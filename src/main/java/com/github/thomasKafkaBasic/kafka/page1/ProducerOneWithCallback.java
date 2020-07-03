@@ -39,7 +39,7 @@ public class ProducerOneWithCallback {
             String key = "id_" + Integer.toString(i);
             ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, key, value);
 
-            logger.info("Key: " + key); // GIVEN KEY GOING TO SAME PARTITION
+            logger.info("Key: " + key + "...and Value: " + value); // GIVEN KEY GOING TO SAME PARTITION
 
             //send data
             producer.send(record, new Callback() {

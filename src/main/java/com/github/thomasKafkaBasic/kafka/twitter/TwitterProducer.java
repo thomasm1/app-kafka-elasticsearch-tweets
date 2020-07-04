@@ -26,9 +26,9 @@ public class TwitterProducer {
     Logger logger = LoggerFactory.getLogger(TwitterProducer.class.getName());
 
     String consumerKey = "Z2xJqU7Gr8elluodKhgjsn2sk";
-    String consumerSecret = "Dm9OJgspp6Avra4HOLgzdJBkFQGiTAneft9NDmIInepKZ6cyBX"; // System.getenv("TWITTER_SECRET_KEY");
+    String consumerSecret =   System.getenv("TWITTER_SECRET_KEY");
     String token = "450477197-Zgn2Hm4Cq23aGwGjFjQdye3ShTt517oLEMgRo6Cn";
-    String secret = "ZkD7KZlBPvkeFsskhTnvuIUqNAuXkeUeDsDL5zR1Gar9T"; // System.getenv("TWITTER_TOKEN_SECRET");
+    String secret =  System.getenv("TWITTER_TOKEN_SECRET");
 
     List<String> terms = Lists.newArrayList("bitcoin");
 

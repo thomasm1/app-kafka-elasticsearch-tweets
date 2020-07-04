@@ -20,7 +20,8 @@ public class ConsumerOneGroups {
         Logger logger = LoggerFactory.getLogger(ConsumerOneGroups.class.getName());
 
         String bootstrapServers = "127.0.0.1:9092";
-        String groupId = "my-third-app";
+        String groupId = "my-fifth-app";
+        String topic = "first-topic";
 
         // create consumer configs
         Properties properties = new Properties();
@@ -34,11 +35,12 @@ public class ConsumerOneGroups {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
 
         // subscribe consumer to topic(s)
-        consumer.subscribe(Arrays.asList("first-topic"));
+        consumer.subscribe(Arrays.asList(topic));
 
         // polling for new data
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+
             for (ConsumerRecord<String, String> record : records) {
                 logger.info("Key: " + record.key() + ", Value: " + record.value());
                 logger.info("Partition: " + record.partition() + ", Offset:" + record.offset());

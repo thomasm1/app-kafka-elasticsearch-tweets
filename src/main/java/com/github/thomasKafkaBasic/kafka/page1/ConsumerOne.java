@@ -21,6 +21,8 @@ public class ConsumerOne {
 
         String bootstrapServers = "127.0.0.1:9092";
         String groupId = "my-first-app";
+        String topic = "first-topic";
+
 
         // create consumer configs
         Properties properties = new Properties();
@@ -34,7 +36,7 @@ public class ConsumerOne {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
 
         // subscribe consumer to topic(s)
-        consumer.subscribe(Arrays.asList("first-topic"));
+        consumer.subscribe(Arrays.asList(topic));
 
         // polling for new data
         while(true) {

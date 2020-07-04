@@ -47,7 +47,7 @@ public class ConsumerOneWithThread {
         myThread.start();
 
         // add a shutdown hook
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+        Runtime.getRuntime().addShutdownHook(new Thread( () -> {
             logger.info("Caught shutdown hook");
             ((ConsumerRunnable) myConsumerRunnable).shutdown();
             try {
@@ -89,7 +89,7 @@ public class ConsumerOneWithThread {
             properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // earliest, none,latest
 
             // create consumer
-            KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
+            consumer = new KafkaConsumer<String, String>(properties);
 
             // subscribe consumer to topic(s)
             consumer.subscribe(Arrays.asList(topic));

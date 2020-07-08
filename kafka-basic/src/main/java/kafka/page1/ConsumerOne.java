@@ -1,4 +1,4 @@
-package com.github.thomasKafkaBasic.kafka.page1;
+package kafka.page1;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -12,16 +12,17 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class ConsumerOneGroups {
+public class ConsumerOne {
 
     public static void main(String[] args) {
         System.out.println("Consumer One starting ....");
 
-        Logger logger = LoggerFactory.getLogger(ConsumerOneGroups.class.getName());
+        Logger logger = LoggerFactory.getLogger(ConsumerOne.class.getName());
 
         String bootstrapServers = "127.0.0.1:9092";
-        String groupId = "my-fifth-app";
+        String groupId = "my-first-app";
         String topic = "first-topic";
+
 
         // create consumer configs
         Properties properties = new Properties();
@@ -29,7 +30,7 @@ public class ConsumerOneGroups {
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // latest, none
+        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // earliest, none,latest
 
         // create consumer
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
@@ -40,7 +41,6 @@ public class ConsumerOneGroups {
         // polling for new data
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-
             for (ConsumerRecord<String, String> record : records) {
                 logger.info("Key: " + record.key() + ", Value: " + record.value());
                 logger.info("Partition: " + record.partition() + ", Offset:" + record.offset());

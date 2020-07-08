@@ -1,4 +1,4 @@
-package com.github.thomasKafkaBasic.kafka.page1;
+package kafka.page1;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

@@ -1,13 +1,13 @@
 
-package com.github.thomasKafkaBasic.kafka.page1;
+package kafka.page1;
 
-        import org.apache.kafka.clients.producer.*;
-        import org.apache.kafka.common.serialization.StringSerializer;
-        import org.slf4j.Logger;
-        import org.slf4j.LoggerFactory;
+import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-        import java.util.Properties;
-        import java.util.concurrent.ExecutionException;
+import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 public class ProducerOneWithCallback {
 

@@ -1,5 +1,7 @@
 package com.github.thomas.kafka.elastic;
 
+
+import com.google.gson.JsonParser;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -25,6 +27,10 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
+
+// ./bin/windows/kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --topic twitter_tweets
+// ./bin/windows/kafka-consumer-groups --bootstrap-server 127.0.0.1:9092 --group kafka-demo-elasticsearch --describe
+
 
 public class ElasticSearchConsumer {
 
@@ -72,33 +78,49 @@ public class ElasticSearchConsumer {
         consumer.subscribe(Arrays.asList(topic));
         return consumer;
     }
+    private static JsonParser jsonParser = new JsonParser();
+    private static String extractIdFromTweet(String tweetJson) {
+        // gson library
+        return jsonParser.parse(tweetJson)
+                .getAsJsonObject()
+                .get("id_str")
+                .getAsString();
+    }
 
     public static void main(String[] args)  throws IOException {
         Logger logger = LoggerFactory.getLogger(ElasticSearchConsumer.class.getName());
         RestHighLevelClient client = createClient();
 
-//      String jsonString = "{ \"crypto\": \"tom\" }";
+//        String jsonString = "{ \"crypto\": \"tom\" }";
 
+
+        
         KafkaConsumer<String, String> consumer = createConsumer("twitter_tweets");
 
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
+            logger.info("Received " + records.count() + " records");
+
             for (ConsumerRecord<String, String> record : records) {
+                // 2 strategies
+                // kafka generic ID
+                // String id = record.topic() + "_" + record.partition() + "_"+ record.offset();
 
-                // where will insert data into ElasticSearch
-           //    String jsonString = record.value(); // <== this is the tweet
+                // twitter feed specific id
+                String id = extractIdFromTweet(record.value());
 
+               // where to insert data into ElasticSearch
                 IndexRequest indexRequest = new IndexRequest(
-//                        "twitter",
-                        "tweets"
+                        "twitter",
+                        "tweets",
+                        id // this is to make consumer idempotent
                 ).source(record.value(), XContentType.JSON);
 
                 IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
-                String id = indexResponse.getId();
-                logger.info(id);
+                logger.info(indexResponse.getId());
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1000); // introduce small delay here ...
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -14,7 +14,7 @@ public class StreamsFilterTweets {
     public static void main(String[] args) {
         // create properties
         Properties properties = new Properties();
-        properties.setProperty(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+        properties.setProperty(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "${KAFKA_HOST}:${KAFKA_PORT}");
         properties.setProperty(StreamsConfig.APPLICATION_ID_CONFIG, "thomas-kafka-streams");
         properties.setProperty(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class.getName());
         properties.setProperty(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class.getName());

@@ -27,7 +27,7 @@ public class ConsumerOneWithThread {
     private void run(){
         Logger logger = LoggerFactory.getLogger(ConsumerOneWithThread.class.getName());
 
-        String bootstrapServers = "127.0.0.1:9092";
+        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
         String groupId = "my-sixth-app";
         String topic = "first-topic";
 

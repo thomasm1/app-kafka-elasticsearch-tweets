@@ -17,7 +17,7 @@ public class ProducerOneWithCallback {
         final Logger logger;
         logger = LoggerFactory.getLogger(ProducerOneWithCallback.class);
 
-        String bootstrapServers = "127.0.0.1:9092";
+        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
 
         // Create Producer props
         Properties properties = new Properties();

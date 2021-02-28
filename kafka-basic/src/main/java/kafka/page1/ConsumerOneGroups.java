@@ -19,7 +19,7 @@ public class ConsumerOneGroups {
 
         Logger logger = LoggerFactory.getLogger(ConsumerOneGroups.class.getName());
 
-        String bootstrapServers = "127.0.0.1:9092";
+        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
         String groupId = "my-fifth-app";
         String topic = "first-topic";
 

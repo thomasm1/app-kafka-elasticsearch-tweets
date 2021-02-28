@@ -63,7 +63,7 @@ public class ElasticSearchConsumer {
 
     public static KafkaConsumer<String, String> createConsumer(String topic) {
 
-        String bootstrapServers = "127.0.0.1:9092";
+        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
         String groupId = "kafka-elasticsearch";
 //        String topic = "twitter_tweets";
 

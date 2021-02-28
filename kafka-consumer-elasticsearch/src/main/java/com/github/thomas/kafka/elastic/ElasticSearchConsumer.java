@@ -86,9 +86,10 @@ public class ElasticSearchConsumer {
         return consumer;
     }
     private static JsonParser jsonParser = new JsonParser();
+
     private static String extractIdFromTweet(String tweetJson) {
         // gson library
-        return jsonParser.parse(tweetJson)
+        return JsonParser.parseString(tweetJson)
                 .getAsJsonObject()
                 .get("id_str")
                 .getAsString();
@@ -115,18 +116,19 @@ public class ElasticSearchConsumer {
             for (ConsumerRecord<String, String> record : records) {
                 // 2 strategies
                 // kafka generic ID
-                // String id = record.topic() + "_" + record.partition() + "_"+ record.offset();
+                 String id = record.topic() + "_" + record.partition() + "_"+ record.offset();
 
                 // twitter feed specific id
                 try {
-                    String id = extractIdFromTweet(record.value());
+//                    String id = extractIdFromTweet(record.value());
 
                     // where to insert data into ElasticSearch
                     IndexRequest indexRequest = new IndexRequest(
-                            "twitter",
-                            "tweets",
-                            id // this is to make consumer idempotent
-                    ).source(record.value(), XContentType.JSON);
+//                            "twitter"  //,
+                            "tweets" //,
+//                            id // this/ is to make consumer idempotent
+                    ).source(record.value(), XContentType.JSON)
+                            .id(id);
 
                     bulkRequest.add(indexRequest); // add to bulk request (takes no time)
                 } catch (NullPointerException e) {
@@ -135,7 +137,7 @@ public class ElasticSearchConsumer {
 
             }
      if (recordCount > 0) {
-         BulkResponse bulkResponses = client.bulk(bulkRequest, RequestOptions.DEFAULT);
+//         BulkResponse bulkResponses = client.bulk(bulkRequest, RequestOptions.DEFAULT);
          logger.info("Committing offsets ...");
          consumer.commitSync();
          logger.info("Offsets have been committed");

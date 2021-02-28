@@ -42,8 +42,8 @@ public class ElasticSearchConsumer {
 
     public static RestHighLevelClient createClient(){
 
-        String hostname = "twitter-searcher-487538879.us-east-1.bonsaisearch.net";
-        String username = "g26t2lz1ax";
+        String hostname = "twitter-searcher-3257558923.us-east-1.bonsaisearch.net";
+        String username = "kmqmyqmj1j";
         String password = System.getenv("ELASTIC_PASSWORD");
 
 

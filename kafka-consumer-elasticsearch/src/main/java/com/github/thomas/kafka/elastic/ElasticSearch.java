@@ -25,9 +25,9 @@ import java.util.Properties;
 public class ElasticSearch {
 
     public static RestHighLevelClient createClient(){
-     //   https://fv9ho4dne6:pqee7eghku@twitter-searcher-109994568.us-east-1.bonsaisearch.net:443
-        String hostname = "twitter-searcher-109994568.us-east-1.bonsaisearch.net";
-        String username = "fv9ho4dne6";
+     //   https://user:pw@twitter-searcher-3257558923.us-east-1.bonsaisearch.net:443
+        String hostname = "twitter-searcher-3257558923.us-east-1.bonsaisearch.net";
+        String username = "kmqmyqmj1j";
         String password = System.getenv("ELASTIC_PASSWORD");
 
         // Not for local ElasticSearch

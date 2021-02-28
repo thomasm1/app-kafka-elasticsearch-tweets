@@ -11,7 +11,9 @@ public class ProducerOne {
     public static void main(String[] args) {
         System.out.println("Kafka producer one");
 
-        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
+        String KAFKA_HOST = System.getenv("KAFKA_HOST");
+        String KAFKA_PORT = System.getenv("KAFKA_PORT");
+        String bootstrapServers = KAFKA_HOST + ":" + KAFKA_PORT;
 
         // Create Producer props
         Properties properties = new Properties();

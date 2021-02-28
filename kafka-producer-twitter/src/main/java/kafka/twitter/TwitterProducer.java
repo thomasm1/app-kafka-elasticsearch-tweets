@@ -20,10 +20,17 @@ import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
+//imoprt org.springframework.core.env.Environment
+//
+//@Autowired
+//private Environment env;
 
 public class TwitterProducer {
 
     Logger logger = LoggerFactory.getLogger(TwitterProducer.class.getName());
+    String KAFKA_HOST = System.getenv("KAFKA_HOST");
+    String KAFKA_PORT = System.getenv("KAFKA_PORT");
+    String bootstrapServers = KAFKA_HOST +":" + KAFKA_PORT;
 
     String consumerKey = "Z2xJqU7Gr8elluodKhgjsn2sk";
     String consumerSecret =   System.getenv("TWITTER_SECRET_KEY");
@@ -117,7 +124,6 @@ public class TwitterProducer {
     }
 
     public KafkaProducer<String, String> createKafkaProducer() {
-        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
 
         // Create Producer props
         Properties properties = new Properties();

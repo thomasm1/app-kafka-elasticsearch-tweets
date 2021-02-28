@@ -18,8 +18,9 @@ public class ConsumerOneGroups {
         System.out.println("Consumer One starting ....");
 
         Logger logger = LoggerFactory.getLogger(ConsumerOneGroups.class.getName());
-
-        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
+        String KAFKA_HOST = System.getenv("KAFKA_HOST");
+        String KAFKA_PORT = System.getenv("KAFKA_PORT");
+        String bootstrapServers = KAFKA_HOST + ":" + KAFKA_PORT;
         String groupId = "my-fifth-app";
         String topic = "first-topic";
 

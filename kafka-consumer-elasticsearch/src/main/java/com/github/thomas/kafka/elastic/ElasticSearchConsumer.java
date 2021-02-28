@@ -36,11 +36,16 @@ import java.util.Properties;
 
 public class ElasticSearchConsumer {
 
+    private static String KAFKA_HOST = System.getenv("KAFKA_HOST");
+    private static String KAFKA_PORT = System.getenv("KAFKA_PORT");
+    private static String bootstrapServers = KAFKA_HOST + ":" + KAFKA_PORT;
+
     public static RestHighLevelClient createClient(){
 
         String hostname = "twitter-searcher-487538879.us-east-1.bonsaisearch.net";
         String username = "g26t2lz1ax";
         String password = System.getenv("ELASTIC_PASSWORD");
+
 
         // Not for local ElasticSearch
         final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
@@ -63,7 +68,7 @@ public class ElasticSearchConsumer {
 
     public static KafkaConsumer<String, String> createConsumer(String topic) {
 
-        String bootstrapServers = "${KAFKA_HOST}:${KAFKA_PORT}";
+//        String bootstrapServers = KAFKA_HOST + ":" + KAFKA_PORT;
         String groupId = "kafka-elasticsearch";
 //        String topic = "twitter_tweets";
 

@@ -10,11 +10,12 @@ import org.apache.kafka.streams.kstream.KStream;
 import java.util.Properties;
 
 public class StreamsFilterTweets {
-
+    private static String KAFKA_HOST = System.getenv("KAFKA_HOST");
+    private static String KAFKA_PORT = System.getenv("KAFKA_PORT");
     public static void main(String[] args) {
         // create properties
         Properties properties = new Properties();
-        properties.setProperty(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "${KAFKA_HOST}:${KAFKA_PORT}");
+        properties.setProperty(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_HOST +":"+ KAFKA_PORT);
         properties.setProperty(StreamsConfig.APPLICATION_ID_CONFIG, "thomas-kafka-streams");
         properties.setProperty(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class.getName());
         properties.setProperty(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class.getName());

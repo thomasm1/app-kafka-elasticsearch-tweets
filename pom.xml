@@ -25,6 +25,7 @@
         <module>kafka-basic</module>
         <module>kafka-producer-twitter</module>
         <module>kafka-streams-filter-tweets</module>
+        <module>kafka-tweets-controller</module>
     </modules>
 
 <!--    <dependencies>-->

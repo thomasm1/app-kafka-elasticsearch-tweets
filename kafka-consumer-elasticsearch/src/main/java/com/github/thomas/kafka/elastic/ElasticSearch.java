@@ -56,8 +56,8 @@ public class ElasticSearch {
         String jsonString = "{ \"crypto\": \"tom\" }";
 
         IndexRequest indexRequest = new IndexRequest(
-                "twitter",
-                "tweets"
+                "twitter"  //,
+//                "tweets"
         ).source(jsonString, XContentType.JSON);
 
         IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);

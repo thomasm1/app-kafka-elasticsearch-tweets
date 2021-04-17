@@ -1,5 +1,17 @@
 3 forms:  1) Kafka Java API, 2) Kafka connect [source and Sink], 3) Kafka REST Proxy 
 
+#### PROD Instructions after install 
+##### 1.)
+```
+./bin/windows/zookeeper-server-start.bat config/zookeeper.properties  
+./bin/windows/kafka-server-start.bat config/server.properties  
+```
+
+##### 2.) TwitterProducer (TwitterMessageQueue + TwitterProducer)
+###### Connects to Twitter API, polls for "crypto" tweets, Kafka produces to topic "twitter_tweets"
+##### 3.) ElasticSearchConsumer ( )
+###### Connects to ElasticSearch (bonsai.io API), consumes topic "twitter_tweets", 
+
 #### KAFKA INSTALL 
 Java 8, Kafka 2.0, extracted with winRAR
 ```
@@ -20,8 +32,11 @@ C:\kafka_2.12-2.0.0>bin\windows\kafka-topics.bat
 #### KAFKA START - from kafka dir 
 ```
 ./bin/windows/zookeeper-server-start.bat config/zookeeper.properties
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 
 ./bin/windows/kafka-server-start.bat config/server.properties
+bin\windows\kafka-server-start.bat config\server.properties
+
 ```
 #### Create Topic
 ```
@@ -94,3 +109,80 @@ kafka-topics --zookeeper 127.0.0.1:2181 --topic important_tweets --create --part
 
 kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic important_tweets --from-beginning
 ```
+
+##### Example JSON FROM TWITTERS STREAM:
+{
+  "created_at": "Sat Apr 17 21:30:02 +0000 2021",
+  "id": 1383533234814738434,
+  "id_str": "1383533234814738434",
+  "text": "Bitcoin subiu!\n\ud83c\udde7\ud83c\uddf7\ud83d\udcb5 BTC\/BRL R$ 344,595.59\n\ud83c\uddfa\ud83c\uddf8\ud83d\udcb5 BTC\/USD $ 61,437.88\nVaria\u00e7\u00e3o 24h(%): -0.84",
+  "source": "\u003ca href=\"https:\/\/donthaveaurl.com\" rel=\"nofollow\"\u003eSeuBitcoinBot\u003c\/a\u003e",
+  "truncated": false,
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 1238318943942651904,
+    "id_str": "1238318943942651904",
+    "name": "Seu Bitcoin",
+    "screen_name": "SeuBitcoin",
+    "location": null,
+    "url": null,
+    "description": "Tenha acesso ao pre\u00e7o do Bitcoin sem sair da sua rede social!",
+    "translator_type": "none",
+    "protected": false,
+    "verified": false,
+    "followers_count": 115,
+    "friends_count": 8,
+    "listed_count": 2,
+    "favourites_count": 3,
+    "statuses_count": 57250,
+    "created_at": "Fri Mar 13 04:20:36 +0000 2020",
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": "",
+    "profile_background_image_url_https": "",
+    "profile_background_tile": false,
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1238319344251293696\/g2YCxm3c_normal.jpg",
+    "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1238319344251293696\/g2YCxm3c_normal.jpg",
+    "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/1238318943942651904\/1584074187",
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "withheld_in_countries": []
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": false,
+  "quote_count": 0,
+  "reply_count": 0,
+  "retweet_count": 0,
+  "favorite_count": 0,
+  "entities": {
+    "hashtags": [],
+    "urls": [],
+    "user_mentions": [],
+    "symbols": []
+  },
+  "favorited": false,
+  "retweeted": false,
+  "filter_level": "low",
+  "lang": "fi",
+  "timestamp_ms": "1618695002641"
+}

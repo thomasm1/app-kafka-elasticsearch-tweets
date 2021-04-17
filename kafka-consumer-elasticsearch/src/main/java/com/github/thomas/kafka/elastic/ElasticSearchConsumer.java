@@ -110,7 +110,7 @@ public class ElasticSearchConsumer {
 
             Integer recordCount = records.count();
             logger.info("Received " + recordCount + " records");
-
+            logger.info(" ++++ " + records.toString() + " ++++++++");
             BulkRequest bulkRequest = new BulkRequest();
 
             for (ConsumerRecord<String, String> record : records) {
@@ -124,8 +124,8 @@ public class ElasticSearchConsumer {
 
                     // where to insert data into ElasticSearch
                     IndexRequest indexRequest = new IndexRequest(
-//                            "twitter"  //,
-                            "tweets" //,
+                            "twitter"  //,
+//                            "tweets" //,
 //                            id // this/ is to make consumer idempotent
                     ).source(record.value(), XContentType.JSON)
                             .id(id);

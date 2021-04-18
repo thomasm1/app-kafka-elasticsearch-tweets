@@ -11,6 +11,8 @@
 ###### Connects to Twitter API, polls for "crypto" tweets, Kafka produces to topic "twitter_tweets"
 ##### 3.) ElasticSearchConsumer ( )
 ###### Connects to ElasticSearch (bonsai.io API), consumes topic "twitter_tweets", 
+######          // HTTP GET /twitter/tweets/k94853gBH4p2ivtBimUm OR 
+######          // HTTP GET  /twitter/tweets/topictwitter_tweets_partition_2_offset_4135
 
 #### KAFKA INSTALL 
 Java 8, Kafka 2.0, extracted with winRAR
@@ -36,6 +38,12 @@ bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 
 ./bin/windows/kafka-server-start.bat config/server.properties
 bin\windows\kafka-server-start.bat config\server.properties
+
+```
+#### KAFKA GRACEFUL STOP 
+```
+./bin/windows/kafka-server-stop.bat  
+./bin/windows/zookeeper-server-stop.bat 
 
 ```
 #### Create Topic

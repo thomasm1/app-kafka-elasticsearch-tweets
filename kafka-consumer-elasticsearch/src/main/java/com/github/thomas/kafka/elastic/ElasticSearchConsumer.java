@@ -100,9 +100,6 @@ public class ElasticSearchConsumer {
         RestHighLevelClient client = createClient();
 
 //        String jsonString = "{ \"crypto\": \"tom\" }";
-
-
-        
         KafkaConsumer<String, String> consumer = createConsumer("twitter_tweets");
 
         while(true) {
@@ -114,21 +111,31 @@ public class ElasticSearchConsumer {
             BulkRequest bulkRequest = new BulkRequest();
 
             for (ConsumerRecord<String, String> record : records) {
-                // 2 strategies
-                // kafka generic ID
-                 String id = record.topic() + "_" + record.partition() + "_"+ record.offset();
-
-                // twitter feed specific id
+                // Three strategies
+                // 1. idKafkaRecord ... Kafka generic ID
+                 String idKafkaRecord = "topic"+ record.topic() + "_partition_" + record.partition() + "_offset_"+ record.offset();
+                logger.info("idKafkaRecord: "+idKafkaRecord);
+                // HTTP GET /twitter/tweets/topictwitter_tweets_partition_2_offset_4135
                 try {
-//                    String id = extractIdFromTweet(record.value());
+                    // 2. idTwitter ... Twitter feed specific id
+                    String idTwitter = extractIdFromTweet(record.value());
+                    logger.info("idTwitter: "+idTwitter);
 
                     // where to insert data into ElasticSearch
                     IndexRequest indexRequest = new IndexRequest(
-                            "twitter"  //,
-//                            "tweets" //,
-//                            id // this/ is to make consumer idempotent
+                            "twitter"  ,
+                            "tweets" //,
+//                            idTwitter   /// THIRD FIELD No Good
+//                            idKafkaRecord // this/ is to make consumer idempotent
                     ).source(record.value(), XContentType.JSON)
-                            .id(id);
+                            .id(idKafkaRecord)
+                            ; // idTwitter OR idKafkaRecord
+                    IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
+
+                    // 2. idElasticResp ... Elasticache Response id
+                    String idElasticResp = indexResponse.getId();
+                    logger.info("idElasticResp: "+idElasticResp);
+                    // HTTP GET /twitter/tweets/k94853gBH4p2ivtBimUm
 
                     bulkRequest.add(indexRequest); // add to bulk request (takes no time)
                 } catch (NullPointerException e) {

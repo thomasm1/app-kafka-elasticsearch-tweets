@@ -1,0 +1,96 @@
+ {
+ 	"pets": [{
+ 			"id": 1,
+ 			"cId": 1,
+ 			"petName": "Sprinkles",
+ 			"birthDate": "12-APR-01",
+ 			"weight": 60,
+ 			"color":"brown","type": 2,
+ 			"breed": "Himalayan",
+ 			"neuter":1,"description": "Diabeetus.",
+ 			"petUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+ 		},
+ 		{
+ 			"id": 2,
+ 			"cId": 1,
+ 			"petName": "Bandit",
+ 			"birthDate": "12-APR-01",
+ 			"weight": 60,
+ 			"color":"brown","type": 2,
+ 			"breed": "Bengal",
+ 			"neuter":1,"description": "There's bad blood--cliques, gangs.",
+ 			"petUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
+ 		},
+ 		{
+ 			"id": 3,
+ 			"cId": 2,
+ 			"petName": "Garbage",
+ 			"birthDate": "12-APR-01",
+ 			"weight": 60,
+ 			"color":"brown","type": 2,
+ 			"breed": "British Shorthair",
+ 			"neuter":1,"description": "Feral barn cat.",
+ 			"petUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
+ 		}, {
+ 			"id": 5,
+ 			"cId": 5,
+ 			"petName": "Brandon",
+ 			"birthDate": "2020-04-20 00:00:00.0",
+ 			"weight": 60,
+ 			"color": "Black",
+ 			"type": 1,
+ 			"breed": "Malinois",
+ 			"neuter": 1,
+ 			"description": "Big ole pupper",
+ 			"petUrl": "mal.jpeg"
+ 		}, {
+ 			"id": 6,
+ 			"cId": 6,
+ 			"petName": "Ruben",
+ 			"birthDate": "2020-04-16 00:00:00.0",
+ 			"weight": 40,
+ 			"color": "Brown",
+ 			"type": 1,
+ 			"breed": "Chihuahua",
+ 			"neuter": 1,
+ 			"description": "Smol pupper",
+ 			"petUrl": "chi.jpeg"
+ 		}, {
+ 			"id": 8,
+ 			"cId": 5,
+ 			"petName": "Whiskers",
+ 			"birthDate": "2018-01-25 00:00:00.0",
+ 			"weight": 69,
+ 			"color": "Green",
+ 			"type": 2,
+ 			"breed": "English Bdog",
+ 			"neuter": 1,
+ 			"description": "Hes a big boy",
+ 			"petUrl": null
+ 		}, {
+ 			"id": 10,
+ 			"cId": 5,
+ 			"petName": "Whiskers",
+ 			"birthDate": "2018-01-25 00:00:00.0",
+ 			"weight": 69,
+ 			"color": "Green",
+ 			"type": 2,
+ 			"breed": "English Bdog",
+ 			"neuter": 1,
+ 			"description": "Hes a big boy",
+ 			"petUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+ 		}, {
+ 			"id": 27,
+ 			"cId": 0,
+ 			"petName": null,
+ 			"birthDate": null,
+ 			"weight": 0,
+ 			"color": null,
+ 			"type": 0,
+ 			"breed": null,
+ 			"neuter": 0,
+ 			"description": null,
+ 			"petUrl": null
+ 		}
+ 	]
+ }

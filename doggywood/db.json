@@ -1,0 +1,633 @@
+{
+  "customers": [
+    {
+      "id": 3,
+      "firstName": "Crystal",
+      "lastName": "Diaz",
+      "phone": "888-888-8888",
+      "email": "project1@earthlink.net",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p11.png"
+    },
+    {
+      "id": 4,
+      "firstName": "Jalian",
+      "lastName": "JLast",
+      "phone": "999-999-9999",
+      "email": "project0@earthlink.net",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p12.png"
+    },
+    {
+      "id": 44,
+      "firstName": "Veronika",
+      "lastName": "Sotera",
+      "phone": "999-699-6999",
+      "email": "fistacuffs@sweetangel.com",
+      "password": "derder",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p13.png"
+    },
+    {
+      "id": 45,
+      "firstName": "heart",
+      "lastName": "Fire",
+      "phone": "111-699-8888",
+      "email": "DeeDee@fire.com",
+      "password": "ersdfgerhg",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p14.png"
+    },
+    {
+      "id": 88,
+      "firstName": "example",
+      "lastName": "example",
+      "phone": "example",
+      "email": "example",
+      "password": "example",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p15.png"
+    },
+    {
+      "id": 91,
+      "firstName": "TT",
+      "lastName": "Cat",
+      "phone": "888-888-8888",
+      "email": "user",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p16.png"
+    },
+    {
+      "id": 95,
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "email": null,
+      "password": null,
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p17.png"
+    },
+    {
+      "id": 11,
+      "firstName": "Edmund",
+      "lastName": "Butkess",
+      "phone": "888-888-8888",
+      "email": "IdoThings@earthlink.net",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p17.png"
+    },
+    {
+      "id": 87,
+      "firstName": "example",
+      "lastName": null,
+      "phone": null,
+      "email": null,
+      "password": null,
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p17.png"
+    },
+    {
+      "id": 50,
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "email": null,
+      "password": null,
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p17.png"
+    },
+    {
+      "id": 81,
+      "firstName": "sundayRegister",
+      "lastName": "sundayLastname",
+      "phone": "333333-33",
+      "email": "sunday@sun.com",
+      "password": "sunpassword",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p17.png"
+    },
+    {
+      "id": 99,
+      "firstName": "Tuesday",
+      "lastName": "Tuesd",
+      "phone": "444-4444",
+      "email": "Tues@tuesday",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p7.png"
+    },
+    {
+      "id": 100,
+      "firstName": "first",
+      "lastName": "last",
+      "phone": "333333333",
+      "email": "first@last.com",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p7.png"
+    },
+    {
+      "id": 101,
+      "firstName": "Janet",
+      "lastName": "Janet",
+      "phone": "3333333",
+      "email": "Janet",
+      "password": "password",
+      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p7.png"
+    }
+  ],
+  "pets": [
+    {
+      "id": 5,
+      "custId": 5,
+      "petName": "Brandon",
+      "birthDate": "2020-04-20 00:00:00.0",
+      "weight": 60,
+      "color": "Black",
+      "type": 1,
+      "breed": "Malinois",
+      "neuter": 1,
+      "description": "Big ole pupper",
+      "petUrl": "mal.jpeg"
+    },
+    {
+      "id": 6,
+      "custId": 6,
+      "petName": "Ruben",
+      "birthDate": "2020-04-16 00:00:00.0",
+      "weight": 40,
+      "color": "Brown",
+      "type": 1,
+      "breed": "Chihuahua",
+      "neuter": 1,
+      "description": "Smol pupper",
+      "petUrl": "chi.jpeg"
+    },
+    {
+      "id": 128,
+      "custId": 0,
+      "petName": null,
+      "birthDate": null,
+      "weight": 0,
+      "color": null,
+      "type": 0,
+      "breed": null,
+      "neuter": 0,
+      "description": null,
+      "petUrl": null
+    },
+    {
+      "id": 82,
+      "custId": 0,
+      "petName": "newpeat",
+      "birthDate": null,
+      "weight": 0,
+      "color": null,
+      "type": 0,
+      "breed": "br",
+      "neuter": 0,
+      "description": null,
+      "petUrl": null
+    },
+    {
+      "id": 83,
+      "custId": 0,
+      "petName": "newpeat",
+      "birthDate": null,
+      "weight": 0,
+      "color": null,
+      "type": 0,
+      "breed": "br",
+      "neuter": 0,
+      "description": null,
+      "petUrl": null
+    },
+    {
+      "id": 89,
+      "custId": 0,
+      "petName": null,
+      "birthDate": null,
+      "weight": 0,
+      "color": null,
+      "type": 0,
+      "breed": null,
+      "neuter": 0,
+      "description": null,
+      "petUrl": null
+    },
+    {
+      "id": 90,
+      "custId": 0,
+      "petName": null,
+      "birthDate": null,
+      "weight": 0,
+      "color": null,
+      "type": 0,
+      "breed": null,
+      "neuter": 0,
+      "description": null,
+      "petUrl": null
+    },
+    {
+      "id": 107,
+      "custId": 0,
+      "petName": "Ro2ben",
+      "birthDate": "2020-01-01 00:00:00.0",
+      "weight": 60,
+      "color": "Black",
+      "type": 1,
+      "breed": "Malinois",
+      "neuter": 1,
+      "description": "Big ole pupper",
+      "petUrl": "mal.jpeg"
+    },
+    {
+      "id": 108,
+      "custId": 0,
+      "petName": "Rowben",
+      "birthDate": "2020-01-01 00:00:00.0",
+      "weight": 60,
+      "color": "Black",
+      "type": 1,
+      "breed": "Malinois",
+      "neuter": 1,
+      "description": "Big ole pupper",
+      "petUrl": "mal.jpeg"
+    },
+    {
+      "id": 109,
+      "custId": 45,
+      "petName": "Rowben",
+      "birthDate": "2020-01-01 00:00:00.0",
+      "weight": 60,
+      "color": "Black",
+      "type": 1,
+      "breed": "Malinois",
+      "neuter": 1,
+      "description": "Big ole pupper",
+      "petUrl": "mal.jpeg"
+    },
+    {
+      "id": 129,
+      "custId": null,
+      "petName": "df",
+      "birthDate": "2020-01-08",
+      "weight": null,
+      "color": "df",
+      "type": null,
+      "breed": "df",
+      "neuter": null,
+      "description": "dfdf",
+      "petUrl": ""
+    },
+    {
+      "id": 130,
+      "custId": null,
+      "petName": "d",
+      "birthDate": "2020-01-22",
+      "weight": 2,
+      "color": "dd",
+      "type": null,
+      "breed": "d",
+      "neuter": null,
+      "description": "dd",
+      "petUrl": ""
+    },
+    {
+      "id": 131,
+      "custId": null,
+      "petName": "df",
+      "birthDate": "2020-01-10",
+      "weight": null,
+      "color": "df",
+      "type": "3",
+      "breed": "df",
+      "neuter": "1",
+      "description": "dfdf",
+      "petUrl": ""
+    },
+    {
+      "id": 132,
+      "custId": null,
+      "petName": "asdfasdf",
+      "birthDate": "2020-01-15",
+      "weight": null,
+      "color": "asdf",
+      "type": "2",
+      "breed": "asdf",
+      "neuter": "2",
+      "description": "asdfasdfadfs",
+      "petUrl": ""
+    },
+    {
+      "id": 133,
+      "custId": null,
+      "petName": "asdfasdf",
+      "birthDate": "2020-01-15",
+      "weight": 1,
+      "color": "asdf",
+      "type": "2",
+      "breed": "asdf",
+      "neuter": "2",
+      "description": "asdfasdfadfs",
+      "petUrl": ""
+    },
+    {
+      "id": 134,
+      "custId": null,
+      "petName": "",
+      "birthDate": "2020-01-02",
+      "weight": null,
+      "color": "",
+      "type": "3",
+      "breed": "",
+      "neuter": "3",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 135,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": "2",
+      "breed": "",
+      "neuter": "2",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 136,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": "2",
+      "breed": "",
+      "neuter": "2",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 137,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": "1",
+      "breed": "",
+      "neuter": "1",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 138,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": null,
+      "breed": "",
+      "neuter": "1",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 139,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": "4",
+      "breed": "",
+      "neuter": null,
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 140,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": "2",
+      "breed": "",
+      "neuter": "2",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 141,
+      "custId": null,
+      "petName": "",
+      "birthDate": "",
+      "weight": null,
+      "color": "",
+      "type": "2",
+      "breed": "",
+      "neuter": "2",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 3434,
+      "custId": null,
+      "petName": "d",
+      "birthDate": "20-JAN-3333",
+      "weight": 3,
+      "color": "",
+      "type": "2",
+      "breed": "",
+      "neuter": "2",
+      "description": "",
+      "petUrl": ""
+    },
+    {
+      "id": 3435,
+      "custId": null,
+      "petName": "dsf",
+      "birthDate": "2020-01-09",
+      "weight": null,
+      "color": "ds",
+      "type": "2",
+      "breed": "sdf",
+      "neuter": "2",
+      "description": "sdff",
+      "petUrl": ""
+    },
+    {
+      "id": 3436,
+      "custId": null,
+      "petName": "df",
+      "birthDate": "22-JAN-2020",
+      "weight": 1,
+      "color": "fs",
+      "type": "3",
+      "breed": "f",
+      "neuter": "1",
+      "description": "sdff",
+      "petUrl": ""
+    },
+    {
+      "id": 3437,
+      "custId": null,
+      "petName": "",
+      "birthDate": "22-JAN-2020",
+      "weight": null,
+      "color": "",
+      "type": null,
+      "breed": "",
+      "neuter": null,
+      "description": "",
+      "petUrl": ""
+    }
+  ],
+  "employees": [
+    {
+      "id": 48,
+      "eType": 1,
+      "firstName": "Victor",
+      "lastName": "Vet",
+      "phone": "555-555-5555",
+      "email": "admin",
+      "password": "password"
+    },
+    {
+      "id": 49,
+      "eType": 1,
+      "firstName": "Vicky",
+      "lastName": "Vet",
+      "phone": "666-666-6666",
+      "email": "vickyvet@earthlink.net",
+      "password": "password"
+    },
+    {
+      "id": 50,
+      "eType": 2,
+      "firstName": "Rachel",
+      "lastName": "Receptionist",
+      "phone": "777-777-7777",
+      "email": "rachelrecep@earthlink.net",
+      "password": "password"
+    },
+    {
+      "id": 14,
+      "eType": 1,
+      "firstName": "Vetricious",
+      "lastName": "Vexation",
+      "phone": "666-666-6666",
+      "email": "vetricioust@earthlink.net",
+      "password": "password"
+    },
+    {
+      "id": 15,
+      "eType": 1,
+      "firstName": "Venomous",
+      "lastName": "Vandemoniansism",
+      "phone": "666-666-6666",
+      "email": "Vandemoniansism@earthlink.net",
+      "password": "password"
+    },
+    {
+      "id": 16,
+      "eType": 1,
+      "firstName": "Vandlop",
+      "lastName": "Vaniloquence",
+      "phone": "666-666-6666",
+      "email": "Vaniloquence@earthlink.net",
+      "password": "password"
+    }
+  ],
+  "records": [
+    {
+      "id": 57,
+      "petId": 5,
+      "custId": 3,
+      "empId": 6,
+      "vaccId": 6,
+      "apptId": 4
+    },
+    {
+      "id": 56,
+      "petId": 99,
+      "custId": 999,
+      "empId": 999,
+      "vaccId": 999,
+      "apptId": 9999
+    },
+    {
+      "id": 58,
+      "petId": 5,
+      "custId": 4,
+      "empId": 6,
+      "vaccId": 6,
+      "apptId": 4
+    },
+    {
+      "id": 60,
+      "petId": 6,
+      "custId": 44,
+      "empId": 6,
+      "vaccId": 6,
+      "apptId": 4
+    },
+    {
+      "id": 61,
+      "petId": 10,
+      "custId": 44,
+      "empId": 6,
+      "vaccId": 6,
+      "apptId": 4
+    },
+    {
+      "id": 62,
+      "petId": 0,
+      "custId": 0,
+      "empId": 0,
+      "vaccId": 0,
+      "apptId": 0
+    }
+  ],
+  "vaccinations": [
+    {
+      "id": 1,
+      "name": "DHPP",
+      "time": 365,
+      "petType": 1
+    },
+    {
+      "id": 2,
+      "name": "Bordatella",
+      "time": 365,
+      "petType": 1
+    },
+    {
+      "id": 3,
+      "name": "Rabies",
+      "time": 180,
+      "petType": 0
+    },
+    {
+      "id": 4,
+      "name": "Leptoporosis",
+      "time": 365,
+      "petType": 1
+    },
+    {
+      "id": 5,
+      "name": "Lyme",
+      "time": 180,
+      "petType": 1
+    },
+    {
+      "id": 6,
+      "name": "FVRCP",
+      "time": 365,
+      "petType": 2
+    },
+    {
+      "id": 7,
+      "name": "Feline Leukemia",
+      "time": 180,
+      "petType": 2
+    }
+  ]
+}

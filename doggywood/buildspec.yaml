@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+    install:
+      runtime-versions:
+        nodejs: 10
+      commands:
+      - cd doggywood
+      - npm install -g @angular/cli
+      - npm install --save-dev @angular-devkit/build-angular
+      - cd ..
+    build:
+      commands:
+      - cd doggywood
+      - ng build --prod
+      - cd ..
+    post_build:
+      commands:
+      - aws s3 cp doggywood/dist/doggywood s3://doggywood --recursive
+  

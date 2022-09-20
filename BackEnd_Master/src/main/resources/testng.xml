@@ -1,0 +1,17 @@
+<!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  -->
+
+<suite name = "Wiki Main Page Tests">
+
+<test name = "SSB Character Tests">
+	<classes>
+		<class name = "com.revature.charactertesting.CharacterSearchTest"></class>
+	</classes>
+</test>
+
+<test name = "Cucumber Tests">
+	<classes>
+		<class name = "com.revature.behaviortests.TestRunner"></class>
+	</classes>
+</test>
+
+</suite>

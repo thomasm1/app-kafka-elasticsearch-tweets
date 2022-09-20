@@ -1,0 +1,149 @@
+<!-- [{"id":2,"cId":1,"petName":"Whiskers","birthDate":"2017-08-01 00:00:00.0","weight":69,"type":2,"breed":"English Bdog","description":null}] -->
+<!-- id: number;
+    custId: number;
+    petName: string;
+    birthDate: string;
+    weight: number;
+    color: string;
+    type: number;
+    breed: string;
+    neuter: number;
+    description: string;
+    petUrl: string; -->
+
+<button class="btn btn-block btn-info table-btn" data-toggle="modal" data-target="#exampleModalCenter">Add Client Pet</button>
+
+<!-- pet create modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Client Pet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+          <label for="petName" class="control-label">Pet Name<span class="required"> *</span></label>
+          <input id="petName" required name="petName" [(ngModel)]="pet.petName" type="text" class="form-control"
+            #name="ngModel">
+          <span class="help-block" *ngIf="name.invalid && name.touched"> Pet Name is required
+          </span>
+        </div>
+
+        <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+          <label for="breed" class="control-label">Breed<span class="required"> *</span></label>
+          <input id="breed" name="breed" [(ngModel)]="pet.breed" type="text" class="form-control" #name="ngModel">
+          <span class="help-block" *ngIf="name.invalid && name.touched"> Breed is required
+          </span>
+        </div>
+
+        <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+          <label for="color" class="control-label">Color<span class="required"> *</span></label>
+          <input id="color" name="color" [(ngModel)]="pet.color" type="text" class="form-control" #name="ngModel">
+          <span class="help-block" *ngIf="name.invalid && name.touched"> Color is required
+          </span>
+        </div>
+
+
+        <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+          <label for="weight" class="control-label">Weight<span class="required"> *</span></label>
+          <input id="weight" name="weight" [(ngModel)]="pet.weight" type="number" min="0" class="form-control"
+            #name="ngModel">
+          <span class="help-block" *ngIf="name.invalid && name.touched"> Weight is required
+          </span>
+        </div>
+
+        <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+          <label for="birthDate">Pet Date of Birth</label>
+          <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="pet.birthDate"   #name="ngModel">
+          <span class="help-block" *ngIf="name.invalid && name.touched"> DOB is required
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="neuter" class="control-label">Pet Neuter<span class="required"></span></label>
+            <select id="neuter" name="neuter" [(ngModel)]="pet.neuter" class="form-control" #neuter="ngModel">
+                <option disabled value="select"><em>Select Type of Neuter Status: </em></option>
+                <option  *ngFor="let n of petNeuters" [value]="n.id">
+                  {{n.name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="type" class="control-label">Pet Type<span class="required">
+              </span></label>
+            <select id="type"  type="number" appSelectValidator="select" name="type" [(ngModel)]="pet.type" class="form-control" #type="ngModel">
+                <option disabled  type="number" value="select"><em>Select Type of Pet: </em></option>
+                <option  *ngFor="let t of petTypes" type="number" [value]="t.id">
+                  {{t.name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+          <label for="description" class="control-label">Description</label>
+          <textarea class="form-control" id="description" name="description" [(ngModel)]="pet.description"
+            rows="3"></textarea>
+          <span class="help-block" *ngIf="name.invalid && name.touched">
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="petUrl">Enter Image URL For Pet</label>
+          <input type="text" class="form-control" id="petUrl" [(ngModel)]="pet.petUrl">
+        </div>
+        <p>https://doggywood.s3.amazonaws.com/assets/Animals/random_a8.jpg</p>
+    </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-info" (click)="savePet()" data-dismiss="modal">Add Pet</button>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- test modal -->
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class=" scroll-window">
+  <h6>PETS:<br /> http://localhost:8080/pets</h6>
+
+  <ul *ngFor="let pet of petsList">
+    <hr>
+    <img class="imageClass" alt="pet.petUrl" width="100" [src]="pet.petUrl" />
+    <li><strong>pet.id: </strong> {{pet.id}}</li>
+    <li><strong>pet.cId: </strong> {{pet.cId}}</li>
+    <li><strong>pet.petName: </strong> {{pet.petName}}</li>
+    <li><strong>pet.birthDate: </strong> {{pet.birthDate}}</li>
+    <li><strong>pet.weight: </strong> {{pet.weight}}</li>
+    <li><strong>pet.type: </strong> {{pet.type}}</li>
+    <li><strong>pet.neuter: </strong> {{pet.neuter}}</li>
+    <li><strong>pet.breed: </strong> {{pet.breed}}</li>
+    <li><strong>pet.description: </strong> {{pet.description}}</li>
+  </ul>
+</div> -->

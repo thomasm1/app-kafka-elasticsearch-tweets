@@ -1,0 +1,5 @@
+no,username,password,expectedMessage,description
+1,incorrectUsername,password,"Oops, wrong email or password!",not valid email
+2,customer1@gmail.com,incorrectPassword,"Oops, wrong email or password!",incorrect password
+3,,password,"Oops, wrong email or password!",empty username
+4,customer1@gmail.com,,"Oops, wrong email or password!",empty password

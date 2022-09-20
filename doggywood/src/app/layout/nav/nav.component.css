@@ -1,0 +1,11 @@
+nav.navbar {
+    background-color: rgba(144, 184, 219, 0.256); 
+    color: rgba(0, 0, 139, 0.719);
+} 
+a img {
+    margin:10px 0px 0px 30px;
+}
+form button {
+    margin:0px 40px 0px 0px;
+
+}

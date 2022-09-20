@@ -1,0 +1,98 @@
+<div class="container">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="handleLogin()"
+    [ngStyle]="{
+      background: this.admin === false ? '' : 'rgba(144, 184, 219, 0.156)'
+    }"
+  >
+    <div class="panel panel-primary form-group">
+      <br />
+      <div class="panel-heading">
+        <h5 class="panel-title">{{ panelTitle }}</h5>
+      </div>
+      <hr />
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="email" class="control-label">Email </label>
+          <input
+            formControlName="email"
+            id="email"
+            name="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            type="text"
+            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+            class="form-control"
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors?.pattern">Email is invalid form</div>
+            <div *ngIf="f.email.errors.required">
+              Username Email is required
+            </div>
+            <div *ngIf="f.email.errors.required">
+              Username Email is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="control-label">Password </label>
+          <input
+            id="password"
+            name="password"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            type="password"
+            formControlName="password"
+            class="form-control"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        [disabled]="loading"
+        id="submit-button"
+        class="btn btn-primary login"
+      >
+        SUBMIT
+      </button>
+      <!-- <a routerLink="../register" class="btn btn-outline register">REGISTER</a> -->
+
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-sm mr-1"
+      ></span>
+      <br />
+      <hr />
+      <div>
+        <pre>
+Register or use Demo Login:<em>
+customer3@gmail.com
+password</em></pre>
+      </div>
+      <hr />
+      <div class="admin-login">
+        <a
+          (click)="adminButton()"
+          class="links"
+          *ngIf="
+            !authenticationService.isCustLoggedIn() &&
+            !authenticationService.isEmpLoggedIn()
+          "
+        >
+          {{ adminLogin }}
+        </a>
+      </div>
+      <hr />
+      <div
+        class="alert alert-warning"
+        id="errorMessage"
+        *ngIf="errorMessage != ''"
+      >
+        {{ errorMessage }}
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,118 @@
+{
+	"customer": [
+		{
+			"c_id": 1,
+			"fname": "John",
+			"lname": "Doe",
+			"phone": "555-555-5555",
+			"email": "boomermail@aol.com",
+			"pass": "hunter2",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+		},
+		{
+			"c_id": 2,
+			"fname": "Jane",
+			"lname": "Doe",
+			"phone": "666-666-6666",
+			"email": "catlady@aol.com",
+			"pass": "password",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.jpg"
+		},
+		{
+			"c_id": 3,
+			"fname": "John",
+			"lname": "Krasinski",
+			"phone": "777-777-7777",
+			"email": "phillyjim@aol.com",
+			"pass": "1234",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+		}
+	],
+	"pet": [
+		{
+			"p_id": 1,
+			"c_id": 1,
+			"p_name": "Sprinkles",
+			"dob": "12-APR-01",
+			"p_weight": 60,
+			"p_type": 2,
+			"p_breed": "Himalayan",
+			"p_description": "Diabeetus.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+		},
+		{
+			"p_id": 2,
+			"c_id": 1,
+			"p_name": "Bandit",
+			"dob": "12-APR-01",
+			"p_weight": 60,
+			"p_type": 2,
+			"p_breed": "Bengal",
+			"p_description": "There's bad blood--cliques, gangs.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
+		},
+		{
+			"p_id": 3,
+			"c_id": 2,
+			"p_name": "Garbage",
+			"dob": "12-APR-01",
+			"p_weight": 60,
+			"p_type": 2,
+			"p_breed": "British Shorthair",
+			"p_description": "Feral barn cat.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
+		}
+	],
+	"appointment": [
+		{
+			"a_id": 1,
+			"c_id": 1,
+			"p_id": 1,
+			"e_id": 1,
+			"a_date": "14-JAN-20",
+			"weight": 30,
+			"time_slot": 3,
+			"a_description": "Looks kinda dead."
+		},
+		{
+			"a_id": 2,
+			"c_id": 1,
+			"p_id": 2,
+			"e_id": 1,
+			"a_date": "14-JAN-20",
+			"weight": 35,
+			"time_slot": 4,
+			"a_description": "Vaccination for something."
+		},
+		{
+			"a_id": 3,
+			"c_id": 2,
+			"p_id": 3,
+			"e_id": 1,
+			"a_date": "15-JAN-20",
+			"weight": 25,
+			"time_slot": 5,
+			"a_description": "Blood test."
+		}
+	],
+	"notes": [
+		{
+			"n_id": 1,
+			"a_id": 1,
+			"p_id": 1,
+			"n_message": "Cat presented with a whole bunch of I don't even know. Gross."
+		},
+		{
+			"n_id": 2,
+			"a_id": 2,
+			"p_id": 2,
+			"n_message": "Cat presented with literally nothing."
+		},
+		{
+			"n_id": 3,
+			"a_id": 3,
+			"p_id": 3,
+			"n_message": "Cat presented with mange, fleas, and is also kinda ugly."
+		}
+	]
+}

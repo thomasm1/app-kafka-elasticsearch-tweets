@@ -1,9 +1,10 @@
 package apps;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Scanner;
-
+ 
 public class Cli {
 
 	public static void main(String[] args) throws IOException {
@@ -16,6 +17,18 @@ public class Cli {
 		Finalizable f = new Finalizable();
 		f.readFirstLine();  
 		
+		// Time
+		DateActions.timeFormatterThis("yyyy-MM-dd");
+		// Time using Text
+		try {
+			DateActions.convertToText("yyyy-MM-dd");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Serializing
+		SerializeTest.serialTest(1, "file.txt");
+		// String
 		StringActions s = new StringActions();
 		String filename = "C:\\Users\\thoma\\eclipse-workspace\\cli-cryptomaven\\src\\file.txt";
 		s.stringCounts(filename);

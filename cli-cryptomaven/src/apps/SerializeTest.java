@@ -5,9 +5,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
  public class SerializeTest implements java.io.Serializable {
-    public int a;
+    
+	public static void encodeThis(String symbol) throws UnsupportedEncodingException {
+		System.out.println("ENCODING: ..."+symbol);
+ 
+			System.out.println(Arrays.toString(symbol.getBytes("US-ASCII")));
+			System.out.println(Arrays.toString(symbol.getBytes("US-ASCII")));
+			System.out.println(Arrays.toString(symbol.getBytes("ISO-8859-1"))); // ASCII + 
+			System.out.println(Arrays.toString(symbol.getBytes("ISO-8859-1"))); // ASCII + 
+			System.out.println("UTF-8");
+			System.out.println(Arrays.toString(symbol.getBytes("UTF-8")));
+			System.out.println("UTF-16"); 
+			System.out.println(Arrays.toString(symbol.getBytes("UTF-16"))); // includes Byte-Order-Mark BE "FEFF"
+			System.out.println("UTF-16BE"); // big endian
+			System.out.println(Arrays.toString(symbol.getBytes("UTF-16BE"))); // big endian
+			System.out.println("UTF-16LE"); //little Endian	 
+			System.out.println(Arrays.toString(symbol.getBytes("UTF-16LE"))); //little Endian	 
+	}
+	 
+	 public int a;
     public String b;
   
     // Default constructor
@@ -32,23 +52,17 @@ import java.io.ObjectOutputStream;
               
             // Method for serialization of object
             out.writeObject(object);
-              
-            out.close();
+                          out.close();
             file.close();
-              
-            System.out.println("Object has been serialized");
-  
-        }
-          
-        catch(IOException ex)
+                          System.out.println("Object has been serialized");
+          }
+             catch(IOException ex)
         {
             System.out.println("IOException is caught");
         }
-  
-  
+    
         SerializeTest object1 = null;
-  
-        // Deserialization
+          // Deserialization
         try
         {   
             // Reading the object from a file

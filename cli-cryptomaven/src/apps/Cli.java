@@ -28,21 +28,31 @@ public class Cli {
 		}
 		// Serializing
 		SerializeTest.serialTest(1, "file.txt");
+		
 		// String
 		StringActions s = new StringActions();
 		String filename = "C:\\Users\\thoma\\eclipse-workspace\\cli-cryptomaven\\src\\file.txt";
 		s.stringCounts(filename);
 		 
+		// Streams
+		String[] str = { "5.6", "7.4", "4", "1", "2.3"};
+		StreamThis.staticStreamer(str);
+		StreamThis.nullable(str);
+		int[] ints = {1,2,3,4};
+		StreamThis.reduceFilterInts(ints);
+		
+		// ENCODING
+		SerializeTest.encodeThis("a");
+		
 		Scanner inputObj = new Scanner(System.in);
 		System.out.println("Enter Input here - |");
-		 
 			while(inputObj.hasNextLine()) {
 				System.out.println("Enter Input here - |"); 
 				String inputStr = inputObj.nextLine(); 
 				boolean matched = RegEx.regExThis(inputStr);
 				System.out.println("\""+inputStr+"\" input match: "+matched); 
 			}
-			inputObj.close();
+		inputObj.close(); 
 		}
 	 
 

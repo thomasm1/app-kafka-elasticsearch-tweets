@@ -20,17 +20,7 @@ public class StreamThis {
 	        System.out.println("Optional null 2: "   + op2);
 
 // Stream ofNullable
-	        Stream<String> value  = Stream.ofNullable(null); 
-	        System.out.println("Values of Stream null: ");
-	        value.forEach(System.out::println);
-	        
-	        ArrayList<String> listVals = new ArrayList<String>();
-	        for(String s: args) {
-	        	listVals.add(s);
-	        }
-	        Stream <ArrayList<String>> value1  = Stream.ofNullable(listVals); 
-	        System.out.println("Values of Stream  : ");
-	        value1.forEach(System.out::println);
+	    
 	    }
 	 
 	 public static void reduceFilterInts(int[] valints) {

@@ -17,6 +17,8 @@ public class Cli {
 		Finalizable f = new Finalizable();
 		f.readFirstLine();  
 		
+		// NEW TIME
+		DateActions.intervalTiming( "a b c a b abc cc cc a");
 		// Time
 		DateActions.timeFormatterThis("yyyy-MM-dd");
 		// Time using Text
@@ -31,7 +33,7 @@ public class Cli {
 		
 		// String
 		StringActions s = new StringActions();
-		String filename = "C:\\Users\\thoma\\eclipse-workspace\\cli-cryptomaven\\src\\file.txt";
+		String filename = "file.txt";
 		s.stringCounts(filename);
 		 
 		// Streams

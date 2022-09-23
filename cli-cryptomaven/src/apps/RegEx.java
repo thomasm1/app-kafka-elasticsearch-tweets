@@ -1,5 +1,6 @@
 package apps;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,7 +8,7 @@ public class RegEx {
 
 	public static Boolean regExThis(String str) {
 
-		String string = str.isBlank() ? "empty" : str;
+ 
 		Pattern pattern = Pattern.compile(str, Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher("my name is thomas milton");
 		boolean matchFound = matcher.find();

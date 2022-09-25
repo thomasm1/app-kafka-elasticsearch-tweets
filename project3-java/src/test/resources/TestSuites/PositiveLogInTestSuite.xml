@@ -1,0 +1,10 @@
+
+<suite name="PositiveLogInTestSuite" verbose="1">
+	
+	<test name="PositiveLogInTest">
+		<classes>
+			<class name="com.revature.selenium.loginpagetests.PositiveLogInTests" />
+		</classes>
+	</test>
+	
+</suite>

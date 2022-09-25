@@ -16,7 +16,7 @@
 		<aspectj.version>1.7.2</aspectj.version>
 		<cglib.version>2.2.2</cglib.version>
 		<commons-lang.version>2.6</commons-lang.version>
-		<fasterxml.jackson.version>2.5.3</fasterxml.jackson.version>
+		<fasterxml.jackson.version>2.12.6.1</fasterxml.jackson.version>
 		<jackson.version>1.9.1</jackson.version>
 		<jdk.version>1.8</jdk.version>
 		<joda-time.version>2.5</joda-time.version>

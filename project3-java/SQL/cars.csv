@@ -1,0 +1,21 @@
+car_id,color,make,model,seats,car_year,user_id
+1,Teal,Ford,Thunderbird,3,1972,1001
+2,Orange,Lexus,IS,1,2012,1002
+3,Puce,Saab,9-3,2,2000,1003
+4,Fuscia,Isuzu,Rodeo,3,2003,1004
+5,Violet,GMC,Sierra 2500,2,2007,1005
+6,Orange,Hyundai,Santa Fe,1,2003,1006
+7,Yellow,Chrysler,Fifth Ave,5,1992,1007
+8,Maroon,Honda,Ridgeline,5,2010,1008
+9,Teal,Ford,Aerostar,3,1990,1009
+10,Pink,Mercedes-Benz,300CE,2,1993,1010
+11,Crimson,MINI,Cooper Countryman,2,2011,1011
+12,Khaki,Dodge,Viper,4,1994,1012
+13,Pink,Pontiac,Bonneville,2,1987,1013
+14,Khaki,Buick,Electra,4,1985,1014
+15,Puce,Lamborghini,Countach,5,1990,1015
+16,Indigo,Ford,Taurus,1,2012,1016
+17,Indigo,Volkswagen,Golf III,1,1994,1017
+18,Goldenrod,Lotus,Esprit,1,2002,1018
+19,Red,Land Rover,Range Rover,1,1989,1019
+20,Pink,Mercedes-Benz,M-Class,5,2000,1020

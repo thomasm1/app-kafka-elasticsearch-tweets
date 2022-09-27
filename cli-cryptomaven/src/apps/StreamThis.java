@@ -4,23 +4,20 @@ import java.util.stream.Stream;
    
 public class StreamThis {
 
-	public static void staticStreamer(String[]  args) {     
-			List<String> list = Arrays.asList(args); // "5.6", "7.4", "4", "1", "2.3"
-		  
-	        //   Stream flatMap(Function mapper)
-	        list.stream().flatMap(num -> Stream.of(num)).forEach(System.out::println); 
+ 
+	public static void staticStreaming(String[] args) {
+		System.out.println("Streaming   flatMap");
+		List<String> list = Arrays.asList(args);  // { "5.6", "7.4", "4", "1", "2.3" }; 
+		list.stream().flatMap(num -> Stream.of(num)).forEach(System.out::println);  
 	}
 
 //	Optional ofNullable
-	 public static void nullable(String[] args)   { 
+	 public static void nullable(String[] args)   {  //{ 1, 2, 3, 4 };
 	   
 	        Optional<Integer> op1  = Optional.ofNullable(9455); 
 	        System.out.println("Optional 1: " + op1);
 	        Optional<String> op2  = Optional.ofNullable(null);
-	        System.out.println("Optional null 2: "   + op2);
-
-// Stream ofNullable
-	    
+	        System.out.println("Optional null 2: "   + op2); 
 	    }
 	 
 	 public static void reduceFilterInts(int[] valints) {

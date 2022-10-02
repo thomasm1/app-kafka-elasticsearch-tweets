@@ -18,11 +18,11 @@ public class UserLogin {
 		String tempUsername = "cust";
 		String tempPassword = "pass";
 		try {
-			System.out.println("Welcome, please enter your username:");
+			System.out.println("Welcome, please enter your username: [admin: admin; default: joshallen]");
 			Scanner scanner = new Scanner(System.in);
 			String un = scanner.next();
 
-			System.out.println("and your password:");
+			System.out.println("and your password: [admin: pass; default: allen");
 			String pw = scanner.next();
 
 			User login = UserService.getUser(un);

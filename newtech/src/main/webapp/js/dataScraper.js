@@ -25,7 +25,7 @@ async function scraper()   {
     console.log(textOutput);
     document.getElementById("scraperBtc").innerHTML =
       `<strong>API Scraper (regExp):</strong><br />${textOutput}`;
-  }:
+  };
 // scraper();
 
 async function scraper2()   { 

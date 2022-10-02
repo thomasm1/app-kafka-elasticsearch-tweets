@@ -34,5 +34,5 @@ async function fetchAsync() {
         "<strong>API BTC Fetched:</strong><br />https://tmm-nov.s3.amazonaws.com/data/coins/BTCUSD_2019.json<br /><br />Date:  " + dataBtc[0].Date + ' Symbol:  ' + dataBtc[0].Symbol + ' Close:  ' + dataBtc[0].Close;
     // console.log("async fetched ..", dataBtc); 
 
-}:
+};
 fetchAsync();

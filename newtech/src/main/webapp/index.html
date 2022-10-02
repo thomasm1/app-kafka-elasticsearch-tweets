@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<!-- 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../common/header.jspf"%>
+<%@ include file="../common/navigation.jspf"%>
+<%@ include file="../common/footer.jspf"%>
+ -->
+ <!DOCTYPE html>
 <html>
   <head>
     <link
@@ -29,7 +35,7 @@
     <!-- <script src="node_modules/jsdom/lib/api.js"></script> -->
   </head>
 
-  <body id="body">
+  <body id="body"  onload="sessionInfo();listRequest(true, 0)">
     <a href="portfolio.html" class="buton"><button class="btn btn-primary buton">Resume Cubed Thomas Maestas</button></a>
     <div id="module"></div> 
     <script  src='js/module.js'></script>
@@ -46,7 +52,23 @@
     <!--MAP: dataVisuals/dataQueues_D3.js -->
     <div id="dataQueues"></div>
 <div class="container">
+
+
+
+
+
+
+ 
   <h2>CalculateCard</h2>
+	<span>User</span><span class="id" id="headerId"> </span><br />
+				<span>ID</span> <span class="id" id="userAdminId"></span><br />
+				<span>Dept</span> <span class="id" id="userAdminDept"></span><br />
+				<span>Super</span> <span class="id" id="userAdminSuper"></span><br />
+		
+  <a href="grootadder.html">Groot</a>
+  	<table id="table">
+
+				</table>
 <calculate-card></calculate-card>
 
 </div>
@@ -192,4 +214,7 @@
 
   <script src="js/consecDays.js"></script>
   <script src="js/searchDays.js"></script>
+  
+  
+<script src="session.js"></script>
 </html>

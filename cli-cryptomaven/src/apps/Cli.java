@@ -58,13 +58,10 @@ public class Cli {
  
 		System.out.println("Scanner(System.in)  continue");
 		System.out.println("Enter start code: ");
-		int code = inputScan.nextInt();
-		System.out.println("Thanks. You entered " + code);
+		  
 		while (inputScan.hasNextLine()) {
 			System.out.println("Enter Input here ::");
-			String inputStr = inputScan.nextLine();
-			boolean matched = RegEx.regExThis(inputStr);
-			System.out.println("\"" + inputStr + "\" input match: " + matched);
+			String inputStr = inputScan.nextLine(); 
 		}
 		inputScan.close();
 	}

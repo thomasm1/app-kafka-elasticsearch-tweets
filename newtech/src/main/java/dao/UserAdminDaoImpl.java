@@ -29,7 +29,7 @@ public class UserAdminDaoImpl implements UserAdminDao {
 //			cs.setString(1, Integer.toString(u.getUserAdminId()));
 			cs.setString(1, Integer.toString(u.getDeptId()));
 			cs.setString(2, Integer.toString(u.getSuperId()));
-			cs.setString(3, u.getUserAdminName());
+			cs.setString(3, u.getUserName());
 			cs.setString(4, u.getPassword());
 			cs.setString(5, u.getEmail());
 
@@ -136,7 +136,7 @@ public class UserAdminDaoImpl implements UserAdminDao {
 //	cs.setString(1, Integer.toString(u.getUserAdminId()));
 			ps.setString(1, Integer.toString(u.getDeptId()));
 			ps.setString(2, Integer.toString(u.getSuperId()));
-			ps.setString(3, u.getUserAdminName());
+			ps.setString(3, u.getUserName());
 			ps.setString(4, u.getPassword());
 			ps.setString(5, u.getEmail());
 

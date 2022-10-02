@@ -3,6 +3,7 @@ package models;
 public class Offer {
 
 	int offerID;
+	int userID;
 	String userName;
 	int carID;
 	double offerAmt;
@@ -18,6 +19,18 @@ public class Offer {
 		this.offerMos = offerMos;
 		this.offerStatus = offerStatus;
 	}
+ 
+	// userName integer not string passed
+	public Offer(int offerID, int userID, int carID, double offerAmt, int offerMos, String offerStatus) {
+		this.offerID = offerID; 
+		this.userID = userID;
+		this.carID = carID;
+		this.offerAmt = offerAmt;
+		this.offerMos = offerMos;
+		this.offerStatus = offerStatus;
+	}
+
+ 
 
 	public int getOfferID() {
 		return offerID;

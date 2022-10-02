@@ -58,21 +58,21 @@ public class UserAdminWebService {
 		String userName = request.getParameter("username");
 		System.out.println("parameter: "+userName);
 		UserAdmin u = UserAdminService.getUserAdmin(userName);
-		System.out.println("getUserAdmin(name):"+u.getUserAdminName());
+		System.out.println("getUserAdmin(name):"+u.getUserName());
 		
-		UserAdmin d = UserAdminService.getUserAdmin(u.getUserAdminId());
-		System.out.println("getUserAdmin(name):"+d.getUserAdminId());
+		UserAdmin d = UserAdminService.getUserAdmin(u.getUserId());
+		System.out.println("getUserAdmin(name):"+d.getUserId());
 		 
-		String dbUserAdmin = d.getUserAdminName();
-		int dbId = d.getUserAdminId();
+		String dbUserAdmin = d.getUserName();
+		int dbId = d.getUserId();
 		int dbSuper = d.getSuperId();
 		int dbDept = d.getDeptId();
 		System.out.println(dbUserAdmin+"..getting userInfo:" ); 
 
 		HttpSession sess = request.getSession();   
 		sess.setAttribute("sessionId", sess.getId());
-		sess.setAttribute("username", dbUserAdmin);  
-		sess.setAttribute("userid", dbId);  
+		sess.setAttribute("useradminname", dbUserAdmin);  
+		sess.setAttribute("useradminid", dbId);  
 		sess.setAttribute("usersuper", dbSuper); 
 		sess.setAttribute("userdept", dbDept); 
 

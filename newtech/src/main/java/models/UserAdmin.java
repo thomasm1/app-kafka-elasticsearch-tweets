@@ -1,33 +1,79 @@
 package models;
 
-public class UserAdmin {
-	private int userAdminId;
+public class UserAdmin { 
+	
+	private int userId;
+	private long id;
+	private String lastName;
+	private String firstName;
+	private int deptId;
 	private int superId;
-	private String userAdminName;
+	private String userName;
 	private String password;
 	private String email;
-	private int deptId;
+	private String phone;
+	private String cusUrl;
 	
 	public UserAdmin() {
 		super();
 	}
 
-	public UserAdmin(int userAdminId, int deptId, int superId, String userAdminName, String password, String email) {
+	public UserAdmin(int userId, long id, String lastName, String firstName, int deptId, int superId, String userName,
+			String password, String email, String phone, String cusUrl) {
 		super();
-		this.userAdminId = userAdminId;
+		this.userId = userId;
+		this.id = id;
+		this.lastName = lastName;
+		this.firstName = firstName;
 		this.deptId = deptId;
 		this.superId = superId;
-		this.userAdminName = userAdminName;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+		this.cusUrl = cusUrl;
+	}
+
+	public UserAdmin(int userId, int deptId, int superId, String userName, String password, String email) {
+		super();
+		this.userId = userId;
+		this.deptId = deptId;
+		this.superId = superId;
+		this.userName = userName;
 		this.password = password;
 		this.email = email;
 	}
 
-	public int getUserAdminId() {
-		return userAdminId;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUserAdminId(int userAdminId) {
-		this.userAdminId = userAdminId;
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public int getDeptId() {
@@ -46,12 +92,12 @@ public class UserAdmin {
 		this.superId = superId;
 	}
 
-	public String getUserAdminName() {
-		return userAdminName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUserAdminName(String userAdminName) {
-		this.userAdminName = userAdminName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -70,10 +116,26 @@ public class UserAdmin {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "UserAdmin [userAdminId=" + userAdminId + ", deptId=" + deptId + ", superId=" + superId + ", userAdminName=" + userAdminName
-				+ ", password=" + password + ", email=" + email + "]";
+	public String getPhone() {
+		return phone;
 	}
 
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getCusUrl() {
+		return cusUrl;
+	}
+
+	public void setCusUrl(String cusUrl) {
+		this.cusUrl = cusUrl;
+	}
+ 
+	@Override
+	public String toString() {
+		return "UserAdmin [userId=" + userId + ", id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
+				+ ", deptId=" + deptId + ", superId=" + superId + ", userName=" + userName + ", password=" + password
+				+ ", email=" + email + ", phone=" + phone + ", cusUrl=" + cusUrl + "]";
+	}
 }

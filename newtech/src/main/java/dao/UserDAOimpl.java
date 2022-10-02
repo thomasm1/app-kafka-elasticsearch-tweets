@@ -20,7 +20,7 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 	public boolean createUser(User u) {
 //		DB.users.put(u.getUserID(), c);
 //		return true;
-		String sql = "CALL add_new_user( ?,?, ?,?,?)";
+		String sql = "CALL add_new_users( ?,?, ?,?,?)";
 		try {
 			CallableStatement cs = conn.prepareCall(sql); 
 			cs.setString(1, u.getUsername()); 
@@ -43,7 +43,7 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 	public User getUser (String username) {
 //		return DB.users.get(id);
 		try {
-			String sql = "SELECT * FROM usertable WHERE username = ?";
+			String sql = "SELECT * FROM users WHERE username = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
 
@@ -68,7 +68,7 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 	public User getUser(int id) {
 //		return null;
 		try {
-			String sql = "SELECT * FROM usertable WHERE userid = ?";
+			String sql = "SELECT * FROM users WHERE userid = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, Integer.toString(id));
 			ResultSet rs = ps.executeQuery();
@@ -98,7 +98,7 @@ e.printStackTrace();
 //		for(Integer k: keys)
 //			userList.add(DB.users.get(k));
 //		return userList;
-		String sql = "SELECT * FROM usertable";
+		String sql = "SELECT * FROM users";
 		List<User> userArr = new ArrayList<User>();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -122,7 +122,7 @@ e.printStackTrace();
 	public boolean updateUser(User change) { // using USERNAME
 //		DB.users.replace(change.getUserID(), change);
 //		return true;
-		String sql = "UPDATE usertable SET password=?, fullname=?, iscust=?, isowner=? WHERE username = ?";
+		String sql = "UPDATE users SET password=?, fullname=?, iscust=?, isowner=? WHERE username = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(sql); 
 //					ps.setString(6, Integer.toString(change.getUserID()));
@@ -143,7 +143,7 @@ e.printStackTrace();
 	}
 	public boolean deleteUser(String u) {
 //		DB.users.remove(id);
-		String sql = "DELETE usertable WHERE username = ?";
+		String sql = "DELETE users WHERE username = ?";
 		
 	try {
 		PreparedStatement ps = conn.prepareStatement(sql); 

@@ -72,27 +72,27 @@ public class LoginWebService {
 		System.out.println("this user is not verified as a Dept Head, checking tho...");
 
 		for (UserAdmin u : uu) { // this is user object logged in
-			if (u.getUserAdminName().equals(username) && u.getPassword().equals(password)) {
-				System.out.println("logged in! " + u.getUserAdminName() + " matches " + username + "\n" + "and "
+			if (u.getUserName().equals(username) && u.getPassword().equals(password)) {
+				System.out.println("logged in! " + u.getUserName() + " matches " + username + "\n" + "and "
 						+ u.getPassword() + " matches " + password + " :-)... welcome");
 				valid = true;
 				/// GET USER DETAILS
-				UserAdmin userLogged = UserAdminService.getUserAdmin(u.getUserAdminId());
+				UserAdmin userLogged = UserAdminService.getUserAdmin(u.getUserId());
 				System.out.println(userLogged.toString());
-				dbUserAdmin = userLogged.getUserAdminName();
-				dbId = userLogged.getUserAdminId();
+				dbUserAdmin = userLogged.getUserName();
+				dbId = userLogged.getUserId();
 				dbSuper = userLogged.getSuperId();
 				dbDept = userLogged.getDeptId();
 				System.out.println("dbDept: " + dbDept + ", passes validation: " + valid);
 
 				for (UserAdmin s : allSuperIds) { // I am listed as a super by these users...
-					if (s.getSuperId() == userLogged.getUserAdminId()) {
+					if (s.getSuperId() == userLogged.getUserId()) {
 						isSuper = true;
 						System.out.println( s.getSuperId() +"==== *IS* verified as a Supervisor: " + isSuper + "==========");
 						// GET contact info of sub:
-						System.out.println("LOOPING, after if: #Sub's id: " + s.getUserAdminId() + ", #sub's name:" + s.getUserAdminName()
+						System.out.println("LOOPING, after if: #Sub's id: " + s.getUserId() + ", #sub's name:" + s.getUserName()
 								+ ", his/her email: " + s.getEmail()); 
-						mySubsIds.add(s.getUserAdminId()); // WORKS!!!==>>> SEND OUT 
+						mySubsIds.add(s.getUserId()); // WORKS!!!==>>> SEND OUT 
 						mySubsObjs.add(s);
 					} 
 				}
@@ -105,7 +105,7 @@ public class LoginWebService {
 				System.out.println("list of my mySubs objs: " + mySubsObjs);
 				int i = 0;
 				for (UserAdmin m : mySubsObjs) {
-					Integer mySubId = m.getUserAdminId();
+					Integer mySubId = m.getUserId();
 					Cookie SubId = new Cookie("sessOid" + i, Integer.toString(mySubId));
 					response.addCookie(SubId);
 					i++;
@@ -136,22 +136,22 @@ public class LoginWebService {
 			}
 		}
 		for (UserAdmin u2 : uu) {
-			if (u2.getUserAdminName().equals(username)) { // this is user object logged in
-				UserAdmin userLogged2 = UserAdminService.getUserAdmin(u2.getUserAdminId());
+			if (u2.getUserName().equals(username)) { // this is user object logged in
+				UserAdmin userLogged2 = UserAdminService.getUserAdmin(u2.getUserId());
 				/// GET Dept DETAILS
 				for (Dept dpt : allDeptHeads) {
-					if (userLogged2.getUserAdminId() == dpt.getDeptHeadId()) { // <<this logged in ==deptHead
+					if (userLogged2.getUserId() == dpt.getDeptHeadId()) { // <<this logged in ==deptHead
 						isDeptHead = true;
 						System.out.println("..oh, this user *IS* verified as a Dept. Head.");
 
 						System.out.println("======is Dept Head: " + isDeptHead + "=======");
 						Dept deptToSee = DeptService.getDept(userLogged2.getDeptId()); // < get dept details
 						System.out.println("deptHead Id: " + deptToSee.getDeptId() + ", Head: "
-								+ deptToSee.getDeptHeadId() + ", logged-in Id: " + userLogged2.getUserAdminId());
+								+ deptToSee.getDeptHeadId() + ", logged-in Id: " + userLogged2.getUserId());
 						System.out.println("deptHeadIds details: " + deptToSee.toString());
 						for (UserAdmin uMember : uuu) {
 							if (deptToSee.getDeptId() == uMember.getDeptId()) {
-								myDeptMemberIds.add(uMember.getUserAdminId()); // WORKS!!!
+								myDeptMemberIds.add(uMember.getUserId()); // WORKS!!!
 								System.out.println("list of my  Dept Underlings: 1 " + myDeptMemberIds);
 							}
 							System.out.println("list of my  Dept Underlings: 2 " + myDeptMemberIds);
@@ -163,7 +163,7 @@ public class LoginWebService {
 				System.out.println("list of my deptMember objs: 5 " + myDeptMemberIds);
 				int i = 0;
 				for (UserAdmin m : mySubsObjs) {
-					Integer myDids= m.getUserAdminId();
+					Integer myDids= m.getUserId();
 					Cookie MyDcookie = new Cookie("dsessOid" + i, Integer.toString(myDids));
 					response.addCookie(MyDcookie);
 					i++;

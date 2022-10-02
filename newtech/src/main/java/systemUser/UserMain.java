@@ -32,14 +32,14 @@ public class UserMain {
 	public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
 		LogGround.logger();
-		System.out.println("|||___________________||| \n #0 log ...Logging by Log4j2.\n");/// #0 log
+		System.out.println("|||_________NEWTECH__________||| \n #0 log ...Logging by Log4j2.\n");/// #0 log
 
 		/// #0 Validate and Load local User State
 		frontConsoleValidation();
 
 		/// #1 check for Oracle JDBC Driver
 		try {
-			System.out.println("#1 Success! driver: " + Class.forName("oracle.jdbc.driver.OracleDriver"));
+			System.out.println("#1 Success! NEWTECH driver: " + Class.forName("oracle.jdbc.driver.OracleDriver"));
 			System.out.println("1 ..found Oracle JDBC Driver...ready to connect.");
 		} catch (ClassNotFoundException e) {
 			System.out.println(

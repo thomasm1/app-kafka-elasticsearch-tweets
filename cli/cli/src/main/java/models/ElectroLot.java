@@ -40,7 +40,7 @@ public class ElectroLot implements List<ElectroLot> {
 
 	public static ElectroLot makeElectro(Offer o) {
 
-		Car carid = CarService.getCar(o.getCarID());
+		Car carid = CarService.getCar(o.getCarId());
 		double balDayOne = carid.getPriceTotal() - o.getOfferAmt(); // Calculate balance by dividing Total-price by
 		balDayOne = roundIt(balDayOne, 2);
 		System.out.println("Balance Day 1: $" + balDayOne);
@@ -58,7 +58,7 @@ public class ElectroLot implements List<ElectroLot> {
 
 		i = (int) (Math.random() * i); // Random id generator (Overwritten in DB in any case)
 
-		ElectroLot newest = new ElectroLot(i, o.getOfferID(), carid.getCarID(), o.getUserName(), carid.getPriceTotal(),
+		ElectroLot newest = new ElectroLot(i, o.getOfferID(), carid.getCarId(), o.getUserName(), carid.getPriceTotal(),
 				o.getOfferAmt(), balance, o.getOfferMos(), monthsRemaining, monthlyPayments);
 
 		System.out.println(o.getUserName() + "'s " + carid.getCarMake() + " " + carid.getCarModel() + " Balance:"

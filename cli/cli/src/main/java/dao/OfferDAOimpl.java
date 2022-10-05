@@ -27,7 +27,7 @@ public class OfferDAOimpl implements OfferDAO {
 
 //			cs.setString(1, Integer.toString(o.getOfferID()));
 			cs.setString(1, o.getUserName());
-			cs.setString(2, Integer.toString(o.getCarID()));
+			cs.setString(2, Integer.toString(o.getCarId()));
 			cs.setString(3, Double.toString(o.getOfferAmt()));
 			cs.setString(4, Integer.toString(o.getOfferMos()));
 			cs.setString(5, o.getOfferStatus());
@@ -121,7 +121,7 @@ public class OfferDAOimpl implements OfferDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, change.getUserName());
-			ps.setString(2, Integer.toString(change.getCarID()));
+			ps.setString(2, Integer.toString(change.getCarId()));
 			ps.setString(3, Double.toString(change.getOfferAmt()));
 			ps.setString(4, Integer.toString(change.getOfferMos()));
 			ps.setString(5, change.getOfferStatus());
@@ -146,7 +146,7 @@ public class OfferDAOimpl implements OfferDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "REJECTED"); 
 			ps.setString(2, change.getOfferStatus());
-			ps.setString(3, Integer.toString(change.getCarID()));
+			ps.setString(3, Integer.toString(change.getCarId()));
 			ps.executeQuery();
 
 			return true;

@@ -94,7 +94,8 @@ public class RequestWebService {
        /// EC2  DOES NOT WORK =>       Request URL: http://3.86.59.44:8080/project1/listRequest.do?userId=4
 	public static void listRequest(HttpServletRequest request, HttpServletResponse response) {
  
-		String uid = request.getParameter("userId");
+//		String uid = request.getParameter("userId");
+		String uid = request.getParameter("userAdminId");
 		String uuid = (uid == "") ? "8888" : uid;
 		Integer intId = Integer.parseInt(uuid);
 		System.out.println("uid=" + uid + " intId=" + intId + "userId=" + uid);

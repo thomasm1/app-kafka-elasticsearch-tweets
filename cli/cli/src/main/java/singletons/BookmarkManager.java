@@ -1,11 +1,14 @@
 package singletons;
 
+import dao.BookmarkDaoImpl;
 import models.Book;
+import models.Bookmark;
 import models.Movie;
 import models.Weblink;
 
 public class BookmarkManager {
 	private static BookmarkManager instance = new BookmarkManager();
+	public static BookmarkDaoImpl dao = new BookmarkDaoImpl();
 	
 	private BookmarkManager() {}
 	
@@ -13,27 +16,25 @@ public class BookmarkManager {
 		return instance;
 	}
 	
-	public Movie createMovie(long id, String title, String profileUrl, int releaseYear,	String[] cast, String[] directors, double imbdRating ) {
+	public Movie createMovie(long id, String title,  int releaseYear,	String[] cast, String[] directors, String genre, double imbdRating ) {
 
 	Movie movie = new Movie();
 	movie.setId(id);
-	movie.setTitle(title);
-	movie.setProfileUrl(profileUrl);
+	movie.setTitle(title); 
 	movie.setReleaseYear(releaseYear);
 	movie.setCast(cast);
 	movie.setDirectors(directors);
+	movie.setGenre(genre);
 	movie.setImbdRating(imbdRating);
 	return movie;
 	}
-	
-	
-	public Book createBook( long id, String title, String profileUrl, int publicationYear,String publisher,String[] authors,
+ 
+	public Book createBook( long id, String title,  int publicationYear,String publisher,String[] authors,
 			  String genre,double rating  ) {
 
 		Book book = new Book();
 		book.setId(id);
-		book.setTitle(title);
-		book.setProfileUrl(profileUrl); 
+		book.setTitle(title); 
 		book.setPublicationYear(publicationYear);
 		book.setPublisher(publisher);
 		book.setAuthors(authors);
@@ -42,16 +43,20 @@ public class BookmarkManager {
 	
 	return book;
 	}
-	
-	public Weblink createWebLink( long id, String title, String profileUrl, String url, String host ) {
+
+ 
+	public Weblink createWeblink( long id, String url, String host ) {
 
 		Weblink weblink = new Weblink();
-		weblink.setId(id);
-		weblink.setTitle(title);
-		weblink.setProfileUrl(profileUrl); 
+		weblink.setId(id); 
 		weblink.setUrl(url);
 		weblink.setHost(host);
  
 	return weblink;
 	}
+	
+	public Bookmark[][] getBookmarks() {
+		return dao.getBookmarks();
+	}
+
 	}

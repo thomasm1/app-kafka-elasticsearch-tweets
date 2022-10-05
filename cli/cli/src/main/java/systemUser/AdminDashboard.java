@@ -102,16 +102,16 @@ public class AdminDashboard {
 							val = scan.nextInt();
 							Car uCar = CarService.getCar(val);
 							scan.nextLine();
-							System.out.println("1.) Remove car #" + uCar.getCarID() + "? Type \"y\" or \"yes\"."
+							System.out.println("1.) Remove car #" + uCar.getCarId() + "? Type \"y\" or \"yes\"."
 									+ "\n\n2.)To permanently delete from records?\n" + "If so, type \"delete\" \n");
 
 							String decide = scan.next();
 							if ((decide.contentEquals("y")) | (decide.contentEquals("yes"))) {
-								Car removeCar = new Car(uCar.getCarID(), uCar.getCarMake(), uCar.getCarModel(),
+								Car removeCar = new Car(uCar.getCarId(), uCar.getCarMake(), uCar.getCarModel(),
 										uCar.getPriceTotal(), 2); // 2 = remove unpurchased
 								try {
 									CarService.updateCar(removeCar);
-									System.out.println(removeCar.toString() + "\n" + " ...\n..#" + uCar.getCarID()
+									System.out.println(removeCar.toString() + "\n" + " ...\n..#" + uCar.getCarId()
 											+ " Successfully removed!!\n");
 
 								} catch (Exception e) {
@@ -119,7 +119,7 @@ public class AdminDashboard {
 								}
 							} else if (decide.contentEquals("delete")) {// delete & unpurchased
 								try {
-									int deleted = uCar.getCarID();
+									int deleted = uCar.getCarId();
 									CarService.deleteCar(deleted);
 									System.out.println("\n" + "\n...#" + deleted + " Permanently deleted!\n");
 
@@ -195,7 +195,7 @@ public class AdminDashboard {
 			if (!decide.contentEquals("y") && !decide.contentEquals("r")) {
 				dashboardChoice();
 			} else if (decide.contentEquals("y")) {
-				Offer offering = new Offer(offerLook.getOfferID(), offerLook.getUserName(), offerLook.getCarID(),
+				Offer offering = new Offer(offerLook.getOfferID(), offerLook.getUserName(), offerLook.getCarId(),
 						offerLook.getOfferAmt(), offerLook.getOfferMos(), "APPROVED");
 				// Finalize New-Owner's Offer details
 				OfferService.updateOffer(offering); 
@@ -203,19 +203,19 @@ public class AdminDashboard {
 				System.out.println(ElectroLot.makeElectro(offering));
 				ElectroLotService.addElectroLot(ElectroLot.makeElectro(offering));
 				// Remove car from customer lot
-				Car uCar = CarService.getCar(offerLook.getCarID());
-				Car removePurchase = new Car(uCar.getCarID(), uCar.getCarMake(), uCar.getCarModel(), uCar.getPriceTotal(),
+				Car uCar = CarService.getCar(offerLook.getCarId());
+				Car removePurchase = new Car(uCar.getCarId(), uCar.getCarMake(), uCar.getCarModel(), uCar.getPriceTotal(),
 						1);
 				CarService.updateCar(removePurchase);
 				// Reject all other offers for same car
-				Offer rejectOffers = new Offer(0, "", uCar.getCarID(), 0.0, 0, "PENDING");  // Reject all other pending offers!!
+				Offer rejectOffers = new Offer(0, "", uCar.getCarId(), 0.0, 0, "PENDING");  // Reject all other pending offers!!
 //				int offerID, String userName, int carID, double offerAmt, int offerMos, String offerStatus
 				OfferService.rejectOtherOffers(rejectOffers);
 				System.out.println(
 						offering.toString() + "\n.....#" + offering.getOfferID() + " successfully approved!!\n");
 
 			} else if (decide.contentEquals("r")) {
-				Offer offering = new Offer(offerLook.getOfferID(), offerLook.getUserName(), offerLook.getCarID(),
+				Offer offering = new Offer(offerLook.getOfferID(), offerLook.getUserName(), offerLook.getCarId(),
 						offerLook.getOfferAmt(), offerLook.getOfferMos(), "REJECTED");
 				OfferService.updateOffer(offering);
 				System.out.println(

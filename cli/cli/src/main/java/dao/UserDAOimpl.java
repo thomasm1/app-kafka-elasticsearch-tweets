@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,8 @@ import util.JDBCConnection;
 import java.util.ArrayList;
 import java.util.List;
 import dao.UserDAO;
-
+import db.DataStore;
+import models.Bookmark;
 //import db.DB;
 import models.User; 
 
@@ -39,7 +41,8 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 		return false;
 	
 	}
-	
+
+	 /// GET /////////////////////////////////////////////////////////////////////////////
 	public User getUser (String username) {
 //		return DB.users.get(id);
 		try {
@@ -91,13 +94,13 @@ e.printStackTrace();
 }
 		return null;
 	}; 
-	
+
+	@Override
+	public User[] getUsers() {
+		return DataStore.getUsers();
+	}
+ 
 	public List<User> getAllUsers() {
-//		List<User> userList = new ArrayList<User>();
-//		Set<Integer> keys = DB.users.keySet();
-//		for(Integer k: keys)
-//			userList.add(DB.users.get(k));
-//		return userList;
 		String sql = "SELECT * FROM users";
 		List<User> userArr = new ArrayList<User>();
 		try {
@@ -160,5 +163,5 @@ e.printStackTrace();
 	}
 	return false;
 	}
- 
+
 }  

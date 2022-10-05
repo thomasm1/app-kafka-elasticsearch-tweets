@@ -1,11 +1,12 @@
 package singletons;
 
 import models.User;
-
+ 
+import db.DataStore;
 public class UserManager {
 
 	private static UserManager instance = new UserManager();
-
+	private static User userdao = new User();
 	private UserManager() {
 	}
 
@@ -32,5 +33,8 @@ public class UserManager {
 		
 		return user;
 
+	}
+	public User[] getUsers() { 
+			return DataStore.getUsers(); 
 	}
 }

@@ -35,7 +35,7 @@ public class RequestHelper {
  
 		switch (uri) {
 
-		case "/project1/login.do": {
+		case "/cli/login.do": {
 // LOGIN USER FORM
 			try {
 				LoginWebService.login(request, response);
@@ -50,25 +50,25 @@ public class RequestHelper {
 		}
 		
 // SIGN-IN USER FORM
-		case "/project1/addUserAdmin.do": {
+		case "/cli/addUserAdmin.do": {
 			UserAdminWebService.addUserAdmin(request, response);
 			break;
 		} 
-		case "/project1/getUserAdmin.do": {
+		case "/cli/getUserAdmin.do": {
 			UserAdminWebService.getUserAdmin(request, response);
 			break;
 		}
-		case "/project1/listUserAdmin.do": {
+		case "/cli/listUserAdmin.do": {
 			UserAdminWebService.listUserAdmin(request, response);
 			break;
 		} 
 // Request Form
-		case "/project1/addRequest.do": {
+		case "/cli/addRequest.do": {
 			RequestWebService.addRequest(request, response);
 			break;
 		} 
 // Get Request details - takes param   [reqId] 
-		case "/project1/getRequest.do": {           /////// WORKS ON EC2
+		case "/cli/getRequest.do": {           /////// WORKS ON EC2
 		try {
 			RequestWebService.getRequest(request, response);
 		} catch (Exception e) {
@@ -78,14 +78,14 @@ public class RequestHelper {
 		}
 // takes parameter    [userId]
 // Collect user's requests (and pending)
-		case "/project1/listRequest.do": {
+		case "/cli/listRequest.do": {
 			RequestWebService.listRequest(request, response);
 			break;
 		} 
 // takes parameter    [ (stage, reqUpdateId, supervisorId, text)] 
 //"reqId="+reqUpdateId+"&stage="+stage+"&superText="+superText+"&dheadText="+dheadText+"&bencoText="+bencoText+"&reqText="+reqText
 		// Collect user's requests (and pending)
-		case "/project1/updateRequest.do": {
+		case "/cli/updateRequest.do": {
 		try {
 			RequestWebService.updateReq(request, response);
 		} catch (Exception e) {
@@ -93,28 +93,28 @@ public class RequestHelper {
 		}
 			break;
 		} 
-		case "/project1/addTask.do": {
+		case "/cli/addTask.do": {
 			TaskWebService.addTask(request, response);
 			break;
 		} 
-		case "/project1/getTask.do": {
+		case "/cli/getTask.do": {
 			TaskWebService.getTask(request, response);
 			break;
 		}
-		case "/project1/listTask.do": {
+		case "/cli/listTask.do": {
 			TaskWebService.listTask(request, response);
 			break;
 		} 
 		
-		case "/project1/addDept.do": {
+		case "/cli/addDept.do": {
 			DeptWebService.addDept(request, response);
 			break;
 		} 
-		case "/project1/getDept.do": {
+		case "/cli/getDept.do": {
 			DeptWebService.getDept(request, response);
 			break;
 		}
-		case "/project1/listDept.do": {
+		case "/cli/listDept.do": {
 			DeptWebService.listDept(request, response);
 			break;
 		} 

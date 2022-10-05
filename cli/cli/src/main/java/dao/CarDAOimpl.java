@@ -133,7 +133,7 @@ String sql = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid,
 			ps.setString(2, change.getCarModel()); 
 			ps.setString(3, Double.toString(change.getPriceTotal())); 
 			ps.setString(4, Integer.toString(change.isPurchased())); 
-			ps.setString(5, Integer.toString(change.getCarID())); 
+			ps.setString(5, Integer.toString(change.getCarId())); 
 			ps.executeQuery();
 			return true;
 		} catch (SQLException e) {

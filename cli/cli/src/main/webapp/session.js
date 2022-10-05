@@ -27,8 +27,7 @@ const listRequest = function (atstart, oId) {
 			console.log(d);
 			if (atstart == true) {
 				document.getElementById("table").innerHTML = ""
-			}; //erase empty list
-
+			}; //erase empty list 
 			if (d == "undefined" || d.length == 0 || !d || d == null) {
 				document.getElementById("table").innerHTML += `
 			<h6>No Reimbursements have been requested.</h6>

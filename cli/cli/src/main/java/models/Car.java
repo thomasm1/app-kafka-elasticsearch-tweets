@@ -2,7 +2,7 @@ package models;
 
 public class Car {
 
-	int carID;
+	int carId;
 	String carMake;
 	String carModel;
 	double priceTotal;
@@ -17,22 +17,22 @@ public class Car {
 		super();
 	}
 
-	public Car(int carID, String carMake, String carModel, double priceTotal, int purchased) {
+	public Car(int carId, String carMake, String carModel, double priceTotal, int purchased) {
 		super();
 
-		this.carID = carID;
+		this.carId = carId;
 		this.carMake = carMake;
 		this.carModel = carModel;
 		this.priceTotal = priceTotal;
 		this.purchased = purchased;
 	}
 
-	public int getCarID() {
-		return carID;
+	public int getCarId() {
+		return carId;
 	}
 
-	public void setCarID(int carID) {
-		this.carID = carID;
+	public void setCarId(int carId) {
+		this.carId = carId;
 	}
 
 	public String getCarMake() {
@@ -69,7 +69,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "\nCar ID:" + carID + ", car Make:" + carMake + ", car Model:" + carModel + ", priceTotal:" + priceTotal
+		return "\nCar Id:" + carId + ", car Make:" + carMake + ", car Model:" + carModel + ", priceTotal:" + priceTotal
 				+ ", 1 = purchased:" + purchased + "]\n"
 						+ "------------------------------";
 	}

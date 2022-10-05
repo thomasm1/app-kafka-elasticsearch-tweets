@@ -13,6 +13,7 @@ public class MasterServlet extends HttpServlet {
 
 	public MasterServlet() {
 		super();
+		System.out.println("masterServlet");
 	}
 
 	@Override

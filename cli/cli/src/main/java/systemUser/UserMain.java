@@ -19,7 +19,7 @@ public class UserMain {
 
 	// main class here
 
-	public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
+	public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
 		LogGround.logger();
 		System.out.println("|||_________NEWTECH__________||| \n #0 log ...Logging by Log4j2.\n");/// #0 log

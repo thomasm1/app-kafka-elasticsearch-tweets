@@ -12,6 +12,8 @@ public interface UserDAO {
 	public boolean updateUser(User change);
 	public boolean deleteUser(String username);
 	
+	public User[] getUsers();
+	
 	// PRE-POP
 //	public boolean createUserPrePop(User u);
  

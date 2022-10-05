@@ -5,26 +5,26 @@ public class Offer {
 	int offerID;
 	int userID;
 	String userName;
-	int carID;
+	int carId;
 	double offerAmt;
 	int offerMos;
 	String offerStatus;
 
-	public Offer(int offerID, String userName, int carID, double offerAmt, int offerMos, String offerStatus) {
+	public Offer(int offerID, String userName, int carId, double offerAmt, int offerMos, String offerStatus) {
 //		super();
 		this.offerID = offerID;
 		this.userName = userName;
-		this.carID = carID;
+		this.carId = carId;
 		this.offerAmt = offerAmt;
 		this.offerMos = offerMos;
 		this.offerStatus = offerStatus;
 	}
  
 	// userName integer not string passed
-	public Offer(int offerID, int userID, int carID, double offerAmt, int offerMos, String offerStatus) {
+	public Offer(int offerID, int userID, int carId, double offerAmt, int offerMos, String offerStatus) {
 		this.offerID = offerID; 
 		this.userID = userID;
-		this.carID = carID;
+		this.carId = carId;
 		this.offerAmt = offerAmt;
 		this.offerMos = offerMos;
 		this.offerStatus = offerStatus;
@@ -48,12 +48,12 @@ public class Offer {
 		this.userName = userName;
 	}
 
-	public int getCarID() {
-		return carID;
+	public int getCarId() {
+		return carId;
 	}
 
-	public void setCarID(int carID) {
-		this.carID = carID;
+	public void setCarId(int carId) {
+		this.carId = carId;
 	}
 
 	public double getOfferAmt() {
@@ -83,8 +83,9 @@ public class Offer {
 	@Override
 	public String toString() {
 		return "\nOffer: #" + offerID + ", Offer Status=" + offerStatus + ", Offer by: *" + userName + "*, \n   Car: #"
-				+ carID + ", Offer: $" + offerAmt + " over " + offerMos + " months\n"
+				+ carId + ", Offer: $" + offerAmt + " over " + offerMos + " months\n"
 						+ "---------------------------";
 	}
+ 
 
 }

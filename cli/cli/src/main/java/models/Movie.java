@@ -1,9 +1,12 @@
 package models;
 
+import java.util.Arrays;
+
 public class Movie extends Bookmark {
 	private int releaseYear;
 	private String[] cast;
 	private String[] directors;
+	private String genre;
 	private double imbdRating;
 	
 	public int getReleaseYear() {
@@ -29,6 +32,15 @@ public class Movie extends Bookmark {
 	}
 	public void setImbdRating(double imbdRating) {
 		this.imbdRating = imbdRating;
+	}
+	public void setGenre(String genre) {
+	this.genre = genre;
+		
+	}
+	@Override
+	public String toString() {
+		return "Movie [releaseYear=" + releaseYear + ", cast=" + Arrays.toString(cast) + ", directors="
+				+ Arrays.toString(directors) + ", genre=" + genre + ", imbdRating=" + imbdRating + "]";
 	}
 	
 	

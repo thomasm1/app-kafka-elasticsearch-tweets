@@ -9,30 +9,30 @@ import models.User;
 
 public class UserService {
 	// DB.users.put(c.getUserID(), c);
-	public static UserDAO userdao = new UserDAOimpl();
+	public static UserDAO userdaoImpl = new UserDAOimpl(); // Interface Dao Ref-type, & userImpl is object
 
 	public static boolean createUser(User change) {
-		return userdao.createUser(change);
+		return userdaoImpl.createUser(change);
 	};
 
 	public static User getUser(String id) {
-		return userdao.getUser(id);
+		return userdaoImpl.getUser(id);
 	};
 
 	public static List<User> getAllUsers() {
-		return userdao.getAllUsers();
+		return userdaoImpl.getAllUsers();
 	};
 
 	public static boolean updateUser(User change) {
-		return userdao.updateUser(change);
+		return userdaoImpl.updateUser(change);
 	}
 
 	public static UserDAO getUserdao() {
-		return userdao;
+		return userdaoImpl;
 	}
 
 	public static boolean deleteUser(String username) {
-		return userdao.deleteUser(username);
+		return userdaoImpl.deleteUser(username);
 
 	}
 }

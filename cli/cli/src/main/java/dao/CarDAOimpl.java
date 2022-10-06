@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 //import java.util.Set;
 
+import db.DataStore;
 //import db.DB;
 import models.Car;
+import models.UserCarbuy;
 
 public class CarDAOimpl implements CarDAO {
 
@@ -78,7 +80,12 @@ String sql = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid,
 	}
 	return null; 
 	} 
-	
+
+////////////// GET OFFLINE CARS  ///////////////////
+	@Override
+	public Car[] getCars() {
+		return DataStore.getCars();
+	}
 ////////////// GETALL (ADMIN VIEW)  ///////////////////
 	public List<Car> getAllCars() {   // *Admin View of *all* cars in CarLot (also purchased cars).
 //		List<Car> carList = new ArrayList<Car>();
@@ -161,6 +168,12 @@ String sql = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid,
 		}
 		return false;
 	}
+
+	public void saveUserCarbuy(UserCarbuy userCarbuy) {
+		DataStore.add(userCarbuy);
+		
+	}
+
 
 	 
 }

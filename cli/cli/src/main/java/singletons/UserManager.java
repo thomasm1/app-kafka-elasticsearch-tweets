@@ -1,12 +1,14 @@
 package singletons;
 
+import models.Car;
 import models.User;
- 
-import db.DataStore;
+import models.UserCarbuy;
+import dao.UserDAOimpl;
+  
 public class UserManager {
 
 	private static UserManager instance = new UserManager();
-	private static User userdao = new User();
+	private static UserDAOimpl userDAOimpl = new UserDAOimpl();
 	private UserManager() {
 	}
 
@@ -34,7 +36,15 @@ public class UserManager {
 		return user;
 
 	}
-	public User[] getUsers() { 
-			return DataStore.getUsers(); 
+	public User[] getUsers() {// THis is just relaying the call to the DaoImpl
+			return userDAOimpl.getUsers(); 
+	}
+
+	public void saveUserCar(User user, Car car) {
+		UserCarbuy userCarbuy = new UserCarbuy();
+		userCarbuy.setUser(user);
+		userCarbuy.setCar(car);
+		userDAOimpl.saveUserCarbuy(userCarbuy);
+		
 	}
 }

@@ -9,22 +9,40 @@ import models.Bookmark;
 import models.Car;
 import models.User;
 import models.UserBookmark;
+import models.UserCarbuy;
 import singletons.BookmarkManager;
 import singletons.CarManager;
 import singletons.UserManager;
 
 public class DataStore {
-	private static final int CAR_INVENTORY = 100;
-	private static final int USER_BOOKMARK_LIMIT = 5;
-	private static final int BOOKMARK_COUNT_PER_TYPE = 5;
-	private static final int BOOKMARK_TYPES_COUNT = 3;
-	private static final int TOTAL_USER_COUNT = 5;
+	public static final int USER_CAR_LIMIT = 2;
+	public static final int CAR_INVENTORY = 10;
+	public static final int USER_BOOKMARK_LIMIT = 5;
+	public static final int BOOKMARK_COUNT_PER_TYPE = 5;
+	public static final int BOOKMARK_TYPES_COUNT = 3;
+	public static final int TOTAL_USER_COUNT = 5;
 	
 	private static Car[] cars = new Car[CAR_INVENTORY];
-	private static User[] users = new User[TOTAL_USER_COUNT];
-	private static Bookmark[][] bookmarks= new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
-	private static UserBookmark[]  userBookmarks = new UserBookmark[USER_BOOKMARK_LIMIT * TOTAL_USER_COUNT];
+	public static Car[] getCars() {
+		return cars;
+	} 
+
+	private static UserCarbuy[]  userCarbuys = new UserCarbuy[USER_CAR_LIMIT * TOTAL_USER_COUNT];
+	private static int carIndex;  
 	
+	private static User[] users = new User[TOTAL_USER_COUNT];
+	public static User[] getUsers() {
+		return users;
+	}
+	
+	private static Bookmark[][] bookmarks= new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
+	public static Bookmark[][] getBookmarks() {
+		return bookmarks;
+	}
+	
+	private static UserBookmark[]  userBookmarks = new UserBookmark[USER_BOOKMARK_LIMIT * TOTAL_USER_COUNT];
+	private static int bookmarkIndex; // initialized to zero
+  
 	public static void loadData() {
 		loadUsers();
 		loadWeblinks();
@@ -32,22 +50,12 @@ public class DataStore {
 		loadBooks();
 		loadCars();
 	}
-	public static User[] getUsers() {
-		return users;
-	}
-	public static Bookmark[][] getBookmarks() {
-		return bookmarks;
-	}
-	public static Car[] getCars() {
-		return cars;
-	} 
-
 	private static void loadUsers() {
 		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[1] = UserManager.getInstance().createUser(501, 1001, "Smith", "Tom", "user1", "password", UserType.USER, Gender.OTHER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[2] = UserManager.getInstance().createUser(502, 1002,	"Smith", "Tom", "user2", "password", UserType.EDITOR, Gender.FEMALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[3] = UserManager.getInstance().createUser(503, 1003,	"Smith", "Tom", "user3", "password",   UserType.EDITOR, Gender.OTHER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[4] = UserManager.getInstance().createUser(504, 1004,	"Smith", "Tom", "user4", "password",   UserType.CHIEF_EDITOR, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+		users[1] = UserManager.getInstance().createUser(501, 1001, "Smith", "Tom", "user1", "password", UserType.USER, Gender.OTHER, "user1@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+		users[2] = UserManager.getInstance().createUser(502, 1002,	"Smith", "Tom", "user2", "password", UserType.EDITOR, Gender.FEMALE, "user2@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+		users[3] = UserManager.getInstance().createUser(503, 1003,	"Smith", "Tom", "user3", "password",   UserType.EDITOR, Gender.OTHER, "user3@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+		users[4] = UserManager.getInstance().createUser(504, 1004,	"Smith", "Tom", "user4", "password",   UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
 	}
 	private static void loadWeblinks() { 
 		bookmarks[0][0] = BookmarkManager.getInstance().createWeblink(2000,  "http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html","http://www.javaworld.com" );
@@ -71,13 +79,27 @@ public class DataStore {
 		bookmarks[2][3] = BookmarkManager.getInstance().createBook(4003,"Head First Design Patterns",  2004,	"O'Reilly Media",	new String[] {"Eric Freeman","Bert Bates","Kathy Sierra","Elisabeth Robson"},	BookGenre.FICTION,	4.5 ); 
 		bookmarks[2][4] = BookmarkManager.getInstance().createBook(4004,"Effective Java Programming Language Guide",  2007,	"Prentice Hall",	new String[] {"Joshua Bloch"},	BookGenre.TECHNICAL,	4.9	 );  
 	}
-	private static void loadCars() {
-		cars[0] = CarManager.getInstance().getInstance().createCar(5000, CarMake.TESLA, "Cyber-Truck", 37000.99, 0);
-		cars[1] = CarManager.getInstance().getInstance().createCar(5001, CarMake.FORD, "Fusion", 23000.99, 0  );
-		cars[2] = CarManager.getInstance().getInstance().createCar(5002, CarMake.JEEP, "Gladiator", 59000.99, 0 );
-		cars[3] = CarManager.getInstance().getInstance().createCar(5003, CarMake.FORD, "Fusion1", 23000.99, 0  );
-		cars[4] = CarManager.getInstance().getInstance().createCar(5004, CarMake.JEEP, "Gladiator1", 59000.99, 0 );
+	private static void loadCars() {  
+		cars[0] = CarManager.getInstance().createCar(5000, CarMake.TESLA, "Cyber-Truck", 37000.99, 0);
+		cars[1] = CarManager.getInstance().createCar(5001, CarMake.FORD, "Fusion", 23000.99, 0  );
+		cars[2] = CarManager.getInstance().createCar(5002, CarMake.JEEP, "Gladiator", 59000.99, 0 );
+		cars[3] = CarManager.getInstance().createCar(5003, CarMake.FORD, "Fusion1", 23000.99, 0  );
+		cars[4] = CarManager.getInstance().createCar(5004, CarMake.JEEP, "Gladiator", 59000.99, 0 );
+		cars[5] = CarManager.getInstance().createCar(5005, CarMake.TESLA, "Cyber-Truck", 37000.99, 0);
+		cars[6] = CarManager.getInstance().createCar(5006, CarMake.CHEVROLET, "Impala", 23000.99, 0  );
+		cars[7] = CarManager.getInstance().createCar(5007, CarMake.JEEP, "Wrangler", 59000.99, 0 );
+		cars[8] = CarManager.getInstance().createCar(5008, CarMake.TESLA, "Fusion1", 23000.99, 0  );
+		cars[9] = CarManager.getInstance().createCar(5009, CarMake.JEEP, "Gladiator1", 59000.99, 0 );
 		
 		 
+	}
+	public static void add(UserBookmark userBookmark) {
+		userBookmarks[bookmarkIndex] = userBookmark;
+		bookmarkIndex++;
+		
+	}
+	public static void add(UserCarbuy userCarbuy) {
+		userCarbuys[carIndex] = userCarbuy;
+		carIndex++;
 	}
 }

@@ -13,6 +13,8 @@ public interface CarDAO {
 	public List<Car> getAllCarsIOwn(String username);
 	public boolean updateCar(Car change); // void
 	public boolean deleteCar(int id); // void 
+	
+	public Car[] getCars();
 	 
 	
 } 

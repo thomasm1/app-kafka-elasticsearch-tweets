@@ -14,7 +14,8 @@ import dao.UserDAO;
 import db.DataStore;
 import models.Bookmark;
 //import db.DB;
-import models.User; 
+import models.User;
+import models.UserCarbuy; 
 
 public class UserDAOimpl implements UserDAO {  // can't make static! so use the service layer!
 	public static Connection conn = JDBCConnection.getConnection();
@@ -95,7 +96,7 @@ e.printStackTrace();
 		return null;
 	}; 
 
-	@Override
+//	@Override
 	public User[] getUsers() {
 		return DataStore.getUsers();
 	}
@@ -162,6 +163,11 @@ e.printStackTrace();
 	e.printStackTrace();
 	}
 	return false;
+	}
+
+	public void saveUserCarbuy(UserCarbuy userCarbuy) {
+		DataStore.add(userCarbuy);
+		
 	}
 
 }  

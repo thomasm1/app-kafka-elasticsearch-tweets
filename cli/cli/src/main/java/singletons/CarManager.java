@@ -1,12 +1,14 @@
 package singletons;
 
-import db.DataStore;
+import dao.CarDAOimpl;
 import models.Car;
 import models.User;
+import models.UserCarbuy;
 
 public class CarManager {
 
 	private static CarManager instance = new CarManager(); 
+	private static CarDAOimpl carDaoImpl = new CarDAOimpl();
 	private CarManager() {
 	}
 
@@ -28,6 +30,7 @@ public class CarManager {
 		return car; 
 	}
 	public Car[] getCars() { 
-		return DataStore.getCars(); 
+		return carDaoImpl.getCars(); 
 }
+
 }

@@ -4,11 +4,13 @@ import dao.BookmarkDaoImpl;
 import models.Book;
 import models.Bookmark;
 import models.Movie;
+import models.User;
+import models.UserBookmark;
 import models.Weblink;
 
 public class BookmarkManager {
 	private static BookmarkManager instance = new BookmarkManager();
-	public static BookmarkDaoImpl dao = new BookmarkDaoImpl();
+	public static BookmarkDaoImpl bookmarkDaoImpl = new BookmarkDaoImpl();
 	
 	private BookmarkManager() {}
 	
@@ -56,7 +58,15 @@ public class BookmarkManager {
 	}
 	
 	public Bookmark[][] getBookmarks() {
-		return dao.getBookmarks();
+		return bookmarkDaoImpl.getBookmarks();
+	}
+
+	public void saveUserBookmark(User user, Bookmark bookmark) {
+	    UserBookmark userBookmark = new UserBookmark();
+	    userBookmark.setUser(user);
+	    userBookmark.setBookmark(bookmark);
+	    bookmarkDaoImpl.saveUserBookmark(userBookmark);
+	    
 	}
 
 	}

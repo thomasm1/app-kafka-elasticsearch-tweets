@@ -1,32 +1,41 @@
 package modelTests;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*; 
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.AfterEach;
+//import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 
 import models.Car;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
+ 
 
 public class CarModelTest {
-//int carID, String carMake, String carModel, double priceTotal, int carCount, boolean purchased, int status
+//int carId, String carMake, String carModel, double priceTotal, int carCount, boolean purchased, int status
+	@BeforeAll // setup
+	public static void setupClass() {
+		System.out.println("Class/Static setup "); 
+	}
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		Car newCar = new Car(1010, "Jeep", "Wrangler", 24000.01, 0);
 		System.out.println(newCar);
 	}
 
 	@Test
-	public void getCarID() {										  // PASSES
+	public void getCarId() {										  // PASSES
 		Car newCar = new Car(1010, "Jeep", "Wrangler", 24000.01, 0);
-		assertEquals(1010, newCar.getCarID());
+		assertEquals(1010, newCar.getCarId());
 	}
 
 	@Test
-	public void setCarID() {										  // PASSES
+	public void setCarId() {										  // PASSES
 		Car newCar = new Car(1010, "Jeep", "Wrangler", 24000.01, 0);
-		newCar.setCarID(1010);
-		assertEquals(1010, newCar.getCarID());
+		newCar.setCarId(1010);
+		assertEquals(1010, newCar.getCarId());
 	}
 
 	@Test

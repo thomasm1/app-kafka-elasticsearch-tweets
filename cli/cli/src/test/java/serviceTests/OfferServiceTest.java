@@ -1,9 +1,12 @@
 package serviceTests; 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import models.User;
 import service.UserService;
@@ -18,17 +21,17 @@ public class OfferServiceTest {      // *NOTE: change PK offernames before sendi
 //		  Offer  p2; update
 //		  Offer p3; delete
 
-	@org.junit.BeforeClass // setup
+	@BeforeAll // setup
 	public static void setupClass() {
 		System.out.println("Class/Static setup "); 
 	}
 
-	@org.junit.Before
+	@BeforeEach
 	public void setup() {
 		System.out.println("Method/Instance setup ");
 	}
 
-    @org.junit.Test   
+    @Test   
 	public void add_new_offer() {
     	Car c = new Car(757357, "Tesla", "CyberTruck", 45000.00, 0); // make foreign-key car
     	CarService.createCar(c);									// Only non-passing test
@@ -40,13 +43,13 @@ public class OfferServiceTest {      // *NOTE: change PK offernames before sendi
 		assertTrue(OfferService.createOffer(o));
 		
 	}
-    @org.junit.Test   
+    @Test   
    	public void update_offer() {
    		Offer o = new Offer(23230, "x455491", 757357, 1110.0, 0, "PENDING");  // PASSES
    		assertTrue(OfferService.updateOffer(o));
    		
    	}
-    @org.junit.Test   
+    @Test   
    	public void get_offer() {
    		Offer o = new Offer(23230, "x455491", 757357, 1110.0, 0, "PENDING");   // PASSES
 		OfferService.createOffer(o); 
@@ -54,7 +57,7 @@ public class OfferServiceTest {      // *NOTE: change PK offernames before sendi
    		
    	} 
 
-	@org.junit.Test   
+	@Test   
    	public void delete_offer() {										  // PASSES
    		Offer o = new Offer(23230, "x455491", 757357, 1110.0, 0, "PENDING");
    		OfferService.createOffer(o); 
@@ -62,12 +65,12 @@ public class OfferServiceTest {      // *NOTE: change PK offernames before sendi
    		
    	}
     
-	@org.junit.After
+	@AfterEach
 	public void tearDown() {
 		System.out.println("After Class executing ...");
 	} // teardown
 
-	@org.junit.AfterClass
+	@AfterAll
 	public static void tearDownClass() {
 		System.out.println("After Class executing ...");
 	} // teardown

@@ -1,9 +1,9 @@
 package daoTests;
 
-//import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+ 
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import models.User;
 import service.UserService;

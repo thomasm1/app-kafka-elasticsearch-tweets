@@ -1,10 +1,13 @@
 //package systemUserTests;
 //
-//import org.junit.After;
-//import org.junit.Before;
-//import org.junit.Test;
+//import static org.junit.jupiter.api.Assertions.*;
+// 
 //
-//import static org.junit.Assert.*;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.BeforeAll;
+// 
+//import org.junit.jupiter.api.AfterAll;
+//import org.junit.jupiter.api.Test;
 //
 //import java.io.File;
 //import java.io.FileNotFoundException;
@@ -12,7 +15,7 @@
 //
 //public class UserRegisterTest {
 //
-//	@Before
+//	@BeforeEach
 //	
 //	public void setup() {
 //		String fileName = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/scannertext.txt";
@@ -73,7 +76,7 @@
 //		scan.close();
 //	}
 //
-//	@After
+//	@AfterEach
 //	public void teardown() {
 //		String fileName = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/scannertext.txt";
 //		System.out.println("scan.close() After executing ..."  );

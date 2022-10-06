@@ -1,14 +1,13 @@
 package serviceTests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+ 
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+ 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 
 import models.Car;
 import service.CarService;
@@ -19,12 +18,12 @@ public class CarServiceTest {      // *NOTE: change PK carnames before sending t
 //		  Car  p2; update
 //		  Car p3; delete
 
-	@org.junit.BeforeClass // setup
+	@BeforeAll // setup
 	public static void setupClass() {
 		System.out.println("Class/Static setup "); 
 	}
 
-	@org.junit.Before
+	@BeforeEach
 	public void setup() {
 		System.out.println("Method/Instance setup ");
 	}
@@ -51,24 +50,18 @@ public class CarServiceTest {      // *NOTE: change PK carnames before sending t
     @Test   
    	public void get_car() {
     	Car c = new Car(775578, "Tesla", "CyberTruck", 45000.00, 0);    // PASSES
-		CarService.getCar(c.getCarID()); 
-   		assertEquals(CarService.getCar(c.getCarID()), CarService.getCar(c.getCarID())); // Check not null bc dynamic int ID
+		CarService.getCar(c.getCarId()); 
+   		assertEquals(CarService.getCar(c.getCarId()), CarService.getCar(c.getCarId())); // Check not null bc dynamic int ID
    		
    	} 
 	@Test   
    	public void delete_car() {										  // PASSES
 		Car c = new Car(77558, "Tesla", "CyberTruck", 45000.00, 0);  
    		CarService.createCar(c); 
-   		assertTrue(CarService.deleteCar(c.getCarID()));
-   		
+   		assertTrue(CarService.deleteCar(c.getCarId())); 
    	}
-    
-	@org.junit.After
-	public void tearDown() {
-		System.out.println("After Class executing ...");
-	} // teardown
-
-	@org.junit.AfterClass
+     
+	@AfterAll
 	public static void tearDownClass() {
 		System.out.println("After Class executing ...");
 	} // teardown

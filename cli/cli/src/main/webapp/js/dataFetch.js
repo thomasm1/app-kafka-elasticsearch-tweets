@@ -12,12 +12,10 @@
 //   const data = await response.json();
 //   console.log(JSON.stringify(json));
 // })() 
-
 // ASYNC - AWAIT - FETCH
-async function fetchAsync() {
-
+async function fetchAsync() { 
     const resBtc = await fetch(
-        "https://tmm-nov.s3.amazonaws.com/data/coins/BTCUSD_2019.json"
+        "https://tmm-nov.s3.amazonaws.com/data/coins/BTCUSD_2019.json" 
     );
     const resEth = await fetch(
         "https://tmm-nov.s3.amazonaws.com/data/coins/Coinbase_ETHUSD_2019.json"

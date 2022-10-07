@@ -7,25 +7,35 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import constants.Cmds;
 import models.Car;
 import models.ElectroLot;
 import models.Offer;
+import models.User;
 //import systemAdmin.AdminLotState;
 //import systemCars.CarsMain;
 //import systemCars.OffersMain;
 import service.CarService;
 import service.ElectroLotService;
 import service.OfferService;
+import service.UserService;
 
 public class AdminDashboard {
+
+	private static final int MIN_OPTIONS = 0;
+	private static final int MAX_OPTIONS = 6;
 
 	public static void dashboardChoice() throws SQLException {
 
 		System.out.println("*---------------------------------*");
 		System.out.println(
-				"\nWelcome to the dashboard\n " + " ... What's Next? \n " + "1.) View Financials and Payments\n "
-						+ "2.) View Car Lot\n " + "3.) Add Car\n " // +"4.) Update as Purchased (also removes)\n "
-						+ "4.) Remove Unpurchased Car\n " + "5.) View and/or Accept Offers\n " + "0.) Logout");
+				"\nWelcome to the dashboard\n " + " ... What's Next? \n "   
+						+ Cmds.ONE + "View Financials and Payments\n "
+						+ Cmds.TWO + "View Car Lot\n " + "3.) Add Car\n " // +"4.) Update as Purchased (also removes)\n "
+						+ Cmds.FOUR + "Remove Unpurchased Car\n " 
+						+ Cmds.FIVE + "View and/or Accept Offers\n "  
+						+ Cmds.SIX + "get Users With Cars\n" 
+						+ Cmds.ZERO + "Logout");
 //OK* As an employee, I can add a car to the lot.
 //OK * As an employee, I can accept or reject an offer for a car.
 //OK* As an employee, I can remove a car from the lot.
@@ -33,7 +43,7 @@ public class AdminDashboard {
 		try {
 			Scanner scan = new Scanner(System.in);
 			int val = scan.nextInt();
-			if (val >= 0 && val <= 5) {
+			if (val >= MIN_OPTIONS && val <= MAX_OPTIONS) {
 				switch (val) {
 				case 1: {
 					scan.nextLine();
@@ -42,15 +52,17 @@ public class AdminDashboard {
 //					System.out.println(electroList);
 					dashboardChoice();
 				}
-				case 2: {
-//					List<Car> carList = CarService.getAllCars();
-					System.out.println("Entering CarLot View...");
-//					System.out.println(carList);
+
+/////////////////// THREE
+				case 2: { 
+					System.out.println("Entering CarLot View..."); 
 					System.out.println(CarService.getAllCars());
 					System.out.println(
 							"\nWhat is next, Valued Employee? \n... Shall I order you a pizza for a late lunch?... \n ");
 					dashboardChoice();
 				}
+
+/////////////////// THREE
 				case 3: {
 					scan.nextLine();
 					System.out.println("Adding a car? Let me get my notepad ...");
@@ -93,6 +105,7 @@ public class AdminDashboard {
 						dashboardChoice();
 					}
 				}
+/////////////////// OUR
 				case 4: {
 					scan.nextLine();
 					System.out.println("Removing a car? \nLet me get my notepad ...");
@@ -140,11 +153,20 @@ public class AdminDashboard {
 						dashboardChoice();
 					}
 				}
+/////////////////// FIVE
 				case 5: {
 					List<Offer> offerList = OfferService.getAllOffers();
 					System.out.println("Listing reports ...");
 					System.out.println(offerList); 
 					checkOffer(); // method below
+
+					dashboardChoice();
+				}	
+/////////////////// SIX
+				case 6: {
+					List<User> userList = UserService.getUsersWithCars();
+					System.out.println("Listing Users with Cars ...");
+					System.out.println(userList);  
 
 					dashboardChoice();
 				}

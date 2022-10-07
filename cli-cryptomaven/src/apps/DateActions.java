@@ -1,5 +1,6 @@
 package apps;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -11,14 +12,45 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.TreeMap;
+import java.util.HashMap; 
 
-// convert calendar date to yyyy-MM-dd format.
-//inActiveDate = Wed Sep 26 00:00:00 IST 2012. ==> 2012-09-26. 
-public class DateActions {
+// SINGLETON DATE  ==> Must still use ENUMs to overcome Reflection problem
+
+public class DateActions  implements Serializable,Cloneable{
+
+	private static final long serialVersionUID = 1L;
+	private static volatile DateActions instance; 
+	
+	long[] hashCode = {12,12,12,13,13};  //  
+	
+	
+	private DateActions() {}
+	
+	public static DateActions getInstance() {
+		if (instance == null) {
+			synchronized (DateActions.class) {
+				if (instance == null) {
+					instance = new DateActions();
+				}
+			}
+		}
+		return instance;
+	}
+
+	protected Object readResolve() {
+		return instance;
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException();
+	}
+
+	// convert calendar date to yyyy-MM-dd format.
+	//inActiveDate = Wed Sep 26 00:00:00 IST 2012. ==> 2012-09-26. 
 	
 	// java.time.formatter.DataTimeFormatter
 	public static void timeFormatterThis(String sPattern) { //"yyyy-MM-dd"
@@ -92,4 +124,24 @@ public class DateActions {
 		inActiveDate = format1.format(date); 
 		System.out.println(inActiveDate );
 	} 
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1; 
+		result = prime * result + Arrays.hashCode(hashCode);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof DateActions))
+			return false;
+		DateActions other = (DateActions) obj;
+		return Arrays.equals(hashCode, other.hashCode);
+	}
+
 }

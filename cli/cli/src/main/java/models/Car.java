@@ -27,6 +27,11 @@ public class Car {
 		this.purchased = purchased;
 	}
 
+	public Car(int carId) {
+		super();
+		this.carId = carId;
+	}
+
 	public int getCarId() {
 		return carId;
 	}

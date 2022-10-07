@@ -25,7 +25,7 @@ public class CliApplication {
 	// launch methods
 	private static void loadData() {
  
-		CliLogger.logger.info("cli running");
+		System.out.println(CliLogger.getInstance());;
 		System.out.println("1. LOADING BOOKMARK DATA");
 		DataStore.loadData();
 		users = UserManager.getInstance().getUsers();

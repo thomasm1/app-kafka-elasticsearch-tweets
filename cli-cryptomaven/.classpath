@@ -17,6 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="/com.github.thomas-kafka-basic/cli-cryptomaven/src/apps/lambdas/htmlcleaner-2.21.jar"/>
+	<classpathentry kind="lib" path="src/apps/lambdas/htmlcleaner-2.21.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

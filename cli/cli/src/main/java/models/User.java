@@ -1,6 +1,8 @@
 package models;
 
-public class User {
+import java.util.Map;
+
+public class User   {
 
 	private int userId;
 	private long id;
@@ -32,7 +34,18 @@ public class User {
 		this.phone = phone;
 		this.cusUrl = cusUrl;
 	}
-	
+
+	// overloaded for getUsersByCArs() call to DB
+public User(int userId,   String userName ) {
+	super();
+	this.userId = userId; 
+	this.userName = userName; 
+}
+public User(  String userName, String password ) {
+	super(); 
+	this.userName = userName; 
+	this.password = password;
+}
 		// overloaded for OFFER/ Gender must be multi-purpose
 	public User(int userId,   String userName, String password, int userType, int gender) {
 		super();
@@ -73,6 +86,13 @@ public class User {
 	} 
  
  
+
+	public User(int userId,   String userName, String password) {
+		super();
+		this.userId = userId; 
+		this.userName = userName;
+		this.password = password;
+	}
 
 	@Override
     public int hashCode() {

@@ -32,7 +32,13 @@ public class UserService {
 	}
 
 	public static boolean deleteUser(String username) {
-		return userdaoImpl.deleteUser(username);
+		return userdaoImpl.deleteUser(username); 
+	}
+	public static List<User> getUsersWithCars() {
+		return userdaoImpl.getUsersWithCars();
+	}
 
+	public static User getUserByPassword(String username, String password) {
+		return userdaoImpl.getUserByPassword(username, password);
 	}
 }

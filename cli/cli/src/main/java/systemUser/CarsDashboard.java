@@ -32,7 +32,7 @@ public class CarsDashboard {
 
 try {
 	if (val < MENU_FIRST || val > MENU_LAST) {
-		System.out.println(Cmds.OOPS);
+		System.out.println(Cmds.OOPS_OPTIONS);
 		val = scan.nextInt();
 		scan.nextLine();
 	} else {

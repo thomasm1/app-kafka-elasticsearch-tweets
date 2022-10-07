@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List; 
 import java.util.Scanner;
- 
 
-import logger.LogGround;
+import constants.Cmds;
+import logger.LogCustom; 
 import models.Car; 
 import service.CarService; 
 
@@ -21,7 +21,7 @@ public class UserMain {
 
 	public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
-		LogGround.logger();
+		LogCustom.logger();
 		System.out.println("|||_________NEWTECH__________||| \n #0 log ...Logging by Log4j2.\n");/// #0 log
 
 		/// #0 Validate and Load local User State
@@ -33,7 +33,7 @@ public class UserMain {
 			System.out.println("1 ..found Oracle JDBC Driver...ready to connect.");
 		} catch (ClassNotFoundException e) {
 			System.out.println(
-					"oops, Driver not found :-O. Hey! Check Build Path for the Oracle Java Database Connector Class! Physically put the jar into ");
+					Cmds.OOPS_JDBC);
 		}
 		/// #2 Loading frontConsole Menu
 		try {
@@ -42,14 +42,14 @@ public class UserMain {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("oops, #2 menu fail");
+			System.out.println(Cmds.OOPS + Cmds.TWO+ "menu fail");
 //			UserMain.main(args);
 			System.exit(0);
 		}
 		/// #3 Loading Scanner accepting Integer Input
 		try {
 			frontConsole();
-			System.out.println(" #3 Loading Scanner accepting Integer Input");
+			System.out.println(Cmds.THREE + "Loading Scanner accepting Integer Input");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());

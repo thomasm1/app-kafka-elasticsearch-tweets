@@ -5,6 +5,8 @@ import java.util.stream.Stream;
 public class StreamThis {
 
  
+		
+	
 	public static void staticStreaming(String[] args) {
 		System.out.println("Streaming   flatMap");
 		List<String> list = Arrays.asList(args);  // { "5.6", "7.4", "4", "1", "2.3" }; 

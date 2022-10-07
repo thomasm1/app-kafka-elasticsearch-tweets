@@ -24,9 +24,8 @@ public class UserLogin {
 
 			System.out.println("and your password: [admin: pass; default: allen");
 			String pw = scanner.next();
-
 			User login = UserService.getUser(un);
-
+//			User login = UserService.getUserByPassword(un, pw);
 			if (un.contentEquals(adminUsername) && pw.contentEquals(adminPassword)) {
 				System.out.println("Welcome Administrator, *" + un + "*\n    ... now preparing your Dashboard");
 				AdminDashboard.loginDashboard(un); //

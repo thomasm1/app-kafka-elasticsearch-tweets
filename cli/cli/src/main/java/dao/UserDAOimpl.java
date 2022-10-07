@@ -23,14 +23,19 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 	public boolean createUser(User u) {
 //		DB.users.put(u.getUserID(), c);
 //		return true;
-		String sql = "CALL add_new_users( ?,?, ?,?,?)";
+		// USER is autoincrement
+		String sql = "CALL add_new_users( ?,?,?, ?,?,?, ?,?,?, ?)";
 		try {
-			CallableStatement cs = conn.prepareCall(sql); 
+			CallableStatement cs = conn.prepareCall(sql);  
 			cs.setString(1, u.getUsername()); 
 			cs.setString(2, u.getPassword()); 
 			cs.setString(3, u.getLastName());  
-			cs.setString(4, Integer.toString(u.getUserType()));
-			cs.setString(5, Integer.toString(u.getGender()));
+			cs.setString(4, u.getFirstName()); 
+			cs.setString(5, Integer.toString(u.getUserType()));
+			cs.setString(6, Integer.toString(u.getGender()));
+			cs.setString(7, u.getEmail()); 
+			cs.setString(8, u.getPhone());  
+			cs.setString(9, u.getCusUrl()); 
 
 			cs.execute();
 			return true;
@@ -56,11 +61,16 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 			while (rs.next()) 
 			{
 				return new User(rs.getInt("userid"), 
-						0, rs.getString("username"),  
+						   rs.getString("username"),  
 						rs.getString("password"),  
 						rs.getString("lastname"),   
-						sql, rs.getInt("usertype"), 
-						rs.getInt("gender"), sql, sql, sql);
+						rs.getString("firstName"),   
+						 rs.getInt("userType"), 
+						rs.getInt("gender"),  
+						rs.getString("email"),   
+						rs.getString("phone"),   
+						rs.getString("cusUrl")  
+						);
 			}
 
 		} catch (Exception e) {
@@ -79,13 +89,17 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 
 			while (rs.next())
 			{
-				return new User(rs.getInt("userid"), id, 
-						rs.getString("username"),  
+				return new User(rs.getInt("userid"), 
+						   rs.getString("username"),  
 						rs.getString("password"),  
-						rs.getString("lastname"),  sql, 
-						rs.getInt("usertype"), 
-						rs.getInt("gender"), sql, sql, sql);
-		 
+						rs.getString("lastname"),   
+						rs.getString("firstName"),   
+						 rs.getInt("userType"), 
+						rs.getInt("gender"),  
+						rs.getString("email"),   
+						rs.getString("phone"),   
+						rs.getString("cusUrl")  
+						);
 			}
 
 		} 
@@ -110,11 +124,16 @@ e.printStackTrace();
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				userArr.add(new User(rs.getInt("userid"), 
-						0, rs.getString("username"),  
+						   rs.getString("username"),  
 						rs.getString("password"),  
-						rs.getString("usertype"),   
-						sql, rs.getInt("iscust"), 
-						rs.getInt("isowner"), sql, sql, sql));
+						rs.getString("lastname"),   
+						rs.getString("firstName"),   
+						 rs.getInt("userType"), 
+						rs.getInt("gender"),  
+						rs.getString("email"),   
+						rs.getString("phone"),   
+						rs.getString("cusUrl")  
+ 					));
 			}
 			return userArr;
 		} catch (SQLException e) {
@@ -126,15 +145,19 @@ e.printStackTrace();
 	public boolean updateUser(User change) { // using USERNAME
 //		DB.users.replace(change.getUserID(), change);
 //		return true;
-		String sql = "UPDATE users SET password=?, usertype=?, iscust=?, isowner=? WHERE username = ?";
+		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?, gender=?, email=?, phone=?, cusurl=? WHERE username = ?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(sql); 
 //					ps.setString(6, Integer.toString(change.getUserID()));
 					ps.setString(1, change.getPassword());
 					ps.setString(2, change.getLastName());
-					ps.setString(3, Integer.toString(change.getUserType()));
-					ps.setString(4, Integer.toString(change.getGender())); 
-					ps.setString(5, change.getUsername());
+					ps.setString(3, change.getFirstName()); 
+					ps.setString(4, Integer.toString(change.getUserType()));
+					ps.setString(5, Integer.toString(change.getGender())); 
+					ps.setString(6, change.getEmail()); 
+					ps.setString(7, change.getPhone());  
+					ps.setString(8, change.getCusUrl()); 
+					ps.setString(9, change.getUsername());
 					ps.executeQuery();
 				
 					return true;

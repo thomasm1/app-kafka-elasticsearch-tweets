@@ -32,25 +32,39 @@ public class User {
 		this.phone = phone;
 		this.cusUrl = cusUrl;
 	}
-// overloaded without   Id, lastname, firstname, email, phone, cusurl
-	public User(int userId, String userName, String password,  int  userType,   int gender) {
+	
+		// overloaded for OFFER/ Gender must be multi-purpose
+	public User(int userId,   String userName, String password, int userType, int gender) {
 		super();
-		this.userId = userId;
+		this.userId = userId; 
 		this.userName = userName;
 		this.password = password;
-		this.userType = userType; 
+		this.userType = userType;  
 		this.gender = gender;
 	}
+	
+// overloaded For REGISTER userId is AutoIncrement, lastname, firstname, email, phone, cusurl
+	public User(  String userName, String password, String lastName, String firstName) {
+		super(); 
+		this.userName = userName;
+		this.password = password;
+		this.lastName = lastName;
+		this.firstName = firstName;
+	}
 
-//	 overloaded without Id
-	public User(String userName, String password, String lastName, String firstName,  int userType, int gender) {
-//			super(); 
+//	 overloaded without Id  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
+	public User( int userId, String userName, String password, String lastName, String firstName,  int userType, int gender, String email, String phone, String cusUrl) {
+			super();  
+			this.userId =  userId;
 		this.userName = userName;
 		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.userType = userType;
 		this.gender = gender;
+		this.email = email;
+		this.phone = phone;
+		this.cusUrl = cusUrl;
 	} 
  
  

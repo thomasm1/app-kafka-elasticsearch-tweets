@@ -30,7 +30,7 @@ public class UserRegister {
 		System.out.println(" ,  last name:\n"); 
 		String ln = scan.next();  
 		
-		User newUser = new User(un, pw, ln, fn, 0, 0);
+		User newUser = new User(un, pw, ln, fn );
 		System.out.println("Successfully registered: "+ UserService.createUser(newUser));
 		System.out.println(newUser);
 

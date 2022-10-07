@@ -7,16 +7,14 @@ public class LogGround {
 	}
 
 	public static void logger() {
-		Project0Logger.logger.info("Program Started");
-//		int num;
+		CliLogger.logger.info("Program Started");
  
-//		Project0Logger.logger.warn("'num' is not used....");
 		try {
 			int x = 1/10;
 		} catch (ArithmeticException e) {
-			Project0Logger.logger.error( e.getMessage());
+			CliLogger.logger.error( e.getMessage());
 		}
-		Project0Logger.logger.info("Program ended");
+		CliLogger.logger.info("Program ended");
 		
 	}
 

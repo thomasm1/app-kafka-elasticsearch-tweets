@@ -79,7 +79,12 @@ public class RequestHelper {
 // takes parameter    [userId]
 // Collect user's requests (and pending)
 		case "/cli/listRequest.do": {
+			System.out.println("asking listRe");
+		try {
 			RequestWebService.listRequest(request, response);
+		} catch(Exception e) {
+			e.getStackTrace();
+		}
 			break;
 		} 
 // takes parameter    [ (stage, reqUpdateId, supervisorId, text)] 

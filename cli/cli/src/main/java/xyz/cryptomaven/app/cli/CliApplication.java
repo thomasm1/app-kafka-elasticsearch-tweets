@@ -2,7 +2,7 @@ package xyz.cryptomaven.app.cli;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import logger.CliLogger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -24,6 +24,8 @@ public class CliApplication {
 
 	// launch methods
 	private static void loadData() {
+ 
+		CliLogger.logger.info("cli running");
 		System.out.println("1. LOADING BOOKMARK DATA");
 		DataStore.loadData();
 		users = UserManager.getInstance().getUsers();
@@ -94,7 +96,7 @@ public class CliApplication {
 		startBookmarking();
 		buyCar();
 		// USER MAIN
-//		cliUser(); 
+		cliUser(); 
 
 	}
 

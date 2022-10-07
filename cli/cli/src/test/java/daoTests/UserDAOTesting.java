@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import constants.Gender;
+import constants.UserType;
 import models.User;
 import service.UserService;
 
@@ -13,8 +15,8 @@ public class UserDAOTesting {
 
 	@Test
 	public void add_User() {
-		dynamicUsername = "x1userdname" + Double.toString(Math.random()*31); // should constrain this back into String form and unique
-		User u = new User(dynamicUsername, "passWdordX", "lastName", "firstName", 0, 0);
+		dynamicUsername = "Random-User-" + Double.toString(Math.random()*31); // should constrain this back into String form and unique
+		User u = new User(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
 		assertTrue(UserService.createUser(u));
 		assertTrue(UserService.deleteUser(UserService.getUser("dynamicUsername").getUsername()));
 	}

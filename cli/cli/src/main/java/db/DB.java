@@ -36,7 +36,7 @@ public class DB {
 		cars.put(301, newFord);
 //		
 //		////////////////////// USER 
-//	   //(int userID, String user, String pass, String userType, boolean isOwner, int offerCount)
+//	   //(int userID, String user, String pass, String userType, int userType, int offerCount)
 		User templateOfferer = new User(1, "user", "password",   0 ,0 );
 		User templateOwner = new User(2, "user0", "password",   1, 1  );
 		users.put(1, templateOfferer);

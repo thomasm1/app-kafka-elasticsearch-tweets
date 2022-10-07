@@ -24,7 +24,7 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 //		DB.users.put(u.getUserID(), c);
 //		return true;
 		// USER is autoincrement
-		String sql = "CALL add_new_users( ?,?,?, ?,?,?, ?,?,?, ?)";
+		String sql = "CALL add_new_users(?,?,?, ?,?,?, ?,?,?)";
 		try {
 			CallableStatement cs = conn.prepareCall(sql);  
 			cs.setString(1, u.getUsername()); 
@@ -60,7 +60,7 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 
 			while (rs.next()) 
 			{
-				return new User(rs.getInt("userid"), 
+				return new User(rs.getInt("userid"),  
 						   rs.getString("username"),  
 						rs.getString("password"),  
 						rs.getString("lastname"),   
@@ -89,7 +89,7 @@ public class UserDAOimpl implements UserDAO {  // can't make static! so use the 
 
 			while (rs.next())
 			{
-				return new User(rs.getInt("userid"), 
+				return new User(rs.getInt("userid"),  
 						   rs.getString("username"),  
 						rs.getString("password"),  
 						rs.getString("lastname"),   
@@ -123,7 +123,7 @@ e.printStackTrace();
 			// preparedStatements are safe from SQL injection & sanitize inputs
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				userArr.add(new User(rs.getInt("userid"), 
+				userArr.add(new User(rs.getInt("userid"),  
 						   rs.getString("username"),  
 						rs.getString("password"),  
 						rs.getString("lastname"),   

@@ -16,8 +16,8 @@ public class UserDAOTesting {
 	@Test
 	public void add_User() {
 		dynamicUsername = "Random-User-" + Double.toString(Math.random()*31); // should constrain this back into String form and unique
-		User u = new User(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+		User u = new User( "user0", "password", "Smith", "Tom",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
 		assertTrue(UserService.createUser(u));
-		assertTrue(UserService.deleteUser(UserService.getUser("dynamicUsername").getUsername()));
+		assertTrue(UserService.deleteUser(UserService.getUser("user0").getUsername()));
 	}
 }

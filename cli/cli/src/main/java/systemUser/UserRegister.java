@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import constants.Gender;
+import constants.UserType;
 import models.User;
 import service.UserService;
 //import models.Pokemon;
@@ -29,8 +31,9 @@ public class UserRegister {
 
 		System.out.println(" ,  last name:\n"); 
 		String ln = scan.next();  
-		
-		User newUser = new User(un, pw, ln, fn );
+		//  "ADD_NEW_USERS" 
+//(username VARCHAR2, password VARCHAR2, lastName varchar2, firstName varchar2, usertype NUMBER, gender NUMBER, email VARCHAR2, phone VARCHAR2, cusURl VARCHAR2)
+		User newUser = new User(999,un, pw, ln, fn, UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net" );
 		System.out.println("Successfully registered: "+ UserService.createUser(newUser));
 		System.out.println(newUser);
 

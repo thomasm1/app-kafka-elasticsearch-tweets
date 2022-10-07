@@ -44,18 +44,23 @@ public class User {
 	}
 	
 // overloaded For REGISTER userId is AutoIncrement, lastname, firstname, email, phone, cusurl
-	public User(  String userName, String password, String lastName, String firstName) {
-		super(); 
+	public User(  String userName, String password, String lastName, String firstName, int userType, int gender, String email, String phone, String cusUrl) {
+		super();  
 		this.userName = userName;
 		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
+		this.userType = userType; 
+		this.gender = gender;
+		this.email = email;
+		this.phone = phone;
+		this.cusUrl = cusUrl;
 	}
 
 //	 overloaded without Id  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
 	public User( int userId, String userName, String password, String lastName, String firstName,  int userType, int gender, String email, String phone, String cusUrl) {
 			super();  
-			this.userId =  userId;
+		 this.userId =  userId;
 		this.userName = userName;
 		this.password = password;
 		this.lastName = lastName;

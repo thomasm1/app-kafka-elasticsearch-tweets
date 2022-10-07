@@ -2,6 +2,14 @@ package serviceTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+ 
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -31,31 +39,32 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
     @Test   
 	public void add_new_user() {
-		User u = new User(999, 0, "x1445549", "passWordX", null, null, 0, 0, null, null, null);    // PASSES
+		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");    // PASSES
 		assertTrue(UserService.createUser(u));
-		UserService.deleteUser(UserService.getUser("x1445549").getUsername());		
+		UserService.deleteUser(UserService.getUser("user4").getUsername());		
 	}
 
     @Test   
    	public void get_user() {
-   		User u = new User(99, 0, "x455491", "passWordX", null, null, 0, 0, null, null, null);   // PASSES
-		UserService.createUser(u); // leave ou
-   		assertEquals("passWordX", u.getPassword());
-		UserService.deleteUser(UserService.getUser("x455491").getUsername());	
+   		String expected = "passWordX";
+		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
+		UserService.createUser(u);  
+   		assertEquals(expected, u.getPassword());
+		UserService.deleteUser(UserService.getUser("user4").getUsername());	
    	} 
 
     @Test   
    	public void update_user() {
-   		User u = new User(99, 0, "x455491", "passWordX", null, null, 0, 0, null, null, null);   // PASSES
+   		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
 		UserService.createUser(u); // leave ou
-   		User uUpdated = new User(99, 0, "x455491", "UPDATESpassWordX", null, null, 1, 1, null, null, null);   // PASSES
+   		User uUpdated = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
    		assertTrue(UserService.updateUser(uUpdated));
-		UserService.deleteUser(UserService.getUser("x455491").getUsername());
+		UserService.deleteUser(UserService.getUser("user4").getUsername());
    	} 
 
     @Test   
    	public void delete_user() {										  // PASSES
-   		User u = new User(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+   		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
    		UserService.createUser(u); 
    		assertTrue(UserService.deleteUser(u.getUsername())); 
 

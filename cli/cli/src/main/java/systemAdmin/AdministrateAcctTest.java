@@ -1,23 +1,25 @@
 package systemAdmin;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.fail;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 public class AdministrateAcctTest {
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
     }
 
-    @org.junit.Test
+    @Test
     public void deposit() throws Exception {
     			//    	int carID, int userID,  int offerID, double balance, int offerStatus, int offerCount
         AdministrateAcct account = new AdministrateAcct(1005, 7, 207, 30301, 1, 2);
@@ -25,26 +27,26 @@ public class AdministrateAcctTest {
 //        assertEquals(1200.00, carCount, 0);
     }
 
-    @org.junit.Test
+    @Test
     public void newBal() throws Exception {
         fail("This test has yet to be implemented");
     }
 
-    @org.junit.Test
+    @Test
     public void getBalance_user() throws Exception {
 //        AdministrateAcct account = new AdministrateAcct("Tom", "Maestas", 1000.00, AdministrateAcct.PENDING);
 //        account.deposit(200.00, true);
 //        assertEquals(1200.00, account.getBalance(), 0);
     }
 
-    @org.junit.Test
+    @Test
     public void getBalance_newBal() throws Exception {
 //        AdministrateAcct account = new AdministrateAcct("Tom", "Maestas", 1000.00, AdministrateAcct.PENDING);
 //        account.newBal(200.00, true);
 //        assertEquals(800.00, account.getBalance(), 0);
     }
 
-    @org.junit.Test
+    @Test
     public void isOwner_true() {
 //        AdministrateAcct account = new AdministrateAcct("Tom", "Maestas", 1000.00, AdministrateAcct.PENDING);
 //        assertTrue("The account is not pending", account.Pending());

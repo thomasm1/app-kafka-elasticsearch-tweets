@@ -4,3 +4,5 @@ target
 *.gz
 
 /.metadata/
+secret-file
+jenkins-agent/secret-file

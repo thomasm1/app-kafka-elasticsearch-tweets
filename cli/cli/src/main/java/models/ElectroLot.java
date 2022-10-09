@@ -13,10 +13,6 @@ import service.CarService;
 
 public class ElectroLot implements List<ElectroLot> {
 
-	public static void main(String[] args) {
-
-	}
-
 	public int id;
 	private int offerid;
 	private int carid;

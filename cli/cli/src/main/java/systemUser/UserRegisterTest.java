@@ -1,9 +1,12 @@
 package systemUser;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +14,7 @@ import java.util.Scanner;
 
 public class UserRegisterTest {
  
- 	@Before
+ 	@BeforeAll
  	public void setup() {
  		 System.out.println("Before executing ...");
  		 String fileName = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/scannertext.txt";

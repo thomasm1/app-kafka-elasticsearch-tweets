@@ -16,9 +16,7 @@ import models.Car;
 import service.CarService; 
 
 public class UserMain {
-
-	// main class here
-
+ 
 	public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
 		LogCustom.logger();
@@ -28,9 +26,8 @@ public class UserMain {
 		frontConsoleValidation();
 
 		/// #1 check for Oracle JDBC Driver
-		try {
-			System.out.println("#1 Success! NEWTECH driver: " + Class.forName("oracle.jdbc.driver.OracleDriver"));
-			System.out.println("1 ..found Oracle JDBC Driver...ready to connect.");
+		try { 
+			System.out.println("1 ..Success Oracle JDBC Driver"+Class.forName("oracle.jdbc.driver.OracleDriver") +": ready to connect.\n");
 		} catch (ClassNotFoundException e) {
 			System.out.println(
 					Cmds.OOPS_JDBC);
@@ -42,8 +39,7 @@ public class UserMain {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(Cmds.OOPS + Cmds.TWO+ "menu fail");
-//			UserMain.main(args);
+			System.out.println(Cmds.OOPS + Cmds.TWO+ "menu fail"); 
 			System.exit(0);
 		}
 		/// #3 Loading Scanner accepting Integer Input
@@ -58,17 +54,12 @@ public class UserMain {
 	}
 
 	public static void carlotView() {
-		List<Car> carList = CarService.getAllCarsCust(); // Customer view of carlot.
-		System.out.println("\nWelcome  !\n  " + ">>>> Now featuring 2020 e-Cars!! <<<<");
-
+		List<Car> carList = CarService.getAllCarsCust(); // Customer view of carlot. 
 		System.out.println(carList);
 		frontConsole();
 	}
 
-	protected static File checkLocalfiles(String path) throws FileNotFoundException {
-		// if no path provided, local here:
-		// TODO UPDATE using JavaScript Dynamically get browser & OS, etc.
-		// Assuming I pass a null (usually), this method returns default
+	protected static File checkLocalfiles(String path) throws FileNotFoundException { 
 		String fileFullPath = (path != null) ? path
 				: "src/main/java/systemUser/scannertext.txt";
 		File textFile = new File(fileFullPath);
@@ -83,8 +74,7 @@ public class UserMain {
 	public static void frontConsoleValidation() throws IOException, ClassNotFoundException {
 
 		// ## Checking data types and local input
-		File file = checkLocalfiles(null);
-
+		File file = checkLocalfiles(null); 
 		Scanner scanText = new Scanner(file);
 		int rowInt1 = scanText.nextInt();
 		System.out.println("\n    #=====document ID: " + rowInt1 + "========#");

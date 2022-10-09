@@ -1,9 +1,13 @@
 package systemAdmin;
 
-import org.junit.Test; 
-import static org.junit.Assert.*;
 
-import org.junit.Before;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 //AdminLotState nov26 = new AdminLotState(date, carLotCount);
 //nov26.getCarCount(); 
@@ -12,7 +16,7 @@ public class AdminLotStateTest {
 
 private AdminLotState nov28;
 
-	@Before 
+	@BeforeEach
 	public void setup()  { 
     	nov28 = new AdminLotState("11/28", 10);  
 	}

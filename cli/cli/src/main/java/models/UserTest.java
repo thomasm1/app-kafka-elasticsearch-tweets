@@ -1,30 +1,36 @@
 package models;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class UserTest { 
 	
 	private User custOne;
 	
-	@org.junit.BeforeClass
+	@BeforeAll
 	public static void beforeClass() {
 		System.out.println("Before Class executing ...");
 	}
 	
-	@org.junit.Before
+	@BeforeEach
 	public void setup() {
 		 System.out.println("Before executing ...");
 // int userID, String userName, String password, String firstName, String lastName, boolean isOwner, int offerCount)
 //		 custOne = new User(3, "tmaestas", "password", "thom", "m-last", false, 0);
 	   }
 
-//    @org.junit.Test
+//    @Test
 //    public void setUserID() {  
 //    	custOne.setUserID(4);  
 //    	assertEquals(4, custOne.getUserID());
 //    }
 // 
-//    @org.junit.Test
+//    @Test
 //    public void getUserID() { 
 //    	int userId = custOne.getUserID();   
 //    	System.out.println("-getUserID()-        "+ userId  );  
@@ -33,13 +39,13 @@ public class UserTest {
 //    	System.out.println("-getUserID()-        "+ userId2  );  
 //    }
 
-    @org.junit.Test
+    @Test
     public void setUserName() {
 //    	custOne.setUserName("newUsername");
 //    	assertEquals("newUsername", custOne.getUserName());
     }
 
-    @org.junit.Test
+    @Test
     public void getUserName() { 
 //    	String thomUserName = custOne.getUserName();
 //    	System.out.println("-getUserName()-  " + thomUserName);
@@ -48,13 +54,13 @@ public class UserTest {
 //    	System.out.println("-getUserName()-  " + thomUserName2);
     }
 
-    @org.junit.Test
+    @Test
     public void setPassword() {
 //       custOne.setPassword("newPassWord");
 //   	assertEquals("newPassWord", custOne.getPassword());
     }
     
-    @org.junit.Test
+    @Test
     public void getPassword() {
 //    	String getpass = custOne.getPassword();
 //        System.out.println("-getPassword() - " + getpass);
@@ -63,13 +69,13 @@ public class UserTest {
 //        System.out.println("-getPassword() - " + getpass2);
     }  
 
-    @org.junit.Test
+    @Test
     public void setOwner() {
 //    	custOne.setOwner(true);
 //       	assertEquals(true, custOne.isOwner());
     }
     
-    @org.junit.Test
+    @Test
     public void setLastName() {
 // 	    String oldLast = custOne.getLastName();
 // 	    custOne.setLastName("m-custNEW-lastNameNEW"); 
@@ -78,7 +84,7 @@ public class UserTest {
 //	    System.out.println("Updated last name: " + newLast);
     }
     
-//    @org.junit.Test
+//    @Test
 //    public void isOwner() {
 //    	Boolean isOwnerr = custOne.isOwner();
 //        System.out.println("-isOwner() - " + isOwnerr);
@@ -89,14 +95,14 @@ public class UserTest {
 //        System.out.println("-isOwner() - " + isOwnerr2);
 //    }
 //    
-//    @org.junit.Test
+//    @Test
 //	    public void getOfferCount() { 
 //	    	int oldOffer = (int) custOne.getOfferCount();
 //	    	System.out.println("get Offer Cound is: "+ oldOffer);
 //	    	 System.out.println("Updated Offer Count is: "+ custOne.getOfferCount());
 //	    }
 //	   
-    @org.junit.AfterClass
+    @AfterAll
     public static void afterClass() {
 		System.out.println("After Class executing ...");
     }

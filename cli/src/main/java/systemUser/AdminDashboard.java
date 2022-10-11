@@ -47,9 +47,9 @@ public class AdminDashboard {
 				switch (val) {
 				case 1: {
 					scan.nextLine();
-//					List<ElectroLot> electroList = ElectroLotService.getAllElectroLot();
-					System.out.println(ElectroLotService.getAllElectroLot());
-//					System.out.println(electroList);
+					List<ElectroLot> electroList = ElectroLotService.getAllElectroLot();
+//					System.out.println(ElectroLotService.getAllElectroLot());
+					System.out.println(electroList);
 					dashboardChoice();
 				}
 

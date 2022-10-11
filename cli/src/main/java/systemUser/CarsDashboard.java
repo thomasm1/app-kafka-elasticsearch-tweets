@@ -58,6 +58,7 @@ try {
 				dashboardChoice(username);
 			}
 			dashboardChoice(username);
+			break;
 		}
 		case 2: {
 			try {

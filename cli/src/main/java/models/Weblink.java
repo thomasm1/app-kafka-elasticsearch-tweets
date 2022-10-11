@@ -3,7 +3,8 @@ package models;
 public class Weblink extends Bookmark {
 	private String url;
 	private String host;
-	
+
+
 	public String getUrl() {
 		return url;
 	}
@@ -16,7 +17,14 @@ public class Weblink extends Bookmark {
 	public void setHost(String host) {
 		this.host = host;
 	}
-	
+
+/*  {web3, dapp, crypto} in title
+*
+ */
+	@Override
+	public boolean isWeb3Link() {
+		return true;
+	}
 
 	@Override
 	public String toString() {

@@ -37,6 +37,12 @@ public class Movie extends Bookmark {
 	this.genre = genre;
 		
 	}
+
+	@Override
+	public boolean isWeb3Link() {
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [releaseYear=" + releaseYear + ", cast=" + Arrays.toString(cast) + ", directors="

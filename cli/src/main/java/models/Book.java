@@ -2,7 +2,7 @@ package models;
 
 import java.util.Arrays;
 
-public class Book extends Bookmark {
+public   class Book extends Bookmark {
 	private int publicationYear;
 	private String publisher;
 	private String[] authors;
@@ -39,6 +39,12 @@ public class Book extends Bookmark {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
+
+	@Override
+	public boolean isWeb3Link() {
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [publicationYear=" + publicationYear + ", publisher=" + publisher + ", authors="

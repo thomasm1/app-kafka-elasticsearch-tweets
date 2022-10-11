@@ -23,15 +23,9 @@ public class UserMain {
 		System.out.println("|||_________NEWTECH__________||| \n #0 log ...Logging by Log4j2.\n");/// #0 log
 
 		/// #0 Validate and Load local User State
+		/// #1 check for Oracle JDBC Driver
 		frontConsoleValidation();
 
-		/// #1 check for Oracle JDBC Driver
-		try { 
-			System.out.println("1 ..Success Oracle JDBC Driver"+Class.forName("oracle.jdbc.driver.OracleDriver") +": ready to connect.\n");
-		} catch (ClassNotFoundException e) {
-			System.out.println(
-					Cmds.OOPS_JDBC);
-		}
 		/// #2 Loading frontConsole Menu
 		try {
 			System.out.println("#2 Loading frontConsole menu");
@@ -60,31 +54,22 @@ public class UserMain {
 	}
 
 	protected static File checkLocalfiles(String path) throws FileNotFoundException { 
-		String fileFullPath = (path != null) ? path
-				: "src/main/java/systemUser/scannertext.txt";
+		String fileFullPath = (path != null) ? path : "src/scannertext.txt";
 		File textFile = new File(fileFullPath);
 		return textFile;
 	}
 
-	/*
-	 * frontConsole() method soon to be moved into a Singleton Session ..
-	 * Class.forName("oracle.jdbc.driver.OracleDriver, but now auto-bounnd npi with
-	 * database of user.
-	 */
 	public static void frontConsoleValidation() throws IOException, ClassNotFoundException {
-
-		// ## Checking data types and local input
-		File file = checkLocalfiles(null); 
+		try {
+			System.out.println("1 ..Success Oracle JDBC Driver"+Class.forName("oracle.jdbc.driver.OracleDriver") +" \n");
+		} catch (ClassNotFoundException e) {
+			System.out.println(	Cmds.OOPS_JDBC );
+		}
+		// ## Checking  local input
+			File file =  checkLocalfiles(null);
 		Scanner scanText = new Scanner(file);
 		int rowInt1 = scanText.nextInt();
-		System.out.println("\n    #=====document ID: " + rowInt1 + "========#");
-		String rowString1 = scanText.next();
-		System.out.println("    Welcome  " + rowString1 + " .., I am now updated with your database: "
-				+ Class.forName("oracle.jdbc.driver.OracleDriver") + " ...\nWhat can I do next?");
-		System.out.println("    #=============#");
-		long rowLong1 = scanText.nextLong();
-		rowLong1 = System.currentTimeMillis();
-		System.out.println("\n#===Maven Dashboard Validation. " + rowLong1 + " o'clock!" + startupTime());
+		System.out.println("\n    #=====scanText ID: " + rowInt1 + "========#\n");
 		scanText.close();
 	}
 

@@ -1,6 +1,8 @@
 package xyz.cryptomaven.app.cli;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import systemUser.UserMain;
@@ -20,21 +22,24 @@ public class CliApplication {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		//server
 //		SpringApplication.run(CliApplication.class, args);
 
 		// Data Loader
 		cliDataLoader();
-
+		// Navigation
+		CliNavigator.mainNavigator(new String[] {"no", "options","now"});
+		
 		// Automated USER
 		startBookmarking();
 		buyCar();
 
 		// USER MAIN
-		cliUser(); 
+		cliUser();
 
 	}
+
 
 
 }

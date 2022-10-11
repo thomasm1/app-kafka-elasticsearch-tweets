@@ -19,7 +19,7 @@ public class User   {
 	public User() {
 		super();
 	}
-
+//f=0,m=1,o=2
 	public User(int userId, long id, String lastName, String firstName, String userName, String password, int userType, int gender, String email, String phone, String cusUrl) {
 		super();
 		this.userId = userId;

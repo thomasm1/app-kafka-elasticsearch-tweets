@@ -13,6 +13,10 @@ import models.UserCarbuy;
 import singletons.BookmarkManager;
 import singletons.CarManager;
 import singletons.UserManager;
+import util.InputOutput;
+
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class DataStore {
 	public static final int USER_CAR_LIMIT = 2;
@@ -20,7 +24,7 @@ public class DataStore {
 	public static final int USER_BOOKMARK_LIMIT = 5;
 	public static final int BOOKMARK_COUNT_PER_TYPE = 5;
 	public static final int BOOKMARK_TYPES_COUNT = 3;
-	public static final int TOTAL_USER_COUNT = 5;
+	public static final int TOTAL_USER_COUNT = 100;
 	
 	private static Car[] cars = new Car[CAR_INVENTORY];
 	public static Car[] getCars() {
@@ -43,19 +47,27 @@ public class DataStore {
 	private static UserBookmark[]  userBookmarks = new UserBookmark[USER_BOOKMARK_LIMIT * TOTAL_USER_COUNT];
 	private static int bookmarkIndex; // initialized to zero
   
-	public static void loadData() {
+	public static void loadData() throws FileNotFoundException, UnsupportedEncodingException {
 		loadUsers();
 		loadWeblinks();
 		loadMovies();
 		loadBooks();
 		loadCars();
 	}
-	private static void loadUsers() {
-		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[1] = UserManager.getInstance().createUser(501, 1001, "Smith", "Tom", "user1", "password", UserType.USER, Gender.OTHER, "user1@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[2] = UserManager.getInstance().createUser(502, 1002,	"Smith", "Tom", "user2", "password", UserType.EDITOR, Gender.FEMALE, "user2@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[3] = UserManager.getInstance().createUser(503, 1003,	"Smith", "Tom", "user3", "password",   UserType.EDITOR, Gender.OTHER, "user3@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-		users[4] = UserManager.getInstance().createUser(504, 1004,	"Smith", "Tom", "user4", "password",   UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+	private static void loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
+//		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+//		users[1] = UserManager.getInstance().createUser(501, 1001, "Smith", "Tom", "user1", "password", UserType.USER, Gender.OTHER, "user1@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+//		users[2] = UserManager.getInstance().createUser(502, 1002,	"Smith", "Tom", "user2", "password", UserType.EDITOR, Gender.FEMALE, "user2@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+//		users[3] = UserManager.getInstance().createUser(503, 1003,	"Smith", "Tom", "user3", "password",   UserType.EDITOR, Gender.OTHER, "user3@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+//		users[4] = UserManager.getInstance().createUser(504, 1004,	"Smith", "Tom", "user4", "password",   UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+		String[] data = new String[TOTAL_USER_COUNT];
+		InputOutput.read(data, "src/main/java/usertext.csv");
+		int rowNum = 0;
+		for (String row : data) {
+			String[] values = row.split(",");
+
+			users[rowNum++] = UserManager.getInstance().createUser(Integer.parseInt(values[0]), Long.parseLong(values[1]), values[2],  values[3],  values[4],  values[5],  Integer.parseInt(values[6]),Integer.parseInt(values[7]),  values[8],  values[9],  values[10]);
+		}
 	}
 	private static void loadWeblinks() { 
 		bookmarks[0][0] = BookmarkManager.getInstance().createWeblink(2000,  "http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html","http://www.javaworld.com" );

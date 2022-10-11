@@ -9,6 +9,10 @@ import singletons.BookmarkManager;
 import singletons.CarManager;
 import singletons.UserManager;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+
 public class CliLoader {
     // app-wide vars
     private static User[] users;
@@ -16,7 +20,7 @@ public class CliLoader {
     private static Car[] cars;
 
     // launch methods
-    static void cliDataLoader() {
+    static void cliDataLoader() throws FileNotFoundException, UnsupportedEncodingException {
 
         System.out.println(CliLogger.getInstance());;
         System.out.println("1. LOADING BOOKMARK DATA");

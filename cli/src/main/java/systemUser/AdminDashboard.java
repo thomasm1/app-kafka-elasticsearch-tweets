@@ -19,12 +19,14 @@ import service.CarService;
 import service.ElectroLotService;
 import service.OfferService;
 import service.UserService;
+import xyz.cryptomaven.app.cli.CliNavigator;
 
 public class AdminDashboard {
 
 	private static final int MIN_OPTIONS = 0;
 	private static final int MAX_OPTIONS = 6;
 
+	// RECURSIVE LOOP, breaks out at option 0
 	public static void dashboardChoice() throws SQLException {
 
 		System.out.println("*---------------------------------*");
@@ -172,7 +174,10 @@ public class AdminDashboard {
 				}
 				case 0: {
 					System.out.println("At your service, logging you out now ...\n");
-					System.exit(0);
+//					System.exit(0);
+					scan.close();
+					CliNavigator.mainNavigator( new String[] {"any", "options"});
+					break;
 				}
 				} // end switch
 			} else {

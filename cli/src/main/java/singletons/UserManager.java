@@ -47,4 +47,5 @@ public class UserManager {
 		userDAOimpl.saveUserCarbuy(userCarbuy);
 		
 	}
+
 }

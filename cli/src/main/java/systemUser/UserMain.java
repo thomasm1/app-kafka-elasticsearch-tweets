@@ -13,7 +13,8 @@ import java.util.Scanner;
 import constants.Cmds;
 import logger.LogCustom; 
 import models.Car; 
-import service.CarService; 
+import service.CarService;
+import xyz.cryptomaven.app.cli.CliNavigator;
 
 public class UserMain {
  
@@ -112,7 +113,11 @@ public class UserMain {
 					}
 					case 0: {
 						System.out.println("\n   Come Back *Soon* !\n");
-						frontConsole();
+						System.out.println("\n =======================!\n");
+//						frontConsole();
+						newScan.close();
+						CliNavigator.mainNavigator( new String[] {"any", "options"});
+						break;
 					}
 					}
 					newScan.close();

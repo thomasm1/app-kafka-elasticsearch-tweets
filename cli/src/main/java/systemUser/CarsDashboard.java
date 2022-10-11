@@ -8,7 +8,8 @@ import models.Car;
 import models.Offer; 
 import service.CarService;
 import service.ElectroLotService;
-import service.OfferService; 
+import service.OfferService;
+import xyz.cryptomaven.app.cli.CliNavigator;
 
 public class CarsDashboard {
 
@@ -18,6 +19,7 @@ public class CarsDashboard {
 
 	Integer val;
 
+	// RECURSIVE LOOP, breaks out at option 0
 	public static void dashboardChoice(String username) {
 		System.out.println(Cmds.WHAT_TO_DO+
 				Cmds.ONE+Cmds.VIEW_MY_CARS+
@@ -137,8 +139,11 @@ try {
 		case 0: {
 			System.out.println(Cmds.GOOD_BYE); 
 //				System.exit(0); 
-			UserMain.frontConsoleMenu();
-			dashboardChoice(username);
+//			UserMain.frontConsoleMenu();
+//			dashboardChoice(username);
+			scan.close();
+			CliNavigator.mainNavigator( new String[] {"any", "options"});
+			break;
 		}
 		}
 	}

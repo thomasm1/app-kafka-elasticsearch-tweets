@@ -1,5 +1,7 @@
 package systemUser;
  
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -141,13 +143,19 @@ try {
 //				System.exit(0); 
 //			UserMain.frontConsoleMenu();
 //			dashboardChoice(username);
-			scan.close();
+//			scan.close();
 			CliNavigator.mainNavigator( new String[] {"any", "options"});
 			break;
 		}
 		}
 	}
 	dashboardChoice(username);
+} catch (SQLException e) {
+	throw new RuntimeException(e);
+} catch (IOException e) {
+	throw new RuntimeException(e);
+} catch (ClassNotFoundException e) {
+	throw new RuntimeException(e);
 } finally {
 	scan.close(); 
 }

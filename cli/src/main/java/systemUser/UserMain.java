@@ -115,8 +115,8 @@ public class UserMain {
 						System.out.println("\n   Come Back *Soon* !\n");
 						System.out.println("\n =======================!\n");
 //						frontConsole();
-						newScan.close();
-						CliNavigator.mainNavigator( new String[] {"any", "options"});
+//						newScan.close();
+						CliNavigator.mainNavigator( new String[] {}); //{"any", "options"});
 						break;
 					}
 					}
@@ -126,6 +126,10 @@ public class UserMain {
 			} catch (SQLException e) {
 				System.out.println("Input digits from 0 - 4" + e);
 				frontConsole();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
 			}
 			frontConsole();
 

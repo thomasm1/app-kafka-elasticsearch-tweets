@@ -1,6 +1,7 @@
 
 package systemUser;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 //import java.util.ArrayList;
@@ -175,7 +176,7 @@ public class AdminDashboard {
 				case 0: {
 					System.out.println("At your service, logging you out now ...\n");
 //					System.exit(0);
-					scan.close();
+//					scan.close();
 					CliNavigator.mainNavigator( new String[] {"any", "options"});
 					break;
 				}
@@ -188,6 +189,10 @@ public class AdminDashboard {
 			// go round again. Read past the end of line in the input first
 			System.out.println("Please enter digits 0 to 5");
 			dashboardChoice();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
 		}
 	}
 

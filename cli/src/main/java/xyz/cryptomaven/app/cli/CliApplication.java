@@ -22,21 +22,24 @@ public class CliApplication {
 		}
 	}
 
-	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 		//server
 //		SpringApplication.run(CliApplication.class, args);
 
 		// Data Loader
 		cliDataLoader();
-		// Navigation
-		CliNavigator.mainNavigator(new String[] {"no", "options","now"});
-		
 		// Automated USER
 		startBookmarking();
 		buyCar();
 
+
 		// USER MAIN
 		cliUser();
+
+		// Navigation
+		CliNavigator.mainNavigator(new String[] {}); //new String[] {"no", "options","now"});
+
+
 
 	}
 

@@ -1,5 +1,7 @@
 package xyz.cryptomaven.app.cli;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 
 public class CliNavigator {
@@ -7,7 +9,7 @@ public class CliNavigator {
 
         Map<String, Integer> options = null;
 
-    public static void mainNavigator(String[] args) {
+    public static void mainNavigator(String[] args) throws SQLException, IOException, ClassNotFoundException {
         Scanner scanNav;
 
         locations.put(0, new Location(0, "You have just quit"));
@@ -78,7 +80,8 @@ public class CliNavigator {
                 System.out.println("Pathway restricted");
             }
         }
-        scanNav.close();
+        systemUser.UserMain.mainUser(new String[] {});
+//        scanNav.close();
 
     }
 

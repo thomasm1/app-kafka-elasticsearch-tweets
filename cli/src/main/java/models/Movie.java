@@ -8,7 +8,15 @@ public class Movie extends Bookmark {
 	private String[] directors;
 	private String genre;
 	private double imbdRating;
-	
+
+	public Movie(long id, String title, String profileUrl) {
+		super(id, title, profileUrl);
+	}
+
+    public Movie() {
+
+    }
+
 	public int getReleaseYear() {
 		return releaseYear;
 	}
@@ -38,10 +46,10 @@ public class Movie extends Bookmark {
 		
 	}
 
-	@Override
-	public boolean isWeb3Link() {
-		return true;
-	}
+//	@Override
+//	public boolean isWeb3Link() {
+//		return true;
+//	}
 
 	@Override
 	public String toString() {

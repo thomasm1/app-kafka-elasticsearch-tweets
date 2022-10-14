@@ -1,9 +1,19 @@
 package models;
 
-public  abstract class Bookmark {
+public class Bookmark {
 	private long id;
 	private String title;
 	private String profileUrl;
+
+	public Bookmark(long id, String title, String profileUrl) {
+		this.id = id;
+		this.title = title;
+		this.profileUrl = profileUrl;
+	}
+
+	public Bookmark() {
+
+	}
 
 	public long getId() {
 		return id;
@@ -29,7 +39,7 @@ public  abstract class Bookmark {
 		this.profileUrl = profileUrl;
 	}
 
-	public abstract boolean isWeb3Link();
+//	public abstract boolean isWeb3Link();
 
 	@Override
 	public String toString() {

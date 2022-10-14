@@ -39,13 +39,13 @@ public class DataStore {
 		return users;
 	}
 	
-	private static Bookmark[][] bookmarks= new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
-	public static Bookmark[][] getBookmarks() {
+	protected static Bookmark[][] bookmarks= new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
+	public static Bookmark[][] getBookmarksArray() {
 		return bookmarks;
 	}
 	
-	private static UserBookmark[]  userBookmarks = new UserBookmark[USER_BOOKMARK_LIMIT * TOTAL_USER_COUNT];
-	private static int bookmarkIndex; // initialized to zero
+	public static UserBookmark[]  userBookmarks = new UserBookmark[USER_BOOKMARK_LIMIT * TOTAL_USER_COUNT];
+	public static int bookmarkIndex; // initialized to zero
   
 	public static void loadData() throws FileNotFoundException, UnsupportedEncodingException {
 		loadUsers();
@@ -114,4 +114,6 @@ public class DataStore {
 		userCarbuys[carIndex] = userCarbuy;
 		carIndex++;
 	}
+
+
 }

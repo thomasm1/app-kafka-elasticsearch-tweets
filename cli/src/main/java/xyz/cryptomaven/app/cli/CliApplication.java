@@ -29,7 +29,7 @@ public class CliApplication {
 		// Data Loader
 		cliDataLoader();
 		// Automated USER
-		startBookmarking();
+//		startBookmarking();  /// UNTIL AWS DB UPDATED
 		buyCar();
 
 

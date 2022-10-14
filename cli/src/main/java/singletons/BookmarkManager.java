@@ -56,10 +56,7 @@ public class BookmarkManager {
  
 	return weblink;
 	}
-	
-	public Bookmark[][] getBookmarks() {
-		return bookmarkDaoImpl.getBookmarks();
-	}
+
 
 	public void saveUserBookmark(User user, Bookmark bookmark) {
 	    UserBookmark userBookmark = new UserBookmark();

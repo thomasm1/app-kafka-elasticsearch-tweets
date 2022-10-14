@@ -8,7 +8,15 @@ public   class Book extends Bookmark {
 	private String[] authors;
 	private String genre;
 	private double rating;
-	
+
+	public Book(long id, String title, String profileUrl) {
+		super(id, title, profileUrl);
+	}
+
+	public Book() {
+		super();
+	}
+
 	public int getPublicationYear() {
 		return publicationYear;
 	}
@@ -40,10 +48,10 @@ public   class Book extends Bookmark {
 		this.rating = rating;
 	}
 
-	@Override
-	public boolean isWeb3Link() {
-		return true;
-	}
+//	@Override
+//	public boolean isWeb3Link() {
+//		return true;
+//	}
 
 	@Override
 	public String toString() {

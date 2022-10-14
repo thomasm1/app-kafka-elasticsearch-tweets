@@ -26,13 +26,13 @@ public class CliLoader {
         System.out.println("1. LOADING BOOKMARK DATA");
         DataStore.loadData();
         users = UserManager.getInstance().getUsers();
-        bookmarks = BookmarkManager.getInstance().getBookmarks();
+//        bookmarks[] = BookmarkManager.getInstance().getBookmarksArray();
         cars = CarManager.getInstance().getCars();
 
         System.out.println("printing user data: ");
         printUserData();
-        System.out.println("printing bookmark data: ");
-        printBookmarks();
+        System.out.println("printing bookmark data: ***Paused until AWS DB PS/SQL UPDATED");
+//        printBookmarks();
         System.out.println("printing car data: ");
         printCars();
 
@@ -51,21 +51,21 @@ public class CliLoader {
         }
     }
 
-    private static void printBookmarks() {
-        for (Bookmark[] i : bookmarks) {
-            for (Bookmark j : i) {
-                System.out.println(j);
-            }
-        }
-    }
+//    private static void printBookmarks() {
+//        for (Bookmark[] i : bookmarks) {
+//            for (Bookmark j : i) {
+//                System.out.println(j);
+//            }
+//        }
+//    }
 
-    static void startBookmarking() {
-        System.out.println("\n2. Start Bookmarking");
-        for (User user: users) {
-            View.bookmark(user,bookmarks);
-
-        }
-    }
+//    static void startBookmarking() {
+//        System.out.println("\n2. Start Bookmarking");
+//        for (User user: users) {
+//            View.bookmark(user,bookmarks);
+//
+//        }
+//    }
 
     static void buyCar() {
         System.out.println("\n3. Buy Cars");

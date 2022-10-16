@@ -5,6 +5,12 @@ public class Bookmark {
 	private String title;
 	private String profileUrl;
 
+
+
+
+
+	private User sharedBy;
+
 	public Bookmark(long id, String title, String profileUrl) {
 		this.id = id;
 		this.title = title;
@@ -46,4 +52,10 @@ public class Bookmark {
 		return "Bookmark [id=" + id + ", title=" + title + ", profileUrl=" + profileUrl + "]";
 	}
 
+	public User getSharedBy() {
+		return sharedBy;
+	}
+    public void setSharedBy(User sharedBy) {
+	this.sharedBy = sharedBy;
+    }
 }

@@ -41,4 +41,5 @@ public class UserService {
 	public static User getUserByPassword(String username, String password) {
 		return userdaoImpl.getUserByPassword(username, password);
 	}
+
 }

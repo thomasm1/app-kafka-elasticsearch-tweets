@@ -53,7 +53,6 @@ public class BookmarkManager {
 		weblink.setId(id); 
 		weblink.setUrl(url);
 		weblink.setHost(host);
- 
 	return weblink;
 	}
 
@@ -65,5 +64,17 @@ public class BookmarkManager {
 	    bookmarkDaoImpl.saveUserBookmark(userBookmark);
 	    
 	}
+public void share(User user, Bookmark bookmark) {
+		bookmark.setSharedBy(user);
+	System.out.println("Data to be shared by" + user + " : "+bookmark);
+	if (bookmark instanceof Book) {
+		System.out.println(((Book) bookmark).getItemData());
+	} else if (bookmark instanceof Weblink) {
+		System.out.println(((Weblink) bookmark).getItemData());
 
 	}
+}
+	public Bookmark[][] getBookmarksArray() {
+		return bookmarkDaoImpl.getBookmarksArray();
+	}
+}

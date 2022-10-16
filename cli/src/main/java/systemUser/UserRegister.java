@@ -1,8 +1,5 @@
 package systemUser;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -11,10 +8,6 @@ import constants.Gender;
 import constants.UserType;
 import models.User;
 import service.UserService;
-//import models.Pokemon;
-//import service.PokemonService;
-
-import java.util.InputMismatchException;
 
 public class UserRegister {
 
@@ -43,12 +36,12 @@ public class UserRegister {
 		if (yes.contentEquals("y")) { 
 			try {
 				System.out.println("...sounds good, *"+ fn + "*, now logging you into your Dashboard");
-				CarsDashboard.loginDashboard(un, fn); 
+				UserDashboard.loginDashboard(un, fn);
 			} catch (Exception e) {
-				CarsDashboard.loginDashboard(un, fn);  
+				UserDashboard.loginDashboard(un, fn);
 			}
 		} else {
-			UserMain.frontConsole();
+			MainDashboard.console();
 		}
 
 		scan.close();

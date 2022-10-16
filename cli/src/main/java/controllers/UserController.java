@@ -15,6 +15,6 @@ public class UserController {
 	}
 	public void saveUserCar(User user, Car car) {
 		UserManager.getInstance().saveUserCar(user, car);
-		
 	}
+
 }

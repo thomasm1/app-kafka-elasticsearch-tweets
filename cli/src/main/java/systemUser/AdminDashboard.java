@@ -174,10 +174,8 @@ public class AdminDashboard {
 					dashboardChoice();
 				}
 				case 0: {
-					System.out.println("At your service, logging you out now ...\n");
-//					System.exit(0);
-//					scan.close();
-					CliNavigator.mainNavigator( new String[] {"any", "options"});
+					System.out.println("At your service, back to MainDashboard ...\n");
+					MainDashboard.console();
 					break;
 				}
 				} // end switch
@@ -189,10 +187,6 @@ public class AdminDashboard {
 			// go round again. Read past the end of line in the input first
 			System.out.println("Please enter digits 0 to 5");
 			dashboardChoice();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
 		}
 	}
 
@@ -258,7 +252,7 @@ public class AdminDashboard {
 			try {
 				dashboardChoice();
 			} catch (SQLException e1) {
-				UserMain.frontConsole();
+				MainDashboard.console();
 			}
 		}
 	}

@@ -24,7 +24,18 @@ public class Cmds {
     public static final String REGISTER_UNAME = "Please type your username below:\n"; 
     public static final String REGISTER_PW =    "Now, please type an alpha-numeric password:\n"; 
     public static final String REGISTER_FNAME = " first name:\n"; 
-    public static final String REGISTER_LNAME = " ,  last name:\n"; 
+    public static final String REGISTER_LNAME = " ,  last name:\n";
+
+// EDIT PROFILE
+    public static final String WELCOME_PROFILE= "Welcome to Your Profile, ";
+    public static final String EDIT_PW =    "Edit your password? :\n";
+    public static final String EDIT_FNAME = " first name? :\n";
+    public static final String EDIT_LNAME = " ,  edit your last name?  :\n";
+    public static final String EDIT_GENDER = " ,  edit your gender? :\n";
+    public static final String EDIT_EMAIL = " ,  edit your email? :\n";
+    public static final String EDIT_PHONE = " ,  edit your phone number? :\n";
+    public static final String EDIT_URL = " ,  edit your image URL? :\n";
+
     // Errors
 
     public static final String OOPS  =  "Oops,  ";
@@ -43,6 +54,7 @@ public class Cmds {
     public static final String FOUR = "4.) ";
     public static final String FIVE = "5.) ";
     public static final String SIX = "6.) ";
+    public static final String SEVEN = "7.) ";
     
     // behavior
     public static final String BR = "\n";

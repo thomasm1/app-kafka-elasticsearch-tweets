@@ -1,5 +1,6 @@
 package xyz.cryptomaven.app.cli;
 
+import controllers.BookmarkController;
 import db.DataStore;
 import logger.CliLogger;
 import models.Bookmark;
@@ -26,13 +27,13 @@ public class CliLoader {
         System.out.println("1. LOADING BOOKMARK DATA");
         DataStore.loadData();
         users = UserManager.getInstance().getUsers();
-//        bookmarks[] = BookmarkManager.getInstance().getBookmarksArray();
+        bookmarks = BookmarkManager.getInstance().getBookmarksArray();
         cars = CarManager.getInstance().getCars();
 
         System.out.println("printing user data: ");
         printUserData();
         System.out.println("printing bookmark data: ***Paused until AWS DB PS/SQL UPDATED");
-//        printBookmarks();
+        printBookmarks();
         System.out.println("printing car data: ");
         printCars();
 
@@ -51,21 +52,35 @@ public class CliLoader {
         }
     }
 
-//    private static void printBookmarks() {
-//        for (Bookmark[] i : bookmarks) {
-//            for (Bookmark j : i) {
-//                System.out.println(j);
-//            }
-//        }
-//    }
+    private static void printBookmarks() {
+        for (Bookmark[] i : bookmarks) {
+            for (Bookmark j : i) {
+                System.out.println(j);
+            }
+        }
+    }
 
-//    static void startBookmarking() {
-//        System.out.println("\n2. Start Bookmarking");
-//        for (User user: users) {
-//            View.bookmark(user,bookmarks);
-//
-//        }
-//    }
+    static void startBookmarking() {
+        System.out.println("\n2. Start Bookmarking");
+        for (User user: users) {
+            View.bookmark(user,bookmarks);
+
+        }
+    }
+    public static void shareBookmark() {
+        for(User user: users) {
+        System.out.println("\n" + user.getEmail() + " is sharing two instance of link or book");
+        for (int i = 0; i < 2; i++) { // shareing 2
+
+            int bookmarkOffset = (int) (Math.random() * DataStore.BOOKMARK_COUNT_PER_TYPE);
+
+            Bookmark bookmark = bookmarks[i][bookmarkOffset];
+            BookmarkController.getInstance().shareBookmark(user, bookmark);
+            System.out.println("User: " + user + "inside View; bookmark: " + bookmark);
+
+        }
+        }
+    }
 
     static void buyCar() {
         System.out.println("\n3. Buy Cars");

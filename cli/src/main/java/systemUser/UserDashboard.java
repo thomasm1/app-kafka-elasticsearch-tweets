@@ -13,7 +13,7 @@ import service.ElectroLotService;
 import service.OfferService;
 import xyz.cryptomaven.app.cli.CliNavigator;
 
-public class CarsDashboard {
+public class UserDashboard {
 
 	
 	private static final int MENU_FIRST = 0;
@@ -139,33 +139,21 @@ try {
 			dashboardChoice(username);
 		}
 		case 0: {
-			System.out.println(Cmds.GOOD_BYE); 
-//				System.exit(0); 
-//			UserMain.frontConsoleMenu();
-//			dashboardChoice(username);
-//			scan.close();
-			CliNavigator.mainNavigator( new String[] {"any", "options"});
+			System.out.println(Cmds.GOOD_BYE);
+			MainDashboard.console();
 			break;
 		}
 		}
 	}
 	dashboardChoice(username);
-} catch (SQLException e) {
-	throw new RuntimeException(e);
-} catch (IOException e) {
-	throw new RuntimeException(e);
-} catch (ClassNotFoundException e) {
-	throw new RuntimeException(e);
 } finally {
 	scan.close(); 
 }
 
 	};
 
-	public static void loginDashboard(String userName, String firstName) { 
-
+	public static void loginDashboard(String userName, String firstName) {
 		System.out.println("\n Welcome to your Dashboard! *" + firstName + "*, ");
- 
 		dashboardChoice(userName);
 
 	}

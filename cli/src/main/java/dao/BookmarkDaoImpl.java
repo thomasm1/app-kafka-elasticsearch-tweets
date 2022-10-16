@@ -73,6 +73,11 @@ public class BookmarkDaoImpl   implements BookmarkDAO {
 		return false;
 	}
 
+	@Override
+	public Bookmark[][] getBookmarksArray() {
+		return DataStore.getBookmarksArray();
+	}
+
 	public static void add(UserBookmark userBookmark) {
 		userBookmarks[bookmarkIndex] = userBookmark;
 		bookmarkIndex++;

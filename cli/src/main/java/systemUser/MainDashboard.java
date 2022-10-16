@@ -16,7 +16,7 @@ import models.Car;
 import service.CarService;
 import xyz.cryptomaven.app.cli.CliNavigator;
 
-public class UserMain {
+public class MainDashboard {
  
 	public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
@@ -27,20 +27,9 @@ public class UserMain {
 		/// #1 check for Oracle JDBC Driver
 		frontConsoleValidation();
 
-		/// #2 Loading frontConsole Menu
+		/// #2  Loading Scanner accepting Integer Input
 		try {
-			System.out.println("#2 Loading frontConsole menu");
-			frontConsoleMenu(); //
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(Cmds.OOPS + Cmds.TWO+ "menu fail"); 
-			System.exit(0);
-		}
-		/// #3 Loading Scanner accepting Integer Input
-		try {
-			frontConsole();
-			System.out.println(Cmds.THREE + "Loading Scanner accepting Integer Input");
+			console();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
@@ -51,7 +40,7 @@ public class UserMain {
 	public static void carlotView() {
 		List<Car> carList = CarService.getAllCarsCust(); // Customer view of carlot. 
 		System.out.println(carList);
-		frontConsole();
+
 	}
 
 	protected static File checkLocalfiles(String path) throws FileNotFoundException { 
@@ -70,7 +59,7 @@ public class UserMain {
 			File file =  checkLocalfiles(null);
 		Scanner scanText = new Scanner(file);
 		int rowInt1 = scanText.nextInt();
-		System.out.println("\n    #=====scanText ID: " + rowInt1 + "========#\n");
+		System.out.println("\n    #=====Reading  \"src/scannertext.txt\" ID: " + rowInt1 + "========#\n");
 		scanText.close();
 	}
 
@@ -79,8 +68,8 @@ public class UserMain {
 				+ "\n3.) Browse the lot,  press '3'." + "\n4.) Data Structures Manipulation,  press '4'."
 				+ "\n\nExit, press '0'.");
 	}
-
-	public static void frontConsole() {
+	public static void console() {
+		System.out.println("Now Loading frontConsoleMenu()");
 		frontConsoleMenu();
 		try {
 			Scanner newScan = new Scanner(System.in);
@@ -89,7 +78,8 @@ public class UserMain {
 			try { 
 				if (val < 0 | val > 4 | !hasNextInt) {
 					System.out.println("Please enter valid choices: 0-3");
-					UserMain.frontConsole();
+	// RECURSE
+					console();
 				} else {
 					switch (val) {
 					case 1: {
@@ -114,28 +104,32 @@ public class UserMain {
 					case 0: {
 						System.out.println("\n   Come Back *Soon* !\n");
 						System.out.println("\n =======================!\n");
-//						frontConsole();
-//						newScan.close();
 						CliNavigator.mainNavigator( new String[] {}); //{"any", "options"});
 						break;
 					}
 					}
-					newScan.close();
+					console();
+ // After returning & Break, back to console
 				}
 
 			} catch (SQLException e) {
-				System.out.println("Input digits from 0 - 4" + e);
-				frontConsole();
+				System.out.println("SQLException" + e);
+				console();
+ // RECURSE
 			} catch (IOException e) {
-				throw new RuntimeException(e);
+				console();
+ // RECURSE
 			} catch (ClassNotFoundException e) {
-				throw new RuntimeException(e);
+				System.out.println("Oops, ClassNotFoundException " + e);
+				console();
+ // RECURSE
 			}
-			frontConsole();
+			console();
 
 		} catch (InputMismatchException e) {
 			System.out.println("Oops, Inputs! must choose 1,2,3,4... " + e);
-			frontConsole();
+			console();
+ // RECURSE
 		}
 	}
 

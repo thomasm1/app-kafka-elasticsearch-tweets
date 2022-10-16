@@ -80,7 +80,7 @@ public class CliNavigator {
                 System.out.println("Pathway restricted");
             }
         }
-        systemUser.UserMain.mainUser(new String[] {});
+        systemUser.MainDashboard.mainUser(new String[] {});
 //        scanNav.close();
 
     }

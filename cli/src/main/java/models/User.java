@@ -94,7 +94,19 @@ public User(  String userName, String password ) {
 		this.password = password;
 	}
 
-	@Override
+	// Contstructor for EDIT PROFILE (options available for user)
+    public User(String password, String lastName, String firstName, int gender, String email, String phone, String cusUrl) {
+		super();
+		this.password = password;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.gender = gender;
+		this.email = email;
+		this.phone = phone;
+		this.cusUrl = cusUrl;
+    }
+
+    @Override
     public int hashCode() {
         int result = userName.hashCode();
         result = 31 * result + lastName.hashCode(); 

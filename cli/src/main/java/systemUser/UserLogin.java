@@ -34,13 +34,13 @@ public class UserLogin {
 				System.out.println(
 						"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 				String name = (login.getFirstName() != null) ? login.getFirstName() : un;
-				CarsDashboard.loginDashboard(un, name); //
+				UserDashboard.loginDashboard(un, name); //
 			} else {
 				System.out.println("Oops, typo time, please try again");
 				try {
 					login();
 				} catch (Exception e) {
-					UserMain.frontConsole();
+					MainDashboard.console();
 				}
 			}
 			scanner.close();

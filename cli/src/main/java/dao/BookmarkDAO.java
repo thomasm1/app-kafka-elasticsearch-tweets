@@ -12,7 +12,7 @@ public interface BookmarkDAO {
     public boolean updateBookmark(Bookmark change); // void
     public boolean deleteBookmark(int id); // void 
 
-//    public Bookmark[][] getBookmarksArray();
+    public Bookmark[][] getBookmarksArray();
 
 
 } 

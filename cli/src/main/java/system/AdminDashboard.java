@@ -1,7 +1,6 @@
 
-package systemUser;
+package system;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 //import java.util.ArrayList;
@@ -20,7 +19,6 @@ import service.CarService;
 import service.ElectroLotService;
 import service.OfferService;
 import service.UserService;
-import xyz.cryptomaven.app.cli.CliNavigator;
 
 public class AdminDashboard {
 

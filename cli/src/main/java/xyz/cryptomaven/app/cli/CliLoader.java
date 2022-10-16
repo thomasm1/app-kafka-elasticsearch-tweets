@@ -22,7 +22,6 @@ public class CliLoader {
 
     // launch methods
     static void cliDataLoader() throws FileNotFoundException, UnsupportedEncodingException {
-
         System.out.println(CliLogger.getInstance());;
         System.out.println("1. LOADING BOOKMARK DATA");
         DataStore.loadData();
@@ -67,17 +66,15 @@ public class CliLoader {
 
         }
     }
+    // random loader
     public static void shareBookmark() {
         for(User user: users) {
-        System.out.println("\n" + user.getEmail() + " is sharing two instance of link or book");
-        for (int i = 0; i < 2; i++) { // shareing 2
-
+        System.out.println("\n" + user.getEmail() + " is sharing two instance: link or book");
+        for(int x = 0;x<=1;x++) {
             int bookmarkOffset = (int) (Math.random() * DataStore.BOOKMARK_COUNT_PER_TYPE);
-
-            Bookmark bookmark = bookmarks[i][bookmarkOffset];
+            Bookmark bookmark = bookmarks[x][bookmarkOffset];
             BookmarkController.getInstance().shareBookmark(user, bookmark);
             System.out.println("User: " + user + "inside View; bookmark: " + bookmark);
-
         }
         }
     }

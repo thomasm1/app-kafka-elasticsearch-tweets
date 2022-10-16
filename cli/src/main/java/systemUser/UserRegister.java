@@ -8,6 +8,8 @@ import constants.Gender;
 import constants.UserType;
 import models.User;
 import service.UserService;
+import system.MainDashboard;
+import system.UserDashboard;
 
 public class UserRegister {
 

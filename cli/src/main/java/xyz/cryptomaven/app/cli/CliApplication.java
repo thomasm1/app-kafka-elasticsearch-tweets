@@ -3,7 +3,7 @@ package xyz.cryptomaven.app.cli;
 import java.io.IOException;
 import java.sql.SQLException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import systemUser.MainDashboard;
+import system.MainDashboard;
 
 import static xyz.cryptomaven.app.cli.CliLoader.*;
 import static xyz.cryptomaven.app.cli.CliLoader.shareBookmark;

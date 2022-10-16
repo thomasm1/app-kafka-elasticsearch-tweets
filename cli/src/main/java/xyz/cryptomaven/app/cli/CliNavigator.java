@@ -1,5 +1,7 @@
 package xyz.cryptomaven.app.cli;
 
+import system.MainDashboard;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
@@ -80,7 +82,7 @@ public class CliNavigator {
                 System.out.println("Pathway restricted");
             }
         }
-        systemUser.MainDashboard.mainUser(new String[] {});
+        MainDashboard.mainUser(new String[] {});
 //        scanNav.close();
 
     }

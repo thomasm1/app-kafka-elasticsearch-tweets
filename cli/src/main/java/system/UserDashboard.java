@@ -1,17 +1,16 @@
-package systemUser;
+package system;
  
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
 import constants.Cmds;
-import models.Car; 
+import controllers.BookmarkController;
+import models.Bookmark;
+import models.Car;
 import models.Offer; 
 import service.CarService;
 import service.ElectroLotService;
 import service.OfferService;
-import xyz.cryptomaven.app.cli.CliNavigator;
 
 public class UserDashboard {
 
@@ -128,8 +127,7 @@ try {
 		case 5: {
 			try {
 				List<Offer> offerList = OfferService.getAllOffersCust(username);
-
-				for (Offer offer : offerList) {
+ 				for (Offer offer : offerList) {
 					System.out.println(offer);
 				}
 

@@ -1,10 +1,10 @@
 package systemUser;
 
 import constants.Cmds;
-import constants.Gender;
-import constants.UserType;
 import models.User;
 import service.UserService;
+import system.MainDashboard;
+import system.UserDashboard;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -30,6 +30,7 @@ public class UserProfile {
 		System.out.println(Cmds.FIVE+ Cmds.EDIT_EMAIL);
 		System.out.println(Cmds.SIX+ Cmds.EDIT_PHONE);
 		System.out.println(Cmds.SEVEN+ Cmds.EDIT_URL);
+		System.out.println(Cmds.ZERO+ ": Finished, go back");
 		int Choice = scan.nextInt();
 		System.out.printf("'%S' %n", "Enter your edit");
 
@@ -55,6 +56,9 @@ public class UserProfile {
 				break;
 			case 7:
 				  url = scan.next();
+				break;
+			case 0:
+				MainDashboard.console();
 				break;
 		}
 

@@ -12,7 +12,7 @@ public interface UserDAO {
 	public boolean updateUser(User change);
 	public boolean deleteUser(String username);
 	public List<User> getUsersWithCars();
-	public User[] getUsers();
+	public  List<User> getUsers();
 	public User getUserByPassword(String username, String password);
 	
 	// PRE-POP

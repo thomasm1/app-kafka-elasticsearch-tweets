@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import util.JDBCConnection;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 //import java.util.Set;
 
@@ -83,8 +84,8 @@ String sql = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid,
 
 ////////////// GET OFFLINE CARS  ///////////////////
 	@Override
-	public Car[] getCars() {
-		return DataStore.getCars();
+	public List<Car> getCars() {
+		return  DataStore.getCars();
 	}
 ////////////// GETALL (ADMIN VIEW)  ///////////////////
 	public List<Car> getAllCars() {   // *Admin View of *all* cars in CarLot (also purchased cars).

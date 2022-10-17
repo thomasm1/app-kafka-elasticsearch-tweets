@@ -8,6 +8,8 @@ import models.User;
 import models.UserBookmark;
 import models.Weblink;
 
+import java.util.List;
+
 public class BookmarkManager {
 	private static BookmarkManager instance = new BookmarkManager();
 	public static BookmarkDaoImpl bookmarkDaoImpl = new BookmarkDaoImpl();
@@ -18,7 +20,7 @@ public class BookmarkManager {
 		return instance;
 	}
 	
-	public Movie createMovie(long id, String title,  int releaseYear,	String[] cast, String[] directors, String genre, double imbdRating ) {
+	public Movie createMovie(long id, String title,  int releaseYear,	String cast, String directors, String genre, double imbdRating ) {
 
 	Movie movie = new Movie();
 	movie.setId(id);
@@ -31,7 +33,7 @@ public class BookmarkManager {
 	return movie;
 	}
  
-	public Book createBook( long id, String title,  int publicationYear,String publisher,String[] authors,
+	public Book createBook( long id, String title,  int publicationYear,String publisher,String authors,
 			  String genre,double rating  ) {
 
 		Book book = new Book();
@@ -74,7 +76,7 @@ public void share(User user, Bookmark bookmark) {
 
 	}
 }
-	public Bookmark[][] getBookmarksArray() {
+	public List<List<Bookmark>> getBookmarksArray() {
 		return bookmarkDaoImpl.getBookmarksArray();
 	}
 }

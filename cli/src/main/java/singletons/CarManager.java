@@ -5,6 +5,8 @@ import models.Car;
 import models.User;
 import models.UserCarbuy;
 
+import java.util.List;
+
 public class CarManager {
 
 	private static CarManager instance = new CarManager(); 
@@ -18,7 +20,6 @@ public class CarManager {
 	}
 
 	public Car createCar(int carId, String carMake, String carModel, double priceTotal, int purchased) {
-	 
 
 		Car car = new Car(); 
 		car.setCarId(carId);
@@ -29,7 +30,7 @@ public class CarManager {
 		
 		return car; 
 	}
-	public Car[] getCars() { 
+	public List<Car> getCars() {
 		return carDaoImpl.getCars(); 
 }
 

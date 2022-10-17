@@ -14,7 +14,7 @@ public interface CarDAO {
 	public boolean updateCar(Car change); // void
 	public boolean deleteCar(int id); // void 
 	
-	public Car[] getCars();
+	public List<Car> getCars();
 	 
 	
 } 

@@ -8,7 +8,7 @@ import java.util.Arrays;
 public   class Book extends Bookmark implements Shareable {
 	private int publicationYear;
 	private String publisher;
-	private String[] authors;
+	private String authors;
 	private String genre;
 	private double rating;
 
@@ -32,10 +32,10 @@ public   class Book extends Bookmark implements Shareable {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
-	public String[] getAuthors() {
+	public String getAuthors() {
 		return authors;
 	}
-	public void setAuthors(String[] authors) {
+	public void setAuthors(String authors) {
 		this.authors = authors;
 	}
 	public String getGenre() {
@@ -59,7 +59,7 @@ public   class Book extends Bookmark implements Shareable {
 	@Override
 	public String toString() {
 		return "Book [publicationYear=" + publicationYear + ", publisher=" + publisher + ", authors="
-				+ Arrays.toString(authors) + ", genre=" + genre + ", rating=" + rating + "]";
+				+  authors + ", genre=" + genre + ", rating=" + rating + "]";
 	}
 
 
@@ -69,7 +69,7 @@ public   class Book extends Bookmark implements Shareable {
 		builder.append("<item>");
 			builder.append("<type>Book</type>");
 		builder.append("<title>").append(getTitle()).append("</title>");
-		builder.append("<authors>").append(StringUtils.join(authors, ",")).append("</authors>");
+		builder.append("<authors>").append(authors).append("</authors>");
 		builder.append("<publisher>").append(publisher).append("</publisher>");
 		builder.append("<publicationYear>").append(publicationYear).append("</publicationYear>");
 		builder.append("<genre").append(genre).append("</genre>");

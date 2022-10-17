@@ -139,7 +139,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	}
 
 //	@Override
-	public User[] getUsers() {
+	public  List<User> getUsers() {
 		return DataStore.getUsers();
 	}
 

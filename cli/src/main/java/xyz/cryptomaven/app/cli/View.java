@@ -3,35 +3,46 @@ package xyz.cryptomaven.app.cli;
 import controllers.BookmarkController;
 import controllers.UserController;
 import db.DataStore;
-import models.Book;
 import models.Bookmark;
 import models.Car;
 import models.User;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 public class View {
 
-	public static void bookmark(User user, Bookmark[][] bookmarks) {
+	public static void bookmark(User user, List<List<Bookmark>> bookmarks) throws FileNotFoundException, UnsupportedEncodingException {
 
 		System.out.println("\n" + user.getEmail() + " is bookmarking");
+		int count = 0;
 		for (int i = 0; i < DataStore.USER_BOOKMARK_LIMIT; i++) {
 			int typeOffset = (int) (Math.random() * DataStore.BOOKMARK_TYPES_COUNT);
 			int bookmarkOffset = (int) (Math.random() * DataStore.BOOKMARK_COUNT_PER_TYPE);
-
-			Bookmark bookmark = bookmarks[typeOffset][bookmarkOffset];
-			BookmarkController.getInstance().saveUserBookmark(user, bookmark);
-			System.out.println(bookmark);
+			Bookmark bookmark = bookmarks.get(typeOffset).get(bookmarkOffset);
+			boolean isBookmarked = getBookmarkDecision(bookmark);
+			if(isBookmarked) {
+				count++;
+				BookmarkController.getInstance().saveUserBookmark(user, bookmark);
+				System.out.println(count+ "[Bookmarke]"+bookmark);
+			}
 		}
 	}
 
-	public static void buyCar(User user, Car[] cars) {
+
+
+	private static boolean getBookmarkDecision(Bookmark bookmark) {
+		return (Math.random() <.4);
+	}
+
+	public static void buyCar(User user, List<Car> cars) {
 		System.out.println("\n" + user.getEmail() + " is carbuying");
 		for (int i = 0; i < 2; i++) {  // buy 2 randomly among inventory
 			int carOffset = (int) (Math.random() * DataStore.CAR_INVENTORY);
-			Car car = cars[carOffset];
+			Car car = cars.get(carOffset);
 			UserController.getInstance().saveUserCar(user, car);
 			System.out.println(car);
 		}
 	}
-
-
-}
+	}

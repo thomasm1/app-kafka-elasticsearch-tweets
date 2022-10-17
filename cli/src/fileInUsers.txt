@@ -1,0 +1,5 @@
+501,1001,Smith,Tom,user1,password,7,1,user1@cryptomaven.xyz,5055087707,http://www.dailytech.net
+502,1002,Smith,Tom,user2,password,7,1,user2@cryptomaven.xyz,5055087707,http://www.dailytech.net
+503,1003,Smith,Tom,user3,password,7,1,user3@cryptomaven.xyz,5055087707,http://www.dailytech.net
+504,1004,Smith,Tom,user4,password,7,1,user4@cryptomaven.xyz,5055087707,http://www.dailytech.net
+505,1005,Smith,Tom,user5,password,7,1,user4@cryptomaven.xyz,5055087707,http://www.dailytech.net

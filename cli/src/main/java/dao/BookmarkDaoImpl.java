@@ -74,7 +74,7 @@ public class BookmarkDaoImpl   implements BookmarkDAO {
 	}
 
 	@Override
-	public Bookmark[][] getBookmarksArray() {
+	public List<List<Bookmark>> getBookmarksArray() {
 		return DataStore.getBookmarksArray();
 	}
 

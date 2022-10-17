@@ -1,0 +1,5 @@
+2000,http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html,http://www.javaworld.com
+2001,http://mindprod.com/jgloss/interfacevsabstract.html,http://mindprod.com
+2002,https://www.imdb.com/title/tt0120915/,http://www.starwars.com
+2003,http://www.javaworld.com/article/2072759/core-java/taming-tiger-web3.html,http://www.javaworld.com
+2004,http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html,http://www.javaworld.com

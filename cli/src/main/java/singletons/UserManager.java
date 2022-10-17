@@ -4,7 +4,9 @@ import models.Car;
 import models.User;
 import models.UserCarbuy;
 import dao.UserDAOimpl;
-  
+
+import java.util.List;
+
 public class UserManager {
 
 	private static UserManager instance = new UserManager();
@@ -36,7 +38,7 @@ public class UserManager {
 		return user;
 
 	}
-	public User[] getUsers() {// THis is just relaying the call to the DaoImpl
+	public List<User>  getUsers() {// THis is just relaying the call to the DaoImpl
 			return userDAOimpl.getUsers(); 
 	}
 

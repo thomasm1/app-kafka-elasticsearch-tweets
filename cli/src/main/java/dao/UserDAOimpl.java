@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,12 +9,8 @@ import util.JDBCConnection;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import dao.UserDAO;
-import db.DataStore;
-import models.Bookmark;
-import models.Car;
+import db.TestDataStore;
 //import db.DB;
 import models.User;
 import models.UserCarbuy;
@@ -140,7 +135,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 //	@Override
 	public  List<User> getUsers() {
-		return DataStore.getUsers();
+		return TestDataStore.getUsers();
 	}
 
 	public List<User> getAllUsers() {
@@ -211,7 +206,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	}
 
 	public void saveUserCarbuy(UserCarbuy userCarbuy) {
-		DataStore.add(userCarbuy);
+		TestDataStore.add(userCarbuy);
 
 	}
 

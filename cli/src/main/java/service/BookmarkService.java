@@ -9,8 +9,8 @@ public class BookmarkService {
 
     public static BookmarkDAO bookmarkdao = new BookmarkDaoImpl();
 
-//	 * This method is now a static version of the getBookmark() method. To get a bookmark by
-//	 * its ID, call: BookmarkService.getBookmark(id); NOT bookmarkManager.getInstance()!
+//	 * This method is now a static version of the getBookmark() method. To get a bookmark by ID,
+//	 * BookmarkService.getBookmark(id); NOT bookmarkManager.getInstance()!
 
     public static boolean createBookmark(Bookmark bkmk) {
         return bookmarkdao.createBookmark(bkmk);

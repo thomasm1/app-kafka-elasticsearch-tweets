@@ -1,5 +1,0 @@
-3000,Movie0,1940,[HenryFonda JaneDarwell],[JohnFord],Classics,8.2
-3001,Movie1,1940,[Henry Fonda JaneDarwell],[JohnFord],Classics,8.2
-3002,Movie2,1940,[Henry Fonda JaneDarwell],[JohnFord],Classics,8.2
-3003,Movie3,1940,[Henry Fonda JaneDarwell],[JohnFord],Classics,8.2
-3004,Movie4,1940,[HenryFonda JaneDarwell],[JohnFord],Classics,8.2

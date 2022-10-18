@@ -1,9 +1,9 @@
 package singletons;
 
 import dao.CarDAOimpl;
+import dao.OfferDAOimpl;
 import models.Car;
-import models.User;
-import models.UserCarbuy;
+import models.Offer;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ public class CarManager {
 
 	private static CarManager instance = new CarManager(); 
 	private static CarDAOimpl carDaoImpl = new CarDAOimpl();
+
+	private static OfferDAOimpl offerDaoImpl= new OfferDAOimpl();
 	private CarManager() {
 	}
 
@@ -34,4 +36,19 @@ public class CarManager {
 		return carDaoImpl.getCars(); 
 }
 
+
+	public Offer createOffer(int offerID, String userName, int carId, double offerAmt, int offerMos, String offerStatus) {
+		Offer offer = new Offer();
+		offer.setOfferID(offerID);
+		offer.setUserName(userName);
+		offer.setCarId(carId);
+		offer.setOfferAmt(offerAmt);
+		offer.setOfferMos(offerMos);
+		offer.setOfferStatus(offerStatus);
+		return offer;
+	}
+
+	public List<Offer> getOffers() {
+		return offerDaoImpl.getOffers();
+	}
 }

@@ -7,10 +7,6 @@ public class Weblink extends Bookmark implements Shareable {
 	private String url;
 	private String host;
 
-	public Weblink(long id, String title, String profileUrl) {
-		super(id, title, profileUrl);
-	}
-
 	public Weblink() {
 
 	}

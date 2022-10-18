@@ -8,7 +8,8 @@ public class Offer {
 	int carId;
 	double offerAmt;
 	int offerMos;
-	String offerStatus;
+	String offerStatus; // PENDING, APPROVED, REJECTED
+	public Offer() { }
 
 	public Offer(int offerID, String userName, int carId, double offerAmt, int offerMos, String offerStatus) {
 //		super();
@@ -30,7 +31,7 @@ public class Offer {
 		this.offerStatus = offerStatus;
 	}
 
- 
+
 
 	public int getOfferID() {
 		return offerID;

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" xml:lang="en">
+
+<head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114267362-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114267362-1'); 
+    </script>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Technology Blog: Musing Blockchain | Web Dev Affairs | Sociology Tomorrow! Latest Developments in Technology Culture, 
+  Technology News, Tech Tools, Tech Talk Too! I explore daily tech topics on one of my three tech
+   blog topics: Blockchain, Web Dev, and Sociology in Tech.  DailyTech is both a public blog, as it is my own research tool for both subject content and app design" name="description" />
+    <meta content="Thomas Maestas, Thomas M Maestas, data analysis and visualization, sociology statistical tests"
+        name="keywords" />
+    <link rel="manifest" href="/manifest.json">
+    <meta content="Thomas M. Maestas" name="author" />
+    <title>OUR DAILY TECH</title>
+    <base href="/">
+    <link href="dist/app.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="dist/js/vendor/d3v4.min.js"></script>
+    <script src="dist/js/vendor/jquery.2.1.min.js"></script>
+ 
+</head>
+
+
+
+<body ng-controller="IndexController" class="with-top-navbar">
+
+
+    <div id="dailyNav">
+
+    </div>
+    <!--end dailyNav -->
+    <div class="container" id="foreground">
+        <!-- /.container -->
+
+        <div class="row">
+            <div class="col-md-12" id="view">
+
+
+
+                <div class="container pt-4">
+                    
+                    <div class="row">
+                      
+                    </div>
+                    <div id="module"></div> 
+                    <script  src='dataVisuals/module.js'></script>
+
+
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card card-profile">
+
+
+
+
+                                <div id="planets">
+                                    
+                                    <form class="form">
+                                        <br />
+                                        <input type="radio" name="reference" id="ref-annulus">
+                                        <label for="ref-annulus">OrbitðŸ“¦ </label>
+                                        <br>
+                                        <input type="radio" name="reference" id="ref-planet" checked>
+                                        <label for="ref-planet">Planetsâœ¨</label>
+                                        <br>
+                                        <input type="radio" name="reference" id="ref-sun">
+                                        <label for="ref-sun">Sun</label><span>ðŸ”¥</span>
+
+                                    </form>
+
+
+                                </div>  
+
+                                
+                                <button id="mmodalBtn" class="mbutton title   hover" id="b-header">
+                                    <h6 class="    subdailytech white hover" title="Social Data &amp; Statistics ">
+                                        <a class="cover  ">SOCIOLOGY TOMORROW!</a>
+                                    </h6>
+                                    <h6 class="            subdailytech white hover">
+                                        <a class="cover steel">WEB DEV &nbsp; AFFAIRS &nbsp; </a>
+                                    </h6>
+                                    <h6 class=" subdailytech white" title="Machine Learning">
+                                        <a class="cover ">A.I.NOW</a>
+                                    </h6>
+                                    <h6 class="subdailytech white hover"
+                                        title="About Blockchain Technologies in our Daily Lives">
+                                        <a class="cover steel">QUANTUM DATA</a>
+                                    </h6>
+                                    <h6 class="subdailytech white hover"
+                                        title="About Blockchain Technologies in our Daily Lives">
+                                        <a class="cover">MUSING BLOCKCHAIN</a>
+                                    </h6>
+                                    <a class="btn btn-primary"><em>READING MODAL</em></a>
+                                </button>
+
+                                 <div id="map0">
+                                    <div class="map0"></div>
+                                    <div class="map0"></div>
+                                </div>
+                                <script src="dist/js/planets.js"></script> -->
+                                
+
+                                <!-- <div class="card-header" ng-class=""> -->
+
+                                 <!-- <div ng-view class="view"></div> -->
+                                <!-- </div> -->
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div id="msimpleModal" class="mmodal">
+                                <div class="mmodal-content">
+                                    <span class="mcloseBtn"> &nbsp;&times; &nbsp; </span>
+                                    <div class="mmodal-header">
+
+                                    </div>
+                                    <div class="mod-behave ">
+                                        <div id="top-mod"></div>
+ 
+                                        <div id="paragraph-mod-may21"></div>
+                                        <div id="paragraph-March20-mod"></div>
+                                        <div id="paragraph-may19-mod"></div>
+                                        <div id="paragraph-march19-mod"></div>
+                                        <div id="paragraph-jan19-mod"></div>
+                                        <div id="paragraph-dec-mod"></div>
+                                        <div id="paragraph-nov-mod"></div>
+                                        <div id="paragraph-oct-mod"></div>
+                                        <div id="paragraph-sep-mod"></div>
+                                        <div id="paragraph-aug-mod"></div>
+                                        <div id="paragraph-july-mod"></div>
+                                        <div id="paragraph-june-mod"></div>
+                                        <div id="paragraph-may-mod"></div>
+                                        <div id="paragraph-apr-mod"></div>
+                                        <div id="paragraph-mar-mod"></div>
+                                        <div id="paragraph-feb-mod"></div>
+
+                                    </div>
+                                    <div class="mmodal-footer">
+                                        <p>&copy; 2018 All Rights Reserved. &nbsp;|
+                                            <a href="http://www.thomasmaestas.net"
+                                                style="color:darkblue;text-decoration:none;">thomasmaestas.net
+                                                &nbsp;|</a>
+                                            <a href="mailto:thomas@ourdailytech.com"
+                                                style="color:darkblue;text-decoration:none;">
+                                                thomas@ourdailytech.com &nbsp;|</a>
+                                            <a href="http://www.thomasmaestas.net/profile.html#contactme"
+                                                title="Contact Information: thomasmaestas.net">
+                                                Contact Information</a>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <ul class="list-group media-list media-list-stream mb-4" id="center-col">
+
+                                <li>
+                                    <div id="tech">
+                                           <div ng-view class="view"></div>
+                                    <div ng-if="$scope.array">
+
+                                            <!-- <div ng-repeat="p in array" class="blogDivMod">
+                                                <hr />
+                                                <div id="mod_{{p.did}}"></div>
+                                                <a href="#top-mod"><button>Top</button></a>
+                                                <h4 class="title dailytech longtitle">OUR DAILY TECH:</h4>
+                                                <h5 id="cat3" class="  subdailytech">{{p.cat3}}</h5>
+                                                <p id="author" class="  author">{{p.author}}</p>
+                                                <h6 id="date" class="  chapternumber">{{p.date}}</h6>
+                                                <h6 id="title" class="dailytitle chapternumber">{{p.title}}</h6>
+                                                <br />
+                                                <div id="post">{{p.post}}</div>
+                                                <div id="blogcite">{{p.blogcite}}</div>
+                                            </div> -->
+
+                                        </div> 
+                                        <div class="mod-behave ">
+                                            <div id="top"></div>
+                                            
+                                            <div id="paragraph-may21"></div>
+                                            <div id="paragraph-March20"></div>
+                                            <div id="paragraph-may19"></div>
+                                            <div id="paragraph-march19"></div>
+                                            <div id="paragraph-jan19"></div>
+                                            <div id="paragraph-dec"></div>
+                                            <div id="paragraph-nov"></div>
+                                            <div id="paragraph-oct"></div>
+                                            <div id="paragraph-sep"></div>
+                                            <div id="paragraph-aug"></div>
+                                            <div id="paragraph-july"></div>
+                                            <div id="paragraph-june"></div>
+                                            <div id="paragraph-may"></div>
+                                            <div id="paragraph-apr"></div>
+                                            <div id="paragraph-mar"></div>
+                                            <div id="paragraph-feb"></div>
+
+                                        </div>
+                                        <!-- blog-text.js  BEGINS HERE -->
+
+
+                                        <div id="febarchive">
+                                        </div>
+                                    </div>
+                                </li>
+                                <style>
+                                    #lambda-posts {
+                                        max-height: 400px;
+                                    }
+                                </style>
+
+                                
+                                <!-- <div id="lambda-posts" class="lambda-posts">
+                                    Title {{titleLambda}} endtitle
+                                    <div>POSTS-FILTER</div>
+                                    <button ng-click="postBlogs()">Button POSTS </button>
+                                    <legend> </legend>
+                                </div> -->
+                               
+                            </ul>
+
+
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="card mb-4 ">
+                                <div class="card-block">
+
+                                    <div id="marsreader" class="marsreader">
+
+                                        <pre id="reqObject"></pre>
+                                        <img id="apod_img_id" class="zoom" />
+
+                                        <iframe id="apod_vid_id" type="text/html" width="426" height="262"
+                                            frameborder="0"></iframe>
+
+                                        <p id="copyright"></p>
+                                        <h6 class="dailytech">Twython NASA API </h6>
+                                        <h5 id="apod_title"></h5>
+                                        <p id="apod_explaination"></p>
+                                        <pre id="returnObject"></pre>
+
+                                    </div>
+
+                                    <div class="media-body thesis">
+
+                                        <div id="message">
+
+                                        </div>
+
+                                    </div>
+                                    <div id="force">
+                                        <canvas class="canvas" height="700px"></canvas>
+
+                                    </div>
+
+                                    <div id="d-button">
+                                        
+
+                                        ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥
+                                        <button class="btn btn-primary">
+                                            <a href="https://ourdailytech.net/_For_Cat_Eyes_Only_/" target="_blank">
+                                                <h6>Fiction Publications:</h6>
+                                                <em>For Cat Eyes Only</em> <br />
+                                                <em>The Casperian Ancestries</em>
+                                            </a>
+                                        </button> ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥
+                                    </div>
+                                    <!--end dbutton-->
+
+                                </div>
+
+                                <link href="dist/calc.css" rel="stylesheet" />
+                                <div id="calc"></div>
+                                <script src="dist/calc.js"></script>
+                                <!-- <script src="dist/calc-deux.js"></script> -->
+
+
+                                                            <!-- TEMPORARY -->
+                            <div> 
+                                <hr/>
+                                <
+                                <form id="reader">
+                                    <input name="todo" type="text">
+                                    <<input type="submit" value="Add Post">
+                                    <<button type="button"  onclick="clearList()">Delete</button>
+                                </form> 
+                                <hr>
+                                <div id="todo-list">
+                                    <ul id="todos"></ul>
+                                </div>
+
+
+                            </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- end card card-link-list -->
+
+                </div>
+
+            </div>
+        </div>
+        
+    <div>  
+        <pre>
+               
+        â–‚â–„â–„â–“â–„â–„â–‚
+        â—¢â—¤â–ˆâ–€â–ˆâ–ˆâ–ˆâ–ˆâ–„â–„â–„â–„â–„â–„â—¢â—¤
+        â–ˆ  ðŸ¦„ â–ˆâ–€â–€â–€â–€â–€â–€â•¬
+        â—¥â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ—¤
+        â•�â•�â•©â•�â•�â•©â•� 
+        </pre>
+    </div>
+    </div>
+ 
+    <!-- /.container -->
+
+    <div class="card-block" id="footer">
+
+        <a class="nav-link foot"href="/Books"><small>_</small></a>
+        <a class="nav-link foot" href="/posts">_</a>
+        <p>Copyright &copy; 2018, 2019, 2020 All Rights Reserved. &nbsp; | &nbsp;
+            <a href="https://thomasmaestas.net" title="Contact Information: thomasmaestas.net/">
+                thomasmaestas.net</a>&nbsp; | &nbsp;
+            <img src="dist/img/paypal.PNG" alt="PayPal Emblem" height="
+	   15" />
+            <a href="https://www.paypal.com/paypalme/ThomasMaestas" style="color:white;text-decoration:none;">
+                &nbsp; Blog contribution appreciated!</a>
+        </p>
+
+    </div>
+    
+    </div>
+    </div>
+
+
+
+    <script>
+        // TEMPORARY
+const form = document.querySelector("[id='reader']");
+const input = document.querySelector("[name='todo']");
+const todoList = document.getElementById('todos');
+// todoList.style('background',  'red' ); 
+
+// Side Effects / LifeCycle
+
+let existingTodos = JSON.parse(localStorage.getItem('todos'));
+
+let todoData = existingTodos || [];
+
+todoData.forEach(todo => {
+    addTodo(todo);
+});
+
+
+function addTodo(todoText) {
+    todoData.push(todoText);
+    const li = document.createElement('li');
+    li.innerHTML = todoText;
+    todoList.appendChild(li);
+    localStorage.setItem('todos', JSON.stringify(todoData));
+}
+function clearList() {
+    console.log(todoData);
+    localStorage.clear();
+ existingTodos = [];
+    console.log(todoData);
+}
+// form.onclick = () => {
+//     todoData = [];
+// }
+form.onsubmit = (event) => {
+    event.preventDefault();
+    addTodo(input.value);
+    input.value = "";
+}
+    </script>
+
+    <script src="dist/js/force.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular-route.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
+
+    <script src="dist/js/vendor/tether.min.js"></script>
+    <script src="dist/js/vendor/popper.min.js"></script>
+    <script src="dist/js/vendor/bootstrap.min.js"></script>
+
+    <!-- <script src="dist/app.min.js"></script> -->
+    <script src="dist/app1.bundle.js"></script> 
+    <script src="dist/app2.bundle.js"></script>
+    <script src="dist/app3.bundle.js"></script>
+    <script src="dist/app4.bundle.js"></script>
+    <script src="app.js"></script>
+
+
+    <!-- <script src="dist/js/daily-nav.js"></script> -->
+    <script src="controllers/books/IndexController.js"></script>
+    <script src="controllers/blogs/BlogsController.js"></script>
+    <script src="controllers/books/BooksController.js"></script>
+    <script src="controllers/books/CatsController.js"></script>
+    <script src="controllers/books/ArchivesController.js"></script>
+    <script src="controllers/books/AddBookController.js"></script>
+    <script src="controllers/books/EditBookController.js"></script>
+    <script src="controllers/blogs/AddBlogController.js"></script>
+    <script src="controllers/blogs/EditBlogController.js"></script>
+    <script src="services/dataService.js"></script>
+    <!-- <script src="services/dataBlogService.js"></script> -->
+    <script src="services/loggerService.js"></script>
+    <script src="services/constantService.js"></script>
+    <script src="services/badgeService.js"></script>
+    <script src="services/bookLoggerInterceptor.js"></script>
+    <script src="services/BooksResource.js"></script>
+    <script src="services/currentUser.js"></script>
+    
+</body>
+
+</html>

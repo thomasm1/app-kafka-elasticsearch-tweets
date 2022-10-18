@@ -1,6 +1,5 @@
 package systemUser;
 
-import constants.Cmds;
 import models.User;
 import service.UserService;
 import system.MainDashboard;
@@ -8,6 +7,8 @@ import system.UserDashboard;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import static constants.Cmds.*;
 
 public class UserProfile {
 
@@ -22,15 +23,15 @@ public class UserProfile {
 
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println(Cmds.WELCOME_PROFILE );
-		System.out.println(Cmds.ONE+ Cmds.EDIT_PW);
-		System.out.println(Cmds.TWO+ Cmds.EDIT_FNAME);
-		System.out.println(Cmds.THREE+ Cmds.EDIT_LNAME);
-		System.out.println(Cmds.FOUR + Cmds.EDIT_GENDER);
-		System.out.println(Cmds.FIVE+ Cmds.EDIT_EMAIL);
-		System.out.println(Cmds.SIX+ Cmds.EDIT_PHONE);
-		System.out.println(Cmds.SEVEN+ Cmds.EDIT_URL);
-		System.out.println(Cmds.ZERO+ ": Finished, go back");
+		System.out.println(WELCOME_PROFILE );
+		System.out.println("1: "+ EDIT_PW);
+		System.out.println("2: "+ EDIT_FNAME);
+		System.out.println("3: "+ EDIT_LNAME);
+		System.out.println("4: " + EDIT_GENDER);
+		System.out.println("5: "+ EDIT_EMAIL);
+		System.out.println("6: "+ EDIT_PHONE);
+		System.out.println("7: "+ EDIT_URL);
+		System.out.println("0: "+ ": Finished, go back");
 		int Choice = scan.nextInt();
 		System.out.printf("'%S' %n", "Enter your edit");
 

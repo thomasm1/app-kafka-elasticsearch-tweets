@@ -2,23 +2,13 @@ package db;
 
 import java.util.HashMap;
 import java.util.Map;
- 
-import models.Offer;
-import models.Car;
-import models.User; 
 
-import models.Task; 
+import models.Task;
 import models.Dept; 
 import models.UserAdmin;
 import models.Request;
 
-public class DB { 
-	
-	
-	
-	public static Map<Integer, Car> cars = new HashMap<Integer, Car>();
-	public static Map<Integer, User> users = new HashMap<Integer, User>();
-	public static Map<Integer, Offer> offers = new HashMap<Integer, Offer>(); 
+public class TestReqStore {
 	
 	public static Map<Integer, Task> tasks = new HashMap<Integer, Task>();  
 	public static Map<Integer, Dept> depts = new HashMap<Integer, Dept>();
@@ -26,27 +16,6 @@ public class DB {
 	public static Map<Integer, Request> requests = new HashMap<Integer, Request>();
 	
 	static {  // Static initializer 1st; shared among all super-constructors, but only by last of this-constructors
-	 
-//		////////////////////// CAR
-		Car newTesla = new Car(22, "Tesla", "Cyber-Truck", 37000.99, 0 );	System.out.println("\n");
-		Car newJeep = new Car(101, "Jeep", "Wrangler", 24000.01, 0 );	System.out.println("\n");
-		Car newFord = new Car(102, "Ford", "Fusion", 23000.99, 0 );	System.out.println("\n"); 
-		cars.put(101, newTesla);
-		cars.put(201, newJeep);
-		cars.put(301, newFord);
-//		
-//		////////////////////// USER 
-//	   //(int userID, String user, String pass, String userType, int userType, int offerCount)
-		User templateOfferer = new User(1, "user", "password",   0 ,0 );
-		User templateOwner = new User(2, "user0", "password",   1, 1  );
-		users.put(1, templateOfferer);
-		users.put(2, templateOwner);
-//		
-//		////////////////////// OFFER
-//	   //(int offerID, int userID, int carID, int offerCount, double offerAmt, int offerMos) 
-		Offer gimsOffer = new Offer(99, 99, 101, 9999.00, 99, "PENDING"); 
-		offers.put(1, gimsOffer); 
-
 		///////////////////////  TASKS
 		Task d1 = new Task(1, 1, 1,"1-20-20", "URL" , "newRules", "newConf", "numeric", "70%", 300.99, 1);
 		Task d2 = new Task(2, 2, 1,"2-20-20", "form data" , "newRules", "newConf", "numeric", "80%", 250.00, 1); 

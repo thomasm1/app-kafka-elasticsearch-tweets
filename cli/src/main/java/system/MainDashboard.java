@@ -18,6 +18,8 @@ import systemUser.UserLogin;
 import systemUser.UserRegister;
 import xyz.cryptomaven.app.cli.CliNavigator;
 
+import static constants.Datum.LOCAL_SCANNER_TXT;
+
 public class MainDashboard {
  
 	public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
@@ -46,7 +48,7 @@ public class MainDashboard {
 	}
 
 	protected static File checkLocalfiles(String path) throws FileNotFoundException { 
-		String fileFullPath = (path != null) ? path : "src/scannertext.txt";
+		String fileFullPath = (path != null) ? path : String.valueOf("src/data/scannertext.txt");
 		File textFile = new File(fileFullPath);
 		return textFile;
 	}

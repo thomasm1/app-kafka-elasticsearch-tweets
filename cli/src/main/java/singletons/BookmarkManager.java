@@ -7,7 +7,12 @@ import models.Movie;
 import models.User;
 import models.UserBookmark;
 import models.Weblink;
+import util.HTTPConnect;
+import util.InputOutput;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class BookmarkManager {
@@ -47,7 +52,6 @@ public class BookmarkManager {
 	
 	return book;
 	}
-
  
 	public Weblink createWeblink( long id, String url, String host ) {
 
@@ -64,6 +68,21 @@ public class BookmarkManager {
 	    userBookmark.setUser(user);
 	    userBookmark.setBookmark(bookmark);
 	    bookmarkDaoImpl.saveUserBookmark(userBookmark);
+		if(bookmark instanceof Weblink) {
+			try {
+				String url = ((Weblink) bookmark).getUrl();
+				if(!url.endsWith(".pdf")) {
+					String website = HTTPConnect.download(((Weblink) bookmark).getUrl());
+					if(website != null) {
+						InputOutput.write(website, bookmark.getId());
+					}
+				}
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			} catch (URISyntaxException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	    
 	}
 public void share(User user, Bookmark bookmark) {

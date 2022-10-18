@@ -1,6 +1,7 @@
 package singletons;
 
 import models.Car;
+import models.Offer;
 import models.User;
 import models.UserCarbuy;
 import dao.UserDAOimpl;
@@ -49,5 +50,4 @@ public class UserManager {
 		userDAOimpl.saveUserCarbuy(userCarbuy);
 		
 	}
-
 }

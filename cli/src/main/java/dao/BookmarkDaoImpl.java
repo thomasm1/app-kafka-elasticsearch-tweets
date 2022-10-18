@@ -3,7 +3,7 @@ package dao;
 
 import java.sql.Connection;
 
-import db.DataStore;
+import db.TestDataStore;
 import models.Bookmark;
 import util.JDBCConnection;
 //import db.DataStore;
@@ -13,9 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
-import static db.DataStore.bookmarkIndex;
-import static db.DataStore.userBookmarks;
 
 public class BookmarkDaoImpl   implements BookmarkDAO {
 
@@ -75,17 +72,15 @@ public class BookmarkDaoImpl   implements BookmarkDAO {
 
 	@Override
 	public List<List<Bookmark>> getBookmarksArray() {
-		return DataStore.getBookmarksArray();
+		return TestDataStore.getBookmarksArray();
 	}
 
 	public static void add(UserBookmark userBookmark) {
-		userBookmarks[bookmarkIndex] = userBookmark;
-		bookmarkIndex++;
-
+		TestDataStore.add(userBookmark);
 	}
 
 	public void saveUserBookmark(UserBookmark userBookmark) {
-		DataStore.add(userBookmark);
+		TestDataStore.add(userBookmark);
 
 	}
 }

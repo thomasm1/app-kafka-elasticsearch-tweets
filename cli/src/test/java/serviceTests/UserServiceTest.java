@@ -1,5 +1,7 @@
 package serviceTests; 
 
+import static constants.Gender.MALE;
+import static constants.UserType.CHIEF_EDITOR;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,7 +40,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
     @Test   
 	public void add_new_user() {
-		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");    // PASSES
+		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");    // PASSES
 		assertTrue(UserService.createUser(u));
 		UserService.deleteUser(UserService.getUser("user4").getUsername());		
 	}
@@ -46,7 +48,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
     @Test   
    	public void get_user() {
    		String expected = "passWordX";
-		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
+		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
 		UserService.createUser(u);  
    		assertEquals(expected, u.getPassword());
 		UserService.deleteUser(UserService.getUser("user4").getUsername());	
@@ -54,16 +56,16 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
     @Test   
    	public void update_user() {
-   		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
+   		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
 		UserService.createUser(u); // leave ou
-   		User uUpdated = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
+   		User uUpdated = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
    		assertTrue(UserService.updateUser(uUpdated));
 		UserService.deleteUser(UserService.getUser("user4").getUsername());
    	} 
 
     @Test   
    	public void delete_user() {										  // PASSES
-   		User u = new User("user4", "password", "Smith", "Tom", UserType.CHIEF_EDITOR, Gender.MALE, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+   		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
    		UserService.createUser(u); 
    		assertTrue(UserService.deleteUser(u.getUsername())); 
 

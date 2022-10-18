@@ -2,7 +2,7 @@ package xyz.cryptomaven.app.cli;
 
 import controllers.BookmarkController;
 import controllers.UserController;
-import db.DataStore;
+import db.TestDataStore;
 import models.Bookmark;
 import models.Car;
 import models.User;
@@ -17,11 +17,12 @@ public class View {
 
 		System.out.println("\n" + user.getEmail() + " is bookmarking");
 		int count = 0;
-		for (int i = 0; i < DataStore.USER_BOOKMARK_LIMIT; i++) {
-			int typeOffset = (int) (Math.random() * DataStore.BOOKMARK_TYPES_COUNT);
-			int bookmarkOffset = (int) (Math.random() * DataStore.BOOKMARK_COUNT_PER_TYPE);
+		for (int i = 0; i < TestDataStore.USER_BOOKMARK_LIMIT; i++) {
+			// BOOKMARK_TYPES_COUNT 0= webLink, 1=book, 2=movie
+			int typeOffset = (int) (Math.random() * TestDataStore.BOOKMARK_TYPES_COUNT);
+			int bookmarkOffset = (int) (Math.random() * TestDataStore.BOOKMARK_COUNT_PER_TYPE);
 			Bookmark bookmark = bookmarks.get(typeOffset).get(bookmarkOffset);
-			boolean isBookmarked = getBookmarkDecision(bookmark);
+			boolean isBookmarked = getBookmarkDecision(bookmark); //bookmark ~ 4 of 10
 			if(isBookmarked) {
 				count++;
 				BookmarkController.getInstance().saveUserBookmark(user, bookmark);
@@ -30,8 +31,6 @@ public class View {
 		}
 	}
 
-
-
 	private static boolean getBookmarkDecision(Bookmark bookmark) {
 		return (Math.random() <.4);
 	}
@@ -39,7 +38,7 @@ public class View {
 	public static void buyCar(User user, List<Car> cars) {
 		System.out.println("\n" + user.getEmail() + " is carbuying");
 		for (int i = 0; i < 2; i++) {  // buy 2 randomly among inventory
-			int carOffset = (int) (Math.random() * DataStore.CAR_INVENTORY);
+			int carOffset = (int) (Math.random() * TestDataStore.getCarInventory());
 			Car car = cars.get(carOffset);
 			UserController.getInstance().saveUserCar(user, car);
 			System.out.println(car);

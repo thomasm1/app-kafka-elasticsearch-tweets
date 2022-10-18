@@ -12,6 +12,8 @@ import service.CarService;
 import service.ElectroLotService;
 import service.OfferService;
 
+import static constants.Cmds.*;
+
 public class UserDashboard {
 
 	
@@ -22,20 +24,20 @@ public class UserDashboard {
 
 	// RECURSIVE LOOP, breaks out at option 0
 	public static void dashboardChoice(String username) {
-		System.out.println(Cmds.WHAT_TO_DO+
-				Cmds.ONE+Cmds.VIEW_MY_CARS+
-				Cmds.TWO+Cmds.VIEW_ALL_CARS+
-				Cmds.THREE+Cmds.VIEW_CAR_DETAILS+
-				Cmds.FOUR + Cmds.MAKE_AN_OFFER +
-				Cmds.FIVE + Cmds.MAKE_INQUIRY_MY_OFFERS +
-				Cmds.ZERO + Cmds.LEAVE_MENU ); 
+		System.out.println(WHAT_TO_DO);
+		System.out.println("1: "+VIEW_MY_CARS);
+		System.out.println("2: "+VIEW_ALL_CARS);
+		System.out.println("3: "+VIEW_CAR_DETAILS);
+		System.out.println("4: "+MAKE_AN_OFFER);
+		System.out.println("5: "+MAKE_INQUIRY_MY_OFFERS);
+		System.out.println("0: "+LEAVE_MENU);
 
 		Scanner scan = new Scanner(System.in);
 		int val = scan.nextInt();
 
 try {
 	if (val < MENU_FIRST || val > MENU_LAST) {
-		System.out.println(Cmds.OOPS_OPTIONS);
+		System.out.println(OOPS_OPTIONS);
 		val = scan.nextInt();
 		scan.nextLine();
 	} else {
@@ -66,9 +68,10 @@ try {
 		case 2: {
 			try {
 				List<Car> carList = CarService.getAllCarsCust();
-				System.out.println(Cmds.CARLOT_TITLE);
+				System.out.println(CARLOT_TITLE);
 				System.out.println(carList);
-				System.out.println(Cmds.PRESS_DIGIT + Cmds.FOUR + Cmds.BR);
+				System.out.println("4: "+PRESS_DIGIT);
+				System.out.println();
 			} catch (Exception e) {
 				dashboardChoice(username);
 			}
@@ -85,7 +88,7 @@ try {
 				Car newest = CarService.getCar(id);
 				System.out.println(newest);
 				System.out.println("\n Car #" + id + 
-										Cmds.NICE + Cmds.PRESS_DIGIT + Cmds.FOUR);
+										NICE + PRESS_DIGIT + FOUR);
 			} catch (Exception e) {
 				dashboardChoice(username);
 			}
@@ -112,12 +115,12 @@ try {
 					down = scan.nextDouble();
 				}
 				scan.nextLine();
-				System.out.println(Cmds.HOW_MANY_MONTHS);
+				System.out.println(HOW_MANY_MONTHS);
 				int mos = scan.nextInt();
 				Offer offering = new Offer(777, username, val, down, mos, "PENDING");
 				 
 				System.out.println(OfferService.createOffer(offering));
-				System.out.println(Cmds.NICE+ " $" + down + " down, over *" + mos + "* months\n"
+				System.out.println(NICE+ " $" + down + " down, over *" + mos + "* months\n"
 						+ "We'll let you know in less than 24 hours!!\n");
 			} catch (Exception e) {
 				dashboardChoice(username);
@@ -137,7 +140,7 @@ try {
 			dashboardChoice(username);
 		}
 		case 0: {
-			System.out.println(Cmds.GOOD_BYE);
+			System.out.println(GOOD_BYE);
 			MainDashboard.console();
 			break;
 		}

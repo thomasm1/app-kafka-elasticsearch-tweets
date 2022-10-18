@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import db.TestDataStore;
 import util.JDBCConnection;
 
 import java.util.ArrayList;
@@ -63,12 +65,14 @@ public class OfferDAOimpl implements OfferDAO {
 		return null;
 	}
 
+	////////////// GET OFFLINE     OFFERS ///////////////////
+	@Override
+	public  List<Offer> getOffers() {
+		return  TestDataStore.getOffers();
+	}
+
 	public List<Offer> getAllOffers() {
-//		List<Offer> offerList = new ArrayList<Offer>();
-//		Set<Integer> keys = DB.offers.keySet();
-//		for(Integer k: keys)
-//			offerList.add(DB.offers.get(k));
-//		return offerList;
+
 		String sql = "SELECT * FROM offertable";
 		List<Offer> offerArr = new ArrayList<Offer>();
 		try {

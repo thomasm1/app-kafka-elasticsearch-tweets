@@ -1,10 +1,18 @@
 package constants;
 
-public class CarMake {
-    private CarMake () {}
-    
-    public static final String TESLA = "Tesla";
-    public static final String JEEP = "Jeep";
-    public static final String FORD = "Ford"; 
-    public static final String CHEVROLET = "Chevrolet"; 
+public enum CarMake {
+
+    TESLA("Tesla"),
+    JEEP("Jeep"),
+    FORD("Ford"),
+    CHEVROLET("Chevrolet");
+
+    private CarMake (String make) {
+        this.make = make;
+    }
+    private String make;
+    public String getCarMake() {
+        return make;
+    }
+
 }

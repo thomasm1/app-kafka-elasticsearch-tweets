@@ -57,5 +57,4 @@ public class Movie extends Bookmark {
 				+ directors + ", genre=" + genre + ", imbdRating=" + imbdRating + "]";
 	}
 	
-	
 }

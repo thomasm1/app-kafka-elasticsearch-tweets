@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,11 +7,10 @@ import java.sql.SQLException;
 import util.JDBCConnection;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 //import java.util.Set;
 
-import db.DataStore;
+import db.TestDataStore;
 //import db.DB;
 import models.Car;
 import models.UserCarbuy;
@@ -82,11 +80,12 @@ String sql = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid,
 	return null; 
 	} 
 
-////////////// GET OFFLINE CARS  ///////////////////
+////////////// GET OFFLINE CARS AND OFFERS ///////////////////
 	@Override
 	public List<Car> getCars() {
-		return  DataStore.getCars();
+		return  TestDataStore.getCars();
 	}
+
 ////////////// GETALL (ADMIN VIEW)  ///////////////////
 	public List<Car> getAllCars() {   // *Admin View of *all* cars in CarLot (also purchased cars).
 //		List<Car> carList = new ArrayList<Car>();
@@ -171,7 +170,7 @@ String sql = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid,
 	}
 
 	public void saveUserCarbuy(UserCarbuy userCarbuy) {
-		DataStore.add(userCarbuy);
+		TestDataStore.add(userCarbuy);
 		
 	}
 

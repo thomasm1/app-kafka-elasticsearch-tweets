@@ -1,9 +1,6 @@
 package singletons;
 
-import models.Car;
-import models.Offer;
-import models.User;
-import models.UserCarbuy;
+import models.*;
 import dao.UserDAOimpl;
 
 import java.util.List;
@@ -21,7 +18,7 @@ public class UserManager {
 	}
 
 	public User createUser(int userId, long id, String lastName, String firstName, String userName, String password,
-			int userType, int gender, String email, String phone, String cusUrl) {
+			int userType, int group, String email, String phone, String cusUrl) {
 		
 		User user = new User();
 		user.setUserId(userId);
@@ -31,7 +28,7 @@ public class UserManager {
 		user.setUsername(userName);
 		user.setPassword(password);
 		user.setUserType(userType); 
-		user.setGender(gender);
+		user.setGroup(group);
 		user.setEmail(email);
 		user.setPhone(phone);
 		user.setCusUrl(cusUrl);
@@ -49,5 +46,14 @@ public class UserManager {
 		userCarbuy.setCar(car);
 		userDAOimpl.saveUserCarbuy(userCarbuy);
 		
+	}
+
+    public Group createGroup(int id, int id2, String name_group) {
+		Group group = new Group();
+		group.setGroupId(id);
+		group.setGroupHeadId(id2);
+		group.setGroupName(name_group);
+		userDAOimpl.createGroup(group);
+		return group;
 	}
 }

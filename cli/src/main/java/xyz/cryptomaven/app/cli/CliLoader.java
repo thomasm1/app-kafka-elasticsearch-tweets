@@ -16,6 +16,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CliLoader {
@@ -44,7 +46,6 @@ public class CliLoader {
         System.out.println("printing offer data: ");
         printCars();
     }
-
     private static void printCars() {
         for (Car c: cars) {
             System.out.println(c);
@@ -54,9 +55,7 @@ public class CliLoader {
                 }
             }
         }
-
     }
-
     private static void printUserData() throws IOException {
         for (User u : users) {
             System.out.println(u);
@@ -64,7 +63,6 @@ public class CliLoader {
             InputOutput.writeUsers(users);
         }
     }
-
     private static void printBookmarks() {
         for (List<Bookmark> i : bookmarks) {
             for (Bookmark j : i) {
@@ -73,24 +71,15 @@ public class CliLoader {
         }
     }
 
-    static void startBookmarking() throws FileNotFoundException, UnsupportedEncodingException {
+    static void start() throws FileNotFoundException, UnsupportedEncodingException {
         System.out.println("\n2. Start Bookmarking");
         for (User user: users) {
-            View.bookmark(user,bookmarks);
+            View.browse(user,bookmarks);
+            View.shareBookmark(user, bookmarks);
         }
     }
     // random loader
-    public static void shareBookmark() {
-        for(User user: users) {
-        System.out.println("\n" + user.getEmail() + " is sharing two instance: link or book");
-        for(int x = 0;x<=1;x++) {
-            int bookmarkOffset = (int) (Math.random() * TestDataStore.BOOKMARK_COUNT_PER_TYPE);
-            Bookmark bookmark = bookmarks.get(x).get(bookmarkOffset);
-            BookmarkController.getInstance().shareBookmark(user, bookmark);
-            System.out.println("User: " + user + "inside View; bookmark: " + bookmark);
-        }
-        }
-    }
+
     static void buyCar() {
         System.out.println("\n3. Buy Cars");
         for(User user: users) {

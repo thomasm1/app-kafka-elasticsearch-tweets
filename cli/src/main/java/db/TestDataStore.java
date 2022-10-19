@@ -1,5 +1,6 @@
 package db;
 
+import jdk.tools.jaotc.collect.SearchPath;
 import models.*;
 import singletons.BookmarkManager;
 import singletons.CarManager;
@@ -23,6 +24,7 @@ public class TestDataStore {
 	public static final int BOOKMARK_COUNT_PER_TYPE = 5;
 	public static final int BOOKMARK_TYPES_COUNT = 3;
 
+	public static List<Group> groups = new ArrayList<>();
 	public static List<Car> cars = new ArrayList<>();
 	public static List<Offer> offers = new ArrayList<>();
 	public static List<Car> getCars() {
@@ -54,13 +56,14 @@ public class TestDataStore {
 		loadBooks();
 		loadCars();
 		loadOffers();
+		loadGroups();
 	}
 
 		private static void loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
-//		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Gender.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+//		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Group.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
  	List<String> data = new ArrayList<>();
-			InputOutput.read(data, FILE_IN_USERS);
-			System.out.println("TEST_USERS::::::: "+data.toString());
+			InputOutput.read(data,  FILE_IN_USERS);
+			System.out.println("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
 				User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), Long.parseLong(values[1]), values[2], values[3], values[4], values[5], Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], values[9], values[10]);
@@ -111,7 +114,6 @@ public class TestDataStore {
 			List<Bookmark> movieList = new ArrayList<>();
 			for (String row : data) {
 				String[] values = row.split(",");
-				System.out.println(values.toString());
 				Bookmark movie = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]), values[1],  Integer.parseInt(values[2]), values[3], values[4], values[5], Double.parseDouble(values[6]));
 				movieList.add(movie);
 			}
@@ -123,12 +125,21 @@ public class TestDataStore {
 			InputOutput.read(data, FILE_IN_CARS);
 			for (String row: data) {
 				String[] values = row.split(",");
-				System.out.println(values.toString());
 				Car car = CarManager.getInstance().createCar(Integer.parseInt(values[0]), values[1], values[2], Double.parseDouble(values[3]), Integer.parseInt(values[4]));
 				cars.add(car);
 				CAR_INVENTORY = cars.size();
 			}
 		};
+	public static void loadGroups() throws FileNotFoundException, UnsupportedEncodingException {
+//		Group group1 = UserManager.getInstance().createGroup( 7004,24,"Business Group");
+		List<String> data =new ArrayList<>();
+		InputOutput.read(data, FILE_IN_GROUPS);
+		for (String row: data) {
+			String[] values = row.split(",");
+			Group group = UserManager.getInstance().createGroup(Integer.parseInt(values[0]), Integer.parseInt(values[1]), values[2] );
+			groups.add(group);
+		}
+	};
 // TABLE JOIN
 	public static void add(UserBookmark userBookmark) {
 		userBookmarks.add(userBookmark);
@@ -138,5 +149,8 @@ public class TestDataStore {
 		userCarbuys.add(userCarbuy);
 	}
 
+	public static void add(Group group) {
+		groups.add(group);
+	}
 
 }

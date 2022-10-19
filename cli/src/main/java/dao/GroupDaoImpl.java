@@ -11,31 +11,31 @@ import java.util.ArrayList;
 
 
 //import db.DB;
-import dao.DeptDao;
-import models.Dept; 
+import dao.GroupDao;
+import models.Group; 
 import util.JDBCConnection;
 
 //can't make static, so use the service layer 
-public class DeptDaoImpl implements DeptDao {
+public class GroupDaoImpl implements GroupDao {
 	public static Connection conn = JDBCConnection.getConnection();
 
 	@Override
-	public boolean addDept(Dept d) {
+	public boolean addGroup(Group d) {
 	  
-		System.out.println("Submitting to deptDaoImpl: "+d);
-		String sql = "CALL add_new_reqdepttable(?,?)";
+		System.out.println("Submitting to groupDaoImpl: "+d);
+		String sql = "CALL add_new_reqgrouptable(?,?)";
 		try {
 			CallableStatement cs = conn.prepareCall(sql); 
 //			cs.setString(1, Integer.toString(d.getReqId()));
-			cs.setString(1, Integer.toString(d.getDeptHeadId()));
-			cs.setString(2, d.getDeptName());
+			cs.setString(1, Integer.toString(d.getGroupHeadId()));
+			cs.setString(2, d.getGroupName());
  
-			System.out.println("success to dept!: reqId#"+d.getDeptName());
+			System.out.println("success to group!: reqId#"+d.getGroupName());
 			cs.execute();
 			return true;
 
 		} catch (SQLException e) {
-			System.out.println("Double Check add_new_reqdepttable DB SQL");
+			System.out.println("Double Check add_new_reqgrouptable DB SQL");
 			System.out.println(e);
 		}
 		return false;
@@ -43,23 +43,23 @@ public class DeptDaoImpl implements DeptDao {
 
 
 	@Override
-	public Dept getDept(int deptId) {
+	public Group getGroup(int groupId) {
 	  
 		try {
-			String sql = "SELECT * FROM reqdepttable WHERE deptid = ?";
+			String sql = "SELECT * FROM reqgrouptable WHERE groupid = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, Integer.toString(deptId));
+			ps.setString(1, Integer.toString(groupId));
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next())
 			{
-			return new Dept(
-					rs.getInt("deptId"),
-					rs.getInt("deptHeadid"), 
-					rs.getString("deptName")); 
+			return new Group(
+					rs.getInt("groupId"),
+					rs.getInt("groupHeadid"), 
+					rs.getString("groupName")); 
 			}
 	}		catch (Exception e) {
-		System.out.println("SQL issue with getting dept: \n"+e);
+		System.out.println("SQL issue with getting group: \n"+e);
 	}
 			return null;
 		};  
@@ -76,7 +76,7 @@ public class DeptDaoImpl implements DeptDao {
 //			while (rs.next())
 //			{
 //				return new Request(rs.getInt("userid"),
-//						rs.getInt("deptid"), 
+//						rs.getInt("groupid"), 
 //						rs.getInt("superid"), 
 //				rs.getString("username"),  
 //				rs.getString("password"),  
@@ -92,34 +92,34 @@ public class DeptDaoImpl implements DeptDao {
 
 
 @Override
-public List<Dept> listDept() {
+public List<Group> listGroup() {
 	 
 //		List<Request> reqList = new ArrayList<Request>();
 //		Set<Integer> keys = DB.reqs.keySet();
 //		for (Integer k : keys)
 //			reqList.add(DB.reqs.get(k));
 //		return reqList;
-		String sql = "SELECT * FROM reqdepttable";
-		List<Dept> deptArr = new ArrayList<Dept>();
+		String sql = "SELECT * FROM reqgrouptable";
+		List<Group> groupArr = new ArrayList<Group>();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// preparedStatements are safe from SQL injection & sanitize inputs
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				deptArr.add(new Dept(rs.getInt("deptid"),
-						rs.getInt("deptHeadId"), 
-						rs.getString("deptName"))); 
+				groupArr.add(new Group(rs.getInt("groupid"),
+						rs.getInt("groupHeadId"), 
+						rs.getString("groupName"))); 
 			}
 			System.out.println("SQL is All Good!");
-			return deptArr;
+			return groupArr;
 		} catch (SQLException e) {
-			System.out.println("SQL issue with getting All DEPT:\n "+e);
+			System.out.println("SQL issue with getting All groups:\n "+e);
 		}
 		return null;
 	}
 
 @Override
-public boolean updateDept(Dept change) {
+public boolean updateGroup(Group change) {
 	// TODO Auto-generated method stub
 	return false;
 }
@@ -146,7 +146,7 @@ public boolean updateDept(Dept change) {
 //	}
 
 	@Override
-	public boolean deleteDept(int id) {
+	public boolean deleteGroup(int id) {
 //		DB.users.remove(req);
 //		String sql = "DELETE usertable WHERE username = ?";
 //		

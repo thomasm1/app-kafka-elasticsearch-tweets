@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import models.Group;
 import util.JDBCConnection;
 
 import java.util.ArrayList;
@@ -15,12 +17,13 @@ import db.TestDataStore;
 import models.User;
 import models.UserCarbuy;
 
+
 public class UserDAOimpl implements UserDAO { // can't make static! so use the service layer!
 	public static Connection conn = JDBCConnection.getConnection();
 
+	@Override
 	public boolean createUser(User u) {
 //		DB.users.put(u.getUserID(), c);
-//		return true;
 		// USER is autoincrement
 		String sql = "CALL add_new_users(?,?,?, ?,?,?, ?,?,?)";
 		try {
@@ -30,7 +33,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			cs.setString(3, u.getLastName());
 			cs.setString(4, u.getFirstName());
 			cs.setString(5, Integer.toString(u.getUserType()));
-			cs.setString(6, Integer.toString(u.getGender()));
+			cs.setString(6, Integer.toString(u.getGroup()));
 			cs.setString(7, u.getEmail());
 			cs.setString(8, u.getPhone());
 			cs.setString(9, u.getCusUrl());
@@ -47,6 +50,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	}
 
 	/// SQL ERROR HERE? 
+	@Override
 	public User getUserByPassword(String username, String password) {
 		try {
 			String sql = "SELECT users.username  FROM users WHERE users.username = ? AND users.password = ?";
@@ -57,7 +61,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 			while (rs.next()) {
 				return new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password")
-//						,rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("gender"),
+//						,rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("group"),
 //						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl")
 						);
 			}
@@ -70,8 +74,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	}
 
+
 	/// GET
 	/// /////////////////////////////////////////////////////////////////////////////
+	@Override
 	public User getUser(String username) {
 //		return DB.users.get(id);
 		try {
@@ -83,7 +89,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 			while (rs.next()) {
 				return new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password"),
-						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("gender"),
+						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("group"),
 						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl"));
 			}
 
@@ -94,6 +100,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 		return null;
 	}
 
+	@Override
 	public User getUser(int id) {
 //		return null;
 		try {
@@ -104,7 +111,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 			while (rs.next()) {
 				return new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password"),
-						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("gender"),
+						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("group"),
 						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl"));
 			}
 
@@ -115,6 +122,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 		return null;
 	};
 
+	@Override
 	public List<User> getUsersWithCars() {
 		String sql = "SELECT users.userid, users.username FROM users,electrolot WHERE users.username = electrolot.username";
 		List<User> usersWithCars = new ArrayList<User>(); 
@@ -133,11 +141,6 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	}
 
-//	@Override
-	public  List<User> getUsers() {
-		return TestDataStore.getUsers();
-	}
-
 	public List<User> getAllUsers() {
 		String sql = "SELECT * FROM users";
 		List<User> userArr = new ArrayList<User>();
@@ -147,7 +150,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				userArr.add(new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password"),
-						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("gender"),
+						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("group"),
 						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl")));
 			}
 			return userArr;
@@ -161,7 +164,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	public boolean updateUser(User change) { // using USERNAME
 //		DB.users.replace(change.getUserID(), change);
 //		return true;
-		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?, gender=?, email=?, phone=?, cusurl=? WHERE username = ?";
+		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?, group=?, email=?, phone=?, cusurl=? WHERE username = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 //					ps.setString(6, Integer.toString(change.getUserID()));
@@ -169,7 +172,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ps.setString(2, change.getLastName());
 			ps.setString(3, change.getFirstName());
 			ps.setString(4, Integer.toString(change.getUserType()));
-			ps.setString(5, Integer.toString(change.getGender()));
+			ps.setString(5, Integer.toString(change.getGroup()));
 			ps.setString(6, change.getEmail());
 			ps.setString(7, change.getPhone());
 			ps.setString(8, change.getCusUrl());
@@ -185,13 +188,13 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	}
 
-	public boolean deleteUser(String u) {
+	public boolean deleteUser(String username) {
 //		DB.users.remove(id);
 		String sql = "DELETE users WHERE username = ?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, u);
+			ps.setString(1, username);
 
 //		int var = 1;
 //		System.out.println(var);
@@ -205,9 +208,25 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 		return false;
 	}
 
+	///////////////////////// //	OFFLINE TESTDATA
+
+	@Override
+	public boolean createUserPrePop(User u) {
+		return false;
+	}
+	@Override
+	public  List<User> getUsers() {
+		return TestDataStore.getUsers();
+	}
+
+
+	@Override
 	public void saveUserCarbuy(UserCarbuy userCarbuy) {
 		TestDataStore.add(userCarbuy);
 
 	}
 
+    public void createGroup(Group group) {
+		TestDataStore.add(group);
+    }
 }

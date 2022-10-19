@@ -31,7 +31,7 @@ public enum Cmds {
     EDIT_PW ("Edit your password? :\n"),
     EDIT_FNAME(" first name? :\n"),
     EDIT_LNAME(" ,  edit your last name?  :\n"),
-    EDIT_GENDER(" ,  edit your gender? :\n"),
+    EDIT_GENDER(" ,  edit your group? :\n"),
     EDIT_EMAIL(" ,  edit your email? :\n"),
     EDIT_PHONE(" ,  edit your phone number? :\n"),
     EDIT_URL(" ,  edit your image URL? :\n"),

@@ -9,12 +9,13 @@ import models.User;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class View {
 
-	public static void bookmark(User user, List<List<Bookmark>> bookmarks) throws FileNotFoundException, UnsupportedEncodingException {
-
+	public static List<Bookmark> browse(User user, List<List<Bookmark>> bookmarks) throws FileNotFoundException, UnsupportedEncodingException {
+		List<Bookmark> subset = new ArrayList<>();
 		System.out.println("\n" + user.getEmail() + " is bookmarking");
 		int count = 0;
 		for (int i = 0; i < TestDataStore.USER_BOOKMARK_LIMIT; i++) {
@@ -25,16 +26,28 @@ public class View {
 			boolean isBookmarked = getBookmarkDecision(bookmark); //bookmark ~ 4 of 10
 			if(isBookmarked) {
 				count++;
-				BookmarkController.getInstance().saveUserBookmark(user, bookmark);
 				System.out.println(count+ "[Bookmarke]"+bookmark);
+				BookmarkController.getInstance().saveUserBookmark(user, bookmark);
+				subset.add(bookmark);
 			}
 		}
+		return subset;
 	}
 
 	private static boolean getBookmarkDecision(Bookmark bookmark) {
 		return (Math.random() <.4);
 	}
 
+	// user shares subset of browsed bookmarks:
+	public static void shareBookmark(User user, List<List<Bookmark>> bookmarks) {
+		System.out.println("\n" + user.getEmail() + " is sharing two instance: (0)link or (1) book; Not (2) movie");
+		for(int x = 0;x<=1;x++) {
+			int bookmarkOffset = (int) (Math.random() * TestDataStore.BOOKMARK_COUNT_PER_TYPE);
+			Bookmark bookmark = bookmarks.get(x).get(bookmarkOffset);
+			BookmarkController.getInstance().shareBookmark(user, bookmark);
+			System.out.println("User: " + user.getEmail() + "inside View; bookmark: " + bookmark.getTitle()+ bookmark.getClass());
+		}
+	}
 	public static void buyCar(User user, List<Car> cars) {
 		System.out.println("\n" + user.getEmail() + " is carbuying");
 		for (int i = 0; i < 2; i++) {  // buy 2 randomly among inventory

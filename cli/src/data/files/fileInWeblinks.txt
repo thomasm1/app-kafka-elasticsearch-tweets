@@ -2,4 +2,9 @@
 2001,http://mindprod.com/jgloss/interfacevsabstract.html,http://mindprod.com
 2002,https://www.imdb.com/title/tt0120915/,http://www.starwars.com
 2003,https://thomasmaestas.net,http://www.javaworld.com
-2004,https://ourdailytech.net,http://www.javaworld.com
+2004,https://ourdailytech.net,https://ourdailytech.net
+2005,http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html,http://www.javaworld.com
+2006,http://mindprod.com/jgloss/interfacevsabstract.html,http://mindprod.com
+2007,https://www.imdb.com/title/tt0120915/,http://www.starwars.com
+2008,https://thomasmaestas.net,http://www.javaworld.com
+2009,https://ourdailytech.net,https://ourdailytech.net

@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import db.TestDataStore;
 import models.Bookmark;
+import models.Weblink;
 import util.JDBCConnection;
 //import db.DataStore;
 import models.UserBookmark;
@@ -12,6 +13,7 @@ import models.UserBookmark;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookmarkDaoImpl   implements BookmarkDAO {
@@ -75,12 +77,35 @@ public class BookmarkDaoImpl   implements BookmarkDAO {
 		return TestDataStore.getBookmarksArray();
 	}
 
+	// Wide-net Http weblinks
+	public List<Weblink> getAllWebLinks() {
+		List<Weblink> result = new ArrayList<>();
+		List<List<Bookmark>> bookmarks = TestDataStore.getBookmarksArray();
+		List<Bookmark> allWeblinks = bookmarks.get(0);
+		for (Bookmark wl : allWeblinks) {
+			result.add((Weblink) wl);
+		}
+		return result;
+	}
+
+	// Filter from get-ALL-WebLinks to get only 200's
+	public List<Weblink> getWebLinks(Weblink.DownloadStatus downloadStatus) {
+		List<Weblink> result = new ArrayList<>();
+		List<Weblink> allWeblinks = getAllWebLinks();
+		for (Weblink weblink : allWeblinks) {
+			if (weblink.getDownloadStatus().equals(downloadStatus)) {
+				result.add(weblink);
+			}
+		}
+		return result;
+	}
 	public static void add(UserBookmark userBookmark) {
 		TestDataStore.add(userBookmark);
 	}
 
 	public void saveUserBookmark(UserBookmark userBookmark) {
 		TestDataStore.add(userBookmark);
-
 	}
+
+
 }

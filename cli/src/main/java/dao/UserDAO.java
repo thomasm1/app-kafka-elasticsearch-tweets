@@ -2,7 +2,8 @@ package dao;
 
 import java.util.List;
  
-import models.User; 
+import models.User;
+import models.UserCarbuy;
 
 public interface UserDAO { 
 	public boolean createUser(User u); 
@@ -14,9 +15,12 @@ public interface UserDAO {
 	public List<User> getUsersWithCars();
 	public  List<User> getUsers();
 	public User getUserByPassword(String username, String password);
-	
+
+
 	// PRE-POP
-//	public boolean createUserPrePop(User u);
- 
+	public boolean createUserPrePop(User u);
+
+	void saveUserCarbuy(UserCarbuy userCarbuy);
+
 	
 } 

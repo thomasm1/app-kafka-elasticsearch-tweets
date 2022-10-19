@@ -1,11 +1,8 @@
 package webservice;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,12 +10,12 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import models.UserAdmin;
-import service.UserAdminService;
+import models.User;
+import service.UserService;
 
-public class UserAdminWebService {
+public class UserWebService {
 
-	public static void addUserAdmin(HttpServletRequest request, HttpServletResponse response) {
+	public static void createUser(HttpServletRequest request, HttpServletResponse response) {
 
 		try {
 			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
@@ -29,8 +26,8 @@ public class UserAdminWebService {
 //			e1.printStackTrace();
 		}
 //		int userId = Integer.parseInt(request.getParameter("id"));
-		int deptId = Integer.parseInt(request.getParameter("deptId"));
-		System.out.println(deptId);
+		int groupId = Integer.parseInt(request.getParameter("groupId"));
+		System.out.println(groupId);
 		int superId = Integer.parseInt(request.getParameter("superId"));
 		String userName = request.getParameter("userName");
 		System.out.println(userName);
@@ -38,11 +35,11 @@ public class UserAdminWebService {
 		String email = request.getParameter("email");
 
 //		 add db using these fields 
-		UserAdmin d = new UserAdmin(999, deptId, superId, userName, password, email);
-		System.out.println("UserAdminWebService: "+d);
+		User d = new User(999, groupId, superId, userName, password, email);
+		System.out.println("UserWebService: "+d);
 
-		// Call UserAdminService to add it.
-		UserAdminService.addUserAdmin(d);
+		// Call UserService to add it.
+		UserService.createUser(d);
 
 		try {
 			response.getWriter().append("Successfully added data to ORACLE (AWS) input: " + request.getContextPath());
@@ -51,40 +48,36 @@ public class UserAdminWebService {
 		}
 	}
  
-	public static void getUserAdmin(HttpServletRequest request, HttpServletResponse response) {
+	public static void getUser(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("userId"));
 		System.out.println("id: " + id);
 		
 		String userName = request.getParameter("username");
 		System.out.println("parameter: "+userName);
-		UserAdmin u = UserAdminService.getUserAdmin(userName);
-		System.out.println("getUserAdmin(name):"+u.getUserName());
+		User u = UserService.getUser(userName);
+		System.out.println("getUser(name):"+u.getUsername());
 		
-		UserAdmin d = UserAdminService.getUserAdmin(u.getUserId());
-		System.out.println("getUserAdmin(name):"+d.getUserId());
+		User d = UserService.getUser(u.getUsername());
+		System.out.println("getUser(name):"+d.getUserId());
 		 
-		String dbUserAdmin = d.getUserName();
+		String dbUser = d.getUsername();
 		int dbId = d.getUserId();
-		int dbSuper = d.getSuperId();
-		int dbDept = d.getDeptId();
-		System.out.println(dbUserAdmin+"..getting userInfo:" ); 
+		int dbGroup = d.getGroup();
+		System.out.println(dbUser+"..getting userInfo:" );
 
 		HttpSession sess = request.getSession();   
 		sess.setAttribute("sessionId", sess.getId());
-		sess.setAttribute("useradminname", dbUserAdmin);  
-		sess.setAttribute("useradminid", dbId);  
-		sess.setAttribute("usersuper", dbSuper); 
-		sess.setAttribute("userdept", dbDept); 
+		sess.setAttribute("useradminname", dbUser);
+		sess.setAttribute("useradminid", dbId);
+		sess.setAttribute("usergroup", dbGroup); 
 
-		Cookie sessUserAdmin = new Cookie("sessUserAdmin", dbUserAdmin);
+		Cookie sessUser = new Cookie("sessUser", dbUser);
 		Cookie sessId = new Cookie("sessId", Integer.toString(dbId));
-		Cookie sessSuper = new Cookie("sessSuper", Integer.toString(dbSuper));
-		Cookie sessDept = new Cookie("sessDept", Integer.toString(dbDept));
+		Cookie sessGroup = new Cookie("sessGroup", Integer.toString(dbGroup));
 		response.setContentType("text/html"); 
 		response.addCookie(sessId);
-		response.addCookie(sessUserAdmin);
-		response.addCookie(sessSuper);
-		response.addCookie(sessDept);
+		response.addCookie(sessUser);
+		response.addCookie(sessGroup);
  
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
@@ -100,11 +93,11 @@ public class UserAdminWebService {
 		}  
 	}
 
-//	int userId, int deptId, int superId, String userName, String password, String email  
+//	int userId, int groupId, int superId, String userName, String password, String email  
 
-	public static void listUserAdmin(HttpServletRequest request, HttpServletResponse response) {
+	public static void listUser(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<UserAdmin> d = UserAdminService.listUserAdmin(); 
+		List<User> d = UserService.getUsers();
 		
 
 		System.out.println(d);

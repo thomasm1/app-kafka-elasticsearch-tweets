@@ -18,8 +18,6 @@ import systemUser.UserLogin;
 import systemUser.UserRegister;
 import xyz.cryptomaven.app.cli.CliNavigator;
 
-import static constants.Datum.LOCAL_SCANNER_TXT;
-
 public class MainDashboard {
  
 	public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {

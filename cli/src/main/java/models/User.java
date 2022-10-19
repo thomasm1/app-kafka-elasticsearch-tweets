@@ -11,7 +11,7 @@ public class User   {
 	private String userName;
 	private String password; 
 	private int userType;
-	private int gender;
+	private int group;
 	private String email;
 	private String phone;
 	private String cusUrl;  
@@ -20,7 +20,7 @@ public class User   {
 		super();
 	}
 //f=0,m=1,o=2
-	public User(int userId, long id, String lastName, String firstName, String userName, String password, int userType, int gender, String email, String phone, String cusUrl) {
+	public User(int userId, long id, String lastName, String firstName, String userName, String password, int userType, int group, String email, String phone, String cusUrl) {
 		super();
 		this.userId = userId;
 		this.id = id;
@@ -29,7 +29,7 @@ public class User   {
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType; 
-		this.gender = gender;
+		this.group = group;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
@@ -46,32 +46,32 @@ public User(  String userName, String password ) {
 	this.userName = userName; 
 	this.password = password;
 }
-		// overloaded for OFFER/ Gender must be multi-purpose
-	public User(int userId,   String userName, String password, int userType, int gender) {
+		// overloaded for OFFER/ Group must be multi-purpose
+	public User(int userId,   String userName, String password, int userType, int group) {
 		super();
 		this.userId = userId; 
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType;  
-		this.gender = gender;
+		this.group = group;
 	}
 	
 // overloaded For REGISTER userId is AutoIncrement, lastname, firstname, email, phone, cusurl
-	public User(  String userName, String password, String lastName, String firstName, int userType, int gender, String email, String phone, String cusUrl) {
+	public User(  String userName, String password, String lastName, String firstName, int userType, int group, String email, String phone, String cusUrl) {
 		super();  
 		this.userName = userName;
 		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.userType = userType; 
-		this.gender = gender;
+		this.group = group;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
 	}
 
 //	 overloaded without Id  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
-	public User( int userId, String userName, String password, String lastName, String firstName,  int userType, int gender, String email, String phone, String cusUrl) {
+	public User( int userId, String userName, String password, String lastName, String firstName,  int userType, int group, String email, String phone, String cusUrl) {
 			super();  
 		 this.userId =  userId;
 		this.userName = userName;
@@ -79,7 +79,7 @@ public User(  String userName, String password ) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.userType = userType;
-		this.gender = gender;
+		this.group = group;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
@@ -95,18 +95,21 @@ public User(  String userName, String password ) {
 	}
 
 	// Contstructor for EDIT PROFILE (options available for user)
-    public User(String password, String lastName, String firstName, int gender, String email, String phone, String cusUrl) {
+    public User(String password, String lastName, String firstName, int group, String email, String phone, String cusUrl) {
 		super();
 		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
-		this.gender = gender;
+		this.group = group;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
     }
 
-    @Override
+	public User(int i, int userType, int group, String userName, String password, String email) {
+	}
+
+	@Override
     public int hashCode() {
         int result = userName.hashCode();
         result = 31 * result + lastName.hashCode(); 
@@ -171,12 +174,12 @@ public User(  String userName, String password ) {
 	}
   
 
-	public int getGender() {
-		return gender;
+	public int getGroup() {
+		return group;
 	}
 
-	public void setGender(int gender) {
-		this.gender = gender;
+	public void setGroup(int group) {
+		this.group = group;
 	}
 
 	public String getEmail() {
@@ -207,7 +210,8 @@ public User(  String userName, String password ) {
 	public String toString() {
 		return "User [userId=" + userId + ", id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
 				+ ", userName=" + userName + ", password=" + password + ", userType=" + userType  
-				+ ", gender=" + gender + ", email=" + email + ", phone=" + phone + ", cusUrl=" + cusUrl + "]";
+				+ ", group=" + group + ", email=" + email + ", phone=" + phone + ", cusUrl=" + cusUrl + "]";
 	}
+
 
 }

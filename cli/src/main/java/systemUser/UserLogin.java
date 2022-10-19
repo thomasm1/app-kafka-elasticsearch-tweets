@@ -17,7 +17,6 @@ public class UserLogin {
 
 		String adminUsername = "admin";
 		String adminPassword = "pass";
-
 		String tempUsername = "cust";
 		String tempPassword = "pass";
 		try {

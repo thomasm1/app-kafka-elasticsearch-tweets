@@ -2,4 +2,4 @@
 501 2001	Smith1	Tom1		user1 password cust 1 1 user0@cryptomaven.xyz  5055087707 http://www.dailytech.net
 502 1002	Smith2	Tom2		user2 password owner 1 1 user0@cryptomaven.xyz  5055087707 http://www.dailytech.net
  
-1, 20000,  lastName,   firstName,   userName,   password,   userType,   isCust,   gender,   email,   phone,   cusUrl	
+1, 20000,  lastName,   firstName,   userName,   password,   userType,   isCust,   group,   email,   phone,   cusUrl

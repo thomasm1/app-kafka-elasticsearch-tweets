@@ -1,6 +1,6 @@
 package serviceTests; 
 
-import static constants.Gender.MALE;
+import static constants.Group.MALE;
 import static constants.UserType.CHIEF_EDITOR;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
-import constants.Gender;
+import constants.Group;
 import constants.UserType;
 import models.User;
 import service.UserService;

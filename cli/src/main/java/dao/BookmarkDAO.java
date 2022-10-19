@@ -1,6 +1,7 @@
 package dao;
 
 import models.Bookmark;
+import models.Weblink;
 
 import java.util.List;
  
@@ -13,6 +14,7 @@ public interface BookmarkDAO {
     public boolean deleteBookmark(int id); // void 
 
     public List<List<Bookmark>> getBookmarksArray();
-
+    public List<Weblink> getAllWebLinks();
+    public List<Weblink> getWebLinks(Weblink.DownloadStatus downloadStatus);
 
 } 

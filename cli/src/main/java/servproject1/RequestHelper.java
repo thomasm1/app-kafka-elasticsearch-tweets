@@ -5,16 +5,10 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
- 
-import webservice.TaskWebService; 
-import webservice.DeptWebService;
-import webservice.LoginWebService;
-import webservice.UserAdminWebService;
-import webservice.RequestWebService;
+
+import webservice.*;
 
 public class RequestHelper {
 
@@ -50,81 +44,19 @@ public class RequestHelper {
 		}
 		
 // SIGN-IN USER FORM
-		case "/cli/addUserAdmin.do": {
-			UserAdminWebService.addUserAdmin(request, response);
+		case "/cli/addUser.do": {
+			UserWebService.createUser(request, response);
 			break;
 		} 
-		case "/cli/getUserAdmin.do": {
-			UserAdminWebService.getUserAdmin(request, response);
+		case "/cli/getUser.do": {
+			UserWebService.getUser(request, response);
 			break;
 		}
-		case "/cli/listUserAdmin.do": {
-			UserAdminWebService.listUserAdmin(request, response);
-			break;
-		} 
-// Request Form
-		case "/cli/addRequest.do": {
-			RequestWebService.addRequest(request, response);
-			break;
-		} 
-// Get Request details - takes param   [reqId] 
-		case "/cli/getRequest.do": {           /////// WORKS ON EC2
-		try {
-			RequestWebService.getRequest(request, response);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-			break;
-		}
-// takes parameter    [userId]
-// Collect user's requests (and pending)
-		case "/cli/listRequest.do": {
-			System.out.println("asking listRe");
-		try {
-			RequestWebService.listRequest(request, response);
-		} catch(Exception e) {
-			e.getStackTrace();
-		}
-			break;
-		} 
-// takes parameter    [ (stage, reqUpdateId, supervisorId, text)] 
-//"reqId="+reqUpdateId+"&stage="+stage+"&superText="+superText+"&dheadText="+dheadText+"&bencoText="+bencoText+"&reqText="+reqText
-		// Collect user's requests (and pending)
-		case "/cli/updateRequest.do": {
-		try {
-			RequestWebService.updateReq(request, response);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-			break;
-		} 
-		case "/cli/addTask.do": {
-			TaskWebService.addTask(request, response);
-			break;
-		} 
-		case "/cli/getTask.do": {
-			TaskWebService.getTask(request, response);
-			break;
-		}
-		case "/cli/listTask.do": {
-			TaskWebService.listTask(request, response);
-			break;
-		} 
-		
-		case "/cli/addDept.do": {
-			DeptWebService.addDept(request, response);
-			break;
-		} 
-		case "/cli/getDept.do": {
-			DeptWebService.getDept(request, response);
-			break;
-		}
-		case "/cli/listDept.do": {
-			DeptWebService.listDept(request, response);
+		case "/cli/listUser.do": {
+			UserWebService.listUser(request, response);
 			break;
 		} 
 
-		 
 //		case "/Task/MasterServlet": {
 //			System.out.println("In MasterServlet *case*");
 //			break;

@@ -1,12 +1,13 @@
 package util;
 
-import constants.Datum;
 import models.User;
 
 import java.io.*;
 import java.util.List;
 
-import static constants.Datum.FILE_OUT_WEBLINKS;
+import static constants.Datum.FILE_IN_USERS;
+import static constants.Datum.FILE_OUT_USERS;
+import static constants.Datum.*;
 
 public class InputOutput {
     //    each line data chunk
@@ -16,8 +17,7 @@ public class InputOutput {
         StringBuilder text = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"))) {
             String line;
-            System.out.println("filename");
-            System.out.println(filename);
+            System.out.println("filename "+filename);
             while ((line = br.readLine()) != null) {
                 data.add(line);
                 text.append(line).append("\n");
@@ -51,7 +51,7 @@ public class InputOutput {
     public static void writeUser(User user) throws FileNotFoundException, UnsupportedEncodingException, IOException {
         try {
             Writer output = null;
-            File file = new File(Datum.FILE_OUT_USERS);
+            File file = new File(FILE_OUT_USERS );
             output = new BufferedWriter(new FileWriter(file));
                 output.write(user.toString());
                 System.out.println("WRITTEN: "+user);
@@ -67,8 +67,8 @@ public class InputOutput {
 
         long startTime, elapsedTime; // for speed benchmarking
         startTime = System.nanoTime();
-        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(Datum.FILE_IN_USERS));
-             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(Datum.FILE_OUT_USERS))) {
+        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(FILE_IN_USERS));
+             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(FILE_OUT_USERS))) {
 
             byte[] byteBuf = new byte[4000];
             int numBytesRead;
@@ -85,13 +85,11 @@ public class InputOutput {
     public static void writeUsers(List<User> users) {
         try {
             Writer output = null;
-            File file = new File(Datum.FILE_OUT_USERS);
+            File file = new File(FILE_OUT_USERS);
             output = new BufferedWriter(new FileWriter(file));
            for(int i = 0;i < users.size();i++) {
                output.write(users.get(i).toString());
                output.write("\n");
-               System.out.println("ARRAY[i]: "+ users.get(i));
-               System.out.println("\n");
            }
             output.close();
             System.out.println("File has been written");

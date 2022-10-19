@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import system.MainDashboard;
+import util.DownloadThreadTask;
 
-import static xyz.cryptomaven.app.cli.CliLoader.*;
-import static xyz.cryptomaven.app.cli.CliLoader.shareBookmark;
+import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader;
+import static xyz.cryptomaven.app.cli.CliLoader.start;
+import static xyz.cryptomaven.app.cli.CliLoader.buyCar;
 
 @SpringBootApplication
 public class CliApplication {
@@ -20,6 +22,10 @@ public class CliApplication {
 			e.printStackTrace();
 		}
 	}
+	private static void runDownloaderJob() {
+		DownloadThreadTask task = new DownloadThreadTask(true);
+		(new Thread((Runnable) task)).start();
+	}
 
 	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 //		SpringApplication.run(CliApplication.class, args);
@@ -27,15 +33,16 @@ public class CliApplication {
 		// Data Loader
 		cliDataLoader();
 		// Automated USER
-		startBookmarking();  /// UNTIL AWS DB UPDATED
-		shareBookmark();
+		start();  /// Test Data
 		buyCar();
+
+		// Background Loader
+		runDownloaderJob();
 
 		// USER MAIN
 		cliUser(); // Pathway to CliNavigator
-
-
 	}
+
 
 
 

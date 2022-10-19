@@ -68,6 +68,7 @@ public class BookmarkManager {
 	    userBookmark.setUser(user);
 	    userBookmark.setBookmark(bookmark);
 	    bookmarkDaoImpl.saveUserBookmark(userBookmark);
+
 		if(bookmark instanceof Weblink) {
 			try {
 				String url = ((Weblink) bookmark).getUrl();

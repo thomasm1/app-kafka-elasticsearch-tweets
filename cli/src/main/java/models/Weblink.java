@@ -6,7 +6,15 @@ import util.Shareable;
 public class Weblink extends Bookmark implements Shareable {
 	private String url;
 	private String host;
+	private String htmlPage;
+	private DownloadStatus downloadStatus = DownloadStatus.NOT_ATTEMPTED;
 
+	public enum DownloadStatus {
+		NOT_ATTEMPTED,
+		SUCCESS,
+		FAILED,
+		NOT_ELIGIBLE;
+	}
 	public Weblink() {
 
 	}
@@ -50,4 +58,21 @@ public class Weblink extends Bookmark implements Shareable {
 		builder.append("</item>");
 		return builder.toString();
 	}
+
+	public String getHtmlPage() {
+		return htmlPage;
+	}
+
+	public void setHtmlPage(String htmlPage) {
+		this.htmlPage = htmlPage;
+	}
+
+	public DownloadStatus getDownloadStatus() {
+		return downloadStatus;
+	}
+
+	public void setDownloadStatus(DownloadStatus downloadStatus) {
+		this.downloadStatus = downloadStatus;
+	}
+
 }

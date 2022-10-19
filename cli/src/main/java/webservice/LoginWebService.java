@@ -23,9 +23,9 @@ import com.google.gson.Gson;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
 import models.User;
-import models.Group;
+import models.Groups;
 import service.UserService;
-import service.GroupService;
+import service.GroupsService;
 
 public class LoginWebService {
 
@@ -46,11 +46,11 @@ public class LoginWebService {
 		int dbId = 0;
 		String dbUser = null;
 		int dbSuper = 0;
-		int dbGroup = 0;
+		int dbGroups = 0;
 		/// ALL DEPTHEADS' IDs LISTED
-		List<Group> allGroupHeads = GroupService.listGroup();
-//		List<User> myGroupMemberObjs = new ArrayList<User>();
-		List<Integer> myGroupMemberIds = new ArrayList<>();
+		List<Groups> allGroupsHeads = GroupsService.listGroups();
+//		List<User> myGroupsMemberObjs = new ArrayList<User>();
+		List<Integer> myGroupsMemberIds = new ArrayList<>();
 
 		/// ALL SUPER's subs' IDs LISTED
 		List<User> allSuperIds = UserService.getAllUsers();
@@ -65,8 +65,8 @@ public class LoginWebService {
 		Boolean valid = false;
 		Boolean isSuper = false;
 		System.out.println("this user is not verified as a Supervisor, checking tho...");
-		Boolean isGroupHead = false;
-		System.out.println("this user is not verified as a Group Head, checking tho...");
+		Boolean isGroupsHead = false;
+		System.out.println("this user is not verified as a Groups Head, checking tho...");
 
 		for (User u : uu) { // this is user object logged in
 			if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
@@ -78,8 +78,8 @@ public class LoginWebService {
 				System.out.println(userLogged.toString());
 				dbUser = userLogged.getUsername();
 				dbId = userLogged.getUserId();
-				dbGroup = userLogged.getGroup();
-				System.out.println("dbGroup: " + dbGroup + ", passes validation: " + valid);
+				dbGroups = userLogged.getGroups();
+				System.out.println("dbGroups: " + dbGroups + ", passes validation: " + valid);
 
 				
 				System.out.println("list of my mySubs: " + mySubsIds);
@@ -110,17 +110,17 @@ public class LoginWebService {
 
 			request.setAttribute("dbUser", dbUser);
 			request.setAttribute("dbId", dbId);
-			request.setAttribute("dbGroup", dbGroup);
+			request.setAttribute("dbGroups", dbGroups);
 
 			// COOKIES
 			response.setContentType("text/html");
 			response.getWriter().append("visiting LoginWebServices");
 			Cookie sessUser = new Cookie("sessUser", dbUser);
 			Cookie sessId = new Cookie("sessId", Integer.toString(dbId));
-			Cookie sessGroup = new Cookie("sessGroup", Integer.toString(dbGroup));
+			Cookie sessGroups = new Cookie("sessGroup", Integer.toString(dbGroups));
 			response.addCookie(sessId);
 			response.addCookie(sessUser);
-			response.addCookie(sessGroup);
+			response.addCookie(sessGroups);
 			System.out.println("..just made cookies...");
 
 			RequestDispatcher rd = request.getRequestDispatcher("login.html");

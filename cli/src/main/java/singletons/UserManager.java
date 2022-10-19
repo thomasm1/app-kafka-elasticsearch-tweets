@@ -18,7 +18,7 @@ public class UserManager {
 	}
 
 	public User createUser(int userId, long id, String lastName, String firstName, String userName, String password,
-			int userType, int group, String email, String phone, String cusUrl) {
+			int userType, int groups, String email, String phone, String cusUrl) {
 		
 		User user = new User();
 		user.setUserId(userId);
@@ -28,7 +28,7 @@ public class UserManager {
 		user.setUsername(userName);
 		user.setPassword(password);
 		user.setUserType(userType); 
-		user.setGroup(group);
+		user.setGroups(groups);
 		user.setEmail(email);
 		user.setPhone(phone);
 		user.setCusUrl(cusUrl);
@@ -48,12 +48,12 @@ public class UserManager {
 		
 	}
 
-    public Group createGroup(int id, int id2, String name_group) {
-		Group group = new Group();
-		group.setGroupId(id);
-		group.setGroupHeadId(id2);
-		group.setGroupName(name_group);
-		userDAOimpl.createGroup(group);
-		return group;
+    public Groups createGroups(int id, int id2, String name_groups) {
+		Groups groups = new Groups();
+		groups.setGroupsId(id);
+		groups.setGroupsHeadId(id2);
+		groups.setGroupsName(name_groups);
+		userDAOimpl.createGroups(groups);
+		return groups;
 	}
 }

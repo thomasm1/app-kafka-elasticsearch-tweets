@@ -7,11 +7,10 @@ import models.Movie;
 import models.User;
 import models.UserBookmark;
 import models.Weblink;
-import util.HTTPConnect;
+import util.DownloadSequential;
 import util.InputOutput;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -73,9 +72,9 @@ public class BookmarkManager {
 			try {
 				String url = ((Weblink) bookmark).getUrl();
 				if(!url.endsWith(".pdf")) {
-					String website = HTTPConnect.download(((Weblink) bookmark).getUrl());
+					String website = DownloadSequential.downloadFromUrl(((Weblink) bookmark).getUrl());
 					if(website != null) {
-						InputOutput.write(website, bookmark.getId());
+						InputOutput.writeWebpage(website, bookmark.getId());
 					}
 				}
 			} catch (IOException e) {

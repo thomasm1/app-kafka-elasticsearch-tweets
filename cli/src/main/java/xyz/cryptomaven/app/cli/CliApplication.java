@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import system.MainDashboard;
-import util.DownloadThreadTask;
+import utilConcurrency.DownloadThreadTask;
 
 import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader;
 import static xyz.cryptomaven.app.cli.CliLoader.start;

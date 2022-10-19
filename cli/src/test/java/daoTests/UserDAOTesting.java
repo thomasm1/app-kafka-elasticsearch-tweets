@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import constants.Group;
+import constants.Groups;
 import constants.UserType;
 import models.User;
 import service.UserService;

@@ -26,8 +26,8 @@ public class UserWebService {
 //			e1.printStackTrace();
 		}
 //		int userId = Integer.parseInt(request.getParameter("id"));
-		int groupId = Integer.parseInt(request.getParameter("groupId"));
-		System.out.println(groupId);
+		int groupsId = Integer.parseInt(request.getParameter("groupsId"));
+		System.out.println(groupsId);
 		int superId = Integer.parseInt(request.getParameter("superId"));
 		String userName = request.getParameter("userName");
 		System.out.println(userName);
@@ -35,7 +35,7 @@ public class UserWebService {
 		String email = request.getParameter("email");
 
 //		 add db using these fields 
-		User d = new User(999, groupId, superId, userName, password, email);
+		User d = new User(999, groupsId, superId, userName, password, email);
 		System.out.println("UserWebService: "+d);
 
 		// Call UserService to add it.
@@ -62,22 +62,22 @@ public class UserWebService {
 		 
 		String dbUser = d.getUsername();
 		int dbId = d.getUserId();
-		int dbGroup = d.getGroup();
+		int dbGroups = d.getGroups();
 		System.out.println(dbUser+"..getting userInfo:" );
 
 		HttpSession sess = request.getSession();   
 		sess.setAttribute("sessionId", sess.getId());
 		sess.setAttribute("useradminname", dbUser);
 		sess.setAttribute("useradminid", dbId);
-		sess.setAttribute("usergroup", dbGroup); 
+		sess.setAttribute("usergroups", dbGroups);
 
 		Cookie sessUser = new Cookie("sessUser", dbUser);
 		Cookie sessId = new Cookie("sessId", Integer.toString(dbId));
-		Cookie sessGroup = new Cookie("sessGroup", Integer.toString(dbGroup));
+		Cookie sessGroups = new Cookie("sessGroups", Integer.toString(dbGroups));
 		response.setContentType("text/html"); 
 		response.addCookie(sessId);
 		response.addCookie(sessUser);
-		response.addCookie(sessGroup);
+		response.addCookie(sessGroups);
  
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
@@ -93,7 +93,7 @@ public class UserWebService {
 		}  
 	}
 
-//	int userId, int groupId, int superId, String userName, String password, String email  
+//	int userId, int groupsId, int superId, String userName, String password, String email
 
 	public static void listUser(HttpServletRequest request, HttpServletResponse response) {
 		

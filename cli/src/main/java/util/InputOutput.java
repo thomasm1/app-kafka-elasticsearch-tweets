@@ -13,7 +13,7 @@ public class InputOutput {
     //    each line data chunk
 
 
-    public static String read(List<String> data, String filename) throws FileNotFoundException, UnsupportedEncodingException {
+    public static String readFromFilename(List<String> data, String filename) throws FileNotFoundException, UnsupportedEncodingException {
         StringBuilder text = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"))) {
             String line;
@@ -33,7 +33,7 @@ public class InputOutput {
     }
 
 
-    public static String read(InputStream inStream) {
+    public static String readFromStream(InputStream inStream) {
         StringBuilder text = new StringBuilder();
         try(BufferedReader br = new BufferedReader(new InputStreamReader(inStream))) {
             String line;
@@ -102,7 +102,8 @@ public class InputOutput {
         }
     }
 
-    public static boolean write(String webpage, long id) {
+    // Dynamically name webpage based on ID /// HARD-CODED LOCATION!
+    public static boolean writeWebpage(String webpage, long id) {
         try(BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FILE_OUT_WEBLINKS+String.valueOf(id)+".html"), "UTF-8"))) {
             wr.write(webpage);
             return true;

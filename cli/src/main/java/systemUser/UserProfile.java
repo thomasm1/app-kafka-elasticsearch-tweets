@@ -16,7 +16,7 @@ public class UserProfile {
 		String pw ="";
 		String fName ="";
 		String lName ="";
-		int group = 0;
+		int groups = 0;
 		String email ="";
 		String phone ="";
 		String url ="";
@@ -46,8 +46,8 @@ public class UserProfile {
 				  lName = scan.next();
 				break;
 			case 4:
-				String groupStr = scan.next();
-				  group = groupStr == "m"? 1:(groupStr=="f"? 2: 3);
+				String groupsStr = scan.next();
+				  groups = groupsStr == "m"? 1:(groupsStr=="f"? 2: 3);
 				break;
 			case 5:
 				  email = scan.next();
@@ -64,8 +64,8 @@ public class UserProfile {
 		}
 
 
-//(username VARCHAR2, password VARCHAR2, lastName varchar2, firstName varchar2, usertype NUMBER, group NUMBER, email VARCHAR2, phone VARCHAR2, cusURl VARCHAR2)
-		User change = new User( pw, lName, fName, group, email, phone ,url );
+//(username VARCHAR2, password VARCHAR2, lastName varchar2, firstName varchar2, usertype NUMBER, groups NUMBER, email VARCHAR2, phone VARCHAR2, cusURl VARCHAR2)
+		User change = new User( pw, lName, fName, groups, email, phone ,url );
 		System.out.println("Successfully registered: "+ UserService.updateUser(change));
 		System.out.println("changed: "+ change);
 

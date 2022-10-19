@@ -11,31 +11,30 @@ import java.util.ArrayList;
 
 
 //import db.DB;
-import dao.GroupDao;
-import models.Group; 
+import models.Groups;
 import util.JDBCConnection;
 
 //can't make static, so use the service layer 
-public class GroupDaoImpl implements GroupDao {
+public class GroupsDaoImpl implements GroupsDao {
 	public static Connection conn = JDBCConnection.getConnection();
 
 	@Override
-	public boolean addGroup(Group d) {
+	public boolean addGroups(Groups d) {
 	  
-		System.out.println("Submitting to groupDaoImpl: "+d);
-		String sql = "CALL add_new_reqgrouptable(?,?)";
+		System.out.println("Submitting to groupsDaoImpl: "+d);
+		String sql = "CALL add_new_reqgroupstable(?,?)";
 		try {
 			CallableStatement cs = conn.prepareCall(sql); 
 //			cs.setString(1, Integer.toString(d.getReqId()));
-			cs.setString(1, Integer.toString(d.getGroupHeadId()));
-			cs.setString(2, d.getGroupName());
+			cs.setString(1, Integer.toString(d.getGroupsHeadId()));
+			cs.setString(2, d.getGroupsName());
  
-			System.out.println("success to group!: reqId#"+d.getGroupName());
+			System.out.println("success to groups!: reqId#"+d.getGroupsName());
 			cs.execute();
 			return true;
 
 		} catch (SQLException e) {
-			System.out.println("Double Check add_new_reqgrouptable DB SQL");
+			System.out.println("Double Check add_new_reqgroupstable DB SQL");
 			System.out.println(e);
 		}
 		return false;
@@ -43,23 +42,23 @@ public class GroupDaoImpl implements GroupDao {
 
 
 	@Override
-	public Group getGroup(int groupId) {
+	public Groups getGroups(int groupsId) {
 	  
 		try {
-			String sql = "SELECT * FROM reqgrouptable WHERE groupid = ?";
+			String sql = "SELECT * FROM reqgroupstable WHERE groupsid = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, Integer.toString(groupId));
+			ps.setString(1, Integer.toString(groupsId));
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next())
 			{
-			return new Group(
-					rs.getInt("groupId"),
-					rs.getInt("groupHeadid"), 
-					rs.getString("groupName")); 
+			return new Groups(
+					rs.getInt("groupsId"),
+					rs.getInt("groupsHeadid"),
+					rs.getString("groupsName"));
 			}
 	}		catch (Exception e) {
-		System.out.println("SQL issue with getting group: \n"+e);
+		System.out.println("SQL issue with getting groups: \n"+e);
 	}
 			return null;
 		};  
@@ -76,7 +75,7 @@ public class GroupDaoImpl implements GroupDao {
 //			while (rs.next())
 //			{
 //				return new Request(rs.getInt("userid"),
-//						rs.getInt("groupid"), 
+//						rs.getInt("groupsid"),
 //						rs.getInt("superid"), 
 //				rs.getString("username"),  
 //				rs.getString("password"),  
@@ -92,26 +91,26 @@ public class GroupDaoImpl implements GroupDao {
 
 
 @Override
-public List<Group> listGroup() {
+public List<Groups> listGroups() {
 	 
 //		List<Request> reqList = new ArrayList<Request>();
 //		Set<Integer> keys = DB.reqs.keySet();
 //		for (Integer k : keys)
 //			reqList.add(DB.reqs.get(k));
 //		return reqList;
-		String sql = "SELECT * FROM reqgrouptable";
-		List<Group> groupArr = new ArrayList<Group>();
+		String sql = "SELECT * FROM reqgroupstable";
+		List<Groups> groupsArr = new ArrayList<Groups>();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// preparedStatements are safe from SQL injection & sanitize inputs
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				groupArr.add(new Group(rs.getInt("groupid"),
-						rs.getInt("groupHeadId"), 
-						rs.getString("groupName"))); 
+				groupsArr.add(new Groups(rs.getInt("groupsid"),
+						rs.getInt("groupsHeadId"),
+						rs.getString("groupsName")));
 			}
 			System.out.println("SQL is All Good!");
-			return groupArr;
+			return groupsArr;
 		} catch (SQLException e) {
 			System.out.println("SQL issue with getting All groups:\n "+e);
 		}
@@ -119,7 +118,7 @@ public List<Group> listGroup() {
 	}
 
 @Override
-public boolean updateGroup(Group change) {
+public boolean updateGroups(Groups change) {
 	// TODO Auto-generated method stub
 	return false;
 }
@@ -146,7 +145,7 @@ public boolean updateGroup(Group change) {
 //	}
 
 	@Override
-	public boolean deleteGroup(int id) {
+	public boolean deleteGroups(int id) {
 //		DB.users.remove(req);
 //		String sql = "DELETE usertable WHERE username = ?";
 //		

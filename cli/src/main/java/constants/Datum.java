@@ -5,7 +5,7 @@ public class Datum {
     public static final String LOCAL_SCANNER_TXT = "src/data/scannertext.txt" ;
     public static final String  FILE_IN_CARS = "src/data/files/fileInCars.txt" ;
     public static final String FILE_IN_WEBLINKS = "src/data/files/fileInWeblinks.txt" ;
-    public static final String FILE_OUT_WEBLINKS = "src/data/files/fileOutWeblinks.txt" ;
+    public static final String FILE_OUT_WEBLINKS = "src/data/pages/fileOutWeblinks" ;
 
     public static final String FILE_IN_BOOKS = "src/data/files/fileInBooks.txt" ;
     public static final String FILE_IN_MOVIES = "src/data/files/fileInMovies.txt" ;

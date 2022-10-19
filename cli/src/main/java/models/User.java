@@ -11,7 +11,7 @@ public class User   {
 	private String userName;
 	private String password; 
 	private int userType;
-	private int group;
+	private int groups;
 	private String email;
 	private String phone;
 	private String cusUrl;  
@@ -20,7 +20,7 @@ public class User   {
 		super();
 	}
 //f=0,m=1,o=2
-	public User(int userId, long id, String lastName, String firstName, String userName, String password, int userType, int group, String email, String phone, String cusUrl) {
+	public User(int userId, long id, String lastName, String firstName, String userName, String password, int userType, int groups, String email, String phone, String cusUrl) {
 		super();
 		this.userId = userId;
 		this.id = id;
@@ -29,7 +29,7 @@ public class User   {
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType; 
-		this.group = group;
+		this.groups = groups;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
@@ -46,32 +46,32 @@ public User(  String userName, String password ) {
 	this.userName = userName; 
 	this.password = password;
 }
-		// overloaded for OFFER/ Group must be multi-purpose
-	public User(int userId,   String userName, String password, int userType, int group) {
+		// overloaded for OFFER/ Groups must be multi-purpose
+	public User(int userId,   String userName, String password, int userType, int groups) {
 		super();
 		this.userId = userId; 
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType;  
-		this.group = group;
+		this.groups = groups;
 	}
 	
 // overloaded For REGISTER userId is AutoIncrement, lastname, firstname, email, phone, cusurl
-	public User(  String userName, String password, String lastName, String firstName, int userType, int group, String email, String phone, String cusUrl) {
+	public User(  String userName, String password, String lastName, String firstName, int userType, int groups, String email, String phone, String cusUrl) {
 		super();  
 		this.userName = userName;
 		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.userType = userType; 
-		this.group = group;
+		this.groups = groups;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
 	}
 
 //	 overloaded without Id  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
-	public User( int userId, String userName, String password, String lastName, String firstName,  int userType, int group, String email, String phone, String cusUrl) {
+	public User( int userId, String userName, String password, String lastName, String firstName,  int userType, int groups, String email, String phone, String cusUrl) {
 			super();  
 		 this.userId =  userId;
 		this.userName = userName;
@@ -79,7 +79,7 @@ public User(  String userName, String password ) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.userType = userType;
-		this.group = group;
+		this.groups = groups;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
@@ -95,18 +95,18 @@ public User(  String userName, String password ) {
 	}
 
 	// Contstructor for EDIT PROFILE (options available for user)
-    public User(String password, String lastName, String firstName, int group, String email, String phone, String cusUrl) {
+    public User(String password, String lastName, String firstName, int groups, String email, String phone, String cusUrl) {
 		super();
 		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
-		this.group = group;
+		this.groups = groups;
 		this.email = email;
 		this.phone = phone;
 		this.cusUrl = cusUrl;
     }
 
-	public User(int i, int userType, int group, String userName, String password, String email) {
+	public User(int i, int userType, int groups, String userName, String password, String email) {
 	}
 
 	@Override
@@ -174,12 +174,12 @@ public User(  String userName, String password ) {
 	}
   
 
-	public int getGroup() {
-		return group;
+	public int getGroups() {
+		return groups;
 	}
 
-	public void setGroup(int group) {
-		this.group = group;
+	public void setGroups(int groups) {
+		this.groups = groups;
 	}
 
 	public String getEmail() {
@@ -210,7 +210,7 @@ public User(  String userName, String password ) {
 	public String toString() {
 		return "User [userId=" + userId + ", id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
 				+ ", userName=" + userName + ", password=" + password + ", userType=" + userType  
-				+ ", group=" + group + ", email=" + email + ", phone=" + phone + ", cusUrl=" + cusUrl + "]";
+				+ ", groups=" + groups + ", email=" + email + ", phone=" + phone + ", cusUrl=" + cusUrl + "]";
 	}
 
 

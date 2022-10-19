@@ -24,7 +24,7 @@ public class TestDataStore {
 	public static final int BOOKMARK_COUNT_PER_TYPE = 5;
 	public static final int BOOKMARK_TYPES_COUNT = 3;
 
-	public static List<Group> groups = new ArrayList<>();
+	public static List<Groups> groups = new ArrayList<>();
 	public static List<Car> cars = new ArrayList<>();
 	public static List<Offer> offers = new ArrayList<>();
 	public static List<Car> getCars() {
@@ -62,7 +62,7 @@ public class TestDataStore {
 		private static void loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
 //		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Group.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
  	List<String> data = new ArrayList<>();
-			InputOutput.read(data,  FILE_IN_USERS);
+			InputOutput.readFromFilename(data,  FILE_IN_USERS);
 			System.out.println("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
@@ -73,7 +73,7 @@ public class TestDataStore {
 		}
 		private static void loadOffers() throws FileNotFoundException, UnsupportedEncodingException {
 			List<String> data = new ArrayList<>();
-			InputOutput.read(data, FILE_IN_OFFERS);
+			InputOutput.readFromFilename(data, FILE_IN_OFFERS);
 			System.out.println("OFFER-FILE IN::::::: "+data.toString());
 			for (String row: data) {
 				String[] values = row.split(",");
@@ -85,7 +85,7 @@ public class TestDataStore {
 		private static void loadWeblinks() throws FileNotFoundException, UnsupportedEncodingException {
 //			bookmarks[0][0] = BookmarkManager.getInstance().createWeblink(2000,  "http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html","http://www.javaworld.com" );
 			List<String>  data = new ArrayList<>();
-			InputOutput.read(data, FILE_IN_WEBLINKS);
+			InputOutput.readFromFilename(data, FILE_IN_WEBLINKS);
 			List<Bookmark> WeblinkList = new ArrayList<>();
 			for (String row : data) {
 				String[] values = row.split(",");
@@ -98,7 +98,7 @@ public class TestDataStore {
 		private static void loadBooks() throws FileNotFoundException, UnsupportedEncodingException {
 //		bookmarks[1][1] = BookmarkManager.getInstance().createBook(4001,"Self-Reliance and Other Essays",	1993,	"Dover Publications", new String[] {"Ralph Waldo Emerson"},	BookGenre.PHILOSOPHY,	4.3  );
 			List<String> data = new ArrayList<>();
-			InputOutput.read(data, FILE_IN_BOOKS);
+			InputOutput.readFromFilename(data, FILE_IN_BOOKS);
 			List<Bookmark> bookList = new ArrayList<>();
 			for (String row : data) {
 				String[] values = row.split(",");
@@ -110,7 +110,7 @@ public class TestDataStore {
 		private static void loadMovies() throws FileNotFoundException, UnsupportedEncodingException {
 //		bookmarks[2][0] = BookmarkManager.getInstance().createMovie(3000, "Citizen Kane", 1941, new String[] {"Orson Welles"," Joseph Cotten"},new String[] {"Orson Welles"}, MovieGenre.CLASSICS, 8.5);
  			List<String> data = new ArrayList<>();
-			InputOutput.read(data, FILE_IN_MOVIES);
+			InputOutput.readFromFilename(data, FILE_IN_MOVIES);
 			List<Bookmark> movieList = new ArrayList<>();
 			for (String row : data) {
 				String[] values = row.split(",");
@@ -122,7 +122,7 @@ public class TestDataStore {
 		public static void loadCars() throws FileNotFoundException, UnsupportedEncodingException {
 //		Car car1 = CarManager.getInstance().createCar(5000, CarMake.TESLA, "Cyber-Truck", 37000.99, 0);
 			List<String> data =new ArrayList<>();
-			InputOutput.read(data, FILE_IN_CARS);
+			InputOutput.readFromFilename(data, FILE_IN_CARS);
 			for (String row: data) {
 				String[] values = row.split(",");
 				Car car = CarManager.getInstance().createCar(Integer.parseInt(values[0]), values[1], values[2], Double.parseDouble(values[3]), Integer.parseInt(values[4]));
@@ -133,11 +133,11 @@ public class TestDataStore {
 	public static void loadGroups() throws FileNotFoundException, UnsupportedEncodingException {
 //		Group group1 = UserManager.getInstance().createGroup( 7004,24,"Business Group");
 		List<String> data =new ArrayList<>();
-		InputOutput.read(data, FILE_IN_GROUPS);
+		InputOutput.readFromFilename(data, FILE_IN_GROUPS);
 		for (String row: data) {
 			String[] values = row.split(",");
-			Group group = UserManager.getInstance().createGroup(Integer.parseInt(values[0]), Integer.parseInt(values[1]), values[2] );
-			groups.add(group);
+			Groups groups = UserManager.getInstance().createGroups(Integer.parseInt(values[0]), Integer.parseInt(values[1]), values[2] );
+			groups.add(groups);
 		}
 	};
 // TABLE JOIN
@@ -149,8 +149,8 @@ public class TestDataStore {
 		userCarbuys.add(userCarbuy);
 	}
 
-	public static void add(Group group) {
-		groups.add(group);
+	public static void add(Groups groups) {
+		groups.add(groups);
 	}
 
 }

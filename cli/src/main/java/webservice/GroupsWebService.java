@@ -8,24 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import models.Group;
-import service.GroupService;
+import models.Groups;
+import service.GroupsService;
 	
-public class GroupWebService {
+public class GroupsWebService {
 
 
-	public static void addGroup(HttpServletRequest request, HttpServletResponse response) {
+	public static void addGroups(HttpServletRequest request, HttpServletResponse response) {
 
-		int group = Integer.parseInt(request.getParameter("id"));
-		int groupHeadId = Integer.parseInt(request.getParameter("groupHeadId"));
-		String groupName = request.getParameter("groupName"); 
+		int groups = Integer.parseInt(request.getParameter("id"));
+		int groupsHeadId = Integer.parseInt(request.getParameter("groupsHeadId"));
+		String groupsName = request.getParameter("groupsName");
 		
 		// add db using these fields
-		Group d = new Group(group, groupHeadId, groupName);
+		Groups d = new Groups(groups, groupsHeadId, groupsName);
 		System.out.println(d);
 
-		// Call GroupService to add it.
-		GroupService.addGroup(d);
+		// Call GroupsService to add it.
+		GroupsService.addGroups(d);
  
 		try {
 			response.getWriter().append("Successfully added data input: " + request.getContextPath());
@@ -34,19 +34,19 @@ public class GroupWebService {
 		}  
 	}
 
-	public static void getGroup(HttpServletRequest request, HttpServletResponse response) {
+	public static void getGroups(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println("id: " + id);
 
-		Group d = GroupService.getGroup(id);
+		Groups d = GroupsService.getGroups(id);
 		System.out.println(d);
 
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
 			try {
-				String groupJSON = om.writeValueAsString(d);
+				String groupsJSON = om.writeValueAsString(d);
 //				response.getWriter().append("\n\n\n Welcome to Subservlet. You are accessing .do File");
-				response.getWriter().append(groupJSON);
+				response.getWriter().append(groupsJSON);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -62,15 +62,15 @@ public class GroupWebService {
 			}	
 		}
 	}
-	public static void listGroup(HttpServletRequest request, HttpServletResponse response) {
-		List<Group> d = GroupService.listGroup(); 
+	public static void listGroups(HttpServletRequest request, HttpServletResponse response) {
+		List<Groups> d = GroupsService.listGroups();
 		System.out.println(d);
 
 		ObjectMapper om = new ObjectMapper();
 		try {
-			String groupJSON = om.writeValueAsString(d);
+			String groupsJSON = om.writeValueAsString(d);
 //			response.getWriter().append("\n\n\n Welcome to Subservlet. You are accessing .do File");
-			response.getWriter().append(groupJSON);
+			response.getWriter().append(groupsJSON);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

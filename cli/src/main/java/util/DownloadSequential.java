@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
 
-public class HTTPConnect {
+public class DownloadSequential {
 
-    public static String download(String sourceURL) throws IOException, URISyntaxException {
+    public static String downloadFromUrl(String sourceURL) throws IOException, URISyntaxException {
         System.out.println("Downloading from "+ sourceURL);
         URL url = new URI(sourceURL).toURL();
 
@@ -15,7 +15,7 @@ public class HTTPConnect {
             int responseCode = conn.getResponseCode();
 
             if(responseCode >=200 && responseCode < 300) {
-                return InputOutput.read(conn.getInputStream()); // returns html text
+                return InputOutput.readFromStream(conn.getInputStream()); // returns html text
             }
         } catch (MalformedURLException e) {
           e.printStackTrace();
@@ -27,10 +27,11 @@ public class HTTPConnect {
         return null;
     }
 
-    public static String download(InputStream in) throws MalformedURLException, URISyntaxException {
-        return InputOutput.read(in);
+    public static String downloadFromStream(InputStream in) throws MalformedURLException, URISyntaxException {
+        return InputOutput.readFromStream(in);
     }
-    public InputStream getInputStream(String sourceUrl) throws MalformedURLException, URISyntaxException {
+
+    public InputStream getStreamFromUrl(String sourceUrl) throws MalformedURLException, URISyntaxException {
         System.out.println("Downloading: " + sourceUrl);
         URL url = new URI(sourceUrl).toURL();
         InputStream in = null;

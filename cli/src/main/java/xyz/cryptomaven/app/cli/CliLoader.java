@@ -1,23 +1,19 @@
 package xyz.cryptomaven.app.cli;
 
-import controllers.BookmarkController;
-import db.TestDataStore;
-import logger.CliLogger;
-import models.Bookmark;
-import models.Car;
-import models.Offer;
-import models.User;
-import singletons.BookmarkManager;
-import singletons.CarManager;
-import singletons.UserManager;
-import util.InputOutput;
+import xyz.cryptomaven.app.dataLoader.TestDataStore;
+import xyz.cryptomaven.app.logger.CliLogger;
+import xyz.cryptomaven.app.models.Bookmark;
+import xyz.cryptomaven.app.models.Car;
+import xyz.cryptomaven.app.models.Offer;
+import xyz.cryptomaven.app.models.User;
+import xyz.cryptomaven.app.dataLoader.BookmarkManager;
+import xyz.cryptomaven.app.dataLoader.CarManager;
+import xyz.cryptomaven.app.dataLoader.UserManager;
+import xyz.cryptomaven.app.util.InputOutput;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CliLoader {

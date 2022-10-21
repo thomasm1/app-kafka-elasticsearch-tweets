@@ -3,8 +3,8 @@ package xyz.cryptomaven.app.cli;
 import java.io.IOException;
 import java.sql.SQLException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import system.MainDashboard;
-import utilConcurrency.DownloadThreadTask;
+import xyz.cryptomaven.app.consoles.MainDashboard;
+import xyz.cryptomaven.app.utilConcurrency.DownloadThreadTask;
 
 import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader;
 import static xyz.cryptomaven.app.cli.CliLoader.start;

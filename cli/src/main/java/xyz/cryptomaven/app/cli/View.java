@@ -1,11 +1,11 @@
 package xyz.cryptomaven.app.cli;
 
-import controllers.BookmarkController;
-import controllers.UserController;
-import db.TestDataStore;
-import models.Bookmark;
-import models.Car;
-import models.User;
+import xyz.cryptomaven.app.controllers.BookmarkController;
+import xyz.cryptomaven.app.controllers.UserController;
+import xyz.cryptomaven.app.dataLoader.TestDataStore;
+import xyz.cryptomaven.app.models.Bookmark;
+import xyz.cryptomaven.app.models.Car;
+import xyz.cryptomaven.app.models.User;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;

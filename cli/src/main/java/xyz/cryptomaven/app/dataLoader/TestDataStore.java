@@ -54,6 +54,9 @@ public class TestDataStore {
 		loadOffers();
 		loadGroups();
 	}
+	try {
+		Class.forName("com.mysql.jdbc.Driver")
+	}
 
 		private static void loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
 //		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Group.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");

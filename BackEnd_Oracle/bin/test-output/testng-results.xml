@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="PositiveLogInTestSuite" duration-ms="15624" started-at="2020-12-31T03:11:01Z" finished-at="2020-12-31T03:11:17Z">
+    <groups>
+    </groups>
+    <test name="PositiveLogInTest" duration-ms="15624" started-at="2020-12-31T03:11:01Z" finished-at="2020-12-31T03:11:17Z">
+      <class name="com.doggywood.selenium.loginpagetests.PositiveLogInTests">
+        <test-method status="PASS" signature="setUp(java.lang.String, org.testng.ITestContext)[pri:0, instance:com.doggywood.selenium.loginpagetests.PositiveLogInTests@5d76b067]" name="setUp" is-config="true" duration-ms="10057" started-at="2020-12-31T03:11:01Z" finished-at="2020-12-31T03:11:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@436bc36]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="logInTest()[pri:0, instance:com.doggywood.selenium.loginpagetests.PositiveLogInTests@5d76b067]" name="logInTest" duration-ms="4387" started-at="2020-12-31T03:11:11Z" finished-at="2020-12-31T03:11:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logInTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.doggywood.selenium.loginpagetests.PositiveLogInTests@5d76b067]" name="tearDown" is-config="true" duration-ms="1147" started-at="2020-12-31T03:11:16Z" finished-at="2020-12-31T03:11:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.doggywood.selenium.loginpagetests.PositiveLogInTests -->
+    </test> <!-- PositiveLogInTest -->
+  </suite> <!-- PositiveLogInTestSuite -->
+</testng-results>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="htmlcleaner-2.21">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/apps/lambdas/htmlcleaner-2.21.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

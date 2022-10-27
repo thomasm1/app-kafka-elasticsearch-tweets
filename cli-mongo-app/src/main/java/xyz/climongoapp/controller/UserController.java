@@ -48,21 +48,21 @@ public class UserController {
 		return userService.deleteUser(id);
 	}
 	
-	@GetMapping("/usersByName/{name}")
-	public List<User> usersByName(@PathVariable String name) {
-		return userService.getUsersByName(name);
+	@GetMapping("/usersByUserName/{userName}")
+	public List<User> usersByUserName(@PathVariable String userName) {
+		return userService.getUsersByUserName(userName);
 	}
 	
-	@GetMapping("/usersByNameAndMail")
-	public User usersByNameAndMail(@RequestParam String name,
+	@GetMapping("/usersByUserNameAndMail")
+	public User usersByUserNameAndMail(@RequestParam String userName,
 			@RequestParam String email) {
-		return userService.usersByNameAndMail(name, email);
+		return userService.usersByUserNameAndMail(userName, email);
 	}
 	
-	@GetMapping("/usersByNameOrMail")
-	public User usersByNameOrMail(@RequestParam String name,
+	@GetMapping("/usersByUserNameOrMail")
+	public User usersByUserNameOrMail(@RequestParam String userName,
 			@RequestParam String email) {
-		return userService.usersByNameOrMail(name, email);
+		return userService.usersByUserNameOrMail(userName, email);
 	}
 	
 	@GetMapping("/allWithPagination")
@@ -77,8 +77,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/byGroupsName")
-	public List<User> byGroupsName(@RequestParam String deptName) {
-		return userService.byGroupsName(deptName);
+	public List<User> byGroupsName(@RequestParam String groupsName) {
+		return userService.byGroupsName(groupsName);
 	}
 	
 	@GetMapping("/byCarName")
@@ -86,9 +86,9 @@ public class UserController {
 		return userService.byCarName(subName);
 	}
 	
-	@GetMapping("/nameStartsWith")
-	public List<User> nameStartsWith(@RequestParam String name) {
-		return userService.nameStartsWith(name);
+	@GetMapping("/userNameStartsWith")
+	public List<User> userNameStartsWith(@RequestParam String userName) {
+		return userService.userNameStartsWith(userName);
 	}
 	
 	@GetMapping("/byGroupsId")

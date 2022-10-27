@@ -16,9 +16,13 @@ public class UserService {
 		return userdaoImpl.createUser(user);
 	};
 
-	public static User getUser(String id) {
+	public static User getUser(int id) {
 		System.out.println("Passing User Service getUser(String id) {...");
 		return userdaoImpl.getUser(id);
+	};
+	public static User getUser(String username ) {
+		System.out.println("Passing User Service getUser(SString username) {...");
+		return userdaoImpl.getUser(username);
 	};
 	public static List<User> getUsers() {
 		System.out.println("Passing User Service userdao.getAllUsers() { ...");
@@ -51,5 +55,8 @@ public class UserService {
 	public static boolean deleteUser(String username) {
 		System.out.println("Passing User Service userdao.deleteUser(String username) { ...");
 		return userdaoImpl.deleteUser(username);
+	}
+
+	public static void createUser(String user4, String passwordX, String smith, String tom, int i, int i1, String s, String s1, String s2) {
 	}
 }

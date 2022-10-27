@@ -1,5 +1,7 @@
 package xyz.climongoapp.methods;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class BankAccount {
 
     private String firstName;
@@ -41,7 +43,9 @@ public class BankAccount {
     public boolean isChecking() {
         return accountType == CHECKING;
     }
-
-    // More methods that use firstName, lastName, and perform other functions
-
+    @Autowired
+    public String[] provideNames() {
+        String fName = "fName",  lName = "lName";
+        return  new String[] {fName, lName};
+    }
 }

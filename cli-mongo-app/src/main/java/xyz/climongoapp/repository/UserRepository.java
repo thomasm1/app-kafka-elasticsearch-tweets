@@ -10,19 +10,19 @@ import xyz.climongoapp.entity.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
-	List<User> findByName(String name);
-	
-	User findByEmailAndName (String email, String name);
-	
-	User findByNameOrEmail (String name, String email);
-	
+	List<User> findByUserName(String userName);
+
+	User findByEmailAndUserName(String email, String userName);
+
+	User findByUserNameOrEmail(String userName, String email);
+
 	List<User> findByGroupsGroupsName(String deptname);
-	
+
 	List<User> findByCarsCarName (String subName);
-	
+
 	List<User> findByEmailIsLike (String email);
-	
-	List<User> findByNameStartsWith (String name);
-	
+
+	List<User> findByUserNameStartsWith(String userName);
+
 	List<User> findByGroupsId (String deptId);
 }

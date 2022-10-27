@@ -255,7 +255,7 @@ public class AdminDashboard {
 		}
 	}
 
-	public static void loginDashboard(String userName) throws SQLException {  
+	public static void loginDashboard(String userName, String firstName) throws SQLException {
 
 		System.out.println("\n  Welcome to your Dashboard! *" + userName + "*, ");
 

@@ -1,5 +1,6 @@
 package xyz.cryptomaven.app.dataLoader;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import xyz.cryptomaven.app.models.*;
 import xyz.cryptomaven.app.util.InputOutput;
 
@@ -149,4 +150,21 @@ public class TestDataStore {
 		groups.add(groups);
 	}
 
+
 }
+class DataGenerator {
+	@Autowired
+	public String[] provideNames() {
+		String firstName = "fName", lastName = "lName";
+		return  new String[] {firstName, lastName};
+	}
+}
+
+
+
+
+
+
+
+
+

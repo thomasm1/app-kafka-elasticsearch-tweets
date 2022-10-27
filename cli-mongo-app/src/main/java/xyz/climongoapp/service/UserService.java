@@ -52,16 +52,16 @@ public class UserService {
 		return "User has been deleted.";
 	}
 	
-	public List<User> getUsersByName (String name) {
-		return userRepository.findByName(name);
+	public List<User> getUsersByUserName (String userName) {
+		return userRepository.findByUserName(userName);
 	}
 	
-	public User usersByNameAndMail (String name, String email) {
-		return userRepository.findByEmailAndName(email, name);
+	public User usersByUserNameAndMail (String userName, String email) {
+		return userRepository.findByEmailAndUserName(email, userName);
 	}
 	
-	public User usersByNameOrMail (String name, String email) {
-		return userRepository.findByNameOrEmail(name, email);
+	public User usersByUserNameOrMail (String userName, String email) {
+		return userRepository.findByUserNameOrEmail(userName, email);
 	}
 	
 	public List<User> getAllWithPagination (int pageNo, int pageSize) {
@@ -71,13 +71,13 @@ public class UserService {
 	}
 	
 	public List<User> allWithSorting () {
-		Sort sort = Sort.by(Sort.Direction.ASC, "name", "email");
+		Sort sort = Sort.by(Sort.Direction.ASC, "userName", "email");
 		
 		return userRepository.findAll(sort);		
 	}
 	
-	public List<User> byGroupsName (String deptName) {
-		return userRepository.findByGroupsGroupsName(deptName);
+	public List<User> byGroupsName (String groupsName) {
+		return userRepository.findByGroupsGroupsName(groupsName);
 	}
 	
 	public List<User> byCarName (String subName) {
@@ -88,12 +88,16 @@ public class UserService {
 		return userRepository.findByEmailIsLike(email);
 	}
 	
-	public List<User> nameStartsWith (String name) {
-		return userRepository.findByNameStartsWith(name);
+	public List<User> userNameStartsWith (String userName) {
+		return userRepository.findByUserNameStartsWith(userName);
 	}
 	
 	public List<User> byGroupsId (String deptId) {
 		return userRepository.findByGroupsId(deptId);
 	}
-	
+
+
+
+	// VARIOUS USER SERVICES
+
 }

@@ -1,6 +1,7 @@
 package com.doggywood.utilities;
  
 import java.time.temporal.Temporal;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,11 @@ import com.doggywood.services.CustomerService;
 
 public class StringService {
 
+	@Autowired
+	public String[] provideNames() {
+		String fName = "fName",  lName = "lName";
+		return  new String[] {fName, lName};
+	}
 	/**
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"
@@ -385,18 +391,18 @@ public class StringService {
 	public static class AtbashCipher {
 
 		/**
-		 * Question 13
+		 * Test 13
 		 * 
 		 * @param string
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+//			String encoded = Base64.getEncoder().encode(string);
+			return string;
 		}
 
 		/**
-		 * Question 14
+		 * StringService 14
 		 * 
 		 * @param string
 		 * @return
@@ -430,8 +436,27 @@ public class StringService {
 	 * @return
 	 */
 	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String newStr = string.replace("-", "");
+		String newStr1 = newStr.replace("X", "10");
+		String[] strArr = newStr1.split("");
+		int[] intArr= new int[10];
+		int x = 10;
+		try {
+			for (int i = 0; i<10;i++) {
+			intArr[i] =	Integer.parseInt(strArr[i]) * x;
+			x--;
+			}
+			int answer = 0;
+			for(int i : intArr) {
+				answer+=i;
+			}
+			if (!(answer % 11 == 0)) {
+				return false;
+			}
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 	/**

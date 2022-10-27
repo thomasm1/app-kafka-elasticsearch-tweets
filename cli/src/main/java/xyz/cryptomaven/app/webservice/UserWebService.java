@@ -28,18 +28,18 @@ public class UserWebService {
 //		int userId = Integer.parseInt(request.getParameter("id"));
 		int groupsId = Integer.parseInt(request.getParameter("groupsId"));
 		System.out.println(groupsId);
-		int superId = Integer.parseInt(request.getParameter("superId"));
 		String userName = request.getParameter("userName");
 		System.out.println(userName);
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 
-//		 add db using these fields 
-		User d = new User(999, groupsId, superId, userName, password, email);
-		System.out.println("UserWebService: "+d);
+//		 add db using these fields
+//		"user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net"
+//		User d = new User(999, groupsId,  userName, password, email);
+//		System.out.println("UserWebService: "+d);
 
 		// Call UserService to add it.
-		UserService.createUser(d);
+		UserService.createUser(new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net"));
 
 		try {
 			response.getWriter().append("Successfully added data to ORACLE (AWS) input: " + request.getContextPath());

@@ -14,55 +14,57 @@ import xyz.cryptomaven.app.service.UserService;
 
 public class UserServiceTest {      // *NOTE: change PK usernames before sending to DB
 
-//        Setup User  p1; get
-//		  User  p2; update
-//		  User p3; delete
+//        Setup
+        User  p1; //  get
+		  User  p2;// update
+		  User p3; //delete
+
+	User u = new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");    // PASSES
+	// UI Source
+	String loggedUserName = "user4";
+	String loggedInPW = "passWordX";
+//DB
 
 	@BeforeAll // setup   
 	public static void setupClass() { // static! (not needed with TestNG @BeforeClass
-		System.out.println("Class/Static setup "); 
+	System.out.println("Class/Static setup ");
 	}
 
 	@BeforeEach
 	public void setup() {
+		UserService.createUser(u);
 		System.out.println("Method/Instance setup ");
 	}
-
+//TODO mockito Service INJECTION
     @Test   
 	public void add_new_user() {
-		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");    // PASSES
 		assertTrue(UserService.createUser(u));
-		UserService.deleteUser(UserService.getUser("user4").getUsername());		
+
 	}
 
     @Test   
    	public void get_user() {
-   		String expected = "passWordX";
-		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
-		UserService.createUser(u);  
-   		assertEquals(expected, u.getPassword());
-		UserService.deleteUser(UserService.getUser("user4").getUsername());	
+   		assertEquals(loggedInPW, u.getPassword());
+		   //cleanup
+		UserService.deleteUser(UserService.getUser(u.getUserId()).getUsername());
    	} 
 
     @Test   
    	public void update_user() {
-   		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
-		UserService.createUser(u); // leave ou
-   		User uUpdated = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
+		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
    		assertTrue(UserService.updateUser(uUpdated));
-		UserService.deleteUser(UserService.getUser("user4").getUsername());
+//		   TODO - verify changes from db
    	} 
 
     @Test   
-   	public void delete_user() {										  // PASSES
-   		User u = new User("user4", "password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
-   		UserService.createUser(u); 
+   	public void delete_user() {
    		assertTrue(UserService.deleteUser(u.getUsername())); 
 
    	}
     
 	@AfterEach
 	public void tearDown() {
+		
 		System.out.println("After Class executing ...");
 	} // teardown
 

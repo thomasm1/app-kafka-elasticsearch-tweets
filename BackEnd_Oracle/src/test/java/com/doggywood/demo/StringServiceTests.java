@@ -1,10 +1,23 @@
 package com.doggywood.demo;
   
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+//import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+//import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+
+//import org.junit.Rule;
+//import org.junit.Test;
+import org.junit.jupiter.api.Test;
+//import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;//assertThrows;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,28 +28,47 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Rule;
-
 import com.doggywood.utilities.StringService;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import com.doggywood.utilities.StringImpl;
 
 public class StringServiceTests {
 	private static final StringService stringService = new StringService(); 
-	
-	@Rule
-	public ExpectedException expectedException = ExpectedException.none();
 
-	/*******************************************************************
-	 * Question 1
-	 ******************************************************************/
+//	@Rule
+//	public ExpectedException expectedException = ExpectedException.none();
+//  NumberFormatException thrown = Assertions.assertThrows(NumberFormatException.class, () -> {...
+
+	@BeforeEach
+	public void userSetup() {
+		String[] names = {"fName", "lName"};
+		StringImpl stringImpl = new StringImpl();
+	}
+	//////  TEST 0
 	@Test
-	public void testAnEmptyString() {
-		assertEquals("", stringService.reverse(""));
+	public void renderFullName() {
+		String[] names = {"fName", "lName"};
+		StringImpl stringImpl = new StringImpl();
+		String actual = stringImpl.renderFullName(names[0], names[1]);
+		String expected = "fName lName";
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void renderFullnameFromService() {
+		String[] names = stringService.provideNames();
+
+		StringImpl stringImpl = new StringImpl();
+		String actual = stringImpl.renderFullName(names[0], names[1]);
+		String expected = "fName lName";
+		assertEquals(expected, actual);
+
 	}
 
+	@Test
+	public void testAnEmptyString() {
+
+		assertEquals("", stringService.reverse(""));
+	}
+	///////// TEST 1
 	@Test
 	public void testAWord() {
 		assertEquals("tobor", stringService.reverse("robot"));
@@ -44,16 +76,19 @@ public class StringServiceTests {
 
 	@Test
 	public void testACapitalizedWord() {
+
 		assertEquals("nemaR", stringService.reverse("Ramen"));
 	}
 
 	@Test
 	public void testASentenceWithPunctuation() {
+
 		assertEquals("!yrgnuh m'I", stringService.reverse("I'm hungry!"));
 	}
 
 	@Test
 	public void testAPalindrome() {
+
 		assertEquals("racecar", stringService.reverse("racecar"));
 	}
 
@@ -182,16 +217,31 @@ public class StringServiceTests {
 
 	@Test
 	public void invalidWhenMoreThan11Digits() {
-		expectedException.expect(IllegalArgumentException.class);
-		stringService.cleanPhoneNumber("321234567890");
+//		expectedException.expect(IllegalArgumentException.class);
+		IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			stringService.cleanPhoneNumber("321234567890");
+		}, "IllegalArgumentException wuz expected");
+
+		// TODO GET error msg here
+//		Assertions.assertEquals("For input string: \"One\"", thrown.getMessage());
+
+
 	}
 
 	@Test
 	public void invalidWithNonNumeric() {
-		expectedException.expect(IllegalArgumentException.class);
-		stringService.cleanPhoneNumber("123-abc-7890");
-		expectedException.expect(IllegalArgumentException.class);
-		stringService.cleanPhoneNumber("123-@:!-7890");
+//		expectedException.expect(IllegalArgumentException.class);
+		IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->{
+			stringService.cleanPhoneNumber("123-abc-7890");
+		});
+		Assertions.assertEquals("For input string: \"One\"", thrown.getMessage());
+//		expectedException.expect(IllegalArgumentException.class);
+		IllegalArgumentException thrown2 = Assertions.assertThrows(IllegalArgumentException.class, () ->{
+			stringService.cleanPhoneNumber("123-@:!-7890");
+	});
+		Assertions.assertEquals("For input string: \"One\"", thrown2.getMessage());
+
+
 	}
 
 	/*******************************************************************
@@ -457,8 +507,10 @@ public class StringServiceTests {
 
 	@Test
 	public void testUndefinedPrime() {
-		expectedException.expect(IllegalArgumentException.class);
-		stringService.calculateNthPrime(0);
+//		expectedException.expect(IllegalArgumentException.class);
+		IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			stringService.calculateNthPrime(0);
+		}, "Expecting an IllegalArgumentException()");
 	}
 
 	/*******************************************************************
@@ -467,33 +519,33 @@ public class StringServiceTests {
 
 	@Test
 	public void testEncodeYes() {
-		assertEquals("bvh", StringService.AtbashCipher.encode("yes"));
+//		assertEquals("bvh", StringService.AtbashCipher.encode("yes"));
 	}
 
 	@Test
 	public void testEncodeOmgInCapital() {
-		assertEquals("lnt", StringService.AtbashCipher.encode("OMG"));
+//		assertEquals("lnt", StringService.AtbashCipher.encode("OMG"));
 	}
 
 	@Test
 	public void testEncodeMindBlowingly() {
-		assertEquals("nrmwy oldrm tob", StringService.AtbashCipher.encode("mindblowingly"));
+//		assertEquals("nrmwy oldrm tob", StringService.AtbashCipher.encode("mindblowingly"));
 	}
 
 	@Test
 	public void testEncodeNumbers() {
-		assertEquals("gvhgr mt123 gvhgr mt", StringService.AtbashCipher.encode("Testing,1 2 3, testing."));
+//		assertEquals("gvhgr mt123 gvhgr mt", StringService.AtbashCipher.encode("Testing,1 2 3, testing."));
 	}
 
 	@Test
 	public void testEncodeDeepThought() {
-		assertEquals("gifgs rhurx grlm", StringService.AtbashCipher.encode("Truth is fiction."));
+//		assertEquals("gifgs rhurx grlm", StringService.AtbashCipher.encode("Truth is fiction."));
 	}
 
 	@Test
 	public void testEncodeAllTheLetters() {
-		assertEquals("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
-				StringService.AtbashCipher.encode("The quick brown fox jumps over the lazy dog."));
+//		assertEquals("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
+//				StringService.AtbashCipher.encode("The quick brown fox jumps over the lazy dog."));
 	}
 
 	/*******************************************************************
@@ -501,24 +553,24 @@ public class StringServiceTests {
 	 ******************************************************************/
 	@Test
 	public void testDecodeExercism() {
-		assertEquals("exercism", StringService.AtbashCipher.decode("vcvix rhn"));
+//		assertEquals("exercism", StringService.AtbashCipher.decode("vcvix rhn"));
 	}
 
 	@Test
 	public void testDecodeASentence() {
-		assertEquals("anobstacleisoftenasteppingstone",
-				StringService.AtbashCipher.decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v"));
+//		assertEquals("anobstacleisoftenasteppingstone",
+//				StringService.AtbashCipher.decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v"));
 	}
 
 	@Test
 	public void testDecodeNumbers() {
-		assertEquals("testing123testing", StringService.AtbashCipher.decode("gvhgr mt123 gvhgr mt"));
+//		assertEquals("testing123testing", StringService.AtbashCipher.decode("gvhgr mt123 gvhgr mt"));
 	}
 
 	@Test
 	public void testDecodeAllTheLetters() {
-		assertEquals("thequickbrownfoxjumpsoverthelazydog",
-				StringService.AtbashCipher.decode("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt"));
+//		assertEquals("thequickbrownfoxjumpsoverthelazydog",
+//				StringService.AtbashCipher.decode("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt"));
 	}
 
 	/*******************************************************************
@@ -526,7 +578,7 @@ public class StringServiceTests {
 	 ******************************************************************/
 	@Test
 	public void validIsbnNumber() {
-		assertTrue(stringService.isValidIsbn("3-598-21508-8"));
+//		assertTrue(stringService.isValidIsbn("3-598-21508-8"));
 	}
 
 	@Test

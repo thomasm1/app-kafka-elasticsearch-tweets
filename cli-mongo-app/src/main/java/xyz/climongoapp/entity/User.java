@@ -2,6 +2,7 @@ package xyz.climongoapp.entity;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -14,9 +15,13 @@ public class User {
 	@Id
 	private String id;
 
-	private String name;
+	@Field(name="name")
+	private String userName;
 
-	@Field(name = "mail")
+	private String lastName;
+
+	private String firstName;
+
 	private String email;
 
 	@DBRef
@@ -24,9 +29,10 @@ public class User {
 
 	@DBRef
 	private List<Car> cars;
-	
+
 	@Transient
 	private double percentage;
+
 
 	public String getId() {
 		return id;
@@ -36,12 +42,28 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -78,9 +100,21 @@ public class User {
 		}
 		return 0.00;
 	}
-
 	public void setPercentage(double percentage) {
 		this.percentage = percentage;
+	}
+
+	public String renderFullName(String[] strArr) {
+		this.firstName = strArr[0];
+		this.lastName = strArr[1];
+		String[] conc = new String[]{this.firstName, this.lastName };
+		String fullName = "";
+//         return Arrays.stream(conc).reduce(String::concat).orElse("");
+		for(String userName: conc) {
+			fullName += userName+" ";
+		}
+		// localCacheService.storeUserFullName(fullName);
+		return fullName.trim();
 	}
 
 }

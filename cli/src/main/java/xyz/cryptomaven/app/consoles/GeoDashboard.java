@@ -81,10 +81,9 @@ import java.util.*;
             }
         }
         MainDashboard.mainUser(new String[] {});
-
     }
 
-    static private class Location {
+        private static class Location {
         protected final  int placeInt;
         protected final String descript;
         protected final Map<String, Integer> options;

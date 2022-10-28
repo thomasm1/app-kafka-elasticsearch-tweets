@@ -1,4 +1,4 @@
-package xyz.cryptomaven.app.daoTests;
+package xyz.cryptomaven.app.integrationTests;
 
 import org.junit.jupiter.api.*;
 import xyz.cryptomaven.app.consoles.AdminDashboard;
@@ -8,7 +8,7 @@ import xyz.cryptomaven.app.service.UserService;
 
 import java.sql.SQLException;
 
-class UserDaoLoginTest {
+class UserDaoLoginTest {  // INTE
 	String adminUsername = "admin", adminPassword = "pass";
 	// VALIDATION #1 - LOOK UP AND GET Target INPUT DB USER
 	String tempUsername = "cust", tempPassword = "pass";
@@ -49,7 +49,7 @@ class UserDaoLoginTest {
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
 // USER LOGIN
-			UserDashboard.loginDashboard(un, name); //
+			UserDashboard.loginDashboard(un); //
 		}
 	}
 
@@ -67,7 +67,7 @@ class UserDaoLoginTest {
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
 // USER LOGIN
-			UserDashboard.loginDashboard(un, name); //
+			UserDashboard.loginDashboard(un); //
 //		fail("Not yet implemented");
 		}
 	}

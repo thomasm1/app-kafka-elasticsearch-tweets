@@ -235,7 +235,8 @@ public class StringServiceTests {
 			stringService.cleanPhoneNumber("123-abc-7890");
 		});
 		Assertions.assertEquals("For input string: \"One\"", thrown.getMessage());
-//		expectedException.expect(IllegalArgumentException.class);
+
+		-//		expectedException.expect(IllegalArgumentException.class);
 		IllegalArgumentException thrown2 = Assertions.assertThrows(IllegalArgumentException.class, () ->{
 			stringService.cleanPhoneNumber("123-@:!-7890");
 	});

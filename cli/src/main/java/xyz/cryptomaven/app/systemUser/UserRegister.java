@@ -29,24 +29,19 @@ public class UserRegister {
 		//  "ADD_NEW_USERS" 
 //(username VARCHAR2, password VARCHAR2, lastName varchar2, firstName varchar2, usertype NUMBER, groups NUMBER, email VARCHAR2, phone VARCHAR2, cusURl VARCHAR2)
 		User newUser = new User(un, pw, ln, fn, 4, 2, un+"@cryptomaven.xyz", "999-999-9999" ,"http://www.dailytech.net" );
+
 		System.out.println("Successfully registered: "+ UserService.createUser(newUser));
-		System.out.println(newUser);
+		System.out.println("New User: "+newUser);
 
-		System.out.println("\nThank you, *" + fn + " "+ ln+"*, Continue to dashboard? yes, 'y':");  
-		String yes = scan.next();  
-		if (yes.contentEquals("y")) { 
-			try {
-				System.out.println("...sounds good, *"+ fn + "*, now logging you into your Dashboard");
-				UserDashboard.loginDashboard(un, fn);
-			} catch (Exception e) {
-				UserDashboard.loginDashboard(un, fn);
-			}
-		} else {
-			MainDashboard.console();
-		}
+		System.out.println("\nThank you, *" + fn + " "+ ln);
+		System.out.println(" Continue to dashboard?  'yes'/'no':");
+		String response = scan.next();
 
+		UserLogin.decideDashboard(response, un);
 		scan.close();
 
 		
 	}
+
+
 }

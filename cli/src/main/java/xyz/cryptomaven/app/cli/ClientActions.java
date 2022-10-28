@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class View {
+public class ClientActions {
 
 	public static List<Bookmark> browse(User user, List<List<Bookmark>> bookmarks) throws FileNotFoundException, UnsupportedEncodingException {
 		List<Bookmark> subset = new ArrayList<>();
@@ -34,7 +34,7 @@ public class View {
 		return subset;
 	}
 
-	private static boolean getBookmarkDecision(Bookmark bookmark) {
+	static boolean getBookmarkDecision(Bookmark bookmark) {
 		return (Math.random() <.4);
 	}
 

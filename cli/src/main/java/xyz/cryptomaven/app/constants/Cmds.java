@@ -4,12 +4,12 @@ public class Cmds {
 
     
     //menu dashboard
-    public static final String WHAT_TO_DO = "What would you like to do? \n ";
-    public static final String VIEW_MY_CARS = "View my cars\n ";
-    public static final String VIEW_ALL_CARS = "View all cars\n";
-    public static final String  VIEW_CAR_DETAILS = "View a car in detail\n";
-    public static final String MAKE_AN_OFFER = "Find one you like? Make an offer!\n";
-    public static final String MAKE_INQUIRY_MY_OFFERS = "Inquire about my existing offers\n";
+    public static final String WHAT_TO_DO = "What would you like to do?  ";
+    public static final String VIEW_MY_CARS = "View my cars ";
+    public static final String VIEW_ALL_CARS = "View all cars";
+    public static final String  VIEW_CAR_DETAILS = "View a car in detail";
+    public static final String MAKE_AN_OFFER = "Find one you like? Make an offer!";
+    public static final String MAKE_INQUIRY_MY_OFFERS = "Inquire about my existing offers";
     public static final String PRESS_DIGIT = "\n There they are!, to make an offer, press ";
     public static final String HOW_MANY_MONTHS = "and how many months to pay remainder?";
     
@@ -27,14 +27,16 @@ public class Cmds {
     public static final String REGISTER_LNAME = " ,  last name:\n";
 
 // EDIT PROFILE
-public static final String WELCOME_PROFILE = "Welcome to Your Profile, ";
-    public static final String EDIT_PW  = "Edit your password? :\n";
-    public static final String EDIT_FNAME = " first name? :\n";
-    public static final String EDIT_LNAME = " ,  edit your last name?  :\n";
-    public static final String EDIT_GENDER = " ,  edit your group? :\n";
-    public static final String EDIT_EMAIL = " ,  edit your email? :\n";
-    public static final String EDIT_PHONE = " ,  edit your phone number? :\n";
-    public static final String EDIT_URL = " ,  edit your image URL? :\n";
+public static final String WELCOME_PROFILE = "Welcome to Your Profile, \n";
+    public static final String EDIT_PW  = "Edit password :";
+    public static final String EDIT_FNAME = "Edit first name :";
+    public static final String EDIT_LNAME = "Edit your last name  :";
+
+    public static final String EDIT_USERTYPE = "Edit your Usertype :";
+    public static final String EDIT_GROUP = "Edit your group :";
+    public static final String EDIT_EMAIL = "Edit your email :";
+    public static final String EDIT_PHONE = "Edit your phone number :";
+    public static final String EDIT_URL = "Edit your image URL :";
 
     // Errors
 

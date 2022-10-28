@@ -5,9 +5,12 @@ import java.util.Scanner;
 
 import xyz.cryptomaven.app.models.Car;
 import xyz.cryptomaven.app.models.Offer;
+import xyz.cryptomaven.app.models.User;
 import xyz.cryptomaven.app.service.CarService;
 import xyz.cryptomaven.app.service.ElectroLotService;
 import xyz.cryptomaven.app.service.OfferService;
+import xyz.cryptomaven.app.service.UserService;
+import xyz.cryptomaven.app.systemUser.UserProfile;
 
 import static xyz.cryptomaven.app.constants.Cmds.*;
 
@@ -27,6 +30,7 @@ public class UserDashboard {
 		System.out.println("3: "+VIEW_CAR_DETAILS);
 		System.out.println("4: "+MAKE_AN_OFFER);
 		System.out.println("5: "+MAKE_INQUIRY_MY_OFFERS);
+		System.out.println("6: "+"Edit my Profile ");
 		System.out.println("0: "+LEAVE_MENU);
 
 		Scanner scan = new Scanner(System.in);
@@ -136,6 +140,16 @@ try {
 			}
 			dashboardChoice(username);
 		}
+		case 6: {
+			try { // pass in Loggeed in user object for Profile Edit
+				User user = UserService.getUser(username);
+				UserProfile.editProfile(user);
+
+			} catch (Exception e) {
+				dashboardChoice(username);
+			}
+			dashboardChoice(username);
+		}
 		case 0: {
 			System.out.println(GOOD_BYE);
 			MainDashboard.console();
@@ -150,8 +164,8 @@ try {
 
 	};
 
-	public static void loginDashboard(String userName, String firstName) {
-		System.out.println("\n Welcome to your Dashboard! *" + firstName + "*, ");
+	public static void loginDashboard(String userName) {
+		System.out.println("\n Welcome to your Dashboard! *" + userName + "*, ");
 		dashboardChoice(userName);
 
 	}

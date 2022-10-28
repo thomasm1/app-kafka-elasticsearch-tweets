@@ -188,7 +188,7 @@ public class AdminDashboard {
 		}
 	}
 
-	private static void checkOffer() throws SQLException {
+	static void checkOffer() throws SQLException {
 
 		Scanner scan = new Scanner(System.in);
 
@@ -210,7 +210,7 @@ public class AdminDashboard {
 		dashboardChoice();
 	}
 
-	private static void approveOrReject(Offer offerLook) {
+	static void approveOrReject(Offer offerLook) {
 		try {
 			System.out.println("\n>>>Accept this offer (y)?\n" + "or (r) to reject an offer\n"
 					+ "\nOtherwise hit any key+'enter' to return to dashboard");

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 public class DownloadThreadTask implements Runnable {
-    private static int SUBSEQUENTS = 2;
+    private static int SUBSEQUENTS = 1;
     // STATIC VARS
     private static BookmarkDAO bookmDaoImpl= new BookmarkDaoImpl();
     private static final long TIME_FRAME = 3000000000L;

@@ -10,6 +10,7 @@ import xyz.cryptomaven.app.dataLoader.BookmarkManager;
 import xyz.cryptomaven.app.dataLoader.CarManager;
 import xyz.cryptomaven.app.dataLoader.UserManager;
 import xyz.cryptomaven.app.util.InputOutput;
+import xyz.cryptomaven.app.utilConcurrency.DownloadThreadTask;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -67,19 +68,21 @@ public class CliLoader {
         }
     }
 
-    static void start() throws FileNotFoundException, UnsupportedEncodingException {
+    public static void startBrowsingBuying() throws FileNotFoundException, UnsupportedEncodingException {
         System.out.println("\n2. Start Bookmarking");
         for (User user: users) {
-            View.browse(user,bookmarks);
-            View.shareBookmark(user, bookmarks);
+            ClientActions.browse(user,bookmarks);
+            ClientActions.shareBookmark(user, bookmarks);
+            ClientActions.buyCar(user, cars);
+
         }
     }
     // random loader
 
-    static void buyCar() {
-        System.out.println("\n3. Buy Cars");
-        for(User user: users) {
-            View.buyCar(user,cars);
-        }
+
+    // Multi-Threaded Background offline html loader
+    public static void runDownloaderJob() {
+        DownloadThreadTask task = new DownloadThreadTask(true);
+        (new Thread((Runnable) task)).start();
     }
 }

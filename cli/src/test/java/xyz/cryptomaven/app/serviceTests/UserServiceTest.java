@@ -64,7 +64,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
     
 	@AfterEach
 	public void tearDown() {
-		
+
 		System.out.println("After Class executing ...");
 	} // teardown
 

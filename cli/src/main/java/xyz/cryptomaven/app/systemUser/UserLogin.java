@@ -13,15 +13,20 @@ import java.util.InputMismatchException;
 
 public class UserLogin {
 
+    public static final String ADMIN = "admin";
+    public static final String ADMIN_PASSWORD = "pass";
+
     public static void login() throws SQLException {
 
         try {
             System.out.println("Welcome, please enter your username: [admin: admin; default: joshallen]");
+            System.out.println(" 'quit' to go back");
             Scanner scanner = new Scanner(System.in);
             String un = scanner.next();
-
+            _earlyQuit(new String[]{un});
             System.out.println("and your password: [admin: pass; default: allen");
             String pw = scanner.next();
+            _earlyQuit(new String[]{pw});
 
             //  admin   hardcoded backdoor
             if (hardCodedAdminNameAndPassword(un, pw)) {
@@ -31,8 +36,7 @@ public class UserLogin {
 
             // VALIDATION #1 - LOOK UP AND GET Targeted DB USER
             if (checkDbUsernameAndPassword(un, pw)) {
-                User login = UserService.getUser(un);
-                UserDashboard.loginDashboard(un, login.getFirstName()); //
+                decideDashboard("yes", un);
             } else {
                 System.out.println("Oops, typo time, please try again");
                 try {
@@ -50,13 +54,44 @@ public class UserLogin {
         }
     }
 
-    public static boolean checkDbUsernameAndPassword(String un, String pw) throws SQLException {
-        User login = UserService.getUser(un);
+    static void _earlyQuit(String[] args) {
+        if (args.length < 1) return;
+        if (args.length < 2) {
+            if (args[0].contentEquals("quit")) {
+                MainDashboard.console();
+            }
+        } else {
+            for (String s : args) {
+                if (s.contentEquals("quit")) {
+                    MainDashboard.console();
+                }
+            }
+        }
+
+    }
+
+    static void decideDashboard(String resp, String userName) {
+//		if (yes.matches(("y" | "yes" | "true"|"1"))) {
+        if (resp.contentEquals("yes")) {
+            try {
+                System.out.println("...sounds good, *" + userName + "*, now logging you into your Dashboard");
+                UserDashboard.loginDashboard(userName);
+            } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
+                MainDashboard.console();
+            }
+        } else {
+            MainDashboard.console();
+        }
+    }
+
+    static boolean checkDbUsernameAndPassword(String un, String pw)  {
+        User login = UserService.getUser(un); // returns null if not in DB
 //	    VALIDATION #2 - Check targeted DB User against logged-in Username & password
-        if (un.contentEquals(
+        if (login != null && (un.contentEquals(
                 login.getUsername()) && pw.contentEquals(
                 login.getPassword()
-        )) {
+        ))) {
             System.out.println(
                     "...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
             String name = (login.getFirstName() != null) ? login.getFirstName() : un;
@@ -65,10 +100,8 @@ public class UserLogin {
         return false;
     }
 
-    public static boolean hardCodedAdminNameAndPassword(String un, String pw) {
-        String adminUsername = "admin";
-        String adminPassword = "pass";
-        if (un.contentEquals(adminUsername) && pw.contentEquals(adminPassword)) {
+    static boolean hardCodedAdminNameAndPassword(String un, String pw) {
+        if (un.contentEquals(ADMIN) && pw.contentEquals(ADMIN_PASSWORD)) {
             System.out.println("Welcome Internal Administrator, *" + un + "*\n  " +
                     "  ... now preparing your Dashboard");
             return true;

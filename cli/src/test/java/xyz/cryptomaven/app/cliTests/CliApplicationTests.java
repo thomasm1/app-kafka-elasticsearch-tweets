@@ -1,4 +1,4 @@
-package xyz.cryptomaven.app.cli;
+package xyz.cryptomaven.app.cliTests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

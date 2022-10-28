@@ -1,11 +1,11 @@
 package xyz.cryptomaven.app.constants;
 
-public enum Groups {
+public enum GroupsName {
 
 	MALE(1),
 	FEMALE(2),
 	OTHER(3);
-	private Groups(int groups) {
+	private GroupsName(int groups) {
 		this.groups = groups;
 	}
 	private int groups;

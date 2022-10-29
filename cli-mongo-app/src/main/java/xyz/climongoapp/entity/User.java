@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class User {
 
 	@Id
-	private String id;
+	private int id;
 
 	@Field(name="name")
 	private String userName;
@@ -23,6 +23,8 @@ public class User {
 	private String firstName;
 
 	private String email;
+
+	private String password;
 
 	@DBRef
 	private Groups Groups;
@@ -34,11 +36,11 @@ public class User {
 	private double percentage;
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -72,6 +74,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Groups getGroups() {

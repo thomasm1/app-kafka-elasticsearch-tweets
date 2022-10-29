@@ -6,7 +6,7 @@ import xyz.climongoapp.repository.DataRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class DataServiceStub implements DataRepository {
+class DataRepositoryStub implements DataRepository {
 	@Override
 	public int[] retrieveAllData() {
 		return new int[] { 1, 2, 3 };
@@ -18,7 +18,7 @@ class DataServiceStub implements DataRepository {
 	}
 }
 
-class DataServiceEmptyStub implements DataRepository {
+class DataRepositoryEmptyStub implements DataRepository {
 	@Override
 	public int[] retrieveAllData() {
 		return new int[] { };
@@ -30,7 +30,7 @@ class DataServiceEmptyStub implements DataRepository {
 	}
 }
 
-class DataServiceOneElementStub implements DataRepository {
+class DataRepositoryOneElementStub implements DataRepository {
 	@Override
 	public int[] retrieveAllData() {
 		return new int[] { 5 };
@@ -45,28 +45,28 @@ class DataServiceOneElementStub implements DataRepository {
 public class BusinessStubTest {
 
 	@Test
-	public void calculateSumUsingDataService_basic() {
+	public void calculateSumUsingDataRepository_basic() {
 		BusinessImpl business = new BusinessImpl();
-		business.setDataService(new DataServiceStub());
-		int actualResult = business.calculateSumUsingDataService();
+		business.setDataRepository(new DataRepositoryStub());
+		int actualResult = business.calculateSumUsingDataRepository();
 		int expectedResult = 6;
 		assertEquals(expectedResult, actualResult);
 	}
 
 	@Test
-	public void calculateSumUsingDataService_empty() {
+	public void calculateSumUsingDataRepository_empty() {
 		BusinessImpl business = new BusinessImpl();
-		business.setDataService(new DataServiceEmptyStub());
-		int actualResult = business.calculateSumUsingDataService();//new int[] {}
+		business.setDataRepository(new DataRepositoryEmptyStub());
+		int actualResult = business.calculateSumUsingDataRepository();//new int[] {}
 		int expectedResult = 0;
 		assertEquals(expectedResult, actualResult);
 	}
 
 	@Test
-	public void calculateSumUsingDataService_oneValue() {
+	public void calculateSumUsingDataRepository_oneValue() {
 		BusinessImpl business = new BusinessImpl();
-		business.setDataService(new DataServiceOneElementStub());
-		int actualResult = business.calculateSumUsingDataService();//new int[] { 5 }
+		business.setDataRepository(new DataRepositoryOneElementStub());
+		int actualResult = business.calculateSumUsingDataRepository();//new int[] { 5 }
 		int expectedResult = 5;
 		assertEquals(expectedResult, actualResult);
 	}

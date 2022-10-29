@@ -4,7 +4,7 @@ import xyz.climongoapp.repository.DataRepository;
 
 public class BusinessImpl {
 	private DataRepository dataRepository;
-	public void setDataService(DataRepository dataRepository) {
+	public void setDataRepository(DataRepository dataRepository) {
 
 		this.dataRepository = dataRepository;
 	}
@@ -18,7 +18,7 @@ public class BusinessImpl {
 		//return Arrays.stream(data).reduce(Integer::sum).orElse(0);
 	}
 	
-	public int calculateSumUsingDataService() {
+	public int calculateSumUsingDataRepository() {
 		int sum = 0;
 		int[] data = dataRepository.retrieveAllData();
 		for(int value:data) {

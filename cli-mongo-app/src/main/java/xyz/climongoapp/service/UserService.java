@@ -96,6 +96,9 @@ public class UserService {
 		return userRepository.findByGroupsId(deptId);
 	}
 
+	public User userByUserNameAndPassword(String userName, String password) {
+		return userRepository.findByUserNameAndPassword(userName, password );
+	}
 
 
 	// VARIOUS USER SERVICES

@@ -58,6 +58,13 @@ public class UserController {
 			@RequestParam String email) {
 		return userService.usersByUserNameAndMail(userName, email);
 	}
+	@PostMapping("/userByUserNameAndPassword")
+	public User userByUserNameAndPassword(@RequestBody User user) {
+		String userName = user.getUserName();
+		String password = user.getPassword();
+		User x = userService.userByUserNameAndPassword( userName, password);
+		return x;
+	}
 	
 	@GetMapping("/usersByUserNameOrMail")
 	public User usersByUserNameOrMail(@RequestParam String userName,

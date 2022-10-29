@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import xyz.climongoapp.methods.BusinessImpl;
-import xyz.climongoapp.repository.DataService;
+import xyz.climongoapp.repository.DataRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -18,23 +18,23 @@ public class BusinessMockTest {
 	BusinessImpl business;
 
 	@Mock
-	DataService dataServiceMock;
+	DataRepository dataServiceMock;
 
 	@Test
-	public void calculateSumUsingDataService_basic() {
+	public void calculateSumUsingDataRepository_basic() {
 		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] { 1, 2, 3 });
-		assertEquals(6, business.calculateSumUsingDataService());
+		assertEquals(6, business.calculateSumUsingDataRepository());
 	}
 
 	@Test
-	public void calculateSumUsingDataService_empty() {
+	public void calculateSumUsingDataRepository_empty() {
 		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {});
-		assertEquals(0, business.calculateSumUsingDataService());
+		assertEquals(0, business.calculateSumUsingDataRepository());
 	}
 
 	@Test
-	public void calculateSumUsingDataService_oneValue() {
+	public void calculateSumUsingDataRepository_oneValue() {
 		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] { 5 });
-		assertEquals(5, business.calculateSumUsingDataService());
+		assertEquals(5, business.calculateSumUsingDataRepository());
 	}
 }

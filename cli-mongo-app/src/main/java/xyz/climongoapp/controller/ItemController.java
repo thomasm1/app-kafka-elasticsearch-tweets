@@ -1,9 +1,7 @@
 package xyz.climongoapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xyz.climongoapp.entity.Item;
 import xyz.climongoapp.service.ItemBusinessService;
 
@@ -20,6 +18,11 @@ public class ItemController {
 	public Item hardCodeItem() {
 
 		return new Item(1, "ItemX", 10, 100);
+	}
+	@PostMapping("/create")
+	public Item create(@RequestBody Item item) {
+ 
+		return businessService.create(item);
 	}
 	
 	@GetMapping("/item-from-business-service")

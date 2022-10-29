@@ -95,4 +95,9 @@ public class UserController {
 	public List<User> byGroupsId(@RequestParam String deptId) {
 		return userService.byGroupsId(deptId);
 	}
+
+	@GetMapping("/validate")
+	public   String validate() {
+		return "VALID";
+	}
 }

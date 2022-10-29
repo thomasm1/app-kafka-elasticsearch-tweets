@@ -1,2 +1,3 @@
-package xyz.climongoapp.service;public class GroupsService {
+package xyz.climongoapp.service;
+public class GroupsService {
 }

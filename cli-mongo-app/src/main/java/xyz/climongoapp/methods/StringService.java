@@ -1,43 +1,20 @@
-package com.doggywood.utilities;
+package xyz.climongoapp.methods;
  
 import java.time.temporal.Temporal;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
-import com.doggywood.services.CustomerService;
-import javax.persistence.Entity;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.doggywood.services.CustomerService;
+import xyz.climongoapp.service.UserService;
 
 
 public class StringService {
 
 	private UserService userService;
 
-	public void setUserService(UserService userService) {
 
-		this.userService = userService;
-	}
-	@Autowired
-	public String[] provideNames(User user) {
-
-		String fName = user,  lName = "lName";
-		return  new String[] {fName, lName};
-	}
-	public int calculateSumUsingDataService() {
-		int sum = 0;
-		int[] data = someDataService.retrieveAllData();
-		for(int value:data) {
-			sum += value;
-		}
-
-		//someDataService.storeSum(sum);
-		return sum;
-		//Functional Style
-		//return Arrays.stream(data).reduce(Integer::sum).orElse(0);
-	}
 	/**
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"

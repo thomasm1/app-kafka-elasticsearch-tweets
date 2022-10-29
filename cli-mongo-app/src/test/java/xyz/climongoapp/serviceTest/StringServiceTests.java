@@ -1,4 +1,4 @@
-package com.doggywood.demo;
+package xyz.climongoapp.serviceTest;
 
 import static org.hamcrest.CoreMatchers.is;
 //import static org.junit.Assert.assertThat;
@@ -28,8 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.doggywood.utilities.StringService;
-import com.doggywood.utilities.StringImpl;
+import xyz.climongoapp.methods.StringService;
 
 public class StringServiceTests {
     private static final StringService stringService = new StringService();
@@ -38,32 +37,7 @@ public class StringServiceTests {
 //	public ExpectedException expectedException = ExpectedException.none();
 //  NumberFormatException thrown = Assertions.assertThrows(NumberFormatException.class, () -> {...
 
-    @BeforeEach
-    public void userSetup() {
-        String[] names = {"fName", "lName"};
-        StringImpl stringImpl = new StringImpl();
-    }
 
-    //////  TEST 0
-    @Test
-    public void renderFullName() {
-        String[] names = {"fName", "lName"};
-        StringImpl stringImpl = new StringImpl();
-        String actual = stringService.renderFullName(names[0], names[1]);
-        String expected = "fName lName";
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void renderFullnameFromService() {
-        String[] names = stringService.provideNames();
-
-        StringImpl stringImpl = new StringImpl();
-        String actual = stringService.renderFullName(names[0], names[1]);
-        String expected = "fName lName";
-        assertEquals(expected, actual);
-
-    }
 
     @Test
     public void testAnEmptyString() {

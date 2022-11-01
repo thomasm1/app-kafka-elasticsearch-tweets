@@ -1,18 +1,18 @@
 package xyz.cryptomaven.app.consoles;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import xyz.cryptomaven.app.constants.Cmds;
 import xyz.cryptomaven.app.logger.LogCustom;
 import xyz.cryptomaven.app.models.Car;
+import xyz.cryptomaven.app.models.MaPL;
 import xyz.cryptomaven.app.service.CarService;
 import xyz.cryptomaven.app.systemUser.UserLogin;
 import xyz.cryptomaven.app.systemUser.UserRegister;
@@ -21,16 +21,16 @@ import static xyz.cryptomaven.app.cli.CliLoader.runDownloaderJob;
 import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying;
 
 public class MainDashboard {
+    public Map<String, String> dataMap = new HashMap<>(); //k, v
+    public MaPL sessionMaPL = new MaPL();
 
     public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
         LogCustom.logger();
-        System.out.println("|||_________NEWTECH__________||| \n #0 log ...Logging by Log4j2.\n");/// #0 log
 
-        /// #0 Validate and Load local User State
-        /// #1 check for Oracle JDBC Driver
-        System.out.println(startupTime());
-        frontConsoleValidation();
+        /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
+        MainDashboard m = new MainDashboard();
+        m.consoleValidation();
 
         /// #2  Loading Scanner accepting Integer Input
         try {
@@ -40,31 +40,6 @@ public class MainDashboard {
             System.out.println(e.getMessage());
             System.out.println("oops!! #3 scanner fail");
         }
-    }
-
-    public static void carlotView() {
-        List<Car> carList = CarService.getAllCarsCust(); // Customer view of carlot.
-        System.out.println(carList);
-    }
-
-    protected static File checkLocalfiles(String path) {
-        String fileFullPath = (path != null) ? path : String.valueOf("src/data/scannertext.txt");
-        File textFile = new File(fileFullPath);
-        return textFile;
-    }
-
-    public static void frontConsoleValidation() throws IOException {
-        try {
-            System.out.println("1 ..Success Oracle JDBC Driver" + Class.forName("oracle.jdbc.driver.OracleDriver") + " \n");
-        } catch (ClassNotFoundException e) {
-            System.out.println(Cmds.OOPS_JDBC);
-        }
-        // ## Checking  local input
-        File file = checkLocalfiles(null);
-        Scanner scanText = new Scanner(file);
-        int firstRowCheck = scanText.nextInt();
-        System.out.println("\n    #=====Reading   \"src/scannertext.txt\" firstRowCheck ID: " + firstRowCheck + "=====#\n");
-        scanText.close();
     }
 
     public static void frontConsoleMenu() {
@@ -121,6 +96,11 @@ public class MainDashboard {
                             startBrowsingBuying();
                             break;
                         }
+                        case 7: {
+                            System.out.println("\n   #6 start(); Test Data...");
+                            openMaPL();
+                            break;
+                        }
                         case 0: {
                             System.out.println("\n   Come Back *Soon* !\n");
                             System.out.println("\n =======================!\n");
@@ -153,10 +133,62 @@ public class MainDashboard {
         }
     }
 
+    private static void openMaPL() {
+        System.out.println("Welcome to My Personal Librarian, my name is MaPL.");
+        MaPL m = new MaPL();
+        m.getMapleState();
+
+    }
+
     static String startupTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
-//		System.out.println(formatter.format(date));
+		System.out.println(formatter.format(date));
         return formatter.format(date);
+    }
+
+    public static void carlotView() {
+        List<Car> carList = CarService.getAllCarsCust(); // Customer view of carlot.
+        System.out.println(carList);
+    }
+
+    protected static File checkLocalfiles(String path) {
+        String fileFullPath = (path != null) ? path : String.valueOf("src/data/STARTUP_TEXT.txt");
+        Path absolutePath = FileSystems.getDefault().getPath(fileFullPath);
+        System.out.println("Loading from "+absolutePath);
+        File textFile = new File(fileFullPath);
+        return textFile;
+    }
+
+    public void consoleValidation() {
+        System.out.println(startupTime());
+        File file = checkLocalfiles(null);  //  Checking  local input
+        try (Scanner scanText = new Scanner(file)) {
+            int TEXT_VERSION = scanText.nextInt(); //LINE_1
+              System.out.println("\n    #=== 'src/data/scannertext.txt version': " + TEXT_VERSION + "\n");
+            String SQL_DRIVER = scanText.nextLine();  //LINE_2
+            try {
+                System.out.println("#=== 'SQL_DRIVER': " + Class.forName(SQL_DRIVER) + "\n");
+            } catch (ClassNotFoundException e) {
+                System.out.println(e.getMessage());
+                System.out.println(Cmds.OOPS_JDBC);
+            }
+            System.out.println(Cmds.NOW_LOGGING);
+            String APP_TITLE = scanText.nextLine(); //LINE_3
+            System.out.println(APP_TITLE);
+            String AUTHOR = scanText.nextLine(); //LINE_4
+            System.out.println(AUTHOR);
+            int counter = 10; //Miscellaneous Data Starting at LINE 10:  KEY IS LINE NUMBER
+            while(scanText.hasNext()) {
+                String scanData = scanText.nextLine();
+                if ((!scanData.startsWith("-|")) && scanText.hasNext()) {
+                    dataMap.put(String.valueOf( counter++), scanData);
+                }
+            }
+            System.out.println(dataMap.values());
+            sessionMaPL.registerCmds(dataMap);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

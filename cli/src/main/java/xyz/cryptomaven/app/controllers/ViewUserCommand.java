@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import xyz.cryptomaven.app.models.User;
 
-public class ViewUserCommand implements Command {
+public class ViewUserCommand implements CommandServlet {
  
 
 	@Override

@@ -63,6 +63,7 @@ public static final String WELCOME_PROFILE = "Welcome to Your Profile, \n";
     
     // comments
     public static final String NICE = " Nice! ";
+    public static final String NOW_LOGGING = "|||_______...Logging__________|||";
 
     private final String cmd;
     public String getCmds() {

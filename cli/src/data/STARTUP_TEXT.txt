@@ -1,7 +1,12 @@
-505
-CryptoMaven
-23098333
-
+1001
+"oracle.jdbc.driver.OracleDriver"
+CryptoMaven - My Personal Librarian
+Thomas Maestas
+-|
+-|
+-|
+-|
+-|__________Miscellaneous Data Starting at LINE 10:  KEY IS LINE NUMBER__________
 Can I run any tests on any of your websites, ${user.fname} … ?
 Check google weather api, ${user.fname} … ? 
 Check local and network ports? 
@@ -22,7 +27,7 @@ How about I Web3 connect to blockchain. May I start Ganache?
 May I start Truffle? 
 Running Geth now? 
 Shall I open an API to CryptoMavenAPI? 
-Will we be reading from Our Daily Tech ${
+Will we be reading from Our Daily Tech?
 
 
 

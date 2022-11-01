@@ -16,69 +16,67 @@ import xyz.cryptomaven.app.models.MaPL;
 import xyz.cryptomaven.app.service.CarService;
 import xyz.cryptomaven.app.systemUser.UserLogin;
 import xyz.cryptomaven.app.systemUser.UserRegister;
+import xyz.cryptomaven.app.util.Utilities;
 
 import static xyz.cryptomaven.app.cli.CliLoader.runDownloaderJob;
 import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying;
+import static xyz.cryptomaven.app.service.CarService.carlotViewAll;
 
 public class MainDashboard {
-    public Map<String, String> dataMap = new HashMap<>(); //k, v
-    public MaPL sessionMaPL = new MaPL();
+    private static final int MAIN_OPTIONS_COUNT = 7;
+    private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt";
+    private Map<String, String> dataMap = new HashMap<>();
+    private MaPL sessionMaPL = new MaPL();
 
     public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
-
         LogCustom.logger();
-
         /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
         MainDashboard m = new MainDashboard();
         m.consoleValidation();
 
-        /// #2  Loading Scanner accepting Integer Input
+        /// #2  Loading Recursive Console Scanner accepting Integer Input
         try {
-            console();
+            mainConsole();
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            System.out.println("oops!! #3 scanner fail");
+            System.out.println("oops!  mainConsole fail"+ e.getMessage());
+
         }
     }
 
-    public static void frontConsoleMenu() {
+    private static void frontConsoleMenu() {
         System.out.println("\n1.) Log in \n"
                 + "2.) Register  \n"
                 + "3.) Browse the lot\n"
                 + "4.) to Play Navigation Game \n"
                 + "5.) Background Web Loader\n"
                 + "6.) Set in Motion Automated USER\n"
-                + "Exit, press '0'.\n");
+                + "Stop Application, press '0'.\n");
     }
 
-    public static void console() {
+    public static void mainConsole() {
         System.out.println("Now Loading frontConsoleMenu()");
         frontConsoleMenu();
-        try {
-            Scanner newScan = new Scanner(System.in);
+        try (Scanner newScan = new Scanner(System.in)) {;
             boolean hasNextInt = newScan.hasNextInt();
             int val = newScan.nextInt();
             try {
-                if (val < 0 | val > 6 | !hasNextInt) {
-                    System.out.println("Please enter valid choices: 0-3");
+                if (val < 0 | val > MAIN_OPTIONS_COUNT | !hasNextInt) {
+                    System.out.println("Please enter valid choices: 0-"+MAIN_OPTIONS_COUNT);
                     // RECURSE
-                    console();
+                    mainConsole();
                 } else {
                     switch (val) {
                         case 1: {
                             UserLogin.login();
-                            carlotView();
                             break;
                         }
                         case 2: {
                             UserRegister.register();
-                            carlotView();
                             break;
                         }
                         case 3: {
                             System.out.println("\n Ok, please enjoy your browsing....");
-                            carlotView();
+                            carlotViewAll();
                             break;
                         }
                         case 4: {
@@ -92,68 +90,52 @@ public class MainDashboard {
                             break;
                         }
                         case 6: {
-                            System.out.println("\n   #6 start(); Test Data...");
+                            System.out.println("\n   #6 start() Test Data...");
                             startBrowsingBuying();
                             break;
                         }
-                        case 7: {
-                            System.out.println("\n   #6 start(); Test Data...");
+                        case MAIN_OPTIONS_COUNT: {
+                            System.out.println("\n   #7 openMaPL();...");
                             openMaPL();
                             break;
                         }
                         case 0: {
                             System.out.println("\n   Come Back *Soon* !\n");
                             System.out.println("\n =======================!\n");
-                            System.exit(0);
+                            System.exit(0); // SUCCESSFUL TERMINATION
                             break;
                         }
                     }
-                    console();
-                    // After returning & Break, back to console
+                    mainConsole();// After stack return & Break, back to console
                 }
 
             } catch (SQLException e) {
-                System.out.println("SQLException" + e);
-                console();
-                // RECURSE
+                System.out.println("SQLException: " + e.getMessage());
+                mainConsole();// RECURSE
             } catch (IOException e) {
-                console();
-                // RECURSE
+                System.out.println("IOException: " + e.getMessage());
+                mainConsole();  // RECURSE
             } catch (ClassNotFoundException e) {
-                System.out.println("Oops, ClassNotFoundException " + e);
-                console();
-                // RECURSE
+                System.out.println("Oops, ClassNotFoundException " + e.getMessage());
+                mainConsole();   // RECURSE
             }
-            console();
+            mainConsole();
 
         } catch (InputMismatchException e) {
-            System.out.println("Oops, Inputs! must choose 1,2,3,4... " + e);
-            console();
+            System.out.println("InputMismatchException, Inputs! must choose 1,2,3,4... ");
+            mainConsole();
             // RECURSE
         }
     }
 
     private static void openMaPL() {
-        System.out.println("Welcome to My Personal Librarian, my name is MaPL.");
+        System.out.println(Cmds.WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL);
         MaPL m = new MaPL();
         m.getMapleState();
-
     }
 
-    static String startupTime() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        Date date = new Date(System.currentTimeMillis());
-		System.out.println(formatter.format(date));
-        return formatter.format(date);
-    }
-
-    public static void carlotView() {
-        List<Car> carList = CarService.getAllCarsCust(); // Customer view of carlot.
-        System.out.println(carList);
-    }
-
-    protected static File checkLocalfiles(String path) {
-        String fileFullPath = (path != null) ? path : String.valueOf("src/data/STARTUP_TEXT.txt");
+    protected static File readStartupFile(String path) {
+        String fileFullPath = (path != null) ? path : String.valueOf(SRC_DATA_STARTUP_TEXT_TXT);
         Path absolutePath = FileSystems.getDefault().getPath(fileFullPath);
         System.out.println("Loading from "+absolutePath);
         File textFile = new File(fileFullPath);
@@ -161,11 +143,11 @@ public class MainDashboard {
     }
 
     public void consoleValidation() {
-        System.out.println(startupTime());
-        File file = checkLocalfiles(null);  //  Checking  local input
-        try (Scanner scanText = new Scanner(file)) {
+        System.out.println(Utilities.startupTime());
+        File startFile = readStartupFile(null);  //  Checking  local input
+        try (Scanner scanText = new Scanner(startFile)) {
             int TEXT_VERSION = scanText.nextInt(); //LINE_1
-              System.out.println("\n    #=== 'src/data/scannertext.txt version': " + TEXT_VERSION + "\n");
+              System.out.println("\n    #=== Doc version': " + TEXT_VERSION + "\n");
             String SQL_DRIVER = scanText.nextLine();  //LINE_2
             try {
                 System.out.println("#=== 'SQL_DRIVER': " + Class.forName(SQL_DRIVER) + "\n");

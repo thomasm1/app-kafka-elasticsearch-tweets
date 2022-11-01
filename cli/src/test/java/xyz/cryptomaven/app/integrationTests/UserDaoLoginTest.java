@@ -40,7 +40,7 @@ class UserDaoLoginTest {  // INTE
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
 		if (un.contentEquals(adminUsername) && pw.contentEquals(adminPassword)) {
 			System.out.println("Welcome Administrator, *" + un + "*\n    ... now preparing your Dashboard");
-			AdminDashboard.loginDashboard(un, login.getFirstName()); //
+			AdminDashboard.adminConsole();//
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
@@ -49,7 +49,7 @@ class UserDaoLoginTest {  // INTE
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
 // USER LOGIN
-			UserDashboard.loginDashboard(un); //
+			UserDashboard.dashboardChoice(un); //
 		}
 	}
 
@@ -58,7 +58,7 @@ class UserDaoLoginTest {  // INTE
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
 		if (un.contentEquals(adminUsername) && pw.contentEquals(adminPassword)) {
 			System.out.println("Welcome Administrator, *" + un + "*\n    ... now preparing your Dashboard");
-			AdminDashboard.loginDashboard(un, login.getFirstName()); //
+//			AdminDashboard.loginDashboard(un, login.getFirstName()); //
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
@@ -67,7 +67,7 @@ class UserDaoLoginTest {  // INTE
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
 // USER LOGIN
-			UserDashboard.loginDashboard(un); //
+			UserDashboard.dashboardChoice(un); //
 //		fail("Not yet implemented");
 		}
 	}

@@ -40,4 +40,9 @@ public class CarService {
 	public static boolean deleteCar(int id) {
 		return cardao.deleteCar(id);
 	}
+
+	public static void carlotViewAll() {
+		System.out.println(getAllCarsCust());
+	};
+
 }

@@ -3,11 +3,11 @@ package xyz.cryptomaven.app.systemUser;
 import xyz.cryptomaven.app.consoles.UserDashboard;
 import xyz.cryptomaven.app.models.User;
 import xyz.cryptomaven.app.service.UserService;
-import xyz.cryptomaven.app.consoles.MainDashboard;
 
 import java.util.Scanner;
 
 import static xyz.cryptomaven.app.constants.Cmds.*;
+import static xyz.cryptomaven.app.util.Utilities._earlyQuit; // RETURNS TO MainConsole
 
 public class UserProfile {
 
@@ -44,42 +44,42 @@ public class UserProfile {
             case 1:
                 System.out.println("Current pw: "+ pw);
                 pw = scan.next();
-                UserLogin._earlyQuit(new String[]{pw});
+                _earlyQuit(new String[]{pw});
                 break;
             case 2:
                 System.out.println("Current fn: "+ fn);
                 fn = scan.next();
-                UserLogin._earlyQuit(new String[]{fn});
+                _earlyQuit(new String[]{fn});
                 break;
             case 3:
                 System.out.println("Current ln: "+ ln);
                 ln = scan.next();
-                UserLogin._earlyQuit(new String[]{ln});
+                _earlyQuit(new String[]{ln});
                 break;
             case 4:
                 System.out.println("Current userType: "+ userType);
                 userType = scan.nextInt();
-                UserLogin._earlyQuit(new String[]{String.valueOf(userType)});
+                _earlyQuit(new String[]{String.valueOf(userType)});
                 break;
             case 5:
                 System.out.println("Current groups: "+ groups);
                 groups = scan.nextInt();
-                UserLogin._earlyQuit(new String[]{String.valueOf(groups)});
+                _earlyQuit(new String[]{String.valueOf(groups)});
                 break;
             case 6:
                 System.out.println("Current email: "+ email);
                 email = scan.next();
-                UserLogin._earlyQuit(new String[]{email});
+                _earlyQuit(new String[]{email});
                 break;
             case 7:
                 System.out.println("Current phone: "+ phone);
                 phone = scan.next();
-                UserLogin._earlyQuit(new String[]{phone});
+                _earlyQuit(new String[]{phone});
                 break;
             case 8:
                 System.out.println("Current url: "+ url);
                 url = scan.next();
-                UserLogin._earlyQuit(new String[]{url});
+               _earlyQuit(new String[]{url});
                 break;
             case 0:
                 saveProfile(user, pw, fn, ln, userType, groups, email, phone, url);

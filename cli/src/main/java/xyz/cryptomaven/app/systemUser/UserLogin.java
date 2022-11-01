@@ -11,6 +11,8 @@ import java.util.Scanner;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 
+import static xyz.cryptomaven.app.util.Utilities._earlyQuit; //RETURNS TO MainConsole
+
 public class UserLogin {
 
     public static final String ADMIN = "admin";
@@ -30,8 +32,8 @@ public class UserLogin {
 
             //  admin   hardcoded backdoor
             if (hardCodedAdminNameAndPassword(un, pw)) {
-                User login = UserService.getUser(un);
-                AdminDashboard.loginDashboard(un, login.getFirstName()); //
+//                User login = UserService.getUser(un);
+                AdminDashboard.adminConsole(); //
             }
 
             // VALIDATION #1 - LOOK UP AND GET Targeted DB USER
@@ -43,7 +45,7 @@ public class UserLogin {
                     login(); // login input clears for next attempt
                 } catch (InputMismatchException e) {
                     e.getMessage();
-                    MainDashboard.console();
+                    MainDashboard.mainConsole();
                 }
             }
             scanner.close();
@@ -54,34 +56,17 @@ public class UserLogin {
         }
     }
 
-    static void _earlyQuit(String[] args) {
-        if (args.length < 1) return;
-        if (args.length < 2) {
-            if (args[0].contentEquals("quit")) {
-                MainDashboard.console();
-            }
-        } else {
-            for (String s : args) {
-                if (s.contentEquals("quit")) {
-                    MainDashboard.console();
-                }
-            }
-        }
-
-    }
-
     static void decideDashboard(String resp, String userName) {
-//		if (yes.matches(("y" | "yes" | "true"|"1"))) {
-        if (resp.contentEquals("yes")) {
+		if (resp.matches("y|yes|true")) {
             try {
                 System.out.println("...sounds good, *" + userName + "*, now logging you into your Dashboard");
-                UserDashboard.loginDashboard(userName);
+                UserDashboard.dashboardChoice(userName);
             } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
-                MainDashboard.console();
+                MainDashboard.mainConsole();
             }
         } else {
-            MainDashboard.console();
+            MainDashboard.mainConsole();
         }
     }
 

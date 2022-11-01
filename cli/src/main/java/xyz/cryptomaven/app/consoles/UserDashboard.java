@@ -24,6 +24,7 @@ public class UserDashboard {
 
 	// RECURSIVE LOOP, breaks out at option 0
 	public static void dashboardChoice(String username) {
+		System.out.println("\n Welcome to your Dashboard! *" + username + "*, ");
 		System.out.println(WHAT_TO_DO);
 		System.out.println("1: "+VIEW_MY_CARS);
 		System.out.println("2: "+VIEW_ALL_CARS);
@@ -33,10 +34,8 @@ public class UserDashboard {
 		System.out.println("6: "+"Edit my Profile ");
 		System.out.println("0: "+LEAVE_MENU);
 
-		Scanner scan = new Scanner(System.in);
-		int val = scan.nextInt();
-
-try {
+try(Scanner scan = new Scanner(System.in)) {
+	int val = scan.nextInt();
 	if (val < MENU_FIRST || val > MENU_LAST) {
 		System.out.println(OOPS_OPTIONS);
 		val = scan.nextInt();
@@ -47,7 +46,6 @@ try {
 			try {
 				System.out.println("_____Cars I own:_______");
 //				List<Car> carList = CarService.getAllCarsIOwn(username);
-				
 				System.out.println(ElectroLotService.getAllElectroLot(username));
 				ElectroLotService.getAllElectroLot(username);
 
@@ -79,8 +77,7 @@ try {
 			dashboardChoice(username);
 		}
 		case 3: {
-			try { 
-
+			try {
 				List<Car> carList = CarService.getAllCarsCust();
 				scan.nextLine();
 				System.out.println("Which car #?");
@@ -152,21 +149,14 @@ try {
 		}
 		case 0: {
 			System.out.println(GOOD_BYE);
-			MainDashboard.console();
+			MainDashboard.mainConsole();
 			break;
 		}
 		}
 	}
 	dashboardChoice(username);
-} finally {
-	scan.close(); 
 }
 
 	};
 
-	public static void loginDashboard(String userName) {
-		System.out.println("\n Welcome to your Dashboard! *" + userName + "*, ");
-		dashboardChoice(userName);
-
-	}
 }

@@ -20,7 +20,11 @@
             </plugin>
         </plugins>
     </build>
-    <modules>
+    <modules>cli
+		<module>cli</module>
+		<module>CliMongoApp</module>
+		<module>doggywood</module>
+		<module>maplmq</module>
         <module>kafka-consumer-elasticsearch</module>
         <module>kafka-basic</module>
         <module>kafka-producer-twitter</module>

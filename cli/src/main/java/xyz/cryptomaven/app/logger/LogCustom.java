@@ -8,7 +8,8 @@ public class LogCustom {
 
 	public static void logger() {
 		CliLogger.getInstance().always();
-		System.out.println("logging");
+		logCheck();
+		System.out.println("lOG custom logging");
 
 	}
 	public static void info() {
@@ -20,7 +21,7 @@ public class LogCustom {
 		try {
 			int x = 1/0;
 		} catch (ArithmeticException e) {
-			CliLogger.getInstance().error( e.getMessage());
+			CliLogger.getInstance().error("System Logger Check: "+ e.getMessage());
 		}
 		CliLogger.getInstance().info("Program ended");
 	}

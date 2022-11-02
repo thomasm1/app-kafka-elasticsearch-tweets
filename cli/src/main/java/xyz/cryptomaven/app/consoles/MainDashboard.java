@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import xyz.cryptomaven.app.constants.Cmds;
+import xyz.cryptomaven.app.logger.CliLogger;
 import xyz.cryptomaven.app.logger.LogCustom;
 import xyz.cryptomaven.app.models.Car;
 import xyz.cryptomaven.app.models.MaPL;
@@ -18,18 +19,23 @@ import xyz.cryptomaven.app.systemUser.UserLogin;
 import xyz.cryptomaven.app.systemUser.UserRegister;
 import xyz.cryptomaven.app.util.Utilities;
 
-import static xyz.cryptomaven.app.cli.CliLoader.runDownloaderJob;
-import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying;
-import static xyz.cryptomaven.app.service.CarService.carlotViewAll;
+import static xyz.cryptomaven.app.service.CarService.carlotViewAll; // 3 DB
+import static xyz.cryptomaven.app.cli.CliLoader.runDownloaderJob; //4 download
+import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader; // 5 browse offline lot
+import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying; // 6 auto user
+import static xyz.cryptomaven.app.consoles.GeoDashboard.mainNavigator; // 7 Local
 
+import xyz.cryptomaven.app.logger.LogCustom;
 public class MainDashboard {
-    private static final int MAIN_OPTIONS_COUNT = 7;
+    private static final int MAIN_OPTIONS_COUNT = 8;
     private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt";
+    public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private Map<String, String> dataMap = new HashMap<>();
     private MaPL sessionMaPL = new MaPL();
 
     public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
         LogCustom.logger();
+        System.out.println(CliLogger.getInstance());
         /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
         MainDashboard m = new MainDashboard();
         m.consoleValidation();
@@ -46,10 +52,11 @@ public class MainDashboard {
     private static void frontConsoleMenu() {
         System.out.println("\n1.) Log in \n"
                 + "2.) Register  \n"
-                + "3.) Browse the lot\n"
-                + "4.) to Play Navigation Game \n"
-                + "5.) Background Web Loader\n"
-                + "6.) Set in Motion Automated USER\n"
+                + "3.) Browse the lot from Oracle Database\n"
+                + "4.) Download from Web\n"
+                + "5.) Browse the lot [Offline]\n"
+                + "6.) Set in Motion Automated USER [Offline]\n"
+                + MAIN_OPTIONS_COUNT+".) Play Navigation Game [Offline] \n"
                 + "Stop Application, press '0'.\n");
     }
 
@@ -75,21 +82,27 @@ public class MainDashboard {
                             break;
                         }
                         case 3: {
-                            System.out.println("\n Ok, please enjoy your browsing....");
+                            System.out.println("\n Ok, Accessing DB ...please enjoy your browsing....");
                             carlotViewAll();
                             break;
                         }
                         case 4: {
-                            System.out.println("\n Ok, #4 ...");
-                            GeoDashboard.mainNavigator(new String[]{}); //{"any", "options"});
+                            System.out.println("\n Ok, Initiating Local Offline Data Loader....");
+                            // Local Offline Data Loader
+                            cliDataLoader();
                             break;
                         }
                         case 5: {
+                            System.out.println("\n Ok, #4 ...");
+                            mainNavigator(new String[]{}); //{"any", "options"});
+                            break;
+                        }
+                        case 6: {
                             System.out.println("\n   #5, runDownloaderJob();...");
                             runDownloaderJob();
                             break;
                         }
-                        case 6: {
+                        case 7: {
                             System.out.println("\n   #6 start() Test Data...");
                             startBrowsingBuying();
                             break;
@@ -147,12 +160,11 @@ public class MainDashboard {
         File startFile = readStartupFile(null);  //  Checking  local input
         try (Scanner scanText = new Scanner(startFile)) {
             int TEXT_VERSION = scanText.nextInt(); //LINE_1
-              System.out.println("\n    #=== Doc version': " + TEXT_VERSION + "\n");
             String SQL_DRIVER = scanText.nextLine();  //LINE_2
+            System.out.println("\n    #=== Doc version': " + TEXT_VERSION + "SQL_DRIVER: "+SQL_DRIVER + Cmds.BR);
             try {
-                System.out.println("#=== 'SQL_DRIVER': " + Class.forName(SQL_DRIVER) + "\n");
+                System.out.println(Class.forName(DRIVER));
             } catch (ClassNotFoundException e) {
-                System.out.println(e.getMessage());
                 System.out.println(Cmds.OOPS_JDBC);
             }
             System.out.println(Cmds.NOW_LOGGING);
@@ -167,7 +179,7 @@ public class MainDashboard {
                     dataMap.put(String.valueOf( counter++), scanData);
                 }
             }
-            System.out.println(dataMap.values());
+            System.out.println(dataMap.entrySet());
             sessionMaPL.registerCmds(dataMap);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());

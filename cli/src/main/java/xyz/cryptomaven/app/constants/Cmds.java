@@ -28,6 +28,7 @@ public class Cmds {
     public static final String REGISTER_LNAME = " ,  last name:\n";
 
 // EDIT PROFILE
+    public static final String EDIT_MY_PROFILE = "Edit my Profile";
     public static final String WELCOME_PROFILE = "Welcome to Your Profile, \n";
     public static final String EDIT_PW  = "Edit password :";
     public static final String EDIT_FNAME = "Edit first name :";

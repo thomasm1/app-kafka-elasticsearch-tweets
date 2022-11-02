@@ -1,5 +1,5 @@
 1001
-"oracle.jdbc.driver.OracleDriver"
+oracle.jdbc.driver.OracleDriver
 CryptoMaven - My Personal Librarian
 Thomas Maestas
 -|

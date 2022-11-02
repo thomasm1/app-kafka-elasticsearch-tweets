@@ -25,8 +25,7 @@ public class CliLoader {
     private static List<Offer> offers;
 
     // launch methods
-    static void cliDataLoader() throws IOException {
-        System.out.println(CliLogger.getInstance());
+    public static void cliDataLoader() throws IOException {
         System.out.println("1. LOADING BOOKMARK DATA");
         TestDataStore.loadData();
         users = UserManager.getInstance().getUsers();

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 public class CliLogger implements Serializable, Cloneable  {
 	
 	private static final long serialVersionUID = 1L;
+	public static int count; //0
 	private static Logger instanceLogger = null; // create & store singleton
 	private CliLogger() { }; // prevent from alter-creation
 	 
@@ -18,6 +19,7 @@ public class CliLogger implements Serializable, Cloneable  {
 			synchronized(CliLogger.class) { 
 					setInstance(  LogManager.getLogger(CliLogger.class));  
 		}
+		count++;
 		return instanceLogger;
 	}
 	

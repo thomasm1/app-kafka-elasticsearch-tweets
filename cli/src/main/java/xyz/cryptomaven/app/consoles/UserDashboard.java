@@ -16,11 +16,9 @@ import static xyz.cryptomaven.app.constants.Cmds.*;
 
 public class UserDashboard {
 
-	
+
 	private static final int MENU_FIRST = 0;
 	public static final int MENU_LAST = 6;
-
-	Integer val;
 
 	// RECURSIVE LOOP, breaks out at option 0
 	public static void dashboardChoice(String username) {
@@ -31,7 +29,7 @@ public class UserDashboard {
 		System.out.println("3: "+VIEW_CAR_DETAILS);
 		System.out.println("4: "+MAKE_AN_OFFER);
 		System.out.println("5: "+MAKE_INQUIRY_MY_OFFERS);
-		System.out.println("6: "+"Edit my Profile ");
+		System.out.println("6: "+EDIT_MY_PROFILE);
 		System.out.println("0: "+LEAVE_MENU);
 
 try(Scanner scan = new Scanner(System.in)) {
@@ -139,8 +137,8 @@ try(Scanner scan = new Scanner(System.in)) {
 		}
 		case 6: {
 			try { // pass in Loggeed in user object for Profile Edit
-				User user = UserService.getUser(username);
-				UserProfile.editProfile(user);
+//				User user = UserService.getUser(username);
+				UserProfile.editProfile(UserService.getUser(username));
 
 			} catch (Exception e) {
 				dashboardChoice(username);

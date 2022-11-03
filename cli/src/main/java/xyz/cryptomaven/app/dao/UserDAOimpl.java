@@ -25,10 +25,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	public boolean createUser(User u) {
 //		DB.users.put(u.getUserID(), c);
 		// USER is autoincrement
-		String sql = "CALL add_new_users(?,?,?, ?,?,?, ?,?,?)";
+		String sql = "CALL add_new_users(?,?,?, ?,?,?, ?,?,?, ?,?,?, ?,?)";
 		try {
 			CallableStatement cs = conn.prepareCall(sql);
-			cs.setString(1, u.getUsername());
+			cs.setString(1, u.getUserName());
 			cs.setString(2, u.getPassword());
 			cs.setString(3, u.getLastName());
 			cs.setString(4, u.getFirstName());
@@ -37,6 +37,11 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			cs.setString(7, u.getEmail());
 			cs.setString(8, u.getPhone());
 			cs.setString(9, u.getCusUrl());
+			cs.setString(10, u.getPhotoPath());
+			cs.setString(11, u.getUserGroup());
+			cs.setString(12, Integer.toString(u.getIsActive()));
+			cs.setString(13, Integer.toString(u.getContactType()));
+			cs.setString(14, u.getId());
 
 			cs.execute();
 			return true;
@@ -60,7 +65,9 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				return new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password")
+				return new User(rs.getInt("userid"),
+						rs.getString("username"),
+						rs.getString("password")
 //						,rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("groups"),
 //						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl")
 						);
@@ -88,9 +95,22 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				return new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password"),
-						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("groups"),
-						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl"));
+				return new User(rs.getInt("userid"),
+						rs.getString("username"),
+						rs.getString("password"),
+						rs.getString("lastname"),
+						rs.getString("firstName"),
+						rs.getInt("userType"),
+						rs.getInt("groups"),
+						rs.getString("email"),
+						rs.getString("phone"),
+						rs.getString("cusUrl"),
+						rs.getString("photoPath"),
+						rs.getString("userGroup"),
+						rs.getInt("isActive"),
+						rs.getInt("contactType"),
+						rs.getString("id")
+				);
 			}
 
 		} catch (Exception e) {
@@ -110,9 +130,22 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				return new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password"),
-						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("groups"),
-						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl"));
+				return new User(rs.getInt("userid"),
+						rs.getString("username"),
+						rs.getString("password"),
+						rs.getString("lastname"),
+						rs.getString("firstName"),
+						rs.getInt("userType"),
+						rs.getInt("groups"),
+						rs.getString("email"),
+						rs.getString("phone"),
+						rs.getString("cusUrl"),
+						rs.getString("photoPath"),
+						rs.getString("userGroup"),
+						rs.getInt("isActive"),
+						rs.getInt("contactType"),
+						rs.getString("id")
+				);
 			}
 
 		} catch (Exception e) {
@@ -149,9 +182,22 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			// preparedStatements are safe from SQL injection & sanitize inputs
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				userArr.add(new User(rs.getInt("userid"), rs.getString("username"), rs.getString("password"),
-						rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("groups"),
-						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl")));
+				userArr.add(new User(rs.getInt("userid"),
+						rs.getString("username"),
+						rs.getString("password"),
+						rs.getString("lastname"),
+						rs.getString("firstName"),
+						rs.getInt("userType"),
+						rs.getInt("groups"),
+						rs.getString("email"),
+						rs.getString("phone"),
+						rs.getString("cusUrl"),
+						rs.getString("photoPath"),
+						rs.getString("userGroup"),
+						rs.getInt("isActive"),
+						rs.getInt("contactType"),
+						rs.getString("id")
+				));
 			}
 			return userArr;
 		} catch (SQLException e) {
@@ -176,7 +222,14 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ps.setString(6, change.getEmail());
 			ps.setString(7, change.getPhone());
 			ps.setString(8, change.getCusUrl());
-			ps.setString(9, change.getUsername());
+			ps.setString(10, change.getPhotoPath());
+			ps.setString(11, change.getUserGroup());
+			ps.setString(12, Integer.toString(change.getIsActive()));
+			ps.setString(13, Integer.toString(change.getContactType()));
+			ps.setString(14, change.getId());
+
+
+			ps.setString(9, change.getUserName());
 			ps.executeQuery();
 
 			return true;

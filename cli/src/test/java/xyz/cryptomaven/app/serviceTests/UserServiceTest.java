@@ -19,7 +19,12 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 		  User  p2;// update
 		  User p3; //delete
 
-	User u = new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");    // PASSES
+	User u = new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
+			"photoPath",
+			"userGroup",
+			0,
+			1,
+			"id");    // PASSES
 	// UI Source
 	String loggedUserName = "user4";
 	String loggedInPW = "passWordX";
@@ -46,19 +51,24 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
    	public void get_user() {
    		assertEquals(loggedInPW, u.getPassword());
 		   //cleanup
-		UserService.deleteUser(UserService.getUser(u.getUserId()).getUsername());
+		UserService.deleteUser(UserService.getUser(u.getUserId()).getUserName());
    	} 
 
     @Test   
    	public void update_user() {
-		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");   // PASSES
+		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
+				"photoPath",
+				"userGroup",
+				0,
+				1,
+				"id");   // PASSES
    		assertTrue(UserService.updateUser(uUpdated));
 //		   TODO - verify changes from db
    	} 
 
     @Test   
    	public void delete_user() {
-   		assertTrue(UserService.deleteUser(u.getUsername())); 
+   		assertTrue(UserService.deleteUser(u.getUserName()));
 
    	}
     

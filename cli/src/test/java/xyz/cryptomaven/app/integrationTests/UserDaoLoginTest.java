@@ -44,7 +44,7 @@ class UserDaoLoginTest {  // INTE
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
-				| (un.contentEquals(login.getUsername()) && pw.contentEquals(login.getPassword()))) {
+				| (un.contentEquals(login.getUserName()) && pw.contentEquals(login.getPassword()))) {
 			System.out.println(
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
@@ -62,7 +62,7 @@ class UserDaoLoginTest {  // INTE
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
-				| (un.contentEquals(login.getUsername()) && pw.contentEquals(login.getPassword()))) {
+				| (un.contentEquals(login.getUserName()) && pw.contentEquals(login.getPassword()))) {
 			System.out.println(
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;

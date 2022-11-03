@@ -20,18 +20,18 @@ public class UserManager {
 		return instance;
 	}
 
-	public User createUser(int userId, long id, String lastName, String firstName, String userName, String password,
-						   int userType, int groups, String email, String phone, String cusUrl) {
+	public User createUser(int userId, String userName, String password,  String lastName, String firstName,
+						   int groups, int userType,  String email, String phone, String cusUrl,  String id ) {
 		
 		User user = new User();
 		user.setUserId(userId);
 		user.setId(id);
 		user.setLastName(lastName);
 		user.setFirstName(firstName);
-		user.setUsername(userName);
+		user.setUserName(userName);
 		user.setPassword(password);
-		user.setUserType(userType); 
 		user.setGroups(groups);
+		user.setUserType(userType);
 		user.setEmail(email);
 		user.setPhone(phone);
 		user.setCusUrl(cusUrl);

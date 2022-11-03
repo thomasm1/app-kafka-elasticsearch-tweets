@@ -57,6 +57,4 @@ public class UserService {
 		return userdaoImpl.deleteUser(username);
 	}
 
-	public static void createUser(String user4, String passwordX, String smith, String tom, int i, int i1, String s, String s1, String s2) {
-	}
 }

@@ -63,14 +63,14 @@ public class LoginWebService {
 		System.out.println("this user is not verified as a Groups Head, checking tho...");
 
 		for (User u : uu) { // this is user object logged in
-			if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-				System.out.println("logged in! " + u.getUsername() + " matches " + username + "\n" + "and "
+			if (u.getUserName().equals(username) && u.getPassword().equals(password)) {
+				System.out.println("logged in! " + u.getUserName() + " matches " + username + "\n" + "and "
 						+ u.getPassword() + " matches " + password + " :-)... welcome");
 				valid = true;
 				/// GET USER DETAILS
-				User userLogged = UserService.getUser(u.getUsername());
+				User userLogged = UserService.getUser(u.getUserName());
 				System.out.println(userLogged.toString());
-				dbUser = userLogged.getUsername();
+				dbUser = userLogged.getUserName();
 				dbId = userLogged.getUserId();
 				dbGroups = userLogged.getGroups();
 				System.out.println("dbGroups: " + dbGroups + ", passes validation: " + valid);

@@ -57,13 +57,13 @@ public class TestDataStore {
 	}
 
 		private static void loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
-//		users[0] = UserManager.getInstance().createUser(500, 1000,	"Smith", "Tom", "user0", "password",  UserType.USER, Group.MALE, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net");
+//		users[0] = UserManager.getInstance().createUser(500,  "user0", "password", "Smith", "Tom", Group.MALE,  UserType.USER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "1000");
  	List<String> data = new ArrayList<>();
 			InputOutput.readFromFilename(data,  FILE_IN_USERS);
 			System.out.println("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
-				User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), Long.parseLong(values[1]), values[2], values[3], values[4], values[5], Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], values[9], values[10]);
+				User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), values[1], values[2], values[3], values[4], Integer.parseInt(values[5]), Integer.parseInt(values[6]), values[8], values[9], values[10],  values[11]);
 				users.add(user);
 				TEST_USERS = users.size();
 			}

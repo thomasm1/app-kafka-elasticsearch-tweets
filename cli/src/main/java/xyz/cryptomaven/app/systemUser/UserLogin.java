@@ -74,7 +74,7 @@ public class UserLogin {
         User login = UserService.getUser(un); // returns null if not in DB
 //	    VALIDATION #2 - Check targeted DB User against logged-in Username & password
         if (login != null && (un.contentEquals(
-                login.getUsername()) && pw.contentEquals(
+                login.getUserName()) && pw.contentEquals(
                 login.getPassword()
         ))) {
             System.out.println(

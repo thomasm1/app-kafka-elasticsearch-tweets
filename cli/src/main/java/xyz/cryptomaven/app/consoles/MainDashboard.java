@@ -1,20 +1,13 @@
 package xyz.cryptomaven.app.consoles;
 
 import java.io.*;
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import xyz.cryptomaven.app.constants.Cmds;
-import xyz.cryptomaven.app.logger.CliLogger;
-import xyz.cryptomaven.app.logger.LogCustom;
-import xyz.cryptomaven.app.models.Car;
 import xyz.cryptomaven.app.models.MaPL;
-import xyz.cryptomaven.app.service.CarService;
 import xyz.cryptomaven.app.systemUser.UserLogin;
 import xyz.cryptomaven.app.systemUser.UserRegister;
 import xyz.cryptomaven.app.util.Utilities;
@@ -25,22 +18,22 @@ import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader; // 5 browse offli
 import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying; // 6 auto user
 import static xyz.cryptomaven.app.consoles.GeoDashboard.mainNavigator; // 7 Local
 
+import xyz.cryptomaven.app.logger.CliLogger;
 import xyz.cryptomaven.app.logger.LogCustom;
+
 public class MainDashboard {
     private static final int MAIN_OPTIONS_COUNT = 8;
     private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt";
     public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private Map<String, String> dataMap = new HashMap<>();
+    private Map<String, String> dataMap = new TreeMap<>();
     private MaPL sessionMaPL = new MaPL();
 
     public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
-        LogCustom.logger();
-        System.out.println(CliLogger.getInstance());
         /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
         MainDashboard m = new MainDashboard();
         m.consoleValidation();
 
-        /// #2  Loading Recursive Console Scanner accepting Integer Input
+        /// #1  Loading Recursive Console Scanner accepting Integer Input
         try {
             mainConsole();
         } catch (Exception e) {
@@ -157,6 +150,9 @@ public class MainDashboard {
 
     public void consoleValidation() {
         System.out.println(Utilities.startupTime());
+        System.out.println(Cmds.NOW_LOGGING);
+        LogCustom.logger();
+
         File startFile = readStartupFile(null);  //  Checking  local input
         try (Scanner scanText = new Scanner(startFile)) {
             int TEXT_VERSION = scanText.nextInt(); //LINE_1
@@ -167,11 +163,13 @@ public class MainDashboard {
             } catch (ClassNotFoundException e) {
                 System.out.println(Cmds.OOPS_JDBC);
             }
-            System.out.println(Cmds.NOW_LOGGING);
             String APP_TITLE = scanText.nextLine(); //LINE_3
-            System.out.println(APP_TITLE);
+            System.out.println("'3':APP_TITLE="+APP_TITLE );
+            dataMap.put("3",APP_TITLE);
+
             String AUTHOR = scanText.nextLine(); //LINE_4
-            System.out.println(AUTHOR);
+            dataMap.put("4",AUTHOR);
+            System.out.println("'4':AUTHOR="+AUTHOR);
             int counter = 10; //Miscellaneous Data Starting at LINE 10:  KEY IS LINE NUMBER
             while(scanText.hasNext()) {
                 String scanData = scanText.nextLine();

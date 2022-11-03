@@ -83,7 +83,7 @@ public class MysqlDataStore {
         System.out.println("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
         for (String row : data) {
             String[] values = row.split(",");
-            User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), Long.parseLong(values[1]), values[2], values[3], values[4], values[5], Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], values[9], values[10]);
+            User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), values[1], values[2], values[3],  values[4], Integer.parseInt(values[5]), Integer.parseInt(values[6]), values[8], values[9], values[10],  values[11]);
             users.add(user);
             TEST_USERS = users.size();
         }

@@ -55,12 +55,12 @@ public class UserWebService {
 		String userName = request.getParameter("username");
 		System.out.println("parameter: "+userName);
 		User u = UserService.getUser(userName);
-		System.out.println("getUser(name):"+u.getUsername());
+		System.out.println("getUser(name):"+u.getUserName());
 		
-		User d = UserService.getUser(u.getUsername());
+		User d = UserService.getUser(u.getUserName());
 		System.out.println("getUser(name):"+d.getUserId());
 		 
-		String dbUser = d.getUsername();
+		String dbUser = d.getUserName();
 		int dbId = d.getUserId();
 		int dbGroups = d.getGroups();
 		System.out.println(dbUser+"..getting userInfo:" );

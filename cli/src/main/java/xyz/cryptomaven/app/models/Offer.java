@@ -22,9 +22,8 @@ public class Offer {
 	}
  
 	// userName integer not string passed
-	public Offer(int offerID, int userID, int carId, double offerAmt, int offerMos, String offerStatus) {
-		this.offerID = offerID; 
-		this.userID = userID;
+	public Offer(String userName, int carId, double offerAmt, int offerMos, String offerStatus) {
+		this.userName = userName;
 		this.carId = carId;
 		this.offerAmt = offerAmt;
 		this.offerMos = offerMos;

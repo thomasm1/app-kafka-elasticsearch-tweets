@@ -2,7 +2,6 @@ package xyz.climongoapp.entity;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -11,23 +10,35 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "User")
 public class User {
-
-	@Id
-	private int id;
+	private int userId;
 
 	@Field(name="name")
 	private String userName;
 
-	private String lastName;
-
-	private String firstName;
-
-	private String email;
-
 	private String password;
 
+	private String lastName;
+	private String firstName;
+
+	private Integer userType;
+
+	@Field(name="groups")
 	@DBRef
 	private Groups Groups;
+	private String email;
+	private String phone;
+	private String cusUrl;
+	private String photoPath;
+	private String userGroup;
+	private int isActive;
+	private int contactType; // ContactType contactType
+	@Id
+	private String id;
+//	alter table users add photopath varchar2(400);
+//	alter table users add userGroup varchar2(100);
+//	alter table users add isActive number(1);
+//	alter table users add contacttype number(2);
+
 
 	@DBRef
 	private List<Car> cars;
@@ -35,62 +46,21 @@ public class User {
 	@Transient
 	private double percentage;
 
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Groups getGroups() {
-		return Groups;
-	}
-
-	public void setGroups(Groups Groups) {
-		this.Groups = Groups;
-	}
+//	{
+//		"userGroup": "5",
+//			"lastName": "lastname",
+//			"photoPath": "assets/images/a.png",
+//			"email": "thomasm1.maestas@gmail.com",
+//			"uid": "43uxxxid",
+//			"isActive": true,
+//			"lastname": "das;lkfj",
+//			"firstname": "a;lsdfkj",
+//			"contactType": "email",
+//			"username": "myUserName",
+//			"dateOfBirth": "2020/09/03",
+//			"id": "1",
+//			"phone": 5550005555
+//	},
 
 	public List<Car> getCars() {
 		return cars;

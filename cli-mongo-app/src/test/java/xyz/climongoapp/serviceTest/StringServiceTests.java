@@ -211,13 +211,13 @@ public class StringServiceTests {
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             stringService.cleanPhoneNumber("123-abc-7890");
         });
-        Assertions.assertEquals("For input string: \"One\"", thrown.getMessage());
+        Assertions.assertEquals("java.lang.IllegalArgumentException", thrown.getMessage());
 
         //		expectedException.expect(IllegalArgumentException.class);
         IllegalArgumentException thrown2 = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             stringService.cleanPhoneNumber("123-@:!-7890");
         });
-        Assertions.assertEquals("For input string: \"One\"", thrown2.getMessage());
+        Assertions.assertEquals("java.lang.IllegalArgumentException", thrown2.getMessage());
 
 
     }
@@ -497,12 +497,12 @@ public class StringServiceTests {
 
     @Test
     public void testEncodeYes() {
-//		assertEquals("bvh", StringService.AtbashCipher.encode("yes"));
+		assertEquals("bvh", StringService.AtbashCipher.encode("yes"));
     }
 
     @Test
     public void testEncodeOmgInCapital() {
-//		assertEquals("lnt", StringService.AtbashCipher.encode("OMG"));
+		assertEquals("lnt", StringService.AtbashCipher.encode("OMG"));
     }
 
     @Test

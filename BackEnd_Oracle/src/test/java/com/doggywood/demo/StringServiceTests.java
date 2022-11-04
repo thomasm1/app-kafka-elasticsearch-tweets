@@ -517,15 +517,14 @@ public class StringServiceTests {
 	/*******************************************************************
 	 * Question 13
 	 ******************************************************************/
-
 	@Test
 	public void testEncodeYes() {
-//		assertEquals("bvh", StringService.AtbashCipher.encode("yes"));
+		assertEquals("bvh", StringService.AtbashCipher.encode("yes"));
 	}
 
 	@Test
 	public void testEncodeOmgInCapital() {
-//		assertEquals("lnt", StringService.AtbashCipher.encode("OMG"));
+		assertEquals("lnt", StringService.AtbashCipher.encode("OMG"));
 	}
 
 	@Test

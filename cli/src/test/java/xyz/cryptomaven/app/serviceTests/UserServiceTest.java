@@ -18,6 +18,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
         User  p1; //  get
 		  User  p2;// update
 		  User p3; //delete
+	int rand;
 
 	User u = new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
 			"photoPath",
@@ -37,6 +38,9 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
 	@BeforeEach
 	public void setup() {
+		int num = 711;
+		rand = (int) ((int) num * Math.random());
+		System.out.println("Method/Instance setup "+rand);
 		UserService.createUser(u);
 		System.out.println("Method/Instance setup ");
 	}

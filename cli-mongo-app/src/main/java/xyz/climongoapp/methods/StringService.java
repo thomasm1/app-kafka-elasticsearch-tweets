@@ -1,7 +1,6 @@
 package xyz.climongoapp.methods;
  
-import java.time.temporal.Temporal;
-import java.util.Base64;
+import java.time.temporal.Temporal; 
 import java.util.List;
 import java.util.Map;
 
@@ -393,8 +392,58 @@ public class StringService {
 		 * @return
 		 */
 		public static String encode(String string) {
-//			String encoded = Base64.getEncoder().encode(string);
-			return string;
+			String[] stringArr = string.replaceAll("[^a-zA-Z0-9 ]", "").split("");
+			String[] newArr = new String[stringArr.length];
+			String alpha = new String("abcdefghijklmnopqrstuvwxyz");
+			String[] alphaArr = alpha.split("");
+			for (int i = 0;i<newArr.length;i++) {
+				String it = stringArr[i].toLowerCase();
+				for(int j = 0;j < alphaArr.length;j++) {
+			 	if(it.equals(alphaArr[j])  ) {
+						newArr[i] = alphaArr[alphaArr.length-j -1];
+					}
+				}
+			}
+			String a = String.join("",newArr);
+			System.out.println(a);
+			return a;
+		}
+//		public static String encode(String string) {
+////			String[] words = string.split("\\s+");
+//			String[] stringArr = string.replace(" ","").split("");
+//			String[] newArr = new String[stringArr.length+(stringArr.length/5)];
+//			System.out.println(newArr.length);
+//			String alpha = new String("abcdefghijklmnopqrstuvwxyz");
+//			String[] alphaArr = alpha.split("");
+//			int x = 0;
+//			int count = 0;
+//			for (int i = 0;i<newArr.length;i++) {
+//				String it = stringArr[i].toLowerCase();
+//				for(int j = 0;j < alphaArr.length;j++) {
+//					if((i+1) % 5 == 0) {
+//						newArr[i+1] = " ";
+//						x++;
+//					} else if(it.equals(alphaArr[j])  ) {
+//						newArr[i+x] = alphaArr[alphaArr.length-j -1];
+//						System.out.println(newArr[i+x]);
+//					}
+//					count++;
+//				}
+//			}
+//			System.out.println(count);
+//			String a = String.join("",newArr);
+//			return a;
+//		}
+		/**
+		 * StringService 14
+		 * 
+		 * @param string
+		 * @return
+		 */
+		public static String decode(String string) {
+			// TODO Write an implementation for this method declaration
+			return null;
+		}
 		}
 
 		/**
@@ -407,7 +456,7 @@ public class StringService {
 			// TODO Write an implementation for this method declaration
 			return null;
 		}
-	}
+
 
 	/**
 	 * 15. The ISBN-10 verification process is used to validate book identification

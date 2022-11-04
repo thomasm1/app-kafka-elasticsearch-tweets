@@ -1,15 +1,9 @@
 package xyz.cryptomaven.mq.maplmq;
  
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageProducer;
-import javax.jms.Queue;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+import javax.jms.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.util.Enumeration;
 
 public class QueueJMS_1 {
 
@@ -24,14 +18,30 @@ public class QueueJMS_1 {
 			Session session = connection.createSession();
 			Queue queue = (Queue) initialContext.lookup("queue/maplQueue");
 			MessageProducer producer = session.createProducer(queue);
-			TextMessage message = session.createTextMessage("M.a.P.L. At your Service, your Personal Librarian");
+			TextMessage message = session.createTextMessage("Good morning M.a.P.L. AAre you at my Service? My Personal Librarian");
+			TextMessage message2 = session.createTextMessage("Good evening M.a.P.L. AAre you at my Service? My Personal Librarian");
 			producer.send(message);
+			producer.send(message2);
+
 			System.out.println("message sent: "+ message.getText());
-			
+			System.out.println("message 2 sent: "+ message2.getText());
+
+			QueueBrowser browser = session.createBrowser(queue);
+			Enumeration messagesEnum = browser.getEnumeration();
+
+			while(messagesEnum.hasMoreElements()) {
+				TextMessage eachMsg = (TextMessage)  messagesEnum.nextElement();
+				System.out.println("Browsing: " + eachMsg.getText());
+			}
+
 			MessageConsumer consumer = session.createConsumer(queue);
 			connection.start();
+
 			TextMessage messageReceived = (TextMessage) consumer.receive(5000);
 			System.out.println("message received: " + messageReceived.getText());
+
+			messageReceived = (TextMessage) consumer.receive(5000);
+			System.out.println("message 2 received: " + messageReceived.getText());
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (JMSException e) {

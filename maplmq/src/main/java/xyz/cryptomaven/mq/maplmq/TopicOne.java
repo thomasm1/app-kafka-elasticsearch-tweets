@@ -21,18 +21,20 @@ public class TopicOne {
 		
 		Session session = connection.createSession();
 		MessageProducer producer = session.createProducer(topic);
-		
+		System.out.println(topic.getClass());
 		MessageConsumer consumer1 = session.createConsumer(topic);
 		MessageConsumer consumer2 = session.createConsumer(topic);
-		
-		TextMessage message = session.createTextMessage("My Personal Libarian: MaPL");
-		producer.send(message);
 
+		System.out.println(consumer1.getClass());
+		TextMessage message = session.createTextMessage("TOPIC: My Personal Libarian: MaPL");
+		producer.send(message);
+		System.out.println(message);
 		TextMessage message1 = (TextMessage) consumer1.receive();
 		System.out.println("Consumer 1 message received: " + message1.getText());
-		
-		TextMessage message2 = (TextMessage) consumer1.receive();
-		System.out.println("Consumer 1 message received: " + message2.getText());
+
+		System.out.println(message1);
+		TextMessage message2 = (TextMessage) consumer2.receive();
+		System.out.println("Consumer 2 message received: " + message2.getText());
 		
 		connection.close();
 		initialContext.close();

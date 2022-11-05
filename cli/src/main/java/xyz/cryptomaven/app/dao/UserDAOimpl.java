@@ -244,11 +244,14 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	public boolean deleteUser(String username) {
 //		DB.users.remove(id);
-		String sql = "DELETE users WHERE username = ?";
-
+//		String sql = "DELETE users WHERE username = ?";
+		String sql = "CALL DELETE_USER(?)";
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, username);
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setString(1, username);
+
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.setString(1,username);
 			return true;
 		} catch (Exception e) {
 			System.out.println("doublecheck deletions: \n" + e);

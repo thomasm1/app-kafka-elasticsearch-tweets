@@ -19,14 +19,15 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 		  User  p2;// update
 		  User p3; //delete
 	int rand;
-
-	User u = new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
+	User u = new User("user4" , "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
 			"photoPath",
 			"userGroup",
 			0,
 			1,
 			"id");    // PASSES
+
 	// UI Source
+
 	String loggedUserName = "user4";
 	String loggedInPW = "passWordX";
 //DB
@@ -38,16 +39,18 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
 	@BeforeEach
 	public void setup() {
-		int num = 711;
+		int num = 7131;
 		rand = (int) ((int) num * Math.random());
 		System.out.println("Method/Instance setup "+rand);
-		UserService.createUser(u);
-		System.out.println("Method/Instance setup ");
+
 	}
 //TODO mockito Service INJECTION
     @Test   
 	public void add_new_user() {
-		assertTrue(UserService.createUser(u));
+//
+//		assertTrue(UserService.createUser(u));
+//		UserService.deleteUser(UserService.getUser(u.getUserId()).getUserName());
+//		System.out.println("just added and deleted"+u.getUserName());
 
 	}
 
@@ -70,7 +73,16 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
     @Test   
    	public void delete_user() {
-   		assertTrue(UserService.deleteUser(u.getUserName()));
+		User u = new User("user4"+rand, "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
+				"photoPath",
+				"userGroup",
+				0,
+				1,
+				"id");    // PASSES
+		String x = u.getUserName()+rand;
+		System.out.println("about to delete just  ..."+x);
+		assertTrue(UserService.deleteUser(x));
+		System.out.println("deleteed just now ..."+ x);
 
    	}
     

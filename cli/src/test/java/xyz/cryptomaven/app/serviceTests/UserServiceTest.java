@@ -60,9 +60,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 
     @Test   
    	public void update_user() {
-		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
-				"photoPath",
-				"userGroup",
+		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "5055087707" , "user4@cryptomaven.xyz", "http://www.dailytech.net","photoPath", 	"userGroup",
 				0,
 				1,
 				"id");   // PASSES

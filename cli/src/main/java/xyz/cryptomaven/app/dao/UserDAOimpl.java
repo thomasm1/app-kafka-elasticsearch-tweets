@@ -32,10 +32,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			cs.setString(2, u.getPassword());
 			cs.setString(3, u.getLastName());
 			cs.setString(4, u.getFirstName());
-			cs.setString(5, Integer.toString(u.getUserType()));
-			cs.setString(6, Integer.toString(u.getGroups()));
-			cs.setString(7, u.getEmail());
-			cs.setString(8, u.getPhone());
+			cs.setString(5, Integer.toString(u.getGroups()));
+			cs.setString(6, Integer.toString(u.getUserType()));
+			cs.setString(7, u.getPhone());
+			cs.setString(8, u.getEmail());
 			cs.setString(9, u.getCusUrl());
 			cs.setString(10, u.getPhotoPath());
 			cs.setString(11, u.getUserGroup());
@@ -100,10 +100,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("password"),
 						rs.getString("lastname"),
 						rs.getString("firstName"),
-						rs.getInt("userType"),
 						rs.getInt("groups"),
-						rs.getString("email"),
+						rs.getInt("userType"),
 						rs.getString("phone"),
+						rs.getString("email"),
 						rs.getString("cusUrl"),
 						rs.getString("photoPath"),
 						rs.getString("userGroup"),
@@ -121,12 +121,12 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	}
 
 	@Override
-	public User getUser(int id) {
+	public User getUser(int userid) {
 //		return null;
 		try {
 			String sql = "SELECT * FROM users WHERE userid = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, Integer.toString(id));
+			ps.setString(1, Integer.toString(userid));
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -135,10 +135,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("password"),
 						rs.getString("lastname"),
 						rs.getString("firstName"),
-						rs.getInt("userType"),
 						rs.getInt("groups"),
-						rs.getString("email"),
+						rs.getInt("userType"),
 						rs.getString("phone"),
+						rs.getString("email"),
 						rs.getString("cusUrl"),
 						rs.getString("photoPath"),
 						rs.getString("userGroup"),
@@ -208,29 +208,30 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	}
 
 	public boolean updateUser(User change) { // using USERNAME
-//		DB.users.replace(change.getUserID(), change);
-//		return true;
-		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?, groups=?, email=?, phone=?, cusurl=? WHERE username = ?";
+//											 	1			2			3			4			5		6		7			8			9			10			11			12		13					14
+//		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, groups=?, usertype=?,  phone=?, email=?, cusurl=?, photopath=?, userGroup=?, isActive=?, contactType=?, id=?  WHERE username = ?";
+		String sql = "CALL UPDATE_USER(?,?,?, ?,?,?, ?,?,?, ?,?,?, ?,?)";
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-//					ps.setString(6, Integer.toString(change.getUserID()));
-			ps.setString(1, change.getPassword());
-			ps.setString(2, change.getLastName());
-			ps.setString(3, change.getFirstName());
-			ps.setString(4, Integer.toString(change.getUserType()));
-			ps.setString(5, Integer.toString(change.getGroups()));
-			ps.setString(6, change.getEmail());
-			ps.setString(7, change.getPhone());
-			ps.setString(8, change.getCusUrl());
-			ps.setString(10, change.getPhotoPath());
-			ps.setString(11, change.getUserGroup());
-			ps.setString(12, Integer.toString(change.getIsActive()));
-			ps.setString(13, Integer.toString(change.getContactType()));
-			ps.setString(14, change.getId());
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//		    ps.setString(6, Integer.toString(change.getUserID()));
 
-
-			ps.setString(9, change.getUserName());
-			ps.executeQuery();
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.setString(1, change.getPassword());
+			cs.setString(2, change.getLastName());
+			cs.setString(3, change.getFirstName());
+			cs.setString(4, Integer.toString(change.getGroups()));
+			cs.setString(5, Integer.toString(change.getUserType()));
+			cs.setString(6, change.getPhone());
+			cs.setString(7, change.getEmail());
+			cs.setString(8, change.getCusUrl());
+			cs.setString(9, change.getPhotoPath());
+			cs.setString(10, change.getUserGroup());
+			cs.setString(11, Integer.toString(change.getIsActive()));
+			cs.setString(12, Integer.toString(change.getContactType()));
+			cs.setString(13, change.getId());
+			cs.setString(14, change.getUserName());
+//			ps.executeQuery();
+			cs.execute();
 
 			return true;
 		} catch (SQLException e) {
@@ -248,11 +249,6 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
-
-//		int var = 1;
-//		System.out.println(var);
-//		System.out.println("never delete ... ");
-
 			return true;
 		} catch (Exception e) {
 			System.out.println("doublecheck deletions: \n" + e);

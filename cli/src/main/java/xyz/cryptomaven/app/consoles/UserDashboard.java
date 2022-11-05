@@ -21,6 +21,11 @@ public class UserDashboard {
 	public static final int MENU_LAST = 6;
 
 	// RECURSIVE LOOP, breaks out at option 0
+
+	/**
+	 *
+	 * @param username
+	 */
 	public static void dashboardChoice(String username) {
 		System.out.println("\n Welcome to your Dashboard! *" + username + "*, ");
 		System.out.println(WHAT_TO_DO);

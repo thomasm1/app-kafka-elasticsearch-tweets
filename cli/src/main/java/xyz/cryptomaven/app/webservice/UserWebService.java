@@ -39,7 +39,7 @@ public class UserWebService {
 //		System.out.println("UserWebService: "+d);
 
 		// Call UserService to add it.
-		UserService.createUser(new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net"));
+		UserService.createUser(new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "photopaath", "usergrup",0,0,"id"));
 
 		try {
 			response.getWriter().append("Successfully added data to ORACLE (AWS) input: " + request.getContextPath());

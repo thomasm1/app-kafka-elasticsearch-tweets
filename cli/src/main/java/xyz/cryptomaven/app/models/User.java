@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class User {
 
+
     private int userId; //#1
     private String userName;
     private String password;
@@ -29,8 +30,8 @@ public class User {
     public User(int userId, String userName, String password, String lastName, String firstName,
                 int groups,
                 int userType,
-                String email,
                 String phone,
+                String email,
                 String cusUrl,
                 String photoPath,
                 String userGroup,
@@ -81,36 +82,35 @@ public class User {
     }
 
     // overloaded For REGISTER userId is AutoIncrement, lastname, firstname, email, phone, cusurl
-    public User(String userName, String password, String lastName, String firstName, int groups, int userType, String email, String phone, String cusUrl) {
-        super();
-        this.userName = userName;
-        this.password = password;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.userType = userType;
-        this.groups = groups;
-        this.email = email;
-        this.phone = phone;
-        this.cusUrl = cusUrl;
-    }
+//    public User(String userName, String password, String lastName, String firstName, int groups, int userType, String email, String phone, String cusUrl) {
+//        super();
+//        this.userName = userName;
+//        this.password = password;
+//        this.lastName = lastName;
+//        this.firstName = firstName;
+//        this.userType = userType;
+//        this.groups = groups;
+//        this.email = email;
+//        this.phone = phone;
+//        this.cusUrl = cusUrl;
+//    }
 
     //	 overloaded WITHOUT userId  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
     public User(String userName, String password, String lastName, String firstName,
-                int groups, int userType, String email, String phone, String cusUrl,
-                 String photoPath,
+                int groups, int userType, String phone,String email,  String cusUrl, String photoPath,
                 String userGroup,
                 int isActive,
-                int contactType, // ContactType contactType
+                int contactType,
                 String id) {
         super();
         this.userName = userName;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.userType = userType;
         this.groups = groups;
-        this.email = email;
+        this.userType = userType;
         this.phone = phone;
+        this.email = email;
         this.cusUrl = cusUrl;
         this.photoPath = photoPath;
         this.userGroup = userGroup;
@@ -126,21 +126,32 @@ public class User {
         this.password = password;
     }
 
-    // Contstructor for EDIT PROFILE (options available for user)
-    public User(String pw, String lName, String fName, int userType, int groups, String email, String phone, String url) {
-        super();
-        this.password = pw;
-        this.lastName = lName;
-        this.firstName = fName;
-        this.userType = userType;
-        this.groups = groups;
-        this.email = email;
-        this.phone = phone;
-        this.cusUrl = url;
-    }
+//     Contstructor for EDIT PROFILE (options available for user)
+public User(  String password, String lastName, String firstName,
+            int groups, int userType, String phone,String email,  String cusUrl, String photoPath,
+            String userGroup,
+            int isActive,
+            int contactType, // ContactType contactType
+            String id) {
+    super();
 
-    public User(String password, String smith, String tom, int i, int i1, String s, String s1, String s2, String photoPath, String userGroup, int i2, int i3, String id) {
-    }
+    this.password = password;
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.userType = userType;
+    this.groups = groups;
+    this.email = email;
+    this.phone = phone;
+    this.cusUrl = cusUrl;
+    this.photoPath = photoPath;
+    this.userGroup = userGroup;
+    this.isActive = isActive;
+    this.contactType = contactType;
+    this.id = id;
+}
+
+
+
 
     public int getUserId() {
         return userId;
@@ -260,27 +271,25 @@ public class User {
         this.id = id;
     }
 
-
-    @Override
-    public int hashCode() {
-        int result = userName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return getUserId() == user.getUserId() && getUserName().equals(user.getUserName()) && getPassword().equals(user.getPassword()) && Objects.equals(getId(), user.getId());
-    }
-
     @Override
     public String toString() {
-        return "User [userId=" + userId + ", id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
-                + ", userName=" + userName + ", password=" + password + ", groups=" + groups + ", userType=" + userType
-                + ", email=" + email + ", phone=" + phone + ", cusUrl=" + cusUrl + "]";
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", groups=" + groups +
+                ", userType=" + userType +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", cusUrl='" + cusUrl + '\'' +
+                ", photoPath='" + photoPath + '\'' +
+                ", userGroup='" + userGroup + '\'' +
+                ", isActive=" + isActive +
+                ", contactType=" + contactType +
+                ", id='" + id + '\'' +
+                '}';
     }
 
 

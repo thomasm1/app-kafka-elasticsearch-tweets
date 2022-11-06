@@ -27,7 +27,7 @@ public class Properties {
             producer.send(queue, textMessage);
 
             Message messageReceived = jmsContext.createConsumer(queue).receive(5000);
-            System.out.println(messageReceived);
+
             System.out.println(messageReceived.getBooleanProperty("loggedIn"));
             System.out.println(messageReceived.getStringProperty("userToken"));
 

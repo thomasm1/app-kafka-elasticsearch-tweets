@@ -25,17 +25,18 @@ public class QueueJMS_2 {
 
 //			jmsContext.createProducer().send(queue, "MaPL? Are you there my personal librarian ...");
 			JMSProducer producer  = jmsContext.createProducer();
+//			producer.setDeliveryDelay(2000);
 
 			String[] messages = new String[3];
-			messages[0] = "msg one";
-			messages[1] = "msg two";
-			messages[2] = "msg three";
+			messages[0] = "msg one, priority3";
+			messages[1] = "msg two, priority2";
+			messages[2] = "msg three, priority1";
 			producer.setPriority(3);
 			producer.send(queue, messages[0]);
 
-			producer.setPriority(1);
+			producer.setPriority(2);
 			producer.send(queue, messages[1]);
-			producer.setPriority(3); // 9 to 1 to not interfere later on
+			producer.setPriority(1); // 9 to 1 to not interfere later on
 			producer.send(queue, messages[2]);
 
 //			String receivedMessage = jmsContext.createConsumer(queue).receiveBody(String.class);

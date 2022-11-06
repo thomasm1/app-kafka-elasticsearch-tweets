@@ -1,17 +1,16 @@
 package xyz.cryptomaven.mq.maplmq;
 
-//import javax.jms.Connection;
-//import javax.jms.ConnectionFactory;
+
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 
-import javax.jms.*;
-//import javax.jms.MessageProducer;
-//import javax.jms.TextMessage;
+import javax.jms.JMSConsumer;
+import javax.jms.JMSContext;
+import javax.jms.JMSException;
+import javax.jms.JMSProducer;
+import javax.jms.Message;
+import javax.jms.Queue;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
-
-import java.util.Enumeration;
 
 
 public class QueueJMS_2 {
@@ -34,9 +33,9 @@ public class QueueJMS_2 {
 			producer.setPriority(3);
 			producer.send(queue, messages[0]);
 
-			producer.setPriority(1); // lowest
+			producer.setPriority(1);
 			producer.send(queue, messages[1]);
-			producer.setPriority(9);
+			producer.setPriority(3); // 9 to 1 to not interfere later on
 			producer.send(queue, messages[2]);
 
 //			String receivedMessage = jmsContext.createConsumer(queue).receiveBody(String.class);

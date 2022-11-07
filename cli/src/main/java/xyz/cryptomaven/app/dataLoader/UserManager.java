@@ -21,7 +21,7 @@ public class UserManager {
 	}
 
 	public User createUser(int userId, String userName, String password,  String lastName, String firstName,
-						   int groups, int userType,  String email, String phone, String cusUrl,  String id ) {
+						   int groups, int userType,   String phone, String email, String cusUrl, String photoPath, String userGroup, int isActive, int contactType, String id ) {
 		
 		User user = new User();
 		user.setUserId(userId);
@@ -35,6 +35,11 @@ public class UserManager {
 		user.setEmail(email);
 		user.setPhone(phone);
 		user.setCusUrl(cusUrl);
+		user.setPhotoPath(photoPath);
+		user.setUserGroup(userGroup);
+		user.setIsActive(isActive);
+		user.setContactType(contactType);
+		user.setId(id);
 		
 		return user;
 

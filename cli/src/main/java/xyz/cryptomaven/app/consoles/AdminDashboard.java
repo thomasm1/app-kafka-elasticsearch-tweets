@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import xyz.cryptomaven.app.constants.Cmds;
+import xyz.cryptomaven.app.controllers.MaPLControl;
 import xyz.cryptomaven.app.models.Car;
 import xyz.cryptomaven.app.models.ElectroLot;
+import xyz.cryptomaven.app.models.MaPL;
 import xyz.cryptomaven.app.models.Offer;
 
 import xyz.cryptomaven.app.service.CarService;
@@ -18,8 +20,8 @@ import xyz.cryptomaven.app.service.UserService;
 
 public class AdminDashboard {
 
-	public static final int OPTION_COUNT_INT = 6;
-	private static final int MIN_OPTIONS = 0;
+    public static final int OPTION_COUNT_MAX = 7;
+    private static final int MIN_OPTIONS = 0;
 
     // RECURSIVE LOOP, breaks out at option 0
     public static void adminConsole() throws SQLException {
@@ -32,13 +34,21 @@ public class AdminDashboard {
                         + Cmds.FIVE + "View and/or Accept Offers\n "
                         + Cmds.SIX + "get Users With Cars\n"
                         + Cmds.ZERO + "Logout");
-        try (Scanner scan = new Scanner(System.in)){
+        try (Scanner scan = new Scanner(System.in)) {
             int val = scan.nextInt();
-            if (val >= MIN_OPTIONS && val <= OPTION_COUNT_INT) {
+            if (val < MIN_OPTIONS && val > OPTION_COUNT_MAX) {
+                System.out.println("Please enter digits " + MIN_OPTIONS + "-" + OPTION_COUNT_MAX);
+                adminConsole();
+            } else {
                 switch (val) {
+                    case 0: {
+                        System.out.println("At your service, back to MainDashboard ...\n");
+                        MainDashboard.mainConsole();
+                        break;
+                    }
                     case 1: {
                         scan.nextLine();
-						System.out.println(ElectroLotService.getAllElectroLot());
+                        System.out.println(ElectroLotService.getAllElectroLot());
                         adminConsole();
                     }
                     case 2: {
@@ -134,33 +144,36 @@ public class AdminDashboard {
                             }
                             adminConsole();
                         }
-                    } 
-                    case 5: { 
-                        System.out.println(OfferService.getAllOffers());
-                        checkOffer();  
-                        adminConsole();
-						break;
-                    } 
-                    case OPTION_COUNT_INT: {
-                        System.out.println(UserService.getUsersWithCars()); 
-                        adminConsole();
-						break;
                     }
-                    case 0: {
-                        System.out.println("At your service, back to MainDashboard ...\n");
-                        MainDashboard.mainConsole();
+                    case 5: {
+                        System.out.println(OfferService.getAllOffers());
+                        checkOffer();
+                        adminConsole();
+                        break;
+                    }
+                    case 6: {
+                        System.out.println(UserService.getUsersWithCars());
+                        adminConsole();
+                        break;
+                    }
+                    case OPTION_COUNT_MAX: {
+                        openMaPLControl();
+                        adminConsole();
                         break;
                     }
                 } // end switch
-            } else {
-                System.out.println("Please enter digits "+MIN_OPTIONS+"-"+OPTION_COUNT_INT);
-                adminConsole();
             }
         } catch (InputMismatchException e) {
             // go round again. Read past the end of line in the input first
             System.out.println("Please enter digits 0 to 5");
             adminConsole();
         }
+    }
+
+    private static void openMaPLControl() {
+        System.out.println(Cmds.WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL);
+        MaPLControl mc = new MaPLControl();
+        mc.getMapleState();
     }
 
     static void checkOffer() throws SQLException {

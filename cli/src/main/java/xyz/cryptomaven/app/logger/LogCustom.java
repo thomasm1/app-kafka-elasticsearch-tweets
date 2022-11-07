@@ -1,15 +1,13 @@
 package xyz.cryptomaven.app.logger;
 
+import xyz.cryptomaven.app.constants.Cmds;
+
 public class LogCustom {
 
-	public static void main(String[] args) {
-		
-	}
-
 	public static void logger() {
-		CliLogger.getInstance().always();
+		System.out.println(Cmds.NOW_LOGGING);
 		logCheck();
-		System.out.println("lOG custom logging");
+		CliLogger.getInstance().always();
 
 	}
 	public static void info() {

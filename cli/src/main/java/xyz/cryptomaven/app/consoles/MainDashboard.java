@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 import xyz.cryptomaven.app.constants.Cmds;
-import xyz.cryptomaven.app.models.MaPL;
 import xyz.cryptomaven.app.systemUser.UserLogin;
 import xyz.cryptomaven.app.systemUser.UserRegister;
 import xyz.cryptomaven.app.util.Utilities;
@@ -17,24 +16,17 @@ import static xyz.cryptomaven.app.cli.CliLoader.runDownloaderJob; //4 download
 import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader; // 5 browse offline lot
 import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying; // 6 auto user
 import static xyz.cryptomaven.app.consoles.GeoDashboard.mainNavigator; // 7 Local
+import xyz.cryptomaven.app.models.MaPL;
 
 import xyz.cryptomaven.app.logger.CliLogger;
 import xyz.cryptomaven.app.logger.LogCustom;
 
 public class MainDashboard {
-    private static final int MAIN_OPTIONS_COUNT = 8;
-    private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt";
-    public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private Map<String, String> dataMap = new TreeMap<>();
-    private MaPL sessionMaPL = new MaPL();
+    private static final int MAIN_OPTIONS_COUNT = 7;
 
     public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
-        /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
-        MainDashboard m = new MainDashboard();
-        m.consoleValidation();
-
-        /// #1  Loading Recursive Console Scanner accepting Integer Input
         try {
+            /// #1  Loading Recursive Console Scanner accepting Integer Input
             mainConsole();
         } catch (Exception e) {
             System.out.println("oops!  mainConsole fail"+ e.getMessage());
@@ -46,10 +38,11 @@ public class MainDashboard {
         System.out.println("\n1.) Log in \n"
                 + "2.) Register  \n"
                 + "3.) Browse the lot from Oracle Database\n"
-                + "4.) Download from Web\n"
-                + "5.) Browse the lot [Offline]\n"
-                + "6.) Set in Motion Automated USER [Offline]\n"
-                + MAIN_OPTIONS_COUNT+".) Play Navigation Game [Offline] \n"
+                + "4.) Load Test Data =  cliDataLoader(); \n"
+                + "5.) Play Navigation Game [Offline] \n"
+                + "6.) Download from Web \n"
+                + "7.) Set in Motion Automated USER [Offline]\n"
+                + MAIN_OPTIONS_COUNT+".) Make MaPL request\n"
                 + "Stop Application, press '0'.\n");
     }
 
@@ -76,13 +69,12 @@ public class MainDashboard {
                         }
                         case 3: {
                             System.out.println("\n Ok, Accessing DB ...please enjoy your browsing....");
-                            carlotViewAll();
+                            carlotViewAll(); // Browse the lot from Oracle Database\n"
                             break;
                         }
                         case 4: {
                             System.out.println("\n Ok, Initiating Local Offline Data Loader....");
-                            // Local Offline Data Loader
-                            cliDataLoader();
+                            cliDataLoader();  // Local Offline Automated USER
                             break;
                         }
                         case 5: {
@@ -95,14 +87,9 @@ public class MainDashboard {
                             runDownloaderJob();
                             break;
                         }
-                        case 7: {
-                            System.out.println("\n   #6 start() Test Data...");
-                            startBrowsingBuying();
-                            break;
-                        }
                         case MAIN_OPTIONS_COUNT: {
-                            System.out.println("\n   #7 openMaPL();...");
-                            openMaPL();
+                            System.out.println("\n   #6 startBrowsingBuying();");
+                            startBrowsingBuying();
                             break;
                         }
                         case 0: {
@@ -134,53 +121,7 @@ public class MainDashboard {
         }
     }
 
-    private static void openMaPL() {
-        System.out.println(Cmds.WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL);
-        MaPL m = new MaPL();
-        m.getMapleState();
-    }
 
-    protected static File readStartupFile(String path) {
-        String fileFullPath = (path != null) ? path : String.valueOf(SRC_DATA_STARTUP_TEXT_TXT);
-        Path absolutePath = FileSystems.getDefault().getPath(fileFullPath);
-        System.out.println("Loading from "+absolutePath);
-        File textFile = new File(fileFullPath);
-        return textFile;
-    }
 
-    public void consoleValidation() {
-        System.out.println(Utilities.startupTime());
-        System.out.println(Cmds.NOW_LOGGING);
-        LogCustom.logger();
 
-        File startFile = readStartupFile(null);  //  Checking  local input
-        try (Scanner scanText = new Scanner(startFile)) {
-            int TEXT_VERSION = scanText.nextInt(); //LINE_1
-            String SQL_DRIVER = scanText.nextLine();  //LINE_2
-            System.out.println("\n    #=== Doc version': " + TEXT_VERSION + "SQL_DRIVER: "+SQL_DRIVER + Cmds.BR);
-            try {
-                System.out.println(Class.forName(DRIVER));
-            } catch (ClassNotFoundException e) {
-                System.out.println(Cmds.OOPS_JDBC);
-            }
-            String APP_TITLE = scanText.nextLine(); //LINE_3
-            System.out.println("'3':APP_TITLE="+APP_TITLE );
-            dataMap.put("3",APP_TITLE);
-
-            String AUTHOR = scanText.nextLine(); //LINE_4
-            dataMap.put("4",AUTHOR);
-            System.out.println("'4':AUTHOR="+AUTHOR);
-            int counter = 10; //Miscellaneous Data Starting at LINE 10:  KEY IS LINE NUMBER
-            while(scanText.hasNext()) {
-                String scanData = scanText.nextLine();
-                if ((!scanData.startsWith("-|")) && scanText.hasNext()) {
-                    dataMap.put(String.valueOf( counter++), scanData);
-                }
-            }
-            System.out.println(dataMap.entrySet());
-            sessionMaPL.registerCmds(dataMap);
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }

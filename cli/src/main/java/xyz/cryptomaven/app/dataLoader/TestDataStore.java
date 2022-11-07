@@ -63,7 +63,7 @@ public class TestDataStore {
 			System.out.println("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
-				User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), values[1], values[2], values[3], values[4], Integer.parseInt(values[5]), Integer.parseInt(values[6]), values[8], values[9], values[10],  values[11]);
+				User user = UserManager.getInstance().createUser(Integer.parseInt(values[0]), values[1], values[2], values[3], values[4], Integer.parseInt(values[5]), Integer.parseInt(values[6]), values[7], values[8], values[9],  values[10],values[11],Integer.parseInt(values[12]),Integer.parseInt((values[13])),values[14]);
 				users.add(user);
 				TEST_USERS = users.size();
 			}
@@ -152,13 +152,7 @@ public class TestDataStore {
 
 
 }
-class DataGenerator {
-	@Autowired
-	public String[] provideNames() {
-		String firstName = "fName", lastName = "lName";
-		return  new String[] {firstName, lastName};
-	}
-}
+
 
 
 

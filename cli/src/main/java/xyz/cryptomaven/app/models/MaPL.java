@@ -9,8 +9,7 @@ public class MaPL implements IMaPL {
         IMaPL.super.register(cmdName, cmd);
     }
 
-    public void registerCmds(Map<String, String> dataMap) {
-
+    public void registerCmds(String key, String value) {
     }
 
     @Override
@@ -23,5 +22,4 @@ public class MaPL implements IMaPL {
 
     public void getMapleState() {
     }
-
 }

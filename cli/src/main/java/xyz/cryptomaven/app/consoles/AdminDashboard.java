@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import xyz.cryptomaven.app.constants.Cmds;
-import xyz.cryptomaven.app.controllers.MaPLControl;
+import xyz.cryptomaven.app.controllers.MaPLInvoker;
 import xyz.cryptomaven.app.models.Car;
 import xyz.cryptomaven.app.models.ElectroLot;
-import xyz.cryptomaven.app.models.MaPL;
 import xyz.cryptomaven.app.models.Offer;
 
 import xyz.cryptomaven.app.service.CarService;
@@ -33,6 +32,7 @@ public class AdminDashboard {
                         + Cmds.FOUR + "Remove Unpurchased Car\n "
                         + Cmds.FIVE + "View and/or Accept Offers\n "
                         + Cmds.SIX + "get Users With Cars\n"
+                        + OPTION_COUNT_MAX + ".) open MaPL Control(); \n"
                         + Cmds.ZERO + "Logout");
         try (Scanner scan = new Scanner(System.in)) {
             int val = scan.nextInt();
@@ -172,7 +172,7 @@ public class AdminDashboard {
 
     private static void openMaPLControl() {
         System.out.println(Cmds.WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL);
-        MaPLControl mc = new MaPLControl();
+        MaPLInvoker mc = new MaPLInvoker();
         mc.getMapleState();
     }
 

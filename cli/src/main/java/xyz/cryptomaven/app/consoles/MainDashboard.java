@@ -1,25 +1,18 @@
 package xyz.cryptomaven.app.consoles;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.*;
 
-import xyz.cryptomaven.app.constants.Cmds;
 import xyz.cryptomaven.app.systemUser.UserLogin;
 import xyz.cryptomaven.app.systemUser.UserRegister;
-import xyz.cryptomaven.app.util.Utilities;
 
 import static xyz.cryptomaven.app.service.CarService.carlotViewAll; // 3 DB
 import static xyz.cryptomaven.app.cli.CliLoader.runDownloaderJob; //4 download
 import static xyz.cryptomaven.app.cli.CliLoader.cliDataLoader; // 5 browse offline lot
 import static xyz.cryptomaven.app.cli.CliLoader.startBrowsingBuying; // 6 auto user
 import static xyz.cryptomaven.app.consoles.GeoDashboard.mainNavigator; // 7 Local
-import xyz.cryptomaven.app.models.MaPL;
 
-import xyz.cryptomaven.app.logger.CliLogger;
-import xyz.cryptomaven.app.logger.LogCustom;
 
 public class MainDashboard {
     private static final int MAIN_OPTIONS_COUNT = 7;
@@ -41,12 +34,12 @@ public class MainDashboard {
                 + "4.) Load Test Data =  cliDataLoader(); \n"
                 + "5.) Play Navigation Game [Offline] \n"
                 + "6.) Download from Web \n"
-                + "7.) Set in Motion Automated USER [Offline]\n"
-                + MAIN_OPTIONS_COUNT+".) Make MaPL request\n"
+                + MAIN_OPTIONS_COUNT+") Set in Motion Automated USER [Offline]\n"
                 + "Stop Application, press '0'.\n");
     }
 
     public static void mainConsole() {
+
         System.out.println("Now Loading frontConsoleMenu()");
         frontConsoleMenu();
         try (Scanner newScan = new Scanner(System.in)) {;
@@ -102,7 +95,10 @@ public class MainDashboard {
                     mainConsole();// After stack return & Break, back to console
                 }
 
-            } catch (SQLException e) {
+            } catch (InputMismatchException e) {
+                System.out.println("InputMismatchException, Inputs! must choose 1,2,3,4... ");
+                mainConsole();
+            }  catch (SQLException e) {
                 System.out.println("SQLException: " + e.getMessage());
                 mainConsole();// RECURSE
             } catch (IOException e) {
@@ -114,10 +110,6 @@ public class MainDashboard {
             }
             mainConsole();
 
-        } catch (InputMismatchException e) {
-            System.out.println("InputMismatchException, Inputs! must choose 1,2,3,4... ");
-            mainConsole();
-            // RECURSE
         }
     }
 

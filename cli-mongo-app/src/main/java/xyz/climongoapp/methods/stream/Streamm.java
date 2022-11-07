@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public class Stream {
+public class Streamm {
 	
 	public static void main(String[] args) {
 		Blog b = new Blog();

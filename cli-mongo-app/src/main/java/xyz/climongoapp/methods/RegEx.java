@@ -1,10 +1,17 @@
 package xyz.climongoapp.methods;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegEx {
-
+	static String users = "src/data/files/fileInUsers.txt";
+	public static void main(String[] args) throws IOException {
+		StringActions s = new StringActions();
+		s.stringCounts(users);
+	}
 	public static Boolean regExThis(String str) {
 
  
@@ -18,6 +25,7 @@ public class RegEx {
 		}
 		return matchFound; 
 	}
+
 }
 //Pattern.UNICODE_CASE - 
 //Use with the CASE_INSENSITIVE to also ignore case of letters outside of the English alphabet

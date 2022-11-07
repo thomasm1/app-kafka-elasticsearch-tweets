@@ -1,20 +1,10 @@
-package xyz.cryptomaven.app.controllerTests;
+package xyz.cryptomaven.app.controllers;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MaPLControlTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
+class MaPLInvokerTest {
 
     @Test
     void register() {
@@ -42,5 +32,9 @@ class MaPLControlTest {
 
     @Test
     void execute() {
+    }
+
+    @Test
+    void testExecute() {
     }
 }

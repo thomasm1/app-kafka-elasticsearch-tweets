@@ -1,10 +1,25 @@
 package xyz.cryptomaven.app.commands;
 
-public class MaPLwriter implements IMaPL {
+public class MaPLwriter extends MaPL {
     ReceiverConsole device;
     Integer cmdId = 18;
     String suggestion = "May I print something to the screen?";
     String commandName = "PRINT_SOMETHING_TO_THE_SCREEN";
+
+    String text = "this is MaPLwriter";
+    String cmd1 = "nslookup -type=text thomasmaestas.net";
+    String cmd2 = "nslookup -type=mx thomasmaestas.net";
+    String cmd3 = "nslookup -type=ns thomasmaestas.net";
+    String[] cmds = { text, cmd1, cmd2, cmd3 };
+
+    @Override
+    public String[] getCmds() {
+        return cmds;
+    }
+
+    public void setCmds(String[] cmds) {
+        this.cmds = cmds;
+    }
 
     public String getSuggestion() {
         return suggestion;
@@ -42,17 +57,16 @@ public class MaPLwriter implements IMaPL {
     public void registerCmds(String key, String value) {
     }
 
-    @Override
-    public void execute(String cmdName) {
-
-    }
+//    @Override
+//    public void execute(String cmdName) {
+//    }
 
     /**
      * @param cmdId
      */
     @Override
     public void execute(int cmdId) {
-        device.write(new String[] {String.valueOf( cmdId )});
+        device.write(new String[] {"manually written", cmd1, String.valueOf( cmdId )});
     }
 
     public void execute() {

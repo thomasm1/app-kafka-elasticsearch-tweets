@@ -2,7 +2,7 @@ package xyz.cryptomaven.app.commands;
 
 import xyz.cryptomaven.app.constants.Cmds;
 import xyz.cryptomaven.app.util.Utilities;
-import xyz.cryptomaven.app.commands.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.FileSystems;
@@ -11,42 +11,54 @@ import java.util.*;
 
 /**
  * COMMAND INVOKER
- *[10=Thomas Maestas,
- * 101=Can I add two numbers? ${num1},${num2}
- * 11=Can I run any tests on any of your websites, ${user.fname} … ?,
- * 12=Check google weather api, ${user.fname} … ? , *
- * 13=Check local and network ports? ,
- * 14=Here is your annual state weekly day. Want to update?,
- * 15=Can I look something up for you in your database?,
- * 16=Let’s see I can look it up in aws s3 documents?,
- * 17=How about aws Oracle?, 18=How about blockchain?, 19=,
- * 20=I know nothing of the outside world.  So all I know are my electroLots. Do you want to buy one, ${user.fname} … ?,
- * 21=About my world I have but one source of truth a that is standard.in ,
- * 22=I have in my world one knowledge domain. I have , ${class} Oracle db that I can inquire from. Shall I connect a new DB?,
- * 23=I also have the methods and values you have taught me.,
- * 24=I am ready to open up your workstation layout. Ready [1], * 25=, * 26=Can I run any tests? ,
- * 27=How about I Web3 connect to blockchain. May I start Ganache? , * 28=May I start Truffle? ,
- * 29=Running Geth now? , 3=oracle.jdbc.driver.OracleDriver,
- * 30=Shall I open an API to CryptoMavenAPI? , 4=CryptoMaven - My Personal Librarian]
+ * [10=Can I run any tests on any of your websites?, 11=Check google weather api?, 12=Check local and network ports? , 13=Here is your annual state weekly day. Want to update?, 14=Can I look something up for you in your database?, 15=Let's see I can look it up in aws s3 documents?, 16=How about test aws Oracle?, 17=How about check up on blockchain?, 18=May I print something to the screen?, 19=I know nothing of the outside world.  So all I know are my electroLots. Do you want to buy one?, 20=About my world I have but one source of truth a that is standard.in , 21=I have in my world one knowledge domain. I have , ${class} Oracle db that I can inquire from. Shall I connect a new DB?, 22=I also have the methods and values you have taught me., 23=I am ready to open up your workstation layout. Ready [1], 24=, 25=Can I run any tests? , 26=How about I Web3 connect to blockchain. May I start Ganache? , 27=May I start Truffle? , 28=Can I start Geth now?, 29=Shall I open an API to CryptoMavenAPI? , 3=CryptoMaven's <<MaPL>> My Personal Librarian, 4=Thomas Maestas]
+ * 10: RUN_ANY_TESTS_ON_ANY_OF_YOUR_WEBSITES
+ * 11: CHECK_GOOGLE_WEATHER_API
+ * 12: CHECK_LOCAL_AND_NETWORK_PORTS
+ * 13: HERE_IS_YOUR_ANNUAL_STATE_WEEKLY_DAY_WANT_TO_UPDATE
+ * 14: LOOK_SOMETHING_UP_FOR_IN_YOUR_DATABASE
+ * 15: LET'S_SEE_LOOK_IT_UP_IN_AWS_S3_DOCUMENTS
+ * 16: TEST_AWS_ORACLE
+ * 17: CHECK_UP_ON_BLOCKCHAIN
+ * 18: PRINT_SOMETHING_TO_THE_SCREEN
+ * 19: KNOW_NOTHING_OF_THE_OUTSIDE_WORLD_ALL_KNOW_ARE_ELECTROLOTS_DO_WANT_TO_BUY_ONE
+ * 20: WORLD_HAVE_BUT_ONE_SOURCE_OF_TRUTH_A_THAT_IS_STANDARD_IN
+ * 21: HAVE_IN_WORLD_ONE_KNOWLEDGE_DOMAIN_HAVE_${CLASS}_ORACLE_DB_THAT_INQUIRE_FROM_CONNECT_A_NEW_DB
+ * 22: AL_HAVE_THE_METHODS_AND_VALUES_HAVE_TAUGHT_ME
+ * 23: TO_OPEN_UP_YOUR_WORKSTATION_LAYOUT_[1]
+ * 24:
+ * 25: RUN_ANY_TESTS
+ * 26: WEB3_CONNECT_TO_BLOCKCHAIN_START_GANACHE
+ * 27: START_TRUFFLE
+ * 28: START_GETH_NOW
+ * 29: OPEN_AN_AP_TO_CRYPTOMAVENAPI
+ *
+ * 3: CRYPTOMAVEN'S_<<MAPL>>_PERSONAL_LIBRARIAN
  */
 
 public class MaPLInvoker implements IMaPL {
+    private static  int duplicate = 0;
+    MaPL mw = new MaPLwriter();
     public static final String DRIVER = "oracle.jdbc.driver.OracleDriver"; //  DEFAULT DRIVER
     private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt"; // DEFAULT INSTRUCTION SOURCE
     private Map<String, String> instructionMap = new TreeMap<>(); // STARTUP INSTRUCTION SET   "11=Run Websites Health Check"
-    private Map<Integer,IMaPL> maplCommands = new HashMap<>();
+    private Map<Integer,MaPL> maplCommands = new HashMap<>();
 
-    private Map<String, Map<Integer,MaPL>> commandsMapping = new HashMap<>();
+//    private Map<String, Map<Integer,MaPL>> commandsMapping = new HashMap<>();
+//    public Map<String, Map<Integer, MaPL>> getCommandsMapping() {
+//        return commandsMapping;
+//    }
 
 
     @Override
     public void register(Integer cmdName, MaPL cmd) {
-        // IMaPL.super.register(cmdName, cmd)
+        // IMaPL.super.register(
+        // cmdName, cmd)
         //  implement & register commands to MaPL instance tasks
         maplCommands.put(cmdName, cmd);
     }
 
-    public void registerCmds(String commandID, String suggestion) {
+    public Map<Integer,MaPL> registerCmds(String commandID, String suggestion) {
         //  implement pre-registered commands to MaPL instance tasks
         MaPL mapl = new MaPL(); // Concrete Command
         mapl.setCmdId( Integer.valueOf(commandID) );
@@ -55,6 +67,7 @@ public class MaPLInvoker implements IMaPL {
         maplCommands.put( mapl.getCmdId(), mapl );
 
         System.out.println(mapl.getCmdId() + ": "+mapl.getCommandName());
+        return maplCommands;
     }
 
     private String suggToCmd(String sugg) {
@@ -96,10 +109,16 @@ public class MaPLInvoker implements IMaPL {
                     }
                 }
                 System.out.println(instructionMap.entrySet());
+
                 // REGISTER COMMANDS Using MaPLIMvoker Instance
                 //  map datamap values [suggested] to registered commands
                 for(Map.Entry<String, String> commandPair : instructionMap.entrySet())
-                    this.registerCmds(commandPair.getKey(), commandPair.getValue());
+                    maplCommands = this.registerCmds(commandPair.getKey(), commandPair.getValue());
+
+                this.register(mw.getCmdId(),mw); // check for duplicates later
+                System.out.println(maplCommands);
+                System.out.println("SCANNERTEXT objects loaded; MaPLwriter '18' manually loaded. Leaving MaPLInvoker now.");
+                System.out.println(Arrays.toString(mw.getCmds()));
 
             } catch (FileNotFoundException e) {
                 System.out.println(e.getMessage());
@@ -131,21 +150,23 @@ public class MaPLInvoker implements IMaPL {
         File textFile = new File(fileFullPath);
         return textFile;
     }
-    @Override
-    public void execute(String cmdName) {
-        if(maplCommands.containsKey(cmdName)) {
-           IMaPL m = maplCommands.get(cmdName);
-            m.execute();
-        } else {
-            System.out.println("CMD not recognized");
-        }
-    }
+//    @Override
+//    public void execute(String cmdName) {
+//        if(maplCommands.containsKey(cmdName)) {
+//           IMaPL m = maplCommands.get(cmdName);
+//            m.execute();
+//        } else {
+//            System.out.println("CMD not recognized");
+//        }
+//    }
     @Override
     public void execute(int cmdId) {
         if(maplCommands.containsKey(cmdId)) {
             IMaPL m = maplCommands.get(cmdId);
-            System.out.println(m.getClass());
-//            if (((MaPL) m).getCmdId() == //IMaPL.class())
+            System.out.println("getClass: "+m.getClass());
+            System.out.println("getSuggestion: "+((MaPL) m).getSuggestion());
+            System.out.println("getCommandName: "+((MaPL) m).getCommandName());
+            System.out.println("getCmds: "+((MaPL) m).getCmds());
 
         } else {
             System.out.println("CMD not recognized");

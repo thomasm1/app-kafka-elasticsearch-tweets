@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import xyz.cryptomaven.app.commands.MaPL;
 import xyz.cryptomaven.app.constants.Cmds;
 import xyz.cryptomaven.app.commands.MaPLInvoker;
 import xyz.cryptomaven.app.models.Car;
@@ -172,16 +173,24 @@ public class AdminDashboard {
         }
     }
 
-    private static void openMaPLControl() {
+    private static void openMaPLControl() throws SQLException {
         System.out.println(Cmds.WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL);
         MaPLInvoker mc = new MaPLInvoker();
         mc.getMapleState();
-        try(Scanner scan = new Scanner(System.in)) {
-            System.out.println("What next? - enter number");
-            int nextCommand = scan.nextInt();
-            mc.execute(nextCommand);
 
+        sessionMaPL(mc);
+    }
+    private static void sessionMaPL(MaPLInvoker mapleSession) throws SQLException {
+        while(true) {
+            try(Scanner scan = new Scanner(System.in)) {
+                System.out.println("What next? - enter number; 0 to quit()");
+                int nextCommand = scan.nextInt();
+                if (nextCommand==0)
+                    adminConsole();
 
+                mapleSession.execute(nextCommand);
+                openMaPLControl();
+            }
         }
     }
 

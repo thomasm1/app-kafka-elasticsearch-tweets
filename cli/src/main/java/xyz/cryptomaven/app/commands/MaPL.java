@@ -1,6 +1,6 @@
 package xyz.cryptomaven.app.commands;
 
-public class MaPL implements IMaPL {
+public   class MaPL implements IMaPL {
 
     Integer cmdId = 0;
     String suggestion;
@@ -43,10 +43,9 @@ public class MaPL implements IMaPL {
     public void registerCmds(String key, String value) {
     }
 
-    @Override
-    public void execute(String cmdName) {
-
-    }
+//    @Override
+//    public void execute(String cmdName) {
+//    }
 
     /**
      * @param cmdId
@@ -78,5 +77,9 @@ public class MaPL implements IMaPL {
     @Override
     public void register(Integer cmdName, MaPLwriter cmd) {
 
+    }
+
+    public String[] getCmds() {
+        return new String[] {"maple","--Maple abstract class"};
     }
 }

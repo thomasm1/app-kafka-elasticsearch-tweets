@@ -19,7 +19,7 @@ public interface IMaPL {
 
     void register(Integer cmdName, MaPLwriter cmd);
 
-    void execute(String cmdName);
+//    void execute(String cmdName);
 
     void execute(int cmdId);
 

@@ -5,7 +5,8 @@ public class Cmds {
 
      //menu dashboard
     public static final String WHAT_TO_DO = "What would you like to do?  ";
-    public static final String VIEW_MY_CARS = "View my cars ";
+    public static final String VIEW_MY_CARS = "View my cars " +
+            "";
     public static final String VIEW_ALL_CARS = "View all cars";
     public static final String  VIEW_CAR_DETAILS = "View a car in detail";
     public static final String MAKE_AN_OFFER = "Find one you like? Make an offer!";

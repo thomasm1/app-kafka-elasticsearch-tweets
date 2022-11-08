@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import xyz.cryptomaven.app.constants.Cmds;
-import xyz.cryptomaven.app.controllers.MaPLInvoker;
+import xyz.cryptomaven.app.commands.MaPLInvoker;
 import xyz.cryptomaven.app.models.Car;
 import xyz.cryptomaven.app.models.ElectroLot;
 import xyz.cryptomaven.app.models.Offer;
@@ -26,11 +26,12 @@ public class AdminDashboard {
     public static void adminConsole() throws SQLException {
         System.out.println(
                 "*---------------------------------*\n" +
-                        "Welcome to your Admin dashboard\n " + " ... What's Next? \n "
-                        + Cmds.ONE + "View Financials and Payments\n "
-                        + Cmds.TWO + "View Car Lot\n " + "3.) Add Car\n " // +"4.) Update as Purchased (also removes)\n "
-                        + Cmds.FOUR + "Remove Unpurchased Car\n "
-                        + Cmds.FIVE + "View and/or Accept Offers\n "
+                        "Welcome to your Admin dashboard\n " + " ... What's Next? \n"
+                        + Cmds.ONE + "View Financials and Payments\n"
+                        + Cmds.TWO + "View Car Lot\n"
+                        + Cmds.THREE+"Add Car\n"
+                        + Cmds.FOUR +"Remove Unpurchased Car\n"
+                        + Cmds.FIVE + "View and/or Accept Offers\n"
                         + Cmds.SIX + "get Users With Cars\n"
                         + OPTION_COUNT_MAX + ".) open MaPL Control(); \n"
                         + Cmds.ZERO + "Logout");
@@ -100,6 +101,7 @@ public class AdminDashboard {
                         }
                     }
                     case 4: {
+                        System.out.println(CarService.getAllCars());
                         scan.nextLine();
                         System.out.println("Removing a car? \nLet me get my notepad ...");
                         System.out.println("\nCar ID to be removed?");
@@ -174,6 +176,13 @@ public class AdminDashboard {
         System.out.println(Cmds.WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL);
         MaPLInvoker mc = new MaPLInvoker();
         mc.getMapleState();
+        try(Scanner scan = new Scanner(System.in)) {
+            System.out.println("What next? - enter number");
+            int nextCommand = scan.nextInt();
+            mc.execute(nextCommand);
+
+
+        }
     }
 
     static void checkOffer() throws SQLException {

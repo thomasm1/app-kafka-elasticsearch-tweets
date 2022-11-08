@@ -43,7 +43,7 @@ public class UserService {
 		return userdaoImpl;
 	}
 
-	public static List<User> getUsersWithCars() {
+	public static List<String> getUsersWithCars() {
 		System.out.println("Passing User Service userdao.getUsersWithCars() {...");
 		return userdaoImpl.getUsersWithCars();
 	}

@@ -75,7 +75,7 @@ public class Car {
 	@Override
 	public String toString() {
 		return "CAR ID: " + carId + ", car Make: " + carMake + ", car Model: " + carModel + ", priceTotal: " + priceTotal
-				+ ", [1=purchased]: " + purchased + "]";
+				+ ", " + purchased + "]\n";
 	}
 
 }

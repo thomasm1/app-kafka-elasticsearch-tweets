@@ -1,4 +1,4 @@
-package xyz.cryptomaven.app.models;
+package xyz.cryptomaven.app.commands;
 
 import java.util.Map;
 
@@ -15,7 +15,13 @@ public interface IMaPL {
 
     void getMapleState();
 
+    void register(String cmdName, MaPLwriter cmd);
+
+    void register(Integer cmdName, MaPLwriter cmd);
+
     void execute(String cmdName);
+
+    void execute(int cmdId);
 
     void execute();
 }

@@ -156,14 +156,14 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	};
 
 	@Override
-	public List<User> getUsersWithCars() {
-		String sql = "SELECT users.userid, users.username FROM users,electrolot WHERE users.username = electrolot.username";
-		List<User> usersWithCars = new ArrayList<User>(); 
+	public List<String> getUsersWithCars() {
+		String sql = "SELECT DISTINCT users.userid, users.username FROM users,electrolot WHERE users.username = electrolot.username";
+		List<String> usersWithCars = new ArrayList<>();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql); 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				usersWithCars.add(new User(rs.getInt("userid"), rs.getString("username")));
+				usersWithCars.add(rs.getString("username"));
 			}
 			return usersWithCars;
 		} catch (Exception e) {

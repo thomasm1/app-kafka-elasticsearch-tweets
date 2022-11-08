@@ -1,10 +1,10 @@
-package xyz.cryptomaven.app.models;
+package xyz.cryptomaven.app.commands;
 
-public class MaPL implements IMaPL {
-
-    Integer cmdId = 0;
-    String suggestion;
-    String commandName;
+public class MaPLwriter implements IMaPL {
+    ReceiverConsole device;
+    Integer cmdId = 18;
+    String suggestion = "May I print something to the screen?";
+    String commandName = "PRINT_SOMETHING_TO_THE_SCREEN";
 
     public String getSuggestion() {
         return suggestion;
@@ -31,12 +31,11 @@ public class MaPL implements IMaPL {
     }
 
     @Override
-    public void register(String cmdName, MaPL cmd) {
-        IMaPL.super.register(cmdName, cmd);
+    public void register(String cmdName, MaPLwriter cmd) {
     }
 
     @Override
-    public void register(Integer cmdName, MaPL cmd) {
+    public void register(Integer cmdName, MaPLwriter cmd) {
 
     }
 
@@ -48,7 +47,25 @@ public class MaPL implements IMaPL {
 
     }
 
+    /**
+     * @param cmdId
+     */
+    @Override
+    public void execute(int cmdId) {
+        device.write(new String[] {String.valueOf( cmdId )});
+    }
+
     public void execute() {
+
+    }
+
+    /**
+     * @param cmdName
+     * @param cmd
+     */
+    @Override
+    public void register(Integer cmdName, MaPL cmd) {
+
     }
 
     public void getMapleState() {

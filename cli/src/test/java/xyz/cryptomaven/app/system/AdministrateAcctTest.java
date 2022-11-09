@@ -1,10 +1,11 @@
-package xyz.cryptomaven.app.systemAdmin;
+package xyz.cryptomaven.app.system;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import xyz.cryptomaven.app.systemAdmin.AdministrateAcct;
 
 
 public class AdministrateAcctTest {

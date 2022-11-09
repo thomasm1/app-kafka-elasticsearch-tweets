@@ -1,9 +1,10 @@
-package xyz.cryptomaven.app.models;
+package xyz.cryptomaven.app.unitTests;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import xyz.cryptomaven.app.models.User;
 
 public class UserTest { 
 	

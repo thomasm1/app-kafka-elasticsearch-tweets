@@ -1,10 +1,11 @@
-package xyz.cryptomaven.app.systemAdmin;
+package xyz.cryptomaven.app.system;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import xyz.cryptomaven.app.systemAdmin.AdminLotState;
 
 //AdminLotState nov26 = new AdminLotState(date, carLotCount);
 //nov26.getCarCount(); 

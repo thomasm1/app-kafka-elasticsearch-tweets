@@ -23,6 +23,7 @@
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<version>5.5.0-M1</version>
+			<scope>test</scope>
 		</dependency>
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>

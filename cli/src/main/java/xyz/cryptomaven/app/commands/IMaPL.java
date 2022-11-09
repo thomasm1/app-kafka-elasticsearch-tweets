@@ -6,10 +6,13 @@ public interface IMaPL {
     
     String DRIVER = null;
     String SRC_DATA_STARTUP_TEXT_TXT = null;
-    
+
+
 
     default void register(String cmdName, MaPL cmd) {}
     default void registerCmds(Map<String, String> dataMap) {}
+
+    String[] getCmds();
 
     void register(Integer cmdName, MaPL cmd);
 

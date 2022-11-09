@@ -1,10 +1,25 @@
 package xyz.cryptomaven.app.commands;
 
+import java.util.Arrays;
+
 public   class MaPL implements IMaPL {
 
     Integer cmdId = 0;
     String suggestion;
     String commandName;
+    String text = "maple";
+    String cmd1 = "cmd1";
+    String cmd2 = "cmd2";
+    String cmd3 = "cmd3";
+    String[] cmds = { text, cmd1, cmd2, cmd3 };
+
+
+    public String[] getCmds() {
+        return new String[] {Arrays.toString(cmds)};
+    }
+    public void setCmd(String[] cmds) {
+        this.cmds = cmds;
+    }
 
     public String getSuggestion() {
         return suggestion;
@@ -52,10 +67,11 @@ public   class MaPL implements IMaPL {
      */
     @Override
     public void execute(int cmdId) {
-
+        System.out.println("... MaPL execute(), cmdId: " + cmdId);
     }
 
     public void execute() {
+        System.out.println("... MaPL execute()");
     }
 
     public void getMapleState() {
@@ -79,7 +95,4 @@ public   class MaPL implements IMaPL {
 
     }
 
-    public String[] getCmds() {
-        return new String[] {"maple","--Maple abstract class"};
-    }
 }

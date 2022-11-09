@@ -1,18 +1,19 @@
 package xyz.cryptomaven.app.commands;
 
 public class MaPLwriter extends MaPL {
-    ReceiverConsole device;
+    ReceiverConsole device = new ReceiverConsole();
     Integer cmdId = 18;
     String suggestion = "May I print something to the screen?";
     String commandName = "PRINT_SOMETHING_TO_THE_SCREEN";
 
     String text = "this is MaPLwriter";
     String cmd1 = "nslookup -type=text thomasmaestas.net";
-    String cmd2 = "nslookup -type=mx thomasmaestas.net";
+    String cmd2 = "nslookup -type=mx " +
+            "thomasmaestas.net";
     String cmd3 = "nslookup -type=ns thomasmaestas.net";
-    String[] cmds = { text, cmd1, cmd2, cmd3 };
+    String[] cmds = new String[] { text, cmd1, cmd2, cmd3 };
 
-    @Override
+
     public String[] getCmds() {
         return cmds;
     }
@@ -70,7 +71,11 @@ public class MaPLwriter extends MaPL {
     }
 
     public void execute() {
-
+       try {
+           device.write(getCmds());
+       } catch (NullPointerException e) {
+           System.out.println(e.getMessage());;
+       }
     }
 
     /**

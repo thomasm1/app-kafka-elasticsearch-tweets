@@ -45,14 +45,14 @@ public class UserManager {
 
 	}
 	public List<User>  getUsers() {// THis is just relaying the call to the DaoImpl
-			return userDAOimpl.getUsers(); 
+			return userDAOimpl.getLocalUsers();
 	}
 
 	public void saveUserCar(User user, Car car) {
 		UserCarbuy userCarbuy = new UserCarbuy();
 		userCarbuy.setUser(user);
 		userCarbuy.setCar(car);
-		userDAOimpl.saveUserCarbuy(userCarbuy);
+		userDAOimpl.saveLocalUserCarbuy(userCarbuy);
 		
 	}
 
@@ -61,7 +61,7 @@ public class UserManager {
 		groups.setGroupsId(id);
 		groups.setGroupsHeadId(id2);
 		groups.setGroupsName(name_groups);
-		userDAOimpl.createGroups(groups);
+		userDAOimpl.createLocalGroups(groups);
 		return groups;
 	}
 }

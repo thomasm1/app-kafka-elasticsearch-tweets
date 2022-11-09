@@ -180,7 +180,8 @@ public class AdminDashboard {
 
         sessionMaPL(mc);
     }
-    private static void sessionMaPL(MaPLInvoker mapleSession) throws SQLException {
+    private static void sessionMaPL(MaPLInvoker mapleInvokerSession) throws SQLException {
+        System.out.println(mapleInvokerSession.getMaplCommands());
         while(true) {
             try(Scanner scan = new Scanner(System.in)) {
                 System.out.println("What next? - enter number; 0 to quit()");
@@ -188,34 +189,38 @@ public class AdminDashboard {
                 if (nextCommand==0)
                     adminConsole();
 
-                mapleSession.execute(nextCommand);
-                openMaPLControl();
+                mapleInvokerSession.execute(nextCommand);
+                System.out.println("Invoked command executed.\n");
+                sessionMaPL(mapleInvokerSession);
             }
         }
     }
 
     static void checkOffer() throws SQLException {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("\n>>>Please type offer ID to view or modify. 0 to exit.");
-        int oInt = scan.nextInt();
-        scan.nextLine();
-        if (oInt == 0) {
+        try (Scanner scan = new Scanner(System.in)) {
+            System.out.println("\n>>>Please type offer ID to view or modify. 0 to exit.");
+            int oInt = scan.nextInt();
+            scan.nextLine();
+            if (oInt == 0) {
+                adminConsole();
+            }
+            Offer offerLook = OfferService.getOffer(oInt);
+            System.out.println(">>>Great, looking up offer #" + oInt + "....\n");
+            if (offerLook == null) {
+                System.out.println(">>>Oops, couldn't find it, " + "maybe double check the #id?\n");
+                checkOffer();
+            } else {
+                System.out.println(offerLook);
+                approveOrReject(offerLook);
+                adminConsole();
+            }
             adminConsole();
         }
-        Offer offerLook = OfferService.getOffer(oInt);
-        System.out.println(">>>Great, looking up offer #" + oInt + "....\n");
-        if (offerLook == null) {
-            System.out.println(">>>Oops, couldn't find it, " + "maybe double check the #id?\n");
-            checkOffer();
-        } else {
-            System.out.println(offerLook);
-            approveOrReject(offerLook); // nested method
-        }
-        adminConsole();
     }
 
     static void approveOrReject(Offer offerLook) {
-        try (Scanner scan = new Scanner(System.in)) {
+        try (Scanner scan = new Scanner(System.in)
+        ) {
             System.out.println("\n>>>Accept this offer (y)?\n" + "or (r) to reject an offer\n"
                     + "\nOtherwise hit any key+'enter' to return to dashboard");
             String decide = scan.nextLine();
@@ -239,7 +244,8 @@ public class AdminDashboard {
 //				int offerID, String userName, int carID, double offerAmt, int offerMos, String offerStatus
                 OfferService.rejectOtherOffers(rejectOffers);
                 System.out.println(
-                        offering.toString() + "\n.....#" + offering.getOfferID() + " successfully approved!!\n");
+                offering.toString() + "\n.....#" + offering.getOfferID() + " successfully approved!!\n");
+                adminConsole();
 
             } else if (decide.contentEquals("r")) {
                 Offer offering = new Offer(offerLook.getOfferID(), offerLook.getUserName(), offerLook.getCarId(),

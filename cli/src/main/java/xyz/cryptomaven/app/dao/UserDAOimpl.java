@@ -148,6 +148,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 				);
 			}
 
+
 		} catch (Exception e) {
 			System.out.println("SQL issue with getting USER: \n" + e);
 			e.printStackTrace();
@@ -174,7 +175,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	}
 
-	public List<User> getAllUsers() {
+	public List<User> getUsers() {
 		String sql = "SELECT * FROM users";
 		List<User> userArr = new ArrayList<User>();
 		try {
@@ -244,14 +245,14 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	public boolean deleteUser(String username) {
 //		DB.users.remove(id);
-//		String sql = "DELETE users WHERE username = ?";
-		String sql = "CALL DELETE_USER(?)";
+		String sql = "DELETE users WHERE username = ?;";
+//		String sql = "CALL DELETE_USER(?)";
 		try {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setString(1, username);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
 
-			CallableStatement cs = conn.prepareCall(sql);
-			cs.setString(1,username);
+//			CallableStatement cs = conn.prepareCall(sql);
+//			cs.setString(1,username);
 			return true;
 		} catch (Exception e) {
 			System.out.println("doublecheck deletions: \n" + e);
@@ -266,19 +267,21 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	public boolean createUserPrePop(User u) {
 		return false;
 	}
+
 	@Override
-	public  List<User> getUsers() {
+	public  List<User> getLocalUsers() {
+
 		return TestDataStore.getUsers();
 	}
 
 
 	@Override
-	public void saveUserCarbuy(UserCarbuy userCarbuy) {
+	public void saveLocalUserCarbuy(UserCarbuy userCarbuy) {
 		TestDataStore.add(userCarbuy);
 
 	}
 
-    public void createGroups(Groups groups) {
+    public void createLocalGroups(Groups groups) {
 		TestDataStore.add(groups);
     }
 

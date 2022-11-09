@@ -47,7 +47,7 @@ public class LoginWebService {
 		List<Integer> myGroupsMemberIds = new ArrayList<>();
 
 		/// ALL SUPER's subs' IDs LISTED
-		List<User> allSuperIds = UserService.getAllUsers();
+		List<User> allSuperIds = UserService.getUsers();
 		List<Integer> mySubsIds = new ArrayList<>();
 
 		// ALL SUPER's subs' OBJECTS LISTED

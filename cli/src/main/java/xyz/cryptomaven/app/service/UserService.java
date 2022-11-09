@@ -26,11 +26,7 @@ public class UserService {
 	};
 	public static List<User> getUsers() {
 		System.out.println("Passing User Service userdao.getAllUsers() { ...");
-		return userdaoImpl.getAllUsers();
-	};
-	public static List<User> getAllUsers() {
-		System.out.println("Passing User Service userdao.getAllUsers() { ...");
-		return userdaoImpl.getAllUsers();
+		return userdaoImpl.getUsers();
 	};
 
 	public static boolean updateUser(User change) {

@@ -191,13 +191,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c70001b3-f5a3-42e3-8c20-72614623e480" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../mavenSSL/src/main/java/us/cryptomaven/pageControllers/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mavenSSL/src/main/java/us/cryptomaven/pageControllers/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mavenSSL/src/main/java/us/cryptomaven/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mavenSSL/src/main/java/us/cryptomaven/services/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mavenSSL/src/main/java/us/cryptomaven/services/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mavenSSL/src/main/java/us/cryptomaven/services/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mavenSSL/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../mavenSSL/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c70001b3-f5a3-42e3-8c20-72614623e480" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,6 +220,9 @@
         <entry key="JPA Structure" value="false" />
       </map>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1imh47slWGQkYG2MeHHo1njiGYj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -293,6 +290,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

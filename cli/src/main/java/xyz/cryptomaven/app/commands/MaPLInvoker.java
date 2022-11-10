@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MaPLInvoker implements IMaPL {
     private String suggestRegEx = "HOW |MAY |CAN |SHALL |I |AM |YOU |YOUR |MY |WANT |ABOUT |READY|'s|[!?.,:]+|SO ";
@@ -17,6 +18,35 @@ public class MaPLInvoker implements IMaPL {
     private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt"; // DEFAULT INSTRUCTION SOURCE
     private Map<String, String> instructionMap = new TreeMap<>(); // STARTUP INSTRUCTION SET   "11=Run Websites Health Check"
     private Map<Integer,MaPL> maplCommands = new HashMap<>();
+    private static Map<Integer, String> sessionHistory = new LinkedHashMap<>();
+
+    static void showHistory() {
+        System.out.println("CMD HISTORY = ");
+        // print history of each time a command invoked
+        for(Map.Entry<Integer, String> key: sessionHistory.entrySet()) {
+            System.out.print("key: "+key.getKey() + ", command: "+ key.getValue() + " || ");
+        }
+    }
+    static Map<Integer, String> replayLast(int numberOfCommands) {
+
+        List<Integer> arrayKeys = new ArrayList<Integer>(sessionHistory.keySet());
+        Integer lastPosition = arrayKeys.size();
+        Integer lastKey = arrayKeys.get(lastPosition-1);
+        Integer firstKey = arrayKeys.get(lastPosition-1-numberOfCommands);
+
+        Map<Integer, String> subMap = sessionHistory.entrySet().stream()
+                .filter(x -> x.getKey() >= firstKey)
+                .filter(x -> x.getKey() <= lastKey)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        Set<Integer> set = subMap.keySet();
+        Iterator<Integer> itr = set.iterator();
+        while(itr.hasNext()) {
+            Integer key = itr.next();
+            System.out.println("Replay of "+numberOfCommands+"; Key: "+key+"\t\t"+"value: "+subMap.get(key));
+        }
+        return subMap;
+    }
 
     public Map<Integer, MaPL> getMaplCommands() {
         return maplCommands;
@@ -137,6 +167,7 @@ public class MaPLInvoker implements IMaPL {
         if(maplCommands.containsKey(cmdId)) {
             IMaPL m = maplCommands.get(cmdId);
             getClassProps(m);
+            sessionHistory.put((int) new Date().getTime(), ((MaPL) m).getCommandName());
             m.execute();
         } else {
             System.out.println("CMD not recognized\n");

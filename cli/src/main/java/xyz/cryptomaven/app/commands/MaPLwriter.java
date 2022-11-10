@@ -71,10 +71,12 @@ public class MaPLwriter extends MaPL {
     }
 
     public void execute() {
+        MaPLInvoker.showHistory();
+        System.out.println("last 2 commands: " + MaPLInvoker.replayLast(2));
        try {
            device.write(getCmds());
        } catch (NullPointerException e) {
-           System.out.println(e.getMessage());;
+           System.out.println(e.getMessage());
        }
     }
 

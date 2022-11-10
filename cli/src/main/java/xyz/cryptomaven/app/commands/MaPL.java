@@ -71,6 +71,7 @@ public   class MaPL implements IMaPL {
     }
 
     public void execute() {
+        MaPLInvoker.showHistory();
         System.out.println("... MaPL execute()");
     }
 

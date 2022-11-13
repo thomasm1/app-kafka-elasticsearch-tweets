@@ -20,9 +20,10 @@ public class ElectroLot implements List<ElectroLot> {
 	private int monthsRemaining;
 	private double monthlyPayments;
 
-	private static int i = 1234; // used later to generate randomized id's
+	private static int i = 31; // used later to generate randomized id's
 
-	private static int T = 0; // Month-Time variable // T = Date Month + T(Month purchased);
+	private static int MONTH_TIME =
+			0; // Month-Time variable // T = Date Month + T(Month purchased);
 								// Based on Current Date, variable T will increment by 1 each month.
 
 	static double roundIt(double value, int places) { // Dollar-Cents decimals (pre-db formatting)
@@ -37,7 +38,7 @@ public class ElectroLot implements List<ElectroLot> {
 		balDayOne = roundIt(balDayOne, 2);
 		System.out.println("Balance Day 1: $" + balDayOne);
 
-		int monthsRemaining = (o.getOfferMos() - T);
+		int monthsRemaining = (o.getOfferMos() - MONTH_TIME);
 		System.out.println("Months Remaining: " + monthsRemaining);
 
 		double monthlyPayments = balDayOne / monthsRemaining;
@@ -69,11 +70,11 @@ public class ElectroLot implements List<ElectroLot> {
 	}
 
 	public static int getT() {
-		return T;
+		return MONTH_TIME;
 	}
 
 	public static void setT(int t) {
-		T = t;
+		MONTH_TIME = t;
 	}
 
 	public ElectroLot(int id, int offerid, int carid, String username, Double pricetotal, Double offeramt,

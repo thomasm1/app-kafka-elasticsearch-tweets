@@ -25,7 +25,7 @@ public class ElectroLotService { // This is static version of DAO method
 	}
 
 	public static  List<ElectroLot>  getAllElectroLot(String username) {
-		return electro.getElectroLot(username);
+		return electro.getAllElectroLot(username);
 	}
 	
 	public static boolean addElectroLot(ElectroLot el) {

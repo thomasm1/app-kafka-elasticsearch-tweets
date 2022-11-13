@@ -12,7 +12,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientActions {
+public class
+ClientActions {
 
 	public static List<Bookmark> browse(User user, List<List<Bookmark>> bookmarks) throws FileNotFoundException, UnsupportedEncodingException {
 		List<Bookmark> subset = new ArrayList<>();

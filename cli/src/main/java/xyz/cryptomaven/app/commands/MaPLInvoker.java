@@ -15,7 +15,7 @@ public class MaPLInvoker implements IMaPL {
     private static  int duplicate = 0;
     MaPL mw = new MaPLwriter();
     public static final String DRIVER = "oracle.jdbc.driver.OracleDriver"; //  DEFAULT DRIVER
-    private static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt"; // DEFAULT INSTRUCTION SOURCE
+    private static final String  SRC_DATA_STARTUP_TEXT_TXT    = "src/data/STARTUP_TEXT.txt"; // DEFAULT INSTRUCTION SOURCE
     private Map<String, String> instructionMap = new TreeMap<>(); // STARTUP INSTRUCTION SET   "11=Run Websites Health Check"
     private Map<Integer,MaPL> maplCommands = new HashMap<>();
     private static Map<Integer, String> sessionHistory = new LinkedHashMap<>();
@@ -83,6 +83,7 @@ public class MaPLInvoker implements IMaPL {
 
     @Override
 
+
     public void getMapleState() {
         /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
             System.out.println(Utilities.startupTime());
@@ -126,6 +127,7 @@ public class MaPLInvoker implements IMaPL {
             } catch (FileNotFoundException e) {
                 System.out.println(e.getMessage());
             }
+
         }
 
     /**
@@ -145,7 +147,9 @@ public class MaPLInvoker implements IMaPL {
     public void register(Integer cmdName, MaPLwriter cmd) {
 
     }
-
+    protected static void loadDefault() {
+        readStartupFile(SRC_DATA_STARTUP_TEXT_TXT);
+    }
     protected static File readStartupFile(String path) {
         String fileFullPath = (path != null) ? path : String.valueOf(SRC_DATA_STARTUP_TEXT_TXT);
         Path absolutePath = FileSystems.getDefault().getPath(fileFullPath);
@@ -155,6 +159,7 @@ public class MaPLInvoker implements IMaPL {
     }
 //    @Override
 //    public void execute(String cmdName) {
+
 //        if(maplCommands.containsKey(cmdName)) {
 //           IMaPL m = maplCommands.get(cmdName);
 //            m.execute();

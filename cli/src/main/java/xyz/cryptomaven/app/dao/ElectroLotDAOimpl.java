@@ -77,8 +77,9 @@ public class ElectroLotDAOimpl implements ElectroLotDAO {
 	}
 
 	public List<ElectroLot> getAllElectroLot(String username) {
-		String sql2 = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid, c.carmake, c.carmodel, c.pricetotal FROM offertable o JOIN cartable c ON c.carid = o.carid WHERE o.offerstatus = 'APPROVED' AND o.username = ?";
-		List<ElectroLot> electroLot = new ArrayList<ElectroLot>();
+//		String sql2 = "SELECT o.username,  o.carid,  o.offerstatus,  o.offermos, c.carid, c.carmake, c.carmodel, c.pricetotal FROM offertable o JOIN cartable c ON c.carid = o.carid WHERE o.offerstatus = 'APPROVED' AND o.username = ?";
+		String sql2 = "SELECT * FROM electrolot WHERE username = ?";
+		List<ElectroLot> electroLots = new ArrayList<ElectroLot>();
 				
 		try {   
 			PreparedStatement ps = conn.prepareStatement(sql2);
@@ -86,10 +87,13 @@ public class ElectroLotDAOimpl implements ElectroLotDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				 electroLot.add(new ElectroLot(rs.getInt("ID"),  rs.getInt("OFFERID"), rs.getInt("CARID"), 
-						 rs.getString("USERNAME"),  rs.getDouble("PRICETOTAL"), rs.getDouble("OFFERAMT"), rs.getDouble("BALANCE"), rs.getInt("OFFERMOS"), rs.getInt("MonthsRemaining"), rs.getDouble("MonthlyPayments")));
+				 electroLots.add(new ElectroLot(rs.getInt("ID"),  rs.getInt("OFFERID"), rs.getInt("CARID"),
+						 rs.getString("USERNAME"),  rs.getDouble("PRICETOTAL"), rs.getDouble("OFFERAMT"),
+						 rs.getDouble("BALANCE"), rs.getInt("OFFERMO" +
+						 "S"), rs.getInt("MonthsRemaining"),
+						 rs.getDouble("MonthlyPayments")));
 	}
-			return electroLot;
+			return electroLots;
 		} catch (SQLException e) {
 			System.out.println("Double Check Updated DB's Electrolot customer's list");
 			e.printStackTrace();

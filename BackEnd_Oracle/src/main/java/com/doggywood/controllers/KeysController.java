@@ -14,7 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins="*")
 @RequestMapping("/login")
 public class KeysController {
-	
+	@GetMapping("/getMoralisApi")
+	public Map<String, Set<String>> getMoralisApi() {
+		Map<String, Set<String>> info = new HashMap<>();
+		// getting API key
+		String newkey = System.getenv("MORALIS_API_KEY");
+		info.computeIfAbsent("MORALIS_API_KEY", key -> new HashSet<>()).add(newkey);
+		return info;
+	}
 	  @GetMapping("/getNasaApi")
 	    public Map<String, Set<String>> getNasaApi() {
 	        Map<String, Set<String>> info = new HashMap<>();

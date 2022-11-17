@@ -91,10 +91,5 @@ public class CustomerWelcomeController {
 	@Autowired(required = false)
 	StringService ss;
 
-	public void reverse(String... args) {
-
-		String newe = ss.reverse("robot");
-		System.out.println(newe);
-	}
 
 }

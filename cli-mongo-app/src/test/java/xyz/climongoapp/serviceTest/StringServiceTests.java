@@ -556,26 +556,30 @@ public class StringServiceTests {
      ******************************************************************/
     @Test
     public void validIsbnNumber() {
-//		assertTrue(stringService.isValidIsbn("3-598-21508-8"));
+		assertTrue(stringService.isValidIsbn("3-598-21508-8"));
     }
 
     @Test
     public void invalidIsbnCheckDigit() {
+
         assertFalse(stringService.isValidIsbn("3-598-21508-9"));
     }
 
     @Test
     public void validIsbnNumberWithCheckDigitOfTen() {
+
         assertTrue(stringService.isValidIsbn("3-598-21507-X"));
     }
 
     @Test
     public void checkDigitIsACharacterOtherThanX() {
+
         assertFalse(stringService.isValidIsbn("3-598-21507-A"));
     }
 
     @Test
     public void invalidCharacterInIsbn() {
+
         assertFalse(stringService.isValidIsbn("3-598-2K507-0"));
     }
 

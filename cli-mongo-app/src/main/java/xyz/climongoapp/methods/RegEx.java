@@ -5,18 +5,30 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegEx {
 	static String users = "src/data/files/fileInUsers.txt";
 	public static void main(String[] args) throws IOException {
 		StringActions s = new StringActions();
 		s.stringCounts(users);
-	}
-	public static Boolean regExThis(String str) {
+		regExPattMatch("food", "foodSALAD");
 
- 
-		Pattern pattern = Pattern.compile(str, Pattern.CASE_INSENSITIVE);
-		Matcher matcher = pattern.matcher("my name is thomas milton");
+		String[] wrong = {"[AZ[a-z](a-z)", "", "^(\\d{3}[- .]?){2}\\d{4}$"};
+		String[] right = {   "^(\\d{3}[- .]?){2}\\d{4}$"};
+
+		System.out.println("checkValid(): "+ checkValid(wrong));
+		System.out.println("checkValid(): "+ checkValid(right));
+	}
+	public static Boolean regExPattMatch(String strPattern, String findMatch) {
+		Pattern patt = Pattern.compile(strPattern);
+		Matcher match = patt.matcher(findMatch);
+		System.out.println("first test: "+match.find());
+
+		Pattern pattern = Pattern.compile(strPattern, Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(findMatch);
 		boolean matchFound = matcher.find();
 		if(matchFound) {
 			System.out.println("match found");
@@ -25,7 +37,22 @@ public class RegEx {
 		}
 		return matchFound; 
 	}
+	public static Boolean checkValid(String[] uncertainStrArr){
 
+		for(int i = 0;i<uncertainStrArr.length;i++){
+			String pattern = uncertainStrArr[i];
+			if(pattern != null && !pattern.equals("")){
+				try{
+					Pattern.compile(pattern);
+					System.out.println("Valid");
+				}catch(PatternSyntaxException e){
+					System.out.println("Invalid");
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
 //Pattern.UNICODE_CASE - 
 //Use with the CASE_INSENSITIVE to also ignore case of letters outside of the English alphabet

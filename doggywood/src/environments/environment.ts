@@ -7,7 +7,7 @@ export const environment = {
   // baseUrl: 'http://localhost:8080'
 
   // AWS EC2 Server
-  baseUrl:  'http://34.199.129.2:8090'
+  baseUrl:  'http://34.199.129.2:8080'
 };
 
 /*

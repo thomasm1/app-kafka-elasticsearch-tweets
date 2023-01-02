@@ -38,8 +38,8 @@ public class MappingsApplication implements CommandLineRunner {
 		Location location = new Location();
 		location.setPlace("pittsburgh");
 		location.setDescription("pittsburgh the city of millionaires");
-		location.setLatitude(40.26);
-		location.setLongitude(79.59);
+		location.setLatitude(40.44);
+		location.setLongitude(79.9959);
 		locationRepository.save(location);
 
 		User user1 = new User();
@@ -51,11 +51,11 @@ public class MappingsApplication implements CommandLineRunner {
 		userRepository.save(user1);
 
 		User user2 = new User();
-		user1.setFirstName("Tom");
-		user1.setLastName("Maestas");
-		user1.setEmail("thomas.maestas@hotmail.com");
-		user1.setPassword("password");
-		user1.setLocation(location);
+		user2.setFirstName("Tom");
+		user2.setLastName("Maestas");
+		user2.setEmail("thomas.maestas@hotmail.com");
+		user2.setPassword("password");
+		user2.setLocation(location);
 		userRepository.save(user2);
 
 	}

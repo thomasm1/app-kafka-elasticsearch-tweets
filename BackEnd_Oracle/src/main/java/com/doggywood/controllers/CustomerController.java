@@ -22,7 +22,8 @@ public class CustomerController {
 
 	@Autowired
 	CustomerService cs;
-	
+
+
 	@RequestMapping(value = "/customers", method = RequestMethod.POST, consumes = "application/json") 
 	public Customer createCustomer(@RequestBody Customer customer) {
 		return cs.createCustomer(customer);

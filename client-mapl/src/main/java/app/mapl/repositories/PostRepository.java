@@ -39,7 +39,7 @@ public interface PostRepository extends CrudRepository<PostEntity, Long> {
 	List<Optional<PostEntity>> findByCat3(String cat3);
 	Optional<PostEntity> findFirstByCat3(String cat3);
 	Optional<PostEntity> findByDate(String date);
-
+ 46tg b  ujy 
 	Page<PostEntity> findAllByUsername(Pageable pageable, String username);
 
 	Page<PostEntity> findAll(Pageable pageable);

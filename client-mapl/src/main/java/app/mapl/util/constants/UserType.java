@@ -1,12 +1,11 @@
 package app.mapl.util.constants;
 
 public enum UserType {
-		USER(0),
+		ADMIN(0),
 		CUST(1),
-		OWNER(2), 
-		MEMBER(3), 
-		
-		ADMIN(4),
+		OWNER(2),
+		MEMBER(3),
+		USER(4),
 		SUPER(5),
 		EDITOR(6),
 		CHIEF_EDITOR(7);

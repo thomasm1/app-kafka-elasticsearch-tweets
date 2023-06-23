@@ -1,62 +1,77 @@
 package app.mapl.service;
 
-
+import app.mapl.dao.CoinDAOImpl;
 import app.mapl.models.Coin;
-import app.mapl.repositories.CoinsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+
+// Like Singleton Managers, This Service is a Controllers return singletons
+
 @Service
-public class CoinsServiceImpl implements CoinsService {
+@Profile(value={"dev"})
+@RequiredArgsConstructor
+public class CoinsServiceImpl {
+	private final static Logger log = LoggerFactory.getLogger(CoinsServiceImpl.class);
+    private static CoinDAOImpl coindao;
 
-@Autowired
-private CoinsRepository coinsRepository;
-    @Override
-    public Coin createCoin(Coin c) {
-         return  coinsRepository.save(c);
-    }
-    @Override
-    public Coin getCoin(int coinId) {
-    try {
-            return coinsRepository.findById(coinId).get();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-//    @Autowired
-//    public List<Coin> getAllCoinsIOwn(String username) {
-//        return null; //(List<Coin>)  coinsRepository.findByUsername(username);
-//    }
-    @Override
-    public List<Coin> getAllCoins() {
-        return (List<Coin>) coinsRepository.findAll();
-    }
-    @Override
-    public List<Coin> getAllCoinsCust() {
-        return null; // (List<Coin>) coinsRepository.findAll();
-    }
-    @Override
-    public Coin updateCoin(Coin change) {
-         return   coinsRepository.save(change);
-    }
-    @Override
-    public boolean deleteCoin(int coinId) {
+//
+//	private static CoinsServiceImpl instance = new CoinsServiceImpl();
+//	private CoinsServiceImpl() {}
+//	public static CoinsServiceImpl getInstance() {
+//		return instance;
+//	}
 
-        try {
-            Coin c = coinsRepository.findById(coinId).get();
-            coinsRepository.delete(c);
+//	 * This method is now a static version of the getCoin() method. To get a coin by
+//	 * its ID, call: CoinService.getCoin(id);
 
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-    @Override
-    public void coinMarketViewAll() {
-        System.out.println(getAllCoinsCust());
-    }
+	public static boolean createCoin(Coin c) {
+		return coindao.createCoin(c);
+	}
+
+	public static Coin getCoin(int id) {
+		return coindao.getCoin(id);
+	};
+
+	public static List<Coin> getAllCoinsIOwn(String username) {
+		return coindao.getAllCoinsIOwn(username);
+	};
+
+	public static List<Coin> getAllCoins() {
+		return coindao.getAllCoins();
+	};
+
+	public static List<Coin> getAllCoinsByCoinToken(String token) {
+		Predicate<? super Coin> predicate =
+				c -> c.getCoinToken().equals(token);
+
+		List<Coin> coins = coindao.getAllCoins();
+
+		return coins.stream().filter(predicate).collect(Collectors.toList());
+	};
+
+	public static boolean updateCoin(Coin change) {
+		return coindao.updateCoin(change);
+	}
+
+	public static boolean deleteCoin(int id) {
+		return coindao.deleteCoin(id);
+	}
+
+	public static void coinMarketViewAll() {
+		System.out.println(coindao.getAllCoinsCust());
+	};
+
+	public static void setCoindao(CoinDAOImpl coindao) {
+		CoinsServiceImpl.coindao = coindao;
+	}
 
 }

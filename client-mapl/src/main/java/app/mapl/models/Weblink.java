@@ -1,19 +1,25 @@
 package app.mapl.models;
 
 import app.mapl.util.Shareable;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
 
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
-@Table(name = "weblinks")
 public class Weblink extends Bookmark implements Shareable {
+	static final long serialVersionUID = 1L;
 	@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
-//	@SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@SequenceGenerator( name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
 	private String url;
@@ -22,6 +28,8 @@ public class Weblink extends Bookmark implements Shareable {
 	private String htmlPage;
 	@Column(name="downloadstatus")
 	private DownloadStatus downloadStatus = DownloadStatus.NOT_ATTEMPTED;
+
+
 
 	public enum DownloadStatus {
 		NOT_ATTEMPTED,

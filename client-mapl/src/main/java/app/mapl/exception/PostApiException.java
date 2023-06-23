@@ -3,8 +3,8 @@ package app.mapl.exception;
 import org.springframework.http.HttpStatus;
 
 public class PostApiException extends RuntimeException {
-    private HttpStatus status;
-    private String message;
+    private final HttpStatus status;
+    private final String message;
     public PostApiException(HttpStatus status, String message) {
         this.status = status;
         this.message = message;

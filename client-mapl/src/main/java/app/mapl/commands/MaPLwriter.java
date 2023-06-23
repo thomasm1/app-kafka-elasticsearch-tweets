@@ -1,5 +1,7 @@
 package app.mapl.commands;
 
+import java.util.Map;
+
 public class MaPLwriter extends MaPL {
     ReceiverConsole device = new ReceiverConsole();
     Integer cmdId = 18;
@@ -55,8 +57,25 @@ public class MaPLwriter extends MaPL {
 
     }
 
-    public void registerCmds(String key, String value) {
+    public Map<Integer, MaPL> registerCmds(String commandID, String value) {
+        //  implement pre-registered commands to MaPL instance tasks
+        MaPL mapl = new MaPL(); // Concrete Command
+        mapl.setCmdId( Integer.valueOf(commandID) );
+        mapl.setSuggestion(suggestion);
+        mapl.setCommandName( suggToCmd(suggestion) );
+        maplCommands.put( mapl.getCmdId(), mapl );
+
+        System.out.println(mapl.getCmdId() + ": "+mapl.getCommandName());
+        return maplCommands;
     }
+
+    private String suggToCmd(String sugg) {
+        String[] sArr = sugg.toUpperCase().replaceAll(suggestRegEx," ").stripLeading()
+                .split("\\s+");
+        String newString = String.join("_",sArr);
+        return newString;
+    }
+
 
 //    @Override
 //    public void execute(String cmdName) {

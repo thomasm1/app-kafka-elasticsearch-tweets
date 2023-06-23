@@ -1,113 +1,61 @@
 package app.mapl.service;
 
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import app.mapl.dao.OfferDAO;
+import app.mapl.dao.OfferDAOimpl;
 import app.mapl.models.Offer;
-import app.mapl.repositories.OffersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
-public class OffersServiceImpl implements OffersService {
+@Profile(value={"dev"})
+@RequiredArgsConstructor
+public class OffersServiceImpl {
+	private final static Logger log = LoggerFactory.getLogger(OffersServiceImpl.class);
 
-    @Autowired
-    private OffersRepository offersRepository;
-    /**
-     * @param o
-     * @return
-     */
-    @Override
-    public Offer createOffer(Offer o) {
-        return offersRepository.save(o);
-    }
+	public static OfferDAO offerdaoImpl;
 
-    /**
-     * @param id
-     * @return
-     */
-    @Override
-    public Offer getOffer(int id) {
-        try {
-            return offersRepository.findById(id).get();
-        } catch (Exception e) {
-            return null;
-        }
-    }
+	public static boolean createOffer(Offer o) {
+		System.out.println("service received:+ " + o + "\n");
+		return offerdaoImpl.createOffer(o);
+	}
 
-    /**
-     * @return
-     */
-    @Override
-    public List<Offer> getAllOffers() {
-        return (List<Offer>) offersRepository.findAll();
-    }
+	public static Offer getOffer(int id) {
+		return offerdaoImpl.getOffer(id);
+	};
 
-    /**
-     * @param username
-     * @return
-     */
-    @Override
-    public List<Offer> getAllOffersCust(String username) {
-        List<Offer> allOffers = (List<Offer>) offersRepository.findAll();
-        List<Offer> myOffers = new ArrayList<>();
-        for (Offer o : allOffers) {
-            if (o.getUserName().equals(username)) {
-                myOffers.add(o);
-            }
-        }
-        return myOffers;
-    }
+	public static List<Offer> getAllOffers() {
+		return offerdaoImpl.getAllOffers();
+	};
 
-    /**
-     * @param change
-     * @return
-     */
-    @Override
-    public boolean updateOffer(Offer change) {
-        try {
-            offersRepository.save(change);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
+	public static List<Offer> getAllOffersCust(String username) {
 
-    /**
-     * @param id
-     * @return
-     */
-    @Override
-    public boolean deleteOffer(int id) {
-        try {
-            Offer o = offersRepository.findById(id).get();
-            offersRepository.delete(o);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
+			Predicate<? super Offer> predicate =
+					offer -> offer.getUsername().equalsIgnoreCase(username);
 
-    /**
-     * @param rejectionChanges
-     * @return
-     */
-    @Override
-    public boolean rejectOtherOffers(Offer rejectionChanges) {
-        try {
-            List<Offer> allOffers = (List<Offer>) offersRepository.findAll();
-            for (Offer o : allOffers) {
-                if (o.getCoinId() == rejectionChanges.getCoinId() && o.getOfferID() != rejectionChanges.getOfferID()) {
-                    o.setOfferStatus("rejected");
-                    offersRepository.save(o);
-                }
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
+		   List<Offer> offers = offerdaoImpl.getAllOffers();
+
+			return offers.stream().filter(predicate).collect(Collectors.toList());
+
+	};
+
+	public static boolean updateOffer(Offer change) {
+		return offerdaoImpl.updateOffer(change);
+	}
+
+	public static boolean deleteOffer(int id) {
+		return offerdaoImpl.deleteOffer(id);
+	}
+
+	public static boolean rejectOtherOffers(Offer rejectionChanges) {
+		return offerdaoImpl.rejectOtherOffers(rejectionChanges);
+	}
+
 }

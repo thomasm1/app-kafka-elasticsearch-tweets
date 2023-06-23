@@ -2,9 +2,9 @@ package app.mapl.webservice;
 
 import app.mapl.models.User;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class ViewUserCommand implements Command {
 
@@ -17,7 +17,7 @@ public class ViewUserCommand implements Command {
 
         System.out.println("ViewUserCommand: " + user);
         request.setAttribute("userDetails", user);
-        return "userDetails";
+        return "viewUserDetails";
     }
 
 }

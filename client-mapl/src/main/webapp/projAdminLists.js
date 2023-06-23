@@ -124,7 +124,7 @@ let listUser = function () {
 				document.getElementById("table").innerHTML += `
 			        <tr>
 			            <td><strong>#${d[i].userId}</strong>&nbsp;   &nbsp; Name:</td>
-			            <td >${d[i].userName}</td>
+			            <td >${d[i].username}</td>
 			        </tr> 
 			        <tr>
 			            <td>&nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; Supervisor ID:</td>

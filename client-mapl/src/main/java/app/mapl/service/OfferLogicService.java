@@ -1,9 +1,12 @@
 package app.mapl.service;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import app.mapl.dao.OfferLogicDAO;
 import app.mapl.dao.OfferLogicDAOImpl;
+import app.mapl.models.Offer;
 import app.mapl.models.OfferLogic;
 import app.mapl.repositories.OfferLogicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +38,10 @@ public class OfferLogicService { // This is static version of DAO method
 		}
 	}
 
-//	public static  List<OfferLogic>  getAllOfferLogic(String username) {
-//		return electro.getAllOfferLogic(username);
-//	}
-	
+	public static  List<OfferLogic>  getAllOfferLogic(String username) {
+		return electro.getAllOfferLogic(username);
+	}
+
 	public static boolean addOfferLogic(OfferLogic el) {
 		return electro.addOfferLogic(el);
 	}

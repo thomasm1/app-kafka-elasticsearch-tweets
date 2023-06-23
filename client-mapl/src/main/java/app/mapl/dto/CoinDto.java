@@ -1,24 +1,25 @@
 package app.mapl.dto;
 
-import app.mapl.models.Coin;
-import app.mapl.models.Weblink;
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
- * A DTO for the {@link Coin} entity
+ * A DTO for the {@link app.mapl.models.Coin} entity
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class CoinDto implements Serializable {
-    private final int coinId;
-    private final String coinToken;
-    private final String coinSymbol;
-    private final double priceTotal;
-    private final int purchased;
+    static long serialVersionUID = 1L;
 
-    /**
-     * A DTO for the {@link Weblink} entity
-     */
+    private   int coinId;
+    private   String coinToken;
+    private   String coinSymbol;
+    private   double priceTotal;
+    private   int purchased;
+
 
 }

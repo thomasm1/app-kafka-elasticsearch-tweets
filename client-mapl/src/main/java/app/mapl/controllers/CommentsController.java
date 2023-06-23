@@ -1,19 +1,22 @@
 package app.mapl.controllers;
 
-import app.mapl.models.CommentDto;
+import app.mapl.dto.CommentDto;
 import app.mapl.service.CommentsService;
+import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping(CommentsController.PATH)
 public class CommentsController {
 
+    public static final String PATH = "/api/posts";
     @Autowired
     private CommentsService commentsService;
 
@@ -29,17 +32,20 @@ public class CommentsController {
     }
 
     @GetMapping("/{postId}/comments/{id}")
-    public ResponseEntity<CommentDto> getCommentById(@PathVariable(value = "postId") Long postId,
+    public ResponseEntity<Optional<CommentDto>> getCommentById(@PathVariable(value = "postId") Long postId,
                                                      @PathVariable(value = "id") Long commentId){
-        CommentDto commentDto = commentsService.getCommentById(postId, commentId);
+        Optional<CommentDto> commentDto = commentsService.getCommentById(postId, commentId);
         return new ResponseEntity<>(commentDto, HttpStatus.OK);
     }
 
     @PutMapping("/{postId}/comments/{id}")
-    public ResponseEntity<CommentDto> updateComment(@PathVariable(value = "postId") Long postId,
+    public ResponseEntity<Optional<CommentDto>> updateComment(@PathVariable(value = "postId") Long postId,
                                                     @PathVariable(value = "id") Long commentId,
                                                     @Valid @RequestBody CommentDto commentDto){
-        CommentDto updatedComment = commentsService.updateComment(postId, commentId, commentDto);
+        if (commentsService.updateComment(postId, commentId,commentDto).isEmpty()){
+            throw new NotFoundException();
+        }
+        Optional<CommentDto> updatedComment = commentsService.updateComment(postId, commentId, commentDto);
         return new ResponseEntity<>(updatedComment, HttpStatus.OK);
     }
 

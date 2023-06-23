@@ -1,0 +1,17 @@
+type Query {
+userByEmail(email: String!): User!
+users: [User!]!
+
+}
+type Profiler {
+    id: ID!
+}
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+    createdAt: String!
+    updatedAt: String!
+    profiler: Profiler!
+}

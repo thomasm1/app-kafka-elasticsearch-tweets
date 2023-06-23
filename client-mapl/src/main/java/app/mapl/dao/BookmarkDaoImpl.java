@@ -1,12 +1,12 @@
 package app.mapl.dao;
 
 
-import app.mapl.dataLoader.BookmarkManager;
+import app.mapl.bootstrap.FileDataStore;
+import app.mapl.dto.UserBookmark;
 import app.mapl.models.Bookmark;
 import app.mapl.models.User;
-import app.mapl.models.UserBookmark;
 import app.mapl.models.Weblink;
-import app.mapl.util.JDBCConnection;
+import app.mapl.config.JDBCConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -75,18 +75,16 @@ public class BookmarkDaoImpl   implements BookmarkDAO {
         return false;
     }
 
-    @Override
-    public List<List<Bookmark>> getBookmarksArray() {
-        return BookmarkManager.TestDataStore.getBookmarksArray();
-    }
+
 
     // Wide-net Http weblinks
     public List<Weblink> getAllWebLinks() {
         List<Weblink> result = new ArrayList<>();
-        List<List<Bookmark>> bookmarks = BookmarkManager.TestDataStore.getBookmarksArray();
-        List<Bookmark> allWeblinks = bookmarks.get(0);
-        for (Bookmark wl : allWeblinks) {
-            result.add((Weblink) wl);
+      List<Weblink> bookmarks = FileDataStore.getBookmarksArray();
+        for (Bookmark wl : bookmarks) {
+            if (wl instanceof Weblink) {
+                result.add((Weblink) wl);
+            }
         }
         return result;
     }
@@ -103,14 +101,14 @@ public class BookmarkDaoImpl   implements BookmarkDAO {
         return result;
     }
     public  void add(UserBookmark userBookmark) {
-        BookmarkManager.TestDataStore.add(userBookmark);
+        FileDataStore.add(userBookmark);
     }
 
     public  void saveLocalUserBookmark(UserBookmark userBookmark) {
-        BookmarkManager.TestDataStore.add(userBookmark);
+        FileDataStore.add(userBookmark);
     }
 
     public List<Bookmark> getLocalUserBookmarksByUser(User user) {
-      return BookmarkManager.TestDataStore.getLocalUserBookmarksByUser(user);
+      return FileDataStore.getLocalUserBookmarksByUser(user);
     }
 }

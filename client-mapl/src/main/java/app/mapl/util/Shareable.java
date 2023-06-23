@@ -1,6 +1,8 @@
 package app.mapl.util;
 
-public interface Shareable {
+import java.io.Serializable;
+
+public interface Shareable extends Serializable {
 
     String getItemData();
 

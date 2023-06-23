@@ -2,16 +2,18 @@ package app.mapl.webservice;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import app.mapl.dto.UserDto;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import app.mapl.models.User;
-import app.mapl.service.UserService;
+import app.mapl.service.UsersServiceImpl;
 
 public class UserWebService {
 
@@ -28,21 +30,21 @@ public class UserWebService {
 //		int userId = Integer.parseInt(request.getParameter("id"));
 		int groupsId = Integer.parseInt(request.getParameter("groupsId"));
 		System.out.println(groupsId);
-		String userName = request.getParameter("userName");
-		System.out.println(userName);
+		String username = request.getParameter("username");
+		System.out.println(username);
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 
 //		 add db using these fields
 //		"user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net"
-//		User d = new User(999, groupsId,  userName, password, email);
+//		User d = new User(999, groupsId,  username, password, email);
 //		System.out.println("UserWebService: "+d);
 
 		// Call UserService to add it.
-		UserService.createUser(new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "photopaath", "usergrup",0,0,"id"));
+		UsersServiceImpl.createUserCli(new UserDto(1, "t@t.com", "password", "lastNamedd", "firstnam", 1,   "5055087707" ,"user4@cryptomaven.xyz","http://www.dailytech.net", "photopaath", 0,0,null ));
 
 		try {
-			response.getWriter().append("Successfully added data to ORACLE (AWS) input: " + request.getContextPath());
+			response.getWriter().append("Successfully added data to ORACLE (AWS) input: ").append(request.getContextPath());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -52,32 +54,27 @@ public class UserWebService {
 		int id = Integer.parseInt(request.getParameter("userId"));
 		System.out.println("id: " + id);
 		
-		String userName = request.getParameter("username");
-		System.out.println("parameter: "+userName);
-		User u = UserService.getUser(userName);
-		System.out.println("getUser(name):"+u.getUserName());
-		
-		User d = UserService.getUser(u.getUserName());
-		System.out.println("getUser(name):"+d.getUserId());
-		 
-		String dbUser = d.getUserName();
+		String username = request.getParameter("username");
+		System.out.println("parameter: "+username);
+		UserDto u = UsersServiceImpl.getUserCli(username).orElseThrow();
+		System.out.println("getUser(name):"+u.getUsername());
+
+		UserDto d = UsersServiceImpl.getUserCli(u.getUsername()).orElseThrow();
+
+		String dbUser = d.getUsername();
 		int dbId = d.getUserId();
-		int dbGroups = d.getGroups();
 		System.out.println(dbUser+"..getting userInfo:" );
 
 		HttpSession sess = request.getSession();   
 		sess.setAttribute("sessionId", sess.getId());
 		sess.setAttribute("useradminname", dbUser);
 		sess.setAttribute("useradminid", dbId);
-		sess.setAttribute("usergroups", dbGroups);
 
 		Cookie sessUser = new Cookie("sessUser", dbUser);
 		Cookie sessId = new Cookie("sessId", Integer.toString(dbId));
-		Cookie sessGroups = new Cookie("sessGroups", Integer.toString(dbGroups));
 		response.setContentType("text/html"); 
 		response.addCookie(sessId);
 		response.addCookie(sessUser);
-		response.addCookie(sessGroups);
  
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
@@ -93,11 +90,11 @@ public class UserWebService {
 		}  
 	}
 
-//	int userId, int groupsId, int superId, String userName, String password, String email
+//	int userId, int groupsId, int superId, String username, String password, String email
 
 	public static void listUser(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<User> d = UserService.getUsers();
+		List<UserDto> d = UsersServiceImpl.getUsersCli();
 		
 
 		System.out.println(d);

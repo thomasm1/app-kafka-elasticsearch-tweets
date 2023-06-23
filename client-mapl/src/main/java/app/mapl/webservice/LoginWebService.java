@@ -1,23 +1,18 @@
 package app.mapl.webservice;
 
 import java.io.IOException;
-import java.util.ArrayList;
 //import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 
 //https://github.com/google/gson/blob/master/UserGuide.md
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
-import app.mapl.models.User;
-import app.mapl.models.Groups;
 //import app.mapl.service.UserService;
-import app.mapl.service.GroupsService;
 import app.mapl.service.UsersServiceImpl;
 
 @WebServlet(urlPatterns = { "/signin", "/login}" })
@@ -45,58 +40,17 @@ public class LoginWebService   extends HttpServlet {
 		int dbSuper = 0;
 		int dbGroups = 0;
 		/// ALL DEPTHEADS' IDs LISTED
-		List<Groups> allGroupsHeads = GroupsService.listGroups();
-//		List<User> myGroupsMemberObjs = new ArrayList<User>();
-		List<Integer> myGroupsMemberIds = new ArrayList<>();
 
-		/// ALL SUPER's subs' IDs LISTED
 		UsersServiceImpl userService = new UsersServiceImpl();
-		List<User> allSuperIds = userService.getUsers();
-		List<Integer> mySubsIds = new ArrayList<>();
 
-		// ALL SUPER's subs' OBJECTS LISTED
-		List<User> mySubsObjs = new ArrayList<User>();
-		// (GSON) ALL SUPER's subs' OBJECTS LISTED
 
-		List<User> uu = userService.getUsers();
-		List<User> uuu = userService.getUsers();
 		Boolean valid = false;
 		Boolean isSuper = false;
 		System.out.println("this user is not verified as a Supervisor, checking tho...");
 		Boolean isGroupsHead = false;
 		System.out.println("this user is not verified as a Groups Head, checking tho...");
 
-		for (User u : uu) { // this is user object logged in
-			if (u.getUserName().equals(username) && u.getPassword().equals(password)) {
-				System.out.println("logged in! " + u.getUserName() + " matches " + username + "\n" + "and "
-						+ u.getPassword() + " matches " + password + " :-)... welcome");
-				valid = true;
-				/// GET USER DETAILS
-				User userLogged = userService.getUser(u.getUserName());
-				System.out.println(userLogged.toString());
-				dbUser = userLogged.getUserName();
-				dbId = userLogged.getUserId();
-				dbGroups = userLogged.getGroups();
-				System.out.println("dbGroups: " + dbGroups + ", passes validation: " + valid);
 
-				
-				System.out.println("list of my mySubs: " + mySubsIds);
-// MAKE COOKIE *IS SUPERVISOR 
-				Cookie isSuperCookie = new Cookie("isSuper", isSuper.toString());
-				response.addCookie(isSuperCookie);
-// COLLECT MY SUBORDINATES, PUT IN COOKIE
-				System.out.println("list of my mySubs objs: " + mySubsObjs);
-				int i = 0;
-				for (User m : mySubsObjs) {
-					Integer mySubId = m.getUserId();
-					Cookie SubId = new Cookie("sessOid" + i, Integer.toString(mySubId));
-					response.addCookie(SubId);
-					i++;
-				}
-
-
-			}
-		}
 
 		System.out.println("if valid.." + valid);
 		if (valid) {
@@ -108,15 +62,13 @@ public class LoginWebService   extends HttpServlet {
 
 			request.setAttribute("dbUser", dbUser);
 			request.setAttribute("dbId", dbId);
-			request.setAttribute("dbGroups", dbGroups);
 
 			// COOKIES
 			response.setContentType("text/html");
 			response.getWriter().append("visiting LoginWebServices");
 			Cookie sessUser = new Cookie("sessUser", dbUser);
-			Cookie sessId = new Cookie("sessId", Integer.toString(dbId));
 			Cookie sessGroups = new Cookie("sessGroup", Integer.toString(dbGroups));
-			response.addCookie(sessId);
+			response.addCookie(new Cookie("sess.getId().toString()",sess.getId().toString()));
 			response.addCookie(sessUser);
 			response.addCookie(sessGroups);
 			System.out.println("..just made cookies...");

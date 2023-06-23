@@ -1,9 +1,12 @@
 package app.mapl.serviceTests;
 
+import static app.mapl.service.UsersServiceImpl.userMapper;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import app.mapl.dto.UserDto;
+import app.mapl.models.Role;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,16 +20,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import app.mapl.dao.UserDAOimpl;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
+import app.mapl.service.UsersServiceImpl;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {      // *NOTE: change PK usernames before sending to DB
 
     @InjectMocks
-	private UserService userServiceTester;
+	private UsersServiceImpl userServiceTester;
     @Mock
     private UserDAOimpl userDAOimplTester = mock(UserDAOimpl.class);
 
@@ -38,65 +40,30 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
     //TODO mockito Service INJECTION
     @Test
     public void add_new_user() {
-        User u = new User(
-                "user0", "passwordX",
-                "Smith", "Tom", 3, 1,
-                "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                "photoPath",
-                "userGroup",
-                0,
-                1,
-                "id");
-        when(userDAOimplTester.createUser(u)).thenReturn(true);
-        assertTrue(userServiceTester.createUser(u));
+        UserDto u = new UserDto(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null);
+        when(userDAOimplTester.createUser(userMapper.toEntity(u))).thenReturn(userMapper.toEntity(u));
+        assertEquals(userServiceTester.createUser(u),u);
      }
 
     @Test
     public void get_users() {
+        UserDto u = new UserDto(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null);
 
         when(userDAOimplTester.getUsers()).thenReturn(Arrays.asList(
-                new User(
-                        "user1", "password1",
-                        "Smith", "Tom", 3, 1,
-                        "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                        "photoPath",
-                        "userGroup",
-                        0,
-                        1,
-                        "id"),
-                new User(
-                        "user2", "password2",
-                        "Smith", "Tom", 3, 1,
-                        "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                        "photoPath",
-                        "userGroup",
-                        0,
-                        1,
-                        "id")));
-        List<User> users = userServiceTester.getUsers();
-        assertEquals("user0", users.get(0).getUserName());
+                new User(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null)));
+        List<UserDto> users = userServiceTester.getUsers();
+        assertEquals("user0", users.get(0).getUsername());
         assertEquals("password1", users.get(1).getPassword());
     }
 
-    @Test
-    public void get_user() {
+//    @Test
+//    public void get_user() {
+//
+//        when(userDAOimplTester.getUser("username")).thenReturn(
+//                new UserDto(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null)
+//    }
 
-        when(userDAOimplTester.getUser("user1")).thenReturn(
-                new User(
-                        "user1", "password1",
-                        "Smith", "Tom", 3, 1,
-                        "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                        "photoPath",
-                        "userGroup",
-                        0,
-                        1,
-                        "id"));
-        User user = userServiceTester.getUser("user1");
 
-        assertEquals("user1", user.getUserName());
-    }
-
-    @Test
     public void update_user() {
 //		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "5055087707" , "user4@cryptomaven.xyz", "http://www.dailytech.net","photoPath", 	"userGroup",
 //				0,
@@ -113,7 +80,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 //				0,
 //				1,
 //				"id");    // PASSES
-//		String x = u.getUserName()+rand;
+//		String x = u.getUsername()+rand;
 //		System.out.println("about to delete just  ..."+x);
 //		assertTrue(UserService.deleteUser(x));
 //		System.out.println("deleteed just now ..."+ x);

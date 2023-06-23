@@ -59,7 +59,7 @@
                 <input id="superId" min="1" type="number">
 
                 <h4 id="text">user name</h4>
-                <input id="userName" type="text">
+                <input id="username" type="text">
 
                 <h4 id="text">password</h4>
                 <input id="password" type="password">
@@ -92,9 +92,9 @@
         let superId;  // just declare
         superId = ri.value; // overwrite
 
-        let rn = document.getElementById("userName");
-        let userName;
-        userName = rn.value;
+        let rn = document.getElementById("username");
+        let username;
+        username = rn.value;
 
         let rp = document.getElementById("password");
         let password;
@@ -117,8 +117,8 @@
 
         xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhttp.send("deptId=" + deptId + "&superId=" + superId + "&userName=" + userName + "&password=" + password + "&email=" + email);
-        console.log("Great, submitted; your deptId: #" + deptId + ", super ID: " + superId + " submitted by: *" + userName + " pw: *" + password + ", email: " + email);
+        xhttp.send("deptId=" + deptId + "&superId=" + superId + "&username=" + username + "&password=" + password + "&email=" + email);
+        console.log("Great, submitted; your deptId: #" + deptId + ", super ID: " + superId + " submitted by: *" + username + " pw: *" + password + ", email: " + email);
         window.location.href = "login.html";
 
     }  

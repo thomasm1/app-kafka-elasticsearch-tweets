@@ -10,6 +10,6 @@
 
 <jsp:useBean id="userDetails" type="app.mapl.models.User" scope="request"/>
 Id: <jsp:getProperty property="userId" name="userDetails"/>
-Name: <jsp:getProperty property="userName" name="userDetails"/>
+Name: <jsp:getProperty property="username" name="userDetails"/>
 </body>
 </html>

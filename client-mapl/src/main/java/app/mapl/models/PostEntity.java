@@ -1,23 +1,23 @@
 package app.mapl.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-//import org.springframework.beans.factory.annotation.Value;
+import lombok.*;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.*;
-
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
+@Builder
 @Entity
 @Table(
 		name = "POST_ENTITY", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})}
 )
 public class PostEntity {
 
-	public interface SimplePost {
+    public interface SimplePost {
 		String getTitle();
 //		@Value("#{target.author.name}")  //TODO MAKE AUTHOR OBJECT
 		String getAuthor();
@@ -25,8 +25,9 @@ public class PostEntity {
 		String getCat3();
 		String getBlogcite();
 	}
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false)
 	private Long id;
 
@@ -35,25 +36,22 @@ public class PostEntity {
 
 	@Column(name = "DATE_")
 	private String date;
-	
+
 	@Column(name = "AUTHOR")
 	private String author; //TODO MAKE AUTHOR OBJECT
-	
-	@Column(name = "MONTH_ORDER")
-	private String monthOrder;
-	
+
 	@Column(name = "CAT3")
 	private String cat3;
 
 	@Column(name = "TITLE", nullable = false)
 	private String title;
-	
+
 	@Column(name = "POST", nullable = false)
 	private String post;
-	
+
 	@Column(name = "BLOGCITE", nullable = false)
-	private String blogcite;	
-	
+	private String blogcite;
+
 	@Column(name = "USERNAME", nullable = false)
 	private String username;
 
@@ -61,8 +59,8 @@ public class PostEntity {
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 
-//	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private Set<Comment> comments = new HashSet<>();
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Comment> comments = new HashSet<>();
 
-	
+
 }

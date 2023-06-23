@@ -1,9 +1,10 @@
 package app.mapl.webservice;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-// @WebServlet("/offer")
+ @WebServlet("/offer")
 //    public class CouponServlet extends HttpServlet {
 public class ViewOfferCommand implements Command {
 
@@ -13,9 +14,9 @@ public class ViewOfferCommand implements Command {
         int num1 = Integer.parseInt(request.getParameter("number1"));
         int num2 = Integer.parseInt(request.getParameter("number2"));
 
-        AverageModel model = new AverageModel();
-        int result = model.calculateAverage(num1, num2);
-        request.setAttribute("result", result);
+//        AverageModel model = new AverageModel();
+       final double mean = (double) (num1 + num2) / 2;
+        request.setAttribute("result", mean);
 
         String offer = request.getParameter("offer");
         request.setAttribute("offer","Discount for offer "+offer+" is 50%" );

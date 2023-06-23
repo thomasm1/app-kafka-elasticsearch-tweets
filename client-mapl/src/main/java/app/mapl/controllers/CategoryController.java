@@ -2,13 +2,16 @@ package app.mapl.controllers;
 
 import app.mapl.dto.CategoryDto;
 import app.mapl.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/categories")
 public class CategoryController {
 
@@ -25,8 +28,8 @@ public class CategoryController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<CategoryDto> getCategory(@PathVariable("id") Long categoryId){
-         CategoryDto categoryDto = categoryService.getCategory(categoryId);
+    public ResponseEntity<Optional<CategoryDto>> getCategory(@PathVariable("id") Long categoryId){
+         Optional<CategoryDto> categoryDto = categoryService.getCategory(categoryId);
          return ResponseEntity.ok(categoryDto);
     }
 
@@ -36,7 +39,7 @@ public class CategoryController {
     }
 
     @PutMapping
-    public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto ){
+    public ResponseEntity<Optional<CategoryDto>> updateCategory(@RequestBody CategoryDto categoryDto ){
         return ResponseEntity.ok(categoryService.updateCategory(categoryDto ));
     }
     @DeleteMapping("{id}")

@@ -1,10 +1,13 @@
 package app.mapl.repositories;
 
+import app.mapl.models.Category;
+import app.mapl.models.Comment;
 import app.mapl.models.PostEntity;
 import org.springframework.data.domain.*;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,17 +19,17 @@ public interface PostRepository extends CrudRepository<PostEntity, Long> {
 
 
 	PostEntity pattern = new PostEntity(
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null
+			0L,
+			"did",
+			"date",
+			"author",
+			"cat3",
+			"title",
+			"post",
+			"blogcite",
+			"username",
+			new Category(),
+			new HashSet<>()
 	);
 	Example<PostEntity> lenient = Example.of(pattern, ExampleMatcher.matchingAll().withIgnoreCase());
 //	posts.findAll(lenient, PageRequest.of(0, 10, Sort.by("id").descending()));
@@ -39,7 +42,7 @@ public interface PostRepository extends CrudRepository<PostEntity, Long> {
 	List<Optional<PostEntity>> findByCat3(String cat3);
 	Optional<PostEntity> findFirstByCat3(String cat3);
 	Optional<PostEntity> findByDate(String date);
- 46tg b  ujy 
+
 	Page<PostEntity> findAllByUsername(Pageable pageable, String username);
 
 	Page<PostEntity> findAll(Pageable pageable);

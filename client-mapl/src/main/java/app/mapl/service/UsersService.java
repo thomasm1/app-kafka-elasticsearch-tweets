@@ -1,25 +1,34 @@
 package app.mapl.service;
 
-import app.mapl.models.User;
+import app.mapl.dto.RegisterDto;
+import app.mapl.dto.UserDto;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface UsersService {
 
-	public User createUser(User user);
+	void registerUser(RegisterDto rDto);
 
-	public User getUser(int id);
-	public User getUser(String username );
-	public List<User> getUsers();
+	UserDto loginUser(String username, String password);
+	public UserDto createUser(UserDto user);
 
-	public User updateUser(User change);
+	public static UserDto createUserCli(UserDto user) {
+		return null;
+	}
 
+	public Optional<UserDto> getUser(int id);
+	public Optional<UserDto>  getUser(String username );
+	public List<UserDto> getUsers();
 
-	public List<String> getUsersWithCars();
+	public UserDto updateUser(UserDto change);
 
-	public User getUserByPassword(String username, String password);
+	public Optional<UserDto> getUserByEmailAndPassword(String email, String pw);
+
+	public Optional<UserDto> getUserByPassword(String username, String password);
 	public boolean deleteUser(String username);
 
-	boolean deleteUser(User user);
+	boolean deleteUser(UserDto user);
+
 }

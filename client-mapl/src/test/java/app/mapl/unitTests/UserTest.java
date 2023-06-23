@@ -18,7 +18,7 @@ public class UserTest {
 	@BeforeEach
 	public void setup() {
 		 System.out.println("Before executing ...");
-// int userID, String userName, String password, String firstName, String lastName, boolean isOwner, int offerCount)
+// int userID, String username, String password, String firstName, String lastName, boolean isOwner, int offerCount)
 //		 custOne = new User(3, "tmaestas", "password", "thom", "m-last", false, 0);
 	   }
 
@@ -38,18 +38,18 @@ public class UserTest {
 //    }
 
     @Test
-    public void setUserName() {
-//    	custOne.setUserName("newUsername");
-//    	assertEquals("newUsername", custOne.getUserName());
+    public void setUsername() {
+//    	custOne.setUsername("newUsername");
+//    	assertEquals("newUsername", custOne.getUsername());
     }
 
     @Test
-    public void getUserName() { 
-//    	String thomUserName = custOne.getUserName();
-//    	System.out.println("-getUserName()-  " + thomUserName);
-//    	custOne.setUserName("newUsername"); 
-//    	String thomUserName2 = custOne.getUserName();
-//    	System.out.println("-getUserName()-  " + thomUserName2);
+    public void getUsername() { 
+//    	String thomUsername = custOne.getUsername();
+//    	System.out.println("-getUsername()-  " + thomUsername);
+//    	custOne.setUsername("newUsername"); 
+//    	String thomUsername2 = custOne.getUsername();
+//    	System.out.println("-getUsername()-  " + thomUsername2);
     }
 
     @Test

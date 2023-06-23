@@ -1,12 +1,14 @@
 package app.mapl.integrationTests;
 
+import app.mapl.dto.UserDto;
 import org.junit.jupiter.api.*;
 import app.mapl.consoles.AdminDashboard;
 import app.mapl.consoles.UserDashboard;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
+import app.mapl.service.UsersServiceImpl;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 class UserDaoLoginTest {  // INTE
 	String adminUsername = "admin", adminPassword = "pass";
@@ -15,7 +17,7 @@ class UserDaoLoginTest {  // INTE
 	String un = "joshallen", pw = "allen";
 
 	// MOCKITO Service
-	User login = UserService.getUser(un);
+	UserDto login = UsersServiceImpl.getUserCli(un).orElseThrow();
 
 	@BeforeAll
 	static void setUpBeforeClass_Username() throws Exception {
@@ -36,7 +38,7 @@ class UserDaoLoginTest {  // INTE
 	}
 
 	@Test
-	void checkUserNameAndPassword() throws SQLException {
+	void checkUsernameAndPassword() throws SQLException {
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
 		if (un.contentEquals(adminUsername) && pw.contentEquals(adminPassword)) {
 			System.out.println("Welcome Administrator, *" + un + "*\n    ... now preparing your Dashboard");
@@ -44,12 +46,12 @@ class UserDaoLoginTest {  // INTE
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
-				| (un.contentEquals(login.getUserName()) && pw.contentEquals(login.getPassword()))) {
+				| (un.contentEquals(login.getUsername()) && pw.contentEquals(login.getPassword()))) {
 			System.out.println(
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
 // USER LOGIN
-			UserDashboard.dashboardChoice(un); //
+			UserDashboard.console(un); //
 		}
 	}
 
@@ -62,13 +64,11 @@ class UserDaoLoginTest {  // INTE
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
-				| (un.contentEquals(login.getUserName()) && pw.contentEquals(login.getPassword()))) {
+				| (un.contentEquals(login.getUsername()) && pw.contentEquals(login.getPassword()))) {
 			System.out.println(
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
-// USER LOGIN
-			UserDashboard.dashboardChoice(un); //
-//		fail("Not yet implemented");
+
 		}
 	}
 

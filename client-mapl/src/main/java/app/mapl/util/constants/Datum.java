@@ -17,6 +17,8 @@ public class Datum {
     public static final String DEFAULT_SORT_BY = "id";
     public static final String DEFAULT_SORT_DIRECTION = "asc";
 
+    public static final String SRC_DATA_STARTUP_TEXT_ADMIN_TXT  = "src/data/STARTUP_TEXT_ADMIN.txt" ;;
+    public static final String SRC_DATA_STARTUP_TEXT_TXT = "src/data/STARTUP_TEXT.txt" ;;
 
     // FILES
     public static final String LOCAL_SCANNER_TXT = "src/data/scannertext.txt" ;

@@ -12,9 +12,12 @@ import java.util.List;
 @RequestMapping("/api")
 @RestController
 public class BooksController {
-    @Autowired
-    BooksService booksService;
 
+    BooksService booksService;
+    @Autowired
+    public BooksController(BooksService booksService) {
+        this.booksService = booksService;
+    }
     @RequestMapping(value = "/books", method = RequestMethod.POST, consumes = "application/json")
     public Book createBook(@RequestBody Book c) {
         return booksService.createBooks(c);

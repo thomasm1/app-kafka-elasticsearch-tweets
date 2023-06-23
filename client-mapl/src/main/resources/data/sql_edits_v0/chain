@@ -1,0 +1,61 @@
+--------------------------------------------------------
+--  File created - Friday-March-17-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table CHAIN
+--------------------------------------------------------
+
+  CREATE TABLE "THOMAS"."CHAIN" 
+   (	"ID" NUMBER(10,0), 
+	"NAME" VARCHAR2(30 BYTE), 
+	"SYMBOL" VARCHAR2(10 BYTE), 
+	"DESCRIPTION" VARCHAR2(500 BYTE), 
+	"LONG_DESCRIPTION" VARCHAR2(1500 BYTE), 
+	"ICON_URL" VARCHAR2(150 BYTE), 
+	"CATEGORY" VARCHAR2(50 BYTE), 
+	"CHAIN_LIST_ICON" VARCHAR2(150 BYTE), 
+	"RPC_URL" VARCHAR2(150 BYTE), 
+	"CHAIN_ID" NUMBER(20,0), 
+	"BLOCK_EXPLORER_URL" VARCHAR2(255 BYTE), 
+	"ADDRESSES_COUNT" NUMBER(10,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into THOMAS.CHAIN
+SET DEFINE OFF;
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (386,'Polygon1','MATIC_2','matic  Chain','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/polygon.jpg','Mainnet',null,'https://api.matic.network/ext/bc/C/rpc',2402,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (561,'avalanchedfvdvd','avax','Avalanche C-Chain','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/avax.png','Mainnet',null,'https://api.avax.network/ext/bc/C/rpc',3,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (641,'pulsechain7','pls','Pulsechain Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet','https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png','https://rpc.pulsechain.io',null,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (274,'solana','sol','solana Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/solana.jpg','Mainnet','https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png','https://api.mainnet-beta.solana.com',3,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (275,'Polygon','matic','Polygon Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/polygon.jpg','Mainnet',null,' https://rpc-mainnet.maticvigil.com/',3,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (279,'PulseChain','TPLS','Pulsechain Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet',null,'https://rpc.testnet.pulsechain.com',240,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (344,'ethereum','ETH23','ethereum Mainnet 23','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/ether.png','ethereum2',null,'ETH RPC23',null,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (2,'pulsechain','pls','Pulsechain Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet','https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png','https://rpc.pulsechain.io',null,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (3,'pulsechain','pls','Pulsechain Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet','https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png','https://rpc.pulsechain.io',null,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (1,'pulsechain7','pls','Pulsechain Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet','https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png','https://rpc.pulsechain.io',null,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (387,'PulseChain','tPLS','PulseChain Testnet 2b','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet',null,'https://rpc.v2b.testnet.pulsechain.com',null,null,null);
+Insert into THOMAS.CHAIN (ID,NAME,SYMBOL,DESCRIPTION,LONG_DESCRIPTION,ICON_URL,CATEGORY,CHAIN_LIST_ICON,RPC_URL,CHAIN_ID,BLOCK_EXPLORER_URL,ADDRESSES_COUNT) values (952,'PulseChain','TPLS','Pulsechain Mainnet','NFT - 0x1','https://s3.amazonaws.com/tmm.net/img/pulsechain.png','Mainnet',null,'https://rpc.testnet.pulsechain.com',240,null,null);
+--------------------------------------------------------
+--  DDL for Index SYS_C0013103
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "THOMAS"."SYS_C0013103" ON "THOMAS"."CHAIN" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table CHAIN
+--------------------------------------------------------
+
+  ALTER TABLE "THOMAS"."CHAIN" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;

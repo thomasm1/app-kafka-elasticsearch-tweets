@@ -2,28 +2,26 @@ package app.mapl.controllers;
 
 import app.mapl.dto.PostEntityDto;
 import app.mapl.dto.PostEntityResponse;
-import app.mapl.mapper.PostEntityMapper;
 
 import app.mapl.service.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import app.mapl.util.constants.*;
 
-import java.net.URI;
 import java.util.List;
 
 @RequestMapping(path = "/api/posts")
 @CrossOrigin(origins = "*")
 @RestController
+@RequiredArgsConstructor
 public class PostEntityController {
+    private static final Logger log = LoggerFactory.getLogger(PostEntityController.class);
 
-    @Autowired
-    private PostService postService;
-
-	@Autowired
-	private PostEntityMapper postEntityMapper;
+    private final PostService postService;
 
     @PostMapping("")
     public ResponseEntity<PostEntityDto> createPost(@RequestBody PostEntityDto postEntityDto){
@@ -51,20 +49,23 @@ public class PostEntityController {
         return postService.getAllPostsByUsername(pageNo, pageSize, sortBy, sortDir, username);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<PostEntityDto> getPostById(@PathVariable(name = "id") long id){
-        return ResponseEntity.ok(postService.getPostById(id));
+        ResponseEntity resp= ResponseEntity.ok(postService.getPostById(id).orElseThrow(NullPointerException::new));
+        log.info("GET POSTENTITY/129: "+id+"__RESP: "+resp.getBody().toString()+"\n_____");
+        return resp;
     }
+
+    @GetMapping("/date/{did}")
+    public ResponseEntity<PostEntityDto> getPostByDid(@PathVariable(name = "did") String did){
+        return ResponseEntity.ok(postService.getPostByDid(did).orElseThrow(NullPointerException::new));
+
+    }
+
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<List<PostEntityDto>> getPostsByCategoryId(@PathVariable( "categoryId") long categoryId){
         List<PostEntityDto> postEntityDtoList = (List<PostEntityDto>) postService.getPostsByCategoryId(categoryId);
         return ResponseEntity.ok(postEntityDtoList);
-    }
-
-
-    @GetMapping("/date/{did}")
-    public ResponseEntity<PostEntityDto> getPostByDid(@PathVariable(name = "did") String did){
-        return ResponseEntity.ok(postService.getPostByDid(did));
     }
 
     @PutMapping("/{id}")

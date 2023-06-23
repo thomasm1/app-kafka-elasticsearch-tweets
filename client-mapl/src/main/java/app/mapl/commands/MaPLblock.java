@@ -1,6 +1,7 @@
 package app.mapl.commands;
 
 import java.util.Arrays;
+import java.util.Map;
 
 public class MaPLblock extends MaPL {
     ReceiverConsole device = new ReceiverConsole();
@@ -73,7 +74,8 @@ public class MaPLblock extends MaPL {
 
     }
 
-    public void registerCmds(String key, String value) {
+    public Map<Integer, MaPL> registerCmds(String key, String value) {
+        return null;
     }
 
     /**

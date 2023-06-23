@@ -1,21 +1,34 @@
 package app.mapl.commands;
 
-import app.mapl.util.constants.Cmds;
 import app.mapl.util.Utilities;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MaPLInvoker implements IMaPL {
+public class MaPLInvoker extends MaPL{
+    public MaPLInvoker() {
+        System.out.println("SRC_DATA_STARTUP_TEXT_TXT MaPLInvoker.getMapleState() = " );
+
+        System.out.println("MaPLInvoker.getMapleState() = "  );
+
+    };
+
+
+    public MaPLInvoker(String startupText) {
+        if (startupText == null) {
+            startupText = SRC_DATA_STARTUP_TEXT_TXT;
+        }
+        System.out.println("SRC_DATA_STARTUP_TEXT_TXT MaPLInvok er.getMapleState() = "+startupText  );
+
+    };
+
     private String suggestRegEx = "HOW |MAY |CAN |SHALL |I |AM |YOU |YOUR |MY |WANT |ABOUT |READY|'s|[!?.,:]+|SO ";
     private static  int duplicate = 0;
     MaPL mw = new MaPLwriter();
     public static final String DRIVER = "oracle.jdbc.driver.OracleDriver"; //  DEFAULT DRIVER
-    private static final String  SRC_DATA_STARTUP_TEXT_TXT    = "src/data/STARTUP_TEXT.txt"; // DEFAULT INSTRUCTION SOURCE
     private Map<String, String> instructionMap = new TreeMap<>(); // STARTUP INSTRUCTION SET   "11=Run Websites Health Check"
     private Map<Integer,MaPL> maplCommands = new HashMap<>();
     private static Map<Integer, String> sessionHistory = new LinkedHashMap<>();
@@ -60,6 +73,15 @@ public class MaPLInvoker implements IMaPL {
         maplCommands.put(cmdName, cmd);
     }
 
+    /**
+     *
+     */
+    @Override
+    public void getMapleState() {
+
+    }
+
+
     public Map<Integer,MaPL> registerCmds(String commandID, String suggestion) {
         //  implement pre-registered commands to MaPL instance tasks
         MaPL mapl = new MaPL(); // Concrete Command
@@ -81,54 +103,6 @@ public class MaPLInvoker implements IMaPL {
         return newString;
     }
 
-    @Override
-
-
-    public void getMapleState() {
-        /// #0  Load STARTUP_TEXT.txt User State, Oracle JDBC Driver
-            System.out.println(Utilities.startupTime());
-
-            File startFile = readStartupFile(null);  //  Checking  local input
-            try (Scanner scanText = new Scanner(startFile)) {
-                int TEXT_VERSION = scanText.nextInt(); //LINE_1
-                String SQL_DRIVER = scanText.nextLine();  //LINE_2
-                System.out.println("\n'1': Doc version': " + TEXT_VERSION);
-                try {
-                    System.out.println( "'2': SQL_DRIVER: "+Class.forName(DRIVER));
-                } catch (ClassNotFoundException e) {
-                    System.out.println(Cmds.OOPS_JDBC);
-                }
-                scanText.nextLine();
-                String APP_TITLE = scanText.nextLine(); //LINE_3
-                System.out.println("'3': APP_TITLE="+APP_TITLE );
-                instructionMap.put("3",APP_TITLE);
-
-                String AUTHOR = scanText.nextLine(); //LINE_4
-                instructionMap.put("4",AUTHOR);
-                System.out.println("'4': AUTHOR="+AUTHOR);
-                int counter = 10; //Miscellaneous Data Starting at LINE 10:  KEY IS LINE NUMBER
-                while(scanText.hasNext()) {
-                    String scanData = scanText.nextLine();
-                    if ((!scanData.startsWith("-|")) && scanText.hasNext()) {
-                        // instructionMap is static mapping
-                        instructionMap.put(String.valueOf(counter++), scanData);
-                    }
-                }
-                System.out.println(instructionMap.entrySet());
-
-                // REGISTER COMMANDS Using MaPLIMvoker Instance
-                for(Map.Entry<String, String> commandPair : instructionMap.entrySet())
-                    maplCommands = this.registerCmds(commandPair.getKey(), commandPair.getValue());
-                System.out.println("maplCommands #1: " +maplCommands);
-                this.register(mw.getCmdId(),mw); // manually added classes; check for duplicates later
-                System.out.println("maplCommands #2: " +maplCommands);
-                System.out.println("SCANNERTEXT objects loaded; MaPLwriter '18' manually loaded. Leaving MaPLInvoker now.\n");
-
-            } catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
-
-        }
 
     /**
      * @param cmdName
@@ -136,7 +110,7 @@ public class MaPLInvoker implements IMaPL {
      */
     @Override
     public void register(String cmdName, MaPLwriter cmd) {
-
+    maplCommands.put(Integer.valueOf(cmdName), cmd);
     }
 
     /**
@@ -191,6 +165,70 @@ public class MaPLInvoker implements IMaPL {
     public void execute() {
         System.out.println("... MaPLInvoker execute()");
     }
+
+    /**
+     *
+     */
+    @Override
+    public void up() {
+
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void down() {
+
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void left() {
+
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void right() {
+
+    }
+
+    /**
+     * @param o
+     */
+    @Override
+    public void up(Object o) {
+
+    }
+
+    /**
+     * @param o
+     */
+    @Override
+    public void down(Object o) {
+
+    }
+
+    /**
+     * @param o
+     */
+    @Override
+    public void left(Object o) {
+
+    }
+
+    /**
+     * @param o
+     */
+    @Override
+    public void right(Object o) {
+
+    }
     //    private Map<String, Map<Integer,MaPL>> commandsMapping = new HashMap<>();
 //    public Map<String, Map<Integer, MaPL>> getCommandsMapping() {
 //        return commandsMapping;
@@ -202,4 +240,8 @@ public class MaPLInvoker implements IMaPL {
     public String[] getCmds() {
         return new String[0];
     }
+
+
+//    public void setCommand(MaPLControl maPLControl) {
+//    }
 }

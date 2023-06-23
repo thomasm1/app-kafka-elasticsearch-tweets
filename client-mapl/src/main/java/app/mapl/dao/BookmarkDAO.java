@@ -12,8 +12,6 @@ public interface BookmarkDAO {
     public List<Bookmark> getBookmarks();
     public boolean updateBookmark(Bookmark change); // void
     public boolean deleteBookmark(int id); // void 
-
-    public List<List<Bookmark>> getBookmarksArray();
     public List<Weblink> getAllWebLinks();
     public List<Weblink> getWebLinks(Weblink.DownloadStatus downloadStatus);
 

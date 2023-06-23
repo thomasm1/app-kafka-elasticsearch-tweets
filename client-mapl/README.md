@@ -6,7 +6,7 @@ Java Application: "My Personal Librarian": MaPL
 <img width="200" src="https://friends-of-groot-society.s3.amazonaws.com/assets/grootsmall.png" title="Friends_of_Groot_Society_App" alt="Friends_of_Groot_Society_Image"></a>
 
 ### Groot Society Fan Club Groot NFT Tracker 
-> <a style="text-decoration:none;color:black;" href="https://friendsofgroot.com">Friends_of_Groot_Society - https://friendsofgroot.com</a>
+> <a style="text-decoration:none;color:black;" href="https://mapl.app">Friends_of_Groot_Society - https://mapl.app</a>
 
 > Full-Stack application that manages Groot Fan Club News and Features
  
@@ -129,7 +129,7 @@ CliLogger => [Singleton Logger Log4j]
   [Jenkins]: <https://jenkins.io/> 
   [CodeBuild]:<https://aws.amazon.com/codebuild/> 
    
-  website: [groot.io](https://friendsofgroot.com)
+  website: [groot.io](https://mapl.app)
 #### TESTS
 ##### Behavior-Driven Design Tests
 > Cucumber feature usability testing

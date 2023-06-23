@@ -6,8 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import app.mapl.dataLoader.BookmarkManager;
-import app.mapl.util.JDBCConnection;
+import app.mapl.config.JDBCConnection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,10 @@ public class OfferDAOimpl implements OfferDAO {
 		String sql = "CALL ADD_NEW_COINOFFER(?,?, ?,?,?)";
 		try {
 			CallableStatement cs = conn.prepareCall(sql);
-//int offerID, int userID, int coinID, double offerAmt, int offerMos, String offerStatus 
+//int offerID, int userID, int coinID, double offerAmt, int offerMos, String offerStatus
 
 //			cs.setString(1, Integer.toString(o.getOfferID()));
-			cs.setString(1, o.getUserName());
+			cs.setString(1, o.getUsername());
 			cs.setString(2, Integer.toString(o.getCoinId()));
 			cs.setString(3, Double.toString(o.getOfferAmt()));
 			cs.setString(4, Integer.toString(o.getOfferMos()));
@@ -43,7 +42,7 @@ public class OfferDAOimpl implements OfferDAO {
 		}
 		return false;
 	}
- 
+
 	public Offer getOffer(int id) {
 //		return DB.offers.get(id);
 		try {
@@ -55,7 +54,7 @@ public class OfferDAOimpl implements OfferDAO {
 			while (rs.next())
 			{
 				return new Offer(rs.getInt("offerid"), rs.getString("username"), rs.getInt("coinid"),
-						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus"));
+						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus"),  rs.getString("description"), rs.getDate("targetDate").toLocalDate(), true);
 			}
 
 		} catch (Exception e) {
@@ -65,11 +64,24 @@ public class OfferDAOimpl implements OfferDAO {
 		return null;
 	}
 
-	////////////// GET OFFLINE     OFFERS ///////////////////
 	@Override
-	public  List<Offer> getOffers() {
-		return  BookmarkManager.TestDataStore.getOffers();
+	public List<Offer> getOffers() {
+		try {
+			String sql = "SELECT * FROM offers";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			List<Offer> e = new ArrayList<>();
+			while (rs.next()) {
+				Offer o = new Offer(rs.getInt("offerid"), rs.getString("username"), rs.getInt("coinid"),
+						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus"),  rs.getString("description"), rs.getDate("targetDate").toLocalDate(), true);
+				e.add(o);
+			}
+			return e;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
+		////////////// GET OFFLINE     OFFERS ///////////////////
 
 	public List<Offer> getAllOffers() {
 
@@ -81,7 +93,7 @@ public class OfferDAOimpl implements OfferDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				offerArr.add(new Offer(rs.getInt("offerid"), rs.getString("username"), rs.getInt("coinid"),
-						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus")));
+						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus"),  rs.getString("description"), rs.getDate("targetDate").toLocalDate(), true));
 			}
 			return offerArr;
 		} catch (SQLException e) {
@@ -95,17 +107,17 @@ public class OfferDAOimpl implements OfferDAO {
 //		Set<Integer> keys = DB.offers.keySet();
 //		for(Integer k: keys)
 //			offerList.add(DB.offers.get(k));
-//		return offerList; 
-		
+//		return offerList;
+
 		String sql = "SELECT * FROM offers WHERE username=?";
 		List<Offer> offerArr = new ArrayList<Offer>();
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql); 
+			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				offerArr.add(new Offer(rs.getInt("offerid"), rs.getString("username"), rs.getInt("coinid"),
-						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus")));
+						rs.getDouble("offerAmt"), rs.getInt("offerMos"), rs.getString("offerStatus"),  rs.getString("description"), rs.getDate("targetDate").toLocalDate(), true));
 			}
 			if (offerArr.size() == 0) {
 				System.out.println("\nOops, you have no offers in the system:"+offerArr+"\n ...there's a first time for everything, press 4!\n");
@@ -121,10 +133,10 @@ public class OfferDAOimpl implements OfferDAO {
 //		DB.offers.replace(change.getOfferID(), change);
 //		return true;
 		String sql = "UPDATE offers SET username=?, coinID=?, offerAmt=?, offerMos=?, offerStatus=? WHERE offerID = ?";
-//int offerID, int userID, int coinID, double offerAmt, int offerMos, String offerStatus 
+//int offerID, int userID, int coinID, double offerAmt, int offerMos, String offerStatus
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, change.getUserName());
+			ps.setString(1, change.getUsername());
 			ps.setString(2, Integer.toString(change.getCoinId()));
 			ps.setString(3, Double.toString(change.getOfferAmt()));
 			ps.setString(4, Integer.toString(change.getOfferMos()));
@@ -145,10 +157,10 @@ public class OfferDAOimpl implements OfferDAO {
 //		DB.offers.replace(change.getOfferID(), change);
 //		return true;
 		String sql = "UPDATE offers SET offerStatus=? WHERE offerStatus=? AND coinID = ?";
-//		(0, offerLook.getUserName(), uCoin.getCoinID(), 0.0, 0, "PENDING")
+//		(0, offerLook.getUsername(), uCoin.getCoinID(), 0.0, 0, "PENDING")
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, "REJECTED"); 
+			ps.setString(1, "REJECTED");
 			ps.setString(2, change.getOfferStatus());
 			ps.setString(3, Integer.toString(change.getCoinId()));
 			ps.executeQuery();

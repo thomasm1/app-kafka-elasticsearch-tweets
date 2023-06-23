@@ -1,7 +1,7 @@
 package app.mapl.dao;
 
 import app.mapl.models.OfferLogic;
-import app.mapl.util.JDBCConnection;
+import app.mapl.config.JDBCConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
             CallableStatement cs = conn.prepareCall(sql);
             cs.setString(1, Integer.toString(el.getOfferid()));
             cs.setString(2, Integer.toString(el.getCoinid()));
-            cs.setString(3, el.getUserName());
+            cs.setString(3, el.getUsername());
             cs.setString(4, Double.toString(el.getPricetotal()));
             cs.setString(5, Double.toString(el.getOfferamt()));
             cs.setString(6, Double.toString(el.getBalance()));
@@ -119,7 +119,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, change.getUserName());
+            ps.setString(1, change.getUsername());
             ps.setString(2, Integer.toString(change.getCoinid()));
             ps.setString(3, Integer.toString(change.getOfferid()));
 

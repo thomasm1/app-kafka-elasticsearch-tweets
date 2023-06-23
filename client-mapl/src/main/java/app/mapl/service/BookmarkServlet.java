@@ -3,7 +3,7 @@ package app.mapl.service;
 
 import app.mapl.models.Bookmark;
 import app.mapl.models.User;
-import app.mapl.dataLoader.BookmarkManager;
+import app.mapl.bootstrap.ManagerBookmarks;
 
 import java.util.List;
 
@@ -19,15 +19,15 @@ public class BookmarkServlet {
         return instance;
     }
     public void saveLocalUserBookmark(User user, Bookmark bookmark) {
-        BookmarkManager.getInstance().saveLocalUserBookmark(user, bookmark);
+        ManagerBookmarks.getInstance().saveLocalUserBookmark(user, bookmark);
 
     }
     public List<Bookmark> getLocalUserBookmarksByUser(User user) {
-        List bookmarks = BookmarkManager.getInstance().getLocalUserBookmarksByUser(user);
+        List bookmarks = ManagerBookmarks.getInstance().getLocalUserBookmarksByUser(user);
         return null;
     }
     public void shareBookmark(User user, Bookmark bookmark) {
-        BookmarkManager.getInstance().share(user, bookmark);
+        ManagerBookmarks.getInstance().share(user, bookmark);
     }
 
 

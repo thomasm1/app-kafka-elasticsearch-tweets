@@ -1,10 +1,10 @@
 package app.mapl.models;
 
-import app.mapl.service.CoinService;
+import app.mapl.service.CoinsServiceImpl;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @Entity
@@ -13,13 +13,13 @@ import javax.persistence.*;
 public class OfferLogic   {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int id;
 	private int offerid;
 	private int coinid;
 
 	@Column(name = "username")
-	String userName;
+	String username;
 	private Double pricetotal;
 	private Double offeramt;
 
@@ -43,7 +43,7 @@ public class OfferLogic   {
 
 	public static OfferLogic makeElectro(Offer o) {
 
-		Coin coinid = CoinService.getCoin(o.getCoinId());
+		Coin coinid = CoinsServiceImpl.getCoin(o.getCoinId());
 		double balDayOne = coinid.getPriceTotal() - o.getOfferAmt(); // Calculate balance by dividing Total-price by
 		balDayOne = roundIt(balDayOne, 2);
 		System.out.println("Balance Day 1: $" + balDayOne);
@@ -61,10 +61,10 @@ public class OfferLogic   {
 
 		i = (int) (Math.random() * i); // Random id generator (Overwritten in DB in any case)
 
-		OfferLogic newest = new OfferLogic(i, o.getOfferID(), coinid.getCoinId(), o.getUserName(), coinid.getPriceTotal(),
+		OfferLogic newest = new OfferLogic(i, o.getOfferID(), coinid.getCoinId(), o.getUsername(), coinid.getPriceTotal(),
 				o.getOfferAmt(), balance, o.getOfferMos(), monthsRemaining, monthlyPayments);
 
-		System.out.println(o.getUserName() + "'s " + coinid.getCoinToken() + " " + coinid.getCoinSymbol() + " Balance:"
+		System.out.println(o.getUsername() + "'s " + coinid.getCoinToken() + " " + coinid.getCoinSymbol() + " Balance:"
 				+ newest.getBalance() + " " + " monthly payments: $" + newest.getMonthlyPayments());
 
 		return newest;
@@ -87,13 +87,13 @@ public class OfferLogic   {
 		MONTH_TIME = t;
 	}
 
-	public OfferLogic(int id, int offerid, int coinid, String userName, Double pricetotal, Double offeramt,
+	public OfferLogic(int id, int offerid, int coinid, String username, Double pricetotal, Double offeramt,
 			Double balance, int offermos, int monthsRemaining, double monthlyPayments) {
 		super();
 		this.id = id;
 		this.offerid = offerid;
 		this.coinid = coinid;
-		this.userName =	userName;
+		this.username =	username;
 
 		this.pricetotal = pricetotal;
 		this.offeramt = offeramt;

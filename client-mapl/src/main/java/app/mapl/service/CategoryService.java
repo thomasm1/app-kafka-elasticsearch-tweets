@@ -3,15 +3,16 @@ package app.mapl.service;
 import app.mapl.dto.CategoryDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryService {
     CategoryDto addCategory(CategoryDto categoryDto);
 
-    CategoryDto getCategory(Long categoryId);
+    Optional<CategoryDto> getCategory(Long categoryId);
 
     List<CategoryDto> getAllCategories();
 
-    CategoryDto updateCategory(CategoryDto categoryDto);
+    Optional<CategoryDto> updateCategory(CategoryDto categoryDto);
 
     boolean deleteCategory(Long categoryId);
 }

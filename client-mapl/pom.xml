@@ -35,7 +35,9 @@
 	</properties>
 
 	<dependencyManagement>
+
 		<dependencies>
+
 			<dependency>
 				<groupId>org.spockframework</groupId>
 				<artifactId>spock-bom</artifactId>
@@ -47,6 +49,14 @@
 	</dependencyManagement>
 
 	<dependencies>
+<!--		<dependency>-->
+<!--			<groupId>org.springdoc</groupId>-->
+<!--			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springdoc</groupId>-->
+<!--			<artifactId>springdoc-openapi-starter-common</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-web-api</artifactId>
@@ -162,12 +172,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-jdbc</artifactId>
-				</dependency>
-<!--		 https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-webmvc -->
 
+<!--		 https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-webmvc -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -260,6 +266,10 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.flywaydb</groupId>-->
+<!--			<artifactId>flyway-mysql</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>

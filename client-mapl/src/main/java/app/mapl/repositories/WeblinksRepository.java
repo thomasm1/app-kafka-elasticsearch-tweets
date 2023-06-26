@@ -2,8 +2,10 @@ package app.mapl.repositories;
 
 import app.mapl.models.Weblink;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-@Repository
+
+@RepositoryRestResource(collectionResourceRel="weblink", path="weblinks")
 public interface WeblinksRepository extends JpaRepository<Weblink, Long> {
 }

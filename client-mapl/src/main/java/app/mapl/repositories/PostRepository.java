@@ -4,16 +4,17 @@ import app.mapl.models.Category;
 import app.mapl.models.Comment;
 import app.mapl.models.PostEntity;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-//public interface PostRepository extends JpaRepository<PostEntity, Long> {
-public interface PostRepository extends CrudRepository<PostEntity, Long> {
+@RepositoryRestResource(collectionResourceRel="post_entity", path="post_entity")
+public interface PostRepository extends JpaRepository<PostEntity, Long> {
 	List<PostEntity> findByCategoryId(Long categoryId);
 
 

@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-@RepositoryRestResource(collectionResourceRel="post_entity", path="post_entity")
+@RepositoryRestResource(collectionResourceRel="postEntity", path="posts")
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
 	List<PostEntity> findByCategoryId(Long categoryId);
 

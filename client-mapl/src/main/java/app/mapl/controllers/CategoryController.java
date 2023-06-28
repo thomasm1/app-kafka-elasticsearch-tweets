@@ -21,7 +21,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<CategoryDto> addCategory(@RequestBody CategoryDto categoryDto){
         CategoryDto savedCategory = categoryService.addCategory(categoryDto);
         return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
@@ -33,12 +33,12 @@ public class CategoryController {
          return ResponseEntity.ok(categoryDto);
     }
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<List<CategoryDto>> getCategories(){
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
-    @PutMapping
+    @PutMapping("")
     public ResponseEntity<Optional<CategoryDto>> updateCategory(@RequestBody CategoryDto categoryDto ){
         return ResponseEntity.ok(categoryService.updateCategory(categoryDto ));
     }

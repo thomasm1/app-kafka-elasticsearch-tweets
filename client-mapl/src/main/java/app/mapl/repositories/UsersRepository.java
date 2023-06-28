@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 import java.util.Optional;
 
-@RepositoryRestResource(collectionResourceRel="apiusers", path="apiusers")
+@RepositoryRestResource(collectionResourceRel="user", path="users")
 public interface UsersRepository extends JpaRepository<User, Integer> {
 
 

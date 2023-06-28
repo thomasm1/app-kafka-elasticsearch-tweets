@@ -44,6 +44,7 @@ public class User  implements Serializable{
 
     @Column(name="usertype") /// 0 = admin, 1 = user
     private int userType;
+
     @Column(name="phone")
     private String phone;
 

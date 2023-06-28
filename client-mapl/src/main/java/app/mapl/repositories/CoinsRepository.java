@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource( collectionResourceRel = "coins", path = "coins")
+@RepositoryRestResource( collectionResourceRel = "coin", path = "coins")
 public interface CoinsRepository extends JpaRepository<Coin, Integer> {
 //    Object findByUsername(String username); // logic needed
 

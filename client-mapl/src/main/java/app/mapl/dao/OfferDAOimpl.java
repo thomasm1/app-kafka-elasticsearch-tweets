@@ -8,12 +8,15 @@ import java.sql.SQLException;
 
 import app.mapl.config.JDBCConnection;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 //import java.util.Set;
 
 //import db.DB;
 import app.mapl.models.Offer;
+import org.springframework.format.datetime.DateFormatter;
 
 public class OfferDAOimpl implements OfferDAO {
 	public static Connection conn = JDBCConnection.getConnection();
@@ -21,19 +24,22 @@ public class OfferDAOimpl implements OfferDAO {
 	public boolean createOffer(Offer o) {
 //		DB.offers.put(c.getOfferID(), c);
 //		return true;
-		String sql = "CALL ADD_NEW_COINOFFER(?,?, ?,?,?)";
+//		String sql = "CALL ADD_NEW_COINOFFER(?,?, ?,?,?)";
+		String sql = "INSERT INTO OFFERS(username, coinid, offeramt, offermos, offerstatus, description, target_date, done) VALUES (?,?,?, ?,?,?, ?,?)";
 		try {
-			CallableStatement cs = conn.prepareCall(sql);
+//			CallableStatement cs = conn.prepareCall(sql);
 //int offerID, int userID, int coinID, double offerAmt, int offerMos, String offerStatus
-
-//			cs.setString(1, Integer.toString(o.getOfferID()));
-			cs.setString(1, o.getUsername());
-			cs.setString(2, Integer.toString(o.getCoinId()));
-			cs.setString(3, Double.toString(o.getOfferAmt()));
-			cs.setString(4, Integer.toString(o.getOfferMos()));
-			cs.setString(5, o.getOfferStatus());
-
-			cs.execute();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			//			cs.setString(1, Integer.toString(o.getOfferID()));
+			ps.setString(1, o.getUsername());
+			ps.setString(2, Integer.toString(o.getCoinId()));
+			ps.setString(3, Double.toString(o.getOfferAmt()));
+			ps.setString(4, Integer.toString(o.getOfferMos()));
+			ps.setString(5, o.getOfferStatus());
+			ps.setString(6, o.getDescription());
+			ps.setString(7, o.getTargetDate().format(DateTimeFormatter.ISO_DATE));
+			ps.setString(8, String.valueOf(o.isDone()));
+			ps.execute();
 			return true;
 
 		} catch (SQLException e) {

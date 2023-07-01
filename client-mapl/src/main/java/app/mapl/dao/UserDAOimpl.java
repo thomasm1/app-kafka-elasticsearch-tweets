@@ -21,21 +21,22 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	public User createUser(User u) {
 //		DB.users.put(u.getUserID(), c);
 		// USER is autoincrement
-		String sql = "CALL add_new_users(?,?,?, ?,?,?, ?,?,?, ?,?, ?)";
+		String sql = "INSERT INTO USERS(username, password, lastName, firstName, userType, phone, email, cusUrl, photoPath, isActive, contactType) VALUES (?,?,?, ?,?,?, ?,?,?, ?,?, ?)";
 		try {
-			CallableStatement cs = conn.prepareCall(sql);
-			cs.setString(1, u.getUsername());
-			cs.setString(2, u.getPassword());
-			cs.setString(3, u.getLastName());
-			cs.setString(4, u.getFirstName());
-			cs.setString(5, Integer.toString(u.getUserType()));
-			cs.setString(6, u.getPhone());
-			cs.setString(7, u.getEmail());
-			cs.setString(8, u.getCusUrl());
-			cs.setString(9, u.getPhotoPath());
-			cs.setString(10, Integer.toString(u.getIsActive()));
-			cs.setString(11, Integer.toString(u.getContactType()));
-			cs.execute();
+//			CallableStatement cs = conn.prepareCall(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ps.setString(3, u.getLastName());
+			ps.setString(4, u.getFirstName());
+			ps.setString(5, Integer.toString(u.getUserType()));
+			ps.setString(6, u.getPhone());
+			ps.setString(7, u.getEmail());
+			ps.setString(8, u.getCusUrl());
+			ps.setString(9, u.getPhotoPath());
+			ps.setString(10, Integer.toString(u.getIsActive()));
+			ps.setString(11, Integer.toString(u.getContactType()));
+			ps.execute();
 			return u;
 		} catch (SQLException e) {
 			System.out.println("Double Check create DB's  customer's list");
@@ -189,7 +190,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 
 	@Override
 	public List<String> getUsersWithCoins() {
-		String sql = "SELECT DISTINCT users.userid, users.username FROM users,electrolot WHERE users.username = electrolot.username";
+		String sql = "SELECT DISTINCT users.userid, users.username FROM users,offerlogic WHERE users.username = offerlogic.username";
 		List<String> usersWithCoins = new ArrayList<>();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -221,8 +222,8 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("lastname"),
 						rs.getString("firstName"),
 						rs.getInt("userType"),
-						rs.getString("email"),
 						rs.getString("phone"),
+						rs.getString("email"),
 						rs.getString("cusUrl"),
 						rs.getString("photoPath"),
 						rs.getInt("isActive"),
@@ -241,9 +242,9 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	 * @return User
 	 */
 	public User updateUser(User change) { // using USERNAME
-//											 	1			2			3			4			5		6		7			8			9			10			11			12	        	13
-//		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, groups=?, usertype=?,  phone=?, email=?, cusurl=?, photopath=?, userGroup=?, isActive=?, contactType=? WHERE username = ?";
-		String sql = "CALL UPDATE_USER(?,?,?,   ?,?,?,   ?,?,?,   ?,?,?, ?)";
+//										 1			2			3			   4		5		 6		  7			8			9			10			         11
+		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?,phone=?,email=?, cusurl=?, photopath=?, isActive=?, contactType=? WHERE username = ?";
+//		String sql = "CALL UPDATE_USER(?,?,?,   ?,?,?,   ?,?,?,   ?,?,?, ?)";
 		try {
 //			PreparedStatement ps = conn.prepareStatement(sql);
 //		    ps.setString(6, Integer.toString(change.getUserID()));

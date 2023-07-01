@@ -20,7 +20,8 @@ public class CoinDAOImpl implements CoinDAO {
 //		DB.coins.put(c.getCoinID(), c);
 //		return true;
 
-		String sql = "CALL add_new_coin(?,?,?,?)";
+//		String sql = "CALL add_new_coin(?,?,?,?)";
+		String sql = "INSERT INTO cointable(coinToken, coinSymbol, priceTotal, purchased) VALUES (?,?,?,?)";
 
 		try {
 			PreparedStatement cs = conn.prepareStatement(sql);

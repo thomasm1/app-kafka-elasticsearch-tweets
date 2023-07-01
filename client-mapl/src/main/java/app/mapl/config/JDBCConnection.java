@@ -49,7 +49,7 @@ public class JDBCConnection {
 	public static String getJDBCKey() {
 		Map<String, String> env = System.getenv();
 		for (Map.Entry<String, String> entry : env.entrySet()) {
-			if (entry.getKey().equals("ORACLE_DB_PASSWORD")) {
+			if (entry.getKey().equals("8i")) {
 				return entry.getValue();
 			}
 		}

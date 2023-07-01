@@ -12,7 +12,8 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
     public static Connection conn = JDBCConnection.getConnection();
 
     public boolean addOfferLogic(OfferLogic el) {
-        String sql = "CALL add_new_market(?,?,?, ?,?,?, ?,?,?)";
+//        String sql = "CALL add_new_market(?,?,?, ?,?,?, ?,?,?)";
+        String sql = "INSERT INTO offerlogic VALUES (?,?,?, ?,?,?, ?,?,?)";
         try {
             CallableStatement cs = conn.prepareCall(sql);
             cs.setString(1, Integer.toString(el.getOfferid()));
@@ -35,7 +36,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
     }
     public OfferLogic getOfferLogic(int id) {
         try {
-            String sql = "SELECT * FROM market WHERE username = ?";
+            String sql = "SELECT * FROM offerlogic WHERE username = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, Integer.toString(id));
             ResultSet rs = ps.executeQuery();
@@ -55,7 +56,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
     public OfferLogic getOfferLogic(String username) {
 
         try {
-            String sql = "SELECT * FROM market WHERE username = ?";
+            String sql = "SELECT * FROM offerlogic WHERE username = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -74,7 +75,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
 
     public List<OfferLogic> getAllOfferLogic(String username) {
         //		String sql2 = "SELECT o.username,  o.coinid,  o.offerstatus,  o.offermos, c.coinid, c.cointoken, c.coinsymbol, c.pricetotal FROM offers o JOIN cointable c ON c.coinid = o.coinid WHERE o.offerstatus = 'APPROVED' AND o.username = ?";
-        String sql2 = "SELECT * FROM market WHERE username = ?";
+        String sql2 = "SELECT * FROM offerlogic WHERE username = ?";
         List<OfferLogic> offerLogics = new ArrayList<OfferLogic>();
 
         try {
@@ -97,7 +98,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
         return null;
     }
     public List<OfferLogic> getAllOfferLogic() {
-        String sql = "SELECT * FROM market";
+        String sql = "SELECT * FROM offerlogic";
         List<OfferLogic> offerLogic = new ArrayList<OfferLogic>();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -115,7 +116,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
     }
 
     public boolean updateOfferLogic(OfferLogic change) {
-        String sql = "UPDATE market SET username = ?, coinid = ? WHERE offerid = ?";
+        String sql = "UPDATE offerlogic SET username = ?, coinid = ? WHERE offerid = ?";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -133,7 +134,7 @@ public class OfferLogicDAOImpl implements OfferLogicDAO {
     }
 
     public boolean deleteOfferLogic(int id) {
-        String sql = "DELETE market WHERE id = ?";
+        String sql = "DELETE offerlogic WHERE id = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, Integer.toString(id));

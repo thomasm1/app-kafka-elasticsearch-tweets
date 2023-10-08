@@ -1,7 +1,7 @@
 package app.mapl.cliTests;//package app.mapl.cliTests;
 //
-//import app.mapl.models.Chain;
-//import app.mapl.repositories.ChainsRepository;
+//import app.mapl.models.Coin;
+//import app.mapl.repositories.CoinsRepository;
 //;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
@@ -23,12 +23,12 @@ package app.mapl.cliTests;//package app.mapl.cliTests;
 //public class ProjectRepositoryIntegrationTest {
 //
 //	@Autowired
-//	ChainsRepository chainsRepository;
+//	CoinsRepository chainsRepository;
 //
 //	@Test
 //	public void ifNewProjectSaved_thenSuccess() {
-////		Chain newProject = new Chain(1,"ethereum","ETH","description","longDescription","iconUrl","category","chainListIcon","rpcUrl","id","blockExplorerUrl");
-//		Chain newProject = new Chain();
+////		Coin newProject = new Coin(1,"ethereum","ETH","description","longDescription","iconUrl","category","chainListIcon","rpcUrl","id","blockExplorerUrl");
+//		Coin newProject = new Coin();
 //		chainsRepository.save(newProject);
 //
 //		assertEquals(1, chainsRepository.findAll().size());

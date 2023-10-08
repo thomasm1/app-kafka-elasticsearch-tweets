@@ -1,8 +1,6 @@
 package app.mapl.exception;
 
-import app.mapl.exception.ResourceNotFoundException;
 import org.springframework.http.*;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,10 +10,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.nio.file.AccessDeniedException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
-public class GlobalExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
+public class GlobalExceptionHandlerAdvice  {  //extends ResponseEntityExceptionHandler
     @ExceptionHandler
     public ProblemDetail handleIllegalStateException(IllegalStateException e) {
         var pdh = ProblemDetail.forStatus(HttpStatusCode.valueOf(404));
@@ -23,50 +23,52 @@ public class GlobalExceptionHandlerAdvice extends ResponseEntityExceptionHandler
         return pdh;
     }
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
+    public ResponseEntity<ErrorDetailsDto> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest){
-        ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
+        ErrorDetailsDto eErrorDetailsDto = new ErrorDetailsDto(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));
 
-        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(eErrorDetailsDto, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(PostApiException.class)
-    public ResponseEntity<ErrorDetails> handlePostApiException(PostApiException exception, WebRequest webRequest){
-        ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
+    public ResponseEntity<ErrorDetailsDto> handlePostApiException(PostApiException exception, WebRequest webRequest){
+        ErrorDetailsDto eErrorDetailsDto = new ErrorDetailsDto(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(eErrorDetailsDto, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorDetails> handleGlobalException(Exception exception,
+    public ResponseEntity<ErrorDetailsDto> handleGlobalException(Exception exception,
                                                                WebRequest webRequest){
-        ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
+        ErrorDetailsDto eErrorDetailsDto = new ErrorDetailsDto(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(eErrorDetailsDto, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<ErrorDetails> handleAccessDeniedException(AccessDeniedException exception,
+    public ResponseEntity<ErrorDetailsDto> handleAccessDeniedException(AccessDeniedException exception,
                                                                     WebRequest webRequest){
-        ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
+        ErrorDetailsDto eErrorDetailsDto = new ErrorDetailsDto(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(eErrorDetailsDto, HttpStatus.FORBIDDEN);
     }
+// MethodArgumentNotValidException.
+// MethodArgumentNotValidException.fieldErrors().getfields()
+// MethodArgumentNotValidException.fieldErrors().getDefaultMessage()
 
-    /// Method from ResponseEntityExceptionHandler
+     @ExceptionHandler(MethodArgumentNotValidException.class)
+    ResponseEntity<Object> maplHandleBindErrors(MethodArgumentNotValidException exception){
+         String message = "Error: MethodArgumentNotValidException";
+        // List of Mapped errors
+        List<Map<String, String>> errorList = exception.getFieldErrors().stream()
+                .map(fieldError -> {
+                    Map<String, String > errorMap = new HashMap<>();
+                    errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
+                    return errorMap;
+                }).collect(Collectors.toList());
 
-    protected  ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException notValidException,
-                                                                           HttpHeaders headers,
-                                                                           HttpStatus status,
-                                                                           WebRequest request) {
-        Map<String, String> errors = new HashMap<>();
-        notValidException.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldError = ((FieldError)error).getField();
-            String message = error.getDefaultMessage();
-            errors.put(fieldError, message);
-        });
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(errorList);
     }
 
 

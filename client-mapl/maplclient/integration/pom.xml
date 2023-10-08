@@ -8,7 +8,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.friendsofgroot</groupId>
+    <groupId>app.mapl</groupId>
     <artifactId>karate friendsofgroot</artifactId>
     <version>01</version>
     <packaging>jar</packaging>

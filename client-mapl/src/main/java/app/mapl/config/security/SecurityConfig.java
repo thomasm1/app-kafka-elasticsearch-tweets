@@ -109,7 +109,11 @@ public class SecurityConfig {
                         auth -> auth.requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll() // login
                                 .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll() //  Spring Actuator
                                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll() //  API
+                                .requestMatchers(HttpMethod.POST, "/api/**").permitAll() //  API
+                                .requestMatchers(HttpMethod.PUT, "/api/**").permitAll() //  API
+                                .requestMatchers(HttpMethod.DELETE, "/api/**").permitAll() //  API
                                 .requestMatchers(HttpMethod.GET, "/v1/**").permitAll() // native ThymeLeaf UI
+                                .requestMatchers(HttpMethod.POST, "/v1/**").permitAll() // native ThymeLeaf UI
                                 .requestMatchers(HttpMethod.GET, "/rest/**").permitAll() // Spring Rest API
                                 .requestMatchers(HttpMethod.GET, "/v3/api-docs**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Open API
                                 .requestMatchers(HttpMethod.GET, "/h2-console/**").permitAll() // H2

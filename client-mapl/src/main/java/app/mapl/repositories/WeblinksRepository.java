@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 
-@RepositoryRestResource(collectionResourceRel="weblink", path="weblinks")
+@RepositoryRestResource(collectionResourceRel="weblink", path="weblink")
 public interface WeblinksRepository extends JpaRepository<Weblink, Long> {
 }

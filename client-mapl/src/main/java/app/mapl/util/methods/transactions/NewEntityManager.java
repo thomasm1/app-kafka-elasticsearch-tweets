@@ -11,7 +11,7 @@ public class NewEntityManager {
 
     public static void mainTrans(String[] args) {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.friendsofgroot.mapllistener");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("app.mapl.mapllistener");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {

@@ -110,7 +110,7 @@ public class ParseDynamicJson {
             logger.info("Key: " + itr.getKey() + " Value: " + itr.getValue());
         }
         CliLogger.getInstance().info("Program CliLogger.getInstance()___________ended");
-        //15:07:37.712 [main] INFO com.friendsofgroot.app.util.logger.CliLogger - Program ended
+        //15:07:37.712 [main] INFO app.mapl.util.logger.CliLogger - Program ended
 
 
         String jsonString= "{\"name\":\"foo\", \"num\":100, \"balance\":1000.21, \"is_vip\":true}";

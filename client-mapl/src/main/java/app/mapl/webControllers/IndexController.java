@@ -42,14 +42,14 @@ public class IndexController {
         model.addAttribute("versionNumber",ver);
 
 //        // Query database for chain-links
-//        List<ChainDto> chains = chainsService.getAllChains();
+//        List<CoinDto> chains = chainsService.getAllCoins();
 //        model.addAttribute("chains", chains);
 
         List<UserDto> users =  usersService.getUsers();
         model.addAttribute("users", users);
         model.addAttribute("map", map);
 
-//        List<ChainDto> dataCat= chainsService.findByName("ethereum");
+//        List<CoinDto> dataCat= chainsService.findByName("ethereum");
 
         LoginDto loginDto = new LoginDto();
         model.addAttribute("loginDto",loginDto);

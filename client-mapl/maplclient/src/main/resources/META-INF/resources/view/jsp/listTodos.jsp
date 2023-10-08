@@ -1,7 +1,7 @@
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>
 <div class="container">
-	<h1>Chain Todos and Test Data</h1>
+	<h1>Coin Todos and Test Data</h1>
 	<table class="table">
 		<thead>
 			<tr>

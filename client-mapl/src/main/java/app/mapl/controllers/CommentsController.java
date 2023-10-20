@@ -13,32 +13,35 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(CommentsController.PATH)
+@RequestMapping(CommentsController.API_POSTS)
 public class CommentsController {
 
-    public static final String PATH = "/api/posts";
+    public static final String POST_ID_COMMENTS = "/{postId}/comments";
+    public static final String API_POSTS = "/api/posts";
+    public static final String POST_ID_COMMENTS_ID = "/{postId}/comments/{id}";
+
     @Autowired
     private CommentsService commentsService;
 
-    @PostMapping("/{postId}/comments")
+    @PostMapping(POST_ID_COMMENTS)
     public ResponseEntity<CommentDto> createComment(@PathVariable long postId,
                                                     @Valid @RequestBody CommentDto commentDto){
         return new ResponseEntity<>(commentsService.createComment(postId, commentDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{postId}/comments")
+    @GetMapping(POST_ID_COMMENTS)
     public List<CommentDto> getCommentsByPostId(@PathVariable(value = "postId") Long postId){
         return commentsService.getCommentsByPostId(postId);
     }
 
-    @GetMapping("/{postId}/comments/{id}")
+    @GetMapping(POST_ID_COMMENTS_ID)
     public ResponseEntity<Optional<CommentDto>> getCommentById(@PathVariable(value = "postId") Long postId,
                                                      @PathVariable(value = "id") Long commentId){
         Optional<CommentDto> commentDto = commentsService.getCommentById(postId, commentId);
         return new ResponseEntity<>(commentDto, HttpStatus.OK);
     }
 
-    @PutMapping("/{postId}/comments/{id}")
+    @PutMapping(POST_ID_COMMENTS_ID)
     public ResponseEntity<Optional<CommentDto>> updateComment(@PathVariable(value = "postId") Long postId,
                                                     @PathVariable(value = "id") Long commentId,
                                                     @Valid @RequestBody CommentDto commentDto){
@@ -49,7 +52,7 @@ public class CommentsController {
         return new ResponseEntity<>(updatedComment, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{postId}/comments/{id}")
+    @DeleteMapping(POST_ID_COMMENTS_ID)
     public ResponseEntity<String> deleteComment(@PathVariable(value = "postId") Long postId,
                                                 @PathVariable(value = "id") Long commentId){
         commentsService.deleteComment(postId, commentId);

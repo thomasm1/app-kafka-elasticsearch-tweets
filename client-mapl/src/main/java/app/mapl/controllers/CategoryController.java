@@ -12,9 +12,11 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/categories")
+@RequestMapping(CategoryController.API_CATEGORIES)
 public class CategoryController {
 
+    public static final String API_CATEGORIES = "/api/categories";
+    public static final String ID = "{id}";
     private CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
@@ -27,7 +29,7 @@ public class CategoryController {
         return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
+    @GetMapping(ID)
     public ResponseEntity<Optional<CategoryDto>> getCategory(@PathVariable("id") Long categoryId){
          Optional<CategoryDto> categoryDto = categoryService.getCategory(categoryId);
          return ResponseEntity.ok(categoryDto);
@@ -42,7 +44,7 @@ public class CategoryController {
     public ResponseEntity<Optional<CategoryDto>> updateCategory(@RequestBody CategoryDto categoryDto ){
         return ResponseEntity.ok(categoryService.updateCategory(categoryDto ));
     }
-    @DeleteMapping("{id}")
+    @DeleteMapping(ID)
     public ResponseEntity<Boolean> deleteCategory(@PathVariable("id") Long categoryId){
         categoryService.deleteCategory(categoryId);
         return ResponseEntity.ok(true);

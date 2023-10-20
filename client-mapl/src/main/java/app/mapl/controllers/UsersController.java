@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @CrossOrigin(origins = "*")
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 @RestController
 @SessionAttributes("name")
 //@Api(tags={"Users"})
@@ -73,42 +73,42 @@ public class UsersController {
     //////////////////////////////////////////////////////////////
     //// GENERAL API for user management ////
     /////////////////////////////////////////////////////////
-    @PostMapping("/users")
+    @PostMapping("")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(
                 usersService.createUser(userDto),
                 HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/users/{userId}")
+    @GetMapping(value = "/{userId}")
     public ResponseEntity<UserDto> getUser(@PathVariable("userId") int userId) {
         return new ResponseEntity<>(
                 usersService.getUser(userId).orElseThrow(),
                 HttpStatus.OK);
     }
 
-    @GetMapping(value = "/users/email/{email}")
+    @GetMapping(value = "/email/{email}")
     public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) {
         return new ResponseEntity<>(
                 usersService.getUser(email).orElseThrow(),
                 HttpStatus.OK);
     }
 
-    @GetMapping("/users")
+    @GetMapping("")
     public ResponseEntity<List<UserDto>> getUsers() {
         return new ResponseEntity<>(
                 usersService.getUsers(),
                 HttpStatus.OK);
     }
 
-    @PutMapping(value = "/users", consumes = "application/json")  // userId in body
+    @PutMapping(value = "", consumes = "application/json")  // userId in body
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(
                 usersService.createUser(userDto),
                 HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/users/{userId}")
+    @DeleteMapping(value = "/{userId}")
     public ResponseEntity<Boolean> deleteUser(@PathVariable("userId") int userId) {
         try {
             usersService.deleteUser(usersService.getUser(userId).orElseThrow());

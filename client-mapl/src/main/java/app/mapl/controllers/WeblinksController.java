@@ -10,31 +10,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
-@RequestMapping("/api")
+@RequestMapping(WeblinksController.API_WEBLINKS)
 @RestController
 public class WeblinksController {
+    public static final String API_WEBLINKS = "/api/weblinks";
     @Autowired
     WeblinksService weblinksService;
 
-    @RequestMapping(value = "/weblinks", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<WeblinkDto> createWeblinks(@RequestBody WeblinkDto c) {
 
         return new ResponseEntity<>(weblinksService.createWeblinks(c), HttpStatus.CREATED);
     }
-    @GetMapping(value = "/weblinks/{id}")
+    @GetMapping(value = "/{id}")
     public  ResponseEntity<WeblinkDto>  getWeblinks(@PathVariable("id") long id) {
 
         return new ResponseEntity<>(weblinksService.getWeblinks(id), HttpStatus.OK);
     }
-    @GetMapping(value = "/weblinks")
+    @GetMapping(value = "")
     public ResponseEntity<List<WeblinkDto>> getAllWeblinks() {
         return new ResponseEntity<>(weblinksService.getAllWeblinks(), HttpStatus.OK);
     }
-    @PutMapping(value = "/weblinks", consumes = "application/json")
+    @PutMapping(value = "", consumes = "application/json")
     public  ResponseEntity<WeblinkDto>  updateWeblinks(@RequestBody WeblinkDto change) {
         return new ResponseEntity<>(weblinksService.updateWeblinks(change), HttpStatus.OK);
     }
-    @DeleteMapping(value = "/weblinks/{weblinkId}")
+    @DeleteMapping(value = "/{weblinkId}")
     public ResponseEntity<Boolean> deleteWeblinks(@PathVariable("weblinkId") long weblinkId) {
         return new ResponseEntity<>(weblinksService.deleteWeblinks(weblinkId), HttpStatus.OK);
     }

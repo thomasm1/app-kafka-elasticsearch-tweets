@@ -20,8 +20,8 @@ public class Offer {
 	@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
 //	@SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "offerid", nullable = false)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "offerid", nullable = false)
 	int offerID;
 //	int userID;
 

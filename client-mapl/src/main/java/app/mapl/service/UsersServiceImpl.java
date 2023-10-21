@@ -3,6 +3,7 @@ package app.mapl.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 import app.mapl.dao.UserDAO;
 import app.mapl.dao.UserDAOimpl;
@@ -14,6 +15,7 @@ import app.mapl.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 @Profile(value={"dev"})
@@ -78,8 +80,17 @@ public class UsersServiceImpl implements UsersService {
 	 * @return
 	 */
 	@Override
-	public UserDto updateUser(UserDto change) {
-		return null;
+	public Optional<UserDto> updateUser(UserDto change) {
+		try {
+			User uEntity = userMapper.toEntity(change);
+			User uDone = userdaoImpl.updateUser(uEntity);
+
+			return Optional.of(userMapper.toDto(uDone));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Optional.ofNullable(change);
 	}
 
 	/**
@@ -131,6 +142,24 @@ public class UsersServiceImpl implements UsersService {
 		return userMapper.toDto(userdaoImpl.updateUser(userMapper.toEntity(change)));
 	}
 
+	public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
+		AtomicReference<Optional<UserDto>> atomicReference = new AtomicReference<>();
+
+		userdaoImpl.findById(userId).ifPresentOrElse(foundUser -> {
+//			if (StringUtils.hasText(user.getUsername())){
+//				foundUser.setUsername(user.getUsername());
+//			}
+//			if (StringUtils.hasText(user.getEmail())){
+//				foundUser.setEmail(user.getEmail());
+//			}
+			atomicReference.set(Optional.of(userMapper
+					.toDto(userdaoImpl.createUser((User) foundUser))));
+		}, () -> {
+			atomicReference.set(Optional.empty());
+		});
+
+		return atomicReference.get();
+	}
 	/**
 	 * @param email
 	 * @param pw
@@ -155,6 +184,11 @@ public class UsersServiceImpl implements UsersService {
 		System.out.println("Passing User Service userdao.getUserByPassword(String username, String password)...");
 		return Optional.ofNullable(userMapper.toDto(userdaoImpl.getUserByPassword(username, password)));
 	}
+
+
+
+
+
 	public static boolean deleteUserCli(String username) {
 		System.out.println("Passing User Service userdao.deleteUser(String username) { ...");
 		return userdaoImpl.deleteUser(username);

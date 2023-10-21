@@ -8,12 +8,13 @@ import app.mapl.models.User;
 import app.mapl.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -106,14 +107,18 @@ public class UsersServiceJPA implements UsersService {
      */
     @Override
     public List<UserDto> getUsers() {
-        List<UserDto> userDtos = new ArrayList<>();
-       try {
-           List<User> users = usersRepository.findAll();
-           return users.stream().map(userMapper::toDto).collect(Collectors.toList());
-       } catch (NullPointerException e) {
-           e.printStackTrace();
-           return new ArrayList<>();
-       }
+        List<UserDto> userDtos =null;
+        try {
+            List<User> users = usersRepository.findAll();
+            if (users == null) {
+                throw new ResourceNotFoundException("not found", "not found", "not found");
+            }   else {
+                return users.stream().map(userMapper::toDto).collect(Collectors.toList());
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
 
     }
 
@@ -157,18 +162,37 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public UserDto updateUser(UserDto change) {
+    public Optional<UserDto> updateUser(UserDto change) {
         try {
             User uEntity = userMapper.toEntity(change);
             User uDone = usersRepository.save(uEntity);
 
-            return userMapper.toDto(uDone);
+            return Optional.of(userMapper.toDto(uDone));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return change;
+        return Optional.ofNullable(change);
     }
+    @Override
+    public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
+        AtomicReference<Optional<UserDto>> atomicReference = new AtomicReference<>();
 
+        usersRepository.findById(userId).ifPresentOrElse(foundUser -> {
+            if (StringUtils.hasText(user.getUsername())){
+                foundUser.setUsername(user.getUsername());
+            }
+            if (StringUtils.hasText(user.getEmail())){
+                foundUser.setEmail(user.getEmail());
+            }
+            atomicReference.set(Optional.of(userMapper
+                    .toDto(usersRepository.save(foundUser))));
+        }, () -> {
+            atomicReference.set(Optional.empty());
+        });
+
+        return atomicReference.get();
+    }
     /**
      * @param email
      * @return

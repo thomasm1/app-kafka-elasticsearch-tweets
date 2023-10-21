@@ -7,7 +7,7 @@ Feature: categories feature api
 #    * url baseUrl
 
   Scenario Outline: 'posts/category/367'
-    Given path 'categories/367'
+    Given path '<_path>' +'/'+ '<_id>'
     When method <_meth>
     Then status <_stat>
     * json res = response
@@ -15,10 +15,10 @@ Feature: categories feature api
     * print payload
 
     Examples:
-      | _path     | _meth | _stat | _var1 | _var2 | _var3 |
+      | _path     | _meth | _stat | _id | _var2 | _var3 |
 
       | categories | GET   | 200   |   |   |   |
-#      | categories | GET   | 200   | /11501    |   |   |
+      | categories | GET   | 200   | 367    |   |   |
 
 #  Scenario Outline: 'categories/367'
 #    Given path 'category/367'

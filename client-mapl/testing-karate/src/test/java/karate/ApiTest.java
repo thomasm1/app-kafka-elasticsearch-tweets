@@ -11,7 +11,7 @@ class ApiTest {
 
     @Test
     void testParallel() {
-        Results results = Runner.path("classpath:karate")
+        Results results = Runner.path("classpath:karate/apiTest")
                 //.outputCucumberJson(true)
                 .parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());

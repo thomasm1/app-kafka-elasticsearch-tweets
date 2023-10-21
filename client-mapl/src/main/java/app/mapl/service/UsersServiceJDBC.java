@@ -110,7 +110,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public UserDto updateUser(UserDto change) {
+    public Optional<UserDto> updateUser(UserDto change) {
         return null;
     }
 
@@ -131,6 +131,16 @@ public class UsersServiceJDBC implements UsersService {
      */
     @Override
     public Optional<UserDto> getUserByPassword(String username, String password) {
+        return Optional.empty();
+    }
+
+    /**
+     * @param userId
+     * @param user
+     * @return
+     */
+    @Override
+    public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
         return Optional.empty();
     }
 

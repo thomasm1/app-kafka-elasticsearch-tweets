@@ -1,12 +1,12 @@
-function fn() {
+function () {
     var env = karate.env; // get system property 'karate.env'
     karate.log('karate.env system property was:', env);
     if (!env) {
-        env = 'prod';
+        env = 'mysql';
     }
     karate.log('karate.env system property was:', env);
-    var system = karate.
-    var baseUrl = karate.baseUrl || "http://localhost:8888"
+    var system = process.env;
+    // baseUrl = "http://localhost:8888"
     var pw = process.env.ORACLE_DB_PASSWORD
     console.log("----------pw----------" + pw)
     var spring_datasource_url = karate.spring_datasource_url || ''
@@ -29,7 +29,7 @@ function fn() {
         
         var config = {
             env: env,
-            baseUrl: baseUrl,
+            baseUrl:  'http://localhost:8888',
             spring_datasource_url: spring_datasource_url,
             spring_datasource_username: spring_datasource_username,
             spring_datasource_password: spring_datasource_password,

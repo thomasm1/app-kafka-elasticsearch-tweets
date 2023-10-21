@@ -4,7 +4,7 @@ Feature: posts feature api
 #
 #    * url 'http://34.199.129.2:8888/api'
     * url 'http://localhost:8888/api/'
-#    * url baseUrl
+ #   * url baseUrl
 
   Scenario Outline:
     Given path '<_path>' + '<_var1>'
@@ -35,7 +35,7 @@ Feature: posts feature api
       | _path | _meth | _stat | _var1  | _USERNAME | _var3 |
       | posts | GET   | 200   |  | thomasm1.maestas@gmail.com |       |
 #      | posts | GET   | 200   |  | admin |       |
-      | posts | GET   | 200   |        |           |       |
+  #     | posts | GET   | 200   |        |           |       |
 #      | posts | PUT   | 201   |/10000    |   |   |
 #      | posts | POST   | 201   |   |   |   |
 #      | posts | PATCH   | 201   |/10000    |   |   |
@@ -53,7 +53,7 @@ Feature: posts feature api
     Examples:
       | _path | _meth | _stat | _var1 | _var2 | _var3 |
 #      | posts | GET   | 200   | /129  |       |       |
-      | posts | GET   | 200   |       |       |       |
+ #     | posts | GET   | 200   |       |       |       |
 #      | posts | PUT   | 201   |/129    |   |   |
 #      | posts | POST   | 201   |   |   |   |
 #      | posts | PATCH   | 201   |/129    |   |   |

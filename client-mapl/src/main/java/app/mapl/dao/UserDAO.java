@@ -4,6 +4,7 @@ package app.mapl.dao;
 import app.mapl.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserDAO {
 	public User createUser(User u);
@@ -29,6 +30,8 @@ public interface UserDAO {
 	public User createUserPrePop(User u);
 
     User getUserbyEmail(String un);
+
+    Optional<Object> findById(Integer userId);
 }
 
 

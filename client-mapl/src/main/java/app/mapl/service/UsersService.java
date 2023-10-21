@@ -22,11 +22,14 @@ public interface UsersService {
 	public Optional<UserDto>  getUser(String username );
 	public List<UserDto> getUsers();
 
-	public UserDto updateUser(UserDto change);
+	public Optional<UserDto> updateUser(UserDto change);
 
 	public Optional<UserDto> getUserByEmailAndPassword(String email, String pw);
 
 	public Optional<UserDto> getUserByPassword(String username, String password);
+
+	Optional<UserDto> patchUserById(Integer userId, UserDto user);
+
 	public boolean deleteUser(String username);
 
 	boolean deleteUser(UserDto user);

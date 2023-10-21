@@ -8,6 +8,7 @@ import app.mapl.config.JDBCConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 //import db.DB;
@@ -148,6 +149,15 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	/**
+	 * @param userId
+	 * @return
+	 */
+	@Override
+	public Optional<Object> findById(Integer userId) {
+		return Optional.empty();
 	}
 
 

@@ -1,7 +1,8 @@
 package app.mapl.controllerTests;
 
-import com.friendsofgroot.app.controllers.NftController;
-import com.friendsofgroot.app.models.dto.NftDto;
+
+import app.mapl.controllers.PostEntityController;
+import app.mapl.dto.PostEntityDto;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,32 +20,32 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-@WebMvcTest(controllers = NftController.class)
+@WebMvcTest(controllers = PostEntityController.class)
 @AutoConfigureMockMvc(addFilters = false)
-class MoviesControllerTest {
+class PostEntityControllerTest {
 
-    private static String SPECIFIC_URL = "http://localhost:8080/api/nfts/1";
+    private static String SPECIFIC_URL = "http://localhost:8080/api/posts/1";
 
-    private static String GENERIC_URL = "http://localhost:8080/api/nfts/";
+    private static String GENERIC_URL = "http://localhost:8080/api/posts/";
     @MockBean
-    private NftController nftController;
+    private PostEntityController controller;
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void createNft() {
+    void createPostEntity() {
     }
 
     @Test
-    void getNft() throws Exception {
+    void getPostEntity() throws Exception {
         RequestBuilder requestBuilder =
                 MockMvcRequestBuilders.get(SPECIFIC_URL).accept(MediaType.APPLICATION_JSON);
 
 
-        ResponseEntity<NftDto> nft =  nftController.getNft(1);
+        ResponseEntity<PostEntityDto> postEntity =  controller.getPostById(1);
 
-        when(nftController.getNft(1)).thenReturn(nft);
+        when(controller.getPostById(1)).thenReturn(postEntity);
 
         MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
 
@@ -73,14 +74,14 @@ class MoviesControllerTest {
     }
 
     @Test
-    void getAllNfts() {
+    void getAllPostEntitys() {
     }
 
     @Test
-    void updateNft() {
+    void updatePostEntity() {
     }
 
     @Test
-    void deleteNft() {
+    void deletePostEntity() {
     }
 }

@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 public class WeblinksController {
     public static final String API_WEBLINKS = "/api/weblinks";
+
     @Autowired
     WeblinksService weblinksService;
 

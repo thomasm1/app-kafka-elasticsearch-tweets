@@ -1,0 +1,1732 @@
+[
+  {
+    "Date": "2019-07-04",
+    "Symbol": "ETHUSD",
+    "Open": 301.79,
+    "High": 304,
+    "Low": 300.39,
+    "Close": 301.5,
+    "Volume ETH": 3825.69,
+    "Volume USD": 1154988.12
+  },
+  {
+    "Date": "2019-07-03",
+    "Symbol": "ETHUSD",
+    "Open": 291.25,
+    "High": 303.83,
+    "Low": 289.61,
+    "Close": 301.79,
+    "Volume ETH": 105691.96,
+    "Volume USD": 31264397.55
+  },
+  {
+    "Date": "2019-07-02",
+    "Symbol": "ETHUSD",
+    "Open": 293.7,
+    "High": 296.24,
+    "Low": 270.42,
+    "Close": 291.25,
+    "Volume ETH": 218010.42,
+    "Volume USD": 61564550.93
+  },
+  {
+    "Date": "2019-07-01",
+    "Symbol": "ETHUSD",
+    "Open": 290.07,
+    "High": 301.32,
+    "Low": 278.65,
+    "Close": 293.7,
+    "Volume ETH": 184436.14,
+    "Volume USD": 53230192.12
+  },
+  {
+    "Date": "2019-06-30",
+    "Symbol": "ETHUSD",
+    "Open": 317,
+    "High": 323.61,
+    "Low": 286,
+    "Close": 290.07,
+    "Volume ETH": 164555.46,
+    "Volume USD": 49885668.26
+  },
+  {
+    "Date": "2019-06-29",
+    "Symbol": "ETHUSD",
+    "Open": 309.37,
+    "High": 324.5,
+    "Low": 291.25,
+    "Close": 317,
+    "Volume ETH": 183572.52,
+    "Volume USD": 56075398.3
+  },
+  {
+    "Date": "2019-06-28",
+    "Symbol": "ETHUSD",
+    "Open": 293.47,
+    "High": 312.9,
+    "Low": 289.66,
+    "Close": 309.37,
+    "Volume ETH": 208222.55,
+    "Volume USD": 62944021.71
+  },
+  {
+    "Date": "2019-06-27",
+    "Symbol": "ETHUSD",
+    "Open": 334.86,
+    "High": 343.82,
+    "Low": 273.5,
+    "Close": 293.47,
+    "Volume ETH": 492401.48,
+    "Volume USD": 149768561.11
+  },
+  {
+    "Date": "2019-06-26",
+    "Symbol": "ETHUSD",
+    "Open": 316.59,
+    "High": 364.49,
+    "Low": 308,
+    "Close": 334.86,
+    "Volume ETH": 539859.81,
+    "Volume USD": 182440536.31
+  },
+  {
+    "Date": "2019-06-25",
+    "Symbol": "ETHUSD",
+    "Open": 311,
+    "High": 317.4,
+    "Low": 306,
+    "Close": 316.59,
+    "Volume ETH": 136758.38,
+    "Volume USD": 42606692.49
+  },
+  {
+    "Date": "2019-06-24",
+    "Symbol": "ETHUSD",
+    "Open": 306.98,
+    "High": 313.1,
+    "Low": 295.68,
+    "Close": 311,
+    "Volume ETH": 154448.91,
+    "Volume USD": 47259062.92
+  },
+  {
+    "Date": "2019-06-23",
+    "Symbol": "ETHUSD",
+    "Open": 308.49,
+    "High": 318,
+    "Low": 304.6,
+    "Close": 306.98,
+    "Volume ETH": 165679.38,
+    "Volume USD": 51460280.08
+  },
+  {
+    "Date": "2019-06-22",
+    "Symbol": "ETHUSD",
+    "Open": 296.25,
+    "High": 315.54,
+    "Low": 293.46,
+    "Close": 308.49,
+    "Volume ETH": 288015.72,
+    "Volume USD": 88170547.49
+  },
+  {
+    "Date": "2019-06-21",
+    "Symbol": "ETHUSD",
+    "Open": 272,
+    "High": 299,
+    "Low": 272,
+    "Close": 296.25,
+    "Volume ETH": 259082.5,
+    "Volume USD": 74265206.83
+  },
+  {
+    "Date": "2019-06-20",
+    "Symbol": "ETHUSD",
+    "Open": 268.79,
+    "High": 274.84,
+    "Low": 266.51,
+    "Close": 272,
+    "Volume ETH": 78812.38,
+    "Volume USD": 21299494.55
+  },
+  {
+    "Date": "2019-06-19",
+    "Symbol": "ETHUSD",
+    "Open": 264.37,
+    "High": 270.07,
+    "Low": 263.36,
+    "Close": 268.79,
+    "Volume ETH": 91888.68,
+    "Volume USD": 24560632.98
+  },
+  {
+    "Date": "2019-06-18",
+    "Symbol": "ETHUSD",
+    "Open": 273.97,
+    "High": 274.24,
+    "Low": 261,
+    "Close": 264.37,
+    "Volume ETH": 123457.79,
+    "Volume USD": 32908544.36
+  },
+  {
+    "Date": "2019-06-17",
+    "Symbol": "ETHUSD",
+    "Open": 268.33,
+    "High": 275.93,
+    "Low": 267.69,
+    "Close": 273.97,
+    "Volume ETH": 110046.65,
+    "Volume USD": 29955650.07
+  },
+  {
+    "Date": "2019-06-16",
+    "Symbol": "ETHUSD",
+    "Open": 269.29,
+    "High": 278.83,
+    "Low": 263.02,
+    "Close": 268.33,
+    "Volume ETH": 128153.31,
+    "Volume USD": 34734572.08
+  },
+  {
+    "Date": "2019-06-15",
+    "Symbol": "ETHUSD",
+    "Open": 263.8,
+    "High": 273.3,
+    "Low": 261.57,
+    "Close": 269.29,
+    "Volume ETH": 103428.36,
+    "Volume USD": 27608982.26
+  },
+  {
+    "Date": "2019-06-14",
+    "Symbol": "ETHUSD",
+    "Open": 255.4,
+    "High": 266.21,
+    "Low": 252.42,
+    "Close": 263.8,
+    "Volume ETH": 130707.87,
+    "Volume USD": 33675142.85
+  },
+  {
+    "Date": "2019-06-13",
+    "Symbol": "ETHUSD",
+    "Open": 262.92,
+    "High": 264.75,
+    "Low": 254.2,
+    "Close": 255.4,
+    "Volume ETH": 132818.01,
+    "Volume USD": 34486071.7
+  },
+  {
+    "Date": "2019-06-12",
+    "Symbol": "ETHUSD",
+    "Open": 245.11,
+    "High": 263.81,
+    "Low": 243.01,
+    "Close": 262.92,
+    "Volume ETH": 160643.15,
+    "Volume USD": 40690273.93
+  },
+  {
+    "Date": "2019-06-11",
+    "Symbol": "ETHUSD",
+    "Open": 247.84,
+    "High": 249.38,
+    "Low": 237.33,
+    "Close": 245.11,
+    "Volume ETH": 104759.04,
+    "Volume USD": 25495365.02
+  },
+  {
+    "Date": "2019-06-10",
+    "Symbol": "ETHUSD",
+    "Open": 231.3,
+    "High": 248.16,
+    "Low": 227.52,
+    "Close": 247.84,
+    "Volume ETH": 124592.52,
+    "Volume USD": 30023519.7
+  },
+  {
+    "Date": "2019-06-09",
+    "Symbol": "ETHUSD",
+    "Open": 244.3,
+    "High": 244.97,
+    "Low": 226.56,
+    "Close": 231.3,
+    "Volume ETH": 125479.84,
+    "Volume USD": 29471976.84
+  },
+  {
+    "Date": "2019-06-08",
+    "Symbol": "ETHUSD",
+    "Open": 249.49,
+    "High": 251.17,
+    "Low": 241.52,
+    "Close": 244.3,
+    "Volume ETH": 53536.03,
+    "Volume USD": 13154522.07
+  },
+  {
+    "Date": "2019-06-07",
+    "Symbol": "ETHUSD",
+    "Open": 249.4,
+    "High": 254.4,
+    "Low": 244.84,
+    "Close": 249.49,
+    "Volume ETH": 120716.59,
+    "Volume USD": 30132165.28
+  },
+  {
+    "Date": "2019-06-06",
+    "Symbol": "ETHUSD",
+    "Open": 246.32,
+    "High": 251.29,
+    "Low": 235.32,
+    "Close": 249.4,
+    "Volume ETH": 127683.05,
+    "Volume USD": 30978967.49
+  },
+  {
+    "Date": "2019-06-05",
+    "Symbol": "ETHUSD",
+    "Open": 240.93,
+    "High": 249,
+    "Low": 237.55,
+    "Close": 246.32,
+    "Volume ETH": 140111.7,
+    "Volume USD": 34164535.83
+  },
+  {
+    "Date": "2019-06-04",
+    "Symbol": "ETHUSD",
+    "Open": 249.55,
+    "High": 250.99,
+    "Low": 233,
+    "Close": 240.93,
+    "Volume ETH": 234267.31,
+    "Volume USD": 56871965.24
+  },
+  {
+    "Date": "2019-06-03",
+    "Symbol": "ETHUSD",
+    "Open": 269.23,
+    "High": 270.3,
+    "Low": 246.6,
+    "Close": 249.55,
+    "Volume ETH": 154780.15,
+    "Volume USD": 40060466.97
+  },
+  {
+    "Date": "2019-06-02",
+    "Symbol": "ETHUSD",
+    "Open": 264.78,
+    "High": 274.75,
+    "Low": 264.11,
+    "Close": 269.23,
+    "Volume ETH": 59513.08,
+    "Volume USD": 16006307.23
+  },
+  {
+    "Date": "2019-06-01",
+    "Symbol": "ETHUSD",
+    "Open": 267.74,
+    "High": 274.99,
+    "Low": 261.3,
+    "Close": 264.78,
+    "Volume ETH": 122851.75,
+    "Volume USD": 32975845.16
+  },
+  {
+    "Date": "2019-05-31",
+    "Symbol": "ETHUSD",
+    "Open": 254.62,
+    "High": 268.55,
+    "Low": 245.05,
+    "Close": 267.74,
+    "Volume ETH": 187604.24,
+    "Volume USD": 48316125.52
+  },
+  {
+    "Date": "2019-05-30",
+    "Symbol": "ETHUSD",
+    "Open": 269.39,
+    "High": 288.77,
+    "Low": 235.44,
+    "Close": 254.62,
+    "Volume ETH": 390744.57,
+    "Volume USD": 105099273.04
+  },
+  {
+    "Date": "2019-05-29",
+    "Symbol": "ETHUSD",
+    "Open": 271.15,
+    "High": 274.25,
+    "Low": 260.2,
+    "Close": 269.39,
+    "Volume ETH": 144280.09,
+    "Volume USD": 38821311.71
+  },
+  {
+    "Date": "2019-05-28",
+    "Symbol": "ETHUSD",
+    "Open": 271.24,
+    "High": 276.5,
+    "Low": 265.45,
+    "Close": 271.15,
+    "Volume ETH": 113835.94,
+    "Volume USD": 30821176.06
+  },
+  {
+    "Date": "2019-05-27",
+    "Symbol": "ETHUSD",
+    "Open": 268.37,
+    "High": 279.55,
+    "Low": 262,
+    "Close": 271.24,
+    "Volume ETH": 217922.37,
+    "Volume USD": 58777849.35
+  },
+  {
+    "Date": "2019-05-26",
+    "Symbol": "ETHUSD",
+    "Open": 251.55,
+    "High": 271.19,
+    "Low": 245.66,
+    "Close": 268.37,
+    "Volume ETH": 155954.71,
+    "Volume USD": 40698024.45
+  },
+  {
+    "Date": "2019-05-25",
+    "Symbol": "ETHUSD",
+    "Open": 249.83,
+    "High": 258.89,
+    "Low": 248.43,
+    "Close": 251.55,
+    "Volume ETH": 69546.66,
+    "Volume USD": 17564776.47
+  },
+  {
+    "Date": "2019-05-24",
+    "Symbol": "ETHUSD",
+    "Open": 245.64,
+    "High": 256.06,
+    "Low": 242.4,
+    "Close": 249.83,
+    "Volume ETH": 163732.02,
+    "Volume USD": 41034391.76
+  },
+  {
+    "Date": "2019-05-23",
+    "Symbol": "ETHUSD",
+    "Open": 243.32,
+    "High": 248.7,
+    "Low": 231.12,
+    "Close": 245.64,
+    "Volume ETH": 170413.64,
+    "Volume USD": 41059531.44
+  },
+  {
+    "Date": "2019-05-22",
+    "Symbol": "ETHUSD",
+    "Open": 254.74,
+    "High": 261.62,
+    "Low": 240.04,
+    "Close": 243.32,
+    "Volume ETH": 217233.44,
+    "Volume USD": 54517985.16
+  },
+  {
+    "Date": "2019-05-21",
+    "Symbol": "ETHUSD",
+    "Open": 252.22,
+    "High": 264.2,
+    "Low": 247.84,
+    "Close": 254.74,
+    "Volume ETH": 238043.26,
+    "Volume USD": 60715533.3
+  },
+  {
+    "Date": "2019-05-20",
+    "Symbol": "ETHUSD",
+    "Open": 261.09,
+    "High": 261.09,
+    "Low": 239,
+    "Close": 252.22,
+    "Volume ETH": 253759.54,
+    "Volume USD": 63409736.36
+  },
+  {
+    "Date": "2019-05-19",
+    "Symbol": "ETHUSD",
+    "Open": 234.03,
+    "High": 264.77,
+    "Low": 232.44,
+    "Close": 261.09,
+    "Volume ETH": 271220.93,
+    "Volume USD": 68748265.79
+  },
+  {
+    "Date": "2019-05-18",
+    "Symbol": "ETHUSD",
+    "Open": 244.59,
+    "High": 249.24,
+    "Low": 231.4,
+    "Close": 234.03,
+    "Volume ETH": 165848.44,
+    "Volume USD": 39743041.35
+  },
+  {
+    "Date": "2019-05-17",
+    "Symbol": "ETHUSD",
+    "Open": 264.39,
+    "High": 269.23,
+    "Low": 222.88,
+    "Close": 244.59,
+    "Volume ETH": 571564.4,
+    "Volume USD": 136470842.81
+  },
+  {
+    "Date": "2019-05-16",
+    "Symbol": "ETHUSD",
+    "Open": 249,
+    "High": 281.77,
+    "Low": 242.19,
+    "Close": 264.39,
+    "Volume ETH": 811478.11,
+    "Volume USD": 212567583.77
+  },
+  {
+    "Date": "2019-05-15",
+    "Symbol": "ETHUSD",
+    "Open": 217.44,
+    "High": 250.79,
+    "Low": 216.84,
+    "Close": 249,
+    "Volume ETH": 530985.38,
+    "Volume USD": 124256386.71
+  },
+  {
+    "Date": "2019-05-14",
+    "Symbol": "ETHUSD",
+    "Open": 196.51,
+    "High": 221,
+    "Low": 195.17,
+    "Close": 217.44,
+    "Volume ETH": 439933.88,
+    "Volume USD": 91719433.31
+  },
+  {
+    "Date": "2019-05-13",
+    "Symbol": "ETHUSD",
+    "Open": 188.23,
+    "High": 209.85,
+    "Low": 185.62,
+    "Close": 196.51,
+    "Volume ETH": 340207.76,
+    "Volume USD": 67341603.29
+  },
+  {
+    "Date": "2019-05-12",
+    "Symbol": "ETHUSD",
+    "Open": 192.52,
+    "High": 204.19,
+    "Low": 182.39,
+    "Close": 188.23,
+    "Volume ETH": 323488.65,
+    "Volume USD": 62120720.56
+  },
+  {
+    "Date": "2019-05-11",
+    "Symbol": "ETHUSD",
+    "Open": 172.21,
+    "High": 207,
+    "Low": 172.19,
+    "Close": 192.52,
+    "Volume ETH": 446780.68,
+    "Volume USD": 85143558.76
+  },
+  {
+    "Date": "2019-05-10",
+    "Symbol": "ETHUSD",
+    "Open": 170.11,
+    "High": 176.32,
+    "Low": 167.49,
+    "Close": 172.21,
+    "Volume ETH": 185147.61,
+    "Volume USD": 31970028.6
+  },
+  {
+    "Date": "2019-05-09",
+    "Symbol": "ETHUSD",
+    "Open": 169.58,
+    "High": 173.33,
+    "Low": 165.25,
+    "Close": 170.11,
+    "Volume ETH": 107648.76,
+    "Volume USD": 18204375.75
+  },
+  {
+    "Date": "2019-05-08",
+    "Symbol": "ETHUSD",
+    "Open": 166.51,
+    "High": 172.03,
+    "Low": 162,
+    "Close": 169.58,
+    "Volume ETH": 121813.36,
+    "Volume USD": 20389031.78
+  },
+  {
+    "Date": "2019-05-07",
+    "Symbol": "ETHUSD",
+    "Open": 171.07,
+    "High": 180.69,
+    "Low": 171.07,
+    "Close": 177.23,
+    "Volume ETH": 84636.56,
+    "Volume USD": 15009069.45
+  },
+  {
+    "Date": "2019-05-06",
+    "Symbol": "ETHUSD",
+    "Open": 161.25,
+    "High": 175.97,
+    "Low": 157.78,
+    "Close": 171.07,
+    "Volume ETH": 141941.89,
+    "Volume USD": 23878285.23
+  },
+  {
+    "Date": "2019-05-05",
+    "Symbol": "ETHUSD",
+    "Open": 161.85,
+    "High": 163.4,
+    "Low": 157.28,
+    "Close": 161.25,
+    "Volume ETH": 76173.12,
+    "Volume USD": 12260315.82
+  },
+  {
+    "Date": "2019-05-04",
+    "Symbol": "ETHUSD",
+    "Open": 164.74,
+    "High": 168.71,
+    "Low": 158,
+    "Close": 161.85,
+    "Volume ETH": 120404.97,
+    "Volume USD": 19621643.07
+  },
+  {
+    "Date": "2019-05-03",
+    "Symbol": "ETHUSD",
+    "Open": 158.7,
+    "High": 169.26,
+    "Low": 157.61,
+    "Close": 164.74,
+    "Volume ETH": 120049.19,
+    "Volume USD": 19762844.03
+  },
+  {
+    "Date": "2019-05-02",
+    "Symbol": "ETHUSD",
+    "Open": 158.3,
+    "High": 160.57,
+    "Low": 155.91,
+    "Close": 158.7,
+    "Volume ETH": 56952.5,
+    "Volume USD": 9019708.58
+  },
+  {
+    "Date": "2019-05-01",
+    "Symbol": "ETHUSD",
+    "Open": 160.4,
+    "High": 163.25,
+    "Low": 156.59,
+    "Close": 158.3,
+    "Volume ETH": 68333.23,
+    "Volume USD": 10903050.09
+  },
+  {
+    "Date": "2019-04-30",
+    "Symbol": "ETHUSD",
+    "Open": 152.36,
+    "High": 161.2,
+    "Low": 152.32,
+    "Close": 160.4,
+    "Volume ETH": 97933.87,
+    "Volume USD": 15360377.68
+  },
+  {
+    "Date": "2019-04-29",
+    "Symbol": "ETHUSD",
+    "Open": 153.19,
+    "High": 154.69,
+    "Low": 148.81,
+    "Close": 152.36,
+    "Volume ETH": 67867.36,
+    "Volume USD": 10343932.78
+  },
+  {
+    "Date": "2019-04-28",
+    "Symbol": "ETHUSD",
+    "Open": 155.66,
+    "High": 156.45,
+    "Low": 152.16,
+    "Close": 153.19,
+    "Volume ETH": 50178.77,
+    "Volume USD": 7756869.65
+  },
+  {
+    "Date": "2019-04-27",
+    "Symbol": "ETHUSD",
+    "Open": 153.41,
+    "High": 159,
+    "Low": 152.54,
+    "Close": 155.66,
+    "Volume ETH": 60848.22,
+    "Volume USD": 9456237.26
+  },
+  {
+    "Date": "2019-04-26",
+    "Symbol": "ETHUSD",
+    "Open": 152.05,
+    "High": 156,
+    "Low": 148.26,
+    "Close": 153.41,
+    "Volume ETH": 137093.81,
+    "Volume USD": 20826228.42
+  },
+  {
+    "Date": "2019-04-25",
+    "Symbol": "ETHUSD",
+    "Open": 165.75,
+    "High": 166.34,
+    "Low": 146,
+    "Close": 152.05,
+    "Volume ETH": 152827.22,
+    "Volume USD": 23963443.54
+  },
+  {
+    "Date": "2019-04-24",
+    "Symbol": "ETHUSD",
+    "Open": 170.14,
+    "High": 171.08,
+    "Low": 160.3,
+    "Close": 165.75,
+    "Volume ETH": 132561.25,
+    "Volume USD": 21979086.8
+  },
+  {
+    "Date": "2019-04-23",
+    "Symbol": "ETHUSD",
+    "Open": 171.6,
+    "High": 176.94,
+    "Low": 169.01,
+    "Close": 170.14,
+    "Volume ETH": 125264.08,
+    "Volume USD": 21669988.78
+  },
+  {
+    "Date": "2019-04-22",
+    "Symbol": "ETHUSD",
+    "Open": 169.9,
+    "High": 173.65,
+    "Low": 168.21,
+    "Close": 171.6,
+    "Volume ETH": 78895.82,
+    "Volume USD": 13499886.33
+  },
+  {
+    "Date": "2019-04-21",
+    "Symbol": "ETHUSD",
+    "Open": 173.73,
+    "High": 174.45,
+    "Low": 166.33,
+    "Close": 169.9,
+    "Volume ETH": 69731.15,
+    "Volume USD": 11842580.98
+  },
+  {
+    "Date": "2019-04-20",
+    "Symbol": "ETHUSD",
+    "Open": 173.83,
+    "High": 177.84,
+    "Low": 170.87,
+    "Close": 173.73,
+    "Volume ETH": 61898.85,
+    "Volume USD": 10764187.36
+  },
+  {
+    "Date": "2019-04-19",
+    "Symbol": "ETHUSD",
+    "Open": 174.15,
+    "High": 174.84,
+    "Low": 169.21,
+    "Close": 173.83,
+    "Volume ETH": 82184.65,
+    "Volume USD": 14167682.28
+  },
+  {
+    "Date": "2019-04-18",
+    "Symbol": "ETHUSD",
+    "Open": 166.54,
+    "High": 176.17,
+    "Low": 166.01,
+    "Close": 174.15,
+    "Volume ETH": 120980.8,
+    "Volume USD": 20922534.31
+  },
+  {
+    "Date": "2019-04-17",
+    "Symbol": "ETHUSD",
+    "Open": 166.38,
+    "High": 168.73,
+    "Low": 164.55,
+    "Close": 166.54,
+    "Volume ETH": 57204.94,
+    "Volume USD": 9509513.82
+  },
+  {
+    "Date": "2019-04-16",
+    "Symbol": "ETHUSD",
+    "Open": 160.24,
+    "High": 168.6,
+    "Low": 159.46,
+    "Close": 166.38,
+    "Volume ETH": 83254.55,
+    "Volume USD": 13672707.81
+  },
+  {
+    "Date": "2019-04-15",
+    "Symbol": "ETHUSD",
+    "Open": 168.27,
+    "High": 169.76,
+    "Low": 156,
+    "Close": 160.24,
+    "Volume ETH": 109486.76,
+    "Volume USD": 17822086.91
+  },
+  {
+    "Date": "2019-04-14",
+    "Symbol": "ETHUSD",
+    "Open": 163.75,
+    "High": 169.25,
+    "Low": 161.83,
+    "Close": 168.27,
+    "Volume ETH": 42752.19,
+    "Volume USD": 7061243.25
+  },
+  {
+    "Date": "2019-04-13",
+    "Symbol": "ETHUSD",
+    "Open": 164.27,
+    "High": 166.45,
+    "Low": 161.08,
+    "Close": 163.75,
+    "Volume ETH": 44160.14,
+    "Volume USD": 7243929.7
+  },
+  {
+    "Date": "2019-04-12",
+    "Symbol": "ETHUSD",
+    "Open": 164.92,
+    "High": 168.87,
+    "Low": 159.27,
+    "Close": 164.27,
+    "Volume ETH": 118098.01,
+    "Volume USD": 19374895.8
+  },
+  {
+    "Date": "2019-04-11",
+    "Symbol": "ETHUSD",
+    "Open": 177.55,
+    "High": 177.9,
+    "Low": 160.56,
+    "Close": 164.92,
+    "Volume ETH": 178991.47,
+    "Volume USD": 30077735.96
+  },
+  {
+    "Date": "2019-04-10",
+    "Symbol": "ETHUSD",
+    "Open": 175.83,
+    "High": 185.62,
+    "Low": 169.52,
+    "Close": 177.55,
+    "Volume ETH": 223894.13,
+    "Volume USD": 40200131.96
+  },
+  {
+    "Date": "2019-04-09",
+    "Symbol": "ETHUSD",
+    "Open": 180.74,
+    "High": 180.83,
+    "Low": 174.34,
+    "Close": 175.83,
+    "Volume ETH": 110861.08,
+    "Volume USD": 19671004
+  },
+  {
+    "Date": "2019-04-08",
+    "Symbol": "ETHUSD",
+    "Open": 174.84,
+    "High": 187.62,
+    "Low": 173.95,
+    "Close": 180.74,
+    "Volume ETH": 259091.49,
+    "Volume USD": 46893173.47
+  },
+  {
+    "Date": "2019-04-07",
+    "Symbol": "ETHUSD",
+    "Open": 165.79,
+    "High": 177.17,
+    "Low": 164.27,
+    "Close": 174.84,
+    "Volume ETH": 133000.01,
+    "Volume USD": 22724750.08
+  },
+  {
+    "Date": "2019-04-06",
+    "Symbol": "ETHUSD",
+    "Open": 166.08,
+    "High": 173.19,
+    "Low": 160.48,
+    "Close": 165.79,
+    "Volume ETH": 119581.52,
+    "Volume USD": 19935073.63
+  },
+  {
+    "Date": "2019-04-05",
+    "Symbol": "ETHUSD",
+    "Open": 157.65,
+    "High": 169.2,
+    "Low": 155.5,
+    "Close": 166.08,
+    "Volume ETH": 138635.17,
+    "Volume USD": 22687095.72
+  },
+  {
+    "Date": "2019-04-04",
+    "Symbol": "ETHUSD",
+    "Open": 161.33,
+    "High": 164.84,
+    "Low": 153.5,
+    "Close": 157.65,
+    "Volume ETH": 165389.97,
+    "Volume USD": 26381045.39
+  },
+  {
+    "Date": "2019-04-03",
+    "Symbol": "ETHUSD",
+    "Open": 164.69,
+    "High": 180.1,
+    "Low": 150.53,
+    "Close": 161.33,
+    "Volume ETH": 479348.92,
+    "Volume USD": 81355997.17
+  },
+  {
+    "Date": "2019-04-02",
+    "Symbol": "ETHUSD",
+    "Open": 141,
+    "High": 167.5,
+    "Low": 140.71,
+    "Close": 164.69,
+    "Volume ETH": 340153.74,
+    "Volume USD": 52988711.94
+  },
+  {
+    "Date": "2019-04-01",
+    "Symbol": "ETHUSD",
+    "Open": 141.2,
+    "High": 143,
+    "Low": 138.81,
+    "Close": 141,
+    "Volume ETH": 58061.65,
+    "Volume USD": 8205264.89
+  },
+  {
+    "Date": "2019-03-19",
+    "Symbol": "ETHUSD",
+    "Open": 137.01,
+    "High": 138.65,
+    "Low": 136.76,
+    "Close": 137.59,
+    "Volume ETH": 6598.67,
+    "Volume USD": 909013.16
+  },
+  {
+    "Date": "2019-03-18",
+    "Symbol": "ETHUSD",
+    "Open": 138.07,
+    "High": 141.3,
+    "Low": 135.67,
+    "Close": 137.01,
+    "Volume ETH": 76043.69,
+    "Volume USD": 10481323.66
+  },
+  {
+    "Date": "2019-03-17",
+    "Symbol": "ETHUSD",
+    "Open": 140.48,
+    "High": 140.56,
+    "Low": 136.3,
+    "Close": 138.07,
+    "Volume ETH": 47450.75,
+    "Volume USD": 6554731.06
+  },
+  {
+    "Date": "2019-03-16",
+    "Symbol": "ETHUSD",
+    "Open": 135.99,
+    "High": 147,
+    "Low": 135.98,
+    "Close": 140.48,
+    "Volume ETH": 132756.3,
+    "Volume USD": 18625776.04
+  },
+  {
+    "Date": "2019-03-15",
+    "Symbol": "ETHUSD",
+    "Open": 131.4,
+    "High": 136.91,
+    "Low": 131.4,
+    "Close": 135.99,
+    "Volume ETH": 88437.26,
+    "Volume USD": 11913954.98
+  },
+  {
+    "Date": "2019-03-14",
+    "Symbol": "ETHUSD",
+    "Open": 131.16,
+    "High": 135.09,
+    "Low": 128.9,
+    "Close": 131.4,
+    "Volume ETH": 44539.63,
+    "Volume USD": 5858434.65
+  },
+  {
+    "Date": "2019-03-13",
+    "Symbol": "ETHUSD",
+    "Open": 132.8,
+    "High": 132.94,
+    "Low": 130.2,
+    "Close": 131.16,
+    "Volume ETH": 44620.43,
+    "Volume USD": 5867673.77
+  },
+  {
+    "Date": "2019-03-12",
+    "Symbol": "ETHUSD",
+    "Open": 132.05,
+    "High": 134.3,
+    "Low": 127.19,
+    "Close": 132.8,
+    "Volume ETH": 104264.17,
+    "Volume USD": 13712247.86
+  },
+  {
+    "Date": "2019-03-11",
+    "Symbol": "ETHUSD",
+    "Open": 134.66,
+    "High": 135.37,
+    "Low": 130.57,
+    "Close": 132.05,
+    "Volume ETH": 55581.88,
+    "Volume USD": 7351410.99
+  },
+  {
+    "Date": "2019-03-10",
+    "Symbol": "ETHUSD",
+    "Open": 136.41,
+    "High": 136.73,
+    "Low": 133.42,
+    "Close": 134.66,
+    "Volume ETH": 37822.89,
+    "Volume USD": 5105669.45
+  },
+  {
+    "Date": "2019-03-09",
+    "Symbol": "ETHUSD",
+    "Open": 132.75,
+    "High": 138.01,
+    "Low": 132.09,
+    "Close": 136.41,
+    "Volume ETH": 67910.24,
+    "Volume USD": 9211227.33
+  },
+  {
+    "Date": "2019-03-08",
+    "Symbol": "ETHUSD",
+    "Open": 136.29,
+    "High": 138.6,
+    "Low": 130.13,
+    "Close": 132.75,
+    "Volume ETH": 100150.39,
+    "Volume USD": 13500861.15
+  },
+  {
+    "Date": "2019-03-07",
+    "Symbol": "ETHUSD",
+    "Open": 137,
+    "High": 139.68,
+    "Low": 134.84,
+    "Close": 136.29,
+    "Volume ETH": 75910.24,
+    "Volume USD": 10417753.2
+  },
+  {
+    "Date": "2019-03-06",
+    "Symbol": "ETHUSD",
+    "Open": 136.3,
+    "High": 140,
+    "Low": 131.99,
+    "Close": 137,
+    "Volume ETH": 120503.6,
+    "Volume USD": 16446234.01
+  },
+  {
+    "Date": "2019-03-05",
+    "Symbol": "ETHUSD",
+    "Open": 125.24,
+    "High": 137.49,
+    "Low": 124.78,
+    "Close": 136.3,
+    "Volume ETH": 120692.78,
+    "Volume USD": 15967478.21
+  },
+  {
+    "Date": "2019-03-04",
+    "Symbol": "ETHUSD",
+    "Open": 129.78,
+    "High": 130.22,
+    "Low": 122.75,
+    "Close": 125.24,
+    "Volume ETH": 139685.67,
+    "Volume USD": 17703594.59
+  },
+  {
+    "Date": "2019-03-03",
+    "Symbol": "ETHUSD",
+    "Open": 132.32,
+    "High": 134.41,
+    "Low": 127.49,
+    "Close": 129.78,
+    "Volume ETH": 54408.76,
+    "Volume USD": 7131700.93
+  },
+  {
+    "Date": "2019-03-02",
+    "Symbol": "ETHUSD",
+    "Open": 134.72,
+    "High": 135.39,
+    "Low": 128.95,
+    "Close": 132.32,
+    "Volume ETH": 68559.12,
+    "Volume USD": 9072202.32
+  },
+  {
+    "Date": "2019-03-01",
+    "Symbol": "ETHUSD",
+    "Open": 134.48,
+    "High": 137.53,
+    "Low": 133.52,
+    "Close": 134.72,
+    "Volume ETH": 86367.05,
+    "Volume USD": 11709499.48
+  },
+  {
+    "Date": "2019-02-28",
+    "Symbol": "ETHUSD",
+    "Open": 134.46,
+    "High": 139,
+    "Low": 131.66,
+    "Close": 134.48,
+    "Volume ETH": 111260.82,
+    "Volume USD": 15075301.11
+  },
+  {
+    "Date": "2019-02-27",
+    "Symbol": "ETHUSD",
+    "Open": 135.76,
+    "High": 140,
+    "Low": 125.77,
+    "Close": 134.46,
+    "Volume ETH": 136295.14,
+    "Volume USD": 18163540.51
+  },
+  {
+    "Date": "2019-02-26",
+    "Symbol": "ETHUSD",
+    "Open": 137.64,
+    "High": 138.85,
+    "Low": 133.03,
+    "Close": 135.76,
+    "Volume ETH": 88877.01,
+    "Volume USD": 12073024.91
+  },
+  {
+    "Date": "2019-02-25",
+    "Symbol": "ETHUSD",
+    "Open": 131.76,
+    "High": 141.09,
+    "Low": 131.03,
+    "Close": 137.64,
+    "Volume ETH": 152165.95,
+    "Volume USD": 20876846.84
+  },
+  {
+    "Date": "2019-02-24",
+    "Symbol": "ETHUSD",
+    "Open": 157.56,
+    "High": 165.62,
+    "Low": 131.23,
+    "Close": 131.76,
+    "Volume ETH": 289173.47,
+    "Volume USD": 42273182.44
+  },
+  {
+    "Date": "2019-02-23",
+    "Symbol": "ETHUSD",
+    "Open": 146.68,
+    "High": 159.91,
+    "Low": 144.89,
+    "Close": 157.56,
+    "Volume ETH": 156608.8,
+    "Volume USD": 24118707.38
+  },
+  {
+    "Date": "2019-02-22",
+    "Symbol": "ETHUSD",
+    "Open": 144.21,
+    "High": 147.5,
+    "Low": 142.26,
+    "Close": 146.68,
+    "Volume ETH": 81675.88,
+    "Volume USD": 11920853.02
+  },
+  {
+    "Date": "2019-02-21",
+    "Symbol": "ETHUSD",
+    "Open": 147.19,
+    "High": 148.6,
+    "Low": 141.76,
+    "Close": 144.21,
+    "Volume ETH": 107936.42,
+    "Volume USD": 15616218.08
+  },
+  {
+    "Date": "2019-02-20",
+    "Symbol": "ETHUSD",
+    "Open": 142.69,
+    "High": 148.4,
+    "Low": 138.65,
+    "Close": 147.19,
+    "Volume ETH": 133027.38,
+    "Volume USD": 19164956.95
+  },
+  {
+    "Date": "2019-02-19",
+    "Symbol": "ETHUSD",
+    "Open": 144.56,
+    "High": 149.47,
+    "Low": 142.46,
+    "Close": 142.69,
+    "Volume ETH": 167193.66,
+    "Volume USD": 24386570.28
+  },
+  {
+    "Date": "2019-02-18",
+    "Symbol": "ETHUSD",
+    "Open": 132.34,
+    "High": 147.8,
+    "Low": 131.1,
+    "Close": 144.56,
+    "Volume ETH": 309053.04,
+    "Volume USD": 43193605.47
+  },
+  {
+    "Date": "2019-02-17",
+    "Symbol": "ETHUSD",
+    "Open": 121.56,
+    "High": 134.14,
+    "Low": 121.38,
+    "Close": 132.34,
+    "Volume ETH": 181894.41,
+    "Volume USD": 23211216
+  },
+  {
+    "Date": "2019-02-16",
+    "Symbol": "ETHUSD",
+    "Open": 120.42,
+    "High": 123.6,
+    "Low": 120.42,
+    "Close": 121.56,
+    "Volume ETH": 36254.96,
+    "Volume USD": 4413185.05
+  },
+  {
+    "Date": "2019-02-15",
+    "Symbol": "ETHUSD",
+    "Open": 119.39,
+    "High": 123.57,
+    "Low": 119.13,
+    "Close": 120.42,
+    "Volume ETH": 58334.1,
+    "Volume USD": 7049612.2
+  },
+  {
+    "Date": "2019-02-14",
+    "Symbol": "ETHUSD",
+    "Open": 120.74,
+    "High": 123.22,
+    "Low": 118.73,
+    "Close": 119.39,
+    "Volume ETH": 73049.76,
+    "Volume USD": 8833930.38
+  },
+  {
+    "Date": "2019-02-13",
+    "Symbol": "ETHUSD",
+    "Open": 120.82,
+    "High": 125,
+    "Low": 119.51,
+    "Close": 120.74,
+    "Volume ETH": 85302.86,
+    "Volume USD": 10363670.07
+  },
+  {
+    "Date": "2019-02-12",
+    "Symbol": "ETHUSD",
+    "Open": 119.55,
+    "High": 122.3,
+    "Low": 117,
+    "Close": 120.82,
+    "Volume ETH": 98743.69,
+    "Volume USD": 11817549.12
+  },
+  {
+    "Date": "2019-02-11",
+    "Symbol": "ETHUSD",
+    "Open": 123.94,
+    "High": 124.11,
+    "Low": 118.27,
+    "Close": 119.55,
+    "Volume ETH": 120784.37,
+    "Volume USD": 14506668.41
+  },
+  {
+    "Date": "2019-02-10",
+    "Symbol": "ETHUSD",
+    "Open": 118.06,
+    "High": 125.28,
+    "Low": 115.04,
+    "Close": 123.94,
+    "Volume ETH": 87908.82,
+    "Volume USD": 10524589.78
+  },
+  {
+    "Date": "2019-02-09",
+    "Symbol": "ETHUSD",
+    "Open": 117.98,
+    "High": 119.77,
+    "Low": 116.55,
+    "Close": 118.06,
+    "Volume ETH": 65483.01,
+    "Volume USD": 7714412.45
+  },
+  {
+    "Date": "2019-02-08",
+    "Symbol": "ETHUSD",
+    "Open": 103.21,
+    "High": 122,
+    "Low": 102.29,
+    "Close": 117.98,
+    "Volume ETH": 209786.62,
+    "Volume USD": 23550238.26
+  },
+  {
+    "Date": "2019-02-07",
+    "Symbol": "ETHUSD",
+    "Open": 103.36,
+    "High": 104.77,
+    "Low": 102.75,
+    "Close": 103.21,
+    "Volume ETH": 46433.32,
+    "Volume USD": 4814451.44
+  },
+  {
+    "Date": "2019-02-06",
+    "Symbol": "ETHUSD",
+    "Open": 106,
+    "High": 106.31,
+    "Low": 100.15,
+    "Close": 103.36,
+    "Volume ETH": 95206.15,
+    "Volume USD": 9771491.95
+  },
+  {
+    "Date": "2019-02-05",
+    "Symbol": "ETHUSD",
+    "Open": 106.08,
+    "High": 106.5,
+    "Low": 105.08,
+    "Close": 106,
+    "Volume ETH": 39933.21,
+    "Volume USD": 4227740.74
+  },
+  {
+    "Date": "2019-02-04",
+    "Symbol": "ETHUSD",
+    "Open": 105.94,
+    "High": 107.85,
+    "Low": 105.29,
+    "Close": 106.08,
+    "Volume ETH": 45291.52,
+    "Volume USD": 4812437.9
+  },
+  {
+    "Date": "2019-02-03",
+    "Symbol": "ETHUSD",
+    "Open": 109.3,
+    "High": 110,
+    "Low": 104.52,
+    "Close": 105.94,
+    "Volume ETH": 62708.43,
+    "Volume USD": 6714716.27
+  },
+  {
+    "Date": "2019-02-02",
+    "Symbol": "ETHUSD",
+    "Open": 105.88,
+    "High": 109.98,
+    "Low": 105.16,
+    "Close": 109.3,
+    "Volume ETH": 55967.1,
+    "Volume USD": 5990001.2
+  },
+  {
+    "Date": "2019-02-01",
+    "Symbol": "ETHUSD",
+    "Open": 105.79,
+    "High": 107.69,
+    "Low": 103,
+    "Close": 105.88,
+    "Volume ETH": 86088.64,
+    "Volume USD": 9064660.56
+  },
+  {
+    "Date": "2019-01-31",
+    "Symbol": "ETHUSD",
+    "Open": 107.61,
+    "High": 109.97,
+    "Low": 104.83,
+    "Close": 105.79,
+    "Volume ETH": 82650.37,
+    "Volume USD": 8835050.51
+  },
+  {
+    "Date": "2019-01-30",
+    "Symbol": "ETHUSD",
+    "Open": 104.02,
+    "High": 109.45,
+    "Low": 102.9,
+    "Close": 107.61,
+    "Volume ETH": 108822.86,
+    "Volume USD": 11618524.08
+  },
+  {
+    "Date": "2019-01-29",
+    "Symbol": "ETHUSD",
+    "Open": 105.47,
+    "High": 105.98,
+    "Low": 102.16,
+    "Close": 104.02,
+    "Volume ETH": 76287.24,
+    "Volume USD": 7957296.49
+  },
+  {
+    "Date": "2019-01-28",
+    "Symbol": "ETHUSD",
+    "Open": 111.35,
+    "High": 112.1,
+    "Low": 100.9,
+    "Close": 105.47,
+    "Volume ETH": 161457.03,
+    "Volume USD": 17011109.49
+  },
+  {
+    "Date": "2019-01-27",
+    "Symbol": "ETHUSD",
+    "Open": 115.01,
+    "High": 115.45,
+    "Low": 110.3,
+    "Close": 111.35,
+    "Volume ETH": 61836.44,
+    "Volume USD": 7009092.55
+  },
+  {
+    "Date": "2019-01-26",
+    "Symbol": "ETHUSD",
+    "Open": 114.95,
+    "High": 117.47,
+    "Low": 114.78,
+    "Close": 115.01,
+    "Volume ETH": 41492.11,
+    "Volume USD": 4802290
+  },
+  {
+    "Date": "2019-01-25",
+    "Symbol": "ETHUSD",
+    "Open": 116.4,
+    "High": 117.09,
+    "Low": 114.04,
+    "Close": 114.95,
+    "Volume ETH": 75742.68,
+    "Volume USD": 8751981.6
+  },
+  {
+    "Date": "2019-01-24",
+    "Symbol": "ETHUSD",
+    "Open": 116.55,
+    "High": 117.11,
+    "Low": 113.62,
+    "Close": 116.4,
+    "Volume ETH": 58126.89,
+    "Volume USD": 6734058.67
+  },
+  {
+    "Date": "2019-01-23",
+    "Symbol": "ETHUSD",
+    "Open": 118.1,
+    "High": 118.9,
+    "Low": 115.02,
+    "Close": 116.55,
+    "Volume ETH": 60029.19,
+    "Volume USD": 7036946.69
+  },
+  {
+    "Date": "2019-01-22",
+    "Symbol": "ETHUSD",
+    "Open": 115.86,
+    "High": 119.41,
+    "Low": 110.86,
+    "Close": 118.1,
+    "Volume ETH": 112381.06,
+    "Volume USD": 13100917.61
+  },
+  {
+    "Date": "2019-01-21",
+    "Symbol": "ETHUSD",
+    "Open": 117.43,
+    "High": 118.02,
+    "Low": 113.68,
+    "Close": 115.86,
+    "Volume ETH": 79637.79,
+    "Volume USD": 9253637.46
+  },
+  {
+    "Date": "2019-01-20",
+    "Symbol": "ETHUSD",
+    "Open": 123.17,
+    "High": 123.7,
+    "Low": 115.7,
+    "Close": 117.43,
+    "Volume ETH": 87509.78,
+    "Volume USD": 10407691.29
+  },
+  {
+    "Date": "2019-01-19",
+    "Symbol": "ETHUSD",
+    "Open": 119.53,
+    "High": 126.3,
+    "Low": 119.53,
+    "Close": 123.17,
+    "Volume ETH": 84962.36,
+    "Volume USD": 10514399.35
+  },
+  {
+    "Date": "2019-01-18",
+    "Symbol": "ETHUSD",
+    "Open": 122.55,
+    "High": 122.88,
+    "Low": 118.18,
+    "Close": 119.53,
+    "Volume ETH": 65062.23,
+    "Volume USD": 7841060.99
+  },
+  {
+    "Date": "2019-01-17",
+    "Symbol": "ETHUSD",
+    "Open": 122.12,
+    "High": 123.83,
+    "Low": 117.12,
+    "Close": 122.55,
+    "Volume ETH": 113295.27,
+    "Volume USD": 13712411.91
+  },
+  {
+    "Date": "2019-01-16",
+    "Symbol": "ETHUSD",
+    "Open": 120.06,
+    "High": 127.6,
+    "Low": 119,
+    "Close": 122.12,
+    "Volume ETH": 142720.14,
+    "Volume USD": 17419048.09
+  },
+  {
+    "Date": "2019-01-15",
+    "Symbol": "ETHUSD",
+    "Open": 128.37,
+    "High": 130.61,
+    "Low": 116.91,
+    "Close": 120.06,
+    "Volume ETH": 190531.32,
+    "Volume USD": 23596292.97
+  },
+  {
+    "Date": "2019-01-14",
+    "Symbol": "ETHUSD",
+    "Open": 115.55,
+    "High": 131.7,
+    "Low": 115.34,
+    "Close": 128.37,
+    "Volume ETH": 195432.97,
+    "Volume USD": 24379145.56
+  },
+  {
+    "Date": "2019-01-13",
+    "Symbol": "ETHUSD",
+    "Open": 124.59,
+    "High": 125.21,
+    "Low": 113.5,
+    "Close": 115.55,
+    "Volume ETH": 129282.53,
+    "Volume USD": 15273656.5
+  },
+  {
+    "Date": "2019-01-12",
+    "Symbol": "ETHUSD",
+    "Open": 125.83,
+    "High": 127.24,
+    "Low": 123.4,
+    "Close": 124.59,
+    "Volume ETH": 86580.9,
+    "Volume USD": 10860538.51
+  },
+  {
+    "Date": "2019-01-11",
+    "Symbol": "ETHUSD",
+    "Open": 126.41,
+    "High": 128.84,
+    "Low": 121.74,
+    "Close": 125.83,
+    "Volume ETH": 156159.27,
+    "Volume USD": 19658728.86
+  },
+  {
+    "Date": "2019-01-10",
+    "Symbol": "ETHUSD",
+    "Open": 149.5,
+    "High": 150.9,
+    "Low": 122.15,
+    "Close": 126.41,
+    "Volume ETH": 314051.19,
+    "Volume USD": 41297811.41
+  },
+  {
+    "Date": "2019-01-09",
+    "Symbol": "ETHUSD",
+    "Open": 148.97,
+    "High": 152.88,
+    "Low": 148.36,
+    "Close": 149.5,
+    "Volume ETH": 93315.67,
+    "Volume USD": 14035911.56
+  },
+  {
+    "Date": "2019-01-08",
+    "Symbol": "ETHUSD",
+    "Open": 150.62,
+    "High": 152.9,
+    "Low": 146.71,
+    "Close": 148.97,
+    "Volume ETH": 120487.62,
+    "Volume USD": 18025156.2
+  },
+  {
+    "Date": "2019-01-07",
+    "Symbol": "ETHUSD",
+    "Open": 155.92,
+    "High": 157.15,
+    "Low": 148.59,
+    "Close": 150.62,
+    "Volume ETH": 139195.56,
+    "Volume USD": 21295248.95
+  },
+  {
+    "Date": "2019-01-06",
+    "Symbol": "ETHUSD",
+    "Open": 154.21,
+    "High": 159.58,
+    "Low": 148.5,
+    "Close": 155.92,
+    "Volume ETH": 166721.32,
+    "Volume USD": 25664451.41
+  },
+  {
+    "Date": "2019-01-05",
+    "Symbol": "ETHUSD",
+    "Open": 153.24,
+    "High": 160.61,
+    "Low": 152.92,
+    "Close": 154.21,
+    "Volume ETH": 203048.55,
+    "Volume USD": 31938001.22
+  },
+  {
+    "Date": "2019-01-04",
+    "Symbol": "ETHUSD",
+    "Open": 147.23,
+    "High": 155.51,
+    "Low": 145.14,
+    "Close": 153.24,
+    "Volume ETH": 215980.78,
+    "Volume USD": 32602336.5
+  },
+  {
+    "Date": "2019-01-03",
+    "Symbol": "ETHUSD",
+    "Open": 153.5,
+    "High": 154.44,
+    "Low": 144.49,
+    "Close": 147.23,
+    "Volume ETH": 192147.8,
+    "Volume USD": 28670970.4
+  },
+  {
+    "Date": "2019-01-02",
+    "Symbol": "ETHUSD",
+    "Open": 139.75,
+    "High": 156.69,
+    "Low": 138.75,
+    "Close": 153.5,
+    "Volume ETH": 232659.29,
+    "Volume USD": 34569353.19
+  },
+  {
+    "Date": "2019-01-01",
+    "Symbol": "ETHUSD",
+    "Open": 130.53,
+    "High": 140.9,
+    "Low": 129.55,
+    "Close": 139.75,
+    "Volume ETH": 155397.58,
+    "Volume USD": 20946906.89
+  }
+]

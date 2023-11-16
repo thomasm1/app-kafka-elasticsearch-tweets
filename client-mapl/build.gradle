@@ -64,7 +64,7 @@ version = '0.1.1'
 description = 'my-personal-librarian'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-publishing {cd _te
+publishing {
     publications {
         maven(MavenPublication) {
             from(components.java)

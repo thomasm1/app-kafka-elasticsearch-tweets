@@ -1,0 +1,9 @@
+FROM debian:stable
+LABEL author="Thomas Maesas"
+
+RUN apt update && \ 
+        apt install -y nano && \
+        apt clean
+
+CMD ["/bin/bash"]
+

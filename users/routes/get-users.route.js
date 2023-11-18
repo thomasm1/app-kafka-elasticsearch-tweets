@@ -1,7 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.getUserById = exports.getUsers = exports.postLogin = void 0;
-var db_data_1 = require("../data/db-data");
+var db_data_1 = require("../db-data");
 function postLogin(req, res) {
     var data = req.body;
     var email = data.email;

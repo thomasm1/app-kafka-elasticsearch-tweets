@@ -98,315 +98,315 @@ http://www.LinuxTrainingAcademy.com
 Now display the output of the container with timestamps:
 docker logs -t test_container
 http://www.LinuxTrainingAcademy.com
-Managing Docker Volumes - Exercise􀁢
-􀁢
-Goal:􀁢
-􀁢
-The goal of this exercise is to create and use volumes with containers.􀁢
-􀁢
-Instructions:􀁢
-􀁢
-Create a Volume􀁢
-􀁢
-Create a volume named "localvolume".􀁢
-􀁢
-docker volume create localvolume􀓩
-􀁢
-Use the "docker volume inspect" command to determine where Docker will store the contents􀁢
-of the volume on your local Docker host's filesystem.􀁢
-􀁢
-docker volume inspect localvolume􀓩
-􀁢
-Note the "Mountpoint" path shown as you’ll need it for the next step.􀁢
-􀁢
-Create a text file named "file.txt" in the volume with the contents of "This file exists".􀁢
-􀁢
-echo "This file exists" > /var/lib/docker/volumes/localvolume/_data/file.txt􀓩
-􀁢
-NOTE: Use the output from the above inspect command to determine the path. It will probably be􀁢
-the same, but there is a slight chance that it may be different on your system.􀁢
-􀁢
-Run a Container and Attach the Volume to It􀁢
-􀁢
-Start a detached container using the Apache image named "httpd". Mount the volume named􀁢
-"localvolume" inside the container at "/data".􀁢
-􀁢
-docker run -d --name mountvolume --mount src=localvolume,dst=/data httpd􀓩
-􀁢
-NOTE: The abbreviation of source ("src") and destination ("dst") was used. You could also have􀁢
-used this for the "--mount" option: "source=localvolume,destination=/data"􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-􀁢
-Attach to the "mountvolume" container.􀁢
-􀁢
-docker exec -it mountvolume /bin/bash􀓩
-􀁢
-Check that the volume is available inside of the container and that the "file.txt" exists.􀁢
-􀁢
-df -h􀓩
-cat /data/file.txt􀓩
-􀁢
-Ensure that the contents of "/data/file.txt" is "This file exists”.􀁢
-􀁢
-Create a new file on the volume named "from-container.txt" with the contents of "Created from􀁢
-inside the container".􀁢
-􀁢
-echo "Created from inside the container" > /data/from-container.txt􀓩
-􀁢
-Confirm the file was created and that it's contents are as expected:􀁢
-􀁢
-cat /data/from-container.txt􀓩
-􀁢
-Detach from the container.􀁢
-􀁢
-exit􀓩
-􀁢
-Confirm that you can see the file from the Docker host.􀁢
-􀁢
-cat /var/lib/docker/volumes/localvolume/_data/from-container.txt􀓩
-􀁢
-Run a Container with an Ephemeral Volume􀁢
-􀁢
-Start a container named "tempvolume" in the background. Use the "httpd" image. Also, attach an􀁢
-ephemeral volume to the container at "/tempdata". You'll need to use type "tmpfs" as the volume􀁢
-type.􀁢
-􀁢
-docker run -d --name tempvolume --mount type=tmpfs,dst=/tempdata httpd􀓩
-􀁢
-Check that the temporary volume is created correctly by inspecting the running container.􀁢
-􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-docker inspect tempvolume | grep Mounts -A 10􀓩
-􀁢
-Ensure that the "Type" field shows "tmpfs" and that the "Destination" field shows "/tempdata" as the􀁢
-path.􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-Networking Exercise􀁢
-􀁢
-Goal:􀁢
-􀁢
-The goal of this exercise is to create a user-defined network for a web application called Drupal.􀁢
-􀁢
-Instructions:􀁢
-Create a Network for the Drupal Web Application􀁢
-􀁢
-Create a Docker bridged network named "drupal".􀁢
-􀁢
-docker network create drupal􀓩
-􀁢
-Create a Database Container.􀁢
-􀁢
-First, create a volume that will be used to store the database data. Name the volume "db".􀁢
-􀁢
-docker volume create db􀓩
-􀁢
-Next, start a container named "db" based on the "postgres" image with a tag of "11.5". Make sure it􀁢
-is connected to the "drupal" network. Also, mount the "db" volume to "/var/lib/postgresql/data"􀁢
-inside the container.􀁢
-􀁢
-Create a database named "drupal" that can be accessed by a "drupal" user with a password of􀁢
-"pw123". To do that, set the following environment variables when starting the container:􀁢
-􀁢
-POSTGRES_USER=drupal􀁢
-􀁢
-POSTGRES_PASSWORD=pw123􀁢
-􀁢
-POSTGRES_DB=drupal􀁢
-􀁢
-(NOTE: The environment variables were determined by looking at the documentation for this image􀁢
-as found on Docker Hub: https://hub.docker.com/_/postgres)􀁢
-􀁢
-􀁢
-􀁢
-􀁢 􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-Here is the command: (NOTE: Type this all on one line as this is a single command.)􀁢
-􀁢
-docker run -d --network drupal --name db -e POSTGRES_DB=drupal􀓩
--e POSTGRES_USER=drupal -e POSTGRES_PASSWORD=pw123􀓩
---mount src=db,dst=/var/lib/postgresql/data postgres:11.5􀓩
-􀁢
-Inspect the "drupal" network to make sure the container is attached to it. You should see the "db"􀁢
-container listed in the "Containers" section of the output.􀁢
-􀁢
-docker network inspect drupal􀓩
-􀁢
-Create a Drupal Application Container􀁢
-􀁢
-Start a container named "drupal" based on the "drupal" image with a tag of "8.7.7". Make sure it is􀁢
-connected to the "drupal" network. Also, publish port 80 on the host and map it to port 80 in the􀁢
-container.􀁢
-􀁢
-docker run -d --network drupal --name drupal -p 80:80 drupal:8.7.7􀓩
-􀁢
-Inspect the "drupal" network to make sure the container is attached to it. You should see the􀁢
-"drupal" container listed in the "Containers" section of the output.􀁢
-􀁢
-docker network inspect drupal􀓩
-􀁢
-Connect the Application to the Database􀁢
-􀁢
-If you are running Docker on your local machine, then open up a web browser on your local machine􀁢
-and enter "http://localhost" into your web browser.􀁢
-􀁢
-However, if the Docker host machine is a remote machine and you want to connect to from another􀁢
-system, then you'll need the IP address of your docker host machine. Determine the IP address of􀁢
-your Docker host machine and enter that into your web browser.􀁢
-􀁢
-One way to get the IP address of your Docker host system is to use the "ip a" command:􀁢
-􀁢
-ip a􀓩
-􀁢
-(NOTE: If "ip a" doesn't work, try using the "ifconfig" command.)􀁢
-􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-􀁢
-Answer the installation prompts as follows.􀁢
-􀁢
-Choose Language: English􀁢
-Choose Profile: Standard􀁢
-Set up Database:􀁢
-Select "PostgreSQL"􀁢
-Database name: drupal􀁢
-Database username: drupal􀁢
-Database password: pw123􀁢
-Click "Advanced Options."􀁢
-Host: db􀁢
-Port number: 5432􀁢
-It should look like this:􀁢
-􀁢
-􀁢
-􀁢
-Click "Save and continue".􀁢
-􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-􀁢
-Configure Site:􀁢
-Site name: Test􀁢
-Site email address: root@localhost.localdomain􀁢
-Username: admin􀁢
-Password: admin123􀁢
-Confirm Password: admin123􀁢
-Click "Save and continue".􀁢
-􀁢
-You will now be presented with Drupal web application.􀁢
-􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-Deploying a Private Docker Registry - Exercise􀁢
-􀁢
-Goal:􀁢
-􀁢
-The goal of this exercise is to deploy a private Docker registry. Additionally, you will learn how to􀁢
-pull and push images to the registry you create.􀁢
-􀁢
-Instructions:􀁢
-Create and Start a Registry Container􀁢
-􀁢
-First, create a volume that will be used to store the registry data. Name the volume "registry".􀁢
-􀁢
-docker volume create registry􀓩
-􀁢
-Next, start a container named "registry" based on the "registry" image with a tag of "2". Mount the􀁢
-"registry" volume to "/var/lib/registry" inside the container. Finally, publish port 5000 on the host􀁢
-and map it to port 5000 in the container.􀁢
-􀁢
-Here is the command: (NOTE: Type this all on one line as this is a single command.)􀁢
-􀁢
-docker run -d --name registry --mount src=registry,dst=/var/lib/registry􀓩
--p 5000:5000 registry:2􀓩
-􀁢
-(NOTE: For more information about the official Docker registry image, visit􀁢
-https://hub.docker.com/_/registry.)􀁢
-􀁢
-Copy an Image from Docker Hub to Your Registry􀁢
-􀁢
-Pull down the "nginx:latest" image to your Docker host system.􀁢
-􀁢
-docker pull nginx:latest􀓩
-􀁢
-(NOTE: You could also use "docker pull nginx" as the "latest" tag is assumed if no tag is􀁢
-specified.)􀁢
-􀁢
-Tag the image as "localhost:5000/nginx:latest". Note that the registry name is "localhost:5000", the􀁢
-repository is "nginx" and the tag is "latest".􀁢
-􀁢
-http://www.LinuxTrainingAcademy.com􀁢
-docker tag nginx:latest localhost:5000/nginx:latest􀓩
-􀁢
-Check that the image has been tagged.􀁢
-􀁢
-docker images􀓩
-􀁢
-You'll notice that the "nginx:latest" image and the "localhost:5000/nginx:latest" images have the􀁢
-same Image ID.􀁢
-􀁢
-Push the retagged nginx image into the private registry.􀁢
-􀁢
-docker push localhost:5000/nginx:latest􀓩
-􀁢
-You can check that the image has been pushed to the private registry using the registry's HTTP API.􀁢
-(For details on the API, see https://docs.docker.com/registry/spec/api/.)􀁢
-􀁢
-curl http://localhost:5000/v2/_catalog􀓩
-􀁢
-You should see "nginx" listed as a repository.􀁢
-􀁢
-{"repositories":["nginx"]}􀓩
-􀁢
-Remove the Image from the Docker Host􀁢
-􀁢
-Remove the "nginx:latest" image you downloaded from Docker Hub:􀁢
-􀁢
-docker rmi nginx:latest􀓩
-􀁢
-Confirm that the image has been removed with the following command:􀁢
-􀁢
-docker images􀓩
-􀁢
-Note that deleting the "nginx:latest" image does not remove the other image with the same Image􀁢
-ID, which is localhost:5000/nginx:latest. Of course, it also does not remove it from the private􀁢
-registry.􀁢
-􀁢
-Next, let's remove the localhost:5000/nginx:latest image.􀁢
-􀁢
-docker rmi localhost:5000/nginx:latest􀓩
-http://www.LinuxTrainingAcademy.com􀁢
-􀁢
-You'll notice that instead of only untagging the image, it also actively deletes the layers that make up􀁢
-the image.􀁢
-􀁢
-Confirm that the image has been removed with the following command:􀁢
-􀁢
-docker images􀓩
-􀁢
-Even though the image does not exist on our local Docker host machine, it still exists in the registry.􀁢
-􀁢
-Pull the Image from the Private Docker Registry􀁢
-􀁢
-To prove that the image is stored in the private registry, pull it from the private registry to your􀁢
-Docker host system.􀁢
-􀁢
-docker pull localhost:5000/nginx􀓩
-􀁢
-You will now see the image listed:􀁢
-􀁢
-docker images􀓩
-􀁢
-Start a Container Using the Image􀁢
-􀁢
-Next, start a container using the image.􀁢
-􀁢
-docker run -d localhost:5000/nginx􀓩
-docker ps􀓩
-􀁢
-􀁢
-OPTIONAL: Access the Private Docker Registry from a Remote Docker Host􀁢
-􀁢
-First, determine the IP address of your Docker host machine. One way to get the IP address of your􀁢
-Docker host system is to use the "ip a" command:􀁢
-􀁢
-ip a􀓩
-􀁢
-(NOTE: If "ip a" doesn't work, try using the "ifconfig" command.)􀁢
-􀁢
-http://www.LinuxTrainingAcademy.com􀁢
+Managing Docker Volumes - Exercise
+
+Goal:
+
+The goal of this exercise is to create and use volumes with containers.
+
+Instructions:
+
+Create a Volume
+
+Create a volume named "localvolume".
+
+docker volume create localvolume
+
+Use the "docker volume inspect" command to determine where Docker will store the contents
+of the volume on your local Docker host's filesystem.
+
+docker volume inspect localvolume
+
+Note the "Mountpoint" path shown as you’ll need it for the next step.
+
+Create a text file named "file.txt" in the volume with the contents of "This file exists".
+
+echo "This file exists" > /var/lib/docker/volumes/localvolume/_data/file.txt
+
+NOTE: Use the output from the above inspect command to determine the path. It will probably be
+the same, but there is a slight chance that it may be different on your system.
+
+Run a Container and Attach the Volume to It
+
+Start a detached container using the Apache image named "httpd". Mount the volume named
+"localvolume" inside the container at "/data".
+
+docker run -d --name mountvolume --mount src=localvolume,dst=/data httpd
+
+NOTE: The abbreviation of source ("src") and destination ("dst") was used. You could also have
+used this for the "--mount" option: "source=localvolume,destination=/data"
+http://www.LinuxTrainingAcademy.com
+
+Attach to the "mountvolume" container.
+
+docker exec -it mountvolume /bin/bash
+
+Check that the volume is available inside of the container and that the "file.txt" exists.
+
+df -h
+cat /data/file.txt
+
+Ensure that the contents of "/data/file.txt" is "This file exists”.
+
+Create a new file on the volume named "from-container.txt" with the contents of "Created from
+inside the container".
+
+echo "Created from inside the container" > /data/from-container.txt
+
+Confirm the file was created and that it's contents are as expected:
+
+cat /data/from-container.txt
+
+Detach from the container.
+
+exit
+
+Confirm that you can see the file from the Docker host.
+
+cat /var/lib/docker/volumes/localvolume/_data/from-container.txt
+
+Run a Container with an Ephemeral Volume
+
+Start a container named "tempvolume" in the background. Use the "httpd" image. Also, attach an
+ephemeral volume to the container at "/tempdata". You'll need to use type "tmpfs" as the volume
+type.
+
+docker run -d --name tempvolume --mount type=tmpfs,dst=/tempdata httpd
+
+Check that the temporary volume is created correctly by inspecting the running container.
+
+http://www.LinuxTrainingAcademy.com
+docker inspect tempvolume | grep Mounts -A 10
+
+Ensure that the "Type" field shows "tmpfs" and that the "Destination" field shows "/tempdata" as the
+path.
+http://www.LinuxTrainingAcademy.com
+Networking Exercise
+
+Goal:
+
+The goal of this exercise is to create a user-defined network for a web application called Drupal.
+
+Instructions:
+Create a Network for the Drupal Web Application
+
+Create a Docker bridged network named "drupal".
+
+docker network create drupal
+
+Create a Database Container.
+
+First, create a volume that will be used to store the database data. Name the volume "db".
+
+docker volume create db
+
+Next, start a container named "db" based on the "postgres" image with a tag of "11.5". Make sure it
+is connected to the "drupal" network. Also, mount the "db" volume to "/var/lib/postgresql/data"
+inside the container.
+
+Create a database named "drupal" that can be accessed by a "drupal" user with a password of
+"pw123". To do that, set the following environment variables when starting the container:
+
+POSTGRES_USER=drupal
+
+POSTGRES_PASSWORD=pw123
+
+POSTGRES_DB=drupal
+
+(NOTE: The environment variables were determined by looking at the documentation for this image
+as found on Docker Hub: https://hub.docker.com/_/postgres)
+
+
+
+ 
+http://www.LinuxTrainingAcademy.com
+Here is the command: (NOTE: Type this all on one line as this is a single command.)
+
+docker run -d --network drupal --name db -e POSTGRES_DB=drupal
+-e POSTGRES_USER=drupal -e POSTGRES_PASSWORD=pw123
+--mount src=db,dst=/var/lib/postgresql/data postgres:11.5
+
+Inspect the "drupal" network to make sure the container is attached to it. You should see the "db"
+container listed in the "Containers" section of the output.
+
+docker network inspect drupal
+
+Create a Drupal Application Container
+
+Start a container named "drupal" based on the "drupal" image with a tag of "8.7.7". Make sure it is
+connected to the "drupal" network. Also, publish port 80 on the host and map it to port 80 in the
+container.
+
+docker run -d --network drupal --name drupal -p 80:80 drupal:8.7.7
+
+Inspect the "drupal" network to make sure the container is attached to it. You should see the
+"drupal" container listed in the "Containers" section of the output.
+
+docker network inspect drupal
+
+Connect the Application to the Database
+
+If you are running Docker on your local machine, then open up a web browser on your local machine
+and enter "http://localhost" into your web browser.
+
+However, if the Docker host machine is a remote machine and you want to connect to from another
+system, then you'll need the IP address of your docker host machine. Determine the IP address of
+your Docker host machine and enter that into your web browser.
+
+One way to get the IP address of your Docker host system is to use the "ip a" command:
+
+ip a
+
+(NOTE: If "ip a" doesn't work, try using the "ifconfig" command.)
+
+http://www.LinuxTrainingAcademy.com
+
+Answer the installation prompts as follows.
+
+Choose Language: English
+Choose Profile: Standard
+Set up Database:
+Select "PostgreSQL"
+Database name: drupal
+Database username: drupal
+Database password: pw123
+Click "Advanced Options."
+Host: db
+Port number: 5432
+It should look like this:
+
+
+
+Click "Save and continue".
+
+http://www.LinuxTrainingAcademy.com
+
+Configure Site:
+Site name: Test
+Site email address: root@localhost.localdomain
+Username: admin
+Password: admin123
+Confirm Password: admin123
+Click "Save and continue".
+
+You will now be presented with Drupal web application.
+
+http://www.LinuxTrainingAcademy.com
+Deploying a Private Docker Registry - Exercise
+
+Goal:
+
+The goal of this exercise is to deploy a private Docker registry. Additionally, you will learn how to
+pull and push images to the registry you create.
+
+Instructions:
+Create and Start a Registry Container
+
+First, create a volume that will be used to store the registry data. Name the volume "registry".
+
+docker volume create registry
+
+Next, start a container named "registry" based on the "registry" image with a tag of "2". Mount the
+"registry" volume to "/var/lib/registry" inside the container. Finally, publish port 5000 on the host
+and map it to port 5000 in the container.
+
+Here is the command: (NOTE: Type this all on one line as this is a single command.)
+
+docker run -d --name registry --mount src=registry,dst=/var/lib/registry
+-p 5000:5000 registry:2
+
+(NOTE: For more information about the official Docker registry image, visit
+https://hub.docker.com/_/registry.)
+
+Copy an Image from Docker Hub to Your Registry
+
+Pull down the "nginx:latest" image to your Docker host system.
+
+docker pull nginx:latest
+
+(NOTE: You could also use "docker pull nginx" as the "latest" tag is assumed if no tag is
+specified.)
+
+Tag the image as "localhost:5000/nginx:latest". Note that the registry name is "localhost:5000", the
+repository is "nginx" and the tag is "latest".
+
+http://www.LinuxTrainingAcademy.com
+docker tag nginx:latest localhost:5000/nginx:latest
+
+Check that the image has been tagged.
+
+docker images
+
+You'll notice that the "nginx:latest" image and the "localhost:5000/nginx:latest" images have the
+same Image ID.
+
+Push the retagged nginx image into the private registry.
+
+docker push localhost:5000/nginx:latest
+
+You can check that the image has been pushed to the private registry using the registry's HTTP API.
+(For details on the API, see https://docs.docker.com/registry/spec/api/.)
+
+curl http://localhost:5000/v2/_catalog
+
+You should see "nginx" listed as a repository.
+
+{"repositories":["nginx"]}
+
+Remove the Image from the Docker Host
+
+Remove the "nginx:latest" image you downloaded from Docker Hub:
+
+docker rmi nginx:latest
+
+Confirm that the image has been removed with the following command:
+
+docker images
+
+Note that deleting the "nginx:latest" image does not remove the other image with the same Image
+ID, which is localhost:5000/nginx:latest. Of course, it also does not remove it from the private
+registry.
+
+Next, let's remove the localhost:5000/nginx:latest image.
+
+docker rmi localhost:5000/nginx:latest
+http://www.LinuxTrainingAcademy.com
+
+You'll notice that instead of only untagging the image, it also actively deletes the layers that make up
+the image.
+
+Confirm that the image has been removed with the following command:
+
+docker images
+
+Even though the image does not exist on our local Docker host machine, it still exists in the registry.
+
+Pull the Image from the Private Docker Registry
+
+To prove that the image is stored in the private registry, pull it from the private registry to your
+Docker host system.
+
+docker pull localhost:5000/nginx
+
+You will now see the image listed:
+
+docker images
+
+Start a Container Using the Image
+
+Next, start a container using the image.
+
+docker run -d localhost:5000/nginx
+docker ps
+
+
+OPTIONAL: Access the Private Docker Registry from a Remote Docker Host
+
+First, determine the IP address of your Docker host machine. One way to get the IP address of your
+Docker host system is to use the "ip a" command:
+
+ip a
+
+(NOTE: If "ip a" doesn't work, try using the "ifconfig" command.)
+
+http://www.LinuxTrainingAcademy.com

@@ -1,32 +1,33 @@
-"use strict";
-exports.__esModule = true;
-exports.NFT_REFS = exports.USERS = exports.LOGIN = void 0;
-exports.LOGIN = [
-    { email: "thomasm1.maestas@gmail.com",
-        password: "pass" },
-    { email: "walter.white@gmail.com",
-        password: "pass" }
-];
+ 
+export const LOGIN = [
+    {email:"thomasm1.maestas@gmail.com",
+password:"pass"}, 
+{email:"walter.white@gmail.com",
+password:"pass"}
+]
+
+
 /////////// USERS
-exports.USERS = [
+export const USERS = [
+   { 0:
     {
         id: 0,
         fName: "Tom",
         lName: "Milton",
         email: "thomasm1.maestas@gmail.com",
-        password: "pass",
+        password:"pass",
         memberSince: "02-04-2020",
         groupType: "Admin",
-        userId: "string",
-        tokenId: "string",
+        userId:"string",
+        tokenId: "string", 
         addresses: [
             {
-                id: 0,
+                id:0,
                 description: "NFT - 0x1",
                 owner: "thomasm1.maestas@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "ethereum",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 ownerId: 0,
                 chainId: 4
             },
@@ -36,7 +37,7 @@ exports.USERS = [
                 owner: "thomasm1.maestas@gmail.com",
                 address: "0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 chain: "ethereum",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 ownerId: 0,
                 chainId: 4
             },
@@ -46,7 +47,7 @@ exports.USERS = [
                 owner: "thomasm1.maestas@gmail.com",
                 address: "0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 chain: "polygon",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 ownerId: 0,
                 chainId: 137
             },
@@ -56,7 +57,7 @@ exports.USERS = [
                 owner: "thomasm1.maestas@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "polygon",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 ownerId: 0,
                 chainId: 137
             },
@@ -66,22 +67,23 @@ exports.USERS = [
                 owner: "thomasm1.maestas@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "avalanche",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 ownerId: 0,
                 chainId: 43114
             }
-        ]
-    },
+        ],
+    }},
+   {1:
     {
         id: 1,
         fName: "Jil",
         lName: "G",
         email: "jil@gmail.com",
-        password: "pass",
+        password:"pass",
         memberSince: "02-04-2020",
         groupType: "Premium",
-        userId: "string",
-        tokenId: "string",
+        userId:"string",
+        tokenId: "string", 
         addresses: [
             {
                 id: 1,
@@ -89,7 +91,7 @@ exports.USERS = [
                 owner: "jil@gmail.com",
                 address: "0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633",
                 chain: "ethereum",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633",
                 ownerId: 1,
                 chainId: 1
             },
@@ -99,22 +101,22 @@ exports.USERS = [
                 owner: "jil@gmail.com",
                 address: "0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 chain: "polygon",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 ownerId: 1,
                 chainId: 1
             },
-        ]
-    },
-    {
+        ],
+    }},
+    {2:{
         id: 2,
         fName: "Walter",
         lName: "White",
         email: "walter.white@gmail.com",
-        password: "pass",
+        password:"pass",
         memberSince: "02-04-2020",
         groupType: "Premium",
-        userId: "string",
-        tokenId: "string",
+        userId:"string",
+        tokenId: "string", 
         addresses: [
             {
                 id: 1,
@@ -122,7 +124,7 @@ exports.USERS = [
                 owner: "walter.white@gmail.com",
                 address: "0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633",
                 chain: "binance",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633",
                 ownerId: 2,
                 chainId: 1
             },
@@ -132,14 +134,25 @@ exports.USERS = [
                 owner: "walter.white@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "binance",
-                blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
+                blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 ownerId: 2,
                 chainId: 1
             },
-        ]
-    },
+        ],
+    }},
 ];
-exports.NFT_REFS = {
+
+export const POSTS = {
+    "1": {
+        "id": "1",
+        "title": "Hello World"
+    },
+    "2": {
+        "id": "2",
+        "title": "My first post"
+    }
+}
+export const NFT_REFS = {
     "-NKEMZxPfzYObXOMhGvJ": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
         "chain": "avalanche-212",
@@ -198,4 +211,5 @@ exports.NFT_REFS = {
     "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
     "chain": "mumbai",
     "email": "thomasm1.maestas@gmail.com"
-};
+}
+ 

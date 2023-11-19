@@ -9,6 +9,7 @@ password:"pass"}
 
 /////////// USERS
 export const USERS = [
+   { 0:
     {
         id: 0,
         fName: "Tom",
@@ -71,7 +72,8 @@ export const USERS = [
                 chainId: 43114
             }
         ],
-    },
+    }},
+   {1:
     {
         id: 1,
         fName: "Jil",
@@ -104,8 +106,8 @@ export const USERS = [
                 chainId: 1
             },
         ],
-    },
-    {
+    }},
+    {2:{
         id: 2,
         fName: "Walter",
         lName: "White",
@@ -137,8 +139,19 @@ export const USERS = [
                 chainId: 1
             },
         ],
-    },
+    }},
 ];
+
+export const POSTS = {
+    "1": {
+        "id": "1",
+        "title": "Hello World"
+    },
+    "2": {
+        "id": "2",
+        "title": "My first post"
+    }
+}
 export const NFT_REFS = {
     "-NKEMZxPfzYObXOMhGvJ": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",

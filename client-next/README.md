@@ -1,20 +1,7 @@
 # Getting Started with Create React App
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 # Creating a basic TypeScript structure for the MainDashboard class

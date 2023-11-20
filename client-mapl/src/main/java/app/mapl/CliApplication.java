@@ -28,26 +28,39 @@ import app.mapl.config.logger.LoggerImpl;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 
+// @EnableFeignClients
 @ServletComponentScan("app.mapl.app")
 @EnableJpaRepositories("app.mapl.repositories")
 @EntityScan("app.mapl.models")
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class CliApplication {
 
-	@Bean
-	public LoggerImpl loggerImpl() {
-		return new LoggerImpl();
-	}
-
-	static RestTemplate restTemplate = new RestTemplate();
-	static String baseUrl = "http://localhost:8080/api/"; // Target URL
-
-	private static ForEntityMethod ForEntityMethod;
 	private static final Logger log;
 
 	static {
 		log = LoggerFactory.getLogger(CliApplication.class);
 	}
+	
+	@Bean
+	public LoggerImpl loggerImpl() {
+		return new LoggerImpl();
+	}
+	static String basePath = "api/";
+	static String baseUrl = "http://localhost:8080/" + basePath; // Target URL
+
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
+
+	@Bean
+	public WebClient webClient(){
+		return WebClient.builder().build();
+	}
+	static RestTemplate restTemplate = new RestTemplate();
+
+	private static ForEntityMethod ForEntityMethod;
+
 	UsersServiceJDBC usersServiceJDBC;
 
 	PostServiceJDBC postServiceJDBC;

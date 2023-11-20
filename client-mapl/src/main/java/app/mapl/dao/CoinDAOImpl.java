@@ -84,7 +84,7 @@ String sql = "SELECT o.username,  o.coinid,  o.offerstatus,  o.offermos, c.coini
 	}
 
 ////////////// GETALL (ADMIN VIEW)  ///////////////////
-	public List<Coin> getAllCoins() {   // *Admin View of *all* coins in CoinLot (also purchased coins).
+	public List<Coin> getAllCoins() {   // *Admin View of *all* coins in Wallet (also purchased coins).
 //		List<Coin> coinList = new ArrayList<Coin>();
 //		Set<Integer> keys = DB.coins.keySet();
 //		for(Integer k: keys)
@@ -107,7 +107,7 @@ String sql = "SELECT o.username,  o.coinid,  o.offerstatus,  o.offermos, c.coini
 	}
 
 //////////////GETALL (CUSTOMER VIEW)  ///////////////////
-	public List<Coin> getAllCoinsCust() {    // *Customer View of CoinLot (Only unpurchased coins).
+	public List<Coin> getAllCoinsCust() {    // *Customer View of Wallet (Only unpurchased coins).
 		String sql = "SELECT * FROM cointable WHERE purchased=?";
 		List<Coin> coin = new ArrayList<Coin>();
 		try {

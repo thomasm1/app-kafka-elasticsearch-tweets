@@ -1,5 +1,12 @@
 
-
+### November 20, 2023
+### MICROSERVICES - Notes
+##### Conversion to separate micro-app; replication.
+1. Separate service-registry
+2. Remove @EnableEurekaServer
+3. Disable Eureka Server as Client
+4. Launch eureka server 5
+5. Register Dep
 ## mapl-app
 Java Application: "My Personal Librarian": MaPL
 <a style="margin-left:20%;" href="https://mapl.app">

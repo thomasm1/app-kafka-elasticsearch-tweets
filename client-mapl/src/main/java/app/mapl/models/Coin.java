@@ -25,7 +25,9 @@ public class Coin implements Serializable {
 	@Column(name = "coinsymbol")
 	String coinSymbol;
 	@Column(name = "pricetotal")
-	double priceTotal;
+	double priceTotal; 
+	@Column(name = "amounttotal")
+	double amountTotal; 
 
 	int purchased;
 

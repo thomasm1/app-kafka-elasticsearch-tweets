@@ -82,9 +82,9 @@ public class AdminDashboard {
                         break;
                     }
                     case 2: {
-                        System.out.println("Entering CoinLot View..."); 
+                        System.out.println("Entering Wallet View..."); 
 
-                        adminDashboard.navigateCoinLot();
+                        adminDashboard.navigateWallet();
                         console();
                         break;
 
@@ -335,13 +335,13 @@ public class AdminDashboard {
 
 
 
-    private void navigateCoinLot()  {
+    private void navigateWallet()  {
         System.out.println("NavigateLot()");
 
-        System.out.println("1.) View CoinLot");
-        System.out.println("2.) Add Coin to CoinLot");
-        System.out.println("3.) Remove Coin from CoinLot");
-        System.out.println("4.) Update Coin in CoinLot");
+        System.out.println("1.) View Wallet");
+        System.out.println("2.) Add Coin to Wallet");
+        System.out.println("3.) Remove Coin from Wallet");
+        System.out.println("4.) Update Coin in Wallet");
         System.out.println("5.) Return to Admin Dashboard");
         System.out.println("6.) Exit MaPL");
 
@@ -355,7 +355,7 @@ public class AdminDashboard {
             } else {
                 switch (val) {
                     case 1: {
-                        System.out.println("View CoinLot");
+                        System.out.println("View Wallet");
                         CoinsServiceJPA coinsService = new CoinsServiceJPA();
                         System.out.println(coinsService.getAllCoins());
                         System.out.println("==========================");
@@ -377,12 +377,11 @@ public class AdminDashboard {
                                 String coinToken = scan.nextLine();
                                 System.out.println("Coin Symbol?");
                                 String coinSymbol = scan.nextLine();
-                                System.out.println("Coin Price?");
+                                System.out.println("Coin Amoun?");
                                 double price = scan.nextDouble();
                                 scan.nextLine();
-                                if (price > 999999.99) {
-                                    System.out.println("price must be less than $1 million, please.");
-                                    System.out.println("Coin Price?");
+                                if (price > 0) {
+                                    System.out.println("price must be >0, please."); 
                                     price = scan.nextDouble();
                                     scan.nextLine();
                                 }
@@ -410,11 +409,11 @@ public class AdminDashboard {
                         }
                     }
                     case 3: {
-                        System.out.println("Remove Coin from CoinLot");
+                        System.out.println("Remove Coin from Wallet");
                         break;
                     }
                     case 4: {
-                        System.out.println("Update Coin in CoinLot");
+                        System.out.println("Update Coin in Wallet");
                         break;
                     }
                     case 5: {

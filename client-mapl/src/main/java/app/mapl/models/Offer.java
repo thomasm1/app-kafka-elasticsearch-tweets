@@ -35,7 +35,7 @@ public class Offer {
 	int offerMos;
 	@Column(name = "offerstatus")
 	@Size(min=2, message="Enter at least 2 characters")
-	String offerStatus; // PENDING, APPROVED, REJECTED;
+	String offerStatus; // Offer, APPROVED, REJECTED, COMPLETED;
 	private String description;
 	private LocalDate targetDate;
 	private boolean done;

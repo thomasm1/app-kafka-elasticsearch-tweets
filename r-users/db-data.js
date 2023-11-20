@@ -7,10 +7,10 @@ exports.LOGIN = [
     { email: "walter.white@gmail.com",
         password: "pass" }
 ];
-/////////// USERS
+/////////// USERS ////////////////////////////////////////////
 exports.USERS = [
-    { 0: {
-            id: 0,
+    { "0": {
+            id: "0",
             fName: "Tom",
             lName: "Milton",
             email: "thomasm1.maestas@gmail.com",
@@ -72,8 +72,8 @@ exports.USERS = [
                 }
             ]
         } },
-    { 1: {
-            id: 1,
+    { "1": {
+            id: "1",
             fName: "Jil",
             lName: "G",
             email: "jil@gmail.com",
@@ -105,8 +105,8 @@ exports.USERS = [
                 },
             ]
         } },
-    { 2: {
-            id: 2,
+    { "2": {
+            id: "2",
             fName: "Walter",
             lName: "White",
             email: "walter.white@gmail.com",
@@ -139,6 +139,7 @@ exports.USERS = [
             ]
         } },
 ];
+/////////// POSTS //////////////////////////////////////// //////////////////////////////////////
 exports.POSTS = {
     "1": {
         "id": "1",
@@ -146,9 +147,18 @@ exports.POSTS = {
     },
     "2": {
         "id": "2",
-        "title": "My first post"
+        "title": "My2   post"
+    },
+    "3": {
+        "id": "3",
+        "title": "My   3 post"
+    },
+    "4": {
+        "id": "4",
+        "title": "4st"
     }
 };
+///////////  NFT_REFS //////////////////////////////////////// //////////////////////////////////////
 exports.NFT_REFS = {
     "-NKEMZxPfzYObXOMhGvJ": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",

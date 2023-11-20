@@ -1,8 +1,8 @@
 package app.mapl.controllers;
 
 import app.mapl.dto.CommentDto;
+import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.service.CommentsService;
-import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +46,7 @@ public class CommentsController {
                                                     @PathVariable(value = "id") Long commentId,
                                                     @Valid @RequestBody CommentDto commentDto){
         if (commentsService.updateComment(postId, commentId,commentDto).isEmpty()){
-            throw new NotFoundException();
+            throw new ResourceNotFoundException("Comment", "id", String.valueOf(commentId));
         }
         Optional<CommentDto> updatedComment = commentsService.updateComment(postId, commentId, commentDto);
         return new ResponseEntity<>(updatedComment, HttpStatus.OK);

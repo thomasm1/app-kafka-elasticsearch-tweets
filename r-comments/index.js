@@ -8,14 +8,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const commentsByPostId = {};
+const commentsByPostId = {}; 
+const PORT = 4001; 
+const PORT_EVENT_BUS = 4005;
 
-app.get("/posts/:id/comments", (req, res) => {
+app.get(`/posts/:id/comments`, (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
 });
 
-app.post("/posts/:id/comments", async (req, res) => {
-  const commentId = randomBytes(4).toString("hex");
+app.post(`/posts/:id/comments`, async (req, res) => {
+  const commentId = randomBytes(4).toString(`hex`);
   const { content } = req.body;
 
   const comments = commentsByPostId[req.params.id] || [];
@@ -24,8 +26,8 @@ app.post("/posts/:id/comments", async (req, res) => {
 
   commentsByPostId[req.params.id] = comments;
 
-  await axios.post("http://localhost:4005/events", {
-    type: "CommentCreated",
+  await axios.post(`http://localhost:${PORT_EVENT_BUS}/events`, {
+    type: `CommentCreated`,
     data: {
       id: commentId,
       content,
@@ -36,12 +38,14 @@ app.post("/posts/:id/comments", async (req, res) => {
   res.status(201).send(comments);
 });
 
-app.post("/events", (req, res) => {
-  console.log("Event Received", req.body.type);
+app.post(`/events`, (req, res) => {
+  console.log(`Event Received`, req.body.type);
 
   res.send({});
 });
+ 
 
-app.listen(4001, () => {
-  console.log("Listening on 4001");
+app.listen(PORT, () => {
+  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+  console.log(`⚡️[comments]: Event Bus target: https://localhost:${PORT_EVENT_BUS}`);
 });

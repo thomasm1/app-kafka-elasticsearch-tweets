@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display"
+      rel="stylesheet"
+    />
+
+    <title>ArrayMaker</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/styles.css" /> 
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <meta name="viewport" content=Hi R"width=device-width, initial-scale=1">
+    <script src="lib/rxjs.5.4.3.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.3/Rx.js"></script> -->
+    <script src="lib/d3.v4.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+
+    <!-- <script src="node_modules/jsdom/lib/api.js"></script> -->
+  </head>
+
+  <body id="body">
+    <a href="portfolio.html" class="buton"><button class="btn btn-primary buton">Resume Cubed Thomas Maestas</button></a>
+    <div id="module"></div> 
+    <script  src='js/module.js'></script>
+
+	<!--MAP: dataVisuals/populations.js -->
+    <div id="ckmeans"></div> 
+
+    <!--Title:  public/appTitle.js -->  
+    <div class="appTitle"></div>
+    <script src="./appTitle.js"></script>
+
+	<div class="container">
+		
+    <!--MAP: dataVisuals/dataQueues_D3.js -->
+    <div id="dataQueues"></div>
+<div class="container">
+  <h2>CalculateCard</h2>
+<calculate-card></calculate-card>
+
+</div>
+
+    <div class="contain">
+      <div id="output" class="output"></div>
+      <div class="row btc">
+        <div class="dataConvert col col-xs-4" id="dataConvert0"></div>
+        <div class="dataConvert col col-xs-4" id="dataConvert1"></div>
+        <div class="dataConvert col col-xs-4" id="dataConvert2"></div>
+      </div>
+      <h3 align="center">API Data Fetchers.</h3>
+      <div class="row">
+        <!-- <div class="dataGetters col col-xs-4">
+				<div id="scraperBtc"></div>
+				<div id="scraperEther"></div>
+			</div> -->
+        <div class="dataGetters col col-xs-6">
+          <div id="fetchAsyncBtc"></div>
+          <div id="fetchAsyncEther"></div>
+        </div>
+        <div class="dataGetters col col-xs-6">
+          <div id="promiseAll"></div>
+          <div id="promises"></div>
+        </div>
+      </div>
+
+      <div id="app"></div>
+
+      <script src="js/dataScraper.js"></script>
+      <script src="js/dataAsyncPromise.js"></script>
+      <script src="js/dataFetch.js"></script>
+      <script src="js/serverless.js"></script>
+
+      <div align="center">
+        <h3 onmouseover="show()" onmouseout="hide()">
+          <span class="hover">Serverless API Serving Bitcoin Prices</span>
+        </h3>
+      </div>
+      <div>
+        <code id="code"> </code>
+        <div align="center">
+          <button class="btn btn-primary" onclick="myFunction()">
+            GET DATA
+          </button>
+        </div>
+        <div class="row">
+          <div class="dataXMLH col col-xs-6">
+            <h5>Response from XMLHttpRequest:</h5>
+            <div id="tom-tom"></div>
+          </div>
+          <div class="dataXMLH col col-xs-6">
+            <h5>Bitcoin Daily Prices:</h5>
+            <ul id="bitcoin"></ul>
+          </div>
+        </div>
+        <code
+          >curl -X GET
+          "https://jdkxd2ny04.execute-api.us-east-1.amazonaws.com/prod/thomasMiltonFunction"</code
+        >
+      </div>
+
+      <h3 align="center">Array and Object Structures</h3>
+       <div id="calcs" class="calcs">
+
+        
+       </div>
+
+
+
+      <h3 align="center">RxJS Vanilla Data Stream Manipulation</h3>
+      <div class="row rxjs analytics">
+        <div class="col col-xs-6">
+          <div id="analyticsNum2"></div>
+          <hr />
+          <div id="array1"></div>
+          <hr />
+          <div id="analytics"></div>
+        </div>
+
+        <div class="pull-right col col-xs-5 col-right">
+          <div id="analytics2"></div>
+        </div>
+
+        <div id="mouse"></div>
+      </div> 
+	  
+      <div id="ckmeans"></div>
+	</div>
+     
+    </div>
+	<footer class="footer">
+        <h5>Copyright &copy; 2019 All Rights Reserved.</h5>
+        <h5>
+          <a
+            href="mailto:thomasm1.maestas@gmail.com"
+            title="Contact Information: thomasmaestas.net/"
+          >
+            Contact Thomas Maestas</a
+          >
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <a href="https://thomasmaestas.net">thomasmaestas.net</a>
+        </h5>
+      </footer>
+  </body>
+ <script src="lib/queue.v1.min.js"></script>
+      <!-- <script src="http://d3js.org/queue.v1.min.js"></script> -->
+
+      <script src="lib/topojson.v1.min.js"></script>
+      <!-- <script src="http://d3js.org/topojson.v1.min.js"></script> -->
+
+      <script src="lib/d3-geo-projection.v1.min.js"></script>
+      <!-- <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script> -->
+      <script src="lib/d3-tip.js"></script>
+      <script src="lib/simple-statistics.2.0.min.js"></script>
+      <!-- <script src='https://unpkg.com/simple-statistics@2.0.0/dist/simple-statistics.min.js'></script> -->
+
+      <script src="lib/babel.6.10.3.min.js"></script>
+      <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js'></script> -->
+      <script lang="babel" type="text/babel" src="js/populations.js">
+        //ckmeans
+      </script>
+<!-- <script lang="babel" type="text/babel"    src='dataVisuals/indexModule.js'></script>
+<script  lang="babel" type="text/babel"   src='dataVisuals/index.js'></script> -->
+  <script src="js/dataStreamsRxJS.js"></script>
+  <script src="js/csvJson.js"></script>
+  <script src="js/arrayMethods.js"></script>
+  <script src="js/dataStacks.js"></script>
+  <script src="js/dataLinkedList.js"></script>
+  <script src="js/dataSets.js"></script>
+  <script src="js/dataQueues.js"></script>
+  <script src="js/dataBinaryTree.js"></script>
+  <script src="js/dataHashTable.js"></script>
+  <script src="js/dataTrieStruct.js"></script>
+  <script src="js/dataHeap.js"></script>
+  <script src="js/dataGraphs.js"></script>
+  <script src="js/dataSorting.js"></script>
+  <script src="js/dataQueues_D3.js"></script>
+ 
+  <script src="js/bigO.js"></script>
+
+  <script src="js/orderedSearch.js"></script>
+
+  <script src="js/consecDays.js"></script>
+  <script src="js/searchDays.js"></script>
+</html>

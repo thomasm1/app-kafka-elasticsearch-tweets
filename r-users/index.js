@@ -37,21 +37,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var express = require("express");
-var randomBytes = require("crypto").randomBytes;
-// const bodyParser = require("body-parser");
 var db_data_1 = require("./db-data");
+var crypto_1 = require("crypto");
 var axios_1 = require("axios");
-var cors = require("cors");
 var app = express();
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.use(cors({ origin: true }));
+// app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-var users = {};
+var users = db_data_1.USERS; // {};
 var PORT = 9000;
 var PORT_EVENT_BUS = 4005;
 var userRegister = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -59,7 +57,7 @@ var userRegister = function (req, res) { return __awaiter(void 0, void 0, void 0
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                id = randomBytes(4).toString("hex");
+                id = (0, crypto_1.randomBytes)(4).toString("hex");
                 _a = req.body, email = _a.email, password = _a.password;
                 users[id] = {
                     id: id
@@ -81,10 +79,10 @@ var userRegister = function (req, res) { return __awaiter(void 0, void 0, void 0
 }); };
 var userLogin = function (req, res) {
     var data = req.body;
+    var users = Object.values(db_data_1.USERS); // users;
     var email = data.email;
     var password = data.password;
     var user = null;
-    var users = Object.values(db_data_1.USERS);
     for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
         var u = users_1[_i];
         if (u.email == email && u.password == password) {
@@ -94,12 +92,12 @@ var userLogin = function (req, res) {
     res.status(200).json(user);
 };
 var getUsers = function (req, res) {
-    // res.status(200).json({ data: Object.values(USERS) });
-    res.status(200).json(Object.values(db_data_1.USERS));
+    // res.status(200).json({ data: Object.values(users) });
+    res.status(200).json(Object.values(users));
 };
 var getUserById = function (req, res) {
     var email = req.params["email"];
-    var users = Object.values(db_data_1.USERS);
+    var users = Object.values(db_data_1.USERS); // users;                   //////// REMOVE THIS LINE
     var user = users.find(function (user) { return user.email == email; });
     res.status(200).json(user);
 };
@@ -112,6 +110,6 @@ app.post("/events", function (req, res) {
     res.send({});
 });
 app.listen(PORT, function () {
-    console.log("\u26A1\uFE0F[server]: Server is running at https://localhost:".concat(PORT));
+    console.log("\u26A1\uFE0F[*users* server]: Server is running at https://localhost:".concat(PORT));
     console.log("\u26A1\uFE0F[event-bus]: Event Bus target: https://localhost:".concat(PORT_EVENT_BUS));
 });

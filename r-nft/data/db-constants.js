@@ -1,0 +1,16 @@
+"use strict";
+exports.__esModule = true;
+exports.chainARBITRUM = exports.chainFANTOM = exports.chainFUJI = exports.chainAVA = exports.chainBSC_TEST = exports.chainBSC = exports.chainMUMBAI = exports.chainPOLYGON = exports.chainGOERLI = exports.chainRINKEBY = exports.chainROPSTEIN = exports.chainETH = void 0;
+var EvmChain = require("@moralisweb3/evm-utils").EvmChain;
+exports.chainETH = EvmChain.ETHEREUM;
+exports.chainROPSTEIN = EvmChain.ROPSTEIN;
+exports.chainRINKEBY = EvmChain.RINKEBY;
+exports.chainGOERLI = EvmChain.GOERLI;
+exports.chainPOLYGON = EvmChain.POLYGON;
+exports.chainMUMBAI = EvmChain.MUMBAI;
+exports.chainBSC = EvmChain.BSC;
+exports.chainBSC_TEST = EvmChain.BSC_TESTNET;
+exports.chainAVA = EvmChain.AVALANCHE;
+exports.chainFUJI = EvmChain.FUJI;
+exports.chainFANTOM = EvmChain.FANTOM;
+exports.chainARBITRUM = EvmChain.ARBITRUM;

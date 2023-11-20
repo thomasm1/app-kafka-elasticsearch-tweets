@@ -5,8 +5,10 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-
+ 
 const posts = {};
+const PORT = 4002; 
+const PORT_EVENT_BUS = 4005;
 
 app.get('/posts', (req, res) => {
   res.send(posts);
@@ -33,6 +35,7 @@ app.post('/events', (req, res) => {
   res.send({});
 });
 
-app.listen(4002, () => {
-  console.log('Listening on 4002');
+app.listen(PORT, () => {
+  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+  console.log(`⚡️[query-service]: Event Bus target: https://localhost:${PORT_EVENT_BUS}`);
 });

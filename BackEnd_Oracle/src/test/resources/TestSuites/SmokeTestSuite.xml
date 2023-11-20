@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> -->
+<suite name="SmokeTestSuite" verbose="1">
+
+		<!--  USING TESTLISTENER ANNOTATIONS IN BASETEST 
+	<listeners>
+		<listener class-name="net.thomasmaestas.selenium.base.TestListener"></listener>
+	</listeners>
+	-->
+	
+	<test name="NegativeLogInTestData">
+		<classes>
+			<class name="com.doggywood.selenium.loginpagetests.NegativeLogInTestsDataProvider" />
+		</classes>
+	</test>
+	
+	<!-- 
+	<test name="PositiveLogInTest">
+		<classes>
+			<class name="com.doggywood.selenium.loginpagetests.PositiveLogInTests" />
+		</classes>
+	</test>
+	 -->
+	
+	<test name="PositiveLogInTestData">
+		<classes>
+			<class name="com.doggywood.selenium.loginpagetests.PositiveLogInTestsDataProvider" />
+		</classes>
+	</test>
+	
+	<!-- <test name="UploadTests">
+		<classes>
+			<class name="com.doggywood.selenium.uploadtests.UploadTests" />
+		</classes>
+	</test> -->
+	
+</suite>

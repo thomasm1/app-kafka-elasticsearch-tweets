@@ -37,31 +37,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var express = require("express");
-// import { randomBytes } from 'crypto';
-var randomBytes = require("crypto").randomBytes;
+var db_data_1 = require("./db-data");
+var crypto_1 = require("crypto");
 var axios_1 = require("axios");
-var cors = require("cors");
 var app = express();
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.use(cors({ origin: true }));
+// app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-var posts = {};
+var posts = db_data_1.POSTS; // {};
 var PORT = 4000;
 var PORT_EVENT_BUS = 4005;
-app.get("/posts", function (req, res) {
-    res.send(posts);
-});
-app.post("/posts/create", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+// #1 //
+var getPosts = function (req, res) {
+    res.status(200).json(Object.values(posts));
+};
+// #2 //
+var getPostById = function (req, res) {
+    var postId = req.params["id"];
+    var posts = Object.values(db_data_1.POSTS); //////// REMOVE THIS LINE
+    var post = posts.find(function (post) { return post.id == postId; });---    
+    res.status(200).json(post);
+};
+// #3 //
+var PostCreated = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var id, title;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                id = randomBytes(4).toString("hex");
+                id = (0, crypto_1.randomBytes)(4).toString("hex");
                 title = req.body.title;
                 posts[id] = {
                     id: id,
@@ -80,12 +88,16 @@ app.post("/posts/create", function (req, res) { return __awaiter(void 0, void 0,
                 return [2 /*return*/];
         }
     });
-}); });
+}); };
+app.route('/posts').get(getPosts); // #1 //
+app.route("/posts/:id").get(getPostById); // #2 // 
+app.route("/posts").post(PostCreated); // #3 //
+// #5
 app.post("/events", function (req, res) {
     console.log("Received Event", req.body.type);
     res.send({});
 });
 app.listen(PORT, function () {
-    console.log("\u26A1\uFE0F[server]: Server is running at https://localhost:".concat(PORT));
+    console.log("\u26A1\uFE0F[*posts* server]: Server is running at https://localhost:".concat(PORT));
     console.log("\u26A1\uFE0F[event-bus]: Event Bus target: https://localhost:".concat(PORT_EVENT_BUS));
 });

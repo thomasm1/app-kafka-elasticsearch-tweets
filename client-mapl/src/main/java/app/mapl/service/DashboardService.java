@@ -1,10 +1,10 @@
 package app.mapl.service;
 
 
-import app.mapl.dto.DepartmentDto;
+import app.mapl.dto.DashboardDto;
 
-public interface DepartmentService {
-    DepartmentDto saveDepartment(DepartmentDto departmentDto);
+public interface DashboardService {
+    DashboardDto saveDashboard(DashboardDto dashboardDto);
 
-    DepartmentDto getDepartmentByCode(String code);
+    DashboardDto getDashboardByCode(String code);
 }

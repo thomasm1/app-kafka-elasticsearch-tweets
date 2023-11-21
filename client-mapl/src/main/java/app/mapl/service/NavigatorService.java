@@ -1,10 +1,12 @@
-package net.javaguides.employeeservice.service;
+package app.mapl.service;
 
-import net.javaguides.employeeservice.dto.APIResponseDto;
-import net.javaguides.employeeservice.dto.EmployeeDto;
+import app.mapl.dto.APIResponseDto;
+import app.mapl.dto.NavigatorDto;
 
-public interface EmployeeService {
-    EmployeeDto saveEmployee(EmployeeDto employeeDto);
+public interface NavigatorService {
+    NavigatorDto saveNavigator(NavigatorDto employeeDto);
 
-    APIResponseDto getEmployeeById(Long employeeId);
+    NavigatorDto createNavigator(NavigatorDto navigatorDto);
+
+    APIResponseDto getNavigatorById(Long employeeId);
 }

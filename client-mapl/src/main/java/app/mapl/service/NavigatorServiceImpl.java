@@ -1,81 +1,90 @@
-package net.javaguides.employeeservice.service.impl;
+package app.mapl.service;
 
+import app.mapl.dto.DashboardDto;
+import app.mapl.dto.NavigatorDto;
+import app.mapl.models.Dashboard;
+import app.mapl.models.Navigator;
+import app.mapl.repositories.NavigatorRepository;
 import lombok.AllArgsConstructor;
-import net.javaguides.employeeservice.dto.APIResponseDto;
-import net.javaguides.employeeservice.dto.DepartmentDto;
-import net.javaguides.employeeservice.dto.EmployeeDto;
-import net.javaguides.employeeservice.entity.Employee;
-import net.javaguides.employeeservice.repository.EmployeeRepository;
-import net.javaguides.employeeservice.service.APIClient;
-import net.javaguides.employeeservice.service.EmployeeService;
+import app.mapl.dto.APIResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
+
+import static app.mapl.CliApplication.restTemplate;
 
 @Service
 @AllArgsConstructor
-public class EmployeeServiceImpl implements EmployeeService {
+public class NavigatorServiceImpl implements  NavigatorService {
 
-    private EmployeeRepository employeeRepository;
+    private NavigatorRepository navigatorRepository;
 
-   // private RestTemplate restTemplate;
    // private WebClient webClient;
-    private APIClient apiClient;
+//    private APIClient apiClient;
 
+    /**
+     * @param employeeDto
+     * @return
+     */
     @Override
-    public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
-
-        Employee employee = new Employee(
-                employeeDto.getId(),
-                employeeDto.getFirstName(),
-                employeeDto.getLastName(),
-                employeeDto.getEmail(),
-                employeeDto.getDepartmentCode()
-        );
-
-        Employee saveDEmployee = employeeRepository.save(employee);
-
-        EmployeeDto savedEmployeeDto = new EmployeeDto(
-                saveDEmployee.getId(),
-                saveDEmployee.getFirstName(),
-                saveDEmployee.getLastName(),
-                saveDEmployee.getEmail(),
-                saveDEmployee.getDepartmentCode()
-        );
-
-        return savedEmployeeDto;
+    public NavigatorDto saveNavigator(NavigatorDto employeeDto) {
+        return null;
     }
 
     @Override
-    public APIResponseDto getEmployeeById(Long employeeId) {
+    public NavigatorDto createNavigator(NavigatorDto navigatorDto) {
 
-        Employee employee = employeeRepository.findById(employeeId).get();
+        Navigator navigator = new Navigator(
+                navigatorDto.getId(),
+                navigatorDto.getFirstName(),
+                navigatorDto.getLastName(),
+                navigatorDto.getEmail(),
+                navigatorDto.getDashboardCode()
+        );
 
-//        ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/" + employee.getDepartmentCode(),
-//                DepartmentDto.class);
-//
-//        DepartmentDto departmentDto = responseEntity.getBody();
+        Navigator saveDNavigator = navigatorRepository.save(navigator);
 
-//        DepartmentDto departmentDto = webClient.get()
-//                .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
+        NavigatorDto savedNavigatorDto = new NavigatorDto(
+                saveDNavigator.getId(),
+                saveDNavigator.getFirstName(),
+                saveDNavigator.getLastName(),
+                saveDNavigator.getEmail(),
+                saveDNavigator.getDashboardCode()
+        );
+
+        return savedNavigatorDto;
+    }
+
+    @Override
+    public APIResponseDto getNavigatorById(Long navigatorId) {
+
+        Navigator navigator = navigatorRepository.findById(navigatorId).get();
+
+
+
+        ResponseEntity<DashboardDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/dashboards/" + navigator.getDashboardCode(),
+                DashboardDto.class);
+
+        DashboardDto dashboardDto = responseEntity.getBody();
+
+//        DashboardDto dashboardDto = webClient.get()
+//                .uri("http://localhost:8080/api/dashboards/" + navigator.getDashboardCode())
 //                .retrieve()
-//                .bodyToMono(DepartmentDto.class)
+//                .bodyToMono(DashboardDto.class)
 //                .block();
+//
+//        DashboardDto dashboardDto = apiClient.getDashboard(navigator.getDashboardCode()); // TODO:
 
-        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
-
-        EmployeeDto employeeDto = new EmployeeDto(
-                employee.getId(),
-                employee.getFirstName(),
-                employee.getLastName(),
-                employee.getEmail(),
-                employee.getDepartmentCode()
+        NavigatorDto navigatorDto = new NavigatorDto(
+                navigator.getId(),
+                navigator.getFirstName(),
+                navigator.getLastName(),
+                navigator.getEmail(),
+                navigator.getDashboardCode()
         );
 
         APIResponseDto apiResponseDto = new APIResponseDto();
-        apiResponseDto.setEmployee(employeeDto);
-        apiResponseDto.setDepartment(departmentDto);
+        apiResponseDto.setNavigator(navigatorDto);
+        apiResponseDto.setDashboard(dashboardDto);
 
         return apiResponseDto;
     }

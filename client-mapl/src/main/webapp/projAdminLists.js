@@ -11,18 +11,18 @@ let checkRole = function () {
 		role.style.display = 'block';
 		let charges = [];
 		role.innerHTML = `*Supervisor Role<br />ID's:<br /> `;
-		
-//		addSubordinates(); 
+
+//		addSubordinates();
 		for (i = 0; i < 20; i++) {   // FIX THIS fixed ... TODO
 			charges[i] = getCookie("sessOid" + i);
 			if (charges[i] !== ("" || null || undefined)) {
-			role.innerHTML += `${charges[i]} `; 
+			role.innerHTML += `${charges[i]} `;
 //			console.log(charges[i]);
-			} 
-		}   
+			}
+		}
 		return charges;
 	}
-	
+
 	/// DHEAD
 	if ((adminId == 1) | (adminId == 2) | (adminId == 3) | (adminId == 4)) {
 
@@ -39,12 +39,12 @@ let checkRole = function () {
 		}
 
 		console.log("role" + role);
-		let departmentHead = getCookie("sessId");
-		role.innerHTML += "<br /><strong>Department Head:</strong>40" + departmentHead;
+		let dashboardHead = getCookie("sessId");
+		role.innerHTML += "<br /><strong>Dashboard Head:</strong>40" + departmentHead;
 		console.log("deptCharges " + deptCharges);
 		return deptCharges;
 	}
-	///BENCO		
+	///BENCO
 	if ((adminId == 4)) {
 		detail.style.display = "block";
 		role.style.display = 'block';
@@ -59,7 +59,7 @@ let checkRole = function () {
 
 
 
-// TABLE LISTS 
+// TABLE LISTS
 let listTask = function () {
 	console.log("clicked list");
 	let xhttp = new XMLHttpRequest();
@@ -140,7 +140,7 @@ let listUser = function () {
 }
 
 
-let listRequestArray = function (arr) { 
+let listRequestArray = function (arr) {
 	document.getElementById("table").innerHTML = "";
 	for (i = 0; i < arr.length; i++) {
 		listRequest(false, arr[i]);

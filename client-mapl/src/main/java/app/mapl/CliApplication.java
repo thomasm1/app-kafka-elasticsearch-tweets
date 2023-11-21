@@ -15,6 +15,7 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 
@@ -35,29 +36,28 @@ import org.springframework.http.*;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class CliApplication {
 
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
+	public static RestTemplate restTemplate;
+//	@Bean
+//	public WebClient webClient(){
+//		return WebClient.builder().build();
+//	}
+
 	private static final Logger log;
 
 	static {
 		log = LoggerFactory.getLogger(CliApplication.class);
 	}
-	
+
 	@Bean
 	public LoggerImpl loggerImpl() {
 		return new LoggerImpl();
 	}
 	static String basePath = "api/";
 	static String baseUrl = "http://localhost:8080/" + basePath; // Target URL
-
-	@Bean
-	public RestTemplate restTemplate(){
-		return new RestTemplate();
-	}
-
-	@Bean
-	public WebClient webClient(){
-		return WebClient.builder().build();
-	}
-	static RestTemplate restTemplate = new RestTemplate();
 
 	private static ForEntityMethod ForEntityMethod;
 

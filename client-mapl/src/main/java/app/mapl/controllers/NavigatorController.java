@@ -1,31 +1,31 @@
-package net.javaguides.employeeservice.controller;
-
+package app.mapl.controllers;
+import app.mapl.dto.APIResponseDto;
+import app.mapl.dto.NavigatorDto;
+import app.mapl.service.NavigatorService;
 import lombok.AllArgsConstructor;
-import net.javaguides.employeeservice.dto.APIResponseDto;
-import net.javaguides.employeeservice.dto.EmployeeDto;
-import net.javaguides.employeeservice.service.EmployeeService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/employees")
+@RequestMapping("api/navigators")
 @AllArgsConstructor
-public class EmployeeController {
+public class NavigatorController {
 
-    private EmployeeService employeeService;
+    private NavigatorService navigatorService;
 
-    // Build Save Employee REST API
+    // Build Save Navigator REST API
     @PostMapping
-    public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto employeeDto){
-        EmployeeDto savedEmployee = employeeService.saveEmployee(employeeDto);
-        return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
+    public ResponseEntity<NavigatorDto> saveNavigator(@RequestBody NavigatorDto navigatorDto){
+        NavigatorDto savedNavigator = navigatorService.saveNavigator(navigatorDto);
+        return new ResponseEntity<>(savedNavigator, HttpStatus.CREATED);
     }
 
-    // Build Get Employee REST API
+    // Build Get Navigator REST API
     @GetMapping("{id}")
-    public ResponseEntity<APIResponseDto> getEmployee(@PathVariable("id") Long employeeId){
-        APIResponseDto apiResponseDto = employeeService.getEmployeeById(employeeId);
+    public ResponseEntity<APIResponseDto> getNavigator(@PathVariable("id") Long navigatorId){
+        APIResponseDto apiResponseDto = navigatorService.getNavigatorById(navigatorId);
         return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
     }
 }

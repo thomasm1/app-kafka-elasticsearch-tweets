@@ -1,15 +1,11 @@
-package net.javaguides.employeeservice.service;
-
-import net.javaguides.employeeservice.dto.DepartmentDto;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+package app.mapl.service;
+import app.mapl.dto.DashboardDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(url = "http://localhost:8080", value = "DEPARTMENT-SERVICE")
+//@FeignClient(url = "http://localhost:8080", value = "DEPARTMENT-SERVICE")
 public interface APIClient {
-    // Build get department rest api
-    @GetMapping("api/departments/{department-code}")
-    DepartmentDto getDepartment(@PathVariable("department-code") String departmentCode);
+    // Build get dashboard rest api
+    @GetMapping("api/dashboards/{dashboard-code}")
+    DashboardDto getDashboard(@PathVariable("dashboard-code") String dashboardCode);
 }

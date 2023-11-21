@@ -24,7 +24,7 @@ export default async function CardWrapper() {
       <Card
         title="Total Users"
         value={numberOfUsers}
-        type="users"
+        type="customers"
       /> */}
     </>
   );

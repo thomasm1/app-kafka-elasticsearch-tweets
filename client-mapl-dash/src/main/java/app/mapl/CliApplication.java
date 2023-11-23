@@ -29,8 +29,8 @@ import app.mapl.config.logger.LoggerImpl;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 
-// @EnableFeignClients
-@ServletComponentScan("app.mapl.app")
+/// @EnableFeignClient/s
+@ServletComponentScan("app.mapl")
 @EnableJpaRepositories("app.mapl.repositories")
 @EntityScan("app.mapl.models")
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })

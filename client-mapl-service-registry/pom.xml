@@ -15,6 +15,7 @@
 	<description>mapl-service-registry</description>
 	<properties>
 		<java.version>17</java.version>
+		<!--		<spring-cloud.version>2022.0.1</spring-cloud.version>-->
 		<spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
 	</properties>
 	<dependencies>

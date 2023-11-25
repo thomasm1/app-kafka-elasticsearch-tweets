@@ -45,7 +45,7 @@ public class NoteController {
 		return ns.getNoteByAid(id);
 	}
 	
-	@GetMapping(value="/note/pet/{pId}")
+	@GetMapping(value="/note/nft/{pId}")
 	public List<Note> getNoteByPId(@PathVariable("pId")int id) {
 		return ns.getNoteByPid(id);
 	}

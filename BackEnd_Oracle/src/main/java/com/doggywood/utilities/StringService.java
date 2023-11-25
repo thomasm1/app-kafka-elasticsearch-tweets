@@ -3,7 +3,7 @@ package com.doggywood.utilities;
 import java.time.temporal.Temporal;
 import java.util.*;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

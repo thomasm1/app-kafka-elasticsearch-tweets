@@ -21,13 +21,14 @@ public class CoinDAOImpl implements CoinDAO {
 //		return true;
 
 //		String sql = "CALL add_new_coin(?,?,?,?)";
-		String sql = "INSERT INTO cointable(coinToken, coinSymbol, priceTotal, purchased) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO cointable(coinToken, coinSymbol, priceTotal,  priceAmount,purchased) VALUES (?,?,?,?)";
 
 		try {
 			PreparedStatement cs = conn.prepareStatement(sql);
 			cs.setString(1, c.getCoinToken());
 			cs.setString(2, c.getCoinSymbol());
 			cs.setString(3, Double.toString(c.getPriceTotal()));
+			cs.setString(3, Double.toString(c.getAmountTotal()));
 			cs.setString(4, Integer.toString(c.isPurchased()));
 			cs.execute();
 			return true;
@@ -50,7 +51,7 @@ public class CoinDAOImpl implements CoinDAO {
 
 			while (rs.next()) {
 				return new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"),
-						rs.getDouble("priceTotal"), rs.getInt("purchased"));
+						rs.getDouble("priceTotal"),rs.getDouble("amountTotal"),  rs.getInt("purchased"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Double-check DB connection on get-id");
@@ -67,7 +68,7 @@ String sql = "SELECT o.username,  o.coinid,  o.offerstatus,  o.offermos, c.coini
 		ps.setString(1, username);    //
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-			coin.add(new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"), rs.getDouble("priceTotal"), rs.getInt("purchased")));
+			coin.add(new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"), rs.getDouble("priceTotal"),  rs.getDouble("amountTotal"), rs.getInt("purchased")));
 		}
 		return coin;
 	} catch (SQLException e) {
@@ -96,7 +97,7 @@ String sql = "SELECT o.username,  o.coinid,  o.offerstatus,  o.offermos, c.coini
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				coin.add(new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"), rs.getDouble("priceTotal"), rs.getInt("purchased")));
+				coin.add(new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"), rs.getDouble("priceTotal"), rs.getDouble("amountTotal"), rs.getInt("purchased")));
 			}
 			return coin;
 		} catch (SQLException e) {
@@ -115,7 +116,7 @@ String sql = "SELECT o.username,  o.coinid,  o.offerstatus,  o.offermos, c.coini
 			ps.setInt(1, 1);    //
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				coin.add(new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"), rs.getDouble("priceTotal"), rs.getInt("purchased")));
+				coin.add(new Coin(rs.getInt("coinID"), rs.getString("coinToken"), rs.getString("coinSymbol"), rs.getDouble("priceTotal"), rs.getDouble("amountTotal"),  rs.getInt("purchased")));
 			}
 			return coin;
 		} catch (SQLException e) {

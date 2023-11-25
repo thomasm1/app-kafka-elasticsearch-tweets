@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>app.mapl</groupId>
-	<artifactId>mapl-gateway</artifactId>
+	<artifactId>mapl-config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mapl-gateway</name>
-	<description>Demo project for Spring Boot</description>
+	<name>mapl-config-server</name>
+	<description>Spring Boot mapl-config-server</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.0-RC1</spring-cloud.version>

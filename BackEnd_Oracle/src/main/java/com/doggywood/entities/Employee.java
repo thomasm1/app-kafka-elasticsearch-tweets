@@ -1,6 +1,6 @@
 package com.doggywood.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "employees")

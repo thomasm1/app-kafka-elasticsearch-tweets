@@ -55,7 +55,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 				employeeDto.getPhone(),
 				employeeDto.getEmail(),
 				employeeDto.getPassword(),
-				employeeDto.getDashboardCode()
+				employeeDto.getDashboardCode(),
+				employeeDto.getOrganizationCode()
 		);
 		Employee saveDEmployee = er.save(employee);
 
@@ -66,48 +67,48 @@ public class EmployeeServiceImpl implements EmployeeService {
 				saveDEmployee.getLastName(),
 				saveDEmployee.getPhone(),
 				saveDEmployee.getEmail(),
-				employeeDto.getPassword(),
+				saveDEmployee.getPassword(),
 				saveDEmployee.getDashboardCode()
 		);
 
 		return savedEmployeeDto;
 	}
 
-	@Override
-	public APIResponseDto getEmployeeById(int  eId) {
-
-		Employee employee = er.findById(eId).get();
-
-        ResponseEntity<DashboardDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/dashboards/" + employee.getDashboardCode(),
-                DashboardDto.class);
-
-        DashboardDto dashboardDto = responseEntity.getBody();
-
-//        DashboardDto dashboardDto = webClient.get()
-//                .uri("http://localhost:8080/api/dashboards/" + employee.getDashboardCode())
-//                .retrieve()
-//                .bodyToMono(DashboardDto.class)
-//                .block();
+//	@Override
+//	public APIResponseDto getEmployeeById(int  eId) {
 //
-//        DashboardDto dashboardDto = apiClient.getDashboard(employee.getDashboardCode());
-
-		EmployeeDto employeeDto = new EmployeeDto(
-				employee.getId(),
-				employee.geteType(),
-				employee.getFirstName(),
-				employee.getLastName(),
-				employee.getPhone(),
-				employee.getEmail(),
-				employee.getPassword(),
-				employee.getDashboardCode()
-		);
-
-		APIResponseDto apiResponseDto = new APIResponseDto();
-		apiResponseDto.setEmployee(employeeDto);
-		apiResponseDto.setDashboard(dashboardDto);
-
-		return apiResponseDto;
-	}
+//		Employee employee = er.findById(eId).get();
+//
+//        ResponseEntity<DashboardDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/dashboards/" + employee.getDashboardCode(),
+//                DashboardDto.class);
+//
+//        DashboardDto dashboardDto = responseEntity.getBody();
+//
+////        DashboardDto dashboardDto = webClient.get()
+////                .uri("http://localhost:8080/api/dashboards/" + employee.getDashboardCode())
+////                .retrieve()
+////                .bodyToMono(DashboardDto.class)
+////                .block();
+////
+////        DashboardDto dashboardDto = apiClient.getDashboard(employee.getDashboardCode());
+//
+//		EmployeeDto employeeDto = new EmployeeDto(
+//				employee.getId(),
+//				employee.geteType(),
+//				employee.getFirstName(),
+//				employee.getLastName(),
+//				employee.getPhone(),
+//				employee.getEmail(),
+//				employee.getPassword(),
+//				employee.getDashboardCode()
+//		);
+//
+//		APIResponseDto apiResponseDto = new APIResponseDto();
+//		apiResponseDto.setEmployee(employeeDto);
+//		apiResponseDto.setDashboard(dashboardDto);
+//
+//		return apiResponseDto;
+//	}
 
 	@Override
 	public EmployeeDto saveEmployee(EmployeeDto employeeDto) {

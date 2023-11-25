@@ -3,7 +3,7 @@
 <img width="200" src="https://doggywood.s3.amazonaws.com/assets/style6.png" title="Doggywood_Veterinary_App" alt="Doggywood_Veterinary_Image"></a>
 
 ### Doggywood Veterinarian Data Tracker 
-> <a style="text-decoration:none;color:black;" href="http://doggywood.s3-website-us-east-1.amazonaws.com">Appointment and Pet Records Management URL</a>
+> <a style="text-decoration:none;color:black;" href="http://doggywood.s3-website-us-east-1.amazonaws.com">Appointment and Nft Records Management URL</a>
 
 > Full-Stack application that manages clients' and employees' appointments and records
  
@@ -14,10 +14,10 @@
 > Ruben Colons
 
 ### Application Overview
-The mission of the app is to organize and persist health and appointment information relating to clients and the client's pets. The architecture provides a service-based design managing both customers' and receptionists' data-related tasks. The system maintains vaccination records dynamically by tracking expiration dates, with notifications to customers of upcoming vaccination expiries and other information. 
+The mission of the app is to organize and persist health and appointment information relating to clients and the client's nfts. The architecture provides a service-based design managing both customers' and receptionists' data-related tasks. The system maintains vaccination records dynamically by tracking expiration dates, with notifications to customers of upcoming vaccination expiries and other information. 
 
 #### Purposes
-The veterinarians are able to record notes based off the clients visits, and those notes will be tied to the client's pet in the graphical user interface. The goal of this application is to reduce the workload of data entry on the employees, as well as maintain a structured note system and portable vaccination record for the pets that visit the practice using an intuitive interface.
+The veterinarians are able to record notes based off the clients visits, and those notes will be tied to the client's nft in the graphical user interface. The goal of this application is to reduce the workload of data entry on the employees, as well as maintain a structured note system and portable vaccination record for the nfts that visit the practice using an intuitive interface.
 
 ### Technologies 
 | Fx | Tools | URLS |
@@ -70,25 +70,25 @@ ORM enables developers to more easily write applications whose data outlives the
 ```sh 
 As an employee, I can login.
 As an employee, I can add appointments.
-As an employee, I can add notes about the pets.
-As an employee, I add notes about the pets appointment.
+As an employee, I can add notes about the nfts.
+As an employee, I add notes about the nfts appointment.
 As an employee, I can view my upcoming appointments.
 As an employee, I can view information about the client.
-As an employee, I can view information about the pet.
+As an employee, I can view information about the nft.
 As an employee, I can add customers.
-As an employee, I can add pets to the customer
-As an employee, I can add vaccinations to an pet
-As an employee, I can view the weights of the pet on the dates of their appointment.
+As an employee, I can add nfts to the customer
+As an employee, I can add vaccinations to an nft
+As an employee, I can view the weights of the nft on the dates of their appointment.
  
 As a customer, I can login to an account.
 As a customer, I can fill out a form with my information.
-As a customer, I can see notes on what my pet was treated for.
-As a customer, I can view a list of my owned pets.
-As a customer, I add a new pet.
+As a customer, I can see notes on what my nft was treated for.
+As a customer, I can view a list of my owned nfts.
+As a customer, I add a new nft.
 As a customer I can book an appointment    
 As a customer, I can upload relevant documents about my dog into the system.
 As a customer, I download copies of my vaccination/health records.
-As a customer, I can see the age of my pet. 
+As a customer, I can see the age of my nft. 
 
 As a system, it will notify us in some way if the vaccination record has expired.
 As a system, it will notify us if the vaccination record will expire before the scheduled visit.

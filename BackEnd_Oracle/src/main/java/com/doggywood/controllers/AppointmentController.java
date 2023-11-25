@@ -46,10 +46,10 @@ public class AppointmentController {
 		return as.getAppointmentsByCustId(custId);
 	}
 
-	// appointments by pet
-	@GetMapping(value = "pets/{id}/appointments")
-	public List<Appointment> getAppointmentsByPetId(@PathVariable("id") int petId) {
-		return as.getAppointmentsByPetId(petId);
+	// appointments by nft
+	@GetMapping(value = "nfts/{id}/appointments")
+	public List<Appointment> getAppointmentsByNftId(@PathVariable("id") int nftId) {
+		return as.getAppointmentsByNftId(nftId);
 	}
 
 	// appointments by employee

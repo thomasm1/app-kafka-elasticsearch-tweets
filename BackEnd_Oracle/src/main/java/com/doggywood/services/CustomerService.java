@@ -3,7 +3,6 @@ package com.doggywood.services;
 import java.util.List;
 
 import com.doggywood.entities.Customer;
-import com.doggywood.entities.Pet;
 
 
 public interface CustomerService {
@@ -17,7 +16,7 @@ public interface CustomerService {
 	// login auth return Person
 	public Customer getCustomerByEmailAndPassword(String email, String password);
 	  
-	// post-login authentication, get cust's pets: Not in pets
-//	public Pet getPetsByCustEmail(String email);
+	// post-login authentication, get cust's nfts: Not in nfts
+//	public Nft getNftsByCustEmail(String email);
 	
 }

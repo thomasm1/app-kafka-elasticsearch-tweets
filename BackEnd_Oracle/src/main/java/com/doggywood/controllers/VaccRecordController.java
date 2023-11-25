@@ -39,9 +39,9 @@ public class VaccRecordController {
 		return vrs.getVaccRecordById(id);
 	}
 
-	@GetMapping(value = "/records/pet/{id}")
-	public List<VaccRecord> getVaccRecordsByPetId(@PathVariable("id") int petId) {
-		return vrs.getVaccRecordsByPetId(petId);
+	@GetMapping(value = "/records/nft/{id}")
+	public List<VaccRecord> getVaccRecordsByNftId(@PathVariable("id") int nftId) {
+		return vrs.getVaccRecordsByNftId(nftId);
 	}
  
 	//UPDATE

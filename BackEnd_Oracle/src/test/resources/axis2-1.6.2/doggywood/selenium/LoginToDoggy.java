@@ -106,7 +106,7 @@ public class LoginToDoggy {
 //		action.perform();
 //		Thread.sleep(1000);
 
-		//		WebElement addPet = driver.findElement(By.name("q"));
+		//		WebElement addNft = driver.findElement(By.name("q"));
 //		WebElement myElement=driver.findElement(By.id("twotabsearchtextbox"));
 //		myElement.sendKeys("John Grisham");
 

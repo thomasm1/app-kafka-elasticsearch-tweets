@@ -99,8 +99,8 @@ public class BootstrapStaticData implements CommandLineRunner {
         coinsStatic = FileDataStore.loadCoins();
         List<Coin> coins = coinsStatic;
         coinsRepository.saveAll(coins);
-        coinsRepository.save(new Coin(0, "Ethereum", "ETH", 1455.1111, 0));
-        coinsRepository.save(new Coin(1, "Bitcoin", "BTC", 23455.5455, 1));
+        coinsRepository.save(new Coin(0, "Ethereum", "ETH", 1455.1111, 1455.1111,0));
+        coinsRepository.save(new Coin(1, "Bitcoin", "BTC", 23455.5455,1455.1111, 1));
 
 
         System.out.println(Datum.ANSI_GREEN + "ANSI_GREEN printing user data: ");

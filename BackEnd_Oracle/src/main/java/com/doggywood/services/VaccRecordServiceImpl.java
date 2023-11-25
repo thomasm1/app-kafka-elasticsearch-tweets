@@ -28,8 +28,8 @@ public class VaccRecordServiceImpl implements VaccRecordService {
 	}
 
 	@Override
-	public List<VaccRecord> getVaccRecordsByPetId(int petId) {
-		return vrr.findByPetId(petId);
+	public List<VaccRecord> getVaccRecordsByNftId(int nftId) {
+		return vrr.findByNftId(nftId);
 	}
 
 	@Override

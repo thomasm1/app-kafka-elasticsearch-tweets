@@ -1,9 +1,9 @@
 package com.doggywood.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class Appointment {
@@ -17,7 +17,7 @@ public class Appointment {
 	int custId;
 	
 	@Column(name = "p_id")
-	int petId;
+	int nftId;
 	
 	@Column(name = "e_id")
 	int empId;
@@ -37,12 +37,12 @@ public class Appointment {
 		super();
 	}
 
-	public Appointment(int id, int custId, int petId, int empId, String date, int weight, int timeSlot,
+	public Appointment(int id, int custId, int nftId, int empId, String date, int weight, int timeSlot,
 			String description) {
 		super();
 		this.id = id;
 		this.custId = custId;
-		this.petId = petId;
+		this.nftId = nftId;
 		this.empId = empId;
 		this.date = date;
 		this.weight = weight;
@@ -50,10 +50,10 @@ public class Appointment {
 		this.description = description;
 	}
 
-	public Appointment(int custId, int petId, int empId, String date, int weight, int timeSlot, String description) {
+	public Appointment(int custId, int nftId, int empId, String date, int weight, int timeSlot, String description) {
 		super();
 		this.custId = custId;
-		this.petId = petId;
+		this.nftId = nftId;
 		this.empId = empId;
 		this.date = date;
 		this.weight = weight;
@@ -77,12 +77,12 @@ public class Appointment {
 		this.custId = custId;
 	}
 
-	public int getPetId() {
-		return petId;
+	public int getNftId() {
+		return nftId;
 	}
 
-	public void setPetId(int petId) {
-		this.petId = petId;
+	public void setNftId(int nftId) {
+		this.nftId = nftId;
 	}
 
 	public int getEmpId() {
@@ -127,7 +127,7 @@ public class Appointment {
 
 	@Override
 	public String toString() {
-		return "Appointment [id=" + id + ", custId=" + custId + ", petId=" + petId + ", empId=" + empId + ", date="
+		return "Appointment [id=" + id + ", custId=" + custId + ", nftId=" + nftId + ", empId=" + empId + ", date="
 				+ date + ", weight=" + weight + ", timeSlot=" + timeSlot + ", description=" + description + "]";
 	}
 }

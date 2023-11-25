@@ -1,9 +1,9 @@
 package com.doggywood.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class VaccRecord {
@@ -14,7 +14,7 @@ public class VaccRecord {
 	private int id;
 
 	@Column(name = "P_ID")
-	private int petId; 
+	private int nftId; 
 	
 	@Column(name = "VNAME")
 	private String vacName;
@@ -25,18 +25,18 @@ public class VaccRecord {
 	@Column(name = "VDATE")
 	private String vacDate;
 
-	public VaccRecord(int id, int petId, String vacName, int vacTime, String vacDate) {
+	public VaccRecord(int id, int nftId, String vacName, int vacTime, String vacDate) {
 		super();
 		this.id = id;
-		this.petId = petId;
+		this.nftId = nftId;
 		this.vacName = vacName;
 		this.vacTime = vacTime;
 		this.vacDate = vacDate;
 	}
 
-	public VaccRecord(int petId, String vacName, int vacTime, String vacDate) {
+	public VaccRecord(int nftId, String vacName, int vacTime, String vacDate) {
 		super();
-		this.petId = petId;
+		this.nftId = nftId;
 		this.vacName = vacName;
 		this.vacTime = vacTime;
 		this.vacDate = vacDate;
@@ -48,7 +48,7 @@ public class VaccRecord {
 
 	@Override
 	public String toString() {
-		return "VaccRecord [id=" + id + ", petId=" + petId + ", vacName=" + vacName + ", vacTime=" + vacTime
+		return "VaccRecord [id=" + id + ", nftId=" + nftId + ", vacName=" + vacName + ", vacTime=" + vacTime
 				+ ", vacDate=" + vacDate + "]";
 	}
 
@@ -60,12 +60,12 @@ public class VaccRecord {
 		this.id = id;
 	}
 
-	public int getPetId() {
-		return petId;
+	public int getNftId() {
+		return nftId;
 	}
 
-	public void setPetId(int petId) {
-		this.petId = petId;
+	public void setNftId(int nftId) {
+		this.nftId = nftId;
 	}
 
 	public String getVacName() {

@@ -35,8 +35,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 	}
 
 	@Override
-	public List<Appointment> getAppointmentsByPetId(int petId) {
-		return ar.findByPetId(petId);
+	public List<Appointment> getAppointmentsByNftId(int nftId) {
+		return ar.findByNftId(nftId);
 	}
 
 	@Override

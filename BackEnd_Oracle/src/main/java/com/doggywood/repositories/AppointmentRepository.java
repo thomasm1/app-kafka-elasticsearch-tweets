@@ -11,7 +11,7 @@ import com.doggywood.entities.Appointment;
 public interface AppointmentRepository extends CrudRepository<Appointment, Integer> {
 
 	List<Appointment> findByCustId(int custId);
-	List<Appointment> findByPetId(int petId);
+	List<Appointment> findByNftId(int nftId);
 	List<Appointment> findByEmpId(int empId);
 	List<Appointment> findByDate(String date);
 }

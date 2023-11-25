@@ -1,6 +1,5 @@
 package app.mapl.dto;
 
-import app.mapl.models.Navigator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

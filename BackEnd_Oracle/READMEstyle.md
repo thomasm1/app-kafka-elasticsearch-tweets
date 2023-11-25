@@ -7,7 +7,7 @@
 
 # Doggywood Veterinary Clinic 
 
-> Appoointment and Pet Records Management Application
+> Appoointment and Nft Records Management Application
 
 > ideally one sentence
 

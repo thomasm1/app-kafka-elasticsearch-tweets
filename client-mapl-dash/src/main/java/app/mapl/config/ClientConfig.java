@@ -1,6 +1,13 @@
 package app.mapl.config;
 
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
+
 @Validated
 @ConfigurationProperties(prefix = "app.mapl.client")
 @Slf4j
@@ -29,10 +36,10 @@ public class ClientConfig {
 
 
     }
-    @Data
-    public String getMaplClientConfig() {
+    public MaplClientConfig getMaplClientConfig() {
         return maplClientConfig;
     }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);

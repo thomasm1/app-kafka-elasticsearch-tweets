@@ -10,7 +10,7 @@ public interface AppointmentService {
 	public Appointment getAppointmentById(int id);
 	public List<Appointment> getAllAppointments();
 	public List<Appointment> getAppointmentsByCustId(int custId);
-	public List<Appointment> getAppointmentsByPetId(int petId);
+	public List<Appointment> getAppointmentsByNftId(int nftId);
 	public List<Appointment> getAppointmentsByEmpId(int empId);
 	public List<Appointment> getAppointmentsDate(String date);
 	public Appointment updateAppointment(Appointment a);

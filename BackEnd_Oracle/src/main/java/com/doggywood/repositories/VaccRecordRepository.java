@@ -12,7 +12,7 @@ public interface VaccRecordRepository extends CrudRepository<VaccRecord, Integer
 
 	VaccRecord findById(int id);
 
-	List<VaccRecord> findByPetId(int petId);
+	List<VaccRecord> findByNftId(int nftId);
 
 
 }

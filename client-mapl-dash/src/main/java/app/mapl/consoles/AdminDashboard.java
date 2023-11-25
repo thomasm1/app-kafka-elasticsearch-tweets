@@ -113,7 +113,7 @@ public class AdminDashboard {
                                 String decide = scan.next();
                                 if ((decide.contentEquals("y")) | (decide.contentEquals("yes"))) {
                                     Coin removeCoin = new Coin(uCoin.getCoinId(), uCoin.getCoinToken(), uCoin.getCoinSymbol(),
-                                            uCoin.getPriceTotal(), 2); // 2 = remove unpurchased
+                                            uCoin.getPriceTotal(), uCoin.getAmountTotal(),2); // 2 = remove unpurchased
                                     try {
                                         coinsService.updateCoinCLI(removeCoin);
                                         System.out.println(removeCoin.toString() + "\n" + " ...\n..#" + uCoin.getCoinId()
@@ -377,8 +377,10 @@ public class AdminDashboard {
                                 String coinToken = scan.nextLine();
                                 System.out.println("Coin Symbol?");
                                 String coinSymbol = scan.nextLine();
-                                System.out.println("Coin Amoun?");
+                                System.out.println("Coin price?");
                                 double price = scan.nextDouble();
+                                System.out.println("Coin Amoun?");
+                                double amount = scan.nextDouble();
                                 scan.nextLine();
                                 if (price > 0) {
                                     System.out.println("price must be >0, please."); 
@@ -391,7 +393,7 @@ public class AdminDashboard {
                                 while (true) {
                                     String decide = scan.next();
                                     if (decide.contentEquals("y")) {
-                                        Coin createdCoin = new Coin(999, coinToken, coinSymbol, price, 0); //CoinId overwritten later
+                                        Coin createdCoin = new Coin(999, coinToken, coinSymbol, price, amount,  0); //CoinId overwritten later
 
                                         coinsService.createCoinCLI(createdCoin);
                                         System.out.println(

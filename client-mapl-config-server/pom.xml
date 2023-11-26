@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>app.mapl</groupId>
 	<artifactId>mapl-config-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>mapl-config-server</name>
 	<description>Spring Boot mapl-config-server</description>
 	<properties>

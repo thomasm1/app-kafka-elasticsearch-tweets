@@ -55,12 +55,13 @@ var PORT_EVENT_BUS = 4005;
 // #1 //
 var getPosts = function (req, res) {
     res.status(200).json(Object.values(posts));
+    res.send(posts);
 };
 // #2 //
 var getPostById = function (req, res) {
     var postId = req.params["id"];
     var posts = Object.values(db_data_1.POSTS); //////// REMOVE THIS LINE
-    var post = posts.find(function (post) { return post.id == postId; });---    
+    var post = posts.find(function (post) { return post.id == postId; });
     res.status(200).json(post);
 };
 // #3 //

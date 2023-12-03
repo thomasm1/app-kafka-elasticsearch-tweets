@@ -9,7 +9,8 @@ password:"pass"}
 
 /////////// USERS ////////////////////////////////////////////
 export const USERS = [
-   { "0":
+   { 
+    "0":
     {
         id: "0",
         fName: "Tom",
@@ -161,7 +162,25 @@ export const POSTS = {
         "title": "4st"
     }
 }
-
+ 
+export const BLOCKCHAIN = {
+    "1": {
+        "id": "1",
+        "title": "genesis block1"
+    },
+    "2": {
+        "id": "2",
+        "title": "genesis block2"
+    },
+    "3": {
+        "id": "3",
+        "title": "genesis block3"
+    },
+    "4": {
+        "id": "4",
+        "title": "genesis block4"
+    }
+}
 ///////////  NFT_REFS //////////////////////////////////////// //////////////////////////////////////
 export const NFT_REFS = {
     "-NKEMZxPfzYObXOMhGvJ": {

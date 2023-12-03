@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blockchain-depl
+spec:
+  replicas:
+  selector:
+    matchLabels:
+      app: r-blockchain
+  template:
+    metadata:
+      labels:
+        app: r-blockchain
+    spec:
+      containers:
+        - name: r-blockchain
+          image: thomasm1/r-blockchain:0.0.1

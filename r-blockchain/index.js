@@ -49,35 +49,35 @@ app.use(function (req, res, next) {
 // app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-var posts = db_data_1.POSTS; // {};
-var PORT = 4000;
+var blockchain = {};
+var PORT = 9009;
 var PORT_EVENT_BUS = 4005;
 // #1 //
-var getPosts = function (req, res) {
-    res.status(200).json(Object.values(posts));
-    res.send(posts);
+var getBlockchain = function (req, res) {
+    res.status(200).json(Object.values(blockchain));
+    res.send(blockchain);
 };
 // #2 //
-var getPostById = function (req, res) {
-    var postId = req.params["id"];
-    var posts = Object.values(db_data_1.POSTS); //////// REMOVE THIS LINE
-    var post = posts.find(function (post) { return post.id == postId; });
-    res.status(200).json(post);
+var getBlockById = function (req, res) {
+    var blockId = req.params["id"];
+    var blockchain = Object.values(db_data_1.BLOCKCHAIN); //////// REMOVE THIS LINE
+    var block = blockchain.find(function (block) { return block.id == blockId; });
+    res.status(200).json(block);
 };
 // #3 //
-var PostCreated = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var BlockMinted = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var id, title;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 id = (0, crypto_1.randomBytes)(4).toString("hex");
                 title = req.body.title;
-                posts[id] = {
+                blockchain[id] = {
                     id: id,
                     title: title
                 };
                 return [4 /*yield*/, axios_1["default"].post("http://localhost:".concat(PORT_EVENT_BUS, "/events"), {
-                        type: "PostCreated",
+                        type: "BlockMinted",
                         data: {
                             id: id,
                             title: title
@@ -85,20 +85,20 @@ var PostCreated = function (req, res) { return __awaiter(void 0, void 0, void 0,
                     })];
             case 1:
                 _a.sent();
-                res.status(201).send(posts[id]);
+                res.status(201).send(blockchain[id]);
                 return [2 /*return*/];
         }
     });
 }); };
-app.route('/posts').get(getPosts); // #1 //
-app.route("/posts/:id").get(getPostById); // #2 // 
-app.route("/posts").post(PostCreated); // #3 //
+app.route('/blockchain').get(getBlockchain); // #1 //
+app.route("/blockchain/:id").get(getBlockById); // #2 // 
+app.route("/transaction").post(BlockMinted); // #3 //
 // #5
 app.post("/events", function (req, res) {
     console.log("Received Event", req.body.type);
     res.send({});
 });
 app.listen(PORT, function () {
-    console.log("\u26A1\uFE0F[*posts* server]: Server is running at https://localhost:".concat(PORT));
+    console.log("\u26A1\uFE0F[*blockchain* server]: Server is running at https://localhost:".concat(PORT));
     console.log("\u26A1\uFE0F[event-bus]: Event Bus target: https://localhost:".concat(PORT_EVENT_BUS));
 });

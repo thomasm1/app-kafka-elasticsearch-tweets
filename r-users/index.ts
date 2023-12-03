@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false })); 
   
 const users = USERS; // {};
-const PORT = 9000; 
+const PORT = 9002; 
 const PORT_EVENT_BUS = 4005;
 
 // #1

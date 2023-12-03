@@ -1,4 +1,4 @@
-
+ 
 docker system df
 docker rmi jenkins/jenkins
 docker rmi httpd:2-alpine

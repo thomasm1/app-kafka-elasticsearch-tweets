@@ -1,7 +1,8 @@
 FROM node:alpine
+
 WORKDIR /app
 COPY package.json ./
-CMD npm install
+RUN npm install
 COPY ./ ./
-ENTRYPOINT ["npm","start"]
 
+CMD ["npm", "start"]

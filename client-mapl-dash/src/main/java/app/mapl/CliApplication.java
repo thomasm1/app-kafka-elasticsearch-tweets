@@ -34,7 +34,28 @@ import org.springframework.http.*;
 @EnableJpaRepositories("app.mapl.repositories")
 @EntityScan("app.mapl.models")
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@OpenAPIDefinition(
+		info = @Info(
+				title = "Spring Boot REST API Documentation",
+				description = "Spring Boot REST API Documentation",
+				version = "v1.0",
+				contact = @Contact(
+						name = "Ramesh",
+						email = "javaguides.net@gmail.com",
+						url = "https://www.javaguides.net"
+				),
+				license = @License(
+						name = "Apache 2.0",
+						url = "https://www.javaguides.net/license"
+				)
+		),
+		externalDocs = @ExternalDocumentation(
+				description = "Spring Boot User Management Documentation",
+				url = "https://www.javaguides.net/user_management.html"
+		)
+)
 public class CliApplication {
+
 
 	@Bean
 	public RestTemplate restTemplate(){
@@ -65,6 +86,13 @@ public class CliApplication {
 
 	PostServiceJDBC postServiceJDBC;
 	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+
+	// @Bean
+	// public ModelMapper modelMapper(){
+	// 	return new ModelMapper();
+	// }
+
+		 
 		log.info("INSIDE ____log.info________CliApplication.main()");
 		ApplicationContext ctx = SpringApplication.run(CliApplication.class, args);
 

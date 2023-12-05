@@ -23,9 +23,9 @@ import java.util.Set;
 public class User  implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
-    @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
+    // @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="userid", nullable = false, unique = true)
     private int userId;
 

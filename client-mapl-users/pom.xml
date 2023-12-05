@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>app.mapl</groupId>
-	<artifactId>mapl-navigator-service</artifactId>
+	<artifactId>mapl-authorization-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mapl-navigator-service</name>
-	<description>mapl-navigator-service Spring Boot</description>
+	<name>mapl-authorization-service</name>
+	<description>mapl-authorization-service Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
@@ -102,6 +102,10 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 	</dependencies>

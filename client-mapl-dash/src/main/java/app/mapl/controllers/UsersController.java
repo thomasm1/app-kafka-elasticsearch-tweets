@@ -25,6 +25,10 @@ import java.util.List;
 import java.util.Optional;
 
 
+@Tag(
+        name = "CRUD REST APIs for User Resource",
+        description = "CRUD REST APIs - Create User, Update User, Get User, Get All Users, Delete User"
+)
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 @RestController
@@ -236,6 +240,19 @@ public class UsersController {
         }
     }
 
+//    @ExceptionHandler(ResourceNotFoundException.class)
+//    public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
+//                                                                        WebRequest webRequest){
+//
+//        ErrorDetails errorDetails = new ErrorDetails(
+//                LocalDateTime.now(),
+//                exception.getMessage(),
+//                webRequest.getDescription(false),
+//                "USER_NOT_FOUND"
+//        );
+//
+//        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+//    }
 
 //    public List<String> getUsersByCoins();
 

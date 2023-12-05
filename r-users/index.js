@@ -80,7 +80,6 @@ var userRegister = function (req, res) { return __awaiter(void 0, void 0, void 0
 var userLogin = function (req, res) {
     var data = req.body;
     var users = Object.values(db_data_1.USERS); // users;
-    var email = data.email;
     var password = data.password;
     var user = null;
     for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {

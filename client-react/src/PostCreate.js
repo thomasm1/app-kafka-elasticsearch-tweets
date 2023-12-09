@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+let postAddress = "http://ourdailytech.net/posts/create";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
@@ -7,7 +8,7 @@ const PostCreate = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post("http://localhost:4000/posts", {
+    await axios.post(postAddress, {
       title,
     });
 

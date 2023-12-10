@@ -24,100 +24,18 @@ Technology News, Tech Tools, Tech Talk Too! I explore daily tech topics on one o
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <meta content="Thomas M. Maestas" name="author" />
   <!-- <base href="/"> -->
-  <link href="app.css" rel="stylesheet" />
+ 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="d3v4.min.js"></script>
-  <script src="jquery.2.1.min.js"></script>
+ 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="style-global.css" />
-
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+ 
   <title>Data Creator</title>
 </head>
 
-<body class="with-top-navbar">
-  <div class="container"  id="foreground">
-
-
-    <div id="content">
-      <h1>Data Creator</h1>
-      <br>
-      <div id="sketchPadContainer"  >X </div>
-      <script src="./draw.js">
-      </script>
-      <script src="./sketchPad.js"></script>
-
-      <script>
-        const data = {
-          user: null,
-          session: new Date().getTime(),
-          drawings: {}
-        };
-        const sketchPad = new SketchPad(sketchPadContainer);
-        function start() {
-          if (user.value == "") {
-            alert("please enter name");
-            return;
-          }
-          data.user = user.value;
-          user.style.display = "none";
-          sketchPadContainer.style.visibility = "visible";
-          const label = labels[index];
-          instructions.innerHTML = "Please draw a " + label;
-          advanceBtn.innerHTML = "NEXT";
-          advanceBtn.onclick = next;
-        }
-
-        function next() {
-          if (sketchPad.paths.length == 0) {
-            alert("draw first");
-            return;
-          }
-          const label = labels[index];
-          data.drawings[label]
-          index++;
-          instructions.innerHTML = "Please draw a " + label;
-        }
-        
-      </script>
-
-
-    </div>
-    <!-- end content -->
-
-
-    <div id="planets">
-
-      <form class="form">
-        <br />
-        <input type="radio" name="reference" id="ref-annulus">
-        <label for="ref-annulus">Orbit📦 </label>
-        <br>
-        <input type="radio" name="reference" id="ref-planet" checked>
-        <label for="ref-planet">Planets✨</label>
-        <br>
-        <input type="radio" name="reference" id="ref-sun">
-        <label for="ref-sun">Sun</label><span>🔥</span>
-
-      </form>
-
-
-    </div>
-    <hr>
-    <!-- end Planets✨ -->
-
-
-    
-    <!-- // REACT BELOW -->
+<body >
+  
     <div>
       <pre>
   
@@ -128,24 +46,15 @@ Technology News, Tech Tools, Tech Talk Too! I explore daily tech topics on one o
         ══╩══╩═ 
         </pre>
         </div>
+
       <hr>
   
   
     <!-- ROOT -->
 
-    <div id="root"></div>
+    <div id="root" ></div>
     <!-- ROOT -->
-
-    <div class="card-block" id="footer"> <p>
-      <a href="https://thomasmaestas.net" title="Contact Information: thomasmaestas.net/">
-          thomasmaestas.net</a> 
-      </p>
-
-    </div>
-  </div>
-  <!-- end container -->
-
-
+ 
   
 </body>
 

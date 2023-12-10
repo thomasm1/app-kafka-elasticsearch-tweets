@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="style.css">
+         
+        <title>NO DICE!</title>
+    </head>
+
+    <body>
+<div><a id="tmm_bck" href="../../index.html">back to TMM</a></div><div  id="rules">
+<p>1. A player rolls the die and collects "current" points until rolling snake-eyes or even one '1', at which point the player loses all his/her current points.  The player that loses his "current" points when rolling a 'one' does however keep collected points not lost from earlier rolls.    <br />
+2. A player avoids losing all his points by 'holding' at some point, thus keeping the collected points.  <br />
+3. The players therefore alternate dice rolls, until the first one reaches a hundred points, which is the victor.<br />
+ 
+</p></div>
+        <div style="margin-top:50px;" class="wrapper clearfix">
+            <div class="player-0-panel active">
+                <div class="player-name" id="name-0">Player 1</div>
+                <div class="player-score" id="score-0">43</div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-0">11</div>
+                </div>
+            </div>
+            
+            <div class="player-1-panel">
+                <div class="player-name" id="name-1">Player 2</div>
+                <div class="player-score" id="score-1">72</div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-1">0</div>
+                </div>
+            </div>
+            
+            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+            <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+            <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+            
+            <input type="text" style="width:200px;" placeholder="Final Added score" class="final-score">
+            
+            <img src="dice-5.png" alt="Dice" class="dice" id="dice-1">
+            <img src="dice-5.png" alt="Dice" class="dice" id="dice-2">
+        </div>
+        
+         <script src="querySelector.js"></script> 
+        <script src="challenges.js"></script>
+    </body>
+</html>

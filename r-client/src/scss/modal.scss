@@ -1,0 +1,126 @@
+.mbutton {
+    border: 0;
+    font-weight: 300;
+    min-width: 100%;
+    font-size: 1.1rem;
+    background-color: rgba(116, 186, 255, 0.2);
+}
+
+.cover:hover {
+    color: blue !important;
+}
+
+.steel {
+    color: rgb(205, 226, 252) !important;
+}
+
+#mmodalBtn {
+    max-width: 100%;
+    line-height: 130%;
+    border-radius: 5%;
+    border: 1px solid purple;
+    padding-bottom: .5em;
+    padding-top: 1em;
+
+    &:hover {
+        border: 2px inset white;
+        opacity: .8;
+        cursor: pointer;
+    }
+}
+
+.mmodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mmodal-content {
+    margin: 20% auto;
+    width: 90%;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: 1.5s;
+}
+
+@media (min-width: 100px) {
+    .d3-tip {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 100px) {
+    .app-navbar .navbar-collapse:after {
+        height: auto;
+    }
+}
+
+@media (max-width: 100px) {
+    .app-search {
+        margin-top: -10px;
+    }
+}
+
+@media (max-width: 750px) {
+    .mmodal-content {
+        width: 100%;
+    }
+}
+
+.mmodal-header {
+    background-color: rgba(0, 0, 200, 0.9);
+    background-image: url("img/MaestasReykjavikBanner.jpg");
+    padding: 15px;
+    color: #fff;
+
+    & h2, .modal-footer h3 {
+        margin: 0;
+    }
+}
+
+.mmodal-body {
+    padding: 0px 0px;
+    background-color: rgba(0, 0, 200, 0.5);
+    background-image: $rey;
+}
+
+.mmodal-footer {
+    background-color: rgba(0, 0, 200, 0.5);
+    background-image: $rey;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+.mcloseBtn {
+    color: #ccc;
+    font-size: 30px;
+    color: #fff;
+    width: 100%;
+    float: right;
+    padding: 0px 20px;
+    margin: 0px;
+
+    &:hover, .mcloseBtn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: rgba(0, 176, 236, 0.5);
+    }
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

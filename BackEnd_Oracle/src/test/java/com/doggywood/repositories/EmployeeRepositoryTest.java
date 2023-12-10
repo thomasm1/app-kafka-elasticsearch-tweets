@@ -25,7 +25,7 @@ class EmployeeRepositoryTest {
     @Test
     void findByEmail() {
 
-        Optional<Employee> employee = employeeRepository.findByEmail("thomasm1.maestas@gmail.com");
+        Optional<Employee> employee = employeeRepository.findByEmail("thomas1.maestas@gmail.com");
         assertEquals(true, employee.isPresent());
         assertEquals("thomas", employee.get().getFirstName());
     }

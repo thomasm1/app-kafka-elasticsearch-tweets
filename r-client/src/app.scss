@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Monoton:300,400,500,600");
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,600");
+
+/*@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+*/
+$tmmSquare: url('./img/tmmsquare.png');
+$tmmPurple: url('/img/tmmpurple.png');
+$tmmBlue: url('./img/tmmblue.png');
+
+$silverchip: url('./img/silverchip.png');
+$bluechip: url('./img/bluechipTileT8.png');
+
+$dailyIcon: url('./img/blueColorTriomphe.png');
+$rey: url('./img/MaestasReykjavikBanner.jpg');
+$rey_back: url('./img/MaestasReykjavikBanner.jpg');
+$body-bg: blue;
+$font-roboto: "Roboto", sans-serif;
+$font-monoton: "Monoton", "Roboto", sans-serif;
+
+$bg-steel: steelblue;
+$bg-color: steelblue;
+$background-color: rgb(46, 73, 152);
+$msg-color: white;
+$color: #fff;
+
+body {
+    font-family: $font-roboto;
+    color: rgb(61, 58, 151);
+    background-image: $bluechip;
+    opacity: .9;
+    background-color: $background-color;
+    max-width: 950px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 100%;
+    *width: 100%;
+
+    h1, h2, h3 {
+        margin: 0;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}
+p {
+    margin: 10px 0 !important;
+  }
+  
+  .login-container {
+    width: 400px;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .fa-small {
+    font-size: 16px !important;
+  }
+  
+  .btn-float {
+    float: left;
+    margin-right: 10px;
+  }
+  
+  .img-small {
+    width: 180px;
+  }
+  
+strong {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.white {
+    color: white !important;
+}
+
+.sky {
+    color: skyblue !important;
+}
+
+.opaque {
+    opacity: .8;
+}
+
+@import "scss/application-toolkit";
+@import "scss/application";
+@import "scss/dag";
+@import "scss/multi_drop_menu";
+@import "scss/calc";
+@import "scss/force";
+@import "scss/planets";
+@import "scss/d3-style";
+@import "scss/functions";
+@import "scss/customVariables";
+@import "scss/paragraph";
+@import "scss/modal";
+@import "scss/marsreader";
+@import "scss/mainblog";
+
+@media (max-width: 700px) {
+    #dailylogo {
+        display: none;
+    }
+}
+
+@media (min-width: 700px) {
+    #dailylogo {
+        float: right;
+        margin-right: 50%;
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media (min-width: 100px) {
+    .app-navbar .navbar-collapse:after {
+        height: auto;
+    }
+}
+
+@media (max-width: 100px) {
+    .app-search {
+        margin-top: -10px;
+    }
+}
+
+@media (max-width: 800px) {
+    .nav-link.caret * {
+        z-index: 1000;
+        opacity: .9;
+    }
+
+    #bluelogo {
+        transform: translate(180px, -5px);
+        float: right;
+        margin-top: 0px;
+        background-color: blue;
+        height: 45px;
+        border-radius: 10%;
+        width: 55px;
+    }
+}
+
+@media (max-width: 700px) {
+    #view {
+        padding-top: 45px;
+    }
+}
+
+@media (display-mode: standalone), (display-mode: fullscreen) {
+    .backButton {
+        display: block;
+    }
+}
+
+@media (min-width: 100px) {
+    secret-paragraphMP {
+        font-family: 'monoton';
+        max-width: 100%;
+    }
+
+    #secret-paragraphMPB:hover {
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 100px) {
+    .app-navbar .navbar-collapse:after {
+        height: auto;
+    }
+}
+
+@media (min-width: 401px) {
+    .multi_drop_menu li li a {
+        color: silver;
+        background-color: teal;
+    }
+}
+
+@media (min-width: 768px) {
+    .app-navbar .navbar-collapse:after {
+        height: auto;
+    }
+}
+
+@media (max-width: 768) {
+    .map {
+        max-width: 50%;
+        border: solid .5px white;
+    }
+}
+
+// daily-nav
+.banner {
+    border-radius: 10px;
+}
+
+#linkbanner {
+    padding: 10px 20px;
+}

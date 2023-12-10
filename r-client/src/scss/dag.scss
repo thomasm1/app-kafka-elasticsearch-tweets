@@ -1,0 +1,24 @@
+
+.node rect,
+.node circle,
+.node ellipse {
+  stroke: rgb(92, 92, 194);
+  fill: aliceblue;
+  stroke-width: 1px;
+}
+
+.edgePath path {
+  stroke: rgb(92, 92, 194);
+  fill: rgb(152, 174, 247);
+  stroke-width: 1.5px;
+}
+#dag {
+  background-color:rgba(199, 212, 223, 0.6);
+}
+#dag0 {
+display:none;
+min-height:400px;
+background-color:lightsteelblue;
+margin:0px;
+padding:0px;
+}

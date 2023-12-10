@@ -50,7 +50,7 @@ public class User {
 //		"userGroup": "5",
 //			"lastName": "lastname",
 //			"photoPath": "assets/images/a.png",
-//			"email": "thomasm1.maestas@gmail.com",
+//			"email": "thomas1.maestas@gmail.com",
 //			"uid": "43uxxxid",
 //			"isActive": true,
 //			"lastname": "das;lkfj",

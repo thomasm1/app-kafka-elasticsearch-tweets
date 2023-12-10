@@ -1,6 +1,6 @@
  
 export const LOGIN = [
-    {email:"thomasm1.maestas@gmail.com",
+    {email:"thomas1.maestas@gmail.com",
 password:"pass"}, 
 {email:"walter.white@gmail.com",
 password:"pass"}
@@ -14,7 +14,7 @@ export const USERS = [
         id: "0",
         fName: "Tom",
         lName: "Milton",
-        email: "thomasm1.maestas@gmail.com",
+        email: "thomas1.maestas@gmail.com",
         password:"pass",
         memberSince: "02-04-2020",
         groupType: "Admin",
@@ -24,7 +24,7 @@ export const USERS = [
             {
                 id:0,
                 description: "NFT - 0x1",
-                owner: "thomasm1.maestas@gmail.com",
+                owner: "thomas1.maestas@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "ethereum",
                 blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
@@ -34,7 +34,7 @@ export const USERS = [
             {
                 id: 1,
                 description: "NFT - 0x1",
-                owner: "thomasm1.maestas@gmail.com",
+                owner: "thomas1.maestas@gmail.com",
                 address: "0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 chain: "ethereum",
                 blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
@@ -44,7 +44,7 @@ export const USERS = [
             {
                 id: 4,
                 description: "NFT - 0x1",
-                owner: "thomasm1.maestas@gmail.com",
+                owner: "thomas1.maestas@gmail.com",
                 address: "0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
                 chain: "polygon",
                 blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834",
@@ -54,7 +54,7 @@ export const USERS = [
             {
                 id: 5,
                 description: "NFT - 0x1",
-                owner: "thomasm1.maestas@gmail.com",
+                owner: "thomas1.maestas@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "polygon",
                 blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
@@ -64,7 +64,7 @@ export const USERS = [
             {
                 id: 6,
                 description: "NFT - 0x1",
-                owner: "thomasm1.maestas@gmail.com",
+                owner: "thomas1.maestas@gmail.com",
                 address: "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
                 chain: "avalanche",
                 blockExplorerUrl:"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
@@ -167,60 +167,60 @@ export const NFT_REFS = {
     "-NKEMZxPfzYObXOMhGvJ": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
         "chain": "avalanche-212",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPd8VzgcGjQ3R2FcMD": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
         "chain": "pulsechain23",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPdCfqfdZwwRCho-jR": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
         "chain": "pulsechain23",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPdDPlAV2on5cNe0X-": {
         "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
         "chain": "pulsechain23",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPddvcSbmHPtN4j9fR": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "ropstein",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPdnBQSaiAaFFBLtNd": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "rinkeby",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPeBEBcT6n1q8jByro": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "rinkeby",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPeD-QhB5J_Wwe9Obn": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "rinkeby",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPesZxmixtS5WxSoW_": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "fuji",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPf17952XsLIaFBCRK": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "fuji",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "-NKPfBg73DGAppuhwvmo": {
         "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
         "chain": "arbitrum",
-        "email": "thomasm1.maestas@gmail.com"
+        "email": "thomas1.maestas@gmail.com"
     },
     "address": "0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156",
     "chain": "mumbai",
-    "email": "thomasm1.maestas@gmail.com"
+    "email": "thomas1.maestas@gmail.com"
 }
  

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+  <meta name="viewport" content="width=device-width, maximum-scale=0.9,user-scalable=0">
+  <meta
+    content="Technology Blog: Musing Blockchain | Web Dev Affairs | Sociology Tomorrow! Latest Developments in Technology Culture, 
+Technology News, Tech Tools, Tech Talk Too! I explore daily tech topics on one of my three tech
+ blog topics: Blockchain, Web Dev, and Sociology in Tech.  DailyTech is both a public blog, as it is my own research tool for both subject content and app design"
+    name="description" />
+  <meta content="Thomas Maestas, Thomas M Maestas, data analysis and visualization, sociology statistical tests"
+    name="keywords" />
+
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <meta content="Thomas M. Maestas" name="author" />
+  <!-- <base href="/"> -->
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style-global.css" />
+ 
+  <title>Data Creator</title>
+</head>
+
+<body class="with-top-navbar">
+ 
+  <div class="container"  id="foreground">
+
+
+    <div id="content">
+      <h1>Data Creator</h1>
+      <br>
+      <div>
+        <input id="user" type="text" placeholder="type your name"/>
+        <span id="instructions"></span>
+        <button id="advanceBtn" onclick="start();">
+          START</button>
+      </div>
+      <div id="sketchPadContainer" style="visibility:hidden;"  >X </div>
+      <script src="./draw.js">     </script>
+      <script src="./sketchPad.js"></script>
+
+      <script>
+        let index=0;
+        const labels=["car","fish","house","tree",
+           "bicycle","guitar","pencil","clock"];
+
+        const data = {
+          user: null,
+          session: new Date().getTime(),
+          drawings: {}
+        };
+        const sketchPad = new SketchPad(sketchPadContainer);
+        function start(){
+            if(user.value==""){
+               alert("Please type your name first!");
+               return;
+            }
+            data.user=user.value;
+            user.style.display="none";
+            sketchPadContainer.style.visibility="visible";
+            const label=labels[index];
+            instructions.innerHTML="Please draw a "+label;
+            advanceBtn.innerHTML="NEXT";
+            advanceBtn.onclick=next;
+         }
+         function next(){
+            if(sketchPad.paths.length==0){
+               alert("Draw something first!");
+               return;
+            }
+
+            const label=labels[index];
+            data.drawings[label]=sketchPad.paths;
+            sketchPad.reset();
+            index++;
+            if(index<labels.length){
+               const nextLabel=labels[index];
+               instructions.innerHTML="Please draw a "+nextLabel;
+            }else{
+               sketchPadContainer.style.visibility="hidden";
+               instructions.innerHTML="Thank you!";
+               advanceBtn.innerHTML="SAVE";
+               advanceBtn.onclick=save;
+            }
+         }
+
+         function save(){
+            advanceBtn.style.display='none';
+            instructions.innerHTML="Take your downloaded file and place it alongside the others in the dataset!";
+
+            const element=document.createElement('a');
+            element.setAttribute('href', 
+               'data:text/plain;charset=utf-8,'+
+               encodeURIComponent(JSON.stringify(data))
+            );
+
+            const fileName=data.session+".json";
+            element.setAttribute('download', fileName);
+
+            element.style.display='none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+         }
+      </script>
+
+
+    </div>
+    <!-- end content -->
+
+
+
+    
+    <!-- // REACT BELOW -->
+    <div>
+      <pre>
+  
+        ▂▄▄▓▄▄▂
+        ◢◤█▀████▄▄▄▄▄▄◢◤
+        █  🦄 █▀▀▀▀▀▀╬
+        ◥█████◤
+        ══╩══╩═ 
+        </pre>
+        </div>
+      <hr>
+  
+  
+    <!-- ROOT -->
+
+    <div id="root" style="max-height:60%;"></div>
+    <!-- ROOT -->
+
+    <div class="card-block" id="footer"> <p>
+      <a href="https://thomasmaestas.net" title="Contact Information: thomasmaestas.net/">
+          thomasmaestas.net</a> 
+      </p>
+
+    </div>
+  </div>
+  <!-- end container -->
+
+
+  
+</body>
+
+
+</html>

@@ -1,0 +1,19 @@
+@import '~variables';
+.generate-header-fonts(@h1Size, @i: 1) when (@i <= 4) {
+  h@{i} {
+    font-size: (@h1Size/(pow(@goldenRatio, @i - 1)));
+    line-height: (@h1Size/(pow(@goldenRatio, @i - 1)));
+    font-weight: (400/(pow(@goldenRatio, @i - 1)));
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #4C5159;
+  }
+  .generate-header-fonts(@h1Size, @i + 1);
+}
+
+.generate-zdepth(@depth1, @i: 1) when (@i <= 5) {
+  .z-depth-@{i} {
+    box-shadow: 0 (@depth1 * @i) (@depth1 * @i * 3) rgba(0,0,0,0.12), 0 (@depth1 * @i) (@depth1 * @i * 3) rgba(0,0,0,0.24);
+  }
+  .generate-header-fonts(@depth1, @i + 1);
+}

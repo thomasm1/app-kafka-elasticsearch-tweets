@@ -1,0 +1,80 @@
+Wou are you?,Device Name,Operating System,Browser Version,What's wrong? Any ideas how to fix?,Other comments,@dropdown,Option 2,,,,@,Option 2
+Radu,Samsung Galaxy A40,Android version 11,Chrome 108.0.5359.79,"Stupid thing is up-side-down... No need to fix, I guess... can just hold the phone the other way around.",,,,,,,,
+Binij,Samsung  Galaxy A50s,Android Version 11,Chrome Version 109.0.5414.118,It's great. No fix needed.,,,,,,,,
+Deccan Charger,Samsubg galaxy A20,Android Version 10,Samsung Internet 11.0.01.11,Works great and flawless,,,,,,,,
+Depi,Samsung Galaxy A20,Android Version 11,"Brave 1.47.186, Chromium 109.0.5414.119",Works beautifully! :),,,,,,,,
+Cristi,Iphone 13 Pro Max,Ios 16.3,Chrome,It scrolls up and down. cannot draw. also the gestures trigger (eg: go back or refresh when pull down) in rest treaba buna. Felicitari,just dont use apple,,,,,,,
+jag,Asus Laptop,Ubuntu,Firefox 109,Great!!!,⭐️⭐️⭐️⭐️⭐️,,,,,,,
+Răzvan,Samsung note 20 5g,Android 13,Google Chrome 109.0.5414.118,"If you tap ( as in creating multiple dots ) it doesnt work sooo, no dots for me  : (",,,,,,,,
+Ngari,Huawei,Android 11,Edge,Sometimes screen doesn.t sense a touch from fingers. Replace the phone screen or switch off and  on,,,,,,,,
+Gerry,Toshiba Satellite Laptop,Linux(WattOS),Chrome,Worked,,,,,,,,
+Zhynem#0217,iPad Mini 6 w/ Pencil,iPadOS 16.4.1,Brave 1.49 (23.4.3.20),"Everything worked except saving the json, I can't seem to find an error message why th download doesn't work.",,,,,,,,
+Zhynem#0217,iPad Mini 6 w/ Pencil,iPadOS 16.4.1,Safari 604.1,"Everything works, including the json download",,,,,,,,
+Zhynem#0217,Macbook Pro,Ventura 13.3.1,Brave Version 1.50.114 Chromium: 112.0.5615.49 (Official Build) (arm64),Everything works,,,,,,,,
+Gab@Nuage.ch,Notebook,Ubuntu 22.10,Firefox 111.0.1,"Everything is fine - concerning the ""save"" functionality, I tend to use ""iframe"". ","Concerning javascript, I avoid having javascript in html documents, I put the <script src=""""> in the head, so I'll have ""creator.js"" with the code that is linked to creator.html. Then in the creator.js document.addEventListener(""DOMContentLoaded"", function(event) {... }); but it's just my own preference",,,,,,,
+Rami,Lenovo Yoga,Windows 10,Edge,Everything works fine.,,,,,,,,
+Leo,Dell Optiflex7000,Ubuntu 20.04,Chrome 112.0.5615.49 ,Everything works fine.,,,,,,,,
+MJaque,Acer A315-51,Ubuntu 20.04,Firefox 111.0.1 64b,Everything works fine.,,,,,,,,
+MJaque,Redmi Note 9,Android 11 RP1A 200720.011,Firefox 111.1.1,"Everything works fine, but on mobile tries to scroll. It's solved with evt.preventDefault() at the end of  SketchPad.#addEventListeners.this.canvas.ontouchmove()",,,,,,,,
+MJaque,Redmi Note 9,Android 11 RP1A 200720.011,Chrome 112.0.5615,"Everything works fine, but on mobile tries to scroll. It's solved with evt.preventDefault() at the end of  SketchPad.#addEventListeners.this.canvas.ontouchmove()",,,,,,,,
+Leo,Huawei,Windows 10,Chrome,Seems ok,,,,,,,,
+Rick,Firefox,Mac OS X,Firefox 112.0.1 ,"To prevent movement of the full screen while drawing in OS X, use `evt.preventDefault();` in the touch events",,,,,,,,
+Marcus,M1 Macbook Air,Ventura 13.0.1,112.0.5615.137,"When using the content type of ""text/plain"" during the download for JSON data, the browser warns that it thinks this should be a text file. I changed the content type to ""application/json"" which will not trigger a warning.",Excellent course! =],,,,,,,
+Ross,MSI Desktop PC,Linux Mint 21.1,Firefox 112.0.2,All good,,,,,,,,
+Haroon,Dell Optiflex7000,Windows 10,Chrome,All good,,,,,,,,
+Dani,Macbook Pro,Ventura 13.2.1,Chrome 112.0.5615.137 (Official Build) (x86_64),"All good. I had to tweak some code on my IDE PhpStorm on file sketchPad.js #addEventListeners because the touch events (TouchEvent) shouldn't be passed to onmouse events (MouseEvent). I solved this ""issue"" by creating separate private functions #drawStart, #drawMove and #drawStop with their respective lines.",,,,,,,,
+Drl,Lenovo Legion laptop,Pop!_OS 22.04 LTS,Firefox 12.0.1 (64-bit),All good,undo button disabled property as a double negative when enabled was a little confusing. (i wrote an enabled property accidentally),,,,,,,
+Daniel,Desktop PC,Arch Linux,Firefox,All good,,,,,,,,
+Rafa,Redmi Note 10 pro,Android 13 - MIUI 13.1,Opera,All good,,,,,,,,
+Aaron,Notebook,Ubuntu 23.04,Chrome 112.0.5615.165 (Official Build) (64 bit),Everything works fine.,,,,,,,,
+,Origin laptop,Windows 10,Version 112.0.5615.138 (Official Build) (64-bit),"When drawing off the canvas, the text and button above the canvas become selected and then when attempting to draw again it becomes an issue. Fix: Add to the body style (styles.css) the following: -webkit-user-select: none; -moz-user-select:none; user-select:none;",,,,,,,,
+Matt,Lenovo Legion desktop,Windows 11,Version 112.0.5615.138 (Official Build) (64-bit),"Works well, no bugs to report so far","Great class, thank you!",,,,,,,
+Kostadin,Notebook,Manjaro Linux,Firefox 112.0.2,The drawing app is faultless.,Great job and thanks for the effort!,,,,,,,
+Trushali,Acer Nitro 5,Windows 10,Chrome,Everthings works good.,,,,,,,,
+Ninja Coder Tech,Samsung S21+ 5G,Android 13 OneUI 5.1,Samsung Internet 20.0.7.1,Works perfectly!,Thanks Radu! Maybe put dark mode though...,,,,,,,
+Eve,HP Omen laptop,Windows 10 Home,Brave 1.51.114 Chromium: 113.0.5672.92 (Official build) 64 bit,Perfect,,,,,,,,
+Eve,Samsung Galaxy S23 ,Android 13,Brave 1.51.114 Chromium: 113.0.5672.92,Perfect,,,,,,,,
+Ankit Rawat,Asus Laptop,Windows 11,Chrome ,Works fine,,,,,,,,
+Eugene Ng,Dell Latitude 5520,Windows 10,Chrome,Working well,,,,,,,,
+Satoshi,ASUSTeK COMPUTER INC. X510UA,Ubuntu 22.04.2 LTS,Chrome Version 113.0.5672.126 (Official Build) (64-bit),"Save function didn't work. Gave me an network error. The way mentioned in a comment in the video didn't work either.   function save() {
+  advanceBtn.style.display = 'none';
+  instruction.innerHTML = ""Take your downloaded file and place it alongside the others in the dataset"";
+
+  const json = JSON.stringify(data);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  const element = document.createElement('a');
+  element.setAttribute('href', url);
+  element.setAttribute('download', data.session + "".json"");
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+  URL.revokeObjectURL(url);
+} This function ChatGPT wrote worked fine for me!!",,,,,,,,
+Niels,Lenovo X1,Ubuntu 22.04.2 LTS,Firefox 113,Works great! So much fun.,,,,,,,,
+Yana,iPhone13,iOS 16.5.1,Chrome,It's hard to draw: when you slide down it updates the page,,,,,,,,
+Yana,Acer,Windows 11,Chrome,Works well,,,,,,,,
+Köksal Denktaş,iPhone 7 Plus,iOS 15.7.7,Safari,"The touch events on the canvas element are interfering with the default touch gestures on iOS, which prevents user from drawing.","I fixed it by adding ""canvas {
+    touch-action: none;
+}"" to the styles.css file.",,,,,,,
+Köksal Denktaş,iPhone 7 Plus,iOS 15.7.7,Safari and Brave,"The canvas element was not displayed correctly on IOS. Also when spamming undo button, it zooms in because of double click.","I fixed it by adding ""initial-scale=1"" to the content attribute of the first meta tag. Also, I fixed the zoom problem by adding ""touch-action: manipulation;"" to the body selector in the styles.css file.",,,,,,,
+om,,,,,,,,,,,,
+Paul,Samsung A52,"Android 13, OneUI 5.1",Chrome,Works well,,,,,,,,
+Roberto,Desktop with B550 Gaming Plus MSI,Windows 11,Chrome,Perfect,,,,,,,,
+Roberto,CONTABO VPS S SSD,Rocky Linux 8 (64 bit),Chrome,Perfect,,,,,,,,
+Roberto,iPhone 11 Pro,IOS 16.6,Safari,"The touch events on the canvas element are interfering with the default touch gestures on iOS, which interfere with drawing.",,,,,,,,
+Val,Dell Inspiron 2 in 1,Windows 11,Chrome,Perfect,,,,,,,,
+Rodolfo,Desktop with AMD A10-7860K Radeon R7,Linux Mint 21.2 (64 bit),Versión 1.57.62 Chromium: 116.0.5845.180 (Build oficial) (64 bits),"The fix for drawing past the canvas works 80% like video, when you drag outside,release outside the canvas, the next click inside starts drawing but then turns into a drag of the Data Creator text and such, which is selected","I added this to de #addEventListeners block:     this.canvas.ondragstart=(evt)=>{
+      evt.preventDefault();
+    }",,,,,,,
+meganova,poco x4 pro,android 13 ,chrome,everything is good,,,,,,,,
+gianlucaemaldi,ASUS X53S, ChromeOS Flex 114,Chrome 114,It works without problems,,,,,,,,
+gianlucaemaldi,HUAWEI Nova CAN-L01,Android 7.0,Chrome 117,It works without problems,,,,,,,,
+Nad,ASUS Vivobook S14,Windows 10 Home,Chrome Version 117.0.5938.132 (Official Build) (64-bit),Works well,,,,,,,,
+Matthew,Raspberry pi 4,Ubuntu 22.04.3 LTS,Chromium Version 118.0.5993.70 (Official Build) snap (64-bit),Works fine. Would have been great if it had an eraser.,,,,,,,,
+Rohit,Macbook Air M2,macOS Ventura 13.1,Brave Browser 1.59.122,Works fine.,,,,,,,,
+alexlead,Lenovo Yoga,Windows 11 Home,Chrome,Works fine.,,,,,,,,
+Sid,Macbook Pro 2020 (Intel),MacOS Ventura 13.1,Chrome,Looks good to me,,,,,,,,
+Mayank,Asus Vivobook S15,Windows 11 Home,Chrom,Works fine. Would have been great if it had an eraser.,,,,,,,,

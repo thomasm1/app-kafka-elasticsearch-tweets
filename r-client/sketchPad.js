@@ -20,7 +20,7 @@ class SketchPad{
 
       this.reset();
 
-      this.#addEventListeners();
+      this.addEventListeners();
    }
 
    reset(){
@@ -29,7 +29,7 @@ class SketchPad{
       this.#redraw();
    }
 
-   #addEventListeners(){
+   addEventListeners(){
       this.canvas.onmousedown=(evt)=>{
          const mouse=this.#getMouse(evt);
          this.paths.push([mouse]);

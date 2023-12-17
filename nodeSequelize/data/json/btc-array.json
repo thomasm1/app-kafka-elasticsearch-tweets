@@ -1,0 +1,31 @@
+ [{
+    "Date": "2019-07-04",
+    "Symbol": "BTCUSD",
+    "Open": 10529.18,
+    "High": 11714.6,
+    "Low": 10529.18,
+    "Close": 11676.42,
+    "Volume BTC": 36336.85,
+    "Volume USD": 519076229.34
+  }, 
+  {
+    "Date": "2019-07-03",
+    "Symbol": "BTCUSD",
+    "Open": 10829.18,
+    "High": 12014.6,
+    "Low": 10829.18,
+    "Close": 21976.42,
+    "Volume BTC": 36836.85,
+    "Volume USD": 419076229.34
+  }, 
+  {
+    "Date": "2019-07-03",
+    "Symbol": "BTCUSD",
+    "Open": 10829.18,
+    "High": 12014.6,
+    "Low": 10829.18,
+    "Close": 33976.42,
+    "Volume BTC": 36836.85,
+    "Volume USD": 419076229.34
+  }
+] 

@@ -12,4 +12,4 @@ WORKDIR /usr/local/bin
 
 ADD "target/mapl.war" .
 
-ENTRYPOINT ["java", "-jar", "friendsofgroot.war"]
+ENTRYPOINT ["java", "-jar", "mapl.war"]

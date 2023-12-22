@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: karate.categories.CategoriesTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.456 s <<< FAILURE! - in karate.categories.CategoriesTest
+testCategories[1][1]  Time elapsed: 0.637 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+http call failed after 518 milliseconds for url: http://localhost:8888/api/categories
+classpath:karate/categories/categories.feature:11
+
+testCategories[1][2]  Time elapsed: 0.731 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+http call failed after 6 milliseconds for url: http://localhost:8888/api/categories/367
+classpath:karate/categories/categories.feature:11
+

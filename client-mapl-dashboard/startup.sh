@@ -1,5 +1,7 @@
 #!/bin/bash
-cd src/test/java/com/friendsofgroot/app/functional && \
-mvn clean test --debug && \ 
+./test.sh && \
+./build.sh && \
+echo "Completed test and build -- client-mapl-dashboard"
+exit
 
 

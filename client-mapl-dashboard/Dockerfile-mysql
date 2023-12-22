@@ -1,7 +1,7 @@
 FROM ubuntu-jdk
 
-MAINTAINER Thomas Maestas "thomas.maestas@hotmail.com"
-
+LABEL maintainer=thomas1.maestas@gmail.com
+ 
 ENV version=localhost
 
 ENV dbuser=root
@@ -10,6 +10,6 @@ ENV jdbcurl=jdbc:mysql://localhost:3306/groot
 
 WORKDIR /usr/local/bin
 
-ADD "target/friendsofgroot.war" .
+ADD "target/my-personal-librarian.war" .
 
-ENTRYPOINT ["java", "-jar", "friendsofgroot.war"]
+ENTRYPOINT ["java", "-jar", "my-personal-librarian.war"]

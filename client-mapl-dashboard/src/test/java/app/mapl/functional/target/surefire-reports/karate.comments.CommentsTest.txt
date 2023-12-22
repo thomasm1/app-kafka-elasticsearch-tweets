@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: karate.comments.CommentsTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.526 s <<< FAILURE! - in karate.comments.CommentsTest
+testComments[1][1]  Time elapsed: 0.516 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+http call failed after 4 milliseconds for url: http://localhost:8888/api/posts/129/comments
+classpath:karate/comments/comments.feature:11
+

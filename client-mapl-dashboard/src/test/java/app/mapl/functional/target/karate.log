@@ -1,0 +1,292 @@
+20:11:34.234 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/api/categories
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:34.277 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 518 milliseconds for url: http://localhost:8888/api/categories
+20:11:34.278 [main] ERROR com.intuit.karate - classpath:karate/categories/categories.feature:11
+When method GET
+http call failed after 518 milliseconds for url: http://localhost:8888/api/categories
+classpath:karate/categories/categories.feature:11
+20:11:34.303 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/api/categories/367
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:34.308 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 6 milliseconds for url: http://localhost:8888/api/categories/367
+20:11:34.309 [main] ERROR com.intuit.karate - classpath:karate/categories/categories.feature:11
+When method GET
+http call failed after 6 milliseconds for url: http://localhost:8888/api/categories/367
+classpath:karate/categories/categories.feature:11
+20:11:34.963 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/api/posts/129/comments
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:34.965 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 4 milliseconds for url: http://localhost:8888/api/posts/129/comments
+20:11:34.966 [main] ERROR com.intuit.karate - classpath:karate/comments/comments.feature:11
+When method GET
+http call failed after 4 milliseconds for url: http://localhost:8888/api/posts/129/comments
+classpath:karate/comments/comments.feature:11
+20:11:35.230 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/api/posts
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.232 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/api/posts
+20:11:35.233 [main] ERROR com.intuit.karate - classpath:karate/posts/posts.feature:11
+When method GET
+http call failed after 3 milliseconds for url: http://localhost:8888/api/posts
+classpath:karate/posts/posts.feature:11
+20:11:35.244 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/api/posts/username/thomas1.maestas@gmail.com
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.246 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/api/posts/username/thomas1.maestas@gmail.com
+20:11:35.247 [main] ERROR com.intuit.karate - classpath:karate/posts/posts.feature:28
+When method GET
+http call failed after 3 milliseconds for url: http://localhost:8888/api/posts/username/thomas1.maestas@gmail.com
+classpath:karate/posts/posts.feature:28
+20:11:35.525 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/actuator/health
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.529 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 5 milliseconds for url: http://localhost:8888/actuator/health
+20:11:35.529 [main] ERROR com.intuit.karate - classpath:karate/springActuator/springActuator.feature:11
+When method get
+http call failed after 5 milliseconds for url: http://localhost:8888/actuator/health
+classpath:karate/springActuator/springActuator.feature:11
+20:11:35.543 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/actuator/info
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.546 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 5 milliseconds for url: http://localhost:8888/actuator/info
+20:11:35.546 [main] ERROR com.intuit.karate - classpath:karate/springActuator/springActuator.feature:11
+When method get
+http call failed after 5 milliseconds for url: http://localhost:8888/actuator/info
+classpath:karate/springActuator/springActuator.feature:11
+20:11:35.555 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/actuator/env
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.558 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 5 milliseconds for url: http://localhost:8888/actuator/env
+20:11:35.559 [main] ERROR com.intuit.karate - classpath:karate/springActuator/springActuator.feature:11
+When method get
+http call failed after 5 milliseconds for url: http://localhost:8888/actuator/env
+classpath:karate/springActuator/springActuator.feature:11
+20:11:35.568 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/actuator/metrics
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.570 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/actuator/metrics
+20:11:35.571 [main] ERROR com.intuit.karate - classpath:karate/springActuator/springActuator.feature:11
+When method get
+http call failed after 3 milliseconds for url: http://localhost:8888/actuator/metrics
+classpath:karate/springActuator/springActuator.feature:11
+20:11:35.593 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/actuator/loggers
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.595 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/actuator/loggers
+20:11:35.596 [main] ERROR com.intuit.karate - classpath:karate/springActuator/springActuator.feature:11
+When method get
+http call failed after 3 milliseconds for url: http://localhost:8888/actuator/loggers
+classpath:karate/springActuator/springActuator.feature:11
+20:11:35.949 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/user
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.951 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/rest/user
+20:11:35.952 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 3 milliseconds for url: http://localhost:8888/rest/user
+classpath:karate/springRest/springRest.feature:11
+20:11:35.977 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/role
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.983 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 10 milliseconds for url: http://localhost:8888/rest/role
+20:11:35.983 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 10 milliseconds for url: http://localhost:8888/rest/role
+classpath:karate/springRest/springRest.feature:11
+20:11:35.994 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/offer
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:35.996 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/rest/offer
+20:11:35.997 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 3 milliseconds for url: http://localhost:8888/rest/offer
+classpath:karate/springRest/springRest.feature:11
+20:11:36.011 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/offer_logic
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.014 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 4 milliseconds for url: http://localhost:8888/rest/offer_logic
+20:11:36.014 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 4 milliseconds for url: http://localhost:8888/rest/offer_logic
+classpath:karate/springRest/springRest.feature:11
+20:11:36.026 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/post
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.029 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 4 milliseconds for url: http://localhost:8888/rest/post
+20:11:36.029 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 4 milliseconds for url: http://localhost:8888/rest/post
+classpath:karate/springRest/springRest.feature:11
+20:11:36.041 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/comment
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.044 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 5 milliseconds for url: http://localhost:8888/rest/comment
+20:11:36.044 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 5 milliseconds for url: http://localhost:8888/rest/comment
+classpath:karate/springRest/springRest.feature:11
+20:11:36.052 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/coin
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.056 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 5 milliseconds for url: http://localhost:8888/rest/coin
+20:11:36.056 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 5 milliseconds for url: http://localhost:8888/rest/coin
+classpath:karate/springRest/springRest.feature:11
+20:11:36.065 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/author
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.067 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/rest/author
+20:11:36.068 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 3 milliseconds for url: http://localhost:8888/rest/author
+classpath:karate/springRest/springRest.feature:11
+20:11:36.080 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/rest/weblink
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.081 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 2 milliseconds for url: http://localhost:8888/rest/weblink
+20:11:36.082 [main] ERROR com.intuit.karate - classpath:karate/springRest/springRest.feature:11
+When method GET
+http call failed after 2 milliseconds for url: http://localhost:8888/rest/weblink
+classpath:karate/springRest/springRest.feature:11
+20:11:36.510 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8888/api/users
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+
+
+20:11:36.512 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/api/users
+20:11:36.512 [main] ERROR com.intuit.karate - classpath:karate/users/users.feature:11
+When method get
+http call failed after 3 milliseconds for url: http://localhost:8888/api/users
+classpath:karate/users/users.feature:11
+20:11:36.586 [main] INFO  com.intuit.karate - [print] _______________________ID____:user852@gmail.com 
+20:11:36.677 [main] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8888/api/users
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 423
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+{"username":"user852@gmail.com","password":"$2a$10$j\/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Smith","firstName":"Tom1","userType":3,"phone":"5051231234","email":"user852@gmail.com","cusUrl":"https:\/\/doggywood-veterinary.s3.amazonaws.com\/assets\/Animals\/random_a1.jpg","photoPath":"www.photo-852.fancyPhotos.com\/photos\/852","isActive":0,"contactType":1,"roles":[{"id":2,"name":"ROLE_ADMIN"}]}
+
+20:11:36.680 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 13 milliseconds for url: http://localhost:8888/api/users
+20:11:36.680 [main] ERROR com.intuit.karate - classpath:karate/users/users.feature:53
+When method POST
+http call failed after 13 milliseconds for url: http://localhost:8888/api/users
+classpath:karate/users/users.feature:53
+20:11:36.694 [main] INFO  com.intuit.karate - [print] _______________________ID____user69@gmail.com 
+20:11:36.698 [main] DEBUG com.intuit.karate - request:
+1 > PUT http://localhost:8888/api/users/212
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 420
+1 > Host: localhost:8888
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 > Accept-Encoding: gzip,deflate
+{"username":"user69@gmail.com","password":"$2a$10$j\/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Maestas","firstName":"Tom2","userType":3,"phone":"5055087707","email":"user69@gmail.com","cusUrl":"https:\/\/doggywood-veterinary.s3.amazonaws.com\/assets\/Animals\/random_a2.jpg","photoPath":"www.photo-69.fancyPhotos.com\/photos\/69","isActive":0,"contactType":1,"roles":[{"id":1,"name":"ROLE_USER"}]}
+
+20:11:36.700 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/api/users/212
+20:11:36.700 [main] ERROR com.intuit.karate - classpath:karate/users/users.feature:114
+When method PUT
+http call failed after 3 milliseconds for url: http://localhost:8888/api/users/212
+classpath:karate/users/users.feature:114

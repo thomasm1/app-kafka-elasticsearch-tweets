@@ -1,0 +1,13 @@
+utils\JavaUtils.class
+karate\comments\CommentsTest.class
+karate\swaggerOpenapi3\SwaggerRunner.class
+karate\jwtGetRequest\TestSecureGetRunner.class
+utils\ReadSystemProperty.class
+utils\DataGenerator.class
+karate\springActuator\SpringActuatorTest.class
+karate\users\UsersTest.class
+karate\springRest\SpringRestTest.class
+karate\categories\CategoriesTest.class
+karate\ApiTest.class
+utils\MongoUtils.class
+karate\posts\PostsTest.class

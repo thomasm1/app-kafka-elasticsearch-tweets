@@ -29,9 +29,9 @@ public class UserRegister {
 		System.out.println(Cmds.REGISTER_LNAME);
 		String ln = scan.next();
 		//  "ADD_NEW_USERS"
-//(username VARCHAR2, password VARCHAR2, lastName varchar2, firstName varchar2,  groups NUMBER,  usertype NUMBER,email VARCHAR2, phone VARCHAR2, cusURl VARCHAR2)
+//(username VARCHAR2, password VARCHAR2, lastName varchar2, firstName varchar2,  groups NUMBER,  usertype NUMBER,email VARCHAR2, organizationCode VARCHAR2, cusURl VARCHAR2)
 //		User newUserser = new User(un, pw, ln, fn, 4, 2, un+"@cryptomaven.xyz", "999-999-9999" ,"http://www.dailytech.net",
-//				"photoPath",
+//				"dashboardCode",
 //				"userGroup",
 //				0,
 //				1,
@@ -67,9 +67,9 @@ public class UserRegister {
 		newUserDto.setFirstName(fn);
 		newUserDto.setUserType(2);	// 2 = customer
 		newUserDto.setEmail(un);
-		newUserDto.setPhone("999-999-9999");
+		newUserDto.setOrganizationCode("999-999-9999");
 		newUserDto.setCusUrl("http://www.dailytech.net");
-		newUserDto.setPhotoPath("photoPath");
+		newUserDto.setDashboardCode("dashboardCode");
 		newUserDto.setIsActive(0);
 		newUserDto.setContactType(1);
 	}

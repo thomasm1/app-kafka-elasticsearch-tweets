@@ -22,7 +22,7 @@ Feature:  users karate test script
 
     * def rando = Math.floor(Math.random() * 1031)
     * def userNameEmail = "user"+rando+"@gmail.com"
-    * def photoPath = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
+    * def dashboardCode = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
     * print "_______________________ID____:" + userNameEmail
     * def user =
       """
@@ -36,7 +36,7 @@ Feature:  users karate test script
   "phone": "5051231234",
   "email":'#(userNameEmail)',
   "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg",
-  "photoPath": '#(photoPath)',
+  "dashboardCode": '#(dashboardCode)',
   "isActive": 0,
   "contactType": 1,
   "roles": [
@@ -82,7 +82,7 @@ Feature:  users karate test script
   @Order(3)
   Scenario Outline: Update a user, get it by id, verify changes
     * def rando = Math.floor(Math.random() * 100)
-    * def photoPath = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
+    * def dashboardCode = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
     * def userNameEmail = "user"+rando+"@gmail.com"
     * print "_______________________ID____" + userNameEmail
     * def user =
@@ -97,7 +97,7 @@ Feature:  users karate test script
       "phone": "5055087707",
       "email":'#(userNameEmail)',
       "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg",
-      "photoPath": '#(photoPath)',
+      "dashboardCode": '#(dashboardCode)',
       "isActive": 0,
       "contactType": 1,
       "roles": [
@@ -120,8 +120,8 @@ Feature:  users karate test script
     * user.email = email
     * def username = resp.username
     * user.username = username
-    * def photoPath = resp.photoPath
-    * user.photoPath = photoPath
+    * def dashboardCode = resp.dashboardCode
+    * user.dashboardCode = dashboardCode
     * print 'updated   resp.userId]_________: ', localId
     * print 'updated  email is [STILL]_________: ', email
     * print 'updated  username is [STILL]_________: ', username
@@ -143,7 +143,7 @@ Feature:  users karate test script
     "phone":'##string',
     "email":'##string',
     "cusUrl":'##string',
-    "photoPath":'##string',
+    "dashboardCode":'##string',
     "isActive":'#number',
     "contactType":'##number',
     "roles": '#array'
@@ -157,4 +157,3 @@ Feature:  users karate test script
 #      | users | PATCH  | 201   |    | GET    |  200   |
 
 #      | users | POST   | 201   |       | GET    |  200   |
-

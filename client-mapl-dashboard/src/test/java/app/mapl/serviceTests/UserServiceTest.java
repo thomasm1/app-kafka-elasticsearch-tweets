@@ -40,17 +40,17 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
     //TODO mockito Service INJECTION
     @Test
     public void add_new_user() {
-        UserDto u = new UserDto(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null);
+        UserDto u = new UserDto(0, "username", "password", "lastName", "firstName", 0, "organizationCode", "email", "cusUrl", "dashboardCode", 0, 0, null);
         when(userDAOimplTester.createUser(userMapper.toEntity(u))).thenReturn(userMapper.toEntity(u));
         assertEquals(userServiceTester.createUser(u),u);
      }
 
     @Test
     public void get_users() {
-        UserDto u = new UserDto(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null);
+        UserDto u = new UserDto(0, "username", "password", "lastName", "firstName", 0, "organizationCode", "email", "cusUrl", "dashboardCode", 0, 0, null);
 
         when(userDAOimplTester.getUsers()).thenReturn(Arrays.asList(
-                new User(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null)));
+                new User(0, "username", "password", "lastName", "firstName", 0, "organizationCode", "email", "cusUrl", "dashboardCode", 0, 0, null)));
         List<UserDto> users = userServiceTester.getUsers();
         assertEquals("user0", users.get(0).getUsername());
         assertEquals("password1", users.get(1).getPassword());
@@ -60,12 +60,12 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
 //    public void get_user() {
 //
 //        when(userDAOimplTester.getUser("username")).thenReturn(
-//                new UserDto(0, "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null)
+//                new UserDto(0, "username", "password", "lastName", "firstName", 0, "organizationCode", "email", "cusUrl", "dashboardCode", 0, 0, null)
 //    }
 
 
     public void update_user() {
-//		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "5055087707" , "user4@cryptomaven.xyz", "http://www.dailytech.net","photoPath", 	"userGroup",
+//		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "5055087707" , "user4@cryptomaven.xyz", "http://www.dailytech.net","dashboardCode", 	"userGroup",
 //				0,
 //				1,
 //				"id");   // PASSES
@@ -75,7 +75,7 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
     @Test
     public void delete_user() {
 //		User u = new User("user4"+rand, "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
-//				"photoPath",
+//				"dashboardCode",
 //				"userGroup",
 //				0,
 //				1,

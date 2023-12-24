@@ -45,8 +45,8 @@ public class User  implements Serializable{
     @Column(name="usertype") /// 0 = admin, 1 = user
     private int userType;
 
-    @Column(name="phone")
-    private String phone;
+    @Column(name="organizationCode")
+    private String organizationCode;
 
     @NotBlank
 //    @Email(message="*Must be a valid email address")
@@ -55,8 +55,8 @@ public class User  implements Serializable{
     @Column(name="cusurl")
     private String cusUrl;
 
-    @Column(name="photopath")
-    private String photoPath;
+    @Column(name="dashboardcode")
+    private String dashboardCode;
 
     @Column(name="isactive")
     private int isActive;
@@ -69,7 +69,7 @@ public class User  implements Serializable{
     private Set<Role> roles = new HashSet<>();
 
     // UserDetailsCommandLineRunner
-    public User(int userid, String username, String password, String lastname, String firstName, int userType, String phone, String email, String cusUrl, String photoPath, int isActive, int contactType) {
+    public User(int userid, String username, String password, String lastname, String firstName, int userType, String organizationCode, String email, String cusUrl, String dashboardCode, int isActive, int contactType) {
 
         this.userId = userid;
         this.username = username;
@@ -77,10 +77,10 @@ public class User  implements Serializable{
         this.lastName = lastname;
         this.firstName = firstName;
         this.userType = userType;
-        this.phone = phone;
+        this.organizationCode = organizationCode;
         this.email = email;
         this.cusUrl = cusUrl;
-        this.photoPath = photoPath;
+        this.dashboardCode = dashboardCode;
         this.isActive = isActive;
         this.contactType = contactType;
     }
@@ -110,7 +110,7 @@ public class User  implements Serializable{
 
     //	 overloaded WITHOUT userId  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
     public User(String username, String password, String lastName, String firstName,
-                 int userType, String phone,String email,  String cusUrl, String photoPath,
+                 int userType, String organizationCode,String email,  String cusUrl, String dashboardCode,
                 int isActive,
                 int contactType ) {
         super();
@@ -119,10 +119,10 @@ public class User  implements Serializable{
         this.lastName = lastName;
         this.firstName = firstName;
         this.userType = userType;
-        this.phone = phone;
+        this.organizationCode = organizationCode;
         this.email = email;
         this.cusUrl = cusUrl;
-        this.photoPath = photoPath;
+        this.dashboardCode = dashboardCode;
         this.isActive = isActive;
         this.contactType = contactType;
 
@@ -136,7 +136,7 @@ public class User  implements Serializable{
     }
 
 //     Contstructor for EDIT PROFILE (options available for user)
-public User(  String password, String lastName, String firstName, int userType, String phone,String email,  String cusUrl, String photoPath,   int isActive,
+public User(  String password, String lastName, String firstName, int userType, String organizationCode,String email,  String cusUrl, String dashboardCode,   int isActive,
             int contactType // ContactType contactType
           ) {
     super();
@@ -146,9 +146,9 @@ public User(  String password, String lastName, String firstName, int userType, 
     this.firstName = firstName;
     this.userType = userType;
     this.email = email;
-    this.phone = phone;
+    this.organizationCode = organizationCode;
     this.cusUrl = cusUrl;
-    this.photoPath = photoPath;
+    this.dashboardCode = dashboardCode;
     this.isActive = isActive;
     this.contactType = contactType;
 

@@ -19,7 +19,7 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 	int rand;
 	@BeforeAll // setup
 	public static void setupClass() {
-		System.out.println("Class/Static setup "); 
+		System.out.println("Class/Static setup ");
 	}
 
 	@BeforeEach
@@ -29,13 +29,13 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 		System.out.println("Method/Instance setup "+rand);
 	}
 
-//    @Test   
+//    @Test
 //	public void add_new_offer() {
 //    	Coin c = new Coin(7577-rand, "Tesla", "CyberTruck", 45000.00, 0); // make foreign-key coin
 //    	CoinService.createCoin(c);// Only non-passing test
 //
 //    	User u = new User("testtest"+rand, "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net",
-//				"photoPath",
+//				"dashboardCode",
 //				"userGroup",
 //				0,
 //				1 );
@@ -45,30 +45,30 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 //		OfferService.deleteOffer(o.getOfferID());
 //		CoinService.deleteCoin(c.getCoinId());
 //		UserService.deleteUser(u.getUsername());
-//		
+//
 //	}
-    @Test   
+    @Test
    	public void update_offer() {
    		Offer o = new Offer(23230-rand, "x455491", 757357, 1110.0, 0, "PENDING", "desc", LocalDate.now(), false);  // PASSES
    		assertTrue(OffersServiceImpl.updateOffer(o));
-   		
+
    	}
-    @Test   
+    @Test
    	public void get_offer() {
    		Offer o = new Offer(23230-rand, "x455491", 757357, 1110.0, 0, "PENDING", "desc", LocalDate.now(), false);   // PASSES
 		OffersServiceImpl.createOffer(o);
    		assertEquals("PENDING", o.getOfferStatus());
-   		
-   	} 
 
-	@Test   
+   	}
+
+	@Test
    	public void delete_offer() {										  // PASSES
    		Offer o = new Offer(23230-rand, "x455491", 757357, 1110.0, 0, "PENDING", "desc", LocalDate.now(), false);
    		OffersServiceImpl.createOffer(o);
    		assertTrue(OffersServiceImpl.deleteOffer(o.getOfferID()));
-   		
+
    	}
-    
+
 	@AfterEach
 	public void tearDown() {
 		System.out.println("After Class executing ...");
@@ -78,7 +78,7 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 	public static void tearDownClass() {
 		System.out.println("After Class executing ...");
 	} // teardown
-	
+
 //////Teardown delete p1;
 ////		 delete p2;
 ////		 delete offer from add_offer test

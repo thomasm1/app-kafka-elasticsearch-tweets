@@ -80,7 +80,7 @@ public class UsersControllerTest {
         String firstName = "Thomas";
         String lastName = "Maestas";
         String email = "thomas1.maestas@gmail.com";
-        String phone = "305.333.0101";
+        String organizationCode = "305.333.0101";
         String username = "mweston";
         String password = "password";
 
@@ -91,7 +91,7 @@ public class UsersControllerTest {
 //        returnUser.getAddress().setAddressLine1(addressLine1);
 //
 //        returnUser.setEmail(email);
-//        returnUser.setPhoneNumber(phoneNumber);
+//        returnUser.setOrganizationCodeNumber(organizationCodeNumber);
 //        returnUser.setUser(new User());
 //        returnUser.getUser().setUsername(username);
 //        returnUser.getUser().setPassword(password);
@@ -106,7 +106,7 @@ public class UsersControllerTest {
 //                        .param("username", username)
 //                        .param("passwordText", password)
 //                        .param("email", email)
-//                        .param("phone", phoner))
+//                        .param("organizationCode", organizationCoder))
 //                .andExpect(status().is3xxRedirection())
 //                .andExpect(view().name("redirect:user/show/1"));
 //
@@ -119,7 +119,7 @@ public class UsersControllerTest {
 //        assertEquals(firstName, boundUser.getFirstName());
 //        assertEquals(lastName, boundUser.getLastName());
 //        assertEquals(email, boundUser.getEmail());
-//        assertEquals(phoneNumber, boundUser.getPhoneNumber());
+//        assertEquals(organizationCodeNumber, boundUser.getOrganizationCodeNumber());
 
     }
 }

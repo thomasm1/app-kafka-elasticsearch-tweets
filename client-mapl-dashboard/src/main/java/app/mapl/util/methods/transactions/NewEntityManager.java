@@ -23,10 +23,10 @@ public class NewEntityManager {
             user.setLastName("lastName");
             user.setFirstName("firstName");
             user.setUserType(1);
-            user.setPhone("phone");
+            user.setOrganizationCode("organizationCode");
             user.setEmail("email");
             user.setCusUrl("cusUrl");
-            user.setPhotoPath("photoPath");
+            user.setDashboardCode("dashboardCode");
             user.setIsActive(1);
             entityManager.persist(user);
 

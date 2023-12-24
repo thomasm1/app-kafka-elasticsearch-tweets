@@ -21,10 +21,10 @@ public class UserDto  implements Serializable {
     private String lastName;
     private String firstName;
     private int userType;
-    private String phone;
+    private String organizationCode;
     private String email;
     private String cusUrl;
-    private String photoPath;
+    private String dashboardCode;
     private int isActive;
     private int contactType;
     // parent of many

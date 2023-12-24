@@ -8,6 +8,10 @@ import app.mapl.models.User;
 import app.mapl.service.PostServiceJDBC;
 import app.mapl.service.UsersServiceJDBC;
 import app.mapl.webControllers.ForEntityMethod;
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +19,8 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
@@ -29,31 +35,28 @@ import app.mapl.config.logger.LoggerImpl;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 
+@OpenAPIDefinition(
+		info = @Info(
+				title = "Personal Crypto Librarian REST API Documentation",
+				description = "Spring Boot REST API Documentation",
+				version = "v1.0",
+				contact = @Contact(
+						name = "Thomas",
+						email = "thomas1.maestas@gmail.com",
+						url = "https://thomasmaestas.net"
+				)
+		),
+		externalDocs = @ExternalDocumentation(
+				description = "mapl-app User Management Documentation",
+				url = "https://thomasmaestas.net/docs/mapl-app"
+		)
+)
 /// @EnableFeignClient/s
 @ServletComponentScan("app.mapl")
 @EnableJpaRepositories("app.mapl.repositories")
 @EntityScan("app.mapl.models")
+@ConfigurationPropertiesScan("app.mapl.config.*")
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-@OpenAPIDefinition(
-		info = @Info(
-				title = "Spring Boot REST API Documentation",
-				description = "Spring Boot REST API Documentation",
-				version = "v1.0",
-				contact = @Contact(
-						name = "Ramesh",
-						email = "javaguides.net@gmail.com",
-						url = "https://www.javaguides.net"
-				),
-				license = @License(
-						name = "Apache 2.0",
-						url = "https://www.javaguides.net/license"
-				)
-		),
-		externalDocs = @ExternalDocumentation(
-				description = "Spring Boot User Management Documentation",
-				url = "https://www.javaguides.net/user_management.html"
-		)
-)
 public class CliApplication {
 
 
@@ -92,7 +95,7 @@ public class CliApplication {
 	// 	return new ModelMapper();
 	// }
 
-		 
+
 		log.info("INSIDE ____log.info________CliApplication.main()");
 		ApplicationContext ctx = SpringApplication.run(CliApplication.class, args);
 

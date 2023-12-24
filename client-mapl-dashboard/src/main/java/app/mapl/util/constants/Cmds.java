@@ -40,7 +40,7 @@ public class Cmds {
     public static final String EDIT_USERTYPE = "Edit your Usertype :";
     public static final String EDIT_GROUP = "Edit your group :";
     public static final String EDIT_EMAIL = "Edit your email :";
-    public static final String EDIT_PHONE = "Edit your phone number :";
+    public static final String EDIT_ORGANIZATIONCODE = "Edit your organizationCode number :";
     public static final String EDIT_URL = "Edit your image URL :";
 
     // Errors
@@ -62,10 +62,10 @@ public class Cmds {
     public static final String FIVE = "5.) ";
     public static final String SIX = "6.) ";
     public static final String SEVEN = "7.) ";
-    
+
     // behavior
     public static final String BR = "\n";
-    
+
     // comments
     public static final String NICE = " Nice! ";
     public static final String NOW_LOGGING = "|||_______...Logging__________|||";
@@ -79,6 +79,6 @@ public class Cmds {
         this.cmd = cmd;
     }
 
-    
- 
+
+
 }

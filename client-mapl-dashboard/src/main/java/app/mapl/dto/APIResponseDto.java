@@ -10,9 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class APIResponseDto {
-    private NavigatorDto navigatorDto;
+    private UserProfileDto userProfileDto;
     private DashboardDto dashboard;
 
-    public void setNavigator(NavigatorDto navigatorDto) {
+    public void setUserProfile(UserProfileDto userProfileDto) {
     }
 }

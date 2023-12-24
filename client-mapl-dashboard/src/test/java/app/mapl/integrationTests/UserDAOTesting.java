@@ -1,6 +1,6 @@
 package app.mapl.integrationTests;
 
- 
+
 import static app.mapl.service.UsersServiceImpl.userMapper;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +24,7 @@ public class UserDAOTesting {
 	@Order(1)
 	public void add_User() throws InterruptedException {
 //		dynamicUsername = "random_user" + Double.toString(Math.floor((Math.random()*31))); // should constrain this back into String form and unique
-		UserDto u = new UserDto( Integer.valueOf(dynamicUsername), "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "photoPath", 0, 0, null);
+		UserDto u = new UserDto( Integer.valueOf(dynamicUsername), "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "dashboardCode", 0, 0, null);
 		assertEquals(UsersServiceImpl.createUserCli(u), u);
 		System.out.println("added: " + dynamicUsername);
 	}

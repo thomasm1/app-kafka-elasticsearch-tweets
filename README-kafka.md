@@ -1,3 +1,6 @@
+## Please see docker-compose file for java micro-services documentation
+
+
 3 forms:  1) Kafka Java API, 2) Kafka connect [source and Sink], 3) Kafka REST Proxy 
 
 #### PROD Instructions after install 

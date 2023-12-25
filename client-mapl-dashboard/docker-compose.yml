@@ -11,10 +11,10 @@ services:
         MYSQL_USER: mapl
         MYSQL_PASSWORD: abc123!!
     networks:
-      groot-mysql-net:
+      mapl-mysql-net:
 
   mapl-restful-webservices:
-    container_name: mapl-restful-webservices
+    container_name: mapl-mvc
     build:
       context: ./
       dockerfile: Dockerfile
@@ -24,9 +24,9 @@ services:
     depends_on:
       - mysqldb
     networks:
-      groot-mysql-net:
+      mapl-mysql-net:
         aliases:
-          - groot-mysql
+          - mapl-mysql
 
 networks:
-    groot-mysql-net:
+    mapl-mysql-net:

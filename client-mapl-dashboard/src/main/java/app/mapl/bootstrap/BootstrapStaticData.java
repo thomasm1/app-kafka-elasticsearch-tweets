@@ -73,7 +73,7 @@ public class BootstrapStaticData implements CommandLineRunner {
 
         usersRepository.saveAll(users);
         usersRepository.save(new User(0,"thomas.maestas@hotmail.com", "password", "lastName", "firstName",
-                1,   "phone", "thomas.maestas@hotmail.com", "cusUrl", "photoPath",  1, 3 ));
+                1,   "organizationCode", "thomas.maestas@hotmail.com", "cusUrl", "dashboardCode",  1, 3 ));
 
 
         Optional<User> userWithIdOne = usersRepository.findById(1);
@@ -210,4 +210,3 @@ public class BootstrapStaticData implements CommandLineRunner {
 
 
 }
-

@@ -170,21 +170,21 @@ public class StringServiceTests {
     @Test
     public void cleansTheNumber() {
         final String expectedNumber = "2234567890";
-        final String actualNumber = stringService.cleanPhoneNumber("(223) 456-7890");
+        final String actualNumber = stringService.cleanOrganizationCodeNumber("(223) 456-7890");
         assertEquals(expectedNumber, actualNumber);
     }
 
     @Test
     public void cleansNumbersWithDots() {
         final String expectedNumber = "2234567890";
-        final String actualNumber = stringService.cleanPhoneNumber("223.456.7890");
+        final String actualNumber = stringService.cleanOrganizationCodeNumber("223.456.7890");
         assertEquals(expectedNumber, actualNumber);
     }
 
     @Test
     public void cleansNumbersWithMultipleSpaces() {
         final String expectedNumber = "2234567890";
-        final String actualNumber = stringService.cleanPhoneNumber("223 456   7890   ");
+        final String actualNumber = stringService.cleanOrganizationCodeNumber("223 456   7890   ");
         assertEquals(expectedNumber, actualNumber);
     }
 
@@ -192,7 +192,7 @@ public class StringServiceTests {
     public void invalidWhenMoreThan11Digits() {
 //		expectedException.expect(IllegalArgumentException.class);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringService.cleanPhoneNumber("321234567890");
+            stringService.cleanOrganizationCodeNumber("321234567890");
         }, "IllegalArgumentException wuz expected");
 
         // TODO GET error msg here
@@ -205,13 +205,13 @@ public class StringServiceTests {
     public void invalidWithNonNumeric() {
 //		expectedException.expect(IllegalArgumentException.class);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringService.cleanPhoneNumber("123-abc-7890");
+            stringService.cleanOrganizationCodeNumber("123-abc-7890");
         });
         Assertions.assertEquals("java.lang.IllegalArgumentException", thrown.getMessage());
 
         //		expectedException.expect(IllegalArgumentException.class);
         IllegalArgumentException thrown2 = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringService.cleanPhoneNumber("123-@:!-7890");
+            stringService.cleanOrganizationCodeNumber("123-@:!-7890");
         });
         Assertions.assertEquals("java.lang.IllegalArgumentException", thrown2.getMessage());
 

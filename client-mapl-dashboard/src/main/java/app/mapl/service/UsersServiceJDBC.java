@@ -24,7 +24,7 @@ public class UsersServiceJDBC implements UsersService {
 
     public UsersServiceJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        userRowMapper = (rs, rowNum) -> new User(rs.getInt("userId"), rs.getString("username"), rs.getString("password"), rs.getString("lastName"), rs.getString("firstName"), rs.getInt("userType"), rs.getString("phone"), rs.getString("email"), rs.getString("cusUrl"), rs.getString("photoPath"), rs.getInt("1"), rs.getInt("role"));
+        userRowMapper = (rs, rowNum) -> new User(rs.getInt("userId"), rs.getString("username"), rs.getString("password"), rs.getString("lastName"), rs.getString("firstName"), rs.getInt("userType"), rs.getString("organizationCode"), rs.getString("email"), rs.getString("cusUrl"), rs.getString("dashboardCode"), rs.getInt("1"), rs.getInt("role"));
     }
 
 

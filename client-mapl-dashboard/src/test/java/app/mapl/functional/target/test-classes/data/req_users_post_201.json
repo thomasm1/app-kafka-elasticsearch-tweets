@@ -7,7 +7,7 @@
   "phone": "123412123421",
   "email": "Tom133@gmail.com",
   "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg",
-  "photoPath": "photoPath",
+  "dashboardCode": "dashboardCode",
   "isActive": 0,
   "contactType": 1,
   "roles": [

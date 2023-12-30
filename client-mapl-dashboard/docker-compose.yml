@@ -6,28 +6,27 @@ services:
     image: mysql
     restart: on-failure
     environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: grootdb
-        MYSQL_USER: root
-        MYSQL_PASSWORD: root
+        MYSQL_ROOT_PASSWORD: abc123!!
+        MYSQL_DATABASE: mapl_db
+        MYSQL_USER: mapl
+        MYSQL_PASSWORD: abc123!!
     networks:
-      groot-mysql-net:
+      mapl-mysql-net:
 
-  groot-restful-webservices:
-    container_name: groot-restful-webservices
+  mapl-restful-webservices:
+    container_name: mapl-mvc
     build:
       context: ./
       dockerfile: Dockerfile
     restart: on-failure
     ports:
-      - "8080:8080"
+      - "9091:8888"
     depends_on:
       - mysqldb
     networks:
-      groot-mysql-net:
+      mapl-mysql-net:
         aliases:
-          - groot-mysql
+          - mapl-mysql
 
 networks:
-    groot-mysql-net:
-
+    mapl-mysql-net:

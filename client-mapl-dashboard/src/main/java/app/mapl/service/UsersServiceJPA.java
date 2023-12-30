@@ -40,7 +40,7 @@ public class UsersServiceJPA implements UsersService {
         /// TODO: MOVE LOGIC TO REGISTERDTO
         newUser.setUserType(2);
         newUser.setEmail(registerDto.getEmail());
-        newUser.setPhone("1234567890");
+        newUser.setOrganizationCode("1234567890");
 //        newUser.setRole(registerDto.getRole()); //  registerDto.setRole("USER");
 
         User u = usersRepository.save(userMapper.toEntity(newUser));

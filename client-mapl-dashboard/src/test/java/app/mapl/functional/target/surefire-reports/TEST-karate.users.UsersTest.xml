@@ -57,7 +57,7 @@
     <property name="java.class.version" value="61.0"/>
   </properties>
   <testcase name="testUsers[1][1]" classname="karate.users.UsersTest" time="0.039">
-    <failure message="http call failed after 3 milliseconds for url: http://localhost:8888/api/users&#10;classpath:karate/users/users.feature:11" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 
+    <failure message="http call failed after 3 milliseconds for url: http://localhost:8888/api/users&#10;classpath:karate/users/users.feature:11" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError:
 http call failed after 3 milliseconds for url: http://localhost:8888/api/users
 classpath:karate/users/users.feature:11
 </failure>
@@ -77,11 +77,11 @@ classpath:karate/users/users.feature:11
 ]]></system-out>
   </testcase>
   <testcase name="testUsers[1][2]" classname="karate.users.UsersTest" time="0.072">
-    <failure message="http call failed after 13 milliseconds for url: http://localhost:8888/api/users&#10;classpath:karate/users/users.feature:53" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 
+    <failure message="http call failed after 13 milliseconds for url: http://localhost:8888/api/users&#10;classpath:karate/users/users.feature:53" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError:
 http call failed after 13 milliseconds for url: http://localhost:8888/api/users
 classpath:karate/users/users.feature:53
 </failure>
-    <system-out><![CDATA[20:11:36.586 [main] INFO  com.intuit.karate - [print] _______________________ID____:user852@gmail.com 
+    <system-out><![CDATA[20:11:36.586 [main] INFO  com.intuit.karate - [print] _______________________ID____:user852@gmail.com
 20:11:36.677 [main] DEBUG com.intuit.karate - request:
 1 > POST http://localhost:8888/api/users
 1 > Content-Type: application/json; charset=UTF-8
@@ -90,7 +90,7 @@ classpath:karate/users/users.feature:53
 1 > Connection: Keep-Alive
 1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
 1 > Accept-Encoding: gzip,deflate
-{"username":"user852@gmail.com","password":"$2a$10$j\/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Smith","firstName":"Tom1","userType":3,"phone":"5051231234","email":"user852@gmail.com","cusUrl":"https:\/\/doggywood-veterinary.s3.amazonaws.com\/assets\/Animals\/random_a1.jpg","photoPath":"www.photo-852.fancyPhotos.com\/photos\/852","isActive":0,"contactType":1,"roles":[{"id":2,"name":"ROLE_ADMIN"}]}
+{"username":"user852@gmail.com","password":"$2a$10$j\/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Smith","firstName":"Tom1","userType":3,"phone":"5051231234","email":"user852@gmail.com","cusUrl":"https:\/\/doggywood-veterinary.s3.amazonaws.com\/assets\/Animals\/random_a1.jpg","dashboardCode":"www.photo-852.fancyPhotos.com\/photos\/852","isActive":0,"contactType":1,"roles":[{"id":2,"name":"ROLE_ADMIN"}]}
 
 20:11:36.680 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 13 milliseconds for url: http://localhost:8888/api/users
 20:11:36.680 [main] ERROR com.intuit.karate - classpath:karate/users/users.feature:53
@@ -100,11 +100,11 @@ classpath:karate/users/users.feature:53
 ]]></system-out>
   </testcase>
   <testcase name="testUsers[1][3]" classname="karate.users.UsersTest" time="0.106">
-    <failure message="http call failed after 3 milliseconds for url: http://localhost:8888/api/users/212&#10;classpath:karate/users/users.feature:114" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 
+    <failure message="http call failed after 3 milliseconds for url: http://localhost:8888/api/users/212&#10;classpath:karate/users/users.feature:114" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError:
 http call failed after 3 milliseconds for url: http://localhost:8888/api/users/212
 classpath:karate/users/users.feature:114
 </failure>
-    <system-out><![CDATA[20:11:36.694 [main] INFO  com.intuit.karate - [print] _______________________ID____user69@gmail.com 
+    <system-out><![CDATA[20:11:36.694 [main] INFO  com.intuit.karate - [print] _______________________ID____user69@gmail.com
 20:11:36.698 [main] DEBUG com.intuit.karate - request:
 1 > PUT http://localhost:8888/api/users/212
 1 > Content-Type: application/json; charset=UTF-8
@@ -113,7 +113,7 @@ classpath:karate/users/users.feature:114
 1 > Connection: Keep-Alive
 1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
 1 > Accept-Encoding: gzip,deflate
-{"username":"user69@gmail.com","password":"$2a$10$j\/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Maestas","firstName":"Tom2","userType":3,"phone":"5055087707","email":"user69@gmail.com","cusUrl":"https:\/\/doggywood-veterinary.s3.amazonaws.com\/assets\/Animals\/random_a2.jpg","photoPath":"www.photo-69.fancyPhotos.com\/photos\/69","isActive":0,"contactType":1,"roles":[{"id":1,"name":"ROLE_USER"}]}
+{"username":"user69@gmail.com","password":"$2a$10$j\/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Maestas","firstName":"Tom2","userType":3,"phone":"5055087707","email":"user69@gmail.com","cusUrl":"https:\/\/doggywood-veterinary.s3.amazonaws.com\/assets\/Animals\/random_a2.jpg","dashboardCode":"www.photo-69.fancyPhotos.com\/photos\/69","isActive":0,"contactType":1,"roles":[{"id":1,"name":"ROLE_USER"}]}
 
 20:11:36.700 [main] ERROR com.intuit.karate - karate.org.apache.http.conn.HttpHostConnectException: Connect to localhost:8888 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information, http call failed after 3 milliseconds for url: http://localhost:8888/api/users/212
 20:11:36.700 [main] ERROR com.intuit.karate - classpath:karate/users/users.feature:114
@@ -127,7 +127,7 @@ scenarios:  3 | passed:  0 | failed:  3 | time: 0.1707
 
 Karate version: 1.1.0
 ======================================================
-elapsed:   0.45 | threads:    1 | thread time: 0.17 
+elapsed:   0.45 | threads:    1 | thread time: 0.17
 features:     1 | skipped:    0 | efficiency: 0.38
 scenarios:    3 | passed:     0 | failed: 3
 ======================================================

@@ -22,7 +22,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	public User createUser(User u) {
 //		DB.users.put(u.getUserID(), c);
 		// USER is autoincrement
-		String sql = "INSERT INTO USERS(username, password, lastName, firstName, userType, phone, email, cusUrl, photoPath, isActive, contactType) VALUES (?,?,?, ?,?,?, ?,?,?, ?,?, ?)";
+		String sql = "INSERT INTO USERS(username, password, lastName, firstName, userType, organizationCode, email, cusUrl, dashboardCode, isActive, contactType) VALUES (?,?,?, ?,?,?, ?,?,?, ?,?, ?)";
 		try {
 //			CallableStatement cs = conn.prepareCall(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -31,10 +31,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			ps.setString(3, u.getLastName());
 			ps.setString(4, u.getFirstName());
 			ps.setString(5, Integer.toString(u.getUserType()));
-			ps.setString(6, u.getPhone());
+			ps.setString(6, u.getOrganizationCode());
 			ps.setString(7, u.getEmail());
 			ps.setString(8, u.getCusUrl());
-			ps.setString(9, u.getPhotoPath());
+			ps.setString(9, u.getDashboardCode());
 			ps.setString(10, Integer.toString(u.getIsActive()));
 			ps.setString(11, Integer.toString(u.getContactType()));
 			ps.execute();
@@ -62,7 +62,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("username"),
 						rs.getString("password")
 //						,rs.getString("lastname"), rs.getString("firstName"), rs.getInt("userType"), rs.getInt("groups"),
-//						rs.getString("email"), rs.getString("phone"), rs.getString("cusUrl")
+//						rs.getString("email"), rs.getString("organizationCode"), rs.getString("cusUrl")
 						);
 			}
 
@@ -94,10 +94,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("lastname"),
 						rs.getString("firstName"),
 						rs.getInt("userType"),
-						rs.getString("phone"),
+						rs.getString("organizationCode"),
 						rs.getString("email"),
 						rs.getString("cusUrl"),
-						rs.getString("photoPath"),
+						rs.getString("dashboardCode"),
 						rs.getInt("isActive"),
 						rs.getInt("contactType")
 
@@ -133,10 +133,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("lastname"),
 						rs.getString("firstName"),
 						rs.getInt("userType"),
-						rs.getString("phone"),
+						rs.getString("organizationCode"),
 						rs.getString("email"),
 						rs.getString("cusUrl"),
-						rs.getString("photoPath"),
+						rs.getString("dashboardCode"),
 						rs.getInt("isActive"),
 						rs.getInt("contactType")
 
@@ -181,10 +181,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("lastname"),
 						rs.getString("firstName"),
 						rs.getInt("userType"),
-						rs.getString("phone"),
+						rs.getString("organizationCode"),
 						rs.getString("email"),
 						rs.getString("cusUrl"),
-						rs.getString("photoPath"),
+						rs.getString("dashboardCode"),
 						rs.getInt("isActive"),
 						rs.getInt("contactType")
 				);
@@ -232,10 +232,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 						rs.getString("lastname"),
 						rs.getString("firstName"),
 						rs.getInt("userType"),
-						rs.getString("phone"),
+						rs.getString("organizationCode"),
 						rs.getString("email"),
 						rs.getString("cusUrl"),
-						rs.getString("photoPath"),
+						rs.getString("dashboardCode"),
 						rs.getInt("isActive"),
 						rs.getInt("contactType")
 				));
@@ -253,7 +253,7 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 	 */
 	public User updateUser(User change) { // using USERNAME
 //										 1			2			3			   4		5		 6		  7			8			9			10			         11
-		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?,phone=?,email=?, cusurl=?, photopath=?, isActive=?, contactType=? WHERE username = ?";
+		String sql = "UPDATE users SET password=?, lastname=?, firstname=?, usertype=?,organizationCode=?,email=?, cusurl=?, dashboardcode=?, isActive=?, contactType=? WHERE username = ?";
 //		String sql = "CALL UPDATE_USER(?,?,?,   ?,?,?,   ?,?,?,   ?,?,?, ?)";
 		try {
 //			PreparedStatement ps = conn.prepareStatement(sql);
@@ -264,10 +264,10 @@ public class UserDAOimpl implements UserDAO { // can't make static! so use the s
 			cs.setString(2, change.getLastName());
 			cs.setString(3, change.getFirstName());
 			cs.setString(4, Integer.toString(change.getUserType()));
-			cs.setString(5, change.getPhone());
+			cs.setString(5, change.getOrganizationCode());
 			cs.setString(6, change.getEmail());
 			cs.setString(7, change.getCusUrl());
-			cs.setString(8, change.getPhotoPath());
+			cs.setString(8, change.getDashboardCode());
 			cs.setString(9, Integer.toString(change.getIsActive()));
 			cs.setString(10, Integer.toString(change.getContactType()));
 			cs.setString(11, change.getUsername());

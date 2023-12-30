@@ -125,7 +125,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " { \r\n        \"userId\": 15201,\r\n        \"username\": \"u152011\",\r\n        \"password\": \"passwordss\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom\",\r\n        \"groups\": \"groups\",\r\n        \"userType\": 1,\r\n        \"phone\": \"5055087707\",\r\n        \"email\": \"user152013@cryptomaven.xyz\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": 4444,\r\n        \"addresses\":[ \r\n             { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n \r\n        \"chainId\": 0\r\n    }\r\n        ]\r\n    }"
+					"raw": " { \r\n        \"userId\": 15201,\r\n        \"username\": \"u152011\",\r\n        \"password\": \"passwordss\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom\",\r\n        \"groups\": \"groups\",\r\n        \"userType\": 1,\r\n        \"organizationCode\": \"5055087707\",\r\n        \"email\": \"user152013@cryptomaven.xyz\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": 4444,\r\n        \"addresses\":[ \r\n             { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n \r\n        \"chainId\": 0\r\n    }\r\n        ]\r\n    }"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/users",
@@ -171,7 +171,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " { \r\n        \"userId\": 741,\r\n        \"username\": \"u152013331\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"thomasm1\",\r\n        \"firstName\": \"thomasm1\",\r\n        \"groups\": \"groups\",\r\n        \"userType\": 1,\r\n        \"phone\": \"5055087707\",\r\n        \"email\": \"thomas.maestas@gmail.com\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": 4444,\r\n        \"addresses\":[ \r\n             { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n \r\n        \"chainId\": 0\r\n    }\r\n        ]\r\n    }"
+					"raw": " { \r\n        \"userId\": 741,\r\n        \"username\": \"u152013331\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"thomasm1\",\r\n        \"firstName\": \"thomasm1\",\r\n        \"groups\": \"groups\",\r\n        \"userType\": 1,\r\n        \"organizationCode\": \"5055087707\",\r\n        \"email\": \"thomas.maestas@gmail.com\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": 4444,\r\n        \"addresses\":[ \r\n             { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n \r\n        \"chainId\": 0\r\n    }\r\n        ]\r\n    }"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/users",
@@ -292,7 +292,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": 741,\r\n    \"username\": \"thomas1.maestas@gmail.com\",\r\n    \"password\": null,\r\n    \"lastName\": \"Maestas\",\r\n    \"firstName\": \"Thomasm\",\r\n    \"groups\": 0,\r\n    \"userType\": 0,\r\n    \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"phone\": null,\r\n    \"cusUrl\": null,\r\n    \"photoPath\": \"photoPath\",\r\n    \"userGroup\": \"userGroup\",\r\n    \"isActive\": 0,\r\n    \"contactType\": 0,\r\n    \"id\": \"4444\",\r\n    \"addresses\": [\r\n        {\r\n            \"id\": 661,\r\n            \"description\": \"description\",\r\n            \"owner\": \"thomas1.maestas@gmail.com\",\r\n            \"address\": \"0x399EEc3B8e889a2E0853dd254f09C4535061693A\",\r\n            \"chain\": \"polygon\",\r\n            \"iconUrl\": \"iconUrl\",\r\n            \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n            \"user\": null,\r\n            \"chainId\": 0,\r\n            \"nftAddress\": null\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"userId\": 741,\r\n    \"username\": \"thomas1.maestas@gmail.com\",\r\n    \"password\": null,\r\n    \"lastName\": \"Maestas\",\r\n    \"firstName\": \"Thomasm\",\r\n    \"groups\": 0,\r\n    \"userType\": 0,\r\n    \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"organizationCode\": null,\r\n    \"cusUrl\": null,\r\n    \"dashboardCode\": \"dashboardCode\",\r\n    \"userGroup\": \"userGroup\",\r\n    \"isActive\": 0,\r\n    \"contactType\": 0,\r\n    \"id\": \"4444\",\r\n    \"addresses\": [\r\n        {\r\n            \"id\": 661,\r\n            \"description\": \"description\",\r\n            \"owner\": \"thomas1.maestas@gmail.com\",\r\n            \"address\": \"0x399EEc3B8e889a2E0853dd254f09C4535061693A\",\r\n            \"chain\": \"polygon\",\r\n            \"iconUrl\": \"iconUrl\",\r\n            \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n            \"user\": null,\r\n            \"chainId\": 0,\r\n            \"nftAddress\": null\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -335,7 +335,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"userId\": 631,\r\n        \"username\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"phone\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"id1\"\r\n    }",
+					"raw": "{\r\n        \"userId\": 631,\r\n        \"username\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"organizationCode\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"id1\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -805,7 +805,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 261,\r\n    \"description\": \"description\",\r\n    \"owner\": \"owner\",\r\n    \"address\": \"address\",\r\n    \"chain\": \"chain\",\r\n    \"iconUrl\": \"iconUrl\",\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n    \"user\":  { \r\n        \"username\": \"user222222222222222\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"groupType\": \"userGroup\",\r\n        \"email\": \"5055087707\",\r\n        \"userId\": \"1\",\r\n        \"lname\": \"Smith\",\r\n        \"fname\": \"Tom\"\r\n    },\r\n    \"chainId\": 0\r\n}"
+					"raw": "{\r\n    \"id\": 261,\r\n    \"description\": \"description\",\r\n    \"owner\": \"owner\",\r\n    \"address\": \"address\",\r\n    \"chain\": \"chain\",\r\n    \"iconUrl\": \"iconUrl\",\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n    \"user\":  { \r\n        \"username\": \"user222222222222222\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"groupType\": \"userGroup\",\r\n        \"email\": \"5055087707\",\r\n        \"userId\": \"1\",\r\n        \"lname\": \"Smith\",\r\n        \"fname\": \"Tom\"\r\n    },\r\n    \"chainId\": 0\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/addresses",

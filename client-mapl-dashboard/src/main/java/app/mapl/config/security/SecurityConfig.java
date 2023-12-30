@@ -56,7 +56,7 @@ public class SecurityConfig {
         this.authenticationFilter = authenticationFilter;
     }
 
-
+    //////////////////////////////////////
     // DISABLE WHEN CONNECTED TO LDAP or DB
     @Bean
     @Profile(value={"test"})
@@ -72,6 +72,9 @@ public class SecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(userDetails1, userDetails2);
     }
+    //////////////////////////////////////
+
+
     private UserDetails createNewUser(String username, String password) {
         log.info("createNewUser");
 

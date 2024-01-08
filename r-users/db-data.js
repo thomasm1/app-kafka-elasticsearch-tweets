@@ -1,6 +1,6 @@
 "use strict";
-exports.__esModule = true;
-exports.NFT_REFS = exports.POSTS = exports.USERS = exports.LOGIN = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NFT_REFS = exports.BLOCKCHAIN = exports.POSTS = exports.USERS = exports.LOGIN = void 0;
 exports.LOGIN = [
     { email: "thomas1.maestas@gmail.com",
         password: "pass" },
@@ -9,7 +9,8 @@ exports.LOGIN = [
 ];
 /////////// USERS ////////////////////////////////////////////
 exports.USERS = [
-    { "0": {
+    {
+        "0": {
             id: "0",
             fName: "Tom",
             lName: "Milton",
@@ -70,8 +71,9 @@ exports.USERS = [
                     ownerId: 0,
                     chainId: 43114
                 }
-            ]
-        } },
+            ],
+        }
+    },
     { "1": {
             id: "1",
             fName: "Jil",
@@ -103,7 +105,7 @@ exports.USERS = [
                     ownerId: 1,
                     chainId: 1
                 },
-            ]
+            ],
         } },
     { "2": {
             id: "2",
@@ -136,7 +138,7 @@ exports.USERS = [
                     ownerId: 2,
                     chainId: 1
                 },
-            ]
+            ],
         } },
 ];
 /////////// POSTS //////////////////////////////////////// //////////////////////////////////////
@@ -156,6 +158,24 @@ exports.POSTS = {
     "4": {
         "id": "4",
         "title": "4st"
+    }
+};
+exports.BLOCKCHAIN = {
+    "1": {
+        "id": "1",
+        "title": "genesis block1"
+    },
+    "2": {
+        "id": "2",
+        "title": "genesis block2"
+    },
+    "3": {
+        "id": "3",
+        "title": "genesis block3"
+    },
+    "4": {
+        "id": "4",
+        "title": "genesis block4"
     }
 };
 ///////////  NFT_REFS //////////////////////////////////////// //////////////////////////////////////

@@ -67,8 +67,7 @@ Host: db
 Port number: 5432
 Configure Site:
 Site name: Test
-Site email address: root@localhost.localdomain
-Username: admin
+Site email address: root@localhost.localdomainUsername: admin
 Password: admin123
 Confirm Password: admin123
 Click "Save and continue".

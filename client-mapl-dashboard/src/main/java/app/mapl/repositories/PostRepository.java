@@ -5,6 +5,7 @@ import app.mapl.models.Comment;
 import app.mapl.models.PostEntity;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
@@ -52,13 +53,23 @@ public interface PostRepository extends JpaRepository<PostEntity, Long> {
 	List<PostEntity> findByUsername(String username);
 
 //	@Query("SELECT p FROM PostEntity p WHERE p.username = ?1")
-//	@Query("SELECT CONCAT(p.title, ' ', p.post) FROM PostEntity p WHERE p.username = ?1")
-//	@Query("SELECT CONCAT(p.username, '\n',  a.name, ' ',a.email) " +
-//			"FROM PostEntity p "+
-//			"JOIN p.author AS a"+
-//			"WHERE a.name LIKE :#{#alias == null || #alias.isEmpty() ? '%' : #alias}")
-//		List<PostEntity> findByAuthor(String alias);
+	@Query("SELECT CONCAT(p.title, ' ', p.post) FROM PostEntity p WHERE p.username = ?1")
+		List<PostEntity> findByAuthor(String alias);
+
+	@Query("SELECT p FROM PostEntity p WHERE " +
+			"p.title LIKE CONCAT('%',:query, '%')" +
+			"Or p.post LIKE CONCAT('%',:query, '%')" +
+			"Or p.blogcite LIKE CONCAT('%', :query, '%')")
+    Page<PostEntity> searchPostEntitiesBy(Pageable page, String query);
+
+	@Query(value = "SELECT * FROM POST_ENTITY p WHERE " +
+			"p.title LIKE CONCAT('%',:query, '%')" +
+			"Or p.post LIKE CONCAT('%',:query, '%')" +
+			"Or p.blogcite LIKE CONCAT('%', :query, '%')", nativeQuery = true)
+	Page<PostEntity> searchPostEntitiesBySQL(String query);
 
 	PostEntity.SimplePost findSimplyByTitle(String title);
+
+
 
 }

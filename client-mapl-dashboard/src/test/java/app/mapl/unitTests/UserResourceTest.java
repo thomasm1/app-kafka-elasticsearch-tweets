@@ -23,12 +23,12 @@ public class UserResourceTest {
     private MockMvc mockMvc;
 
 	private User custOne;
-	
+
 	@BeforeAll
 	public static void beforeClass() {
 		System.out.println("Before Class executing ...");
 	}
-	
+
 	@BeforeEach
 	public void setup() {
 		 System.out.println("Before executing ...");
@@ -36,13 +36,13 @@ public class UserResourceTest {
 //		 custOne = new User(3, "tmaestas", "password", "thom", "m-last", false, 0);
 	   }
 
-//    @Test
+//        // @Test
 //    public void setUserID() {
 //    	custOne.setUserID(4);
 //    	assertEquals(4, custOne.getUserID());
 //    }
 
-    @Test
+        // @Test
     public void getUserID()  throws Exception {
 //        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(USER_URL_TEMPLATE).accept(MediaType.APPLICATION_JSON);
 //        MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
@@ -56,69 +56,69 @@ public class UserResourceTest {
 //    	custOne.setUserId(4);
     }
 
-    @Test
+        // @Test
     public void setUsername() {
 //    	custOne.setUsername("newUsername");
 //    	assertEquals("newUsername", custOne.getUsername());
     }
 
-    @Test
-    public void getUsername() { 
+        // @Test
+    public void getUsername() {
 //    	String thomUsername = custOne.getUsername();
 //    	System.out.println("-getUsername()-  " + thomUsername);
-//    	custOne.setUsername("newUsername"); 
+//    	custOne.setUsername("newUsername");
 //    	String thomUsername2 = custOne.getUsername();
 //    	System.out.println("-getUsername()-  " + thomUsername2);
     }
 
-    @Test
+        // @Test
     public void setPassword() {
 //       custOne.setPassword("newPassWord");
 //   	assertEquals("newPassWord", custOne.getPassword());
     }
-    
-    @Test
+
+        // @Test
     public void getPassword() {
 //    	String getpass = custOne.getPassword();
 //        System.out.println("-getPassword() - " + getpass);
 //        custOne.setPassword("newPassWord");
 //    	String getpass2 = custOne.getPassword();
 //        System.out.println("-getPassword() - " + getpass2);
-    }  
+    }
 
-    @Test
+        // @Test
     public void setOwner() {
 //    	custOne.setOwner(true);
 //       	assertEquals(true, custOne.isOwner());
     }
-    
-    @Test
+
+        // @Test
     public void setLastName() {
 // 	    String oldLast = custOne.getLastName();
-// 	    custOne.setLastName("m-custNEW-lastNameNEW"); 
-//	   
+// 	    custOne.setLastName("m-custNEW-lastNameNEW");
+//
 // 	    String newLast = custOne.getLastName();
 //	    System.out.println("Updated last name: " + newLast);
     }
-    
-//    @Test
+
+//        // @Test
 //    public void isOwner() {
 //    	Boolean isOwnerr = custOne.isOwner();
 //        System.out.println("-isOwner() - " + isOwnerr);
 //    	custOne.setOwner(true);
 //    	assertTrue("post-purchase", custOne.isOwner());
-//    	
+//
 //    	Boolean isOwnerr2 = custOne.isOwner();
 //        System.out.println("-isOwner() - " + isOwnerr2);
 //    }
-//    
-//    @Test
-//	    public void getOfferCount() { 
+//
+//        // @Test
+//	    public void getOfferCount() {
 //	    	int oldOffer = (int) custOne.getOfferCount();
 //	    	System.out.println("get Offer Cound is: "+ oldOffer);
 //	    	 System.out.println("Updated Offer Count is: "+ custOne.getOfferCount());
 //	    }
-//	   
+//
     @AfterAll
     public static void afterClass() {
 		System.out.println("After Class executing ...");

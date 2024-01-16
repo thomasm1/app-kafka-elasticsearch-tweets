@@ -6,10 +6,10 @@ services:
     image: mysql
     restart: on-failure
     environment:
-        MYSQL_ROOT_PASSWORD: abc123!!
-        MYSQL_DATABASE: mapl_db
-        MYSQL_USER: mapl
-        MYSQL_PASSWORD: abc123!!
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: dashboard_db
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
     networks:
       mapl-mysql-net:
 
@@ -20,13 +20,10 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     ports:
-      - "9091:8888"
+      - "9091:8080"
     depends_on:
       - mysqldb
     networks:
       mapl-mysql-net:
         aliases:
           - mapl-mysql
-
-networks:
-    mapl-mysql-net:

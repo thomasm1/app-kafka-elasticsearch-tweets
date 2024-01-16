@@ -1,7 +1,0 @@
-{
-  "type": "about:blank",
-  "title": "Internal Server Error",
-  "status": 500,
-  "detail": "Required path variable 'userId' is not present.",
-  "instance": "/api/users"
-}

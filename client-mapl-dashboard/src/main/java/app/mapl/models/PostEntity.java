@@ -17,7 +17,7 @@ import java.util.Set;
 )
 public class PostEntity {
 
-    public interface SimplePost {
+	public interface SimplePost {
 		String getTitle();
 //		@Value("#{target.author.name}")  //TODO MAKE AUTHOR OBJECT
 		String getAuthor();

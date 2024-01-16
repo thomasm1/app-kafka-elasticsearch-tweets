@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
- 
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class CoinsServiceImplTest {      // *NOTE: change PK coinnames before se
 
 	@BeforeAll // setup
 	public static void setupClass() {
-		System.out.println("Class/Static setup "); 
+		System.out.println("Class/Static setup ");
 	}
 
 	@BeforeEach
@@ -26,39 +26,40 @@ public class CoinsServiceImplTest {      // *NOTE: change PK coinnames before se
 		System.out.println("Method/Instance setup ");
 	}
 
-    @Test   
+    @Test
 	public void add_new_coin() {
-		Coin c = new Coin(75757, "Ethereum", "ETH", 45000.00, 0);    // PASSES
+		Coin c;    // PASSES
+		c = new Coin(75757, "Ethereum", "ETH", 45000.00, 45.01, 0);
 		assertTrue(CoinsServiceImpl.createCoin(c));
-		
+
 	}
-    @Test   
+    @Test
    	public void update_coin() {
-   		Coin c = new Coin(75578, "Ethereum", "ETH", 45000.00, 0);    // PASSES
+   		Coin c = new Coin(75578, "Ethereum", "ETH", 45000.00, 45.01, 0);    // PASSES
    		assertTrue(CoinsServiceImpl.updateCoin(c));
-   		
+
    	}
-    @Test   
+    @Test
    	public void get_coin_make() {
-    	Coin c = new Coin(75578, "Ethereum", "ETH", 45000.00, 0);    // PASSES
+    	Coin c = new Coin(75578, "Ethereum", "ETH", 45000.00, 45.01, 0);    // PASSES
 		CoinsServiceImpl.createCoin(c);
    		assertEquals("Ethereum", c.getCoinToken());
-   		
-   	} 
-    @Test   
-   	public void get_coin() {
-    	Coin c = new Coin(775578, "Ethereum", "ETH", 45000.00, 0);    // PASSES
-		CoinsServiceImpl.getCoin(c.getCoinId()); 
-   		assertEquals(CoinsServiceImpl.getCoin(c.getCoinId()), CoinsServiceImpl.getCoin(c.getCoinId())); // Check not null bc dynamic int ID
-   		
-   	} 
-	@Test   
-   	public void delete_coin() {										  // PASSES
-		Coin c = new Coin(77558, "Ethereum", "ETH", 45000.00, 0);  
-   		CoinsServiceImpl.createCoin(c); 
-   		assertTrue(CoinsServiceImpl.deleteCoin(c.getCoinId())); 
+
    	}
-     
+    @Test
+   	public void get_coin() {
+    	Coin c = new Coin(775578, "Ethereum", "ETH", 45000.00, 45.01, 0);    // PASSES
+		CoinsServiceImpl.getCoin(c.getCoinId());
+   		assertEquals(CoinsServiceImpl.getCoin(c.getCoinId()), CoinsServiceImpl.getCoin(c.getCoinId())); // Check not null bc dynamic int ID
+
+   	}
+	@Test
+   	public void delete_coin() {										  // PASSES
+		Coin c = new Coin(77558, "Ethereum", "ETH", 45000.00, 45.01, 0);
+   		CoinsServiceImpl.createCoin(c);
+   		assertTrue(CoinsServiceImpl.deleteCoin(c.getCoinId()));
+   	}
+
 	@AfterAll
 	public static void tearDownClass() {
 		System.out.println("After Class executing ...");

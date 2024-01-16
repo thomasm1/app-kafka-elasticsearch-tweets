@@ -204,7 +204,7 @@ public class BootstrapStaticData implements CommandLineRunner {
             int coinOffset = (int) (Math.random() * FileDataStore.getCoinInventory());
             Coin coin = coins.get(coinOffset);
             ManagerCoins.getInstance().saveLocalUserCoin(user, coin);
-            System.out.println(coin.getCoinSymbol());
+
         }
     }
 

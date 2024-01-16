@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("api/dashboards")
 @AllArgsConstructor
 public class DashboardController {
@@ -28,5 +29,5 @@ public class DashboardController {
         return new ResponseEntity<>(dashboardDto, HttpStatus.OK);
     }
 
-    
+
 }

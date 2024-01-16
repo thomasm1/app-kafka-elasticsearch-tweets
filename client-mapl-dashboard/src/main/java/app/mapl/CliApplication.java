@@ -21,6 +21,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
@@ -56,6 +57,7 @@ import org.springframework.http.*;
 @EnableJpaRepositories("app.mapl.repositories")
 @EntityScan("app.mapl.models")
 @ConfigurationPropertiesScan("app.mapl.config.*")
+@EnableConfigurationProperties
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class CliApplication {
 

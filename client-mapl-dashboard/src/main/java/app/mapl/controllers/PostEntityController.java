@@ -73,7 +73,11 @@ public class PostEntityController {
         List<PostEntityDto> postEntityDtoList = (List<PostEntityDto>) postService.getPostsByCategoryId(categoryId);
         return ResponseEntity.ok(postEntityDtoList);
     }
-
+    @GetMapping("/search")
+    public ResponseEntity<PostEntityResponse> searchPosts(@RequestParam("query") String query){
+        PostEntityResponse postEntityResponse =  postService.searchPostEntities(query);
+        return ResponseEntity.ok(postEntityResponse);
+    }
     @PutMapping(ID)
     public ResponseEntity<PostEntityDto> updatePost(@RequestBody PostEntityDto postEntityDto, @PathVariable(name = "id") long id){
         PostEntityDto postResponse = postService.updatePost(postEntityDto, id);

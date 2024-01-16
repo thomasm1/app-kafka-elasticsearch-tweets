@@ -10,13 +10,13 @@ public class UserRegisterTest {
 
 	@BeforeEach
 	public void setup() {
-		String fileName = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/scannertext.txt";
+		String fileName = "data/scannertext.txt";
 		System.out.println("Before executing ..." + fileName);
 	}
 
 	@Test // WelcomeScript Test
 	public void WelcomeScriptTest() throws FileNotFoundException {
-		String userScript = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/userscript.txt";
+		String userScript = "data/userscript.txt";
 		File textScript = new File(userScript);
 
 		Scanner scan = new Scanner(textScript);
@@ -28,7 +28,7 @@ public class UserRegisterTest {
 
 	@Test
 	public void RegisterUsernameTest() throws FileNotFoundException {
-		String userScript = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/userscript.txt";
+		String userScript = "data/userscript.txt";
 		File textScript = new File(userScript);
 
 		Scanner scan = new Scanner(textScript);
@@ -41,7 +41,7 @@ public class UserRegisterTest {
 
 	@Test
 	public void RegisterPasswordTest() throws FileNotFoundException {
-		String userScript = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/userscript.txt";
+		String userScript = "data/userscript.txt";
 		File textScript = new File(userScript);
 
 		Scanner scan = new Scanner(textScript);
@@ -54,7 +54,7 @@ public class UserRegisterTest {
 
 	@Test
 	public void RegisterFullnameTest() throws FileNotFoundException {
-		String userScript = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/userscript.txt";
+		String userScript = "data/userscript.txt";
 		File textScript = new File(userScript);
 
 		Scanner scan = new Scanner(textScript);
@@ -70,7 +70,7 @@ public class UserRegisterTest {
 
 	@AfterEach
 	public void teardown() {
-		String fileName = "C:/w/www/git/java-dev/project0/src/main/java/systemUser/scannertext.txt";
+		String fileName = "data/scannertext.txt";
 		System.out.println("scan.close() After executing ..."  );
 		Scanner scan = new Scanner(fileName);
 		scan.close();

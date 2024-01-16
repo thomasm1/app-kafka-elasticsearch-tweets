@@ -1,14 +1,18 @@
 package app.mapl.models;
 
 
-
-import lombok.*;
-
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
 
-@Data
-@NoArgsConstructor
+import java.io.Serializable;
+import java.util.Objects;
+
+@Builder
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "cointable")
@@ -25,11 +29,12 @@ public class Coin implements Serializable {
 	@Column(name = "coinsymbol")
 	String coinSymbol;
 	@Column(name = "pricetotal")
-	double priceTotal; 
+	double priceTotal;
 	@Column(name = "amounttotal")
-	double amountTotal; 
+	double amountTotal;
 
 	int purchased;
+
 
 	public int isPurchased() {
 		return 0;
@@ -40,4 +45,19 @@ public class Coin implements Serializable {
 	 * *purchased = 1 ; (not) purchased = 0
 	 */
 
+	@Override
+	public final boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null) return false;
+		Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+		Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+		if (thisEffectiveClass != oEffectiveClass) return false;
+		Coin coin = (Coin) o;
+		return false;
+	}
+
+	@Override
+	public final int hashCode() {
+		return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+	}
 }

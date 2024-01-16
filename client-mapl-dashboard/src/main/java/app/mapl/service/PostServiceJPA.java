@@ -127,6 +127,90 @@ public class PostServiceJPA implements PostService {
 		return posts.stream().map(post -> postEntityMapper.PostEntityToPostEntityDTO(post)).collect(Collectors.toList());
 	}
 
+
+	/**
+	 * @param query;
+	 * @return PostEntityResponse
+	 */
+	@Override
+	public  PostEntityResponse searchPostEntities(int pageNo, int pageSize, String sortBy, String sortDir, String query) {
+//		List<PostEntityDto> postEntityDtoList =  postEntityRepository.searchProductsSQL(query);
+//		return postEntityDtoList;
+//
+//		Category category = categoryRepository.findById(categoryId).orElseThrow(
+//				() -> new ResourceNotFoundException("Category", "id", Long.toString(categoryId)));
+//		List<PostEntity> posts = pr.findByCategoryId(categoryId);
+//		return posts.stream().map(post -> postEntityMapper.PostEntityToPostEntityDTO(post)).collect(Collectors.toList());
+
+		Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+				: Sort.by(sortBy).descending();
+
+		// create Pageable instance
+		Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+		Page<PostEntity> posts = pr.searchPostEntitiesBy(pageable, query);
+
+		// get content for page object
+		List<PostEntity> listOfPosts = posts.getContent();
+		List<PostEntityDto> content = listOfPosts.stream().map(postEntityMapper::PostEntityToPostEntityDTO).collect(Collectors.toList());
+
+		PostEntityResponse postResponse = new PostEntityResponse();
+		postResponse.setContent(content);
+		postResponse.setPageNo(posts.getNumber());
+		postResponse.setPageSize(posts.getSize());
+		postResponse.setTotalElements(posts.getTotalElements());
+		postResponse.setTotalPages(posts.getTotalPages());
+		postResponse.setLast(posts.isLast());
+
+		return postResponse;
+
+	}
+	@Override
+	public  PostEntityResponse searchPostEntities(String query) {
+//		List<PostEntityDto> postEntityDtoList =  postEntityRepository.searchProductsSQL(query);
+//		return postEntityDtoList;
+//
+//		Category category = categoryRepository.findById(categoryId).orElseThrow(
+//				() -> new ResourceNotFoundException("Category", "id", Long.toString(categoryId)));
+//		List<PostEntity> posts = pr.findByCategoryId(categoryId);
+//		return posts.stream().map(post -> postEntityMapper.PostEntityToPostEntityDTO(post)).collect(Collectors.toList());
+		var sortDir = "ASC";
+		var sortBy = "title";
+		var pageNo = 0;
+		var pageSize = 5;
+		Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+				: Sort.by(sortBy).descending();
+
+		// create Pageable instance
+		Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+		Page<PostEntity> posts = pr.searchPostEntitiesBy(pageable, query);
+
+		// get content for page object
+		List<PostEntity> listOfPosts = posts.getContent();
+		List<PostEntityDto> content = listOfPosts.stream().map(postEntityMapper::PostEntityToPostEntityDTO).collect(Collectors.toList());
+
+		PostEntityResponse postResponse = new PostEntityResponse();
+		postResponse.setContent(content);
+		postResponse.setPageNo(posts.getNumber());
+		postResponse.setPageSize(posts.getSize());
+		postResponse.setTotalElements(posts.getTotalElements());
+		postResponse.setTotalPages(posts.getTotalPages());
+		postResponse.setLast(posts.isLast());
+
+		return postResponse;
+
+	}
+
+	/**
+	 * @param query
+	 * @return
+	 */
+	@Override
+	public PostEntityResponse searchPostEntitiesSQL(String query) {
+		return searchPostEntities(query);
+	}
+
 	@Override
 	public PostEntityDto updatePost(PostEntityDto postDto, long id) {
 		Category cat = categoryRepository.findById(postDto.getCategoryId()).orElseThrow(

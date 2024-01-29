@@ -1,12 +1,11 @@
 package app.mapl.webservice;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
- @WebServlet("/offer")
-//    public class CouponServlet extends HttpServlet {
-public class ViewOfferCommand implements Command {
+public class ViewOfferCommand  implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

@@ -1,6 +1,6 @@
-#!/bin/bash
-docker pull mysql/mysql-server:latest && \
-docker run --name=mysqlContainer -p 3306:3306 -d mysql/mysql-server:latest && \
+#D!i/bin/bash
+#docker pull mysql/mysql-server:latest && \
+docker run --name mysqlContainer --publish 3306:3306 -d 1d9c2 && \
 #docker logs mysqlContainer
 docker exec -it mysqlContainer mysql -uroot -p && \
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';

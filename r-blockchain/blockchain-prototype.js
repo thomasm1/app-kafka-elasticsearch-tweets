@@ -40,7 +40,7 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) 
 		amount: amount,
 		sender: sender,
 		recipient: recipient,
-		transactionId: uuid().split('-').join('')
+		transactionId: uuid()   
 	};
 
 	return newTransaction;
@@ -146,24 +146,8 @@ Blockchain.prototype.getAddressData = function(address) {
 		addressBalance: balance
 	};
 };
-
-
-
-
-
+ 
 
 module.exports = Blockchain;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

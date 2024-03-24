@@ -1,14 +1,13 @@
 package app.mapl.controllerTests;
 
 import app.mapl.controllers.CoinsController;
+import app.mapl.service.CoinsServiceJPA;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import app.mapl.controllers.CoinsController;
 import app.mapl.mapper.CoinMapper;
 import app.mapl.dto.CoinDto;
 //import app.mapl.models.dto.Symbol;
 import app.mapl.repositories.CoinsRepository;
 import app.mapl.service.CoinsService;
-import app.mapl.service.CoinsServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -45,7 +44,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         CoinsService chainService;
 
         @MockBean
-        CoinsServiceImpl chainServiceImpl;
+        CoinsServiceJPA chainServiceImpl;
         @MockBean
         CoinsRepository chainsRepository;
         @MockBean

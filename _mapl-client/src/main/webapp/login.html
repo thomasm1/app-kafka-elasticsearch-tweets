@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Requests-1</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="proj1style.css" rel="stylesheet" />
+    <style>
+        footer.footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <link rel="shortcut favicon" href="https://tmm-nov.s3.amazonaws.com/img/favicon.ico" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav ">
+            <li class="active">
+                <a href="#" class="navbar-brand center"><em>Requests-1</em>
+                </a>
+
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right userdata">
+            <li class=" navright register">
+                <a href="register.html"><button class="btn btn-primary logout">REGISTER</button></a>
+            </li>
+        </ul> 
+        <span class="header-title">
+            <h3>LOGIN </h3>
+        </span>
+    </nav>
+    <div class="container">
+
+        <div id="info">
+            <!-- <form action="login.do" method="post"> -->
+            <p>
+                <!-- 	<font color="red">${errorMessage}</font> -->
+            </p>
+            <h4 id="text">USERNAME</h4>
+            <input id="username" type="text" name="username" />
+            <h4 id="text">PASSWORD</h4>
+            <input id="password" type="password" name="password" />
+            <div class="spinner" id="spinner"></div>
+            <hr>
+            <button class="btn btn-primary" onclick="login()">LOGIN </button>
+
+        </div>
+    </div>
+    <footer class="footer">
+        <div>
+            <p onclick="adminEntry()">Administration Login<br />
+            </p>
+            <p onclick="login.html"> <small>Revature | Copyright &copy; 2020 &nbsp;</small></p>
+        </div>
+    </footer>
+
+</body>
+<script src="proj1js.js"></script>
+<script>
+
+</script>
+
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</html>

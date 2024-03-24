@@ -1,18 +1,17 @@
 package app.mapl.integrationTests;
 
-
-import static app.mapl.service.UsersServiceImpl.userMapper;
-import static org.junit.jupiter.api.Assertions.*;
-
+ 
 import app.mapl.dto.UserDto;
+import app.mapl.service.UsersServiceJPA;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import app.mapl.models.User;
-import app.mapl.service.UsersServiceImpl;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class UserDAOTesting {
-
+	private static UsersServiceJPA usersServiceJPA = new UsersServiceJPA();
 	static String dynamicUsername;
 
 	@BeforeAll
@@ -25,7 +24,7 @@ public class UserDAOTesting {
 	public void add_User() throws InterruptedException {
 //		dynamicUsername = "random_user" + Double.toString(Math.floor((Math.random()*31))); // should constrain this back into String form and unique
 		UserDto u = new UserDto( Integer.valueOf(dynamicUsername), "username", "password", "lastName", "firstName", 0, "phone", "email", "cusUrl", "dashboardCode", 0, 0, null);
-		assertEquals(UsersServiceImpl.createUserCli(u), u);
+		assertEquals(usersServiceJPA.createUser(u), u);
 		System.out.println("added: " + dynamicUsername);
 	}
 	@Test
@@ -37,7 +36,7 @@ public class UserDAOTesting {
 		Thread.sleep(2000);
 		System.out.println(		"Thread.sleep(1000); . . . .");
 		Thread.sleep(1000);
-		assertTrue(UsersServiceImpl.deleteUserCli(String.valueOf(UsersServiceImpl.getUserCli("random_user27.0"))));
+		assertTrue(usersServiceJPA.deleteUser(String.valueOf(usersServiceJPA.getUserByEmail("random_user27@gmail.com"))));
 		System.out.println("deleted: " + dynamicUsername);
 	}
 }

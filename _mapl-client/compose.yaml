@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: 'thomasm1/mysql:latest'
+    environment:
+      - 'MYSQL_USER=root'
+      - 'MYSQL_PASSWORD=root'
+      - 'MYSQL_ROOT_PASSWORD=root'
+      - 'MYSQL_DATABASE=dashboard_db'
+    ports:
+      - '3306'
+#  oracle:
+#    image: 'gvenzl/oracle-xe:latest'
+#    environment:
+#      - 'ORACLE_PASSWORD=secret'
+#    ports:
+#      - '1521'
+#  sqlserver:
+#    image: 'mcr.microsoft.com/mssql/server:latest'
+#    environment:
+#      - 'ACCEPT_EULA=yes'
+#      - 'MSSQL_PID=express'
+#      - 'MSSQL_SA_PASSWORD=verYs3cret'
+#    ports:
+#      - '1433'

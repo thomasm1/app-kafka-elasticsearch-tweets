@@ -2,7 +2,6 @@ package app.mapl.serviceTests;
 
 import app.mapl.dto.UserDto;
 import app.mapl.service.UsersService;
-import app.mapl.service.UsersServiceImpl;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -27,8 +25,7 @@ public class UserServiceMockTest {
     @Mock
     private UsersService userServiceMock;
     // Impl usersServiceImpl = mock(UsersServiceImpl.class);
-    @InjectMocks
-    private UsersServiceImpl usersServiceImpl;
+
 
     @BeforeAll
     public final static void setup() {

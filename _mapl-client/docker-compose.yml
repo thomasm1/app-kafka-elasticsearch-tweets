@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    restart: on-failure
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: dashboard_db
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+    networks:
+      mapl-mysql-net:
+
+  mapl-restful-webservices:
+    container_name: mapl-mvc
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "9091:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      mapl-mysql-net:
+        aliases:
+          - mapl-mysql

@@ -1,6 +1,7 @@
 
 import * as sha256 from 'sha256';
 const currentNodeUrl: string = process.argv[3];
+//"nodemon --watch dev -e js dev/networkNode.js 9001 http://localhost:9001"
 import { v1 as uuidv1 } from 'uuid';
 
 interface Transaction {

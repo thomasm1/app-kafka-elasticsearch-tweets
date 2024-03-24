@@ -32,7 +32,7 @@ const getBlockchain = (req: Request, res: Response) => {
  const getBlockById = (req: Request, res: Response) => {
 
   const blockId = req.params["id"];
-  const blockchain: any = Object.values(BLOCKCHAIN);                      //////// REMOVE THIS LINE
+  const blockchain: BLOCKCHAIN = Object.values(BLOCKCHAIN);
   const block = blockchain.find((block: { id: string; }) => block.id == blockId);
 
   res.status(200).json(block);

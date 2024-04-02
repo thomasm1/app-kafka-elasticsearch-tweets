@@ -1,11 +1,9 @@
 package app.mapl.service;
 
 import app.mapl.models.Book;
-import app.mapl.repositories.BooksRepository;
+import app.mapl.repositories.BookRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +14,7 @@ import java.util.List;
 @Service
 public class BooksServiceJPA implements BooksService {
 
-    private final BooksRepository booksRepository;
+    private final BookRepository booksRepository;
 
     @Override
     public Book createBooks(Book bkmk) {

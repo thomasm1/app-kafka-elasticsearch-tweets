@@ -5,7 +5,7 @@ create table ROLES
     primary key (id)
 );
 
-drop table users;
+
 create table  USERS
 (
     USERID      INT not null AUTO_INCREMENT,
@@ -42,7 +42,7 @@ create table NFT_REF
     primary key (id)
 );
 
-select * from Users;
+
 
 create table COINTABLE
 (
@@ -56,7 +56,7 @@ create table COINTABLE
 CREATE TABLE WEBLINK(id BIGINT PRIMARY KEY AUTO_INCREMENT,
                      title varchar(500) ,
                      url varchar(250) NOT NULL ,
-                     host varchar(250) ,
+#                      host varchar(250) ,
                      downloadstatus TINYINT,
                      htmlpage    varchar(255));
 
@@ -66,10 +66,10 @@ CREATE TABLE CATEGORIES
     name          VARCHAR(255) NULL,
     `description` VARCHAR(255) NULL,
     urls          VARCHAR(255) NULL,
-    CONSTRAINT pk_categories PRIMARY KEY (id)
+    CONSTRAINT PK_CATEGORIES PRIMARY KEY (id)
 );
 
-CREATE TABLE comments
+CREATE TABLE COMMENTS
 (
     id      BIGINT       NOT NULL AUTO_INCREMENT,
     name    VARCHAR(255) NULL,
@@ -78,7 +78,7 @@ CREATE TABLE comments
     post_id BIGINT       NOT NULL,
     CONSTRAINT pk_comments PRIMARY KEY (id)
 );
-CREATE TABLE post_entity
+CREATE TABLE POST_ENTITY
 (
     id          BIGINT       NOT NULL AUTO_INCREMENT,
     did         VARCHAR(255) NOT NULL,
@@ -93,15 +93,15 @@ CREATE TABLE post_entity
     CONSTRAINT pk_post_entity PRIMARY KEY (id)
 );
 
-ALTER TABLE post_entity
+ALTER TABLE POST_ENTITY
     ADD CONSTRAINT uc_6cd2046030c442c12bf79a923 UNIQUE (id);
 
-ALTER TABLE post_entity
-    ADD CONSTRAINT FK_POST_ENTITY_ON_CATEGORY FOREIGN KEY (category_id) REFERENCES categories (id);
-ALTER TABLE comments
-    ADD CONSTRAINT FK_COMMENTS_ON_POST FOREIGN KEY (post_id) REFERENCES post_entity (id);
+ALTER TABLE POST_ENTITY
+    ADD CONSTRAINT FK_POST_ENTITY_ON_CATEGORY FOREIGN KEY (category_id) REFERENCES CATEGORIES (id);
+ALTER TABLE COMMENTS
+    ADD CONSTRAINT FK_COMMENTS_ON_POST FOREIGN KEY (post_id) REFERENCES POST_ENTITY (id);
 
-CREATE TABLE offers
+CREATE TABLE OFFERS
 (
     offerid       INT          NOT NULL AUTO_INCREMENT,
     username      VARCHAR(255) NULL,
@@ -112,10 +112,10 @@ CREATE TABLE offers
     `description` VARCHAR(255) NULL,
     target_date   date         NULL,
     done          BIT(1)       NOT NULL,
-    CONSTRAINT pk_offers PRIMARY KEY (offerid)
+    CONSTRAINT PK_OFFERS PRIMARY KEY (offerid)
 );
-
-CREATE TABLE offerlogic
+# ALTER TABLE post_entity RENAME TO POST_ENTITY;
+CREATE TABLE OFFERLOGIC
 (
     id              INT          NOT NULL AUTO_INCREMENT,
     offerid         INT          NOT NULL,
@@ -127,21 +127,21 @@ CREATE TABLE offerlogic
     offermos        INT          NOT NULL,
     monthsremaining INT          NULL,
     monthlypayments DOUBLE       NULL,
-    CONSTRAINT pk_offerlogic PRIMARY KEY (id)
+    CONSTRAINT PK_OFFERLOGIC PRIMARY KEY (id)
 );
-CREATE TABLE authors
+CREATE TABLE AUTHORS
 (
     id      INT          NOT NULL AUTO_INCREMENT,
     name    VARCHAR(255) NULL,
     email   VARCHAR(255) NULL,
     website VARCHAR(255) NULL,
-    CONSTRAINT pk_authors PRIMARY KEY (id)
+    CONSTRAINT PK_AUTHORS PRIMARY KEY (id)
 );
 
-ALTER TABLE authors
+ALTER TABLE AUTHORS
     ADD CONSTRAINT uc_abce4f41cc0318786befbd2fe UNIQUE (id);
 
-CREATE TABLE books
+CREATE TABLE BOOKS
 (
     id        BIGINT       NOT NULL AUTO_INCREMENT,
     pubyear   INT          NULL,
@@ -150,5 +150,5 @@ CREATE TABLE books
     genre     VARCHAR(255) NULL,
     rating    DOUBLE       NOT NULL,
     title     VARCHAR(255) NULL,
-    CONSTRAINT pk_books PRIMARY KEY (id)
+    CONSTRAINT PK_BOOKS PRIMARY KEY (id)
 );

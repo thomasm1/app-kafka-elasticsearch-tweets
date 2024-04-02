@@ -1,32 +1,40 @@
 package app.mapl.models;
 
+import app.mapl.dto.UserDto;
+import app.mapl.exception.ApiException;
 import app.mapl.util.Shareable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.util.AlternativeJdkIdGenerator;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 
-	@Setter
+@Setter
 	@Getter
-	@Entity
-	@Table(name = "bookmarks")
-	public class  Bookmark implements Shareable {
-		private static final long serialVersionUID = 1L;
-		@Id
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "BOOK_SEQUENCE" )
-//	@SequenceGenerator(name = "BOOK_SEQUENCE", sequenceName = "BOOK_SEQUENCE", allocationSize = 1)
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name="id")
-		private long id;
+	@MappedSuperclass
+	@RequiredArgsConstructor
+	public abstract class Bookmark extends BaseModel implements Shareable {
+
+	private static final long serialVersionUID = 1L;
+
 
 		private String title;
 
-	@Column(name="profileurl")
-	private String profileUrl;
-//		@JoinColumn(name = "shared_by_userid")
-		private User sharedBy;
+		@Column(name="profileurl")
+		private String profileUrl;
+    	@JoinColumn(name = "shared_by_userid")
+		private UserDto sharedBy;
 
 		/**
 		 * @return

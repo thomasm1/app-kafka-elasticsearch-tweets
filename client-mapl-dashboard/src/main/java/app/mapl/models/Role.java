@@ -25,4 +25,12 @@ public class Role  implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "role_id"),    inverseJoinColumns = @JoinColumn(name = "userid"))
     private Set<User> users = new HashSet<>();
-}
+
+//    ADMIN { user:read, user:update, user:create, user:delete, document:read, document:update, document:create, document:delete }
+//    USER { user:read, user:update, document:read, document:update }
+//    READER { user:read, document:read }
+//    EDITOR { user:read, user:update, document:read, document:update
+//        DEVELOPER { user:read, user:update, user:create, user:delete, document:read, document:update, document:create, document:delete }
+
+
+    }

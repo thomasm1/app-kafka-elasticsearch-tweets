@@ -93,7 +93,7 @@ public class CliApplication {
 	// }
 
 
-		log.info("INSIDE ____log.info________CliApplication.main()");
+		log.info("INSIDE ____log.info__dddd______CliApplication.main()");
 		ApplicationContext ctx = SpringApplication.run(CliApplication.class, args);
 
 		logBeans(ctx);

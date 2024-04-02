@@ -1,12 +1,9 @@
 package app.mapl.consoles;
 
-import app.mapl.commands.*;
 import app.mapl.models.Coin;
 import app.mapl.service.CoinsServiceJPA;
-import app.mapl.service.UsersServiceJDBC;
 import app.mapl.service.UsersServiceJPA;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -146,7 +143,7 @@ public class UserDashboard {
                     }
                     case 6: {
                         try {
-                            UserProfile.editProfile(usersServiceImpl.getUserByEmail(username).orElseThrow());
+                            UserProfilerTool.editProfile(usersServiceImpl.getUserByEmail(username).orElseThrow());
 
                         } catch (Exception e) {
                             console(username);
@@ -155,10 +152,6 @@ public class UserDashboard {
                     }
                     case MENU_LAST: {
                         System.out.println("Opening MaPLControl...");
-                        MaPLUserInvoker newMaPLInvokerl = new MaPLUserInvoker(); // create new MaPLInvoker
-
-                        NavigateRunner open = new NavigateRunner( newMaPLInvokerl); // open MaPLControl
-                        open.runNavigate();
                         console("UserDashboard");
                         break;
                     }

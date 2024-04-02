@@ -24,8 +24,4 @@ public interface PostService {
     Object getPostsByCategoryId(long categoryId);
 
 	// SEARCH
-	PostEntityResponse searchPostEntities(int pageNo, int pageSize, String sortBy, String sortDir, String query);
-	PostEntityResponse searchPostEntities(String query);
-
-	PostEntityResponse searchPostEntitiesSQL(String query);
 }

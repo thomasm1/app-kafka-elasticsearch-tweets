@@ -14,16 +14,16 @@ Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, OR
 INSERT INTO ROLES (id, name) VALUES (2,'ROLE_ADMIN');
 INSERT INTO ROLES (id, name) VALUES (1,'ROLE_USER');
 
-insert into USERS_ROLES(id, userid, role_id)values (1, 211, 2);
-insert into USERS_ROLES(id, userid, role_id)values (2, 212, 1);
-insert into USERS_ROLES(id, userid, role_id)values (3, 213, 1);
-insert into USERS_ROLES(id, userid, role_id)values (4, 214, 1);
-insert into USERS_ROLES(id, userid, role_id)values (5, 215, 1);
-insert into USERS_ROLES(id, userid, role_id)values (6, 216, 1);
-insert into USERS_ROLES(id, userid, role_id)values (7, 217, 1);
-insert into USERS_ROLES(id, userid, role_id)values (8, 218, 1);
-insert into USERS_ROLES(id, userid, role_id)values (9, 219, 2);
-insert into USERS_ROLES(id, userid, role_id)values (10,220 ,2);
+insert into USERS_ROLES(id, role_id, user_userid)values (1, 211, 2);
+insert into USERS_ROLES(id, role_id, user_userid)values (2, 212, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (3, 213, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (4, 214, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (5, 215, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (6, 216, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (7, 217, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (8, 218, 1);
+insert into USERS_ROLES(id, role_id, user_userid)values (9, 219, 2);
+insert into USERS_ROLES(id, role_id, user_userid)values (10,220 ,2);
 
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (1, 'ethereum',   'ETH', 12000.22, 0);
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (2, 'polygon',    'MATIC', 9.22, 0);
@@ -41,15 +41,8 @@ Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)valu
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (14, 'binance',    'bsc', 45000, 0);
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (15, 'binance',    'bnb', 45000, 0);
 
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (1, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html>thomasmaestas</html>', 1);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (2, 'https://cryptomaven.xyz', 'https://cryptomaven.xyz', '<html>cryptomaven</html>', 1);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (3, 'https://mapl.app', 'https://mapl.app', '<html>mapl</html>', 2);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (4, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html></html>',  3);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (5, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html></html>',  4);
---
--- create sequence id_maker start with 250 increment by 50;
--- create sequence cointable_seq start with 2066 increment by 50;
--- create sequence roles_seq start with 5 increment by 50;
--- create sequence weblinks_seq start with 800 increment by 50;
--- create sequence addresses_seq start with 10600 increment by 50;
--- create sequence movies_seq start with 900 increment by 50;
+INSERT INTO WEBLINKS (id, url, htmlpage, downloadstatus) VALUES (1, 'https://thomasmaestas.net', '<html>thomasmaestas</html>', 1);
+INSERT INTO WEBLINKS (id, url, htmlpage, downloadstatus) VALUES (2, 'https://cryptomaven.xyz', '<html>cryptomaven</html>', 1);
+INSERT INTO WEBLINKS (id, url, htmlpage, downloadstatus) VALUES (3, 'https://mapl.app', '<html>mapl</html>', 2);
+INSERT INTO WEBLINKS (id, url, htmlpage, downloadstatus) VALUES (4, 'https://thomasmaestas.net', '<html></html>',  3);
+INSERT INTO WEBLINKS (id, url, htmlpage, downloadstatus) VALUES (5, 'https://thomasmaestas.net', '<html></html>',  4);

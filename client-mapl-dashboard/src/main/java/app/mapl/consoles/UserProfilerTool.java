@@ -16,8 +16,7 @@ import static app.mapl.util.constants.Cmds.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "userprofile")
-public class UserProfile {
+public class UserProfilerTool {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

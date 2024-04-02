@@ -1,11 +1,10 @@
 package app.mapl.bootstrap;
 
-import app.mapl.models.*;
-import app.mapl.repositories.BookmarkRepository;
+import app.mapl.models.*; // Bookmark, Coin, User, Weblink
+import app.mapl.repositories.BookRepository;
 import app.mapl.repositories.CoinsRepository;
 import app.mapl.repositories.UsersRepository;
 import app.mapl.repositories.WeblinksRepository;
-import app.mapl.service.BookmarkService;
 import app.mapl.util.ReadWriteFile;
 import app.mapl.util.constants.Datum;
 import app.mapl.config.logger.CliLogger;
@@ -37,7 +36,7 @@ public class BootstrapStaticData implements CommandLineRunner {
     private final CoinsRepository coinsRepository;
 
 
-    private final BookmarkRepository bookmarkRepository;
+    private final BookRepository bookRepository;
     private List<User> users;
     List<Coin> coinsStatic;
     List<Weblink> bookmarksStatic;
@@ -92,7 +91,7 @@ public class BootstrapStaticData implements CommandLineRunner {
         }
         List<Weblink> bookmarks = bookmarksStatic;
         weblinksRepository.saveAll(bookmarks);
-        weblinksRepository.save(new Weblink(0, "https://www.google.com", "Google", "<html><head></head><body>Hello!!!!!!!</body></html>", Weblink.DownloadStatus.SUCCESS));
+        weblinksRepository.save(new Weblink( "https://www.google.com",   "<html><head></head><body>Hello!!!!!!!</body></html>","SUCCESS"));
 
         // COINS
         System.out.println(Datum.ANSI_RED + "ANSI_RED printing user data: ");
@@ -162,13 +161,13 @@ public class BootstrapStaticData implements CommandLineRunner {
             // BOOKMARK_TYPES_COUNT 0= webLink, 1=book, 2=movie
 //            int typeOffset = (int) (Math.random() * FileDataStore.BOOKMARK_TYPES_COUNT);
             int bookmarkOffset = (int) (Math.random() * FileDataStore.BOOKMARK_COUNT_PER_TYPE);
-            Bookmark bookmark = bookmarks.get(bookmarkOffset);
+            Weblink bookmark = bookmarks.get(bookmarkOffset);
             boolean isBookmarked = getBookmarkDecision(bookmark); //bookmark ~ 4 of 10
             if (isBookmarked) {
                 count++;
                 System.out.println(count + "[Bookmarke]" + bookmark);
                 usersRepository.save(user );
-                bookmarkRepository.save( bookmark);
+                bookRepository.save( new Book(0, "title", "publisher", "authors", "genre", 4.5, 2021));
                 subset.add(bookmark);
             }
         }
@@ -185,7 +184,7 @@ public class BootstrapStaticData implements CommandLineRunner {
         for (int x = 0; x <= 1; x++) {
             int bookmarkOffset = (int) (Math.random() * FileDataStore.BOOKMARK_COUNT_PER_TYPE);
             Bookmark bookmark = bookmarks.get(bookmarkOffset);
-//          bookmarkRepository.shareBookmark(user, bookmark); /// TODO: 3/5/21
+//          bookRepository.shareBookmark(user, bookmark); /// TODO: 3/5/21
             System.out.println("User: " + user.getEmail() + "inside View; bookmark: " + bookmark.getTitle() + bookmark.getClass());
         }
     }

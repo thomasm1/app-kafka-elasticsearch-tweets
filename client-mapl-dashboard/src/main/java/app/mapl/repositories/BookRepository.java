@@ -2,9 +2,9 @@ package app.mapl.repositories;
 
 import app.mapl.models.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 //@RepositoryRestResource( collectionResourceRel = "book", path = "book")
-public interface BooksRepository extends JpaRepository<Book, Long> {
-
+public interface BookRepository extends JpaRepository<Book, Long> {
+    @Override
+    <S extends Book> S save(S entity);
 }

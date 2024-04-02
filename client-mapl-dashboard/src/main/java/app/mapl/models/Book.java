@@ -1,22 +1,28 @@
 package app.mapl.models;
 
 import app.mapl.util.Shareable;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import jakarta.persistence.*;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
+
 
 
 @Setter
 @Getter
 @Entity
-@Table(name = "books")
+@Table(name = "BOOKS")
+@AllArgsConstructor
+@JsonInclude(NON_DEFAULT)
 public class Book extends Bookmark implements Shareable {
-	@Id
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "BOOK_SEQUENCE" )
-//	@SequenceGenerator(name = "BOOK_SEQUENCE", sequenceName = "BOOK_SEQUENCE", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private long id;
+//	@Id
+////	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "BOOK_SEQUENCE" )
+////	@SequenceGenerator(name = "BOOK_SEQUENCE", sequenceName = "BOOK_SEQUENCE", allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name="id")
+//	private long id;
 	@Column(name="pubyear")
 	private int publicationYear;
 	private String publisher;
@@ -25,6 +31,13 @@ public class Book extends Bookmark implements Shareable {
 	private double rating;
 
 	private String title;
+
+	public Book() {
+		super();
+	}
+
+	public Book(int i, String title, String publisher, String authors, String genre, double v, int i1) {
+	}
 
 	@Override
 	public  String getItemData() {

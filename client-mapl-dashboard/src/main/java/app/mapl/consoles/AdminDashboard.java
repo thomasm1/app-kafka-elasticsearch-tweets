@@ -1,7 +1,6 @@
 
 package app.mapl.consoles;
 
-import app.mapl.commands.*;
 import app.mapl.dto.UserDto;
 import app.mapl.models.Coin;
 import app.mapl.repositories.UsersRepository;
@@ -157,11 +156,7 @@ public class AdminDashboard {
                     }
                     case OPTION_COUNT_MAX: {
                         System.out.println("Opening MaPLControl...");
-                        MaPLAdminInvoker newMaPLInvokerl = new MaPLAdminInvoker(""); // create new MaPLInvoker
 
-                        NavigateRunner open = new NavigateRunner(newMaPLInvokerl); // open MaPLControl
-
-                        open.runNavigate();
                         console();
                         break;
                     }
@@ -219,11 +214,7 @@ public class AdminDashboard {
                     }
                     case OPTION_COUNT_MAX: {
                         System.out.println("Opening MaPLControl...");
-                        MaPLAdminInvoker newMaPLInvokerl = new MaPLAdminInvoker(""); // create new MaPLInvoker
 
-                        NavigateRunner open = new NavigateRunner(newMaPLInvokerl); // open MaPLControl
-
-                        open.runNavigate();
                         console();
                         break;
                     }

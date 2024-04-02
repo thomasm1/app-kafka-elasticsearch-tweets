@@ -23,7 +23,12 @@ import java.time.Duration;
 public class Config {
 
     @Bean
-    public RestTemplate restTempmlate(RestTemplateBuilder builder) {
+    RestTemplateCustomizer restTemplateCustomizer() {
+        return new MaplRestTemplateCustomizer();
+    }
+
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
         UriTemplateHandler uriTemplateHandler = new RootUriTemplateHandler("${mapl.api.url}");
         return builder
                 .uriTemplateHandler(uriTemplateHandler)
@@ -33,8 +38,7 @@ public class Config {
 
     @Bean
     public MaplRequestInterceptor maplRequestInterceptor() { return new MaplRequestInterceptor(); }
-//    @Bean
-//    public MaplRestTemplateCustomizer restTemplateCustomizer() { return new MaplRestTemplateCustomizer(); }
+
     @Bean
     @DependsOn("restTemplateCustomizer")
     public RestTemplateBuilder restTemplateBuilder(RestTemplateCustomizer restTemplateCustomizer) {

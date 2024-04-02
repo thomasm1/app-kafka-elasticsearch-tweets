@@ -8,14 +8,13 @@ import org.mapstruct.*;
 
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+public interface UserProfileMapper {
+    UserProfile toEntity(UserProfileDto userDto);
 
-public interface UserMapper {
-    User toEntity(UserDto userDto);
-
-    UserDto toDto(User user);
+    UserProfileDto toDto(UserProfile user);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    User partialUpdate(UserDto userDto, @MappingTarget User user);
+    UserProfile partialUpdate(UserDto userDto, @MappingTarget UserProfile user);
 
     UserProfile toUserProfile(UserProfileDto userProfileDto);
 }

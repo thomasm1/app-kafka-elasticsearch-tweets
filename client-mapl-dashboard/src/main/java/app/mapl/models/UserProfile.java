@@ -11,14 +11,13 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
-
-@Table(name= "USER_PROFILE")
 @Getter
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_DEFAULT) // NON_ABSENT, NON_EMPTY, NON_NULL
 @Entity
+@Table(name= "USER_PROFILE")
 public class UserProfile extends BaseModel {
 
 	private String userProfileId;

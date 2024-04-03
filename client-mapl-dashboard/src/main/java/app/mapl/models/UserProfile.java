@@ -41,11 +41,15 @@ public class UserProfile extends BaseModel {
 	private String qrCodeSecret;
 	@Column(columnDefinition = "TEXT")
 	private String qrCodeImageUri;
-
 	private String dashboardCode;
 	private String organizationCode;
 	@ManyToMany
-	private Set<Role> roles; // Todo with class
+	@JoinTable(
+			name = "user_profile_role",
+			joinColumns = @JoinColumn(name = "user_profile_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+	)
+	private Set<Role> roles;  // ADMIN, USER, READER, EDITOR, DEVELOPER
 
 
 //    ADMIN { user:read, user:update, user:create, user:delete, document:read, document:update, document:create, document:delete }

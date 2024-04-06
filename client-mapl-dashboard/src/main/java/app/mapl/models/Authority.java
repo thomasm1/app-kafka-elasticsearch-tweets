@@ -16,7 +16,7 @@ public class Authority {
     private static String value;
     private static List<String> values = new ArrayList<>();
     public Authority(String value) {
-        this.value = value;
+        Authority.value = value;
     }
 
 
@@ -26,7 +26,7 @@ public class Authority {
         return value;
     }
     public void setValue(String value) {
-        this.value = value;
+        Authority.value = value;
     }
 
 

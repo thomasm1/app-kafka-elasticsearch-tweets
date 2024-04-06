@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import static java.time.LocalTime.now;
+
 @Setter
 @Getter
 @MappedSuperclass
@@ -64,23 +66,24 @@ public abstract class  BaseModel implements Serializable {
     public void beforePersist() {
         var usesrId = RequestContext.getUserId();
         if(usesrId != null) {
-            this.createdBy = usesrId;
-            this.updatedBy = usesrId;
+            setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
+            setCreatedBy(usesrId);
+            setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+            setUpdatedBy(usesrId);
+            setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
         } else {
             throw new ApiException("User not found");
         }
-        this.dateCreated = LocalDateTime.now();
-        this.lastUpdated = LocalDateTime.now();
     }
     @PreUpdate
     public void beforeUpdate() {
         var usesrId = RequestContext.getUserId();
         if(usesrId != null) {
-            this.updatedBy = usesrId;
+            setUpdatedBy(usesrId);
         } else {
             throw new ApiException("Cannot update if User not found");
         }
-        this.lastUpdated = LocalDateTime.now();
+        setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
     }
 
 

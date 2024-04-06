@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class MailConfig {
 
     @Bean
-    @ConditionalOnProperty(name = "app.mail.enabled", havingValue = "true", matchIfMissing = false)
+    @ConditionalOnProperty(name = "app.mail.enabled",  matchIfMissing = false)
     public JavaMailSender mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         // configure your mail sender here

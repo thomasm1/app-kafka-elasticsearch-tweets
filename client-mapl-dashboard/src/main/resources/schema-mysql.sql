@@ -1,16 +1,123 @@
 create table ROLES
 (
+    id   BIGINT not null AUTO_INCREMENT,
+    'name' varchar(255),
+    primary key (id)
+);
+# drop table USER_PROFILE;
+create table USER_PROFILE
+(
+    id  BIGINT not null AUTO_INCREMENT,
+    user_id  VARCHAR(255) not null,
+    first_name varchar(255),
+    last_name  varchar(255),
+    email      varchar(255),
+    phone      varchar(255),
+    bio       varchar(255),
+    reference_id VARCHAR(255),
+    qr_code_secret    varchar(255),
+    qr_code_image_uri   TEXT,
+    image_url    varchar(255),
+    last_login    timestamp,
+    login_attempts   INT DEFAULT  0,
+    mfa BOOLEAN NOT NULL DEFAULT FALSE,
+    account_non_expired  BOOLEAN  NOT NULL DEFAULT FALSE,
+    account_non_locked   BOOLEAN  NOT NULL DEFAULT FALSE,
+    created_by BIGINT NOT NULL,
+    updated_by BIGINT NOT NULL,
+    created_at timestamp,
+    updated_at timestamp,
+    constraint uq_users_email UNIQUE (email),
+    constraint uq_users_user_id UNIQUE (user_id),
+    constraint fk_users_created_by foreign key (created_by) references USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    constraint fk_users_updated_by foreign key (updated_by) references USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    enabled    BOOLEAN DEFAULT TRUE,
+    primary key (id)
+);
+# DROP TABLE CONFIRMATIONS;
+CREATE TABLE CONFIRMATIONS (
+    id  BIGINT PRIMARY KEY AUTO_INCREMENT,
+    keyz VARCHAR(255),
+    user_id BIGINT NOT NULL,
+    reference_id VARCHAR(255) NOT NULL,
+    created_by BIGINT NOT NULL,
+    updated_by BIGINT NOT NULL,
+    created_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT  uq_confirmations_user_id UNIQUE (user_id),
+    CONSTRAINT  uq_confirmations_key UNIQUE (keyz),
+    CONSTRAINT  fk_confirmations_user_id FOREIGN KEY (user_id) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT  fk_confirmations_created_by FOREIGN KEY (created_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT  fk_confirmations_updated_by FOREIGN KEY (updated_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
+
+);
+CREATE TABLE CREDENTIALS (
+    id  BIGINT PRIMARY KEY AUTO_INCREMENT,
+    password VARCHAR(255) NOT NULL,
+    reference_id VARCHAR(255) NOT NULL,
+    user_id BIGINT NOT NULL,
+    created_by BIGINT NOT NULL,
+    updated_by BIGINT NOT NULL,
+    created_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT  fk_credentials_user_id FOREIGN KEY (user_id) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT  fk_credentials_created_by FOREIGN KEY (created_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT  fk_credentials_updated_by FOREIGN KEY (updated_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
+);
+CREATE TABLE DOCUMENTS (
+    id  BIGINT PRIMARY KEY AUTO_INCREMENT,
+    document_id VARCHAR(255) NOT NULL,
+    extension VARCHAR(10) NOT NULL,
+    formatted_size VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    icon VARCHAR(255) NOT NULL,
+    reference_id VARCHAR(255) NOT NULL,
+    uri VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    size BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    created_by BIGINT NOT NULL,
+    updated_by BIGINT NOT NULL,
+    created_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT  fk_documents_document_id UNIQUE (document_id),
+    CONSTRAINT  fk_documents_created_by FOREIGN KEY (created_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT  fk_documents_updated_by FOREIGN KEY (updated_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+create table  USER_ROLES
+(
     id   INT not null AUTO_INCREMENT,
-    name varchar(255),
+    role_id BIGINT not null,
+    user_id BIGINT not null,
+    CONSTRAINT fk_user_roles_user_id FOREIGN KEY (user_id) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_user_roles_role_id FOREIGN KEY (role_id) REFERENCES ROLES (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
     primary key (id)
 );
 
+CREATE INDEX index_users_email ON USER_PROFILE (email);
+CREATE INDEX index_users_user_id ON USER_PROFILE (user_id);
+CREATE INDEX index_confirmations_user_id ON CONFIRMATIONS (user_id);
+CREATE INDEX index_credentials_user_id ON CREDENTIALS (user_id);
+CREATE INDEX index_user_roles_user_id ON USER_ROLES (user_id);
+CREATE INDEX index_user_roles_role_id ON USER_ROLES (role_id);
 
+# create table  USER_PERMISSIONS
+# (
+#     id          INT not null AUTO_INCREMENT,
+#     permission_id     BIGINT not null,
+#     user_id BIGINT not null,
+#     CONSTRAINT fk_user_permissions_user_id FOREIGN KEY (user_id) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+#     CONSTRAINT fk_user_permissions_permission_id FOREIGN KEY (permission_id) REFERENCES PERMISSIONS (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+#     primary key (id)
+# );
+
+-- deprecated users and users_roles tables
 create table  USERS
 (
     USERID      INT not null AUTO_INCREMENT,
     USERNAME    VARCHAR(255),
-    PASSWORD    VARCHAR(120),
+    'PASSWORD'    VARCHAR(120),
     LASTNAME    VARCHAR(255),
     FIRSTNAME   VARCHAR(255),
     USERTYPE    FLOAT(10),
@@ -22,6 +129,7 @@ create table  USERS
     CONTACTTYPE FLOAT(10),
     primary key (USERID)
 );
+-- deprecated users and users_roles tables
 create table USERS_ROLES
 (
     id          INT not null AUTO_INCREMENT,
@@ -33,8 +141,8 @@ create table USERS_ROLES
 create table NFT_REF
 (
     id      INT not null AUTO_INCREMENT,
-    name    varchar(255),
-    owner   varchar(255),
+    'name'    varchar(255),
+    'owner'   varchar(255),
     chain_id   INT ,
     email_id    INT ,
     address_id  INT ,
@@ -63,7 +171,7 @@ CREATE TABLE WEBLINK(id BIGINT PRIMARY KEY AUTO_INCREMENT,
 CREATE TABLE CATEGORIES
 (
     id            BIGINT       NOT NULL AUTO_INCREMENT,
-    name          VARCHAR(255) NULL,
+    'name'          VARCHAR(255) NULL,
     `description` VARCHAR(255) NULL,
     urls          VARCHAR(255) NULL,
     CONSTRAINT PK_CATEGORIES PRIMARY KEY (id)
@@ -72,9 +180,9 @@ CREATE TABLE CATEGORIES
 CREATE TABLE COMMENTS
 (
     id      BIGINT       NOT NULL AUTO_INCREMENT,
-    name    VARCHAR(255) NULL,
+    'name'    VARCHAR(255) NULL,
     email   VARCHAR(255) NULL,
-    body    VARCHAR(255) NULL,
+    'body'    VARCHAR(255) NULL,
     post_id BIGINT       NOT NULL,
     CONSTRAINT pk_comments PRIMARY KEY (id)
 );
@@ -132,7 +240,7 @@ CREATE TABLE OFFERLOGIC
 CREATE TABLE AUTHORS
 (
     id      INT          NOT NULL AUTO_INCREMENT,
-    name    VARCHAR(255) NULL,
+    'name'    VARCHAR(255) NULL,
     email   VARCHAR(255) NULL,
     website VARCHAR(255) NULL,
     CONSTRAINT PK_AUTHORS PRIMARY KEY (id)
@@ -146,7 +254,7 @@ CREATE TABLE BOOKS
     id        BIGINT       NOT NULL AUTO_INCREMENT,
     pubyear   INT          NULL,
     publisher VARCHAR(255) NULL,
-    authors   VARCHAR(255) NULL,
+    'authors'   VARCHAR(255) NULL,
     genre     VARCHAR(255) NULL,
     rating    DOUBLE       NOT NULL,
     title     VARCHAR(255) NULL,

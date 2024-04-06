@@ -29,6 +29,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import app.mapl.consoles.MainDashboard;
@@ -55,6 +56,7 @@ import org.springframework.http.*;
 /// @EnableFeignClient
 @ServletComponentScan("app.mapl")
 @EnableJpaRepositories("app.mapl.repositories")
+@EnableJpaAuditing
 @EntityScan("app.mapl.models")
 @ConfigurationPropertiesScan("app.mapl.config.*")
 @EnableConfigurationProperties

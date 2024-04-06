@@ -35,15 +35,19 @@ public class UsersServiceJPA implements UsersService {
     @Override
     public void registerUser(RegisterDto registerDto) {
 
-        UserDto newUser = new UserDto();
-        newUser.setUsername(registerDto.getUsername());
-        newUser.setPassword(registerDto.getPassword());
-        newUser.setLastName(registerDto.getLastName());
-        newUser.setFirstName(registerDto.getFirstName());
-        /// TODO: MOVE LOGIC TO REGISTERDTO
+        UserDto newUser =  new UserDto();
         newUser.setUserType(2);
         newUser.setEmail(registerDto.getEmail());
         newUser.setOrganizationCode("1234567890");
+        newUser.setDashboardCode("1234567890");
+        newUser.setFirstName(registerDto.getFirstName());
+        newUser.setLastName(registerDto.getLastName());
+        newUser.setUsername(registerDto.getUsername());
+        newUser.setPassword(registerDto.getPassword());
+        newUser.setIsActive(1);
+        newUser.setContactType(1);
+        newUser.setCusUrl("http://localhost:8080/api/users/" + registerDto.getEmail());
+
 //        newUser.setRole(registerDto.getRole()); //  registerDto.setRole("USER");
 
         User u = usersRepository.save(userMapper.toEntity(newUser));

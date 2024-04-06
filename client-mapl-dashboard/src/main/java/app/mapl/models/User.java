@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,13 +18,14 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter @Setter @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 public class User  implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
     @Id
     // @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
     // @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="userid", nullable = false, unique = true)
     private int userId;
 
@@ -63,7 +65,7 @@ public class User  implements Serializable{
     private int contactType; // ContactType contactType
 
     @ManyToMany(fetch = FetchType.EAGER)
-   @JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+   @JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     // UserDetailsCommandLineRunner

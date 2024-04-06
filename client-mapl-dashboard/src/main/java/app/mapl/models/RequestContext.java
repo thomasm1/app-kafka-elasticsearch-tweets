@@ -1,18 +1,18 @@
 package app.mapl.models;
 
 public class RequestContext {
-    private static final ThreadLocal<Long> userId = new ThreadLocal<>();
+    private static final ThreadLocal<Long> USER_ID = new ThreadLocal<>();
 
     private RequestContext() {
     }
     public static void start() {
-        userId.remove();
+        USER_ID.remove();
     }
     public static Long getUserId() {
-        return userId.get();
+        return USER_ID.get();
     }
     public static void setUserId(Long id) {
-        userId.set(id);
+        USER_ID.set(id);
     }
 
 }

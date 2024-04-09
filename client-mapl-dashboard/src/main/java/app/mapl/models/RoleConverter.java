@@ -13,16 +13,15 @@ public class RoleConverter implements AttributeConverter<Authority, String> {
         }
         return authority.getValue();
     }
-/// TODO: Implement the convertToEntityAttribute method
+
     @Override
     public Authority convertToEntityAttribute(String dbData) {
         if (dbData == null) {
             return null;
         }
-        return null;
-//return Stream.of(Authority.values())
-//                .filter(c -> c.getValue().equals(dbData))
-//                .findFirst()
-//                .orElseThrow(IllegalAccessError::new);
+return Stream.of(Authority.values())
+                .filter(c -> c.getValue().equals(dbData))
+                .findFirst()
+                .orElseThrow(IllegalAccessError::new);
     }
 }

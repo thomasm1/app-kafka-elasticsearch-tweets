@@ -9,4 +9,6 @@ public interface UserProfileService {
     UserProfileDto createUserProfile(UserProfileDto userProfileDto);
 
     APIResponseDto getUserProfileById(Long employeeId);
+
+    APIResponseDto verifyAccountKey(String key);
 }

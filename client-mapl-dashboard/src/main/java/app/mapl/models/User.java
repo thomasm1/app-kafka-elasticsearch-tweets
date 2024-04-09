@@ -1,6 +1,7 @@
 package app.mapl.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -8,6 +9,7 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,65 +25,67 @@ public class User  implements Serializable{
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
-    // @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
-    // @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="userid", nullable = false, unique = true)
-    private int userId;
-
-    @Column(name="username" , unique = true )
-    private String username;
-
-    @NotBlank(message="*Must give password")
-    @Size(min=2, max=120)
-    @Column(name="password" )
-    private String password;
-    @Column(name="lastname")
-    private String lastName;
-
-    @Column(name="firstname")
-    private String firstName;
-
-    @Column(name="usertype") /// 0 = admin, 1 = user
-    private int userType;
-
-    @Column(name="organizationCode")
-    private String organizationCode;
+    private long userid;
 
     @NotBlank
-//    @Email(message="*Must be a valid email address")
-    @Column(name="email"  , unique = true)
+    private String userId;
+
+
+    @NotBlank
+    private String firstName;
+
+    @NotBlank
+    private String lastName;
+
+
+    @NotBlank
+    @Size(max = 120)
     private String email;
-    @Column(name="cusurl")
-    private String cusUrl;
 
-    @Column(name="dashboardcode")
-    private String dashboardCode;
+    @NotBlank
+    private int userType;
 
-    @Column(name="isactive")
-    private int isActive;
+    private String imageUrl;
 
-    @Column(name="contacttype")
-    private int contactType; // ContactType contactType
+    private String organizationCode;
 
+    private String dashboardCode; // 0 = admin, 1 = user
+
+    private String bio;
+
+    private String referenceId;
+
+
+    @JsonIgnore
+    private String qrCodeSecret;
+    @Column(columnDefinition = "text")
+    private String qrCodeImageUri;
+
+    private Integer loginAttempts;
+    private LocalDateTime lastLogin;
+    private boolean enabled;
+    private boolean mfa;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
     @ManyToMany(fetch = FetchType.EAGER)
-   @JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    @JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "id"),    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
+
 
     // UserDetailsCommandLineRunner
-    public User(int userid, String username, String password, String lastname, String firstName, int userType, String organizationCode, String email, String cusUrl, String dashboardCode, int isActive, int contactType) {
+    public User(long id, String userId,  String lastname, String firstName, int userType, String organizationCode, String email, String imageUrl, String dashboardCode,  Boolean accountNonExpired, Boolean accountNonLocked) {
 
-        this.userId = userid;
-        this.username = username;
-        this.password = password;
+        this.id = id;
+        this.userId = Integer.parseInt(userId);
         this.lastName = lastname;
         this.firstName = firstName;
         this.userType = userType;
         this.organizationCode = organizationCode;
         this.email = email;
-        this.cusUrl = cusUrl;
+        this.imageUrl = imageUrl;
         this.dashboardCode = dashboardCode;
-        this.isActive = isActive;
+        this.accountNonExpired = accountNonExpired;
         this.contactType = contactType;
     }
 
@@ -92,9 +96,9 @@ public class User  implements Serializable{
 //        this.username = username;
 //    }
 
-    public User(String username, String password) {
+    public User(String email, String password) {
         super();
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
@@ -110,7 +114,7 @@ public class User  implements Serializable{
 
     //	 overloaded WITHOUT userId  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
     public User(String username, String password, String lastName, String firstName,
-                 int userType, String organizationCode,String email,  String cusUrl, String dashboardCode,
+                 int userType, String organizationCode,String email,  String imageUrl, String dashboardCode,
                 int isActive,
                 int contactType ) {
         super();
@@ -121,7 +125,7 @@ public class User  implements Serializable{
         this.userType = userType;
         this.organizationCode = organizationCode;
         this.email = email;
-        this.cusUrl = cusUrl;
+        this.imageUrl = imageUrl;
         this.dashboardCode = dashboardCode;
         this.isActive = isActive;
         this.contactType = contactType;
@@ -136,7 +140,7 @@ public class User  implements Serializable{
     }
 
 //     Contstructor for EDIT PROFILE (options available for user)
-public User(  String password, String lastName, String firstName, int userType, String organizationCode,String email,  String cusUrl, String dashboardCode,   int isActive,
+public User(  String password, String lastName, String firstName, int userType, String organizationCode,String email,  String imageUrl, String dashboardCode,   int isActive,
             int contactType // ContactType contactType
           ) {
     super();
@@ -147,7 +151,7 @@ public User(  String password, String lastName, String firstName, int userType, 
     this.userType = userType;
     this.email = email;
     this.organizationCode = organizationCode;
-    this.cusUrl = cusUrl;
+    this.imageUrl = imageUrl;
     this.dashboardCode = dashboardCode;
     this.isActive = isActive;
     this.contactType = contactType;

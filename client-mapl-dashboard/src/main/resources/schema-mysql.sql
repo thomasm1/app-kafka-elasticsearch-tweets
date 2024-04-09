@@ -2,7 +2,16 @@ create table ROLES
 (
     id   BIGINT not null AUTO_INCREMENT,
     'name' varchar(255),
-    primary key (id)
+    primary key (id),
+    authority varchar(255),
+    reference_id varchar(255),
+    created_by BIGINT NOT NULL,
+    updated_by BIGINT NOT NULL,
+    created_at timestamp,
+    updated_at timestamp,
+    constraint fk_rols_created_by foreign key (created_by) references USERS (ID) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+    constraint fk_rols_updated_by foreign key (updated_by) references USERS (ID) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
+
 );
 # drop table USER_PROFILE;
 create table USER_PROFILE
@@ -60,6 +69,7 @@ CREATE TABLE CREDENTIALS (
     updated_by BIGINT NOT NULL,
     created_at timestamp   DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp   DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT  uq_credentials_user_id UNIQUE (user_id),
     CONSTRAINT  fk_credentials_user_id FOREIGN KEY (user_id) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT  fk_credentials_created_by FOREIGN KEY (created_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT  fk_credentials_updated_by FOREIGN KEY (updated_by) REFERENCES USER_PROFILE (id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
@@ -112,31 +122,61 @@ CREATE INDEX index_user_roles_role_id ON USER_ROLES (role_id);
 #     primary key (id)
 # );
 
+
+
+
 -- deprecated users and users_roles tables
-create table  USERS
+
+
+create table USERS
 (
-    USERID      INT not null AUTO_INCREMENT,
-    USERNAME    VARCHAR(255),
-    'PASSWORD'    VARCHAR(120),
-    LASTNAME    VARCHAR(255),
-    FIRSTNAME   VARCHAR(255),
-    USERTYPE    FLOAT(10),
-    ORGANIZATIONCODE       VARCHAR(50),
-    EMAIL       VARCHAR(255),
-    CUSURL      VARCHAR(255),
-    DASHBOARDCODE   VARCHAR(400),
-    ISACTIVE    FLOAT(10),
-    CONTACTTYPE FLOAT(10),
-    primary key (USERID)
+    ID                  INT auto_increment
+        primary key,
+    USER_ID             VARCHAR(255)                                                                        not null,
+    USERNAME            VARCHAR(255)                                                                       null,
+    FIRST_NAME          VARCHAR(50)                                                                         null,
+    LAST_NAME           VARCHAR(50)                                                                         null,
+    EMAIL               VARCHAR(100)                                                                        null,
+    PHONE               VARCHAR(30)                                                                         null,
+    USER_TYPE           INTEGER      default 4                                                              null,
+    IMAGE_URL           VARCHAR(255) default 'https://s3.amazonaws.com/friendsofgroot.com/assets/groot.png' null,
+    ORGANIZATION_CODE   VARCHAR(50)                                                                         null,
+    DASHBOARD_CODE      VARCHAR(400)                                                                        null,
+    BIO                 VARCHAR(255)                                                                        null,
+    REFERENCE_ID        VARCHAR(255)                                                                        null,
+    QR_CODE_SECRET      VARCHAR(255)                                                                        null,
+    QR_CODE_IMAGE_URI   TEXT                                                                                null,
+    LAST_LOGIN          TIMESTAMP                                                                           null,
+    LOGIN_ATTEMPTS      INT          default 0                                                              null,
+    MFA                 BOOLEAN      default FALSE                                                          not null,
+    ENABLED             BOOLEAN      default FALSE                                                          null,
+    ACCOUNT_NON_EXPIRED BOOLEAN      default FALSE                                                          null,
+    ACCOUNT_NON_LOCKED  BOOLEAN      default FALSE                                                          not null,
+    CREATED_BY          BIGINT                                                                              not null,
+    UPDATED_BY          BIGINT                                                                              not null,
+    CREATED_AT          TIMESTAMP                                                                           null,
+    UPDATED_AT          TIMESTAMP                                                                           null,
+    constraint uq_users_email
+        unique (EMAIL),
+    constraint uq_users_user_id
+        unique (USER_ID),
+    constraint fk_users_created_by
+        foreign key (CREATED_BY) references USER_PROFILE (ID)
+            on update cascade on delete cascade,
+    constraint fk_users_updated_by
+        foreign key (UPDATED_BY) references USER_PROFILE (ID)
+            on update cascade on delete cascade
 );
--- deprecated users and users_roles tables
-create table USERS_ROLES
-(
-    id          INT not null AUTO_INCREMENT,
-    role_id     INT not null,
-    user_userid INT not null,
-    primary key (id)
-);
+
+#
+# -- deprecated users and users_roles tables
+# create table USERS_ROLES
+# (
+#     id          INT not null AUTO_INCREMENT,
+#     role_id     INT not null,
+#     user_userid INT not null,
+#     primary key (id)
+# );
 
 create table NFT_REF
 (

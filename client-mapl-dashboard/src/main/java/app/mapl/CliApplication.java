@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
+import org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -60,7 +61,8 @@ import org.springframework.http.*;
 @EntityScan("app.mapl.models")
 @ConfigurationPropertiesScan("app.mapl.config.*")
 @EnableConfigurationProperties
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class, MailSenderAutoConfiguration.class
+})
 public class CliApplication {
 
 

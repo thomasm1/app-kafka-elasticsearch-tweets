@@ -8,25 +8,25 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@Getter
-@Setter
-@Data
-public class Authority {
-    private static String value;
-    private static List<String> values = new ArrayList<>();
-    public Authority(String value) {
-        Authority.value = value;
+import static app.mapl.util.constants.Constants.ADMIN_AUTHORITIES;
+import static app.mapl.util.constants.Constants.MANAGER_AUTHORITIES;
+import static app.mapl.util.constants.Constants.SUPER_ADMIN_AUTHORITIES;
+import static app.mapl.util.constants.Constants.USER_AUTHORITIES;
+
+public enum Authority {
+
+    USER(USER_AUTHORITIES),
+    ADMIN(ADMIN_AUTHORITIES),
+    SUPER_ADMIN(SUPER_ADMIN_AUTHORITIES),
+    MANAGER(MANAGER_AUTHORITIES);
+    private final String value;
+
+    Authority(String value) {
+        this.value = value;
     }
-
-
-
 
     public String getValue() {
         return value;
-    }
-    public void setValue(String value) {
-        Authority.value = value;
     }
 
 

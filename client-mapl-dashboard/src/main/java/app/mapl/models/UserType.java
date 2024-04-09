@@ -1,4 +1,4 @@
-package app.mapl.util.constants;
+package app.mapl.models;
 
 public enum UserType {
 		ADMIN(0),
@@ -12,11 +12,13 @@ public enum UserType {
 
 	private final int userType;
 
-	private UserType(int userType) {
+	UserType(int userType) {
 		this.userType = userType;
 	};
 
 	public int getUserType() {
 		return userType;
 	}
+
+
 }

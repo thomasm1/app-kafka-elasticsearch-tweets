@@ -20,8 +20,11 @@ import java.util.Set;
 @Entity
 @Table(name= "USER_PROFILE")
 public class UserProfile extends BaseModel {
-
-	private String userProfileId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private long userid;
+	private String userId;
 	private String firstName;
 	private String lastName;
 	@Column(unique = true, nullable = false)
@@ -48,13 +51,6 @@ public class UserProfile extends BaseModel {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "id"),    inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
-
-//    ADMIN { user:read, user:update, user:create, user:delete, document:read, document:update, document:create, document:delete }
-//    USER { user:read, user:update, document:read, document:update }
-//    READER { user:read, document:read }
-//    EDITOR { user:read, user:update, document:read, document:update
-//        DEVELOPER { user:read, user:update, user:create, user:delete, document:read, document:update, document:create, document:delete }
-
 
 	
 	

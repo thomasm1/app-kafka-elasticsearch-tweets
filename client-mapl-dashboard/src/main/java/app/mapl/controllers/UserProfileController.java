@@ -3,10 +3,10 @@ package app.mapl.controllers;
 import app.mapl.dto.APIResponseDto;
 import app.mapl.dto.UserProfileDto;
 import app.mapl.service.UserProfileService;
+import io.netty.handler.codec.http.HttpResponseStatus;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +29,9 @@ public class UserProfileController {
         UserProfileDto savedUserProfile = userProfileService.saveUserProfile(userProfileDto);
         return ResponseEntity.created(getUri()).body((UserProfileDto) getResponse(request, emptyMap(), "AccountCreated"));
     }
-/// TODO
+
     private Object getResponse(HttpServletRequest request, Map<Object, Object> emptyMap, String accountCreated) {
+
         return null;
     }
 
@@ -42,6 +43,13 @@ public class UserProfileController {
     @GetMapping("{id}")
     public ResponseEntity<APIResponseDto> getUserProfile(@PathVariable("id") Long userProfileId){
         APIResponseDto apiResponseDto = userProfileService.getUserProfileById(userProfileId);
-        return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
+        return new ResponseEntity<>(apiResponseDto, OK);
+    }
+
+    @GetMapping("verify/account")
+    public ResponseEntity<APIResponseDto> verifyAccount(@RequestParam("key") String key, HttpServletRequest request){
+        APIResponseDto apiResponseDto = userProfileService.verifyAccountKey(key);
+        return ResponseEntity.ok().body(getResponse(request, emptyMap(), "Account Verified.", "OK");
+
     }
 }

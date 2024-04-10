@@ -1,0 +1,39 @@
+FROM eclipse-temurin:17 as builder
+WORKDIR /app
+
+MAINTAINER thomas1.maestas@gmail.com
+LABEL maintainer=thomas1.maestas@gmail.com
+
+
+ENV JAVA_OPTS="-Xms256m -Xmx512m -Dspring.profiles.active=mysql -Djava.security.egd=file: -Dbuild.version=${version} -Dapp.mapl.mail.host=smtp.gmail.com -Dapp.mapl.mail.port=587 -"
+ENV version=localhost
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=password
+ENV jdbcurl=jdbc:mysql://mysqldb:3306/dashboard_db
+ENV DEFAULT_EMAIL_USERNAME=${DEFAULT_EMAIL_USERNAME}
+ENV DEFAULT_EMAIL_PASSWORD=${DEFAULT_EMAIL_PASSWORD}
+ADD maven/${project.build.finalName}.war /app/mapl.war
+RUN java -Djarmode=layertools -jar ${project.build.finalName}-dashboard.war extract # && rm ${project.build.finalName}-dashboard.war
+
+
+FROM eclipse-temurin:17
+WORKDIR /app
+ # handle url
+ADD  libs/mapl-config-server.jar .p/mapl-config-server.jar
+RUN java -Djarmode=layertools -jar app/mapl-config-server.jar extract # && rm app/mapl-config-server.jar
+
+FROM eclipse-temurin:17
+WORKDIR /app
+ # handle url
+ADD libs/mapl-service-registry-1.0.0.jar ./mapl-service-registry.jar
+RUN java -Djarmode=layertools -jar mapl-service-registry.jar extract # && rm mapl-service-registry.jar
+
+FROM eclipse-temurin:17
+WORKDIR /app
+COPY --from=builder /libs/friendsofgroot.war ./libs/friendsofgroot.war
+RUN java -Djarmode=layertools -jar /app/libs/friendsofgroot.war extract # && rm /app/libs/friendsofgroot.war
+
+
+#ENTRYPOINT ["java","-Xms256m", "-Xmx512m", "-Dspring.profiles.active=mysql", "-Djava.security.egd=file:/dev/./urandoa", "-Dbuild.version=${version}", "-Dapp.mapl.mail.host=smtp.gmail.com","-Dapp.mapl.mail.port=587 -"]
+ENTRYPOINT["java","-Djava.security.egd=file:/dev/./thomas1","org.springframework.boot.loader.JarLauncher"]

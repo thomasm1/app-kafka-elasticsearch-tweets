@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.data.convert.ValueConverter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -15,7 +16,7 @@ import java.util.Set;
 
 
 
-
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter @ToString
@@ -25,13 +26,14 @@ public class User  implements Serializable{
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userid;
+    private long id;
 
+    private long createdBy;
+    private long updatedBy;
     @NotBlank
     private String userId;
 
-
+    private String password;
     @NotBlank
     private String firstName;
 
@@ -43,7 +45,7 @@ public class User  implements Serializable{
     @Size(max = 120)
     private String email;
 
-    @NotBlank
+    @NotBlank /*TODO Enum cardinal*/
     private int userType;
 
     private String imageUrl;
@@ -54,30 +56,27 @@ public class User  implements Serializable{
 
     private String bio;
 
-    private String referenceId;
-
-
-    @JsonIgnore
-    private String qrCodeSecret;
     @Column(columnDefinition = "text")
     private String qrCodeImageUri;
 
-    private Integer loginAttempts;
     private LocalDateTime lastLogin;
-    private boolean enabled;
-    private boolean mfa;
+
+    private Integer loginAttempts;
+
+    private String createdAt;
+    private String updatedAt;
+    private String role;
+    private String authorities;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "USERS_ROLES", joinColumns = @JoinColumn(name = "id"),    inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
-
+    private boolean credentialsNonExpired;
+    private boolean enabled;
+    private boolean mfa;
 
     // UserDetailsCommandLineRunner
-    public User(long id, String userId,  String lastname, String firstName, int userType, String organizationCode, String email, String imageUrl, String dashboardCode,  Boolean accountNonExpired, Boolean accountNonLocked) {
-
-        this.id = id;
-        this.userId = Integer.parseInt(userId);
+    public User(long id, String userId,  String lastname, String firstName, int userType, String organizationCode, String email, String imageUrl, String dashboardCode,  Boolean accountNonExpired ) {
+          super();
+        this.userId =  userId ;
         this.lastName = lastname;
         this.firstName = firstName;
         this.userType = userType;
@@ -86,40 +85,27 @@ public class User  implements Serializable{
         this.imageUrl = imageUrl;
         this.dashboardCode = dashboardCode;
         this.accountNonExpired = accountNonExpired;
-        this.contactType = contactType;
     }
 
     // overloaded for getUsersByCArs() call to DB
-//    public User(int userId, String username) {
+//    public User(int userId, String email) {
 //        super();
 //        this.userId = userId;
-//        this.username = username;
+//        this.email = email;
 //    }
 
     public User(String email, String password) {
         super();
         this.email = email;
-        this.password = password;
-    }
-
-    // overloaded for OFFER/ Groups must be multi-purpose
-    public User(int userId, String username, String password, int userType) {
-        super();
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.userType = userType;
+//        this.password = password;
     }
 
 
     //	 overloaded WITHOUT userId  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
-    public User(String username, String password, String lastName, String firstName,
-                 int userType, String organizationCode,String email,  String imageUrl, String dashboardCode,
-                int isActive,
-                int contactType ) {
+    public User( String lastName, String firstName,
+                 int userType, String organizationCode,String email,  String imageUrl, String dashboardCode
+    ) {
         super();
-        this.username = username;
-        this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
         this.userType = userType;
@@ -127,43 +113,56 @@ public class User  implements Serializable{
         this.email = email;
         this.imageUrl = imageUrl;
         this.dashboardCode = dashboardCode;
-        this.isActive = isActive;
-        this.contactType = contactType;
+
 
     }
 
-    public User(int userId, String username, String password) {
-        super();
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
+    public User(int i, String s, String password, String lastNamedd, String firstname, int i1, String s1, String s2, String s3, String photopaath, int i2, int i3, Object o) {
+
+
+
+
     }
+
+    public User(int i, String s, String password, String lastName, String firstName, int i1, String organizationCode, String s1, String cusUrl, String dashboardCode, int i2, int i3) {
+    }
+
+    public User(String value, String value1, String value2, String value3, int parseInt, String value4, String value5, String value6, String value7, int parseInt1, int parseInt2) {
+    }
+
+
+//    public User(int userId, String email, String password) {
+//        super();
+//        this.userId = userId;
+//        this.email = email;
+//        this.password = password;
+//    }
 
 //     Contstructor for EDIT PROFILE (options available for user)
-public User(  String password, String lastName, String firstName, int userType, String organizationCode,String email,  String imageUrl, String dashboardCode,   int isActive,
-            int contactType // ContactType contactType
-          ) {
-    super();
+//public User(  String password, String lastName, String firstName, int userType, String organizationCode,String email,  String imageUrl, String dashboardCode,   int isActive,
+//            int contactType // ContactType contactType
+//          ) {
+//    super();
+//
+//    this.password = password;
+//    this.lastName = lastName;
+//    this.firstName = firstName;
+//    this.userType = userType;
+//    this.email = email;
+//    this.organizationCode = organizationCode;
+//    this.imageUrl = imageUrl;
+//    this.dashboardCode = dashboardCode;
+//    this.isActive = isActive;
+//    this.contactType = contactType;
+//
+//}
 
-    this.password = password;
-    this.lastName = lastName;
-    this.firstName = firstName;
-    this.userType = userType;
-    this.email = email;
-    this.organizationCode = organizationCode;
-    this.imageUrl = imageUrl;
-    this.dashboardCode = dashboardCode;
-    this.isActive = isActive;
-    this.contactType = contactType;
-
-}
 
 
-
-    public void registerThis(String un, String pw, String ln, String fn) {
-        this.username = un;
-        this.password = pw;
-        this.lastName = ln;
-        this.firstName = fn;
-    }
+//    public void registerThis(String un, String pw, String ln, String fn) {
+//        this.email = un;
+//        this.password = pw;
+//        this.lastName = ln;
+//        this.firstName = fn;
+//    }
 }

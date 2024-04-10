@@ -160,7 +160,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //                    .andExpect(jsonPath("$.length()", is(6)))
 //                    .andReturn();
 //
-//            System.out.println(mvcResult.getResponse().getContentAsString());
+//            log.info(mvcResult.getResponse().getContentAsString());
 //        }
 //
 //        @Test

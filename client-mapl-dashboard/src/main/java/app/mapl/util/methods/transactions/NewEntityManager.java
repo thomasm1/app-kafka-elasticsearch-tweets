@@ -17,17 +17,13 @@ public class NewEntityManager {
         try {
             transaction.begin();
             User user = new User();
-            user.setUserId(1);
-            user.setUsername("username");
-            user.setPassword("password");
+            user.setUserId(String.valueOf(1));
             user.setLastName("lastName");
             user.setFirstName("firstName");
             user.setUserType(1);
             user.setOrganizationCode("organizationCode");
             user.setEmail("email");
-            user.setCusUrl("cusUrl");
             user.setDashboardCode("dashboardCode");
-            user.setIsActive(1);
             entityManager.persist(user);
 
 

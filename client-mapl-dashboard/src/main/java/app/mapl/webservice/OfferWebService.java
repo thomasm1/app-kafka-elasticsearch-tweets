@@ -6,12 +6,14 @@ import app.mapl.models.Offer;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class OfferWebService  {
 	OffersRepository offersRepository;
@@ -20,19 +22,19 @@ public class OfferWebService  {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 
 			 Offer o = new Offer();
-		 			 o.setUsername("test");
+		 			 o.setEmail("test");
 					  o.setCoinId(1);
 					  o.setOfferAmt(1.0);
 					  o.setOfferMos(1);
 
-		System.out.println("ReqWebServ submit: " + o);
+		log.info("ReqWebServ submit: " + o);
 		// Call OfferService to add it.
 		offersRepository.save(o);
 
 		try {
 			response.getWriter().append("Successfully added data input: " + request.getContextPath());
 		} catch (IOException e1) {
-			System.out.println("error adding??" + e1);
+			log.info("error adding??" + e1);
 			;
 //			e1.printStackTrace();
 		}
@@ -41,24 +43,24 @@ public class OfferWebService  {
 	public   void getOffer(HttpServletRequest request, HttpServletResponse response) {
 
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
-			System.out.println("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName("oracle.jdbc.driver.SQLDriverManager"));
+			log.info("... JDBC Drive successfully connected.");
 
 		} catch (ClassNotFoundException e1) {
-			System.out.println("oops, Driver not found :-O...\n" + e1);
+			log.info("oops, Driver not found :-O...\n" + e1);
 //			e1.printStackTrace();
 		}
 
 		int id = Integer.parseInt(request.getParameter("reqId"));
-		System.out.println("just got parameter #:" + id);
+		log.info("just got parameter #:" + id);
 
 		Optional<Offer> d = offersRepository.findById(id);
 		if (d.isPresent()) {
-			System.out.println("OfferWebServ: " + d.get());
+			log.info("OfferWebServ: " + d.get());
 		} else {
-			System.out.println("OfferWebServ: " + d);
+			log.info("OfferWebServ: " + d);
 		}
-		System.out.println(d.get());
+		log.info(String.valueOf(d.get()));
 
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
@@ -87,7 +89,7 @@ public class OfferWebService  {
 		Integer intId = Integer.parseInt(uuid);
 		System.out.println("uid=" + uid + " intId=" + intId + "userId=" + uid);
 
-		String uname = request.getParameter("username");
+		String uname = request.getParameter("email");
 			List<Offer> offerList = offersRepository.findAllByUsername(uname);
 			ObjectMapper om = new ObjectMapper();
 			if (offerList.size() > 0) {    //   HAS ID
@@ -110,8 +112,8 @@ public class OfferWebService  {
 
 	public   void updateOffer(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
-			System.out.println("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName("oracle.jdbc.driver.SQLDriverManager"));
+			log.info("... JDBC Drive successfully connected.");
 
 		} catch (ClassNotFoundException e1) {
 			System.out.println("oops, Driver not found :-O...\n" + e1);
@@ -125,7 +127,7 @@ public class OfferWebService  {
 		// add db using these fields
 		System.out.println("OfferWebServ old one: " + r);
 		r = new Offer(reqId,
-				r.getUsername(),
+				r.getEmail(),
 				r.getCoinId(),
 				r.getOfferAmt(),
 				r.getOfferMos(),

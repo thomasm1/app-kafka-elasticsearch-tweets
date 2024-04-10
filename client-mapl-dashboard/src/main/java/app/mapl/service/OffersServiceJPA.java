@@ -47,15 +47,15 @@ public class OffersServiceJPA implements OffersService {
     }
 
     /**
-     * @param username
+     * @param email
      * @return
      */
     @Override
-    public List<Offer> getAllOffersCust(String username) {
+    public List<Offer> getAllOffersCust(String email) {
         List<Offer> allOffers = (List<Offer>) offersRepository.findAll();
         List<Offer> myOffers = new ArrayList<>();
         for (Offer o : allOffers) {
-            if (o.getUsername().equals(username)) {
+            if (o.getEmail().equals(email)) {
                 myOffers.add(o);
             }
         }

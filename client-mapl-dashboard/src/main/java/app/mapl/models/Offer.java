@@ -26,7 +26,7 @@ public class Offer {
 //	int userID;
 
 	@Column(name = "username")
-	String username;
+	String email;
 	@Column(name = "coinid")
 	int coinId;
 	@Column(name = "offeramt")
@@ -40,8 +40,8 @@ public class Offer {
 	private LocalDate targetDate;
 	private boolean done;
 
-	public Offer(String username, int coinId, double offerAmt, int offerMos, String offerStatus) {
-		this.username = username;
+	public Offer(String email, int coinId, double offerAmt, int offerMos, String offerStatus) {
+		this.email = email;
 		this.coinId = coinId;
 		this.offerAmt = offerAmt;
 		this.offerMos = offerMos;
@@ -50,7 +50,7 @@ public class Offer {
 
 
 	public String getUsername() {
-		return username;
+		return email;
 	}
 
 	@Override

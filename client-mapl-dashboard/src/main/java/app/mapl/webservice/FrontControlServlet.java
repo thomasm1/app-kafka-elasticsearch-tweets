@@ -37,10 +37,9 @@ public class FrontControlServlet extends HttpServlet {
 //		System.out.println("getCookies"+Arrays.asList(request.getCookies()));
 
 		User u = new User();
-		u.setUserId(1);
 		u.setFirstName("John");
 		u.setLastName("Doe");
-		u.setCusUrl("https://www.google.com");
+
 		u.setEmail("thomas.maestas@hotmail.com");
 
 		HttpSession sess = request.getSession();

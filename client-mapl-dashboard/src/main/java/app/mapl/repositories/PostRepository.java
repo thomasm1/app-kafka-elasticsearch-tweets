@@ -28,7 +28,7 @@ public interface PostRepository extends JpaRepository<PostEntity, Long> {
 			"title",
 			"post",
 			"blogcite",
-			"username",
+			"email",
 			new Category(),
 			new HashSet<>()
 	);
@@ -44,15 +44,15 @@ public interface PostRepository extends JpaRepository<PostEntity, Long> {
 	Optional<PostEntity> findFirstByCat3(String cat3);
 	Optional<PostEntity> findByDate(String date);
 
-	Page<PostEntity> findAllByUsername(Pageable pageable, String username);
+	Page<PostEntity> findAllByEmail(Pageable pageable, String email);
 
 	Page<PostEntity> findAll(Pageable pageable);
 
 	Optional<PostEntity> findByDid(String did);
-	List<PostEntity> findByUsername(String username);
+	List<PostEntity> findByEmail(String email);
 
-//	@Query("SELECT p FROM PostEntity p WHERE p.username = ?1")
-	@Query("SELECT CONCAT(p.title, ' ', p.post) FROM PostEntity p WHERE p.username = ?1")
+//	@Query("SELECT p FROM PostEntity p WHERE p.email = ?1")
+	@Query("SELECT CONCAT(p.title, ' ', p.post) FROM PostEntity p WHERE p.email = ?1")
 		List<PostEntity> findByAuthor(String alias);
 
 	@Query("SELECT p FROM PostEntity p WHERE " +

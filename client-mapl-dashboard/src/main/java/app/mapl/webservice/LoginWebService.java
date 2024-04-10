@@ -9,38 +9,43 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
-//https://github.com/google/gson/blob/master/UserGuide.md
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
 //import app.mapl.service.UserService;
 
-
+@Slf4j
 @WebServlet(urlPatterns = { "/signin", "/login}" })
 public class LoginWebService   extends HttpServlet {
 
+	@Value("${spring.datasource.driver-class-name}")
+	private static String APP_DRIVER;
 
-	static UsersService userService;
+	@Autowired
+	private final UsersService userService;
 	public LoginWebService(UsersService userService) {
 		this.userService = userService;
 	}
 
-	public static void login(HttpServletRequest request, HttpServletResponse response)
+	public void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
-			System.out.println("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName(APP_DRIVER));
+			log.info("... JDBC Drive successfully connected.");
 
 		} catch (ClassNotFoundException e1) {
-			System.out.println("oops, Driver not found :-O...\n" + e1);
+			log.info("oops, Driver not found :-O...\n" + e1);
 		}
 
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println("username1: " + username + "; password1: " + password);
-		userService.loginUser(username, password);
+		log.info("email1: " + email + "; password1: " + password);
+		userService.loginUser(email, password);
 		int dbId = 0;
 		String dbUser = null;
 		int dbSuper = 0;
@@ -50,19 +55,19 @@ public class LoginWebService   extends HttpServlet {
 
 		Boolean valid = false;
 		Boolean isSuper = false;
-		System.out.println("this user is not verified as a Supervisor, checking tho...");
+		log.info("this user is not verified as a Supervisor, checking tho...");
 		Boolean isGroupsHead = false;
-		System.out.println("this user is not verified as a Groups Head, checking tho...");
+		log.info("this user is not verified as a Groups Head, checking tho...");
 
 
 
-		System.out.println("if valid.." + valid);
+		log.info("if valid.." + valid);
 		if (valid) {
 			HttpSession sess = request.getSession();
 			sess.setAttribute("sessionId", sess.getId());
-			sess.setAttribute("username", username);
+			sess.setAttribute("email", email);
 			sess.setAttribute("validated", "validated");
-			System.out.println("User: " + username + " is validated: " + valid);
+			log.info("User: " + email + " is validated: " + valid);
 
 			request.setAttribute("dbUser", dbUser);
 			request.setAttribute("dbId", dbId);
@@ -75,13 +80,13 @@ public class LoginWebService   extends HttpServlet {
 			response.addCookie(new Cookie("sess.getId().toString()",sess.getId().toString()));
 			response.addCookie(sessUser);
 			response.addCookie(sessGroups);
-			System.out.println("..just made cookies...");
+			log.info("..just made cookies...");
 
 			RequestDispatcher rd = request.getRequestDispatcher("login.html");
 			rd.forward(request, response);
 
 		} else {
-			System.out.println("failed validation");
+			log.info("failed validation");
 			RequestDispatcher rdd = request.getRequestDispatcher("login.html");
 			rdd.forward(request, response);
 			request.setAttribute("errorMessage", "Oops, invalid credentials, typo maybe?");
@@ -90,7 +95,7 @@ public class LoginWebService   extends HttpServlet {
   	}
 
 	public static void logout(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("logging out...");
+		log.info("logging out...");
 
 	}
 }

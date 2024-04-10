@@ -11,7 +11,7 @@ public interface PostService {
 	public PostEntityDto createPost(PostEntityDto postEntityDto);
 
 	public PostEntityResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
-	public PostEntityResponse getAllPostsByUsername(int pageNo, int pageSize, String sortBy, String sortDir, String username);
+	public PostEntityResponse getAllPostsByUsername(int pageNo, int pageSize, String sortBy, String sortDir, String email);
 
 	public Optional<PostEntityDto> getPostById(long id);
 	public Optional<PostEntityDto>  getPostByDid(String did);

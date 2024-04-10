@@ -24,7 +24,7 @@ public interface CoinsService {
 
     public void coinMarketViewAll();
 
-    List<CoinDto> getAllCoinsIOwn(String username);
+    List<CoinDto> getAllCoinsIOwn(String email);
 
     // CLI
     public Coin getCoinCLI(int coinId);

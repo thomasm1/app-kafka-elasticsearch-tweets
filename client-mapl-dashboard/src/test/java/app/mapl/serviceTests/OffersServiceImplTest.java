@@ -4,12 +4,14 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import app.mapl.service.OffersService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 
 import app.mapl.models.Offer;
 
 import java.time.LocalDate;
 
+@Slf4j
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class OffersServiceImplTest {      // *NOTE: change PK offernames before sending to DB
 
@@ -20,14 +22,14 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 	int rand;
 	@BeforeAll // setup
 	public static void setupClass() {
-		System.out.println("Class/Static setup ");
+		log.info("Class/Static setup ");
 	}
 
 	@BeforeEach
 	public void setup() {
 		int num = 711;
 		rand = (int) ((int) num * Math.random());
-		System.out.println("Method/Instance setup "+rand);
+		log.info("Method/Instance setup "+rand);
 	}
 
 //    @Test
@@ -41,11 +43,11 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 //				0,
 //				1 );
 //		UserService.createUser(u);
-//    	Offer o = new Offer(u.getUsername(), c.getCoinId(), 1110.0, 0, "PENDING");    // PASSES
+//    	Offer o = new Offer(u.getEmail(), c.getCoinId(), 1110.0, 0, "PENDING");    // PASSES
 //		assertTrue(OfferService.createOffer(o));
 //		OfferService.deleteOffer(o.getOfferID());
 //		CoinService.deleteCoin(c.getCoinId());
-//		UserService.deleteUser(u.getUsername());
+//		UserService.deleteUser(u.getEmail());
 //
 //	}
     @Test
@@ -72,12 +74,12 @@ public class OffersServiceImplTest {      // *NOTE: change PK offernames before 
 
 	@AfterEach
 	public void tearDown() {
-		System.out.println("After Class executing ...");
+		log.info("After Class executing ...");
 	} // teardown
 
 	@AfterAll
 	public static void tearDownClass() {
-		System.out.println("After Class executing ...");
+		log.info("After Class executing ...");
 	} // teardown
 
 //////Teardown delete p1;

@@ -1,9 +1,9 @@
 package app.mapl.mapper;
 
 import app.mapl.dto.UserDto;
-import app.mapl.dto.UserProfileDto;
+import app.mapl.dto.UserEntityDto;
 import app.mapl.models.User;
-import app.mapl.models.UserProfile;
+import app.mapl.models.UserEntity;
 import org.mapstruct.*;
 
 
@@ -17,5 +17,5 @@ public interface UserMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     User partialUpdate(UserDto userDto, @MappingTarget User user);
 
-    UserProfile toUserProfile(UserProfileDto userProfileDto);
+    UserEntity toUserEntity(UserEntityDto uerEntityDto);
 }

@@ -28,7 +28,7 @@ public class PostEntityDto implements Serializable {
     private String post;
     private String blogcite;
 
-    private String username;
+    private String email;
 
     private Long categoryId;
 

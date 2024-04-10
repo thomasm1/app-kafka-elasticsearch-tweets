@@ -13,34 +13,36 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserWebService {
 	UsersRepository usersRepository;
 	public void createUser(HttpServletRequest request, HttpServletResponse response) {
 
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
-			System.out.println("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName("oracle.jdbc.driver.SQLDriverManager"));
+			log.info("... JDBC Drive successfully connected.");
 			
 		} catch (ClassNotFoundException e1) {
-			System.out.println("oops, Driver not found :-O...\n" +e1);
+			log.info("oops, Driver not found :-O...\n" +e1);
 //			e1.printStackTrace();
 		}
 //		int userId = Integer.parseInt(request.getParameter("id"));
 		int groupsId = Integer.parseInt(request.getParameter("groupsId"));
-		System.out.println(groupsId);
-		String username = request.getParameter("username");
-		System.out.println(username);
-		String password = request.getParameter("password");
+		log.info(String.valueOf(groupsId));
 		String email = request.getParameter("email");
+		log.info(email);
+		String password = request.getParameter("password");
+		 email = request.getParameter("email");
 
 //		 add db using these fields
 //		"user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net"
 //		User d = new User(999, groupsId,  username, password, email);
-//		System.out.println("UserWebService: "+d);
+//		log.info("UserWebService: "+d);
 
 		// Call UserService to add it.
 	    usersRepository.save(new User(1, "t@t.com", "password", "lastNamedd", "firstnam", 1,   "5055087707" ,"user4@cryptomaven.xyz","http://www.dailytech.net", "photopaath", 0,0,null ));
@@ -54,18 +56,18 @@ public class UserWebService {
  
 	public   void getUser(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("userId"));
-		System.out.println("id: " + id);
+		log.info("id: " + id);
 		
-		String username = request.getParameter("username");
-		System.out.println("parameter: "+username);
-		User u = usersRepository.findByEmail(username).orElseThrow();
-		System.out.println("getUser(name):"+u.getUsername());
+		String email = request.getParameter("email");
+		log.info("parameter: "+email);
+		User u = usersRepository.findByEmail(email).orElseThrow();
+		log.info("getUser(name):"+u.getEmail());
 
-		User d = usersRepository.findByEmail(u.getUsername()).orElseThrow();
+		User d = usersRepository.findByEmail(u.getEmail()).orElseThrow();
 
-		String dbUser = d.getUsername();
-		int dbId = d.getUserId();
-		System.out.println(dbUser+"..getting userInfo:" );
+		String dbUser = d.getEmail();
+		int dbId = Integer.parseInt(d.getUserId());
+		log.info(dbUser+"..getting userInfo:" );
 
 		HttpSession sess = request.getSession();   
 		sess.setAttribute("sessionId", sess.getId());
@@ -92,14 +94,14 @@ public class UserWebService {
 		}  
 	}
 
-//	int userId, int groupsId, int superId, String username, String password, String email
+//	int userId, int groupsId, int superId, String email, String password, String email
 
 	public   void listUser(HttpServletRequest request, HttpServletResponse response) {
 		
 		List<User> d = usersRepository.findAll();
 
 
-		System.out.println(d);
+		log.info(d.toString());
 
 		ObjectMapper om = new ObjectMapper();
 		try {
@@ -115,11 +117,11 @@ public class UserWebService {
 	}
 
 	public static void register(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("register");
+		log.info("register");
 	}
 
 	public static void update(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("update");
+		log.info("update");
 	}
 
 	public static void delete(HttpServletRequest request, HttpServletResponse response) {

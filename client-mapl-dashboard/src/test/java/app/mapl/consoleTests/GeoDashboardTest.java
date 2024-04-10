@@ -15,6 +15,6 @@ class GeoDashboardTest {
     }
 
     @Test
-    void mainUserProfile() {
+    void mainUserEntity() {
     }
 }

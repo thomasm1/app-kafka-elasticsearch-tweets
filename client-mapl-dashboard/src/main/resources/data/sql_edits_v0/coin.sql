@@ -13,7 +13,7 @@ CREATE TABLE nfttable (
     metadata  NUMBER(10) NOT NULL   );
 
 CREATE TABLE nftMetadata (
-    metaid number(10) not null unique,
+    metaid number(10) NOT NULL unique,
     name VARCHAR(100),
     description VARCHAR(400),
     image VARCHAR(200),

@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 //dashboard-service.url=
-//dashboard-service.username=
+//dashboard-service.email=
 //dashboard-service.key=
 
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 class DashboardServiceConfiguration {
 
 	private String url;
-	private String username;
+	private String email;
 	private String key;
 
 

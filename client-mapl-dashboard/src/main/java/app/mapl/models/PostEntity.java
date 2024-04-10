@@ -15,7 +15,7 @@ import java.util.Set;
 @Table(
 		name = "POST_ENTITY", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})}
 )
-public class PostEntity {
+public class PostEntity extends BaseModel {
 
 	public interface SimplePost {
 		String getTitle();
@@ -26,9 +26,9 @@ public class PostEntity {
 		String getBlogcite();
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", nullable = false)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "ID", nullable = false)
 	private Long id;
 
 	@Column(name = "DID", nullable = false)
@@ -53,7 +53,7 @@ public class PostEntity {
 	private String blogcite;
 
 	@Column(name = "USERNAME", nullable = false)
-	private String username;
+	private String email;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY_ID")

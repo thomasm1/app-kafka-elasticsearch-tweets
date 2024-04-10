@@ -266,7 +266,7 @@ public class AdminDashboard {
                                 String lastName = scan.nextLine();
                                 System.out.println("User Email?");
                                 String email = scan.nextLine();
-                                System.out.println("User Role?");
+                                System.out.println("User RoleEntity?");
                                 String role = scan.nextLine();
                                 System.out.println("Umkay, user's username is *" + username + "*,\n password is *" + password
                                         + "*,\n first name is *" + firstName + "*,\n last name is *" + lastName
@@ -276,7 +276,6 @@ public class AdminDashboard {
                                     String decide = scan.next();
                                     if (decide.contentEquals("y")) {
                                         UserDto createdUser =  new UserDto();
-                                        createdUser.setUsername(username);
                                         createdUser.setPassword(password);
                                         createdUser.setFirstName(firstName);
                                         createdUser.setLastName(lastName);

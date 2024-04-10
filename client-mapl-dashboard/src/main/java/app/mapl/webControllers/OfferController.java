@@ -85,7 +85,6 @@ public class OfferController {
 		}
 		
 		String username = getLoggedInUsername(model);
-		offer.setUsername(username);
 		offersServiceImpl.updateOffer(offer);
 		return "redirect:list-offers";
 	}

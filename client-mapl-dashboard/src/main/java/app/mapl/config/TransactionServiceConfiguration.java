@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 class TransactionServiceConfiguration {
 
 	private String url;
-	private String username;
+	private String email;
 	private String key;
 
 

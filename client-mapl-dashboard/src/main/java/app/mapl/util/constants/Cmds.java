@@ -25,7 +25,7 @@ public class Cmds {
     public static final String GOOD_BYE = "So sorry to see you leave! Please come back soon!!\n";
 
 // REGISTER
-    public static final String REGISTER_UNAME = "Please type your username below:\n";
+    public static final String REGISTER_UNAME = "Please type your email below:\n";
     public static final String REGISTER_PW = "Now, please type an alpha-numeric password:\n";
     public static final String REGISTER_FNAME = " first name:\n";
     public static final String REGISTER_LNAME = " ,  last name:\n";

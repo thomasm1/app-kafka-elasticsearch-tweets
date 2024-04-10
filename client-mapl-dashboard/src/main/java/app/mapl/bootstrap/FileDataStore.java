@@ -5,6 +5,7 @@ import app.mapl.models.*;
 import app.mapl.service.WeblinksService;
 import app.mapl.util.DownloadSequential;
 import app.mapl.util.ReadWriteFile;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import static app.mapl.util.constants.Datum.*;
 
+@Slf4j
 @Component
 public class FileDataStore extends ReadWriteFile {
  	WeblinksService bookmarks;
@@ -57,7 +59,7 @@ public class FileDataStore extends ReadWriteFile {
 //		users[0] = UserManager.getInstance().createUser(500,  "user0", "password", "Smith", "Tom", Group.MALE,  UserType.USER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "1000");
  	List<String> data = new ArrayList<>();
 			ReadWriteFile.readFromFilename(data,  FILE_IN_USERS);
-			System.out.println("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
+			log.info("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
 				User user = new User( values[1], values[2], values[3], values[4],  Integer.parseInt(values[6]),   values[8], values[9],  values[10],values[11],Integer.parseInt(values[12]),Integer.parseInt((values[13])) );
@@ -95,7 +97,7 @@ public class FileDataStore extends ReadWriteFile {
 
 				coinsStatic.add(coin);
 				COIN_COUNT = coinsStatic.size();
-				System.out.println("COIN_COUNT::::::: "+COIN_COUNT);
+				log.info("COIN_COUNT::::::: "+COIN_COUNT);
 			}
 			return coinsStatic;
 		};

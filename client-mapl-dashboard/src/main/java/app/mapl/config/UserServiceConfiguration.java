@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 class UserServiceConfiguration {
 
 	private String url;
-	private String username;
+	private String email;
 	private String key;
 
 

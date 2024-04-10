@@ -47,7 +47,7 @@ public class UserRegister {
 		System.out.println(" Continue to dashboard?  'yes'/'no':");
 		String response = scan.next();
 
-		UserLogin.decideDashboard(response, un);
+		UserDashboard.UserLogin.decideDashboard(response, un);
 		scan.close();
 
 
@@ -61,17 +61,14 @@ public class UserRegister {
 	}
 
 	private static void regBegin(String un, String pw, String fn, String ln, UserDto newUserDto) {
-		newUserDto.setUsername(un);
+
 		newUserDto.setPassword(pw);
 		newUserDto.setLastName(ln);
 		newUserDto.setFirstName(fn);
 		newUserDto.setUserType(2);	// 2 = customer
 		newUserDto.setEmail(un);
 		newUserDto.setOrganizationCode("999-999-9999");
-		newUserDto.setCusUrl("http://www.dailytech.net");
 		newUserDto.setDashboardCode("dashboardCode");
-		newUserDto.setIsActive(0);
-		newUserDto.setContactType(1);
 	}
 
 }

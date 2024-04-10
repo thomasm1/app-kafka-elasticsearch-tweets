@@ -2,6 +2,7 @@ package app.mapl.serviceTests;
 
 import app.mapl.dto.UserDto;
 import app.mapl.service.UsersService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+@Slf4j
 @ExtendWith(MockitoExtension.class)
 public class UserServiceMockTest {
 
@@ -70,17 +72,17 @@ public class UserServiceMockTest {
         when(userServiceMock.deleteUser(u.getEmail())).thenReturn( assertInstanceOf(Boolean.class, true));
 
         assertTrue(userServiceMock.deleteUser(u.getEmail()));
-//		System.out.println("deleteed just now ..."+ x);
+//		log.info("deleteed just now ..."+ x);
     }
 
     @AfterEach
     public void tearDown() {
-        System.out.println("After Class executing ...");
+        log.info("After Class executing ...");
     }
 
     @AfterAll  // static! (not needed with TestNG @BeforeClass
     public static void tearDownClass() {
-        System.out.println("After Class executing ...");
+        log.info("After Class executing ...");
     } // teardown
 
 

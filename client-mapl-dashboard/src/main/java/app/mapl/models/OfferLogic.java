@@ -24,8 +24,8 @@ public class OfferLogic   {
 	private int offerid;
 	private int coinid;
 
-	@Column(name = "username")
-	String username;
+	@Column(name = "email")
+	String email;
 	private Double pricetotal;
 	private Double offeramt;
 
@@ -67,10 +67,10 @@ public class OfferLogic   {
 
 		i = (int) (Math.random() * i); // Random id generator (Overwritten in DB in any case)
 
-		OfferLogic newest = new OfferLogic(i, o.getOfferID(), coinid.getCoinId(), o.getUsername(), coinid.getPriceTotal(),
+		OfferLogic newest = new OfferLogic(i, o.getOfferID(), coinid.getCoinId(), o.getEmail(), coinid.getPriceTotal(),
 				o.getOfferAmt(), balance, o.getOfferMos(), monthsRemaining, monthlyPayments);
 
-		System.out.println(o.getUsername() + "'s " + coinid.getCoinToken() + " " + coinid.getCoinSymbol() + " Balance:"
+		System.out.println(o.getEmail() + "'s " + coinid.getCoinToken() + " " + coinid.getCoinSymbol() + " Balance:"
 				+ newest.getBalance() + " " + " monthly payments: $" + newest.getMonthlyPayments());
 
 		return newest;
@@ -93,13 +93,13 @@ public class OfferLogic   {
 		MONTH_TIME = t;
 	}
 
-	public OfferLogic(int id, int offerid, int coinid, String username, Double pricetotal, Double offeramt,
+	public OfferLogic(int id, int offerid, int coinid, String email, Double pricetotal, Double offeramt,
 			Double balance, int offermos, int monthsRemaining, double monthlyPayments) {
 		super();
 		this.id = id;
 		this.offerid = offerid;
 		this.coinid = coinid;
-		this.username =	username;
+		this.email =	email;
 
 		this.pricetotal = pricetotal;
 		this.offeramt = offeramt;

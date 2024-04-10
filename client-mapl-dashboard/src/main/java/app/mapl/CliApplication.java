@@ -2,12 +2,11 @@ package app.mapl;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-import app.mapl.models.User;
-import app.mapl.service.PostServiceJDBC;
-import app.mapl.service.UsersServiceJDBC;
-import app.mapl.webControllers.ForEntityMethod;
+import app.mapl.config.MailConfig;
+import app.mapl.models.MaplConfig;
+import app.mapl.models.PostEntity;
+import app.mapl.models.UserEntity;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -19,16 +18,14 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -57,12 +54,13 @@ import org.springframework.http.*;
 /// @EnableFeignClient
 @ServletComponentScan("app.mapl")
 @EnableJpaRepositories("app.mapl.repositories")
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EntityScan("app.mapl.models")
 @ConfigurationPropertiesScan("app.mapl.config.*")
-@EnableConfigurationProperties
+@EnableConfigurationProperties(value={MaplConfig.class, UserEntity.class, PostEntity.class})
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class, MailSenderAutoConfiguration.class
 })
+@ComponentScan( excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {MailConfig.class}))
 public class CliApplication {
 
 
@@ -114,7 +112,7 @@ public class CliApplication {
 		log.info(ctx.getClassLoader().toString());
 		log.info("***log.info**** Environment *******");
 //		log.info(ctx.getEnvironment());
-		System.out.println("******* Application Name *******");
+		log.info("******* Application Name *******");
 		log.info(ctx.getApplicationName());
 		LoggerImpl.loggerInstance(new String[] { "CliApplication.main()" });
 //		for (String name : ctx.getBeanDefinitionNames()){
@@ -124,9 +122,9 @@ public class CliApplication {
 
 	public static void statusCode(ResponseEntity<String> responseEntity) {
 		HttpStatusCode statusCode = responseEntity.getStatusCode();
-		System.out.println("status code - " + statusCode);
+		log.info("status code - " + statusCode);
 		String user = responseEntity.getBody();
-		System.out.println("response body - " + user);
+		log.info("response body - " + user);
 		HttpHeaders responseHeaders = responseEntity.getHeaders();
 		System.out.println("response Headers - " + responseHeaders);
 	}

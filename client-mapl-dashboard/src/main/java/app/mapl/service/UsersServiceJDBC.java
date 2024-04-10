@@ -2,7 +2,9 @@ package app.mapl.service;
 
 import app.mapl.dto.RegisterDto;
 import app.mapl.dto.UserDto;
+import app.mapl.dto.UserRequest;
 import app.mapl.mapper.UserMapper;
+import app.mapl.models.LoginType;
 import app.mapl.models.User;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,7 +28,7 @@ public class UsersServiceJDBC implements UsersService {
         this.jdbcTemplate = jdbcTemplate;
         userRowMapper = (rs, rowNum) -> new User(
                 rs.getInt("userId"),
-                rs.getString("username"),
+                rs.getString("email"),
                 rs.getString("password"),
                 rs.getString("lastName"),
                 rs.getString("firstName"),
@@ -46,8 +48,8 @@ public class UsersServiceJDBC implements UsersService {
 //        return null;
     }
 
-    public User byid(Long userid) {
-        return this.jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE userid = ?", userRowMapper, userid);
+    public User byid(Long id) {
+        return this.jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE id = ?", userRowMapper, id);
 //        return null;
     }
 
@@ -65,13 +67,24 @@ public class UsersServiceJDBC implements UsersService {
     }
 
     /**
-     * @param username
+     * @param email
      * @param password
      * @return
      */
     @Override
-    public UserDto loginUser(String username, String password) {
+    public UserDto loginUser(String email, String password) {
         return null;
+    }
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param password
+     */
+    @Override
+    public void createUser(String firstName, String lastName, String email, String password) {
+
     }
 
     /**
@@ -173,5 +186,24 @@ public class UsersServiceJDBC implements UsersService {
     @Override
     public boolean deleteUser(UserDto user) {
         return false;
+    }
+
+    /**
+     * @param email
+     * @param password
+     * @return
+     */
+    @Override
+    public UserRequest updateLoginAttempt(String email, String password) {
+        return null;
+    }
+
+    /**
+     * @param email
+     * @param loginType
+     */
+    @Override
+    public void updateLoginAttempt(String email, LoginType loginType) {
+
     }
 }

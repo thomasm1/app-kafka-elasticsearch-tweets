@@ -34,8 +34,8 @@ public class PostServiceJDBC {
 
     }
 
-    public PostEntity byusername(String username) {
-        return this.jdbcTemplate.queryForObject("SELECT * FROM post_entity WHERE username = ?", postRowMapper, username);
+    public PostEntity byemail(String email) {
+        return this.jdbcTemplate.queryForObject("SELECT * FROM post_entity WHERE email = ?", postRowMapper, email);
     }
 
 }

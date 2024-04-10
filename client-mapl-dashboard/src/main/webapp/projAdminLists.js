@@ -10,7 +10,7 @@ let checkRole = function () {
 		detail.style.display = "block";
 		role.style.display = 'block';
 		let charges = [];
-		role.innerHTML = `*Supervisor Role<br />ID's:<br /> `;
+		role.innerHTML = `*Supervisor RoleEntity<br />ID's:<br /> `;
 
 //		addSubordinates();
 		for (i = 0; i < 20; i++) {   // FIX THIS fixed ... TODO
@@ -30,7 +30,7 @@ let checkRole = function () {
 		detail.style.display = "block";
 		role.style.display = 'block';
 		let deptCharges = [];
-		role.innerHTML = ` Dept Head Role for ID's:<br /> `;
+		role.innerHTML = ` Dept Head RoleEntity for ID's:<br /> `;
 
 		for (i = 5; i < 10; i++) {
 			detail.style.display = "block";

@@ -1,11 +1,15 @@
 package app.mapl.webservice;
 
+import app.mapl.dto.UserEntityDto;
+import app.mapl.dto.UserRequest;
 import app.mapl.models.User;
 import app.mapl.repositories.UsersRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
+import java.util.Optional;
 
 public class ViewLoginCommand implements Command {
 
@@ -16,15 +20,15 @@ public class ViewLoginCommand implements Command {
         System.out.println("session: " + session);
 //        session.setAttribute("user", new User(Arrays.toString(request.getParameterValues("username")), "Doe"));
 
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
-        System.out.println("username: " + username);
+        System.out.println("email: " + email);
         System.out.println("password: " + password);
 
         User user = (User) session.getAttribute("user");
-        User userRepo = usersRepository.findByUsernameAndPassword(request.getParameter("username"), request.getParameter("password"));
+        Optional<User> userRepo = usersRepository.findByEmailAndPassword(request.getParameter("email"), request.getParameter("password"));
         System.out.println("userRepo: " + userRepo);
-        if (userRepo != null) {
+        if (userRepo.isPresent()) {
             session.setAttribute("user", userRepo);
             return "userDetails";
         }

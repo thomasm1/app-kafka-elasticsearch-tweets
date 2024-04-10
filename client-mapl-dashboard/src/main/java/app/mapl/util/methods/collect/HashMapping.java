@@ -88,25 +88,25 @@ public class HashMapping {
         names.remove("Anita");
         System.out.println(map1);
 
-        Map<String, Map<String, Object>> userProfile = new HashMap<>();
+        Map<String, Map<String, Object>> uerEntity = new HashMap<>();
 
         Map<String, Object> profile = new HashMap<>();
         profile.put("age", 25);
         profile.put("dept", "CS");
         profile.put("city", "New York");
 
-        userProfile.put("John", profile);
+        uerEntity.put("John", profile);
 
         profile = new HashMap<>();
         profile.put("age", 29);
         profile.put("dept", "CS");
         profile.put("city", "New York");
 
-        userProfile.put("Raj", profile);
+        uerEntity.put("Raj", profile);
 
-        System.out.println("userProfile: " + userProfile);
+        System.out.println("uerEntity: " + uerEntity);
 
-        Map<String, Object> profile1 = userProfile.get("John");
+        Map<String, Object> profile1 = uerEntity.get("John");
         int age = (Integer) profile1.get("age");
         System.out.println("Age: " + age);
         // Exercise: Try using second constructor, putAll, clear, values, and other methods

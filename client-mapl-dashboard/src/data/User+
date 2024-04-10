@@ -5,17 +5,17 @@ public class User {
    public String userType = "User";
    
    public void displayUserInfo() {
-	   System.out.println("\nPrinting User Info: ");
-	   System.out.println("id: " + id);
-	   System.out.println("userType: " + userType);
+	   log.info("\nPrinting User Info: ");
+	   log.info("id: " + id);
+	   log.info("userType: " + userType);
    }
    
    public void printUserType() {
-	   System.out.println("User");
+	   log.info("User");
    }
    
    public void saveWebLink() {
-	   System.out.println("User: saveWebLink");
+	   log.info("User: saveWebLink");
 	   postAReview("");	 
 	   staticMethod(); 
    }

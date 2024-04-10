@@ -69,7 +69,7 @@ public class PostServiceJPA implements PostService {
 		return postResponse;
 	}
 	@Override
-	public PostEntityResponse getAllPostsByUsername(int pageNo, int pageSize, String sortBy, String sortDir, String username) {
+	public PostEntityResponse getAllPostsByUsername(int pageNo, int pageSize, String sortBy, String sortDir, String email) {
 
 		Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
 				: Sort.by(sortBy).descending();
@@ -77,7 +77,7 @@ public class PostServiceJPA implements PostService {
 		// create Pageable instance
 		Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
 
-		Page<PostEntity> posts = pr.findAllByUsername(pageable, username);
+		Page<PostEntity> posts = pr.findAllByEmail(pageable, email);
 
 		// get content for page object
 		List<PostEntity> listOfPosts = posts.getContent();

@@ -1,21 +1,21 @@
 create table ROLES
 (
-    id   INT not null,
-    name varchar(255),
+    id   INT NOT NULL,
+    name VARCHAR(255),
     primary key (id)
 );
 commit;
 create table USERS_ROLES
 (
-    id          INT not null,
-    role_id     INT not null,
-    user_userid INT not null,
+    id          INT NOT NULL,
+    role_id     INT NOT NULL,
+    user_userid INT NOT NULL,
     primary key (id)
 );
 
 create table  USERS
 (
-    USERID      INT not null,
+    USERID      INT NOT NULL,
     USERNAME    VARCHAR(255),
     PASSWORD    VARCHAR(120),
     LASTNAME    VARCHAR(255),
@@ -32,9 +32,9 @@ create table  USERS
 
 create table NFT_REF
 (
-    id      INT not null,
-    name    varchar(255),
-    owner   varchar(255),
+    id      INT NOT NULL,
+    name    VARCHAR(255),
+    owner   VARCHAR(255),
     chain_id   INT ,
     email_id    INT ,
     address_id  INT ,
@@ -47,19 +47,19 @@ select * from Users;
 
 create table COINTABLE
 (
-    coinid     INT not null,
-    coinsymbol varchar(255),
-    cointoken  varchar(255),
+    coinid     INT NOT NULL,
+    coinsymbol VARCHAR(255),
+    cointoken  VARCHAR(255),
     pricetotal INT ,
     purchased  INT  ,
     primary key (coinid)
 );
 CREATE TABLE WEBLINK(id BIGINT PRIMARY KEY ,
-                     title varchar(500) ,
-                     url varchar(250) NOT NULL ,
-                     host varchar(250) ,
+                     title VARCHAR(500) ,
+                     url VARCHAR(250) NOT NULL ,
+                     host VARCHAR(250) ,
                      downloadstatus TINYINT,
-                     htmlpage    varchar(255));
+                     htmlpage    VARCHAR(255));
 
 
 create sequence cointable_seq start with 20 increment by 50;
@@ -70,11 +70,11 @@ create sequence weblinks_seq start with 800 increment by 50;
 create sequence movies_seq start with 900 increment by 50;
 
 CREATE TABLE WEBLINK(id BIGINT PRIMARY KEY ,
-                     title varchar(500) ,
-                     url varchar(250) NOT NULL ,
-                     host varchar(250) ,
+                     title VARCHAR(500) ,
+                     url VARCHAR(250) NOT NULL ,
+                     host VARCHAR(250) ,
                      downloadstatus TINYINT,
-                     htmlpage    varchar(255));
+                     htmlpage    VARCHAR(255));
 
 CREATE TABLE CATEGORIES
 (

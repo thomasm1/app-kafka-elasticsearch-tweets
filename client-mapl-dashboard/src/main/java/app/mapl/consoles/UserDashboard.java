@@ -3,12 +3,17 @@ package app.mapl.consoles;
 import app.mapl.models.Coin;
 import app.mapl.service.CoinsServiceJPA;
 import app.mapl.service.UsersServiceJPA;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import static app.mapl.util.Utilities._earlyQuit;
 import static app.mapl.util.constants.Cmds.*;
 
 
@@ -34,9 +39,9 @@ public class UserDashboard {
     }
 
     /**
-     * @param username
+     * @param email
      */
-    public static void console(String username) {
+    public static void console(String email) {
 
 
         System.out.println("Now Loading frontConsoleMenu()");
@@ -59,9 +64,9 @@ public class UserDashboard {
                             System.out.println("4: " + PRESS_DIGIT);
                             System.out.println();
                         } catch (Exception e) {
-                            console(username);
+                            console(email);
                         }
-                        console(username);
+                        console(email);
                     }
                     case 2: {
                         CoinsServiceJPA coinService = new CoinsServiceJPA();
@@ -72,9 +77,9 @@ public class UserDashboard {
                             System.out.println("4: " + PRESS_DIGIT);
                             System.out.println();
                         } catch (Exception e) {
-                            console(username);
+                            console(email);
                         }
-                        console(username);
+                        console(email);
                     }
                     case 3: {
                         CoinsServiceJPA coinService = new CoinsServiceJPA();
@@ -90,9 +95,9 @@ public class UserDashboard {
                             System.out.println("\n Coin #" + id +
                                     NICE + PRESS_DIGIT + FOUR);
                         } catch (Exception e) {
-                            console(username);
+                            console(email);
                         }
-                        console(username);
+                        console(email);
                     }
                     case 4: {
                         CoinsServiceJPA coinService = new CoinsServiceJPA();
@@ -118,37 +123,36 @@ public class UserDashboard {
                             scan.nextLine();
                             System.out.println(HOW_MANY_MONTHS);
                             int mos = scan.nextInt();
-//				Offer offering = new Offer(777, username, val, down, mos, "PENDING");
+//				Offer offering = new Offer(777, email, val, down, mos, "PENDING");
 //				 /////////////////////////////////////////////////////////////////
 //				System.out.println(OfferService.createOffer(offering));
                             System.out.println(NICE + " $" + down + " down, over *" + mos + "* months\n"
                                     + "We'll let you know in less than 24 hours!!\n");
                         } catch (Exception e) {
-                            console(username);
+                            console(email);
                         }
-                        console(username);
+                        console(email);
                     }
                     case 5: {
                         try {
-//				List<Offer> offerList = OfferService.getAllOffersCust(username);
+//				List<Offer> offerList = OfferService.getAllOffersCust(email);
 // 				for (Offer offer : offerList) {
 //					System.out.println(offer);
 //				}
                             System.out.println("Pressed 5");
-//				 /////////////////////////////////////////////////////////////////
                         } catch (Exception e) {
-                            console(username);
+                            console(email);
                         }
-                        console(username);
+                        console(email);
                     }
                     case 6: {
                         try {
-                            UserProfilerTool.editProfile(usersServiceImpl.getUserByEmail(username).orElseThrow());
+                            UserProfileTool.editProfile(usersServiceImpl.getUserByEmail(email).orElseThrow());
 
                         } catch (Exception e) {
-                            console(username);
+                            console(email);
                         }
-                        console(username);
+                        console(email);
                     }
                     case MENU_LAST: {
                         System.out.println("Opening MaPLControl...");
@@ -162,9 +166,83 @@ public class UserDashboard {
                     }
                 }
             }
-            console(username);
+            console(email);
         }
 
     }
 
+    @Data
+    static class UserLogin {
+
+        @Value("${spring.datasource.email}")
+        private static String email;
+
+        @Value("${spring.datasource.password}")
+        private static String password_var;
+
+        public static void login() throws SQLException {
+
+            try {
+                System.out.println("Welcome, please enter your username: [admin: admin; default: joshallen]");
+                System.out.println(" 'quit' to go back");
+                Scanner scanner = new Scanner(System.in);
+                String un = scanner.next();
+                _earlyQuit(new String[]{un});
+                System.out.println("and your password: [admin: pass; default: allen");
+                String pw = scanner.next();
+                _earlyQuit(new String[]{pw});
+
+                //  admin   hardcoded backdoor
+                if (hardCodedAdminNameAndPassword(un, pw)) {
+                    AdminDashboard.console(); //
+                } else {
+                    MainDashboard.console();
+                }
+
+                // VALIDATION #1 - LOOK UP AND GET Targeted DB USER
+                if (checkDbUsernameAndPassword(un, pw)) {
+                    decideDashboard("yes", un);
+                } else {
+                    System.out.println("Oops, typo time, please try again");
+                    try {
+                        login(); // login input clears for next attempt
+                    } catch (InputMismatchException e) {
+                        e.getMessage();
+                        MainDashboard.console();
+                    }
+                }
+                scanner.close();
+            } catch (
+
+                    InputMismatchException e) {
+                System.out.println("Oops, must choose 1 or 2... ");
+            }
+        }
+
+        private static boolean checkDbUsernameAndPassword(String un, String pw) {
+            return false;
+        }
+
+        private static boolean hardCodedAdminNameAndPassword(String email, String pw) {
+            return (email.equalsIgnoreCase(email) && pw.equalsIgnoreCase(password_var));
+        }
+
+        static void decideDashboard(String resp, String email) {
+            if (resp.matches("y|yes|true")) {
+                try {
+                    System.out.println("...sounds good, *" + email + "*, now logging you into your Dashboard");
+                    console(email);
+                } catch (InputMismatchException e) {
+                    System.out.println(e.getMessage());
+                    MainDashboard.console();
+                }
+            } else {
+                MainDashboard.console();
+            }
+        }
+
+        public Object getEmail() {
+        return email;
+        }
+    }
 }

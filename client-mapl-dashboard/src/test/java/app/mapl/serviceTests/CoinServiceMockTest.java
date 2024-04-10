@@ -58,7 +58,7 @@ public class CoinServiceMockTest {      // *NOTE: change PK coinnames before sen
 
     @Test
     public void get_all_coins() {
-        List<CoinDto> coins = (List<CoinDto>) coinsServiceMockTest.getAllCoins();
+        List<CoinDto> coins = coinsServiceMockTest.getAllCoins();
         when(coinsServiceMockTest.getAllCoins()).thenReturn((List<CoinDto>) assertInstanceOf(List.class, coins));
         assertEquals(coinsServiceMockTest.getAllCoins(), coins);
     }
@@ -67,7 +67,7 @@ public class CoinServiceMockTest {      // *NOTE: change PK coinnames before sen
     public void get_coin() {
         CoinDto c = new CoinDto(775578, "Ethereum", "ETH", 45000.00, 0);    // PASSES
         when(coinsServiceMockTest.getCoin(c.getCoinId())).thenReturn(assertInstanceOf(CoinDto.class, c));
-        assertEquals(coinsServiceMockTest.getCoin(c.getCoinId()), coinsServiceMockTest.getCoin(c.getCoinId())); // Check not null bc dynamic int ID
+        assertEquals(coinsServiceMockTest.getCoin(c.getCoinId()), coinsServiceMockTest.getCoin(c.getCoinId())); // Check NOT NULL bc dynamic int ID
 
     }
 

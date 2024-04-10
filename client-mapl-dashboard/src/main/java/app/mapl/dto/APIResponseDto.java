@@ -10,9 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class APIResponseDto {
-    private UserProfileDto userProfileDto;
+    private UserEntityDto uerEntityDto;
     private DashboardDto dashboard;
 
-    public void setUserProfile(UserProfileDto userProfileDto) {
+    public void setUserEntity(UserEntityDto uerEntityDto) {
     }
 }

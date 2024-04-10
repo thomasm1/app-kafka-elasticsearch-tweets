@@ -34,7 +34,7 @@ public abstract class  BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id", updatable = false, nullable = false)
-    private long id;
+    private Long id;
 
     private String referenceId = new AlternativeJdkIdGenerator().generateId().toString();
 

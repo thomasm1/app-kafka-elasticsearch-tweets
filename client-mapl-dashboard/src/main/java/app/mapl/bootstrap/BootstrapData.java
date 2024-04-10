@@ -3,7 +3,7 @@ package app.mapl.bootstrap;
 import app.mapl.models.*; // Bookmark, Coin, User, Weblink
 import app.mapl.repositories.BookRepository;
 import app.mapl.repositories.CoinsRepository;
-import app.mapl.repositories.RoleRepository;
+import app.mapl.repositories.RoleEntityRepository;
 import app.mapl.repositories.UsersRepository;
 import app.mapl.repositories.WeblinksRepository;
 import app.mapl.util.ReadWriteFile;
@@ -31,7 +31,7 @@ public class BootstrapData implements CommandLineRunner {
     private static final Logger log =
             LoggerFactory.getLogger(BootstrapData.class);
 
-    private final RoleRepository roleRepository;
+    private final RoleEntityRepository roleRepository;
     private final UsersRepository usersRepository;
     private final WeblinksRepository weblinksRepository;
     private final CoinsRepository coinsRepository;
@@ -54,20 +54,20 @@ public class BootstrapData implements CommandLineRunner {
                         System.getenv("environment").equalsIgnoreCase("test") ||
                         System.getenv("ENV").equalsIgnoreCase("mysql"))) {
 
-            System.out.println("ENV: ++++++++++++++  + System.getenv( ENV" );
+            log.info("ENV: ++++++++++++++  + System.getenv( ENV" );
             CliLogger.getInstance().info("UserDetailsCommandLineRunner.run()");
             //FileDataStore.loadData();
 
 
             // ROLEs
-            System.out.println(Datum.ANSI_CYAN + "1. ANSI_CYAN LOADING ROLES");
+            log.info(Datum.ANSI_CYAN + "1. ANSI_CYAN LOADING ROLES");
             RequestContext.setUserId(0L);
-            var userRole = new Role();
+            var userRole = new RoleEntity();
 //            userRole.setName(Authority.USER.name());
 //            userRole.setAuthorities(Authority.USER);
             roleRepository.save(userRole);
 
-           var adminRole = new Role();
+           var adminRole = new RoleEntity();
 //            userRole.setName(Authority.ADMIN.name());
 //            userRole.setAuthorities(Authority.ADMIN);
             roleRepository.save(userRole);
@@ -75,13 +75,9 @@ public class BootstrapData implements CommandLineRunner {
             RequestContext.start();
 
             // USERS
-            System.out.println(Datum.ANSI_CYAN + "1. ANSI_CYAN LOADING USERS");
+            log.info(Datum.ANSI_CYAN + "1. ANSI_CYAN LOADING USERS");
             usersStatic = FileDataStore.loadUsers();
             users = usersStatic;
-            users.stream().map(user -> {
-                user.setUsername(user.getEmail());
-                return user;
-            });
 
             usersRepository.saveAll(users);
             usersRepository.save(new User(0, "thomas.maestas@hotmail.com", "password", "lastName", "firstName",
@@ -105,7 +101,7 @@ public class BootstrapData implements CommandLineRunner {
             weblinksRepository.save(new Weblink("https://www.google.com", "<html><head></head><body>Hello!!!!!!!</body></html>", "SUCCESS"));
 
             // COINS
-            System.out.println(Datum.ANSI_RED + "ANSI_RED printing user data: ");
+            log.info(Datum.ANSI_RED + "ANSI_RED printing user data: ");
             coinsStatic = FileDataStore.loadCoins();
             List<Coin> coins = coinsStatic;
             coinsRepository.saveAll(coins);
@@ -113,18 +109,18 @@ public class BootstrapData implements CommandLineRunner {
             coinsRepository.save(new Coin(1, "Bitcoin", "BTC", 23455.5455, 1455.1111, 1));
 
 
-            System.out.println(Datum.ANSI_GREEN + "ANSI_GREEN printing user data: ");
+            log.info(Datum.ANSI_GREEN + "ANSI_GREEN printing user data: ");
             printUserData();
-            System.out.println(Datum.ANSI_BLUE + "ANSI_BLUE printing bookmark data: ***Paused until AWS DB PS/SQL UPDATED");
+            log.info(Datum.ANSI_BLUE + "ANSI_BLUE printing bookmark data: ***Paused until AWS DB PS/SQL UPDATED");
             printBookmarks();
-            System.out.println(Datum.ANSI_PURPLE + "ANSI_PURPLE printing startBrowsingBuying: ");
+            log.info(Datum.ANSI_PURPLE + "ANSI_PURPLE printing startBrowsingBuying: ");
             startBrowsingBuying();
 
 //        runDownloaderJob();
-            System.out.println(Datum.ANSI_RESET + "ANSI_RESET without runDownloaderJob ");
+            log.info(Datum.ANSI_RESET + "ANSI_RESET without runDownloaderJob ");
 
         } else {
-            System.out.println("MAVEN_HOME: NOT SET");
+            log.info("MAVEN_HOME: NOT SET");
         }
     }
 
@@ -132,9 +128,9 @@ public class BootstrapData implements CommandLineRunner {
     void printBookmarks() {
         for (Bookmark i : bookmarksStatic) {
             if (i instanceof Weblink) {
-                System.out.println("WEBLINK" + i);
+                log.info("WEBLINK" + i);
             } else {
-                System.out.println("NON-WEBLINK" + i);
+                log.info("NON-WEBLINK" + i);
             }
         }
     }

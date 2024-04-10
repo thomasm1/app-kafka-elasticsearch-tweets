@@ -1,7 +1,7 @@
 1001
 oracle.jdbc.driver.OracleDriver
 CryptoMaven's <<MaPL>> My Personal Librarian
-ROLE: USER
+ROLE_ENTITY: USER
 -|
 -|
 -|

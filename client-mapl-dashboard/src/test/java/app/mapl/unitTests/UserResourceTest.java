@@ -59,15 +59,15 @@ public class UserResourceTest {
         // @Test
     public void setUsername() {
 //    	custOne.setUsername("newUsername");
-//    	assertEquals("newUsername", custOne.getUsername());
+//    	assertEquals("newUsername", custOne.getEmail());
     }
 
         // @Test
     public void getUsername() {
-//    	String thomUsername = custOne.getUsername();
+//    	String thomUsername = custOne.getEmail();
 //    	System.out.println("-getUsername()-  " + thomUsername);
 //    	custOne.setUsername("newUsername");
-//    	String thomUsername2 = custOne.getUsername();
+//    	String thomUsername2 = custOne.getEmail();
 //    	System.out.println("-getUsername()-  " + thomUsername2);
     }
 

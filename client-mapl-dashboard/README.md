@@ -130,6 +130,24 @@ D. Dashboard screen:
 5. Center of Navbars: User Document Management System
 6. Footer: User Logout 
 
+
+
+### Security
+1. User Authentication
+Original: UsernamePasswordAuthenticationFilter->AuthenticationManager->AuthenticationProvider->UserDetailsService
+    a. Security Flow: UPAFilter->ProviderManager[Authentication Manager]->DaoAuthenticationProvider[AuthenticationProvider]->InMemoryUserDetailsManager[UserDetailsService]
+New: JWTAuthenticationFilter->JWTAuthorizationFilter->AuthenticationManager->AuthenticationProvider->UserDetailsService
+    b. Security Filters: JWT
+2. User Authorization
+3. User Role Management
+4. User Document Management
+5. User Document Upload
+6. User Document Download
+7. User Document Update
+8. User Document Delete
+9. User Document Access Control Lists
+
+
 ### Cloud Native Microservices 
 ### Eureka Server
 1. Separate service-registry
@@ -141,6 +159,9 @@ D. Dashboard screen:
 Java Application: "My Personal Librarian": MaPL
 <a style="margin-left:20%;" href="https://mapl.app">
 <img width="200" src="https://friends-of-groot-society.s3.amazonaws.com/assets/grootsmall.png" title="Friends_of_Groot_Society_App" alt="Friends_of_Groot_Society_Image"></a>
+
+
+
 
 ### Groot Society Fan Club Groot NFT Tracker 
 > <a style="text-decoration:none;color:black;" href="https://mapl.app">Friends_of_Groot_Society - https://mapl.app</a>

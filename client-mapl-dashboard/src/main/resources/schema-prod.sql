@@ -2,25 +2,25 @@
 
 create table USERS_ROLES
 (
-    id NUMBER not null,
-    userid NUMBER not null,
-    role_id     NUMBER not null,
+    id NUMBER NOT NULL,
+    userid NUMBER NOT NULL,
+    role_id     NUMBER NOT NULL,
     primary key (id)
 );
 
 --   drop table coin_users CASCADE  CONSTRAINTS;
 -- create table coin_users
 -- (
---     id       NUMBER  not null,
---     userid   NUMBER  not null,
---     coin_id NUMBER  not null,
+--     id       NUMBER  NOT NULL,
+--     userid   NUMBER  NOT NULL,
+--     coin_id NUMBER  NOT NULL,
 --     primary key (id)
 -- );
 
 --   drop table users CASCADE  CONSTRAINTS;
 create table users
 (
-    USERID      NUMBER not null,
+    USERID      NUMBER NOT NULL,
     USERNAME    VARCHAR(255),
     PASSWORD    VARCHAR(120),
     LASTNAME    VARCHAR(255),
@@ -38,8 +38,8 @@ create table users
 --   drop table roles CASCADE  CONSTRAINTS;
 create table  roles
 (
-    id   NUMBER not null,
-    name varchar(255),
+    id   NUMBER NOT NULL,
+    name VARCHAR(255),
     primary key (id)
 );
 
@@ -47,30 +47,30 @@ create table  roles
 -- drop table chain CASCADE  CONSTRAINTS;
 create table chain
 (
-    chain_id           NUMBER not null,
-    name               varchar(255),
-    symbol             varchar(255),
-    description        varchar(255),
-    long_description   varchar(255),
-    icon_url           varchar(255),
-    category           varchar(255),
-    chain_list_icon    varchar(255),
-    rpc_url            varchar(255),
+    chain_id           NUMBER NOT NULL,
+    name               VARCHAR(255),
+    symbol             VARCHAR(255),
+    description        VARCHAR(255),
+    long_description   VARCHAR(255),
+    icon_url           VARCHAR(255),
+    category           VARCHAR(255),
+    chain_list_icon    VARCHAR(255),
+    rpc_url            VARCHAR(255),
     id                 NUMBER,
-    block_explorer_url varchar(255),
+    block_explorer_url VARCHAR(255),
     primary key (chain_id)
 );
 
 -- drop table address CASCADE  CONSTRAINTS;
 create table address
 (
-    id                 NUMBER not null,
-    description        varchar(255),
-    email              varchar(255),
-    address            varchar(255), -- nft_address
-    chain              varchar(255),
-    icon_url           varchar(255),
-    block_explorer_url varchar(255),
+    id                 NUMBER NOT NULL,
+    description        VARCHAR(255),
+    email              VARCHAR(255),
+    address            VARCHAR(255), -- nft_address
+    chain              VARCHAR(255),
+    icon_url           VARCHAR(255),
+    block_explorer_url VARCHAR(255),
     users_userid       NUMBER,
     chain_id            NUMBER,
     primary key (id)
@@ -78,17 +78,17 @@ create table address
 -- drop table nft CASCADE  CONSTRAINTS;
 create table nft
 (
-    id          NUMBER not null,
+    id          NUMBER NOT NULL,
     amount      NUMBER,
-    name        varchar(255),
+    name        VARCHAR(255),
     metadata_id NUMBER,
     primary key (id)
 );
 -- drop table nft_address CASCADE  CONSTRAINTS;
 create table nft_address
 (
-    id           NUMBER not null,
-    address      varchar(255),
+    id           NUMBER NOT NULL,
+    address      VARCHAR(255),
     native_token NUMBER(13),
     native       NUMBER(13),
     tokens       NUMBER(14),
@@ -97,55 +97,55 @@ create table nft_address
 -- drop table nft_ref CASCADE  CONSTRAINTS;
 create table nft_ref
 (
-    id      NUMBER not null,
-    address varchar(255),
-    chain   varchar(255),
-    email   varchar(255),
-    name    varchar(255),
-    owner   varchar(255),
+    id      NUMBER NOT NULL,
+    address VARCHAR(255),
+    chain   VARCHAR(255),
+    email   VARCHAR(255),
+    name    VARCHAR(255),
+    owner   VARCHAR(255),
     primary key (id)
 );
 
 -- drop table COINTABLE CASCADE  CONSTRAINTS;
 create table COINTABLE
 (
-    coinid     NUMBER not null,
-    coinsymbol varchar(255),
-    cointoken  varchar(255),
+    coinid     NUMBER NOT NULL,
+    coinsymbol VARCHAR(255),
+    cointoken  VARCHAR(255),
     pricetotal NUMBER(13),
-    purchased  NUMBER not null,
+    purchased  NUMBER NOT NULL,
     primary key (coinid)
 );
 CREATE TABLE BOOKMARK(id NUMBER PRIMARY KEY ,
-                     title varchar(500) ,
-                      profileurl varchar(250)  ,
+                     title VARCHAR(500) ,
+                      profileurl VARCHAR(250)  ,
                       shared_by_userid NUMBER,
-                      owneremail    varchar(255)
+                      owneremail    VARCHAR(255)
 );
 -- drop table WEBLINK CASCADE  CONSTRAINTS;
 CREATE TABLE WEBLINK(id NUMBER PRIMARY KEY ,
-                     title varchar(500) ,
-                     url varchar(250) NOT NULL ,
-                     host varchar(250) ,
+                     title VARCHAR(500) ,
+                     url VARCHAR(250) NOT NULL ,
+                     host VARCHAR(250) ,
                      downloadstatus NUMBER,
-                     htmlpage    varchar(255)
+                     htmlpage    VARCHAR(255)
 );
 -- drop table ATTRIBUTE CASCADE  CONSTRAINTS;
 create table ATTRIBUTE
 (
     attrid               NUMBER,
-    trait_type           varchar(255),
-    valu                 varchar(255),
+    trait_type           VARCHAR(255),
+    valu                 VARCHAR(255),
     metadata_metadata_id NUMBER,
     primary key (attrid)
 );
 -- drop TABLE METADATA CASCADE  CONSTRAINTS;
 create table METADATA
 (
-    metadata_id NUMBER not null,
-    description varchar(255),
-    image       varchar(255),
-    name        varchar(255),
+    metadata_id NUMBER NOT NULL,
+    description VARCHAR(255),
+    image       VARCHAR(255),
+    name        VARCHAR(255),
     nft_id      NUMBER,
     primary key (metadata_id)
 );

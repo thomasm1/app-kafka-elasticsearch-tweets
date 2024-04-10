@@ -1,6 +1,6 @@
 package app.mapl.consoles;
 
-import app.mapl.util.constants.Cmds;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@Slf4j
 @Component
 @Primary
 public class MainDashboard  {
@@ -17,7 +18,7 @@ public class MainDashboard  {
     private static final int MAIN_OPTIONS_COUNT = 8;
 
     private static void frontConsoleMenu() {
-        System.out.println("\n1.) Log in \n"
+        log.info("\n1.) Log in \n"
                 + "2.) Register  \n"
                 + "3.) Browse the lot from Oracle Database\n"
                 + "4.) Load Test Data =  cliDataLoader(); \n"
@@ -30,7 +31,7 @@ public class MainDashboard  {
 
     public static void console(String[]... args) {
 
-        System.out.println("Now Loading frontConsoleMenu()");
+        log.info("Now Loading frontConsoleMenu()");
         frontConsoleMenu();
         try (Scanner newScan = new Scanner(System.in)) {
 
@@ -39,24 +40,24 @@ public class MainDashboard  {
             try {
                 // After stack return & Break, back to console
                 if (val < 0 | val > MAIN_OPTIONS_COUNT | !hasNextInt) {
-                    System.out.println("Please enter valid choices: 0-" + MAIN_OPTIONS_COUNT);
+                    log.info("Please enter valid choices: 0-" + MAIN_OPTIONS_COUNT);
 
 
                     // RECURSE
                 } else {
                     switch (val) {
                         case 1: {
-                            UserLogin.login();
+                            UserDashboard.UserLogin.login();
                             break;
                         }
                         case 2: {
-                            System.out.println("\n Initiating Local Oracle Database....USERS");
+                            log.info("\n Initiating Local Oracle Database....USERS");
 
                             UserRegister.register();
                             break;
                         }
                         case 3: {
-                            System.out.println("\n [disabled] , Initiating Local Oracle Database....");
+                            log.info("\n [disabled] , Initiating Local Oracle Database....");
 //                            coinMarketViewAll();
                             break;
                         }

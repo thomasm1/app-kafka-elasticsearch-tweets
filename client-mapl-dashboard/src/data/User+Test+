@@ -10,7 +10,7 @@ public class UserTest {
 		if (s instanceof Editor) {
 			((Editor) s).approveReview(); 
         } else {
-        	System.out.println("Invalid object passed!!");
+        	log.info("Invalid object passed!!");
         }
 	}
 
@@ -55,7 +55,7 @@ public class UserTest {
 		
 		// Overriding of instance variables demo
 		User staff = new Staff();
-		//System.out.println("User type: " + staff.userType); // early binding
+		//log.info("User type: " + staff.userType); // early binding
 		staff.displayUserInfo();// comparison of field hiding & field overriding effect
 	}
 }

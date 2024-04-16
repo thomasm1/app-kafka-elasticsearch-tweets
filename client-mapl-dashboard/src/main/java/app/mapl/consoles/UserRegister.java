@@ -40,7 +40,7 @@ public class UserRegister {
 //		newUser.setUserid((int) Math.round(Math.random()*100));
 		regBegin(un, pw, fn, ln, newUser);
 		UserRegister userRegister = new UserRegister();
-		userRegister.registerThis(un, pw, fn, ln);
+		userRegister.registerUserCli(un, pw, fn, ln);
 
 
 		System.out.println("\nThank you, *" + fn + " "+ ln);
@@ -52,21 +52,21 @@ public class UserRegister {
 
 
 	}
-	void registerThis(String un, String pw, String fn, String ln ) {
+	void registerUserCli(String email, String pw, String fn, String ln ) {
 		UserDto newUserDto =  new UserDto();
 		newUserDto.setUserId((int) Math.round(Math.random()*100));//not saved
-		regBegin(un, pw, fn, ln, newUserDto);
+		regBegin(email, pw, fn, ln, newUserDto);
 		usersService.createUser(newUserDto);
 
 	}
 
-	private static void regBegin(String un, String pw, String fn, String ln, UserDto newUserDto) {
+	private static void regBegin(String email, String pw, String fn, String ln, UserDto newUserDto) {
 
 		newUserDto.setPassword(pw);
 		newUserDto.setLastName(ln);
 		newUserDto.setFirstName(fn);
 		newUserDto.setUserType(2);	// 2 = customer
-		newUserDto.setEmail(un);
+		newUserDto.setEmail(email);
 		newUserDto.setOrganizationCode("999-999-9999");
 		newUserDto.setDashboardCode("dashboardCode");
 	}

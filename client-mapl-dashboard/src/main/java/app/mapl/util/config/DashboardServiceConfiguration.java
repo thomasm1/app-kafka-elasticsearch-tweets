@@ -1,4 +1,4 @@
-package app.mapl.config;
+package app.mapl.util.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,4 +1,4 @@
-package app.mapl.config.logger;
+package app.mapl.util.config.logger;
 
 import app.mapl.util.constants.Cmds;
 import org.slf4j.Logger;

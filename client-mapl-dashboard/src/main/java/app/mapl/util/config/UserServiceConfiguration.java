@@ -1,13 +1,13 @@
-package app.mapl.config;
+package app.mapl.util.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Data
-@ConfigurationProperties(prefix = "transaction-service")
+@ConfigurationProperties(prefix = "user-service")
 @Component
-class TransactionServiceConfiguration {
+class UserServiceConfiguration {
 
 	private String url;
 	private String email;

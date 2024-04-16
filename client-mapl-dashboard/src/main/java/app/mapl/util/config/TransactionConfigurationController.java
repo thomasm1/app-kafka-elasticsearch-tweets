@@ -1,17 +1,17 @@
-package app.mapl.config;
+package app.mapl.util.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DashboardConfigurationController {
+public class TransactionConfigurationController {
 
 	@Autowired
-	private DashboardServiceConfiguration configuration;
+	private TransactionServiceConfiguration configuration;
 
-	@RequestMapping("/dashboard-configuration")
-	public DashboardServiceConfiguration retrieveAllSpecs() {
+	@RequestMapping("/transaction-configuration")
+	public TransactionServiceConfiguration retrieveAllSpecs() {
 		return configuration;
 	}
- }
+}

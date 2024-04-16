@@ -1,4 +1,4 @@
-package app.mapl.bootstrap;
+package app.mapl;
 
 import app.mapl.dto.UserBookmark;
 import app.mapl.models.*;

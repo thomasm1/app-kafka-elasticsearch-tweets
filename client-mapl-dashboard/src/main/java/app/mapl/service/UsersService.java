@@ -1,9 +1,9 @@
 package app.mapl.service;
 
-import app.mapl.dto.RegisterDto;
 import app.mapl.dto.UserDto;
 import app.mapl.dto.UserRequest;
 import app.mapl.models.LoginType;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +11,8 @@ import java.util.Optional;
 
 public interface UsersService {
 
-	void registerUser(RegisterDto rDto);
+	ResponseEntity saveUser (UserRequest userRequest);
+
 
 	UserDto loginUser(String email, String password);
 

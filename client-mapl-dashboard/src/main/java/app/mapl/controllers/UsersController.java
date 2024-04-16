@@ -1,16 +1,19 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.JWTAuthResponse;
+import app.mapl.dto.APIResponseDto;
 import app.mapl.dto.LoginDto;
-import app.mapl.dto.RegisterDto;
+import app.mapl.dto.UserRequest;
 import app.mapl.dto.UserDto;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.asynchttpclient.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +23,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-
+import static java.util.Collections.emptyMap;
 @Tag(
         name = "CRUD REST APIs for User Resource",
         description = "CRUD REST APIs - Create User, Update User, Get User, Get All Users, Delete User"
@@ -43,8 +48,7 @@ public class UsersController {
     public static final String USER_PATH_ID = USER_PATH + "/{userId}";
 
     @Autowired
-    public UsersController( UsersService usersService ) {
-
+    public UsersController( UsersService usersService ) { 
         this.usersService = usersService;
     }
 
@@ -80,20 +84,21 @@ public class UsersController {
             description = "HTTP Status 201 CREATED"
     )
     @PostMapping(value = {"/auth/register", "/auth/signup"}, consumes = "application/x-www-form-urlencoded; charset=utf-8")
-    public ResponseEntity<String> registerUser(@RequestParam String email, @RequestParam String password,
-                                               @RequestParam String firstName, @RequestParam String lastName) {
-        RegisterDto rdto = new RegisterDto();
-        rdto.setEmail(email);
-        rdto.setPassword(bcrypt.encode(password));
-        rdto.setFirstName(firstName);
-        rdto.setLastName(lastName);
-//        String response = authService.register(rdto);
-        return new ResponseEntity<>(rdto.toString(), HttpStatus.CREATED);
-//        return new ResponseEntity<>(
-//                usersService.registerUser(rdto);,
-//                HttpStatus.CREATED);
+    public ResponseEntity<APIResponseDto> registerUser(@RequestBody @Valid UserRequest user, HttpServletRequest request) {
+
+        usersService.createUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
+        return ResponseEntity.created(getUri()).body(getResponse(request, emptyMap(), "Account created successfully"));
+
     }
 
+    private URI getUri() {
+        return URI.create("");
+    }
+    private APIResponseDto getResponse(HttpServletRequest request, Map<?,?> data, String message) {
+//        return new APIResponseDto(request.getRequestURI(), data, message, HttpStatus.CREATED.value());
+ return null; // Too    TODO
+
+    }
     @Operation(
             summary = "Get All Users REST API",
             description = "Get All Users REST API is used to get a all the users from the database"

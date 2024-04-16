@@ -1,7 +1,5 @@
 package app.mapl.webservice;
 
-import app.mapl.dto.UserEntityDto;
-import app.mapl.dto.UserRequest;
 import app.mapl.models.User;
 import app.mapl.repositories.UsersRepository;
 

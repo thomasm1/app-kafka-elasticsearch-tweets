@@ -1,7 +1,6 @@
 package app.mapl.models;
 
 import app.mapl.exception.ApiException;
-import app.mapl.util.Shareable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -17,7 +16,10 @@ import org.springframework.util.AlternativeJdkIdGenerator;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 import static java.time.LocalTime.now;
 
@@ -27,13 +29,14 @@ import static java.time.LocalTime.now;
 @RequiredArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true )
-public abstract class  BaseModel {
+public abstract class  BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", updatable = false, nullable = false)
+    @SequenceGenerator(name = "primary_key_seq", sequenceName = "primary_key_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_key_seq")
+    @Column(name="id", updatable = false )
     private Long id;
 
     private String referenceId = new AlternativeJdkIdGenerator().generateId().toString();
@@ -44,46 +47,62 @@ public abstract class  BaseModel {
 
     @NotNull
     private Long createdBy;
-    @NotNull Long updatedBy;
+    @NotNull
+    private Long updatedBy;
 
+    @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
-    @CreationTimestamp
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @CreatedDate
+    @Column(name = "updated_at", nullable = false )
+    private LocalDateTime updatedAt;
+
+    @Column(name = "date_created",   updatable = false)
+    @CreatedDate
+    private LocalDate dateCreated;
+
+    @Column(name = "last_updated")
     @UpdateTimestamp
-    private Timestamp updatedAt;
+    private Timestamp lastUpdated;
 
-    @CreatedDate
-    @Column(name = "date_created", nullable = false, updatable = false)
-    private LocalDateTime dateCreated;
-
-    @CreatedDate
-    @Column(name = "last_updated", nullable = false )
-    private LocalDateTime lastUpdated;
-
+    /*
+    * Owner of the entity
+     */
+    @OneToMany
+    @JoinColumn(
+            name="owner_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "fk_user_owner", value=ConstraintMode.CONSTRAINT)
+    )
+    private List<UserEntity> owner; // instances of same user, multiple user-logins owned by user
     @PrePersist
     public void beforePersist() {
-        var usesrId = RequestContext.getUserId();
-        if(usesrId != null) {
-            setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
+        var usesrId =  RequestContext.getUserId();
+        if((usesrId != 1) && (usesrId > 0)) {
             setCreatedBy(usesrId);
-            setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
             setUpdatedBy(usesrId);
-            setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
+            setCreatedAt(LocalDateTime.from(now()));
+            setUpdatedAt(LocalDateTime.now());
+            setLastUpdated(Timestamp.valueOf(LocalDateTime.now()));
+            setDateCreated(LocalDate.now());
+
         } else {
             throw new ApiException("User not found");
         }
     }
     @PreUpdate
     public void beforeUpdate() {
-        var usesrId = RequestContext.getUserId();
-        if(usesrId != null) {
+        var usesrId =  RequestContext.getUserId();
+        if((usesrId != null) && (usesrId > 0)) {
             setUpdatedBy(usesrId);
+            setUpdatedAt(LocalDateTime.now());
+            setLastUpdated(Timestamp.valueOf(LocalDateTime.now()));
         } else {
-            throw new ApiException("Cannot update if User not found");
+            throw new ApiException(String.format("Cannot update if User  %s not found", usesrId));
         }
-        setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+        setUpdatedAt(LocalDateTime.now());
+        setLastUpdated(Timestamp.valueOf(LocalDateTime.now()));
     }
 
 

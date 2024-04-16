@@ -1,17 +1,26 @@
 package app.mapl.service;
 
 import app.mapl.dto.APIResponseDto;
-import app.mapl.dto.DashboardDto;
-import app.mapl.dto.UserEntityDto;
 
+import app.mapl.exception.ApiException;
 import app.mapl.mapper.UserMapper;
+import app.mapl.models.Authority;
+import app.mapl.models.ConfirmationEntity;
+import app.mapl.models.RoleEntity;
 import app.mapl.models.UserEntity;
+import app.mapl.repositories.ConfirmationRepository;
+import app.mapl.repositories.RoleEntityRepository;
 import app.mapl.repositories.UserEntityRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Optional;
+
+import static app.mapl.models.UserEntity.buildUserEntity;
 
 
 @Service
@@ -19,38 +28,81 @@ import java.util.Optional;
 public class UserEntityServiceImpl implements  UserEntityService {
 
     private UserEntityRepository uerEntityRepository;
+    private ConfirmationRepository confirmationRepository;
+    private RoleEntityRepository roleRepository;
     private UserMapper userMapper;
 //    private WebClient webClient;
 //    private APIClient apiClient;
 
+
+    @Override
+    public UserEntity createUserEntityRole(String firstName, String lastName, String email) {
+        var role = getRoleName(Authority.USER.name());
+    return createUserEntity(firstName, lastName, email, role);
+    }
+
+    public static APIResponseDto getResponse(HttpServletRequest request, Map<?, ?> data, String message, HttpStatus status) {
+
+        return new APIResponseDto(LocalDateTime.now().toString(), status.value(),  request.getRequestURI(), data);
+    }
     /**
-     * @param employeeDto
+     * @param name
      * @return
      */
     @Override
-    public UserEntityDto saveUserEntity(UserEntityDto employeeDto) {
-        return null;
+    public RoleEntity getRoleName(String name) {
+    return roleRepository.findByName(name).orElseThrow(() -> new ApiException("Role not found"));
+
     }
 
+
+    private ConfirmationEntity getConfirmationEntity(String key) {
+        return confirmationRepository.findByKey(key).orElseThrow(() -> new ApiException("Confirmation not found"));
+    }
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param role
+     * @return UserEntity
+     */
     @Override
-    public UserEntityDto createUserEntity(UserEntityDto uerEntityDto) {
+    public UserEntity createUserEntity(String firstName, String lastName, String email, RoleEntity role) {
+        UserEntity  userEntity =  buildUserEntity(firstName, lastName, email, role);
+        Optional<UserEntity> savedUserEntity = Optional.ofNullable(uerEntityRepository.save(userEntity));
+          return  savedUserEntity.get();
 
-        uerEntityDto.setDashboardCode("DASHBOARD_CODE");
-        uerEntityDto.setOrganizationCode("ORGANIZATION_CODE");
-        UserEntity savedUserEntity = uerEntityRepository.save(userMapper.toUserEntity(uerEntityDto));
-
-        UserEntityDto savedUserEntityDto = new UserEntityDto(
-                savedUserEntity.getId(),
-                savedUserEntity.getFirstName(),
-                savedUserEntity.getLastName(),
-                savedUserEntity.getEmail(),
-                savedUserEntity.getDashboardCode(),
-                savedUserEntity.getOrganizationCode()
-        );
-
-        return savedUserEntityDto;
     }
 
+    /**
+     * @param email
+     * @return UserEntity
+     */
+    @Override
+    public UserEntity  getUserEntityByEmail(String email) {
+        var uerEntity = uerEntityRepository.findByEmailIgnoreCase(email);
+//    var uerEntityDto = userMapper.toUserEntityDto(uerEntity.get());
+        return uerEntity.orElseThrow(() ->  new ApiException("User not found"));
+    }
+
+    /**
+     * @param key
+     * @return
+     */
+    @Override
+    public void verifyAccountKey(String key) {
+        var confirmationEntity = getConfirmationEntity(key);
+        var uerEntity = getUserEntityByEmail(confirmationEntity.getUserEntity().getEmail());
+        uerEntity.setEnabled(true);
+        uerEntityRepository.save(uerEntity);
+        confirmationRepository.delete(confirmationEntity);
+//        return new APIResponseDto("Account verified");
+    }
+    /**
+     * @param uerEntityId
+     * @return UserEntity
+     */
     @Override
     public APIResponseDto getUserEntityById(Long uerEntityId) {
 
@@ -86,13 +138,5 @@ public class UserEntityServiceImpl implements  UserEntityService {
         return apiResponseDto;
     }
 
-    /**
-     * @param key
-     * @return
-     */
-    @Override
-    public APIResponseDto verifyAccountKey(String key) {
-        return null;
-        //TODO: implement
-    }
+
 }

@@ -1,14 +1,19 @@
 package app.mapl.service;
 
 import app.mapl.dto.APIResponseDto;
-import app.mapl.dto.UserEntityDto;
+import app.mapl.models.RoleEntity;
+import app.mapl.models.UserEntity;
 
 public interface UserEntityService {
-    UserEntityDto saveUserEntity(UserEntityDto employeeDto);
+    UserEntity createUserEntityRole(String firstName, String lastName, String email);
 
-    UserEntityDto createUserEntity(UserEntityDto uerEntityDto);
+    RoleEntity getRoleName(String name);
+
+    UserEntity createUserEntity(String firstName, String lastName, String email, RoleEntity role);
+
+    UserEntity getUserEntityByEmail(String email);
 
     APIResponseDto getUserEntityById(Long employeeId);
 
-    APIResponseDto verifyAccountKey(String key);
+    void verifyAccountKey(String key);
 }

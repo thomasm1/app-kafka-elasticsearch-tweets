@@ -1,6 +1,5 @@
 package app.mapl.service;
 
-import app.mapl.dto.RegisterDto;
 import app.mapl.dto.UserDto;
 import app.mapl.dto.UserRequest;
 import app.mapl.exception.ApiException;
@@ -17,15 +16,13 @@ import app.mapl.models.RequestContext;
 import app.mapl.models.User;
 import app.mapl.repositories.CredentialRepository;
 import app.mapl.repositories.UsersRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Repository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -47,7 +44,6 @@ public class UsersServiceJPA implements UsersService {
     private CredentialRepository credentialRepository;
     private ConfirmationRepository confirmationRepository;
 
-//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private UserMapper userMapper;
     private ApplicationEventPublisher publisher;
 
@@ -65,26 +61,23 @@ public class UsersServiceJPA implements UsersService {
         confirmationRepository.save(confirmationEntity);
         publisher.publishEvent(new UserEvent(userEntity, EventType.REGISTRATION, Map.of("key", confirmationEntity.getKey())));
     }
+
     /**
-     * @param registerDto
+     * @param user
+     * @return
      */
     @Override
-    public void registerUser(RegisterDto registerDto) {
+    public UserDto createUser(UserDto user) {
+        return null;
+    }
 
-        UserDto newUser =  new UserDto();
-        newUser.setUserType(2);
-        newUser.setEmail(registerDto.getEmail());
-        newUser.setOrganizationCode("1234567890");
-        newUser.setDashboardCode("1234567890");
-        newUser.setFirstName(registerDto.getFirstName());
-        newUser.setLastName(registerDto.getLastName());
-        newUser.setPassword(registerDto.getPassword());
-
-
-//        newUser.setRole(registerDto.getRole()); //  registerDto.setRole("USER");
-
-        User u = usersRepository.save(userMapper.toEntity(newUser));
-        userMapper.toDto(u);
+    /**
+     * @param userRequest
+     * @return
+     */
+    @Override
+    public ResponseEntity saveUser(UserRequest userRequest) {
+        return null;
     }
 
     /**
@@ -99,18 +92,6 @@ public class UsersServiceJPA implements UsersService {
         // T
             return null;
 
-    }
-
-
-    /**
-     * // DEPRECATED
-     * @param user;
-     * @return
-     */
-    @Override
-        public UserDto createUser(UserDto user) {
-        User u = usersRepository.save(userMapper.toEntity(user));
-        return userMapper.toDto(u);
     }
 
     /**
@@ -163,17 +144,17 @@ public class UsersServiceJPA implements UsersService {
 
     }
 
-    @Override
-    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
-        User u;
-        try {
-            u = usersRepository.findByEmailAndPassword(email,pw).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", email));
-//                return usersRepository.findByEmailAndPassword(email, pw).get();
-        } catch (Exception e) {
-            return null;
-        }
-        return Optional.ofNullable(userMapper.toDto(u));
-    }
+//    @Override
+//    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
+//        User u;
+//        try {
+//            u = usersRepository.findByEmailAndPassword(email,pw).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", email));
+////                return usersRepository.findByEmailAndPassword(email, pw).get();
+//        } catch (Exception e) {
+//            return null;
+//        }
+//        return Optional.ofNullable(userMapper.toDto(u));
+//    }
 
     public Optional<UserDto> getUserByEmail(String email) {
         User u;
@@ -215,6 +196,17 @@ public class UsersServiceJPA implements UsersService {
         }
         return Optional.ofNullable(change);
     }
+
+    /**
+     * @param email
+     * @param pw
+     * @return
+     */
+    @Override
+    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
+        return Optional.empty();
+    }
+
     @Override
     public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
         AtomicReference<Optional<UserDto>> atomicReference = new AtomicReference<>();
@@ -276,29 +268,13 @@ public class UsersServiceJPA implements UsersService {
 
     /**
      * @param email
-     * @return
+     * @param loginType
      */
     @Override
     public void updateLoginAttempt(String email, LoginType loginType) {
-        User userEntity = getUserEntityByEmail(email);
-        RequestContext.setUserId(userEntity.getId());
-         switch (loginType ) {
-              case LOGIN_ATTEMPT -> updateLoginAttempts(userEntity);
-              case LOGIN_SUCCESS -> resetLoginAttempts(userEntity);
-              case LOGIN_FAILURE -> updateLoginAttempts(userEntity);
-         }
-     }
 
-    private void resetLoginAttempts(User userEntity) {
     }
 
-    private void updateLoginAttempts(User userEntity) {
-    }
-
-    private User getUserEntityByEmail(String email) {
-         var userByEmail = usersRepository.findByEmailIgnoreCase(email);
-     return userByEmail.orElseThrow(() -> new ApiException("not found", HttpStatus.NOT_FOUND, email));
-     }
 
 }
 

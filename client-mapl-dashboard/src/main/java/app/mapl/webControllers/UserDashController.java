@@ -4,9 +4,10 @@ package app.mapl.webControllers;
 
 
 
+import app.mapl.dto.UserRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import app.mapl.dto.RegisterDto;
+import app.mapl.dto.UserRequest ;
 import app.mapl.dto.UserDto;
 import app.mapl.mapper.UserMapper;
 import app.mapl.service.UsersService;
@@ -45,19 +46,19 @@ public class UserDashController {
     }
 
 
-    @GetMapping("/v1/register")
+    @GetMapping("/v1thomas")
     public String register(Model model) {
-        RegisterDto userAccount = new RegisterDto();
+        UserRequest userAccount = new UserRequest();
         model.addAttribute("registerDto", userAccount);
 
         return "security/register";
     }
 
     @PostMapping("/v1/register/save")
-    public String saveUser(Model model, RegisterDto user) {
+    public String saveUser(Model model, UserRequest user) {
         user.setPassword(bCryptEncoder.encode(user.getPassword()));
       try {
-          usersService.registerUser(user);
+          usersService.createUser(user.getFirstName(),user.getLastName(),user.getEmail(),user.getPassword());
           return "redirect:/v1/";
       } catch (Exception e) {
           String errorMessage = "Error: " + e.getMessage();

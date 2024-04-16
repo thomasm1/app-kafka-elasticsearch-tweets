@@ -1,17 +1,14 @@
 package app.mapl.service;
 
-import app.mapl.dto.RegisterDto;
 import app.mapl.dto.UserDto;
 import app.mapl.dto.UserRequest;
 import app.mapl.mapper.UserMapper;
 import app.mapl.models.LoginType;
 import app.mapl.models.User;
-import org.springframework.context.annotation.Profile;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,12 +41,12 @@ public class UsersServiceJDBC implements UsersService {
 
 
     public User byemail(String email) {
-        return this.jdbcTemplate.queryForObject("SELECT * FROM users u WHERE u.email = ?", userRowMapper, email);
+        return this.jdbcTemplate.queryForObject("SELECT * FROM USER_ENTITY u WHERE u.email = ?", userRowMapper, email);
 //        return null;
     }
 
     public User byid(Long id) {
-        return this.jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE id = ?", userRowMapper, id);
+        return this.jdbcTemplate.queryForObject("SELECT * FROM USER_ENTITY WHERE id = ?", userRowMapper, id);
 //        return null;
     }
 
@@ -59,11 +56,14 @@ public class UsersServiceJDBC implements UsersService {
 //        return this.jdbcTemplate.query("SELECT * FROM USERS", userRowMapper);
 //    }
 
+
     /**
-     * @param rDto
+     * @param userRequest
+     * @return
      */
     @Override
-    public void registerUser(RegisterDto rDto) {
+    public ResponseEntity saveUser(UserRequest userRequest) {
+        return null;
     }
 
     /**

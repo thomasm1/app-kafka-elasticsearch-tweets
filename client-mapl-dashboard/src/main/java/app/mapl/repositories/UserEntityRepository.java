@@ -10,7 +10,7 @@ public interface UserEntityRepository extends JpaRepository<UserEntity, Long> {
     @Override
     UserEntity save(UserEntity entity);
 
-    Optional<UserEntity> findByEmailIgnoreCase(String email);
     Optional<UserEntity> findUserEntityByUserId(String userId);
 
+    Optional<UserEntity> findByEmailIgnoreCase(String email);
 }

@@ -1,4 +1,4 @@
-package app.mapl.config;
+package app.mapl.util.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

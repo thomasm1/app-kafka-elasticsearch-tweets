@@ -1,4 +1,4 @@
-package app.mapl.models;
+package app.mapl.util.config;
 
 import java.beans.BeanProperty;
 

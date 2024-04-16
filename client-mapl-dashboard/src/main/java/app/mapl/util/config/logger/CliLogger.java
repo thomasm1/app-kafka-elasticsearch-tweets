@@ -1,4 +1,4 @@
-package app.mapl.config.logger;
+package app.mapl.util.config.logger;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package app.mapl.config;
+package app.mapl.util.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

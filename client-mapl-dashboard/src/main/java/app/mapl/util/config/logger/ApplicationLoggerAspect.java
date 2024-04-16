@@ -1,4 +1,4 @@
-package app.mapl.config.logger;
+package app.mapl.util.config.logger;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

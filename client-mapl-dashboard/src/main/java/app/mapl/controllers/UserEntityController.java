@@ -1,7 +1,6 @@
 package app.mapl.controllers;
 
 import app.mapl.dto.APIResponseDto;
-import app.mapl.dto.UserEntityDto;
 import app.mapl.service.UserEntityService;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,7 +49,7 @@ public class UserEntityController {
 
     @GetMapping("verify/account")
     public ResponseEntity<APIResponseDto> verifyAccount(@RequestParam("key") String key, HttpServletRequest request){
-        APIResponseDto apiResponseDto = uerEntityService.verifyAccountKey(key);
+        uerEntityService.verifyAccountKey(key);
         return ResponseEntity.ok().body((APIResponseDto) getResponse(request, emptyMap(), "Account Verified.", HttpResponseStatus.OK));
 
     }

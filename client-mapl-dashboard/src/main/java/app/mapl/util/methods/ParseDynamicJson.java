@@ -1,8 +1,8 @@
 package app.mapl.util.methods;
 
 
-import app.mapl.config.logger.CliLogger;
-import app.mapl.config.logger.LoggerImpl;
+import app.mapl.util.config.logger.CliLogger;
+import app.mapl.util.config.logger.LoggerImpl;
 import com.google.gson.Gson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -41,7 +41,7 @@ public class CredentialEntity extends BaseModel {
     @JsonIdentityReference(alwaysAsId = true)
     @JsonProperty("user_id")
     private UserEntity userEntity;
-    public <S extends Object> CredentialEntity(UserEntity userEntity, String password) {
+    public  CredentialEntity(UserEntity userEntity, String password) {
         this.userEntity = userEntity;
         this.password = password;
     }

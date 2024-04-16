@@ -1,4 +1,4 @@
-package app.mapl.bootstrap;
+package app.mapl;
 
 import app.mapl.models.*; // Bookmark, Coin, User, Weblink
 import app.mapl.repositories.BookRepository;
@@ -8,7 +8,7 @@ import app.mapl.repositories.UsersRepository;
 import app.mapl.repositories.WeblinksRepository;
 import app.mapl.util.ReadWriteFile;
 import app.mapl.util.constants.Datum;
-import app.mapl.config.logger.CliLogger;
+import app.mapl.util.config.logger.CliLogger;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,13 +63,13 @@ public class BootstrapData implements CommandLineRunner {
             log.info(Datum.ANSI_CYAN + "1. ANSI_CYAN LOADING ROLES");
             RequestContext.setUserId(0L);
             var userRole = new RoleEntity();
-//            userRole.setName(Authority.USER.name());
-//            userRole.setAuthorities(Authority.USER);
+            userRole.setName(Authority.USER.name());
+            userRole.setAuthorities(Authority.USER);
             roleRepository.save(userRole);
 
            var adminRole = new RoleEntity();
-//            userRole.setName(Authority.ADMIN.name());
-//            userRole.setAuthorities(Authority.ADMIN);
+            userRole.setName(Authority.ADMIN.name());
+            userRole.setAuthorities(Authority.ADMIN);
             roleRepository.save(userRole);
 
             RequestContext.start();

@@ -1,7 +1,7 @@
 package app.mapl.webControllers;
 
 import app.mapl.CliApplication;
-import app.mapl.models.User;
+import app.mapl.models.auth.UserRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +52,7 @@ public class ForEntityMethod {
 
     private void addUser() {
         String url = baseUrl + "/users";
-        User user = new User();
+        UserRequest user = new UserRequest();
         user.setFirstName("Green");
         user.setLastName("Learner");
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, user, String.class);

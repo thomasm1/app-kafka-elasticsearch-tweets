@@ -4,7 +4,7 @@ import app.mapl.controllers.CoinsController;
 import app.mapl.service.CoinsServiceJPA;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import app.mapl.mapper.CoinMapper;
-import app.mapl.dto.CoinDto;
+import app.mapl.models.dto.CoinDto;
 //import app.mapl.models.dto.Symbol;
 import app.mapl.repositories.CoinsRepository;
 import app.mapl.service.CoinsService;

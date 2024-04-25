@@ -1,13 +1,14 @@
 package app.mapl.models;
 
 import app.mapl.exception.ApiException;
+import app.mapl.models.auth.RequestContext;
+import app.mapl.models.auth.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -19,7 +20,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 import static java.time.LocalTime.now;
 
@@ -75,7 +75,7 @@ public abstract class  BaseModel implements Serializable {
             referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "fk_user_owner", value=ConstraintMode.CONSTRAINT)
     )
-    private List<UserEntity> owner; // instances of same user, multiple user-logins owned by user
+    private List<User> owner; // instances of same user, multiple user-logins owned by user
     @PrePersist
     public void beforePersist() {
         var usesrId =  RequestContext.getUserId();

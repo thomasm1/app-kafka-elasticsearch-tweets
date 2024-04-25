@@ -1,8 +1,12 @@
 package app.mapl.service;
 
-import app.mapl.dto.UserDto;
-import app.mapl.dto.UserRequest;
-import app.mapl.models.LoginType;
+import app.mapl.models.auth.APIResponseDto;
+import app.mapl.models.auth.UserResponse;
+import app.mapl.models.auth.UserRequest;
+import app.mapl.models.auth.LoginType;
+import app.mapl.models.auth.RoleEntity;
+import app.mapl.models.auth.User;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -14,33 +18,42 @@ public interface UsersService {
 	ResponseEntity saveUser (UserRequest userRequest);
 
 
-	UserDto loginUser(String email, String password);
+	UserResponse loginUser(String email, String password);
 
-    void createUser(String firstName, String lastName, String email, String password);
+	User createUserRole(String firstName, String lastName, String email, @NotEmpty String password);
 
-    public UserDto createUser(UserDto user);
+	User createUser(String firstName, String lastName, String email, RoleEntity role);
 
-	public static UserDto createUserCli(UserDto user) {
-		return null;
-	}
+	void createUser(String firstName, String lastName, String email, String password);
+	public static UserResponse createUserCli(UserResponse user) { 	return user; }
 
-	public Optional<UserDto> getUser(int id);
-	public Optional<UserDto>  getUser(String email );
-	public List<UserDto> getUsers();
+	RoleEntity getRoleName(String name);
 
-	public Optional<UserDto> updateUser(UserDto change);
+	public Optional<UserResponse> getUser(int id);
+	public Optional<UserResponse>  getUser(String email );
 
-	public Optional<UserDto> getUserByEmailAndPassword(String email, String pw);
+	APIResponseDto getUserById(Long uerEntityId);
 
-	public Optional<UserDto> getUserByPassword(String email, String password);
+	Optional<User> getUserByEmail(String email);
 
-	Optional<UserDto> patchUserById(Integer userId, UserDto user);
+	public List<UserResponse> getUsers();
+
+	public Optional<UserResponse> updateUser(UserResponse change);
+
+	public Optional<UserResponse> getUserByEmailAndPassword(String email, String pw);
+
+	public Optional<UserResponse> getUserByPassword(String email, String password);
+
+	Optional<UserResponse> patchUserById(Integer userId, UserResponse user);
 
 	public boolean deleteUser(String email);
 
-	boolean deleteUser(UserDto user);
+	boolean deleteUser(UserResponse user);
 
-    UserRequest updateLoginAttempt(String email, String password);
+//    UserRequest updateLoginAttempt(String email, String password);
 
-	void updateLoginAttempt(String email, LoginType loginType);
+	User updateLoginAttempt(String email, LoginType loginType);
+
+	void verifyAccountKey(String key);
+
 }

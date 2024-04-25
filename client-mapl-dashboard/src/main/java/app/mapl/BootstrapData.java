@@ -1,6 +1,10 @@
 package app.mapl;
 
 import app.mapl.models.*; // Bookmark, Coin, User, Weblink
+import app.mapl.models.auth.Authority;
+import app.mapl.models.auth.RequestContext;
+import app.mapl.models.auth.RoleEntity;
+import app.mapl.models.auth.User;
 import app.mapl.repositories.BookRepository;
 import app.mapl.repositories.CoinsRepository;
 import app.mapl.repositories.RoleEntityRepository;
@@ -80,9 +84,15 @@ public class BootstrapData implements CommandLineRunner {
             users = usersStatic;
 
             usersRepository.saveAll(users);
-            usersRepository.save(new User(0, "thomas.maestas@hotmail.com", "password", "lastName", "firstName",
-                    1, "organizationCode", "thomas.maestas@hotmail.com", "cusUrl", "dashboardCode", 1, 3));
-
+            usersRepository.save(User.builder()
+                            .firstName("firstName")
+                            .lastName("lastName")
+                            .email("thomas.maestas@hotmail.com")
+                            .password("password")
+                            .organizationCode("organizationCode")
+                            .dashboardCode("dashboardCode")
+                            .role(roleRepository.findByName("ROLE_USER").orElseThrow(() -> new RuntimeException("Role not found")))
+                            .build());
 
             Optional<User> userWithIdOne = usersRepository.findById(1);
             log.info("User is retrieved : " + userWithIdOne);

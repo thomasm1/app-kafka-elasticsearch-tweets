@@ -2,7 +2,7 @@ package app.mapl.service;
 
 import app.mapl.models.Category;
 import app.mapl.mapper.CategoryMapper;
-import app.mapl.dto.CategoryDto;
+import app.mapl.models.dto.CategoryDto;
 import app.mapl.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 

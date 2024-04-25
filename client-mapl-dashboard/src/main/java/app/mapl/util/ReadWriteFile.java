@@ -1,7 +1,7 @@
 package app.mapl.util;
 
+import app.mapl.models.auth.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import app.mapl.models.User;
 
 import java.io.*;
 import java.net.MalformedURLException;

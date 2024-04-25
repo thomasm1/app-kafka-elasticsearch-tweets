@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.DashboardDto;
+import app.mapl.models.dto.DashboardDto;
 import app.mapl.models.Dashboard;
 import org.mapstruct.*;
 

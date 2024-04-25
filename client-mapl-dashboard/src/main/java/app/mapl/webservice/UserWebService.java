@@ -3,10 +3,8 @@ package app.mapl.webservice;
 import java.io.IOException;
 import java.util.List;
 
-import app.mapl.dto.UserDto;
-import app.mapl.models.User;
+import app.mapl.models.auth.User;
 import app.mapl.repositories.UsersRepository;
-import app.mapl.service.UsersServiceJPA;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,7 +12,6 @@ import jakarta.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -45,9 +42,8 @@ public class UserWebService {
 //		log.info("UserWebService: "+d);
 
 		// Call UserService to add it.
-	    usersRepository.save(new User(1, "t@t.com", "password", "lastNamedd", "firstnam", 1,   "5055087707" ,"user4@cryptomaven.xyz","http://www.dailytech.net", "photopaath", 0,0,null ));
-
-		try {
+	    usersRepository.save(User.builder().firstName("first").lastName("last").email(email).password(password).build());
+		 try {
 			response.getWriter().append("Successfully added data to ORACLE (AWS) input: ").append(request.getContextPath());
 		} catch (IOException e1) {
 			e1.printStackTrace();

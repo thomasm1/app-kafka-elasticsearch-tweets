@@ -1,6 +1,6 @@
 package app.mapl.webControllers;
 
-import app.mapl.models.User;
+import app.mapl.models.auth.UserRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
@@ -40,9 +40,11 @@ public class ForObjectMethod {
 
     private void addUser() {
         String url = baseUrl + "/user";
-        User user = new User();
-        user.setFirstName("Green");
-        user.setLastName("Learner");
+        UserRequest user = new UserRequest();
+        user.setFirstName("firstName");
+        user.setLastName("lastName");
+        user.setLastName("email");
+        user.setLastName("password");
         String response = restTemplate.postForObject(url, user, String.class);
 
         logger.info("response - " + response);

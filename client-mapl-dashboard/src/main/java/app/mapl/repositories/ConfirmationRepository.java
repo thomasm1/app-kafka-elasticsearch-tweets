@@ -1,7 +1,7 @@
 package app.mapl.repositories;
 
-import app.mapl.models.ConfirmationEntity;
-import app.mapl.models.UserEntity;
+import app.mapl.models.auth.ConfirmationEntity;
+import app.mapl.models.auth.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -12,6 +12,6 @@ public interface ConfirmationRepository extends JpaRepository<ConfirmationEntity
     @Override
     ConfirmationEntity save(ConfirmationEntity entity);
     Optional<ConfirmationEntity> findByKey(String key);
-    Optional<ConfirmationEntity> findByUserEntity(UserEntity userEntity);
+    Optional<ConfirmationEntity> findByUser(User userEntity);
 
 }

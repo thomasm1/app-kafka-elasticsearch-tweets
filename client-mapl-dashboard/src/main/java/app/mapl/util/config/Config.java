@@ -21,8 +21,6 @@ import java.time.Duration;
 
 @Configuration
 public class Config {
-
-
     @Bean
     RestTemplateCustomizer restTemplateCustomizer() {
         return new MaplRestTemplateCustomizer();

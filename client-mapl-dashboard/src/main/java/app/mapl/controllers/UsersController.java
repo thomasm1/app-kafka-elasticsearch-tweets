@@ -1,9 +1,10 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.APIResponseDto;
-import app.mapl.dto.LoginDto;
-import app.mapl.dto.UserRequest;
-import app.mapl.dto.UserDto;
+import app.mapl.models.auth.APIResponseDto;
+import app.mapl.models.auth.LoginDto;
+import app.mapl.models.auth.User;
+import app.mapl.models.auth.UserRequest;
+import app.mapl.models.auth.UserResponse;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,13 +14,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.asynchttpclient.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.web.exchanges.HttpExchange.Response;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +33,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static app.mapl.util.Utilities.getResponse;
 import static java.util.Collections.emptyMap;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
+
 @Tag(
         name = "CRUD REST APIs for User Resource",
         description = "CRUD REST APIs - Create User, Update User, Get User, Get All Users, Delete User"
@@ -39,11 +47,13 @@ import static java.util.Collections.emptyMap;
 @RestController
 @SessionAttributes("name")
 public class UsersController {
+    public static final String HTTP_LOCALHOST_8080_API_USER_ENTITY = "http://localhost:8888/api/users";
     static final Logger log = LoggerFactory.getLogger(UsersController.class);
 
     private PasswordEncoder bcrypt;
 
     private UsersService usersService;
+    AuthenticationManager authenticationManager;
     public static final String USER_PATH = "/api/users";
     public static final String USER_PATH_ID = USER_PATH + "/{userId}";
 
@@ -51,6 +61,7 @@ public class UsersController {
     public UsersController( UsersService usersService ) { 
         this.usersService = usersService;
     }
+
 
 
     @Operation(
@@ -74,6 +85,11 @@ public class UsersController {
 
         return new ResponseEntity<>(ldto,HttpStatus.CREATED);
     }
+    @PostMapping("/auth/test")
+    public ResponseEntity<?> test(@RequestBody UserRequest userRequest ) {
+        Authentication authenticate = authenticationManager.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(userRequest.getEmail(), userRequest.getPassword()));
+        return ResponseEntity.ok().body(Map.of("user", authenticate));
+    }
 
     @Operation(
             summary = "Create User REST API  registerUser",
@@ -84,21 +100,41 @@ public class UsersController {
             description = "HTTP Status 201 CREATED"
     )
     @PostMapping(value = {"/auth/register", "/auth/signup"}, consumes = "application/x-www-form-urlencoded; charset=utf-8")
-    public ResponseEntity<APIResponseDto> registerUser(@RequestBody @Valid UserRequest user, HttpServletRequest request) {
-
+    public ResponseEntity<Response> registerUser(@RequestBody @Valid UserRequest user, HttpServletRequest request) {
         usersService.createUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
-        return ResponseEntity.created(getUri()).body(getResponse(request, emptyMap(), "Account created successfully"));
+        return ResponseEntity.created(getUri()).body( getResponse(request, emptyMap(), "AccountCreated", CREATED));
+            }
 
+    @Operation(
+            summary = "Verify Account REST API",
+            description = "Verify Account REST API is used to verify a user account"
+    )
+    @GetMapping("verify/account")
+    public ResponseEntity<Response> verifyAccount(@RequestParam("key") String key, HttpServletRequest request){
+        usersService.verifyAccountKey(key);
+        return ResponseEntity.ok().body(  getResponse(request, emptyMap(), "Account Verified.", OK));
     }
-
+    @Operation(
+            summary = "Save User REST API",
+            description = "Save User REST API is used to save a user in the database"
+    )
+    @ApiResponse(
+            responseCode = "201",
+            description = "HTTP Status 201 CREATED"
+    )
+    @PostMapping(value = "/api/userEntity", consumes = "application/json")
+    public ResponseEntity<Response> saveUser(@RequestBody @Valid  UserRequest user, HttpServletRequest request){
+        User savedUser = usersService.createUserRole(
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getPassword());
+        return ResponseEntity.created(getUri()).body(  getResponse(request, emptyMap(), "AccountCreated", OK));
+    }
     private URI getUri() {
-        return URI.create("");
+        return URI.create(HTTP_LOCALHOST_8080_API_USER_ENTITY);
     }
-    private APIResponseDto getResponse(HttpServletRequest request, Map<?,?> data, String message) {
-//        return new APIResponseDto(request.getRequestURI(), data, message, HttpStatus.CREATED.value());
- return null; // Too    TODO
 
-    }
     @Operation(
             summary = "Get All Users REST API",
             description = "Get All Users REST API is used to get a all the users from the database"
@@ -108,15 +144,15 @@ public class UsersController {
             description = "HTTP Status 200 SUCCESS"
     )
     @GetMapping(USER_PATH)
-    public ResponseEntity<List<UserDto>> getUsers() {
-        List<UserDto> users = new ArrayList<>();
+    public ResponseEntity<List<UserResponse>> getUsers() {
+        List<UserResponse> users = new ArrayList<>();
         try {
             users = usersService.getUsers();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return new ResponseEntity<>(users,
-                HttpStatus.OK);
+                OK);
     }
 
     @Operation(
@@ -127,16 +163,20 @@ public class UsersController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    // build get user by id REST API
     // http://localhost:8080/api/users/1
     @GetMapping(value = USER_PATH_ID)
-    public ResponseEntity<UserDto> getUser(@PathVariable("userId") int userId) {
+    public ResponseEntity<UserResponse> getUser(@PathVariable("userId") int userId) {
         if(usersService.getUser(userId).isEmpty()) {
             throw new ResourceNotFoundException("User " + userId + "not found");
         }
-        return new ResponseEntity<>(usersService.getUser(userId).get(), HttpStatus.OK);
+        return new ResponseEntity<>(usersService.getUser(userId).get(), OK);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<APIResponseDto> getUserById(@PathVariable("id") Long userEntityId){
+        APIResponseDto apiResponseDto = usersService.getUserById(userEntityId);
+        return   ResponseEntity.ok().body(apiResponseDto);
+    }
     @Operation(
             summary = "Get User By EMAIL REST API",
             description = "Get User By EMAIL REST API is used to get a single user from the database"
@@ -146,22 +186,22 @@ public class UsersController {
             description = "HTTP Status 200 SUCCESS"
     )
     @GetMapping(value = USER_PATH+ "/email/{email}")
-    public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) {
+    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable("email") String email) {
         if(usersService.getUser(email).isEmpty()) {
             throw new ResourceNotFoundException("User " + email + "not found");
         }
-        return new ResponseEntity<>(usersService.getUser(email).get(), HttpStatus.OK);
+        return new ResponseEntity<>(usersService.getUser(email).get(), OK);
     }
 
     /// Non-Register Creation Request
     @PostMapping(USER_PATH)
-    public ResponseEntity createUser(@RequestBody UserDto user) {
-        UserDto savedUser = usersService.createUser(user);
+    public ResponseEntity createUser(@RequestBody UserRequest user) {
+        ResponseEntity<UserResponse> savedUser = usersService.saveUser(user);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", USER_PATH + "/" + savedUser.getUserId());
+        headers.add("Location", USER_PATH + "/" + savedUser.getBody().getUserId());
 
-        return new ResponseEntity(savedUser, headers, HttpStatus.CREATED);
+        return new ResponseEntity(savedUser, headers, CREATED);
     }
 
 
@@ -174,8 +214,8 @@ public class UsersController {
             description = "HTTP Status 200 SUCCESS"
     )
     @PutMapping(value = USER_PATH + "/{userId}", consumes = "application/json")  // userId in body
-    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") int userId, @RequestBody UserDto userDto) {
-        Optional<UserDto> updated = usersService.updateUser( userDto);
+    public ResponseEntity<UserResponse> updateUser(@PathVariable("userId") int userId, @RequestBody UserResponse userResponse) {
+        Optional<UserResponse> updated = usersService.updateUser(userResponse);
         return updated.map(dto -> new ResponseEntity<>(
                 dto,
                 HttpStatus.CREATED)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
@@ -193,8 +233,8 @@ public class UsersController {
             description = "HTTP Status 200 SUCCESS"
     )
     @PatchMapping(USER_PATH_ID)
-    public ResponseEntity<UserDto> patchUserById(@PathVariable("userId") Integer userId,
-                                                 @RequestBody UserDto user) {
+    public ResponseEntity<UserResponse> patchUserById(@PathVariable("userId") Integer userId,
+                                                      @RequestBody UserResponse user) {
 
         usersService.patchUserById(userId, user);
 
@@ -216,12 +256,12 @@ public class UsersController {
     public ResponseEntity<Boolean> deleteUser(@PathVariable("userId") int userId) {
         Boolean boolSuccess = null;
 
-        Optional<UserDto> tempUser = usersService.getUser(userId);
+        Optional<UserResponse> tempUser = usersService.getUser(userId);
         if (tempUser == null) throw new ResourceNotFoundException("User " + userId + "not found to delete");
         try {
             boolSuccess = usersService.deleteUser(String.valueOf(tempUser));
             if (boolSuccess) {
-                return new ResponseEntity<>(boolSuccess, HttpStatus.OK);
+                return new ResponseEntity<>(boolSuccess, OK);
             }
             ;
             return new ResponseEntity<>(boolSuccess, HttpStatus.NO_CONTENT);

@@ -1,10 +1,13 @@
 package app.mapl.service;
 
-import app.mapl.dto.UserDto;
-import app.mapl.dto.UserRequest;
+import app.mapl.models.auth.APIResponseDto;
+import app.mapl.models.auth.UserResponse;
+import app.mapl.models.auth.UserRequest;
 import app.mapl.mapper.UserMapper;
-import app.mapl.models.LoginType;
-import app.mapl.models.User;
+import app.mapl.models.auth.LoginType;
+import app.mapl.models.auth.RoleEntity;
+import app.mapl.models.auth.User;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -23,20 +26,15 @@ public class UsersServiceJDBC implements UsersService {
 
     public UsersServiceJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        userRowMapper = (rs, rowNum) -> new User(
-                rs.getInt("userId"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("lastName"),
-                rs.getString("firstName"),
-                rs.getInt("userType"),
-                rs.getString("organizationCode"),
-                rs.getString("email"),
-                rs.getString("cusUrl"),
-                rs.getString("dashboardCode"),
-                rs.getInt("1"),
-                rs.getInt("role")
-        );
+                        userRowMapper = (rs, rowNum) ->   User.builder()
+                                .firstName(rs.getString("firstName                     "))
+                                .lastName(rs.getString("lastName"))
+                                .email(rs.getString("email"))
+                                .password(rs.getString("password"))
+                                .build();
+
+
+
     }
 
 
@@ -58,8 +56,8 @@ public class UsersServiceJDBC implements UsersService {
 
 
     /**
-     * @param userRequest
-     * @return
+     * @param userRequest= Tarmchair1f$
+     *              \* @return
      */
     @Override
     public ResponseEntity saveUser(UserRequest userRequest) {
@@ -72,7 +70,31 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public UserDto loginUser(String email, String password) {
+    public UserResponse loginUser(String email, String password) {
+        return null;
+    }
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param password
+     * @return
+     */
+    @Override
+    public User createUserRole(String firstName, String lastName, String email, @NotEmpty String password) {
+       return null;
+    }
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param role
+     * @return
+     */
+    @Override
+    public User createUser(String firstName, String lastName, String email, RoleEntity role) {
         return null;
     }
 
@@ -87,30 +109,23 @@ public class UsersServiceJDBC implements UsersService {
 
     }
 
+
     /**
-     * @param user
+     * @param name
      * @return
      */
     @Override
-    public UserDto createUser(UserDto user) {
+    public RoleEntity getRoleName(String name) {
         return null;
     }
 
-
-    /**
-     * @param user
-     * @return
-     */
-    public static UserDto createUserCLI(UserDto user) {
-        return null;
-    }
 
     /**
      * @param id
      * @return
      */
     @Override
-    public Optional<UserDto> getUser(int id) {
+    public Optional<UserResponse> getUser(int id) {
         return Optional.empty();
     }
 
@@ -119,7 +134,25 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> getUser(String username) {
+    public Optional<UserResponse> getUser(String username) {
+        return Optional.empty();
+    }
+
+    /**
+     * @param uerEntityId
+     * @return
+     */
+    @Override
+    public APIResponseDto getUserById(Long uerEntityId) {
+        return null;
+    }
+
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public Optional<User> getUserByEmail(String email) {
         return Optional.empty();
     }
 
@@ -127,7 +160,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public List<UserDto> getUsers() {
+    public List<UserResponse> getUsers() {
         return null;
     }
 
@@ -136,7 +169,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> updateUser(UserDto change) {
+    public Optional<UserResponse> updateUser(UserResponse change) {
         return null;
     }
 
@@ -146,7 +179,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
+    public Optional<UserResponse> getUserByEmailAndPassword(String email, String pw) {
         return Optional.empty();
     }
 
@@ -156,7 +189,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> getUserByPassword(String username, String password) {
+    public Optional<UserResponse> getUserByPassword(String username, String password) {
         return Optional.empty();
     }
 
@@ -166,7 +199,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
+    public Optional<UserResponse> patchUserById(Integer userId, UserResponse user) {
         return Optional.empty();
     }
 
@@ -184,26 +217,27 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public boolean deleteUser(UserDto user) {
+    public boolean deleteUser(UserResponse user) {
         return false;
     }
 
-    /**
-     * @param email
-     * @param password
-     * @return
-     */
-    @Override
-    public UserRequest updateLoginAttempt(String email, String password) {
-        return null;
-    }
 
     /**
      * @param email
      * @param loginType
+     * @return
      */
     @Override
-    public void updateLoginAttempt(String email, LoginType loginType) {
+    public User updateLoginAttempt(String email, LoginType loginType) {
+
+        return null;
+    }
+
+    /**
+     * @param key
+     */
+    @Override
+    public void verifyAccountKey(String key) {
 
     }
 }

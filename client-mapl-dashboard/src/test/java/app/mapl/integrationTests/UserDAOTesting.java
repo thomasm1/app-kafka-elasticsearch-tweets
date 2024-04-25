@@ -1,7 +1,7 @@
 package app.mapl.integrationTests;
 
  
-import app.mapl.dto.UserDto;
+import app.mapl.models.auth.UserRequest;
 import app.mapl.service.UsersServiceJPA;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
@@ -25,14 +25,13 @@ public class UserDAOTesting {
 	@Order(1)
 	public void add_User() throws InterruptedException {
 //		dynamicUsername = "random_user" + Double.toString(Math.floor((Math.random()*31))); // should constrain this back into String form and unique
-		UserDto u = UserDto.builder()
+		UserRequest u = UserRequest.builder()
 				.email("user-"+Integer.valueOf(dynamicUsername)+"@gmail.com")
 				.lastName("lastName")
 				.firstName("firstName")
-				.organizationCode("orgCode")
-				.dashboardCode("dashCode")
+				.password("password")
 				.build();
-		assertEquals(usersServiceJPA.createUser(u), u);
+		assertEquals(usersServiceJPA.saveUser(u), u);
 		log.info("added: " + dynamicUsername);
 	}
 	@Test

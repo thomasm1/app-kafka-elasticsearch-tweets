@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.BookDto;
+import app.mapl.models.dto.BookDto;
 import app.mapl.models.Book;
 import org.mapstruct.*;
 

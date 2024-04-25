@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.DashboardDto;
+import app.mapl.models.dto.DashboardDto;
 import app.mapl.service.DashboardService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

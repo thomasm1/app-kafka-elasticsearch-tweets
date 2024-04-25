@@ -1,30 +1,27 @@
 package app.mapl.service;
 
-import app.mapl.dto.UserDto;
-import app.mapl.dto.UserRequest;
+import app.mapl.models.auth.*;
 import app.mapl.exception.ApiException;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.mapper.UserMapper;
-import app.mapl.models.ConfirmationEntity;
-import app.mapl.models.UserEvent;
-import app.mapl.models.UserEntity;
 import app.mapl.repositories.ConfirmationRepository;
-import app.mapl.models.CredentialEntity;
-import app.mapl.models.EventType;
-import app.mapl.models.LoginType;
-import app.mapl.models.RequestContext;
-import app.mapl.models.User;
 import app.mapl.repositories.CredentialRepository;
+import app.mapl.repositories.RoleEntityRepository;
 import app.mapl.repositories.UsersRepository;
-import jakarta.servlet.http.HttpServletRequest;
+import app.mapl.util.config.CacheStore;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,28 +30,65 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
+import static app.mapl.models.auth.User.buildUser;
+import static java.time.LocalDateTime.now;
+
 
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Transactional(rollbackOn= Exception.class)
 @Primary
 @Service
+@Slf4j
 public class UsersServiceJPA implements UsersService {
     private UsersRepository usersRepository;
     private CredentialRepository credentialRepository;
     private ConfirmationRepository confirmationRepository;
+//    private final BCryptPasswordEncoder passwordEncoder;
+    private RoleEntityRepository roleRepository;
+    private CacheStore<String, Integer> userCache;
 
     private UserMapper userMapper;
     private ApplicationEventPublisher publisher;
+//    private WebClient webClient;
+//    private APIClient apiClient;
+
+
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param role
+     * @return User
+     */
+    @Override
+    public User createUser(String firstName, String lastName, String email, RoleEntity role) {
+        User userEntity = buildUser(firstName, lastName, email, role);
+        Optional<User> savedUser = Optional.of(usersRepository.save(userEntity));
+        return savedUser.get();
+
+    }
+
+    @Operation(
+            summary = "login User By ID REST API and JWT Authentication",
+            description = "login User By ID REST API is used to get a single user from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+    @PostMapping(value = {"/auth/login", "/auth/signin"}, consumes = "application/x-www-form-urlencoded; charset=utf-8")
 
     @Override
-    public void createUser(String firstName, String lastName, String email, String password) {
+    public void createUser(String firstName, String lastName, String email, @NotEmpty String password) {
 
-        UserEntity userEntity = UserEntity.builder()
+        User userEntity = User.builder()
                 .email(email)
                 .lastName(lastName)
                 .firstName(firstName)
-                .build();;
+                .build();
+        ;
         var credentialEntity = new CredentialEntity(userEntity, password);
         credentialRepository.save(credentialEntity);
         var confirmationEntity = new ConfirmationEntity(userEntity);
@@ -62,13 +96,10 @@ public class UsersServiceJPA implements UsersService {
         publisher.publishEvent(new UserEvent(userEntity, EventType.REGISTRATION, Map.of("key", confirmationEntity.getKey())));
     }
 
-    /**
-     * @param user
-     * @return
-     */
     @Override
-    public UserDto createUser(UserDto user) {
-        return null;
+    public User createUserRole(String firstName, String lastName, String email, @NotEmpty String password) {
+        var role = getRoleName(Authority.USER.name());
+        return createUser(firstName, lastName, email, role);
     }
 
     /**
@@ -77,29 +108,35 @@ public class UsersServiceJPA implements UsersService {
      */
     @Override
     public ResponseEntity saveUser(UserRequest userRequest) {
-        return null;
+        Optional<User> savedUser = Optional.of(usersRepository.save(userMapper.toUser(userRequest)));
+        return ResponseEntity.ok(userMapper.toDto(savedUser.get()));
     }
 
     /**
      * DEPRECATED
+     *
      * @param usernameOrEmail
      * @param password
      * @return
      */
     @Override
-    public UserDto loginUser(String usernameOrEmail, String password) {
-        User u = usersRepository.findByEmail(  usernameOrEmail).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", usernameOrEmail));
-        // T
-            return null;
-
+    public UserResponse loginUser(String usernameOrEmail, String password) {
+        User u = usersRepository.findByEmail(usernameOrEmail).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", usernameOrEmail));
+        return userMapper.toDto(u);
     }
+
+    private User createUser(String firstName, String lastName, String email) {
+        var role = getRoleName(Authority.USER.name());
+        return createUser(firstName, lastName, email, role);
+    }
+
 
     /**
      * @param id;
      * @return Optional<UserDto>
      */
     @Override
-    public Optional<UserDto> getUser(int id) {
+    public Optional<UserResponse> getUser(int id) {
         try {
             User u = usersRepository.findById(id).get();
             return Optional.ofNullable(userMapper.toDto(u));
@@ -109,32 +146,101 @@ public class UsersServiceJPA implements UsersService {
     }
 
     /**
+     * @param name
+     * @return
+     */
+    @Override
+    public RoleEntity getRoleName(String name) {
+        return roleRepository.findByName(name).orElseThrow(() -> new ApiException("Role not found"));
+
+    }
+
+
+    private ConfirmationEntity getConfirmationEntity(String key) {
+        return confirmationRepository.findByKey(key).orElseThrow(() -> new ApiException("Confirmation not found"));
+    }
+
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public Optional<UserResponse> getUser(String email) {
+        return Optional.empty();
+    }
+
+
+    /**
+     * @param uerEntityId
+     * @return User
+     */
+//    @Override
+    public APIResponseDto getUserById(Long uerEntityId) {
+        APIResponseDto apiResponseDto = new APIResponseDto();
+//        apiResponseDto.setStatusCode(200);
+//        apiResponseDto.setMessage("User found");
+//        apiResponseDto.setTimestamp(LocalDateTime.now().toString());
+//        apiResponseDto.setPath("/api/users/" + uerEntityId);
+
+//        Optional<app.mapl.models.UserEntity> uerEntity = usersRepository.findById(uerEntityId) ;
+
+//        ResponseEntity<DashboardDto> responseEntity = getForEntity("http://localhost:8080/api/dashboards/" + uerEntity.getDashboardCode(),
+//                DashboardDto.class);
+//
+//        DashboardDto dashboardDto = responseEntity.getBody();
+//
+//        DashboardDto dashboardDto = webClient.get()
+//                .uri("http://localhost:8080/api/dashboards/" + uerEntity.getDashboardCode())
+//                .retrieve()
+//                .bodyToMono(DashboardDto.class)
+//                .block();
+//
+//        DashboardDto dashboardDto = apiClient.getDashboard(uerEntity.getDashboardCode()); // TODO:
+//
+//        UserRequest uerEntityDto = new UserRequest(
+//                uerEntity.getId(),
+//                uerEntity.getFirstName(),
+//                uerEntity.getLastName(),
+//                uerEntity.getEmail(),
+//                uerEntity.getDashboardCode(),
+//                uerEntity.getOrganizationCode()
+//        );
+//
+//        APIResponseDto apiResponseDto = new APIResponseDto();
+//        apiResponseDto.setUserEntity(uerEntityDto);
+//        apiResponseDto.setDashboard(dashboardDto);
+
+        return apiResponseDto;
+    }
+
+    /**
      * @param email;
      * @return Optional<UserDto>
      */
     @Override
-    public Optional<UserDto> getUser(String email) {
-        Optional<UserDto> result;
+    public Optional<User> getUserByEmail(String email) {
+        Optional<User> result;
         try {
-            User u = usersRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", email));
-            result = Optional.ofNullable(userMapper.toDto(u));
+            User u = usersRepository.findByEmailIgnoreCase(email).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", email));
+            result = Optional.ofNullable(u);
         } catch (Exception e) {
             result = null;
         }
         return result;
     }
 
+
     /**
      * @return List<UserDto>
      */
     @Override
-    public List<UserDto> getUsers() {
-        List<UserDto> userDtos =null;
+    public List<UserResponse> getUsers() {
+        List<UserResponse> userResponses = null;
         try {
             List<User> users = usersRepository.findAll();
             if (users == null) {
                 throw new ResourceNotFoundException("not found", "not found", "not found");
-            }   else {
+            } else {
                 return users.stream().map(userMapper::toDto).collect(Collectors.toList());
             }
         } catch (NullPointerException e) {
@@ -156,18 +262,6 @@ public class UsersServiceJPA implements UsersService {
 //        return Optional.ofNullable(userMapper.toDto(u));
 //    }
 
-    public Optional<UserDto> getUserByEmail(String email) {
-        User u;
-        try {
-
-            u = usersRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", email));
-        } catch (Exception e) {
-            return null;
-        }
-        return Optional.ofNullable(userMapper.toDto(u));
-    }
-
-
 
     /**
      * @param email
@@ -175,7 +269,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> getUserByPassword(String email, String password) {
+    public Optional<UserResponse> getUserByPassword(String email, String password) {
         return null;
     }
 
@@ -184,9 +278,9 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> updateUser(UserDto change) {
+    public Optional<UserResponse> updateUser(UserResponse change) {
         try {
-            User uEntity = userMapper.toEntity(change);
+            User uEntity = userMapper.partialUpdate(change, usersRepository.findByEmail(change.getEmail()).get());
             User uDone = usersRepository.save(uEntity);
 
             return Optional.of(userMapper.toDto(uDone));
@@ -203,16 +297,16 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
+    public Optional<UserResponse> getUserByEmailAndPassword(String email, String pw) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
-        AtomicReference<Optional<UserDto>> atomicReference = new AtomicReference<>();
+    public Optional<UserResponse> patchUserById(Integer userId, UserResponse user) {
+        AtomicReference<Optional<UserResponse>> atomicReference = new AtomicReference<>();
 
         usersRepository.findById(userId).ifPresentOrElse(foundUser -> {
-            if (StringUtils.hasText(user.getEmail())){
+            if (StringUtils.hasText(user.getEmail())) {
                 foundUser.setEmail(user.getEmail());
             }
             atomicReference.set(Optional.of(userMapper
@@ -223,6 +317,7 @@ public class UsersServiceJPA implements UsersService {
 
         return atomicReference.get();
     }
+
     /**
      * @param email
      * @return
@@ -244,7 +339,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public boolean deleteUser(UserDto user) {
+    public boolean deleteUser(UserResponse user) {
 
         try {
             User u = usersRepository.findByEmail(user.getEmail()).get();
@@ -258,24 +353,59 @@ public class UsersServiceJPA implements UsersService {
 
     /**
      * @param email
-     * @param password
+     * @param loginType
      * @return
      */
     @Override
-    public UserRequest updateLoginAttempt(String email, String password) {
+    public User updateLoginAttempt(String email, LoginType loginType) {
+    var user = getUserByEmail(email).get();
+//            .get()==null?null:getUserByEmail(email).get();
+        RequestContext.setUserId(user.getId());
+        switch(loginType) {
+            case LOGIN_ATTEMPT:
+                if(userCache.get(user.getEmail())==null){
+                    user.setLoginAttempts(0);
+                    user.setAccountNonLocked(true);
+                }
+                user.setLoginAttempts(user.getLoginAttempts() + 1);
+                userCache.put(user.getEmail(), user.getLoginAttempts());
+                if(userCache.get(user.getEmail()) > 5) {
+                    user.setAccountNonLocked(false);
+                }
+
+            case LOGIN_SUCCESS:
+                user.setAccountNonLocked(true);
+                user.setLoginAttempts(0);
+                user.setLastLogin(now());
+                userCache.evict(user.getEmail());
+                break;
+            default:
+                break;
+        }
+        usersRepository.save(user);
         return null;
     }
 
     /**
-     * @param email
-     * @param loginType
+     * @param key
+     * @return
      */
     @Override
-    public void updateLoginAttempt(String email, LoginType loginType) {
-
+    public void verifyAccountKey(String key) {
+        var confirmationEntity = getConfirmationEntity(key);
+//    Optional<UserResponse> uerEntity = getUserByEmail(confirmationEntity
+//            .getUser()
+//            .getEmail());
+        // TODO
+//        uerEntity.get().set(true);
+//        usersRepository.save(uerEntity);
+//        confirmationRepository.delete(confirmationEntity);
+//        return new APIResponseDto("Account verified");
     }
 
-
+    private Object getUserConfirmation(String token) {
+    return confirmationRepository.findByKey(token);
+    }
 }
 
 

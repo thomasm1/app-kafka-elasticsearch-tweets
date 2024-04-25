@@ -1,6 +1,7 @@
 package app.mapl;
 
-import app.mapl.dto.UserBookmark;
+import app.mapl.models.auth.User;
+import app.mapl.models.dto.UserBookmark;
 import app.mapl.models.*;
 import app.mapl.service.WeblinksService;
 import app.mapl.util.DownloadSequential;
@@ -56,13 +57,25 @@ public class FileDataStore extends ReadWriteFile {
 
 
 		static List<User> loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
-//		users[0] = UserManager.getInstance().createUser(500,  "user0", "password", "Smith", "Tom", Group.MALE,  UserType.USER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "1000");
+//		users[0] = UserManager.getInstance().createUser(500,  "user0", "password", "Smith", "Tom", UserType.USER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "1000");
  	List<String> data = new ArrayList<>();
 			ReadWriteFile.readFromFilename(data,  FILE_IN_USERS);
 			log.info("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
-				User user = new User( values[1], values[2], values[3], values[4],  Integer.parseInt(values[6]),   values[8], values[9],  values[10],values[11],Integer.parseInt(values[12]),Integer.parseInt((values[13])) );
+				User user = User.builder()
+						.email(values[1])
+				.password(values[2])
+				.lastName(values[3])
+				.firstName(values[4])
+				.userType(Integer.parseInt(values[6]))
+				.email(values[8])
+				.phone(values[9])
+				.imageUrl(values[10])
+				.dashboardCode(values[11])
+				.organizationCode(values[12])
+				.build();
+
 				users.add(user);
 				TEST_USERS = users.size();
 			}

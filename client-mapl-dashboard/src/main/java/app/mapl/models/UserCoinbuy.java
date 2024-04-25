@@ -1,5 +1,7 @@
 package app.mapl.models;
 
+import app.mapl.models.auth.User;
+
 public class UserCoinbuy {
     private User user;
     private Coin coin;

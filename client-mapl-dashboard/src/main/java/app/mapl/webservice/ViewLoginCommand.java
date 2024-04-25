@@ -1,6 +1,6 @@
 package app.mapl.webservice;
 
-import app.mapl.models.User;
+import app.mapl.models.auth.User;
 import app.mapl.repositories.UsersRepository;
 
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,6 +1,6 @@
 package app.mapl.util.converters;
 
-import app.mapl.models.Authority;
+import app.mapl.models.auth.Authority;
 import jakarta.persistence.AttributeConverter;
 
 import java.util.stream.Stream;

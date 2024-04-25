@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.WeblinkDto;
+import app.mapl.models.dto.WeblinkDto;
 import app.mapl.models.Weblink;
 import org.mapstruct.*;
 

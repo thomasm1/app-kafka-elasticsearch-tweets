@@ -1,10 +1,8 @@
 package app.mapl.service;
 
-import app.mapl.dto.PostEntityDto;
-import app.mapl.dto.PostEntityResponse;
-import org.springframework.data.domain.Page;
+import app.mapl.models.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityResponse;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface PostService {

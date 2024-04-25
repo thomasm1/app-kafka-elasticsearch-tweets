@@ -1,8 +1,8 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityDto;
 import app.mapl.models.Comment;
-import app.mapl.dto.CommentDto;
+import app.mapl.models.dto.CommentDto;
 import app.mapl.models.PostEntity;
 import org.mapstruct.*;
 

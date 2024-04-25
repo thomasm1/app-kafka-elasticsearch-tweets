@@ -7,8 +7,8 @@ package app.mapl.webControllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import app.mapl.dto.LoginDto;
-import app.mapl.dto.UserDto;
+import app.mapl.models.auth.LoginDto;
+import app.mapl.models.auth.UserResponse;
 import app.mapl.service.UsersService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -45,7 +45,7 @@ public class IndexController {
 //        List<CoinDto> chains = chainsService.getAllCoins();
 //        model.addAttribute("chains", chains);
 
-        List<UserDto> users =  usersService.getUsers();
+        List<UserResponse> users =  usersService.getUsers();
         model.addAttribute("users", users);
         model.addAttribute("map", map);
 

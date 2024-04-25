@@ -1,9 +1,8 @@
 package app.mapl.webservice;
 
-import app.mapl.models.User;
-
 import java.io.IOException;
 
+import app.mapl.models.auth.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

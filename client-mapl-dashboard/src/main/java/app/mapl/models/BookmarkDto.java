@@ -1,5 +1,6 @@
 package app.mapl.models;
 
+import app.mapl.models.auth.User;
 import lombok.*;
 
 import jakarta.persistence.*;

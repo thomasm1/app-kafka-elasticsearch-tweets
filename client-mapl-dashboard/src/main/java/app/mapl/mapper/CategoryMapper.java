@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.CategoryDto;
+import app.mapl.models.dto.CategoryDto;
 import app.mapl.models.Category;
 import org.mapstruct.*;
 

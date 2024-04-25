@@ -1,8 +1,8 @@
 package app.mapl.serviceTests;
 
 
-import app.mapl.dto.UserDto;
 import app.mapl.mapper.UserMapper;
+import app.mapl.models.auth.UserResponse;
 import app.mapl.service.UsersService;
 import app.mapl.service.UsersServiceJPA;
 import lombok.extern.slf4j.Slf4j;
@@ -33,20 +33,20 @@ public class UserServiceTest {      // *NOTE: change PK emails before sending to
     //TODO mockito Service INJECTION
     @Test
     public void add_new_user() {
-        UserDto u = UserDto.builder()
-                .email("user-1@gmail.com")
-                .lastName("lastName")
+        UserResponse u = UserResponse.builder()
                 .firstName("firstName")
+                .lastName("lastName")
+                .email("user-1@gmail.com")
                 .organizationCode("orgCode")
                 .dashboardCode("dashCode")
                 .build();
         //when(userDAOimplTester.createUser(u)).thenReturn(u);
-        assertEquals(u, userServiceTesterJPA.createUser(u));
+        assertEquals(u, userServiceTesterJPA.createUserRole(u.getFirstName(), u.getLastName(), u.getEmail(), u.getPassword()));
      }
 
     @Test
     public void get_users() {
-        UserDto u = UserDto.builder()
+        UserResponse u = UserResponse.builder()
                 .email("user-1@gmail.com")
                 .lastName("lastName")
                 .firstName("firstName")
@@ -60,7 +60,7 @@ public class UserServiceTest {      // *NOTE: change PK emails before sending to
 
     @Test
     public void update_user() {
-        UserDto u = UserDto.builder()
+        UserResponse u = UserResponse.builder()
                 .email("_user-1@gmail.com")
                 .lastName("_lastName")
                 .firstName("_firstName")

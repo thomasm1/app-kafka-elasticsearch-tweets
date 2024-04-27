@@ -14,7 +14,7 @@ import lombok.*;
     @AllArgsConstructor
     @NoArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public class UserRequest extends BaseModel {
+    public class UserRequest extends User {
 
         private static final long serialVersionUID = 1L;
 

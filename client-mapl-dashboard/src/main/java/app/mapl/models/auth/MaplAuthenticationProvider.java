@@ -17,11 +17,15 @@ public class MaplAuthenticationProvider implements AuthenticationProvider {
      * @param authentication
      * @return
      * @throws AuthenticationException
+     *
+     *      userAuthToken.getPrincipal() returns the userDto  - email
+     *      userAuthToken.getCredentials() returns the password
+     *
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        var userAuthToken = (UsernamePasswordAuthenticationToken) authentication;
+        var userAuthToken = (UsernamePasswordAuthenticationToken) authentication;  // soon to deprecate UsernamePasswordAuthenticationToken
 
         var userFromDb = userDetailsService.loadUserByUsername((String) userAuthToken.getPrincipal());
         var password = (String) userAuthToken.getCredentials();

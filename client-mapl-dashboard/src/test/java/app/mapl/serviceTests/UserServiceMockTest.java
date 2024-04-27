@@ -1,8 +1,7 @@
 package app.mapl.serviceTests;
 
-import app.mapl.models.auth.User;
 import app.mapl.models.auth.UserRequest;
-import app.mapl.models.auth.UserResponse;
+import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
@@ -46,7 +45,7 @@ public class UserServiceMockTest {
 
     @Test
     public void get_user() {
-        UserResponse user = new UserResponse( );
+        UserDto user = new UserDto( );
         user.setEmail(USER_4_CRYPTOMAVEN_XYZ);
 //        when(userServiceMock.getUser(user.getEmail())).thenReturn( assertInstanceOf(UserDto.class, user));
         assertEquals(USER_4_CRYPTOMAVEN_XYZ, user.getEmail());
@@ -54,8 +53,8 @@ public class UserServiceMockTest {
 
     @Test
     public void get_users() {
-        List<UserResponse> users =   userServiceMock.getUsers();
-        when(userServiceMock.getUsers()).thenReturn((List<UserResponse>) assertInstanceOf(List.class, users));
+        List<UserDto> users =   userServiceMock.getUsers();
+        when(userServiceMock.getUsers()).thenReturn((List<UserDto>) assertInstanceOf(List.class, users));
         assertEquals(userServiceMock.getUsers(), users);
 
     }
@@ -68,7 +67,7 @@ public class UserServiceMockTest {
 
     @Test
     public void delete_user() {
-        UserResponse u = new UserResponse( );    // PASSES
+        UserDto u = new UserDto( );    // PASSES
         u.setEmail("email@email.com");
 //        when(userServiceMock.createUser(u)).thenReturn(assertInstanceOf(UserDto.class, u));
         when(userServiceMock.deleteUser(u.getEmail())).thenReturn( assertInstanceOf(Boolean.class, true));

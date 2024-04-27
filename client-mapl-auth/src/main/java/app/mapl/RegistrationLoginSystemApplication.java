@@ -23,7 +23,6 @@ public class RegistrationLoginSystemApplication {
 	public WebClient webClient(){
 		return WebClient.builder().build();
 	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(RegistrationLoginSystemApplication.class, args);
 	}

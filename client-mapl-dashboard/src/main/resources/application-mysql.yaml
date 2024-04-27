@@ -1,0 +1,65 @@
+app:
+  mapl:
+    client:
+      cloud:
+        config:
+          enabled: false
+      dbtype: mysql
+      driver: com.mysql.cj.jdbc.Driver
+      generate-ddl: false
+      hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      host: ${AWS_MYSQL_HOST}pl   app.mapl.client.database=dashboarddb
+      mail:
+        host: smtp.gmail.com
+        password: ${EMAIL_PASSWORD}
+        port: 587
+        smtp:
+          auth: true
+        username: ${EMAIL_USERNAME}
+      management:
+        endpoint:
+          metrics:
+            enabled: true
+      password: ${AWS_MYSQL_PASSWORD}
+      port: 3306
+      server: ${AWS_MYSQL_URL}
+      sql:
+        init:
+          mode: never
+      user: ${AWS_MYSQL_USER}
+    server:
+      port: 8888
+build:
+  version: 1.0.0
+dashboard-service:
+  key: dashboard-key
+  url: https://dashboard.mapl.app
+  username: =${user-service.username}
+security:
+  basic:
+    enabled: false
+    path: /actuator
+server:
+  port:
+    ${app.mapl.server.port}
+spring:
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+        enabled: true
+  flyway:
+    enabled: false
+  h2:
+    console:
+      enabled: false
+transaction-service:
+  key: ${dashboard-service.key}${user-service.username}
+  url: https://transaction.mapl.app
+  username: ${user-service.username}
+user-service:
+  key: ${dashboard-service.key}
+  url: https://user.mapl.app
+  username: thomas

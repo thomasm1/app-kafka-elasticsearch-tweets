@@ -1,0 +1,200 @@
+H2_VAR: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE;
+MAPL_API_VERSION: 1.0.0
+app:
+  mail:
+    enabled: false
+info:
+  app:
+    contact:
+      name: Thomas1.maestas@gmail.com
+      url: thomasmaestas.net
+    description: MAPL Rest API
+    name: MAPL Restful Web Services
+    version: 1.0.0
+logging:
+  level:
+    com:
+      mapl:
+        app: info
+        app.controller: info
+    org:
+      hibernate:
+        cache: info
+        orm:
+          jdbc:
+            bind: trace
+        stat: info
+      springframework: info
+      springframework.security: INFO
+      springframework.security.authentication: 'OFF'
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: ${app.mapl.client.management.endpoint.metrics.enabled:true}
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: ${app.mapl.client.management.endpoint.metrics.enabled:true}
+security:
+  basic:
+    enabled: true
+server:
+  context-path: /¸
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+    include-path-errors: always
+    include-stacktrace: always
+    include-validation-errors: always
+    path: /user/error
+    whitelabel:
+      enabled: false
+  port: ${app.mapl.server.port}
+  servlet:
+    context-path: /v1
+spring:
+  application:
+    name: mapl-app
+    version: 1.0.0
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+  config:
+    activate:
+      on-profile: cloud
+  data:
+    rest:
+      base-path: /rest/
+      default-page-size: 10
+      limit-param-name: limit
+      max-page-size: 100
+      page-param-name: page
+  datasource:
+    driver-class-name: ${app.mapl.client.driver:org.h2.Driver}
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        rewriteBatchedStatements: true
+        useLocalSessionState: true
+        useServerPrepStmts: true
+      maximum-pool-size: 5
+      pool-name: MaplDB-Pool
+    password: ${app.mapl.client.password:w}
+    url: ${jdbc:${app.mapl.client.dbtype}://${app.mapl.client.database}.${app.mapl.client.host}:${app.mapl.client.port}?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC:H2_VAR}
+    username: ${app.mapl.client.user:sa}
+  flyway:
+    enabled: false
+  h2:
+    console:
+      enabled: false
+      path: /h2-console/
+      settings:
+        trace: false
+        web-allow-all: false
+        web-allow-others: false
+        web-port: 8082
+        web-ssl: false
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+      read-date-timestamps-as-nanoseconds: false
+    serialization:
+      close-closeable: true
+      fail-on-empty-beans: false
+      flush-after-write-value: true
+      write-dates-as-timestamps: false
+  jpa:
+    database: ${app.mapl.client.dbtype:h2}
+    database-platform: ${app.mapl.client.hibernate.dialect}
+    generate-ddl: ${app.mapl.client.generate-ddl}
+    hibernate:
+      ddl-auto: ${app.mapl.client.hibernate.ddl-auto}
+    open-in-view: false
+    properties:
+      hibernate:
+        connection:
+          CharSet: UTF-8
+          characterEncoding: UTF-8
+        dialect: ${app.mapl.client.hibernate.dialect:org.hibernate.dialect.H2Dialect}
+        format_sql: true
+        generate_statistics: true
+        globally_quoted_identifiers: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        session:
+          events:
+            log: org.hibernate.event.service.spi.EventListenerRegistry
+            log.LOG_QUERIES_SLOWER_THAN_MS: 1
+        show-sql: true
+        useUnicode: true
+        use_sql_comments: true
+      jakarta:
+        persistence:
+          cache:
+            retrieveMode: BYPASS
+            storeMode: REFRESH
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+          validation:
+            mode: none
+    show-sql: true
+  mail:
+    host: ${app.mapl.client.mail.host}
+    password: ${app.mapl.client.mail.password}
+    port: ${app.mapl.client.mail.port}
+    properties:
+      mail:
+        mime:
+          charset: UTF-8
+        smtp:
+          auth: ${app.mapl.client.mail.smtp.auth}
+          connectiontimeout: 5000
+          ssl:
+            trust: smtp.gmail.com
+          starttls:
+            enable: true
+            required: true
+          timeout: 3000
+          writetimeout: 5000
+    username: ${app.mapl.client.mail.username}
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    format:
+      date: yyyy-MM-dd
+    view:
+      suffix: .jsp
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  sql:
+    init:
+      continue-on-error: true
+      data-locations: classpath:data-${app.mapl.client.dbtype}.sql
+      mode: ${app.mapl.client.sql.init.mode}
+      schema-locations: classpath:schema-${app.mapl.client.dbtype}.sql
+  thymeleaf:
+    cache: false
+    enabled: true
+version: 1.2.0

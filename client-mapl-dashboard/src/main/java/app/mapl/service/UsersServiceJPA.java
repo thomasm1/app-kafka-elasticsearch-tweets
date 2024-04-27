@@ -4,6 +4,7 @@ import app.mapl.models.auth.*;
 import app.mapl.exception.ApiException;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.mapper.UserMapper;
+import app.mapl.models.dto.UserDto;
 import app.mapl.repositories.ConfirmationRepository;
 import app.mapl.repositories.CredentialRepository;
 import app.mapl.repositories.RoleEntityRepository;
@@ -14,7 +15,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
@@ -103,12 +103,12 @@ public class UsersServiceJPA implements UsersService {
     }
 
     /**
-     * @param userRequest
+     * @param userDto
      * @return
      */
     @Override
-    public ResponseEntity saveUser(UserRequest userRequest) {
-        Optional<User> savedUser = Optional.of(usersRepository.save(userMapper.toUser(userRequest)));
+    public ResponseEntity saveUser( UserDto  userDto) {
+        Optional<User> savedUser = Optional.of(usersRepository.save(userMapper.toUser(userDto)));
         return ResponseEntity.ok(userMapper.toDto(savedUser.get()));
     }
 
@@ -120,7 +120,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public UserResponse loginUser(String usernameOrEmail, String password) {
+    public UserDto loginUser(String usernameOrEmail, String password) {
         User u = usersRepository.findByEmail(usernameOrEmail).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", usernameOrEmail));
         return userMapper.toDto(u);
     }
@@ -136,7 +136,7 @@ public class UsersServiceJPA implements UsersService {
      * @return Optional<UserDto>
      */
     @Override
-    public Optional<UserResponse> getUser(int id) {
+    public Optional<UserDto> getUser(int id) {
         try {
             User u = usersRepository.findById(id).get();
             return Optional.ofNullable(userMapper.toDto(u));
@@ -165,7 +165,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUser(String email) {
+    public Optional<UserDto> getUser(String email) {
         return Optional.empty();
     }
 
@@ -197,7 +197,7 @@ public class UsersServiceJPA implements UsersService {
 //
 //        DashboardDto dashboardDto = apiClient.getDashboard(uerEntity.getDashboardCode()); // TODO:
 //
-//        UserRequest uerEntityDto = new UserRequest(
+//        UserDto uerEntityDto = new UserDto(
 //                uerEntity.getId(),
 //                uerEntity.getFirstName(),
 //                uerEntity.getLastName(),
@@ -234,8 +234,8 @@ public class UsersServiceJPA implements UsersService {
      * @return List<UserDto>
      */
     @Override
-    public List<UserResponse> getUsers() {
-        List<UserResponse> userResponses = null;
+    public List<UserDto> getUsers() {
+        List<UserDto> userResponses = null;
         try {
             List<User> users = usersRepository.findAll();
             if (users == null) {
@@ -269,7 +269,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUserByPassword(String email, String password) {
+    public Optional<UserDto> getUserByPassword(String email, String password) {
         return null;
     }
 
@@ -278,7 +278,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> updateUser(UserResponse change) {
+    public Optional<UserDto> updateUser(UserDto change) {
         try {
             User uEntity = userMapper.partialUpdate(change, usersRepository.findByEmail(change.getEmail()).get());
             User uDone = usersRepository.save(uEntity);
@@ -297,13 +297,13 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUserByEmailAndPassword(String email, String pw) {
+    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<UserResponse> patchUserById(Integer userId, UserResponse user) {
-        AtomicReference<Optional<UserResponse>> atomicReference = new AtomicReference<>();
+    public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
+        AtomicReference<Optional<UserDto>> atomicReference = new AtomicReference<>();
 
         usersRepository.findById(userId).ifPresentOrElse(foundUser -> {
             if (StringUtils.hasText(user.getEmail())) {
@@ -339,7 +339,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public boolean deleteUser(UserResponse user) {
+    public boolean deleteUser(UserDto user) {
 
         try {
             User u = usersRepository.findByEmail(user.getEmail()).get();
@@ -357,7 +357,7 @@ public class UsersServiceJPA implements UsersService {
      * @return
      */
     @Override
-    public User updateLoginAttempt(String email, LoginType loginType) {
+    public UserDto updateLoginAttempt(String email, LoginType loginType) {
     var user = getUserByEmail(email).get();
 //            .get()==null?null:getUserByEmail(email).get();
         RequestContext.setUserId(user.getId());
@@ -382,8 +382,7 @@ public class UsersServiceJPA implements UsersService {
             default:
                 break;
         }
-        usersRepository.save(user);
-        return null;
+      return  userMapper.toDto(usersRepository.save(user));
     }
 
     /**
@@ -393,7 +392,7 @@ public class UsersServiceJPA implements UsersService {
     @Override
     public void verifyAccountKey(String key) {
         var confirmationEntity = getConfirmationEntity(key);
-//    Optional<UserResponse> uerEntity = getUserByEmail(confirmationEntity
+//    Optional<UserDto> uerEntity = getUserByEmail(confirmationEntity
 //            .getUser()
 //            .getEmail());
         // TODO

@@ -1,6 +1,7 @@
 package app.mapl.models.auth;
 
 import app.mapl.models.auth.RoleEntity;
+import app.mapl.models.dto.UserDto;
 import lombok.*;
 
 import java.io.Serializable;
@@ -13,9 +14,10 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserResponse implements Serializable {
+public class UserResponse  extends UserDto implements Serializable {
     static final long serialVersionUID = 1L;
-    private int userId; // userId;
+
+//    private int userId;
     private String email;
     private String password;
     private String lastName;

@@ -1,5 +1,6 @@
 package app.mapl.models.auth;
 
+import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
@@ -7,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -37,13 +39,13 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException , ServletException {
 
         try {
-            var user = new ObjectMapper().configure(AUTO_CLOSE_SOURCE, true).readValue(request.getInputStream(), LoginRequest.class);
+            var user = new ObjectMapper().configure(AUTO_CLOSE_SOURCE, true).readValue(request.getInputStream(), UserDto.class);  // LoginRequest
             userService.updateLoginAttempt(user.getEmail(), LoginType.LOGIN_ATTEMPT);
             var authentication = unauthenticated(user.getEmail(), user.getPassword());
         } catch (Exception exception) {
             throw new BadCredentialsException("Invalid username or password");
         }
-            User user = userService.updateLoginAttempt(request.getParameter("email"), LoginType.valueOf(request.getParameter("password")));
+            UserDto user = userService.updateLoginAttempt(request.getParameter("email"), LoginType.valueOf(request.getParameter("password")));
             if (user == null) {
 //                log.error(exception.getMessage());
                 handleErrorResponse(request, response, new BadCredentialsException("User not found"));
@@ -56,9 +58,28 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, Authentication authResult) throws IOException, ServletException {
-        super.successfulAuthentication(request, response, filterChain, authResult);
+        var user = (UserDto) authResult.getPrincipal(); // PRINCIPAL is the DTO
+        userService.updateLoginAttempt(user.getEmail(), LoginType.LOGIN_SUCCESS);
+       var httpResponse = user.isMfa();
+         if (  httpResponse==true ) {
+             sendQrCode(request, user); }
+         else {
+             sendResponse(request, response, user);
+         }
+        response.setContentType("application/json");
+         response.setStatus(HttpStatus.OK.value());
+         var out = response.getOutputStream();
+         var mapper = new ObjectMapper();
+         mapper.writeValue(out, httpResponse);
+          out.flush();
+
     }
 
+    private void sendResponse(HttpServletRequest request, HttpServletResponse response, UserDto user) {
+    }
+
+    private void sendQrCode(HttpServletRequest request, UserDto user) {
+    }
 
 
 }

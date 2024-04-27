@@ -1,5 +1,4 @@
 package app.mapl.models.auth;
 
-public interface JwtService {
-
+public class JwtConfiguration {
 }

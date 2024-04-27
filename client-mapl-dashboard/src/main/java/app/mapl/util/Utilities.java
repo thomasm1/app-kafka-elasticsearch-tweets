@@ -19,7 +19,7 @@ public class Utilities {
 
     public static Response getResponse(HttpServletRequest request, Map<String, List<String>> data, String message, HttpStatus status) {
 
-        return new Response(200, data);
+        return null;  //new Response(now().toString(), status.value(), request.getRequestURI(), HttpStatus.valueOf(status.value()), message, EMPTY, data);
     }
     public static void handleErrorResponse(HttpServletRequest request, HttpServletResponse response, Exception exception) {
         if (exception instanceof AccessDeniedException) {

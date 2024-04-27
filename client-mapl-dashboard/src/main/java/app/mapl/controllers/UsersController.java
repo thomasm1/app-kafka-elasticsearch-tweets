@@ -6,6 +6,7 @@ import app.mapl.models.auth.User;
 import app.mapl.models.auth.UserRequest;
 import app.mapl.models.auth.UserResponse;
 import app.mapl.exception.ResourceNotFoundException;
+import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -214,8 +215,8 @@ public class UsersController {
             description = "HTTP Status 200 SUCCESS"
     )
     @PutMapping(value = USER_PATH + "/{userId}", consumes = "application/json")  // userId in body
-    public ResponseEntity<UserResponse> updateUser(@PathVariable("userId") int userId, @RequestBody UserResponse userResponse) {
-        Optional<UserResponse> updated = usersService.updateUser(userResponse);
+    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") int userId, @RequestBody UserDto userDto) {
+        Optional<UserDto> updated = usersService.updateUser(userDto);
         return updated.map(dto -> new ResponseEntity<>(
                 dto,
                 HttpStatus.CREATED)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
@@ -233,8 +234,8 @@ public class UsersController {
             description = "HTTP Status 200 SUCCESS"
     )
     @PatchMapping(USER_PATH_ID)
-    public ResponseEntity<UserResponse> patchUserById(@PathVariable("userId") Integer userId,
-                                                      @RequestBody UserResponse user) {
+    public ResponseEntity<UserDto> patchUserById(@PathVariable("userId") Integer userId,
+                                                      @RequestBody UserDto user) {
 
         usersService.patchUserById(userId, user);
 
@@ -256,7 +257,7 @@ public class UsersController {
     public ResponseEntity<Boolean> deleteUser(@PathVariable("userId") int userId) {
         Boolean boolSuccess = null;
 
-        Optional<UserResponse> tempUser = usersService.getUser(userId);
+        Optional<UserDto> tempUser = usersService.getUser(userId);
         if (tempUser == null) throw new ResourceNotFoundException("User " + userId + "not found to delete");
         try {
             boolSuccess = usersService.deleteUser(String.valueOf(tempUser));

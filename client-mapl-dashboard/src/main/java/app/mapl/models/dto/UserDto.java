@@ -1,18 +1,28 @@
-package app.mapl.models.auth;
+package app.mapl.models.dto;
 
 import app.mapl.models.BaseModel;
-import jakarta.validation.constraints.NotBlank;
+import app.mapl.models.auth.RoleEntity;
+import app.mapl.models.auth.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.util.AlternativeJdkIdGenerator;
 
 import java.io.Serial;
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import static io.netty.util.internal.StringUtil.EMPTY_STRING;
@@ -23,18 +33,27 @@ import static io.netty.util.internal.StringUtil.EMPTY_STRING;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_DEFAULT) // NON_ABSENT, NON_EMPTY, NON_NULL
-@Entity
-@Table(name= "USER_ENTITY")
-public class User extends BaseModel {
+public class UserDto implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 1L;
-	@NotBlank
+	// base
+	private Long id;
+	private String referenceId;
+
+	private Integer version; // for optimistic locking
+
+	private Long createdBy;
+	private Long updatedBy;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
+	private LocalDate dateCreated;
+	private Timestamp lastUpdated;
+	private List<User> owner; // instances of same user, multiple user-logins owned by user
+
+	//entity
 	private String userId;
- 	@NotBlank
 	private String firstName;
- 	@NotBlank
 	private String lastName;
-	@Column(unique = true, nullable = false)
 	private String email;
 
 	@JsonIgnore
@@ -52,25 +71,17 @@ public class User extends BaseModel {
 	private String imageUrl;
 	@JsonIgnore
 	private String qrCodeSecret;
-	@Column(columnDefinition = "text")
 	private String qrCodeImageUri;
 	private String dashboardCode;
 	private String organizationCode;
 
 	private int userType;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "USER_ROLES",
-			joinColumns = @JoinColumn(
-					name = "user_id", referencedColumnName = "id"),
-					inverseJoinColumns = @JoinColumn(
-							name = "role_id", referencedColumnName = "id"))
 	private RoleEntity role;
 
 //	prfivate Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
-public static User buildUser(String firstName, String lastName, String email, RoleEntity role) {
-	return User.builder()
+public static UserDto buildUserDto(String firstName, String lastName, String email, RoleEntity role) {
+	return UserDto.builder()
 			.userId(UUID.randomUUID().toString())
 			.firstName(firstName)
 			.lastName(lastName)
@@ -82,7 +93,7 @@ public static User buildUser(String firstName, String lastName, String email, Ro
 			.enabled(false)
 			.loginAttempts(0)
 			.qrCodeSecret("EMPTY_STRING")
-//			.qrCodeImageUri(EMPTY_STRINsG)
+//			.qrCodeImageUri(EMPTY_STRING)
 			.phone(EMPTY_STRING)
 			.bio(EMPTY_STRING)
 			.imageUrl("https://s3.amazonaws.com/friendsofgroot.com/assets/groot.png")
@@ -91,24 +102,24 @@ public static User buildUser(String firstName, String lastName, String email, Ro
 			.role(role)
 			.build();
 }
-	public static User from(User userEntity) {
-		return User.builder()
-				.userId(userEntity.getUserId())
-				.firstName(userEntity.getFirstName())
-				.lastName(userEntity.getLastName())
-				.email(userEntity.getEmail())
-				.password(userEntity.getPassword())
-				.loginAttempts(userEntity.getLoginAttempts())
-				.lastLogin(userEntity.getLastLogin())
-				.accountNonExpired(userEntity.isAccountNonExpired())
-				.accountNonLocked(userEntity.isAccountNonLocked())
-				.enabled(userEntity.isEnabled())
-				.mfa(userEntity.isMfa())
-				.qrCodeSecret(userEntity.getQrCodeSecret())
-				.qrCodeImageUri(userEntity.getQrCodeImageUri())
-				.dashboardCode(userEntity.getDashboardCode())
-				.organizationCode(userEntity.getOrganizationCode())
-				.role(userEntity.getRole())
+	public static UserDto from(UserDto userDto) {
+		return UserDto.builder()
+				.userId(userDto.getUserId())
+				.firstName(userDto.getFirstName())
+				.lastName(userDto.getLastName())
+				.email(userDto.getEmail())
+				.password(userDto.getPassword())
+				.loginAttempts(userDto.getLoginAttempts())
+				.lastLogin(userDto.getLastLogin())
+				.accountNonExpired(userDto.isAccountNonExpired())
+				.accountNonLocked(userDto.isAccountNonLocked())
+				.enabled(userDto.isEnabled())
+				.mfa(userDto.isMfa())
+				.qrCodeSecret(userDto.getQrCodeSecret())
+				.qrCodeImageUri(userDto.getQrCodeImageUri())
+				.dashboardCode(userDto.getDashboardCode())
+				.organizationCode(userDto.getOrganizationCode())
+				.role(userDto.getRole())
 				.build();
 	}
 

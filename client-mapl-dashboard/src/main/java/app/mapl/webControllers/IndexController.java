@@ -4,6 +4,7 @@ package app.mapl.webControllers;
 
 
 
+import app.mapl.models.dto.UserDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -45,7 +46,7 @@ public class IndexController {
 //        List<CoinDto> chains = chainsService.getAllCoins();
 //        model.addAttribute("chains", chains);
 
-        List<UserResponse> users =  usersService.getUsers();
+        List<UserDto> users =  usersService.getUsers();
         model.addAttribute("users", users);
         model.addAttribute("map", map);
 

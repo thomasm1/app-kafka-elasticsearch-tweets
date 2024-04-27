@@ -1,12 +1,11 @@
 package app.mapl.service;
 
 import app.mapl.models.auth.APIResponseDto;
-import app.mapl.models.auth.UserResponse;
-import app.mapl.models.auth.UserRequest;
 import app.mapl.mapper.UserMapper;
 import app.mapl.models.auth.LoginType;
 import app.mapl.models.auth.RoleEntity;
 import app.mapl.models.auth.User;
+import app.mapl.models.dto.UserDto;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,7 +26,7 @@ public class UsersServiceJDBC implements UsersService {
     public UsersServiceJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
                         userRowMapper = (rs, rowNum) ->   User.builder()
-                                .firstName(rs.getString("firstName                     "))
+                                .firstName(rs.getString("firstName "))
                                 .lastName(rs.getString("lastName"))
                                 .email(rs.getString("email"))
                                 .password(rs.getString("password"))
@@ -56,11 +55,10 @@ public class UsersServiceJDBC implements UsersService {
 
 
     /**
-     * @param userRequest= Tarmchair1f$
-     *              \* @return
+     * @param  userDto
      */
     @Override
-    public ResponseEntity saveUser(UserRequest userRequest) {
+    public ResponseEntity saveUser(UserDto userDto) {
         return null;
     }
 
@@ -70,7 +68,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public UserResponse loginUser(String email, String password) {
+    public UserDto loginUser(String email, String password) {
         return null;
     }
 
@@ -125,7 +123,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUser(int id) {
+    public Optional<UserDto> getUser(int id) {
         return Optional.empty();
     }
 
@@ -134,7 +132,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUser(String username) {
+    public Optional<UserDto> getUser(String username) {
         return Optional.empty();
     }
 
@@ -160,7 +158,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public List<UserResponse> getUsers() {
+    public List<UserDto> getUsers() {
         return null;
     }
 
@@ -169,9 +167,10 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> updateUser(UserResponse change) {
-        return null;
+    public Optional<UserDto> updateUser(UserDto change) {
+        return Optional.empty();
     }
+
 
     /**
      * @param email
@@ -179,7 +178,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUserByEmailAndPassword(String email, String pw) {
+    public Optional<UserDto> getUserByEmailAndPassword(String email, String pw) {
         return Optional.empty();
     }
 
@@ -189,17 +188,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public Optional<UserResponse> getUserByPassword(String username, String password) {
-        return Optional.empty();
-    }
-
-    /**
-     * @param userId
-     * @param user
-     * @return
-     */
-    @Override
-    public Optional<UserResponse> patchUserById(Integer userId, UserResponse user) {
+    public Optional<UserDto> getUserByPassword(String username, String password) {
         return Optional.empty();
     }
 
@@ -217,7 +206,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public boolean deleteUser(UserResponse user) {
+    public boolean deleteUser(UserDto user) {
         return false;
     }
 
@@ -228,7 +217,7 @@ public class UsersServiceJDBC implements UsersService {
      * @return
      */
     @Override
-    public User updateLoginAttempt(String email, LoginType loginType) {
+    public UserDto updateLoginAttempt(String email, LoginType loginType) {
 
         return null;
     }

@@ -2,7 +2,7 @@ package app.mapl.serviceTests;
 
 
 import app.mapl.mapper.UserMapper;
-import app.mapl.models.auth.UserResponse;
+import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersService;
 import app.mapl.service.UsersServiceJPA;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class UserServiceTest {      // *NOTE: change PK emails before sending to
     //TODO mockito Service INJECTION
     @Test
     public void add_new_user() {
-        UserResponse u = UserResponse.builder()
+        UserDto u = UserDto.builder()
                 .firstName("firstName")
                 .lastName("lastName")
                 .email("user-1@gmail.com")
@@ -46,7 +46,7 @@ public class UserServiceTest {      // *NOTE: change PK emails before sending to
 
     @Test
     public void get_users() {
-        UserResponse u = UserResponse.builder()
+        UserDto u = UserDto.builder()
                 .email("user-1@gmail.com")
                 .lastName("lastName")
                 .firstName("firstName")
@@ -60,7 +60,7 @@ public class UserServiceTest {      // *NOTE: change PK emails before sending to
 
     @Test
     public void update_user() {
-        UserResponse u = UserResponse.builder()
+        UserDto u = UserDto.builder()
                 .email("_user-1@gmail.com")
                 .lastName("_lastName")
                 .firstName("_firstName")

@@ -4,6 +4,7 @@ import app.mapl.controllers.UsersController;
 import app.mapl.models.auth.User;
 import app.mapl.models.auth.UserRequest;
 import app.mapl.models.auth.UserResponse;
+import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
@@ -54,7 +55,7 @@ public class UsersControllerTest {
     public void testGet() throws Exception {
         Integer id = 1;
 
-        when(usersService.getUser(id)).thenReturn(Optional.of(new UserResponse()));
+        when(usersService.getUser(id)).thenReturn(( Optional.of(new UserDto()));
 
         mockMvc.perform(get("/api/users/1"))
                 .andExpect(status().isOk()); // 200  OK      // .andExpect(view().name("user/show"));
@@ -68,7 +69,7 @@ public class UsersControllerTest {
 
 //        User user = new User();
         UserResponse userResponse = new UserResponse();
-        userResponse.setUserId(id);
+        userResponse.setUserId(String.valueOf(id));
 //        userDto = userMapper.toDto(user);
 
         when(usersService.getUser(id)).thenReturn(Optional.of(userResponse));
@@ -95,13 +96,13 @@ public class UsersControllerTest {
         returnUser.setEmail(email);  
         returnUser.setPassword(password);
 
-        UserResponse userResponse = new UserResponse() ;
+        UserDto userResponse = new UserDto() ;
         userResponse.setFirstName(firstName);
         userResponse.setLastName(lastName);
         userResponse.setEmail(email);
         userResponse.setPassword(password);
 
-        when(usersService.saveUser(UserRequest.class.newInstance()));
+        when(usersService.saveUser(UserDto.class.newInstance()));
 
 
         when(usersService.getUser(String.valueOf(Integer.class))).thenReturn(Optional.of(userResponse));

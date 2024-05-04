@@ -2,9 +2,12 @@ package app.mapl.service;
 
 import app.mapl.models.auth.APIResponseDto;
 import app.mapl.mapper.UserMapper;
+import app.mapl.models.auth.CredentialEntity;
 import app.mapl.models.auth.LoginType;
 import app.mapl.models.auth.RoleEntity;
 import app.mapl.models.auth.User;
+import app.mapl.models.auth.UserRequest;
+import app.mapl.models.auth.UserResponse;
 import app.mapl.models.dto.UserDto;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
@@ -146,6 +149,15 @@ public class UsersServiceJDBC implements UsersService {
     }
 
     /**
+     * @param userId
+     * @return
+     */
+    @Override
+    public CredentialEntity getUserCredentialById(Long userId) {
+        return null;
+    }
+
+    /**
      * @param email
      * @return
      */
@@ -163,11 +175,28 @@ public class UsersServiceJDBC implements UsersService {
     }
 
     /**
+     * @return
+     */
+    @Override
+    public List<UserResponse> getUsersResponse() {
+        return null;
+    }
+
+    /**
      * @param change
      * @return
      */
     @Override
     public Optional<UserDto> updateUser(UserDto change) {
+        return Optional.empty();
+    }
+
+    /**
+     * @param userId
+     * @return
+     */
+    @Override
+    public Optional<UserDto> getUserByUserId(String userId) {
         return Optional.empty();
     }
 
@@ -193,6 +222,16 @@ public class UsersServiceJDBC implements UsersService {
     }
 
     /**
+     * @param userId
+     * @param user
+     * @return
+     */
+    @Override
+    public Optional<UserDto> patchUserById(Integer userId, UserDto user) {
+        return Optional.empty();
+    }
+
+    /**
      * @param username
      * @return
      */
@@ -208,6 +247,24 @@ public class UsersServiceJDBC implements UsersService {
     @Override
     public boolean deleteUser(UserDto user) {
         return false;
+    }
+
+    /**
+     * @param userDto
+     * @return
+     */
+    @Override
+    public ResponseEntity saveUser(UserRequest userDto) {
+        return null;
+    }
+
+    /**
+     * @param userRequest
+     * @return
+     */
+    @Override
+    public User saveUser(User userRequest) {
+        return null;
     }
 
 

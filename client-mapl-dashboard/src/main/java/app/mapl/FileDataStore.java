@@ -5,7 +5,7 @@ import app.mapl.models.dto.UserBookmark;
 import app.mapl.models.*;
 import app.mapl.service.WeblinksService;
 import app.mapl.util.DownloadSequential;
-import app.mapl.util.ReadWriteFile;
+import app.mapl.util.FileReadWrite;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ import static app.mapl.util.constants.Datum.*;
 
 @Slf4j
 @Component
-public class FileDataStore extends ReadWriteFile {
+public class FileDataStore extends FileReadWrite {
  	WeblinksService bookmarks;
 	 FileDataStore(WeblinksService bookmarkservice) {
 		this.bookmarks = bookmarkservice;
@@ -59,7 +59,7 @@ public class FileDataStore extends ReadWriteFile {
 		static List<User> loadUsers() throws FileNotFoundException, UnsupportedEncodingException {
 //		users[0] = UserManager.getInstance().createUser(500,  "user0", "password", "Smith", "Tom", UserType.USER, "user0@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "1000");
  	List<String> data = new ArrayList<>();
-			ReadWriteFile.readFromFilename(data,  FILE_IN_USERS);
+			FileReadWrite.readFromFilename(data,  FILE_IN_USERS);
 			log.info("TEST_USERS::::::: "+FILE_IN_USERS+data.toString());
 			for (String row : data) {
 				String[] values = row.split(",");
@@ -85,7 +85,7 @@ public class FileDataStore extends ReadWriteFile {
 		public static List<Weblink> loadWeblinks() throws FileNotFoundException, UnsupportedEncodingException {
 //			bookmarks[0][0] = BookmarkManager.getInstance().createWeblink(2000,  "http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html","http://www.javaworld.com" );
 			List<String>  data = new ArrayList<>();
-			ReadWriteFile.readFromFilename(data, FILE_IN_WEBLINKS);
+			FileReadWrite.readFromFilename(data, FILE_IN_WEBLINKS);
 
 			for (String row : data) {
 				String[] values = row.split(",");
@@ -103,7 +103,7 @@ public class FileDataStore extends ReadWriteFile {
 		public static List<Coin> loadCoins() throws FileNotFoundException, UnsupportedEncodingException {
 //		Coin coin1 = CoinManager.getInstance().createCoin(5000, CoinMake.TESLA, "Cyber-Truck", 37000.99, 0);
 			List<String> data =new ArrayList<>();
-			ReadWriteFile.readFromFilename(data, FILE_IN_COINS);
+			FileReadWrite.readFromFilename(data, FILE_IN_COINS);
 			for (String row: data) {
 				String[] values = row.split(",");
 				Coin coin = new Coin(Integer.parseInt(values[0]), values[1], values[2], Double.parseDouble(values[3]), Integer.parseInt(values[4]));
@@ -146,7 +146,7 @@ public class FileDataStore extends ReadWriteFile {
 				if(!url.endsWith(".pdf")) {
 					String website = DownloadSequential.downloadFromUrl(((Weblink) bookmark).getUrl());
 					if(website != null) {
-						ReadWriteFile.writeWebpage(website, bookmark.getId());
+						FileReadWrite.writeWebpage(website, bookmark.getId());
 					}
 				}
 			} catch (Exception e) {

@@ -17,7 +17,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class FilterChainConfiguration {
-    DaoAuthenticationConfigurer daoAuthenticationConfigurer;
+//    DaoAuthenticationConfigurer daoAuthenticationConfigurer;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -35,7 +35,8 @@ public class FilterChainConfiguration {
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-//            return new DaoAuthenticationConfigurer().authenticationProvider(daoAuthenticationProvider).getAuthenticationManager();
+
+        //  return new DaoAuthenticationConfigurer().authenticationProvider(daoAuthenticationProvider).getAuthenticationManager();
         return new ProviderManager(daoAuthenticationProvider);
     }
 

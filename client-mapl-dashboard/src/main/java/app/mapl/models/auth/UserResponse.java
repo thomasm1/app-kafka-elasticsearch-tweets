@@ -9,12 +9,11 @@ import java.util.Set;
 
 
 //@NoArgsConstructor
-@Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserResponse  extends UserDto implements Serializable {
+public class UserResponse  extends User  {
     static final long serialVersionUID = 1L;
 
 //    private int userId;
@@ -23,6 +22,10 @@ public class UserResponse  extends UserDto implements Serializable {
     private String lastName;
     private String firstName;
     private int userType;
+    private String bio;
+    private String phone;
+
+     private boolean authenticated;
     private String organizationCode;
 
     private String dashboardCode;

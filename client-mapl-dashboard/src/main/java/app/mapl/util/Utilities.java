@@ -17,18 +17,6 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 
 public class Utilities {
 
-    public static Response getResponse(HttpServletRequest request, Map<String, List<String>> data, String message, HttpStatus status) {
-
-        return null;  //new Response(now().toString(), status.value(), request.getRequestURI(), HttpStatus.valueOf(status.value()), message, EMPTY, data);
-    }
-    public static void handleErrorResponse(HttpServletRequest request, HttpServletResponse response, Exception exception) {
-        if (exception instanceof AccessDeniedException) {
-            response.setStatus(HttpStatus.FORBIDDEN.value());
-            return;
-        }
-        throw new RuntimeException(response.toString());
-    }
-
     public static String startupTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());

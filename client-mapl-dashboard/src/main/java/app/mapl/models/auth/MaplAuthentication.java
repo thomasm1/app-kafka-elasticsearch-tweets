@@ -2,13 +2,16 @@ package app.mapl.models.auth;
 
 import app.mapl.exception.ApiException;
 import app.mapl.models.dto.UserDto;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import java.util.Collection;
 
-
+@Getter
+@Setter
 public class MaplAuthentication extends AbstractAuthenticationToken {
     private static final String PASSWORD_PROTECTED = "PASSWORD_PROTECTED";
     private static final String EMAIL_PROTECTED = "EMAAL_PROTECTED";

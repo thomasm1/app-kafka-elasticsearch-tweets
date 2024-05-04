@@ -1,6 +1,8 @@
 package app.mapl.models.dto;
 
 import app.mapl.models.BaseModel;
+import app.mapl.models.auth.Authority;
+import app.mapl.models.auth.CredentialEntity;
 import app.mapl.models.auth.RoleEntity;
 import app.mapl.models.auth.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,6 +16,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.util.AlternativeJdkIdGenerator;
 
@@ -26,6 +29,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static io.netty.util.internal.StringUtil.EMPTY_STRING;
+import static java.time.LocalDateTime.now;
 
 @Getter
 @Setter
@@ -59,10 +63,11 @@ public class UserDto implements Serializable {
 	@JsonIgnore
 	private String password;
 
+	private List<Authority> authorities;
 	private Integer loginAttempts;
-	private LocalDateTime lastLogin;
+	private String lastLogin;  // LocalDateTime for entity
 	private boolean accountNonExpired;
-//	private boolean credentialsNonExpired;
+	private boolean credentialsNonExpired;
 	private boolean accountNonLocked;
 	private boolean enabled;
 	private boolean mfa;
@@ -79,14 +84,37 @@ public class UserDto implements Serializable {
 
 	private RoleEntity role;
 
-//	prfivate Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
+
+	public static UserDto fromUserEntity(User userEntity, RoleEntity roleEntity, CredentialEntity credentialEntity) {
+		UserDto userDto = new UserDto();
+		BeanUtils.copyProperties(userEntity, userDto); // copy userEntity to userDto properties
+		return userDto.builder()
+				.lastLogin(userEntity.getLastLogin().toString())
+				.credentialsNonExpired(isCredentialsNonExpired(credentialEntity))
+				.createdAt(userEntity.getCreatedAt())
+				.updatedAt(userEntity.getUpdatedAt())
+				.role(roleEntity)
+				.authorities(roleEntity.getAuthorities().getValue())
+				.id(userEntity.getId())
+				.email(userEntity.getEmail())
+				.firstName(userEntity.getFirstName())
+				.lastName(userEntity.getLastName())
+				.build();
+	}
+
+	private static boolean isCredentialsNonExpired(CredentialEntity credentialEntity) {
+		return credentialEntity.getUpdatedAt().plusDays(90).isAfter(now());
+	}
+
+
+	//	prfivate Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
 public static UserDto buildUserDto(String firstName, String lastName, String email, RoleEntity role) {
 	return UserDto.builder()
 			.userId(UUID.randomUUID().toString())
 			.firstName(firstName)
 			.lastName(lastName)
 			.email(email)
-			.lastLogin(LocalDateTime.now())
+			.lastLogin(String.valueOf(LocalDateTime.now()))
 			.accountNonExpired(true)
 			.accountNonLocked(true)
 			.mfa(false)

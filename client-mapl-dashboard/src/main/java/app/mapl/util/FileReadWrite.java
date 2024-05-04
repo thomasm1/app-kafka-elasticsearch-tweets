@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static app.mapl.util.constants.Datum.*;
 
-public class ReadWriteFile {
+public class FileReadWrite {
     public static String readFromJson(String dataPath, String filename) {
         List<User> uList = new ArrayList<>();
         try {

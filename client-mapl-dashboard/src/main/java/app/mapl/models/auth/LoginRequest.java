@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LoginRequest extends BaseModel {
+public class LoginRequest  {
 
     private static final long serialVersionUID = 1L;
     @NotEmpty(message = "Email cannot be empty")

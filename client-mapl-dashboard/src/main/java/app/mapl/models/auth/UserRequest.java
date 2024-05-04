@@ -10,7 +10,6 @@ import lombok.*;
 
     @Getter
     @Setter
-    @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -29,8 +28,6 @@ import lombok.*;
         private String password;
         private String bio;
         private String phone;
-
-//    private boolean authenticated;
 
 
     public UserRequest(String email, String password,String firstName, String lastName   ) {

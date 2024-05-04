@@ -56,10 +56,10 @@ public class UserWebService {
 		
 		String email = request.getParameter("email");
 		log.info("parameter: "+email);
-		User u = usersRepository.findByEmail(email).orElseThrow();
+		User u = usersRepository.findByEmailIgnoreCase(email).orElseThrow();
 		log.info("getUser(name):"+u.getEmail());
 
-		User d = usersRepository.findByEmail(u.getEmail()).orElseThrow();
+		User d = usersRepository.findByEmailIgnoreCase(u.getEmail()).orElseThrow();
 
 		String dbUser = d.getEmail();
 		int dbId = Integer.parseInt(d.getUserId());

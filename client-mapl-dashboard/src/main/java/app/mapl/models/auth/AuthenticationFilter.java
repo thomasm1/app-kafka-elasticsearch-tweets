@@ -8,19 +8,23 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.actuate.web.exchanges.HttpExchange.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
-import static app.mapl.util.Utilities.handleErrorResponse;
+import static app.mapl.exception.ApiException.handleErrorResponse;
 import static com.fasterxml.jackson.core.JsonParser.Feature.AUTO_CLOSE_SOURCE;
+import static java.time.LocalTime.now;
 import static org.springframework.boot.actuate.endpoint.web.WebEndpointHttpMethod.POST;
 import static org.springframework.security.authentication.UsernamePasswordAuthenticationToken.unauthenticated;
 
@@ -39,20 +43,19 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException , ServletException {
 
         try {
-            var user = new ObjectMapper().configure(AUTO_CLOSE_SOURCE, true).readValue(request.getInputStream(), UserDto.class);  // LoginRequest
+            var user = new ObjectMapper().configure(AUTO_CLOSE_SOURCE, true).readValue(request.getInputStream(), LoginRequest.class);  //
             userService.updateLoginAttempt(user.getEmail(), LoginType.LOGIN_ATTEMPT);
             var authentication = unauthenticated(user.getEmail(), user.getPassword());
+            return getAuthenticationManager().authenticate(authentication);
         } catch (Exception exception) {
-            throw new BadCredentialsException("Invalid username or password");
-        }
-            UserDto user = userService.updateLoginAttempt(request.getParameter("email"), LoginType.valueOf(request.getParameter("password")));
-            if (user == null) {
-//                log.error(exception.getMessage());
-                handleErrorResponse(request, response, new BadCredentialsException("User not found"));
-//            throw new BadCredentialsException("User not found");
-            }
-
+//            throw new BadCredentialsException("Invalid username or password");
+            handleErrorResponse(request, response, new BadCredentialsException("User not found"));
             return null; //new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), user.getRoles());
+           } finally {
+            log.info("Login attempt at {}", now());
+            return null;
+        }
+
 
     }
 
@@ -76,10 +79,16 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
     }
 
     private void sendResponse(HttpServletRequest request, HttpServletResponse response, UserDto user) {
+        jwtService.addCookie(response, user, TokenType.ACCESS_TOKEN);
+        jwtService.addCookie(response, user, TokenType.REFRESH_TOKEN);
     }
 
-    private void sendQrCode(HttpServletRequest request, UserDto user) {
+    private Response sendQrCode(HttpServletRequest request, UserDto user) {
+        return getResponse(request,Map.of("user", (List<String>) user), "qrCode, please enter", HttpStatus.OK);
     }
+    public static Response getResponse(HttpServletRequest request, Map<String, List<String>> data, String message, HttpStatus status) {
+        return null; //new Response(status, null);
 
+    }
 
 }

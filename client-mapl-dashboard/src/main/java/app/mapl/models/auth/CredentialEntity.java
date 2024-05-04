@@ -33,6 +33,7 @@ import static jakarta.persistence.FetchType.EAGER;
 @Entity
 @Table(name = "CREDENTIALS")
 public class CredentialEntity extends BaseModel {
+
     private String password;
 
     @OneToOne(targetEntity = User.class, fetch = EAGER)

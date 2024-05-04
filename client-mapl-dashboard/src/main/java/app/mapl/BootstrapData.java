@@ -10,7 +10,7 @@ import app.mapl.repositories.CoinsRepository;
 import app.mapl.repositories.RoleEntityRepository;
 import app.mapl.repositories.UsersRepository;
 import app.mapl.repositories.WeblinksRepository;
-import app.mapl.util.ReadWriteFile;
+import app.mapl.util.FileReadWrite;
 import app.mapl.util.constants.Datum;
 import app.mapl.util.config.logger.CliLogger;
 import lombok.RequiredArgsConstructor;
@@ -148,8 +148,8 @@ public class BootstrapData implements CommandLineRunner {
     void writeUserData() throws IOException {
         for (User u : users) {
             System.out.println("|__________|  WRITING USER  TO FILE |_______|  /n" + u);
-            ReadWriteFile.writeUser(u);
-            ReadWriteFile.writeUsers(users);
+            FileReadWrite.writeUser(u);
+            FileReadWrite.writeUsers(users);
         }
     }
 

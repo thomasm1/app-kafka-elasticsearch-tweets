@@ -12,7 +12,7 @@ public class RoleConverter implements AttributeConverter<Authority, String> {
         if(authority == null) {
             return null;
         }
-        return authority.getValue();
+        return authority.getValue().toString();
     }
 
     @Override

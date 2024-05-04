@@ -49,7 +49,7 @@ public interface PostRepository extends JpaRepository<PostEntity, Long> {
 	Page<PostEntity> findAll(Pageable pageable);
 
 	Optional<PostEntity> findByDid(String did);
-	List<PostEntity> findByEmail(String email);
+	List<PostEntity> findByEmailIgnoreCase(String email);
 
 //	@Query("SELECT p FROM PostEntity p WHERE p.email = ?1")
 	@Query("SELECT CONCAT(p.title, ' ', p.post) FROM PostEntity p WHERE p.email = ?1")

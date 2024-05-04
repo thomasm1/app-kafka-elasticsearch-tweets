@@ -13,6 +13,8 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import static io.netty.util.internal.StringUtil.EMPTY_STRING;
@@ -43,9 +45,10 @@ public class User extends BaseModel {
 	private Integer loginAttempts;
 	private LocalDateTime lastLogin;
 	private boolean accountNonExpired;
-//	private boolean credentialsNonExpired;
+	private boolean credentialsNonExpired;
 	private boolean accountNonLocked;
 	private boolean enabled;
+	private boolean isAuthenticated;
 	private boolean mfa;
 	private String phone;
 	private String bio;
@@ -67,8 +70,8 @@ public class User extends BaseModel {
 					inverseJoinColumns = @JoinColumn(
 							name = "role_id", referencedColumnName = "id"))
 	private RoleEntity role;
-
-//	prfivate Set<User> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
+//
+//	private Set<RoleEntity> roles = new HashSet<>();  // ADMIN, USER, READER, EDITOR, DEVELOPER
 public static User buildUser(String firstName, String lastName, String email, RoleEntity role) {
 	return User.builder()
 			.userId(UUID.randomUUID().toString())
@@ -91,25 +94,6 @@ public static User buildUser(String firstName, String lastName, String email, Ro
 			.role(role)
 			.build();
 }
-	public static User from(User userEntity) {
-		return User.builder()
-				.userId(userEntity.getUserId())
-				.firstName(userEntity.getFirstName())
-				.lastName(userEntity.getLastName())
-				.email(userEntity.getEmail())
-				.password(userEntity.getPassword())
-				.loginAttempts(userEntity.getLoginAttempts())
-				.lastLogin(userEntity.getLastLogin())
-				.accountNonExpired(userEntity.isAccountNonExpired())
-				.accountNonLocked(userEntity.isAccountNonLocked())
-				.enabled(userEntity.isEnabled())
-				.mfa(userEntity.isMfa())
-				.qrCodeSecret(userEntity.getQrCodeSecret())
-				.qrCodeImageUri(userEntity.getQrCodeImageUri())
-				.dashboardCode(userEntity.getDashboardCode())
-				.organizationCode(userEntity.getOrganizationCode())
-				.role(userEntity.getRole())
-				.build();
-	}
+
 
 }

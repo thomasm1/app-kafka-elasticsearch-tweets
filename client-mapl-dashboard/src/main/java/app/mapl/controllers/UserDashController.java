@@ -42,7 +42,7 @@ public class UserDashController {
     }
 
 
-    @GetMapping("/v1thomas")
+    @GetMapping("/v1/register")
     public String register(Model model) {
         UserRequest userAccount = new UserRequest();
         model.addAttribute("registerDto", userAccount);
@@ -68,7 +68,7 @@ public class UserDashController {
         model.addAttribute("versionNumber",ver);
 
 
-        List<UserResponse> users =  usersService.getUsers();
+        List<UserResponse> users =  usersService.getUsersResponse();
         model.addAttribute("users", users);
         model.addAttribute("map", map);
 

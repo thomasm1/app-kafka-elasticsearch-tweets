@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Configuration
@@ -22,6 +23,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
         scheme = "bearer"
 )
 public class SecurityConfig {
+
+    @Bean
+            public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder(12); // strength of 12
+    }
 
    UserDetailsService userDetailsService;
     @Bean

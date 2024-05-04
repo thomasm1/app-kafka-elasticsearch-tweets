@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static app.mapl.util.Utilities.getResponse;
+import static app.mapl.models.auth.AuthenticationFilter.getResponse;
 import static java.util.Collections.emptyMap;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
@@ -55,8 +55,8 @@ public class UsersController {
 
     private UsersService usersService;
     AuthenticationManager authenticationManager;
-    public static final String USER_PATH = "/api/users";
-    public static final String USER_PATH_ID = USER_PATH + "/{userId}";
+    public static final String USER_PATH = "/api";
+    public static final String USER_PATH_ID = USER_PATH + "/users/{userId}";
 
     @Autowired
     public UsersController( UsersService usersService ) { 
@@ -86,12 +86,6 @@ public class UsersController {
 
         return new ResponseEntity<>(ldto,HttpStatus.CREATED);
     }
-    @PostMapping("/auth/test")
-    public ResponseEntity<?> test(@RequestBody UserRequest userRequest ) {
-        Authentication authenticate = authenticationManager.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(userRequest.getEmail(), userRequest.getPassword()));
-        return ResponseEntity.ok().body(Map.of("user", authenticate));
-    }
-
     @Operation(
             summary = "Create User REST API  registerUser",
             description = "Create User REST API is used to save user in a database"
@@ -104,17 +98,24 @@ public class UsersController {
     public ResponseEntity<Response> registerUser(@RequestBody @Valid UserRequest user, HttpServletRequest request) {
         usersService.createUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
         return ResponseEntity.created(getUri()).body( getResponse(request, emptyMap(), "AccountCreated", CREATED));
-            }
+    }
 
     @Operation(
             summary = "Verify Account REST API",
             description = "Verify Account REST API is used to verify a user account"
     )
-    @GetMapping("verify/account")
+    @GetMapping("/auth/verify/account")
     public ResponseEntity<Response> verifyAccount(@RequestParam("key") String key, HttpServletRequest request){
         usersService.verifyAccountKey(key);
         return ResponseEntity.ok().body(  getResponse(request, emptyMap(), "Account Verified.", OK));
     }
+
+    @PostMapping("/auth/test")
+    public ResponseEntity<?> test(@RequestBody UserRequest userRequest ) {
+        Authentication authenticate = authenticationManager.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(userRequest.getEmail(), userRequest.getPassword()));
+        return ResponseEntity.ok().body(Map.of("user", authenticate));
+    }
+
     @Operation(
             summary = "Save User REST API",
             description = "Save User REST API is used to save a user in the database"
@@ -123,7 +124,7 @@ public class UsersController {
             responseCode = "201",
             description = "HTTP Status 201 CREATED"
     )
-    @PostMapping(value = "/api/userEntity", consumes = "application/json")
+    @PostMapping(value = "/users/userEntity", consumes = "application/json")
     public ResponseEntity<Response> saveUser(@RequestBody @Valid  UserRequest user, HttpServletRequest request){
         User savedUser = usersService.createUserRole(
                 user.getFirstName(),
@@ -144,12 +145,14 @@ public class UsersController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    @GetMapping(USER_PATH)
+    @GetMapping(USER_PATH+"/users")
     public ResponseEntity<List<UserResponse>> getUsers() {
         List<UserResponse> users = new ArrayList<>();
+
         try {
-            users = usersService.getUsers();
-        } catch (Exception e) {
+            users = usersService.getUsersResponse();
+
+        }   catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return new ResponseEntity<>(users,
@@ -166,7 +169,7 @@ public class UsersController {
     )
     // http://localhost:8080/api/users/1
     @GetMapping(value = USER_PATH_ID)
-    public ResponseEntity<UserResponse> getUser(@PathVariable("userId") int userId) {
+    public ResponseEntity<UserDto> getUser(@PathVariable("userId") int userId) {
         if(usersService.getUser(userId).isEmpty()) {
             throw new ResourceNotFoundException("User " + userId + "not found");
         }
@@ -186,8 +189,8 @@ public class UsersController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    @GetMapping(value = USER_PATH+ "/email/{email}")
-    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable("email") String email) {
+    @GetMapping(value = USER_PATH+ "/users/email/{email}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) {
         if(usersService.getUser(email).isEmpty()) {
             throw new ResourceNotFoundException("User " + email + "not found");
         }
@@ -195,7 +198,7 @@ public class UsersController {
     }
 
     /// Non-Register Creation Request
-    @PostMapping(USER_PATH)
+    @PostMapping(USER_PATH+"/users")
     public ResponseEntity createUser(@RequestBody UserRequest user) {
         ResponseEntity<UserResponse> savedUser = usersService.saveUser(user);
 
@@ -214,7 +217,7 @@ public class UsersController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    @PutMapping(value = USER_PATH + "/{userId}", consumes = "application/json")  // userId in body
+    @PutMapping(value = USER_PATH + "/users/{userId}", consumes = "application/json")  // userId in body
     public ResponseEntity<UserDto> updateUser(@PathVariable("userId") int userId, @RequestBody UserDto userDto) {
         Optional<UserDto> updated = usersService.updateUser(userDto);
         return updated.map(dto -> new ResponseEntity<>(

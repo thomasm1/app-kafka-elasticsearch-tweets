@@ -23,7 +23,7 @@ public class BusinessImpl {
 	
 	public int calculateSumUsingDataRepository(PostEntity post) {
 		int sum = 0;
-		List<PostEntity> data = dataRepository.findByEmail("email2");
+		List<PostEntity> data = dataRepository.findByEmailIgnoreCase("email2");
 		for(PostEntity d: data) {
 			sum += Integer.valueOf(Math.toIntExact(d.getId()));
 		}

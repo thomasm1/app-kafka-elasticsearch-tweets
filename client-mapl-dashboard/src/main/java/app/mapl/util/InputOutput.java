@@ -1,6 +1,6 @@
 package app.mapl.util;
 
-import app.mapl.models.User;
+import app.mapl.models.auth.User;
 
 import java.io.*;
 import java.net.MalformedURLException;

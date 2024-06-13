@@ -1,0 +1,33 @@
+security:
+  basic:
+    enable: false
+  user:
+    name: admin
+    password: password
+server:
+  port: 8888
+spring:
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    password: ${AWS_MYSQL_PASSWORD}
+    url: jdbc:sqlserver://localhost:1433;database=db_mapl;CharacterSet=UTF-8
+    username: user
+  jpa:
+    database: sql_server
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+  sql:
+    init:
+      continue-on-error: true
+      data-locations: classpath:data-mssql.sql
+      schema-locations: classpath:schema-mssql.sql
+system:
+  environment: mssql
+version: 1.2.0

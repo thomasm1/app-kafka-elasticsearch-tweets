@@ -1,6 +1,6 @@
 package app.mapl.serviceTests;
 
-import app.mapl.dto.CoinDto;
+import app.mapl.models.dto.CoinDto;
 import app.mapl.service.CoinsService;
 import app.mapl.service.CoinsServiceJPA;
 import org.junit.jupiter.api.AfterAll;

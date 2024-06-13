@@ -3,7 +3,7 @@ package app.mapl.service;
 import app.mapl.exception.PostApiException;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.models.Comment;
-import app.mapl.dto.CommentDto;
+import app.mapl.models.dto.CommentDto;
 import app.mapl.mapper.CommentMapper;
 import app.mapl.models.PostEntity;
 import app.mapl.repositories.CommentsRepository;

@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.CoinDto;
+import app.mapl.models.dto.CoinDto;
 import app.mapl.models.Coin;
 import org.mapstruct.*;
 

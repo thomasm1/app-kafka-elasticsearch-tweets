@@ -1,0 +1,123 @@
+logging:
+  level:
+    com:
+      mapl:
+        app: info
+    org:
+      hibernate:
+        cache: info
+        orm:
+          jdbc:
+            bind: trace
+        stat: info
+      springframework: info
+      springframework.security: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+security:
+  basic:
+    enable: false
+  user:
+    name: admin
+    password: password
+spring:
+  application:
+    name: DASHBOARD-SERVICE
+  boot:
+    message: ''
+  config:
+    import: optional:configserver:http://localhost:8888
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+    rest:
+      base-path: /rest/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        rewriteBatchedStatements: true
+        useLocalSessionState: true
+        useServerPrepStmts: true
+      maximum-pool-size: 5
+      pool-name: MaplDB-Pool
+    password: root
+    url: jdbc:mysql://mysqldb:3306/dashboard_db
+    username: root
+  flyway:
+    enabled: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console/
+      settings:
+        trace: false
+        web-allow-others: false
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        connection:
+          CharSet: UTF-8
+          characterEncoding: UTF-8
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        generate_statistics: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        session:
+          events:
+            log: org.hibernate.event.service.spi.EventListenerRegistry
+            log.LOG_QUERIES_SLOWER_THAN_MS: 1
+        show-sql: true
+        useUnicode: true
+      jakarta:
+        persistence:
+          cache:
+            retrieveMode: BYPASS
+            storeMode: REFRESH
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+          validation:
+            mode: none
+  mvc:
+    format:
+      date: yyyy-MM-dd
+    view:
+      suffix: .jsp
+  rabbitmq:
+    host: localhost
+    password: guest
+    port: 5672
+    username: guest
+  sleuth:
+    sampler:
+      probability: 1.0
+  sql:
+    init:
+      continue-on-error: true
+      data-locations: classpath:data-mysql.sql
+      mode: always
+      schema-locations: classpath:schema-mysql.sql
+  thymeleaf:
+    cache: false
+    enabled: true
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+system:
+  environment: docker
+version: 1.2.0

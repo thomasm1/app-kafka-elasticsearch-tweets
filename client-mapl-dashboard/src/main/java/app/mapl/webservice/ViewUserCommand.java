@@ -1,10 +1,9 @@
 package app.mapl.webservice;
 
-import app.mapl.models.User;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import app.mapl.models.auth.User;
 
 public class ViewUserCommand implements Command {
 

@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.CategoryDto;
+import app.mapl.models.dto.CategoryDto;
 import app.mapl.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,14 @@
 package app.mapl.exception;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.actuate.web.exchanges.HttpExchange.Response;
 import org.springframework.http.HttpStatus;
+
+import java.nio.file.AccessDeniedException;
+import java.util.List;
+import java.util.Map;
 
 public class ApiException extends RuntimeException {
     private final HttpStatus status;
@@ -28,4 +35,14 @@ public class ApiException extends RuntimeException {
     public String getMessage() {
         return message;
     }
+
+
+    public static void handleErrorResponse(HttpServletRequest request, HttpServletResponse response, Exception exception) {
+        if (exception instanceof AccessDeniedException) {
+            response.setStatus(HttpStatus.FORBIDDEN.value());
+            return;
+        }
+        throw new RuntimeException(response.toString());
+    }
+
 }

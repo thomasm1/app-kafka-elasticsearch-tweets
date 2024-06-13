@@ -4,11 +4,12 @@ package app.mapl.webControllers;
 
 
 
+import app.mapl.models.dto.UserDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import app.mapl.dto.LoginDto;
-import app.mapl.dto.UserDto;
+import app.mapl.models.auth.LoginDto;
+import app.mapl.models.auth.UserResponse;
 import app.mapl.service.UsersService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

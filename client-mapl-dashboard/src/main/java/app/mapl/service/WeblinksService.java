@@ -1,6 +1,6 @@
 package app.mapl.service;
 
-import app.mapl.dto.WeblinkDto;
+import app.mapl.models.dto.WeblinkDto;
 
 import java.util.List;
 

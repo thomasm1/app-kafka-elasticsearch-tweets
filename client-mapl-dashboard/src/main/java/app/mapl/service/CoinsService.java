@@ -1,7 +1,7 @@
 package app.mapl.service;
 
 
-import app.mapl.dto.CoinDto;
+import app.mapl.models.dto.CoinDto;
 import app.mapl.models.Coin;
 
 import java.util.List;

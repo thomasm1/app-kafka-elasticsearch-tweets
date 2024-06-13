@@ -1,15 +1,12 @@
 package app.mapl.service;
 
 
-import app.mapl.dto.CoinDto;
+import app.mapl.models.dto.CoinDto;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.mapper.CoinMapper;
 import app.mapl.models.Coin;
 import app.mapl.repositories.CoinsRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 

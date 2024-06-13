@@ -1,0 +1,87 @@
+DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+DB_DIALECT: postgres
+DB_HOST: postgresdb
+DB_NAME: dashboarddb
+DB_PASSWORD: ${AWS_POSTGRES_PASSWORD}
+DB_PORT: 5432
+DB_USER: root
+NODE_ENV: development
+PGADMIN_EMAIL: ${PGADMIN_EMAIL}
+PGADMIN_LISTEN_PORT: 5050
+PGADMIN_PASSWORD: ${PGADMIN_PASSWORD}
+PGADMIN_SERVER_NAME: pgadmin.mapl.app
+PGADMIN_SERVER_PORT: 80
+app:
+  mapl:
+    client:
+      cloud:
+        config:
+          enabled: false
+      database: dashboarddb
+      dbtype: mysql
+      driver: org.postgresql.Driver
+      generate-ddl: false
+      hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      mail:
+        host: smtp.gmail.com
+        password: ${EMAIL_PASSWORD}
+        port: 587
+        smtp:
+          auth: true
+        username: ${EMAIL_USERNAME}
+      management:
+        endpoint:
+          metrics:
+            enabled: true
+      password: ${DB_PASSWORD}
+      port: 3306
+      server: ${DATABASE_URL}
+      sql:
+        init:
+          mode: never
+      user: ${AWS_MYSQL_USER}
+    server:
+      port: 8888
+build:
+  version: 1.0.0
+dashboard-service:
+  key: dashboard-key
+  url: https://dashboard.mapl.app
+  username: =${user-service.username}
+offers:
+  -   user:
+        email: thomas76milton@gmail.com
+        first-name: thomas
+        phone: '''+1 234 567 890'''
+posts:
+  fiction:
+    - '"Winslow and Casper"'
+    - '"Casperian Dynasties'
+  message: OurDailyTech.Net
+security:
+  basic:
+    enabled: false
+    path: /actuator
+spring:
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+        enabled: true
+  flyway:
+    enabled: false
+  h2:
+    console:
+      enabled: false
+system:
+  environment: mysql
+transaction-service:
+  key: ${dashboard-service.key}${user-service.username}
+  url: https://transaction.mapl.app
+  username: ${user-service.username}
+user-service:
+  key: ${dashboard-service.key}
+  url: https://user.mapl.app
+  username: thomas

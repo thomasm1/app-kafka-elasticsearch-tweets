@@ -1,6 +1,6 @@
 package app.mapl.service;
 
-import app.mapl.dto.CommentDto;
+import app.mapl.models.dto.CommentDto;
 
 import java.util.List;
 import java.util.Optional;

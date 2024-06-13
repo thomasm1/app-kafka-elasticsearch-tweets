@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.WeblinkDto;
+import app.mapl.models.dto.WeblinkDto;
 import app.mapl.service.WeblinksService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

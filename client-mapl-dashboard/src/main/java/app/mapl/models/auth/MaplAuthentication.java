@@ -1,0 +1,75 @@
+package app.mapl.models.auth;
+
+import app.mapl.exception.ApiException;
+import app.mapl.models.dto.UserDto;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+
+import java.util.Collection;
+
+@Getter
+@Setter
+public class MaplAuthentication extends AbstractAuthenticationToken {
+    private static final String PASSWORD_PROTECTED = "PASSWORD_PROTECTED";
+    private static final String EMAIL_PROTECTED = "EMAAL_PROTECTED";
+    private UserDto userDto;
+    private String email;
+    private String password;
+
+    private boolean authenticated;
+
+    private MaplAuthentication(String email, String password) {
+        super(AuthorityUtils.NO_AUTHORITIES);
+        this.email = email;
+        this.password = password;
+        this.authenticated = false;
+    }
+
+     private MaplAuthentication(UserDto userDto, Collection<? extends GrantedAuthority> authorities) {
+        super(authorities);
+        this.userDto = userDto;
+        this.password = PASSWORD_PROTECTED;
+        this.email = EMAIL_PROTECTED;
+        this.authenticated = true;
+    }
+//     public MaplAuthentication(String email, String password) {
+//        super(AuthorityUtils.NO_AUTHORITIES);
+//        this.email = email;
+//        this.password = password;
+//        this.authenticated = false;
+//    }
+//    public MaplAuthentication(UserDto userDto, Collection<? extends GrantedAuthority> authorities) {
+//        super(authorities);
+//        this.userDto = userDto;
+//        this.password = PASSWORD_PROTECTED;
+//        this.email = EMAIL_PROTECTED;
+//        this.authenticated = true;
+//
+//    }
+    public MaplAuthentication unauthenticated(String email, String password) {
+        return new MaplAuthentication(email, password);
+    }
+    public static MaplAuthentication authenticated(UserDto userDto, Collection<? extends GrantedAuthority> authorities) {
+        return new MaplAuthentication(userDto, authorities);
+    }
+        @Override
+    public Object getCredentials() {
+        return PASSWORD_PROTECTED;
+    }
+    @Override
+    public Object getPrincipal() {
+        return this.userDto;
+
+    }
+    @Override
+    public void setAuthenticated(boolean authenticated) {
+        throw new ApiException("You cannot set authentication");
+    }
+    @Override
+    public boolean isAuthenticated() {
+        return this.authenticated;
+    }
+}

@@ -1,7 +1,7 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.PostEntityDto;
-import app.mapl.dto.PostEntityResponse;
+import app.mapl.models.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityResponse;
 
 import app.mapl.service.PostService;
 import lombok.RequiredArgsConstructor;

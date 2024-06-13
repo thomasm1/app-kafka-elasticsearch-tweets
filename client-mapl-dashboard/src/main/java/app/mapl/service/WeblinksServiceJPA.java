@@ -1,12 +1,11 @@
 package app.mapl.service;
 
-import app.mapl.dto.WeblinkDto;
+import app.mapl.models.dto.WeblinkDto;
 import app.mapl.mapper.WeblinkMapper;
 import app.mapl.models.Weblink;
 import app.mapl.repositories.WeblinksRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

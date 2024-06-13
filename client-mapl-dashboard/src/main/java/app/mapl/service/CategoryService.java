@@ -1,6 +1,6 @@
 package app.mapl.service;
 
-import app.mapl.dto.CategoryDto;
+import app.mapl.models.dto.CategoryDto;
 
 import java.util.List;
 import java.util.Optional;

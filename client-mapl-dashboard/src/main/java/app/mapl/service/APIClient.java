@@ -1,5 +1,5 @@
 package app.mapl.service;
-import app.mapl.dto.DashboardDto;
+import app.mapl.models.dto.DashboardDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

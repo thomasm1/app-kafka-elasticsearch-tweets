@@ -15,7 +15,7 @@ public class DownloadSequential {
             int responseCode = conn.getResponseCode();
 
             if(responseCode >=200 && responseCode < 300) {
-                return ReadWriteFile.readFromStream(conn.getInputStream()); // returns html text
+                return FileReadWrite.readFromStream(conn.getInputStream()); // returns html text
             }
         } catch (MalformedURLException e) {
           e.printStackTrace();
@@ -28,7 +28,7 @@ public class DownloadSequential {
     }
 
     public static String downloadFromStream(InputStream in) throws MalformedURLException, URISyntaxException {
-        return ReadWriteFile.readFromStream(in);
+        return FileReadWrite.readFromStream(in);
     }
 
     public InputStream getStreamFromUrl(String sourceUrl) throws MalformedURLException, URISyntaxException {

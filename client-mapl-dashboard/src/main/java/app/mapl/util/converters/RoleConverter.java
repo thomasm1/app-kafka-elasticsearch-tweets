@@ -1,6 +1,6 @@
 package app.mapl.util.converters;
 
-import app.mapl.models.Authority;
+import app.mapl.models.auth.Authority;
 import jakarta.persistence.AttributeConverter;
 
 import java.util.stream.Stream;
@@ -12,7 +12,7 @@ public class RoleConverter implements AttributeConverter<Authority, String> {
         if(authority == null) {
             return null;
         }
-        return authority.getValue();
+        return authority.getValue().toString();
     }
 
     @Override

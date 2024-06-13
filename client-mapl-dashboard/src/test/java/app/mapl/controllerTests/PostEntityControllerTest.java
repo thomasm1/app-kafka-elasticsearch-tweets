@@ -2,7 +2,7 @@ package app.mapl.controllerTests;
 
 
 import app.mapl.controllers.PostEntityController;
-import app.mapl.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityDto;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;

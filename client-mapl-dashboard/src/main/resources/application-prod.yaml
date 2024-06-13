@@ -1,0 +1,89 @@
+logging:
+  appender:
+    console: org.springframework.boot.logging.logback.ConsoleAppender
+    console.layout: org.springframework.boot.logging.logback.ColorConsoleLayout
+    console.layout.pattern: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${PID}){magenta}
+            %clr(---){faint} %clr([%5p]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(---){faint}
+            %clr([%t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%xEx'
+  level:
+    com:
+      mapl:
+        app: info
+    org:
+      hibernate:
+        cache: info
+        orm:
+          jdbc:
+            bind: trace
+        stat: info
+security:
+  basic:
+    enable: false
+  user:
+    name: admin
+    password: password
+server:
+  port: 8888
+spring:
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+    rest:
+      base-path: /rest/
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: ${ORACLE_DB_PASSWORD}
+    url: jdbc:oracle:thin:@thomas.cmcadlepsyx9.us-east-1.rds.amazonaws.com:1521:thomas
+    username: thomas
+  flyway:
+    enabled: false
+  h2:
+    console:
+      enabled: false
+  jpa:
+    database: oracle
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        connection:
+          CharSet: UTF-8
+          characterEncoding: UTF-8
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: true
+        generate_statistics: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        session:
+          events:
+            log: org.hibernate.event.service.spi.EventListenerRegistry
+            log.LOG_QUERIES_SLOWER_THAN_MS: 1
+        show-sql: true
+        useUnicode: true
+      jakarta:
+        persistence:
+          cache:
+            retrieveMode: BYPASS
+            storeMode: REFRESH
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+          validation:
+            mode: none
+  mvc:
+    format:
+      date: yyyy-MM-dd
+    view:
+      suffix: .jsp
+  sql:
+    init:
+      continue-on-error: true
+      data-locations: classpath:data-prod.sql
+      schema-locations: classpath:schema-prod.sql
+  thymeleaf:
+    cache: false
+    enabled: true
+system:
+  environment: prod
+version: 1.1.1

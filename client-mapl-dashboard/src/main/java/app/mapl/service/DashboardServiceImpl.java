@@ -1,6 +1,6 @@
 package app.mapl.service;
 
-import app.mapl.dto.DashboardDto;
+import app.mapl.models.dto.DashboardDto;
 import app.mapl.models.Dashboard;
 import app.mapl.repositories.DashboardRepository;
 import lombok.AllArgsConstructor;

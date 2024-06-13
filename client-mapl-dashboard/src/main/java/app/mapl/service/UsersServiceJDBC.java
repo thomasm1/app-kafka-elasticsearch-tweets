@@ -1,17 +1,19 @@
 package app.mapl.service;
 
-import app.mapl.dto.RegisterDto;
-import app.mapl.dto.UserDto;
-import app.mapl.dto.UserRequest;
+import app.mapl.models.auth.APIResponseDto;
 import app.mapl.mapper.UserMapper;
-import app.mapl.models.LoginType;
-import app.mapl.models.User;
-import org.springframework.context.annotation.Profile;
+import app.mapl.models.auth.CredentialEntity;
+import app.mapl.models.auth.LoginType;
+import app.mapl.models.auth.RoleEntity;
+import app.mapl.models.auth.User;
+import app.mapl.models.auth.UserRequest;
+import app.mapl.models.auth.UserResponse;
+import app.mapl.models.dto.UserDto;
+import jakarta.validation.constraints.NotEmpty;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,30 +28,25 @@ public class UsersServiceJDBC implements UsersService {
 
     public UsersServiceJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        userRowMapper = (rs, rowNum) -> new User(
-                rs.getInt("userId"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("lastName"),
-                rs.getString("firstName"),
-                rs.getInt("userType"),
-                rs.getString("organizationCode"),
-                rs.getString("email"),
-                rs.getString("cusUrl"),
-                rs.getString("dashboardCode"),
-                rs.getInt("1"),
-                rs.getInt("role")
-        );
+                        userRowMapper = (rs, rowNum) ->   User.builder()
+                                .firstName(rs.getString("firstName "))
+                                .lastName(rs.getString("lastName"))
+                                .email(rs.getString("email"))
+                                .password(rs.getString("password"))
+                                .build();
+
+
+
     }
 
 
     public User byemail(String email) {
-        return this.jdbcTemplate.queryForObject("SELECT * FROM users u WHERE u.email = ?", userRowMapper, email);
+        return this.jdbcTemplate.queryForObject("SELECT * FROM USER_ENTITY u WHERE u.email = ?", userRowMapper, email);
 //        return null;
     }
 
     public User byid(Long id) {
-        return this.jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE id = ?", userRowMapper, id);
+        return this.jdbcTemplate.queryForObject("SELECT * FROM USER_ENTITY WHERE id = ?", userRowMapper, id);
 //        return null;
     }
 
@@ -59,11 +56,13 @@ public class UsersServiceJDBC implements UsersService {
 //        return this.jdbcTemplate.query("SELECT * FROM USERS", userRowMapper);
 //    }
 
+
     /**
-     * @param rDto
+     * @param  userDto
      */
     @Override
-    public void registerUser(RegisterDto rDto) {
+    public ResponseEntity saveUser(UserDto userDto) {
+        return null;
     }
 
     /**
@@ -81,29 +80,46 @@ public class UsersServiceJDBC implements UsersService {
      * @param lastName
      * @param email
      * @param password
+     * @return
+     */
+    @Override
+    public User createUserRole(String firstName, String lastName, String email, @NotEmpty String password) {
+       return null;
+    }
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param role
+     * @return
+     */
+    @Override
+    public User createUser(String firstName, String lastName, String email, RoleEntity role) {
+        return null;
+    }
+
+    /**
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param password
      */
     @Override
     public void createUser(String firstName, String lastName, String email, String password) {
 
     }
 
+
     /**
-     * @param user
+     * @param name
      * @return
      */
     @Override
-    public UserDto createUser(UserDto user) {
+    public RoleEntity getRoleName(String name) {
         return null;
     }
 
-
-    /**
-     * @param user
-     * @return
-     */
-    public static UserDto createUserCLI(UserDto user) {
-        return null;
-    }
 
     /**
      * @param id
@@ -124,10 +140,45 @@ public class UsersServiceJDBC implements UsersService {
     }
 
     /**
+     * @param uerEntityId
+     * @return
+     */
+    @Override
+    public APIResponseDto getUserById(Long uerEntityId) {
+        return null;
+    }
+
+    /**
+     * @param userId
+     * @return
+     */
+    @Override
+    public CredentialEntity getUserCredentialById(Long userId) {
+        return null;
+    }
+
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        return Optional.empty();
+    }
+
+    /**
      * @return
      */
     @Override
     public List<UserDto> getUsers() {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<UserResponse> getUsersResponse() {
         return null;
     }
 
@@ -137,8 +188,18 @@ public class UsersServiceJDBC implements UsersService {
      */
     @Override
     public Optional<UserDto> updateUser(UserDto change) {
-        return null;
+        return Optional.empty();
     }
+
+    /**
+     * @param userId
+     * @return
+     */
+    @Override
+    public Optional<UserDto> getUserByUserId(String userId) {
+        return Optional.empty();
+    }
+
 
     /**
      * @param email
@@ -189,21 +250,40 @@ public class UsersServiceJDBC implements UsersService {
     }
 
     /**
-     * @param email
-     * @param password
+     * @param userDto
      * @return
      */
     @Override
-    public UserRequest updateLoginAttempt(String email, String password) {
+    public ResponseEntity saveUser(UserRequest userDto) {
         return null;
     }
 
     /**
-     * @param email
-     * @param loginType
+     * @param userRequest
+     * @return
      */
     @Override
-    public void updateLoginAttempt(String email, LoginType loginType) {
+    public User saveUser(User userRequest) {
+        return null;
+    }
+
+
+    /**
+     * @param email
+     * @param loginType
+     * @return
+     */
+    @Override
+    public UserDto updateLoginAttempt(String email, LoginType loginType) {
+
+        return null;
+    }
+
+    /**
+     * @param key
+     */
+    @Override
+    public void verifyAccountKey(String key) {
 
     }
 }

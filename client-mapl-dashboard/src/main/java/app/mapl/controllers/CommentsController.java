@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.CommentDto;
+import app.mapl.models.dto.CommentDto;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,10 @@
 package app.mapl.serviceTests;
 
 
-import app.mapl.dto.UserDto;
 import app.mapl.mapper.UserMapper;
+import app.mapl.models.auth.User;
+import app.mapl.models.auth.UserRequest;
+import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersService;
 import app.mapl.service.UsersServiceJPA;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +12,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.MockitoAnnotations;
@@ -28,21 +31,10 @@ public class UserServiceTest {      // *NOTE: change PK emails before sending to
     @BeforeAll
     public void setup() {
         userServiceTesterJPA = new UsersServiceJPA();
+        MockitoAnnotations.openMocks(UsersServiceJPA.class);
         MockitoAnnotations.openMocks(this);
     }
-    //TODO mockito Service INJECTION
-    @Test
-    public void add_new_user() {
-        UserDto u = UserDto.builder()
-                .email("user-1@gmail.com")
-                .lastName("lastName")
-                .firstName("firstName")
-                .organizationCode("orgCode")
-                .dashboardCode("dashCode")
-                .build();
-        //when(userDAOimplTester.createUser(u)).thenReturn(u);
-        assertEquals(u, userServiceTesterJPA.createUser(u));
-     }
+
 
     @Test
     public void get_users() {

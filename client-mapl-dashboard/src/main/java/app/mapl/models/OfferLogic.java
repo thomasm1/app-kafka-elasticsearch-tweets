@@ -1,13 +1,11 @@
 package app.mapl.models;
 
-import app.mapl.dto.CoinDto;
+import app.mapl.models.dto.CoinDto;
 import app.mapl.service.CoinsService;
-import app.mapl.service.CoinsServiceJPA;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity

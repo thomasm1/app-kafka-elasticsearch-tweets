@@ -1,7 +1,7 @@
 package app.mapl.service;
 
-import app.mapl.dto.PostEntityDto;
-import app.mapl.dto.PostEntityResponse;
+import app.mapl.models.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityResponse;
 import app.mapl.mapper.PostEntityMapper;
 import app.mapl.models.Category;
 import app.mapl.models.PostEntity;

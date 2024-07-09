@@ -18,16 +18,16 @@ import org.springframework.scheduling.support.PeriodicTrigger;
 
 import java.io.File;
 
-@Configuration
-@EnableIntegration
-public class App2fileConfig {
+//@Configuration
+//@EnableIntegration
+public class AppConfig {
 
 
     @ServiceActivator
     public void handleIncomingMessage() {
 
     }
-    @Bean
+//    @Bean
     public FileReadingMessageSource fileReadingMessageSource() {
         FileReadingMessageSource source = new FileReadingMessageSource();
         File file = new File("input-directory");
@@ -37,30 +37,30 @@ public class App2fileConfig {
         return source;
     }
 
-    @Bean
+//    @Bean
     public MessageChannel fileInputChannel() {
         return new DirectChannel();
     }
 
-    @Bean
+//    @Bean
     public MessageChannel fileOutputChannel() {
         return new DirectChannel();
     }
 
-    @Bean(name = PollerMetadata.DEFAULT_POLLER)
+//    @Bean(name = PollerMetadata.DEFAULT_POLLER)
     public PollerMetadata poller() {
         PollerMetadata pollerMetadata = new PollerMetadata();
         pollerMetadata.setTrigger(trigger());
         return pollerMetadata;
     }
 
-    @Bean
+//    @Bean
     public Trigger trigger() {
         return new PeriodicTrigger(5000);
     }
 
-    @Bean
-    @ServiceActivator(inputChannel = "fileInputChannel")
+//    @Bean
+//    @ServiceActivator(inputChannel = "fileInputChannel")
     public MessageHandler fileWritingMessageHandler() {
         return Files.outboundAdapter(new File("output-directory"))
                 .autoCreateDirectory(true)
@@ -68,8 +68,8 @@ public class App2fileConfig {
                 .getObject();
     }
 
-    @Bean
-    @ServiceActivator(inputChannel = "fileInputChannel")
+//    @Bean
+//    @ServiceActivator(inputChannel = "fileInputChannel")
     public MessageHandler fileProcessingHandler() {
         return message -> {
             File file = (File) message.getPayload();

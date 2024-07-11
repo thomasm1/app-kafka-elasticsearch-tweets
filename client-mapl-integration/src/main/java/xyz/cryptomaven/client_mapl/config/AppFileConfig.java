@@ -1,11 +1,10 @@
-package xyz.cryptomaven.client_mapl_integration;
+package xyz.cryptomaven.client_mapl.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.dsl.Files;
 import org.springframework.integration.file.filters.SimplePatternFileListFilter;
@@ -20,7 +19,7 @@ import java.io.File;
 
 @Configuration
 @EnableIntegration
-public class App2fileConfig {
+public class AppFileConfig {
 
 
     @ServiceActivator
@@ -77,12 +76,4 @@ public class App2fileConfig {
         };
     }
 
-//    @Bean
-//    public IntegrationFlow integrationFlow() {
-//        return flow -> flow
-//                .handle(fileReadingMessageSource(), e -> e.poller(poller()))
-//                .channel(fileInputChannel())
-//                .handle(fileProcessingHandler())
-//                .handle(fileWritingMessageHandler());
-//    }
 }

@@ -1,5 +1,7 @@
-package xyz.cryptomaven.client_mapl_rest;
+package xyz.cryptomaven.client_mapl.rest;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +11,9 @@ import java.util.UUID;
 @Data
 @Setter
 @Getter
+@Entity
 public class Service {
+    @Id
     private UUID id;
     private String name;
 

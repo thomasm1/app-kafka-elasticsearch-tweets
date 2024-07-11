@@ -1,4 +1,4 @@
-package xyz.cryptomaven.client_mapl_integration;
+package xyz.cryptomaven.client_mapl.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableIntegration
-public class AppConfig2 {
+public class AppFileConfig2 {
 
     @Bean
     MessageChannel requests() {

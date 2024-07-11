@@ -1,4 +1,4 @@
-package xyz.cryptomaven.client_mapl_rest;
+package xyz.cryptomaven.client_mapl.rest;
 
 import lombok.Data;
 import lombok.Getter;

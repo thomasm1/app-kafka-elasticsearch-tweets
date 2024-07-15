@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ServiceRepository extends JpaRepository<Service, UUID> {
-
-    @NotNull
-    Optional<Service> findById(UUID id);
+//
+//    @NotNull
+//    Optional<Service> findById(UUID id);
 }

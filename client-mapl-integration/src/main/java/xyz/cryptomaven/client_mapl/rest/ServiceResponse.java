@@ -15,4 +15,12 @@ public class ServiceResponse {
 
     ServiceResponse() {
     }
+
+    ServiceResponse(UUID id) {
+        super();
+        setId(id);
+    }
+    public static ServiceResponse fakeStudent() {
+        return new ServiceResponse(UUID.randomUUID());
+    }
 }

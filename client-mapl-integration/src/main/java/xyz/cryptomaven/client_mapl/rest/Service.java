@@ -29,6 +29,7 @@ public class Service {
     public Service(UUID uuid) {
     }
 
+
     public static Service register(String name) {
         return new Service(UUID.randomUUID(), name );
 

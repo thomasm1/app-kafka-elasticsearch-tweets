@@ -2,13 +2,17 @@ package xyz.cryptomaven.client_mapl.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.file.FileReadingMessageSource;
+import org.springframework.integration.file.FileWritingMessageHandler;
 import org.springframework.integration.file.dsl.Files;
 import org.springframework.integration.file.filters.SimplePatternFileListFilter;
 import org.springframework.integration.file.support.FileExistsMode;
+import org.springframework.integration.file.transformer.FileToStringTransformer;
 import org.springframework.integration.scheduling.PollerMetadata;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
@@ -19,22 +23,9 @@ import java.io.File;
 
 @Configuration
 @EnableIntegration
+@IntegrationComponentScan
 public class AppFileConfig {
 
-
-    @ServiceActivator
-    public void handleIncomingMessage() {
-
-    }
-    @Bean
-    public FileReadingMessageSource fileReadingMessageSource() {
-        FileReadingMessageSource source = new FileReadingMessageSource();
-        File file = new File("input-directory");
-        source.setDirectory(file);
-        System.out.println("doublecheck FILE location: " + file.getAbsolutePath());
-        source.setFilter(new SimplePatternFileListFilter("*.txt"));
-        return source;
-    }
 
     @Bean
     public MessageChannel fileInputChannel() {
@@ -46,34 +37,37 @@ public class AppFileConfig {
         return new DirectChannel();
     }
 
-    @Bean(name = PollerMetadata.DEFAULT_POLLER)
-    public PollerMetadata poller() {
+    @Bean
+    public FileReadingMessageSource fileReadingMessageSource() {
+        FileReadingMessageSource source = new FileReadingMessageSource();
+        File file = new File("input-directory");
+        source.setDirectory(file);
+        System.out.println(" file.getAbsolutePath location: " + file.getAbsolutePath());
+        source.setFilter(new SimplePatternFileListFilter("*.txt"));
+        return source;
+    }
+
+
+    @Bean
+    @ServiceActivator(inputChannel = "fileOutputChannel")
+    public MessageHandler fileWritingMessageHandler() {
+        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File("backup-directory"));
+        handler.setExpectReply(false);
+//         .autoCreateDirectory(true)
+//                .fileExistsMode(FileExistsMode.REPLACE)
+       handler.setDeleteSourceFiles(true);
+       return handler;
+    }
+
+    @Bean
+    public FileToStringTransformer myFileToStringTransformer() {
+        return  new FileToStringTransformer();
+    }
+
+    @Bean
+    public PollerMetadata pollerMetadata() {
         PollerMetadata pollerMetadata = new PollerMetadata();
-        pollerMetadata.setTrigger(trigger());
+        pollerMetadata.setTrigger(new PeriodicTrigger(1000));
         return pollerMetadata;
     }
-
-    @Bean
-    public Trigger trigger() {
-        return new PeriodicTrigger(5000);
-    }
-
-    @Bean
-    @ServiceActivator(inputChannel = "fileInputChannel")
-    public MessageHandler fileWritingMessageHandler() {
-        return Files.outboundAdapter(new File("output-directory"))
-                .autoCreateDirectory(true)
-                .fileExistsMode(FileExistsMode.REPLACE)
-                .getObject();
-    }
-
-    @Bean
-    @ServiceActivator(inputChannel = "fileInputChannel")
-    public MessageHandler fileProcessingHandler() {
-        return message -> {
-            File file = (File) message.getPayload();
-            System.out.println("Processing file: " + file.getName());
-        };
-    }
-
 }

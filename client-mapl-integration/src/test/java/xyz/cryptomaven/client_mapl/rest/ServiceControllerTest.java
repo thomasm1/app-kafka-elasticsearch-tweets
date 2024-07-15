@@ -4,11 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import xyz.cryptomaven.client_mapl.Util;
 
 import java.net.URI;
 import java.util.UUID;
@@ -30,7 +27,7 @@ public class ServiceControllerTest {
 
         itShouldRegisterANewService(response);
         ServiceResponse newService = serviceTester.getServiceFromResponse(response);
-        itShouldAllocateANewId((WebTestClient.ResponseSpec) newService);
+        itShouldAllocateANewId(  newService);
         itShouldShowWhereToLocateNewService(response, newService);
         itShouldConfirmServiceDetails(serviceRequest, newService);
     }
@@ -41,14 +38,11 @@ public class ServiceControllerTest {
                 .isCreated();
     }
 
-    private void itShouldAllocateANewId(WebTestClient.ResponseSpec response) {
-          response
-                .expectBody(ServiceResponse.class) // BodySpec<MemberResponse, capture of?>
-                .value(service -> {
-                    assertThat(service.getId()).isNotEqualTo(new UUID(0, 0));
-                    assertThat(service.getId()).isNotNull();
-                }).returnResult().getResponseBody();
-    }
+    private void itShouldAllocateANewId(ServiceResponse response) {
+
+                    assertThat(response.getId()).isNotEqualTo(new UUID(0, 0));
+                    assertThat(response.getId()).isNotNull();
+                };
 
     private void itShouldShowWhereToLocateNewService(WebTestClient.ResponseSpec response, ServiceResponse newService) {
         response.

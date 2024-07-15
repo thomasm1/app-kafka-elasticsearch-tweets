@@ -13,7 +13,7 @@ import java.util.UUID;
 @Component
 public class ServiceTester {
 
-    @Value(value = "${local.server.port:8080}")
+    @Value(value = "${local.server.port}")
     private int port;
     
     private static final String SERVICE_PATH = "/services";

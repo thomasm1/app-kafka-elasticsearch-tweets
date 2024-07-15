@@ -29,16 +29,17 @@ public class ServiceController {
 
         Service newService = Service.register(registerServiceRequest.getName());
 
+        this.serviceRepository.save(newService);
+
         URI newServiceLocation = serviceUri( newService.getId() );
 
 
         return ResponseEntity
                 .created( newServiceLocation )
                 .body( newService );
-
     }
 
-    private URI serviceUri(UUID id) {
+    URI serviceUri(UUID id) {
       return  ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -54,7 +55,8 @@ public class ServiceController {
 
     @GetMapping("/services/{id}")
     Service getService(@NotNull @PathVariable UUID id) {
-        Service service = this.serviceRepository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Service service = this.serviceRepository.findById(id)
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return service;
     }
 }

@@ -1,38 +1,37 @@
- 
+### Check docker install
 docker system df
+docker pull hello-world  # empty container system check
+docker run --name test_container -d hello-world
+docker logs test_container
+docker logs -t test_container # time
+
+### Cleanup
 docker rmi jenkins/jenkins
 docker rmi httpd:2-alpine
 docker images
 
-docker run -dit redis
-docker ps
+### Redis
+docker pull redis:latest
 docker run -dit --name redis_container redis # NOTE: You can also use the "--name=CONTAINER_NAME" syntax.
 docker ps
 docker stop redis_container
-docker ps
-docker run --rm hello-world
 docker ps -a
-docker run hello-world
-docker ps -a
-
-docker logs CONTAINER_NAME
-docker run --name test_container -d hello-world
+docker logs redis_container
 docker ps
 docker ps -a
-docker logs test_container
-docker logs -t test_container # -f test_container
 
+### VOLUME
 docker volume create localvolume
 docker volume ls
 docker volume inspect localvolume
 echo "This file exists" > /var/lib/docker/volumes/localvolume/_data/file.txt
 docker run -d --name mountvolume --mount src=localvolume,dst=/data httpd
 docker exec -it mountvolume /bin/bash
-df -h
-cat /data/file.txt
-echo "Created from inside the container" > /data/from-container.txt
-cat /data/from-container.txt
-exit
+  df -h
+  cat /data/file.txt
+  echo "Created from inside the container" > /data/from-container.txt
+  cat /data/from-container.txt
+  exit
 cat /var/lib/docker/volumes/localvolume/_data/from-container.txt
 docker run -d --name tempvolume --mount type=tmpfs,dst=/tempdata httpd
 docker inspect tempvolume | grep Mounts -A 10
@@ -40,7 +39,18 @@ docker exec -it tempvolume /bin/bash
 df -h
 exit
 
+### MQ
+docker pull ibmcom/mq:latest
+docker volume create mqlocalvolume
+docker run --env LICENSE=accept --env MQ_QMGR_NAME=QM1 --volume mqlocalvolume:/mnt/mqm
+   --publish 1414:1414 --publish 9443:9443 --name mqlocal --detach --env MQ_APP_PASSWORD=passw0rd ibmcom/mq:latest
+docker exec -it 00c bash
+    dspmqver
+    dspmq
+docker ps
+[[ https://localhost:9443/ibmmq/console     username admin, password passw0rd
 
+### Postgres & Drupy
 docker network create drupy
 docker volume create db
 POSTGRES_USER=drupy

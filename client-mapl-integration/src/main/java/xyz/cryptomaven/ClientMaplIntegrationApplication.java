@@ -2,6 +2,8 @@ package xyz.cryptomaven;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 
 
@@ -10,6 +12,8 @@ import org.springframework.integration.annotation.IntegrationComponentScan;
 public class ClientMaplIntegrationApplication {
 
 	public static void main(String[] args)  throws Exception {
+//		AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppFileConfig.class);
+//		context.registerShutdownHook();
 		SpringApplication.run(ClientMaplIntegrationApplication.class, args);
 		Thread.currentThread().join();
 	}

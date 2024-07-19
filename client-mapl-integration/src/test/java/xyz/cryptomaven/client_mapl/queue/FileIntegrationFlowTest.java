@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.integration.file.FileReadingMessageSource;
-import xyz.cryptomaven.client_mapl.config.AppFileConfig;
+import xyz.cryptomaven.client_mapl.config.AppFileConfig2;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class FileIntegrationFlowTest {
  /// TODO: THIS TEST IS FAILING!@!V$%^&*()_!
     @Test
     public void testFileProcessing() throws IOException, InterruptedException {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppFileConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppFileConfig2.class);
         FileReadingMessageSource fileReadingMessageSource = context.getBean(FileReadingMessageSource.class);
 
         // Setup
@@ -28,14 +28,14 @@ public class FileIntegrationFlowTest {
         Files.createDirectories(inputDir);
         Files.createDirectories(backupDir);
 
-        Path testFile = inputDir.resolve("text.txt");
+        Path testFile = inputDir.resolve("text2.txt");
         Files.writeString(testFile, "Text file here...!");
 
         // Wait for the file to be processed
         Thread.sleep(2000);
 
         // Verify
-        File backupFile = backupDir.resolve("text.txt").toFile();
+        File backupFile = backupDir.resolve("text2.txt").toFile();
         assertThat(backupFile).exists();
         assertThat(Files.readString(backupFile.toPath())).isEqualTo("Text file here...!");
 

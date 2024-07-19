@@ -1,3 +1,0 @@
-// Validate JSON with quoted keys ...
-json_string.replace(/(\s*?{\s*?|\s*?,\s*?)(['"])?([a-zA-Z0-9]+)(['"])?:/g, '$1"$3":');
-eval('var json = new Object(' + json_string + ')');

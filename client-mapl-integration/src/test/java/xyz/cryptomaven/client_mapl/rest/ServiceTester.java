@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import xyz.cryptomaven.client_mapl.Util;
+import xyz.cryptomaven.client_mapl.rest.services.RegisterServiceRequest;
+import xyz.cryptomaven.client_mapl.rest.services.ServiceResponse;
 
 import java.net.URI;
 import java.util.UUID;

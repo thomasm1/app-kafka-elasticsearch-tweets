@@ -1,5 +1,0 @@
-Document
-HTMLElement
-SVGElement
-Window
-XULElement

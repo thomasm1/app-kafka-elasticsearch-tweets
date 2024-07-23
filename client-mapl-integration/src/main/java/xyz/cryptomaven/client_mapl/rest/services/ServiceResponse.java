@@ -20,7 +20,7 @@ public class ServiceResponse {
         super();
         setId(id);
     }
-    public static ServiceResponse fakeStudent() {
+    public static ServiceResponse demoResponse() {
         return new ServiceResponse(UUID.randomUUID());
     }
 }

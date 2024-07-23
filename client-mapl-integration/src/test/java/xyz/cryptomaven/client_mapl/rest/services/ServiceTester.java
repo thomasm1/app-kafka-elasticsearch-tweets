@@ -1,4 +1,4 @@
-package xyz.cryptomaven.client_mapl.rest;
+package xyz.cryptomaven.client_mapl.rest.services;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;

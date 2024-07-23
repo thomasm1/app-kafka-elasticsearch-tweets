@@ -11,7 +11,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.UUID;
 
-
+@CrossOrigin(origins = "*")
+@RequestMapping("/pods")
 @RestController
 public class ServiceController {
 

@@ -1,4 +1,4 @@
-package xyz.cryptomaven.client_mapl.rest;
+package xyz.cryptomaven.client_mapl.rest.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

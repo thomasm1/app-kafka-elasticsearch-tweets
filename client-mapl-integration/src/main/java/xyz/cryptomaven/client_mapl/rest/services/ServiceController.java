@@ -1,5 +1,9 @@
 package xyz.cryptomaven.client_mapl.rest.services;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
@@ -11,6 +15,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.UUID;
 
+@Tag(
+        name = "POST API for Resource",
+        description = "Creates a new Resource"
+)
 @CrossOrigin(origins = "*")
 @RequestMapping("/pods")
 @RestController
@@ -23,6 +31,16 @@ public class ServiceController {
         this.serviceRepository = serviceRepository;
     }
 
+
+    @Operation(
+            summary = "makeNew Resource",
+            description = " makeNew Resource; pass Name //    {  \"name\":\"any-name\"   } save to database"
+    )
+    @ApiResponse(
+            responseCode = "201",
+            description = "HTTP Status 201 SUCCESS",
+            content = @Content(mediaType = "id:6a81b3c3-c0c3-4bc6-8bb7-7f80eca45812,name:any-name")
+    )
     @PostMapping("/services")
     ResponseEntity<Service> registerNewService(@RequestBody Service registerServiceRequest) {
 
@@ -46,11 +64,6 @@ public class ServiceController {
                 .toUri();
     }
 
-    @Contract(" -> new")
-    @NotNull
-    public static Service register() {
-        return new Service(UUID.randomUUID());
-    }
 
     @GetMapping("/services/{id}")
     Service getService(@NotNull @PathVariable UUID id) {

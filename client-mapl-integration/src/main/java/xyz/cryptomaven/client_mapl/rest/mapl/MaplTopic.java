@@ -20,12 +20,20 @@ public class MaplTopic {
 
     public MaplTopic() {}
 
-    public MaplTopic(UUID id) {}
-    public MaplTopic(UUID id, String topic) {}
+    public MaplTopic(UUID id) {
+        this.id = id;
+    }
+    public MaplTopic(UUID id, String topic) {
+        this.id = id;
+        this.topic = topic;
+    }
 
-
+    public  MaplTopic getMaplTopic() {
+        return new MaplTopic(id, topic);
+    }
 
     public static MaplTopic makeMaplTopic(String topic) {
+
         return new MaplTopic(UUID.randomUUID(), topic);
     }
 

@@ -69,18 +69,6 @@ public class FileIntegrationFlow {
         return pollerMetadata;
     }
 
-//    IntegrationFlows IN Spring INtegration 4.0 ;; current: 2.1.6
-//    @Bean
-//    public IntegrationFlow fileIntegrationFlow(FileReadingMessageSource fileReadingMessageSource,
-//                                               FileToStringTransformer fileToStringTransformer,
-//                                               MessageHandler fileWritingMessageHandler)  {
-//
-//        return IntegrationFlows.from(fileReadingMessageSource, c -> c.poller(p -> p.fixedDelay(1000)))
-//                .channel("fileInputChannel")
-//                .transform(fileToStringTransformer)
-//                .handle(fileWritingMessageHandler)
-//                .get();
-//
 //    }
 
 }

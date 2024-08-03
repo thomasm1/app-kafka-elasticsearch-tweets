@@ -61,7 +61,7 @@ public class AppPollingConfig {
                 .from(
                         ( MessageSource<String>) ()  ->
                                 MessageBuilder.withPayload( text() ).build(),
-                        poller -> poller.poller( pm -> pm.fixedRate(2000))
+                        poller -> poller.poller( pm -> pm.fixedRate(6000))
                 )
                 .transform( (GenericTransformer<String, String>) String::toUpperCase )
                 .handle( (GenericHandler<String>)  (payload, headers)  -> {

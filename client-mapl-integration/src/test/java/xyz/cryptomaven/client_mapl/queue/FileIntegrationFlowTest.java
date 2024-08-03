@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.integration.file.FileReadingMessageSource;
-import xyz.cryptomaven.client_mapl.config.AppFileConfig2;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class FileIntegrationFlowTest {
  /// TODO: THIS TEST IS FAILING!@!V$%^&*()_!
     @Test
     public void testFileProcessing() throws IOException, InterruptedException {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppFileConfig2.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(FileIntegrationFlowTest.class);
         FileReadingMessageSource fileReadingMessageSource = context.getBean(FileReadingMessageSource.class);
 
         // Setup

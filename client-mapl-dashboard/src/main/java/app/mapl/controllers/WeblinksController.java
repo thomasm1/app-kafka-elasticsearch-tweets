@@ -1,100 +1,38 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.WeblinkDto;
+import app.mapl.models.Weblink;
 import app.mapl.service.WeblinksService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-@Tag(
-        name = "CRUD REST APIs for Weblink Resource",
-        description = "CRUD REST APIs - Create Weblink, Update Weblink, Get Weblink, Get All Weblinks, Delete Weblink"
-)
 @CrossOrigin(origins = "*")
-@RequestMapping(WeblinksController.API_WEBLINKS)
+@RequestMapping("/api")
 @RestController
 public class WeblinksController {
-    public static final String API_WEBLINKS = "/api/weblinks";
-
     @Autowired
     WeblinksService weblinksService;
 
-
-    @Operation(
-            summary = "createWeblinks Weblink By ID REST API ",
-            description = "createWeblinks Weblink By ID REST API is used to get a single Weblink from the database"
-    )
-    @ApiResponse(
-            responseCode = "201",
-            description = "HTTP Status CREATED"
-    )
-    @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<WeblinkDto> createWeblinks(@RequestBody WeblinkDto c) {
-
-        return new ResponseEntity<>(weblinksService.createWeblinks(c), HttpStatus.CREATED);
+    @RequestMapping(value = "/weblinks", method = RequestMethod.POST, consumes = "application/json")
+    public Weblink createWeblinks(@RequestBody Weblink c) {
+        return weblinksService.createWeblinks(c);
     }
+    @GetMapping(value = "/weblinks/{id}")
+    public Weblink getWeblinks(@PathVariable("id") long id) {
 
-
-    @Operation(
-            summary = "GetMapping Weblink By ID REST API ",
-            description = "GetMapping Weblink By ID REST API is used to get a single Weblink from the database"
-    )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status 200 SUCCESS"
-    )
-    @GetMapping(value = "/{id}")
-    public  ResponseEntity<WeblinkDto>  getWeblinks(@PathVariable("id") long id) {
-
-        return new ResponseEntity<>(weblinksService.getWeblinks(id), HttpStatus.OK);
+        return weblinksService.getWeblinks(id);
     }
-
-
-    @Operation(
-            summary = "GetMapping Weblink By ID REST API ",
-            description = "GetMapping Weblink By ID REST API is used to get a single Weblink from the database"
-    )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status 200 SUCCESS"
-    )
-    @GetMapping(value = "")
-    public ResponseEntity<List<WeblinkDto>> getAllWeblinks() {
-        return new ResponseEntity<>(weblinksService.getAllWeblinks(), HttpStatus.OK);
+    @GetMapping(value = "/weblinks")
+    public List<Weblink> getAllWeblinks() {
+        return weblinksService.getAllWeblinks();
     }
-
-
-    @Operation(
-            summary = "PutMapping Weblink By ID REST API ",
-            description = "PutMapping Weblink By ID REST API is used to get a single Weblink from the database"
-    )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status 200 SUCCESS"
-    )
-    @PutMapping(value = "", consumes = "application/json")
-    public  ResponseEntity<WeblinkDto>  updateWeblinks(@RequestBody WeblinkDto change) {
-        return new ResponseEntity<>(weblinksService.updateWeblinks(change), HttpStatus.OK);
+    @PutMapping(value = "/weblinks", consumes = "application/json")
+    public Weblink updateWeblinks(@RequestBody Weblink change) {
+        return weblinksService.updateWeblinks(change);
     }
-
-
-    @Operation(
-            summary = "DeleteMapping Weblink By ID REST API ",
-            description = "DeleteMapping Weblink By ID REST API is used to get a single Weblink from the database"
-    )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status 200 SUCCESS"
-    )
-    @DeleteMapping(value = "/{weblinkId}")
-    public ResponseEntity<Boolean> deleteWeblinks(@PathVariable("weblinkId") long weblinkId) {
-        return new ResponseEntity<>(weblinksService.deleteWeblinks(weblinkId), HttpStatus.OK);
+    @DeleteMapping(value = "/weblinks/{weblinkId}")
+    public boolean deleteWeblinks(@PathVariable("weblinkId") long weblinkId) {
+        return weblinksService.deleteWeblinks(weblinkId);
     }
 }

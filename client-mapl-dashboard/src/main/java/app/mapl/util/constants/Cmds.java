@@ -2,10 +2,8 @@ package app.mapl.util.constants;
 
 public class Cmds {
     public static final String WELCOME_TO_MY_PERSONAL_LIBRARIAN_MY_NAME_IS_MA_PL = "Welcome to My Personal Librarian, my name is MaPL.";
-    public static final String LOGGING_AT = "... from Logger Instance! TS::";
 
-
-    //menu dashboard
+     //menu dashboard
     public static final String WHAT_TO_DO = "What would you like to do?  ";
     public static final String VIEW_MY_CARS = "View my coin tokens " +
             "";
@@ -25,7 +23,7 @@ public class Cmds {
     public static final String GOOD_BYE = "So sorry to see you leave! Please come back soon!!\n";
 
 // REGISTER
-    public static final String REGISTER_UNAME = "Please type your email below:\n";
+    public static final String REGISTER_UNAME = "Please type your username below:\n";
     public static final String REGISTER_PW = "Now, please type an alpha-numeric password:\n";
     public static final String REGISTER_FNAME = " first name:\n";
     public static final String REGISTER_LNAME = " ,  last name:\n";
@@ -40,7 +38,7 @@ public class Cmds {
     public static final String EDIT_USERTYPE = "Edit your Usertype :";
     public static final String EDIT_GROUP = "Edit your group :";
     public static final String EDIT_EMAIL = "Edit your email :";
-    public static final String EDIT_ORGANIZATIONCODE = "Edit your organizationCode number :";
+    public static final String EDIT_PHONE = "Edit your organizationCode number :";
     public static final String EDIT_URL = "Edit your image URL :";
 
     // Errors
@@ -62,10 +60,10 @@ public class Cmds {
     public static final String FIVE = "5.) ";
     public static final String SIX = "6.) ";
     public static final String SEVEN = "7.) ";
-
+    
     // behavior
     public static final String BR = "\n";
-
+    
     // comments
     public static final String NICE = " Nice! ";
     public static final String NOW_LOGGING = "|||_______...Logging__________|||";
@@ -79,6 +77,6 @@ public class Cmds {
         this.cmd = cmd;
     }
 
-
-
+    
+ 
 }

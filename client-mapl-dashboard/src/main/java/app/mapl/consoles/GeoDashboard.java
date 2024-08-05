@@ -1,144 +1,113 @@
 package app.mapl.consoles;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
+    public class GeoDashboard {
+    private static Map<Integer, Location> locations = new HashMap<>();
 
-public class GeoDashboard implements Map<Integer, Location> {
+        Map<String, Integer> options = null;
 
-    private static final Logger log =
-            LoggerFactory.getLogger(GeoDashboard.class);
-    //    private static Map<Integer, Location> locations = new HashMap<>();//
-//        Map<String, Integer> options = null;
-    private static Locations locations = new Locations();
-//    InputStream inputStream = getClass().getResourceAsStream("/data/locations/json/posts.json");
-    //cd C:\w\www\_groot\groot-app\src\main\java\com\friendsofgroot\app\data\locations
+    public static void mainNavigator(String[] args) throws SQLException, IOException, ClassNotFoundException {
+        Scanner scanNav;
 
-//    URL url = new URL("jar:file:/absolute/location/of/yourJar.jar!/1.txt");
-//    InputStream is = url.openStream();
-//    BufferedReader br = new BufferedReader(new InputStreamReader(is));
-//    String line = null;
-//    while ((line = br.readLine()) != null) {
-//        System.out.println(line);
-//    }
+        locations.put(0, new Location(0, "You have just quit"));
+        locations.put(1, new Location(1, "[Road]: You are now standing at the end of a road in front of a bridge"));
+        locations.put(2, new Location(2, "[Hill,w]: You are at the top of a hill"));
+        locations.put(3, new Location(3, "[Building,e]: You are in a building, with source of water, i.e. a well"));
+        locations.put(4, new Location(4, "[Valley,s]: You are in a valley beside a stream"));
+        locations.put(5, new Location(5, "[Forest,n]: You are in the forest"));
 
-    public GeoDashboard() throws IOException {
-    }
+//       keySet()
+//       manual (for now) stage location/constrations parameters
+//      Start at  road in front of Bridge
+        locations.get(1).addOption("N", 5); //     =>Forest
+        locations.get(1).addOption("E", 3); //    =>building
+        locations.get(1).addOption("S", 4); //    =>valley/stream
+        locations.get(1).addOption("W", 2); //     =>Hill
+//     locations.get(1).addOption("quit", 0);
 
-    public static void console(String args) throws SQLException, IOException, ClassNotFoundException {
+        locations.get(2).addOption("N", 5); // top of hill
 
-        Scanner scanNav = new Scanner(System.in);
-        Locations.mainLocationsTXT(new String[]{});
-        Locations.mainLocationsDAT(new String[]{});
-        Locations.mainLocationsBIN(new String[]{});
+        locations.get(3).addOption("W", 1); // in building => hill
 
+        locations.get(4).addOption("N", 1); // Valley
+        locations.get(4).addOption("W", 2);
 
-        Map<String, String> vocab_ = new HashMap<String, String>();
-        vocab_.put("QUIT", "Q");
-        vocab_.put("NORTH", "N");
-        vocab_.put("SOUTH", "S");
-        vocab_.put("WEST", "W");
-        vocab_.put("EAST", "E");
+        locations.get(5).addOption("S", 1); // Forest
+        locations.get(5).addOption("W", 2);
+        Map<String, String> vocab = new HashMap<>();
+        vocab.put("quit", "Q");
+        vocab.put("south", "S");
+        vocab.put("north", "N");
+        vocab.put("east", "E");
+        vocab.put("west", "W");
+        
 
         int loc = 1;
-//        int loc = 64;
         while (true) {
             scanNav = new Scanner(System.in);
             System.out.println(locations.get(loc).getDescription()); //startingout
             if (loc == 0) {
                 break;
             }
+            Map<String, Integer> options = locations.get(loc).getOptions();
 
-            Map<String, Integer> exits = locations.get(loc).getExits();
-            System.out.print("Available exits are ");
-            for (String exit : exits.keySet()) {
-                System.out.print(exit + ", ");
+            List<String> optionList = new ArrayList<>();
+            for (String option : options.keySet()) {
+                optionList.add(option);
             }
-            System.out.println();
-
-            String direction = scanNav.nextLine().toUpperCase();
-            if (direction.length() > 1) {
-                String[] words = direction.split(" ");
-                for (String word : words) {
-                    if (vocab_.containsKey(word)) {
-                        direction = vocab_.get(word);
-                        break;
+            System.out.println("=== Optional Directions====");
+            System.out.println(optionList.toString());
+            System.out.println("=======");
+            String direction = null;
+            if (scanNav.hasNext()) {
+                direction = scanNav.nextLine().toUpperCase();
+                if(direction.length() > 1) {
+                    String[] words = direction.split(" ");
+                    for(String word: words) {
+                        if (vocab.containsKey(word)) {
+                            direction = vocab.get(word);
+                            break;
+                        }
                     }
                 }
             }
-
-            if (exits.containsKey(direction)) {
-                loc = exits.get(direction);
-
+            if (options.containsKey(direction)) {
+                loc = options.get(direction);
             } else {
-                System.out.println("You cannot go in that direction");
+                System.out.println("Pathway restricted");
             }
         }
-        MainDashboard.console(new String[]{});
+        MainDashboard.mainConsole(new String[] {});
     }
 
-    @Override
-    public int size() {
-        return locations.size();
-    }
+        private static class Location {
+        protected final  int placeInt;
+        protected final String descript;
+        protected final Map<String, Integer> options;
 
-    @Override
-    public boolean isEmpty() {
-        return locations.isEmpty();
-    }
 
-    @Override
-    public boolean containsKey(Object key) {
-        return locations.containsKey(key);
-    }
+        public Location(int placeInt, String descript ) {
+            this.placeInt = placeInt;
+            this.descript = descript;
 
-    @Override
-    public boolean containsValue(Object value) {
-        return locations.containsValue(value);
-    }
+            this.options = new HashMap<String, Integer>();
+            this.options.put("Q", 0);
 
-    @Override
-    public Location get(Object key) {
-        return locations.get(key);
-    }
-
-    @Override
-    public Location put(Integer key, Location value) {
-        return locations.put(key, value);
-    }
-
-    @Override
-    public Location remove(Object key) {
-        return locations.remove(key);
-    }
-
-    @Override
-    public void putAll(Map<? extends Integer, ? extends Location> m) {
-
-    }
-
-    @Override
-    public void clear() {
-        locations.clear();
-
-    }
-
-    @Override
-    public Set<Integer> keySet() {
-        return locations.keySet();
-    }
-
-    @Override
-    public Collection<Location> values() {
-        return locations.values();
-    }
-
-    @Override
-    public Set<Entry<Integer, Location>> entrySet() {
-        return locations.entrySet();
+        }
+        public void addOption(String direction, int location) {
+            options.put(direction, location);
+        }
+        public int getPlaceInt(){
+            return placeInt;
+        }
+        public String getDescription() {
+            return descript;
+        }
+        public Map<String, Integer> getOptions() {
+            return new HashMap<String, Integer>(options); // returns durable, new  options
+        }
     }
 }

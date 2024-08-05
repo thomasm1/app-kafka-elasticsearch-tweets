@@ -1,55 +1,75 @@
 package app.mapl.models;
 
-import app.mapl.dto.UserDto;
-import app.mapl.exception.ApiException;
-import app.mapl.util.Shareable;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.util.AlternativeJdkIdGenerator;
+import lombok.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 
-@Setter
-	@Getter
-	@MappedSuperclass
-	@RequiredArgsConstructor
-	public abstract class Bookmark extends BaseModel implements Shareable {
+//@NoArgsConstructor
+@Data
+public class Bookmark implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+ 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	private String title;
+
+	@Column(name="profileurl")
+	private String profileUrl;
 
 
-		private String title;
+	@ManyToOne
+	@JoinColumn(name = "shared_by_userid")
+	private User sharedBy;
+//
+//	public Bookmark(long id, String title, String profileUrl) {
+//		this.id = id;
+//		this.title = title;
+//		this.profileUrl = profileUrl;
+//	}
+//
+//	public Bookmark() {
+//
+//	}
+//
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public String getTitle() {
+//		return title;
+//	}
+//
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
+//
+//	public String getProfileUrl() {
+//		return profileUrl;
+//	}
+//
+//	public void setProfileUrl(String profileUrl) {
+//		this.profileUrl = profileUrl;
+//	}
+//
+//	public boolean isWeb3Link() {
+//		return false;
+//	}
+//
+//	public User getSharedBy() {
+//		return sharedBy;
+//	}
+//    public void setSharedBy(User sharedBy) {
+//	this.sharedBy = sharedBy;
+//    }
+//	@Override
+//	public String toString() {
+//		return "Bookmark [id=" + id + ", title=" + title + ", profileUrl=" + profileUrl + "]";
+//	}
 
-		@Column(name="profileurl")
-		private String profileUrl;
-    	@JoinColumn(name = "shared_by_userid")
-		private UserDto sharedBy;
-
-		/**
-		 * @return
-		 */
-		@Override
-		public String getItemData() {
-			return null;
-		}
-
-		/**
-		 * @return
-		 */
-		@Override
-		public boolean isWeb3Link() {
-			return false;
-		}
-
-	}
+}

@@ -5,19 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name = "comments")
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // MUST BE AUTO; IDENTITY NO-GO with ORACLE
+    @GeneratedValue(strategy = GenerationType.AUTO) // MUST BE AUTO; IDENTITY NO-GO with ORACLE
     @Column(name = "id", nullable = false)
     private long id;
-
 
     private String name;
     private String email;

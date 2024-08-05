@@ -1,50 +1,49 @@
 package app.mapl.integrationTests;
 
  
-import app.mapl.dto.UserDto;
-import app.mapl.service.UsersServiceJPA;
-import lombok.extern.slf4j.Slf4j;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import app.mapl.models.User;
+import app.mapl.service.UserService;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-@Slf4j
 @TestMethodOrder(OrderAnnotation.class)
 public class UserDAOTesting {
-	private static UsersServiceJPA usersServiceJPA = new UsersServiceJPA( );
+
 	static String dynamicUsername;
 
 	@BeforeAll
 	public static void setup() {
 		dynamicUsername = "random_user" + Double.toString(Math.floor((Math.random()*31))); // should constrain this back into String form and unique
-		log.info("setup: "+ dynamicUsername);
+		System.out.println("setup: "+ dynamicUsername);
 	}
 	@Test
 	@Order(1)
 	public void add_User() throws InterruptedException {
 //		dynamicUsername = "random_user" + Double.toString(Math.floor((Math.random()*31))); // should constrain this back into String form and unique
-		UserDto u = UserDto.builder()
-				.email("user-"+Integer.valueOf(dynamicUsername)+"@gmail.com")
-				.lastName("lastName")
-				.firstName("firstName")
-				.organizationCode("orgCode")
-				.dashboardCode("dashCode")
-				.build();
-		assertEquals(usersServiceJPA.createUser(u), u);
-		log.info("added: " + dynamicUsername);
+		User u = new User( dynamicUsername, "password", "Smith", "Tom",  6, 1, "user0@cryptomaven.xyz",
+				"5055087707" ,
+				"http://www.dailytech.net",
+		"photoPath",
+				"dashboardCode",
+				0,
+				1,
+				"id"
+				);
+		assertTrue(UserService.createUser(u));
+		System.out.println("added: " + dynamicUsername);
 	}
 	@Test
 
 	@Order(2)
 	public void delete_user() throws InterruptedException {
-		log.info(	 " now deleting ; . . . .");
-		log.info(		"Thread.sleep(2000); . . . .");
+		System.out.println(		dynamicUsername + " now deleting ; . . . .");
+		System.out.println(		"Thread.sleep(2000); . . . .");
 		Thread.sleep(2000);
-		log.info(		"Thread.sleep(1000); . . . .");
+		System.out.println(		"Thread.sleep(1000); . . . .");
 		Thread.sleep(1000);
-		assertTrue(usersServiceJPA.deleteUser(String.valueOf(usersServiceJPA.getUserByEmail("random_user27@gmail.com"))));
-		log.info("deleted: " + dynamicUsername);
+		assertTrue(UserService.deleteUser(UserService.getUser("random_user27.0").getUsername()));
+		System.out.println("deleted: " + dynamicUsername);
 	}
 }

@@ -1,91 +1,86 @@
 package app.mapl.consoles;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
-@Slf4j
-@Component
-@Primary
-public class MainDashboard  {
+import app.mapl.systemUser.UserLogin;
+import app.mapl.systemUser.UserRegister;
 
-    private static final int MAIN_OPTIONS_COUNT = 8;
+import static app.mapl.cli.ClientActions.CliStaticLoader.*;
+import static app.mapl.service.CoinService.coinMarketViewAll; // 3 DB
+import static app.mapl.consoles.GeoDashboard.mainNavigator; // 7 Local
+
+
+public class MainDashboard {
+    private static final int MAIN_OPTIONS_COUNT = 7;
+
+//    public static void mainUser(String[] args) throws SQLException, ClassNotFoundException, IOException {
+//        try {
+//            /// #1  Loading Recursive Console Scanner accepting Integer Input
+//            mainConsole();
+//        } catch (Exception e) {
+//            System.out.println("oops!  mainConsole fail"+ e.getMessage());
+//
+//        }
+//    }
 
     private static void frontConsoleMenu() {
-        log.info("\n1.) Log in \n"
+        System.out.println("\n1.) Log in \n"
                 + "2.) Register  \n"
                 + "3.) Browse the lot from Oracle Database\n"
                 + "4.) Load Test Data =  cliDataLoader(); \n"
                 + "5.) Play Navigation Game [Offline] \n"
                 + "6.) Download from Web \n"
-                + "7.) Start Browsing and Buying \n"
-                + MAIN_OPTIONS_COUNT + ") Set in Motion Automated USER [Offline]\n"
+                + MAIN_OPTIONS_COUNT+") Set in Motion Automated USER [Offline]\n"
                 + "Stop Application, press '0'.\n");
     }
 
-    public static void console(String[]... args) {
+    public static void mainConsole(String[] ...args) {
 
-        log.info("Now Loading frontConsoleMenu()");
+        System.out.println("Now Loading frontConsoleMenu()");
         frontConsoleMenu();
-        try (Scanner newScan = new Scanner(System.in)) {
-
+        try (Scanner newScan = new Scanner(System.in)) {;
             boolean hasNextInt = newScan.hasNextInt();
             int val = newScan.nextInt();
             try {
-                // After stack return & Break, back to console
                 if (val < 0 | val > MAIN_OPTIONS_COUNT | !hasNextInt) {
-                    log.info("Please enter valid choices: 0-" + MAIN_OPTIONS_COUNT);
-
-
+                    System.out.println("Please enter valid choices: 0-"+MAIN_OPTIONS_COUNT);
                     // RECURSE
+                    mainConsole();
                 } else {
                     switch (val) {
                         case 1: {
-                            UserDashboard.UserLogin.login();
+                            UserLogin.login();
                             break;
                         }
                         case 2: {
-                            log.info("\n Initiating Local Oracle Database....USERS");
-
                             UserRegister.register();
                             break;
                         }
                         case 3: {
-                            log.info("\n [disabled] , Initiating Local Oracle Database....");
-//                            coinMarketViewAll();
+                            System.out.println("\n Ok, Accessing DB ...please enjoy your browsing....");
+                            coinMarketViewAll(); // Browse the lot from Oracle Database\n"
                             break;
                         }
                         case 4: {
-                            System.out.println("\n Ok,[disabled]  Initiating Local Offline User Details Loader....");
-//                            UserDetailsCommanLineRunner cliDataLoader = new UserDetailsCommanLineRunner();
-//                            cliDataLoader.run();  // Local Offline Automated USER
+                            System.out.println("\n Ok, Initiating Local Offline Data Loader....");
+                            cliStaticDataLoader();  // Local Offline Automated USER
                             break;
                         }
                         case 5: {
-                            System.out.println("\n Ok, #5 ...");
-                             GeoDashboard.console(Arrays.toString(new String[]{"/data/locations/json/posts.json"})); //{"any", "options"
+                            System.out.println("\n Ok, #4 ...");
+                            mainNavigator(new String[]{}); //{"any", "options"});
                             break;
                         }
                         case 6: {
-                            System.out.println("\n   #6,[disabled]  runDownloaderJob();...");
-//                            runDownloaderJob();
-                            break;
-                        }
-                        case 7: {
-                            System.out.println("\n   #7 [disabled] startBrowsingBuying();");
-//                            startBrowsingBuying();
+                            System.out.println("\n   #5, runDownloaderJob();...");
+                            runDownloaderJob();
                             break;
                         }
                         case MAIN_OPTIONS_COUNT: {
-                            System.out.println("\n   #8 () Opening MaPLControl...");
-
-                            console( );
+                            System.out.println("\n   #6 startBrowsingBuying();");
+                            startBrowsingBuying();
                             break;
                         }
                         case 0: {
@@ -95,24 +90,27 @@ public class MainDashboard  {
                             break;
                         }
                     }
+                    mainConsole();// After stack return & Break, back to console
                 }
-                console();
 
             } catch (InputMismatchException e) {
                 System.out.println("InputMismatchException, Inputs! must choose 1,2,3,4... ");
-                console();
-            } catch (SQLException e) {
+                mainConsole();
+            }  catch (SQLException e) {
                 System.out.println("SQLException: " + e.getMessage());
-                console();// RECURSE
+                mainConsole();// RECURSE
             } catch (IOException e) {
                 System.out.println("IOException: " + e.getMessage());
-                console();  // RECURSE
+                mainConsole();  // RECURSE
             } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                System.out.println("Oops, ClassNotFoundException " + e.getMessage());
+                mainConsole();   // RECURSE
             }
-            console();
+            mainConsole();
 
         }
     }
+
+
 
 }

@@ -1,29 +1,17 @@
-<web-app version="5.0"
-         xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
-    <display-name>mapl</display-name>
-    <servlet>
-        <servlet-name>jakarta.ws.rs.core.Application</servlet-name>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>jakarta.ws.rs.core.Application</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
-
-<!--    <servlet>-->
-<!--        <servlet-name>MasterServlet</servlet-name>-->
-<!--        <display-name>MasterServlet</display-name>-->
-<!--        <description></description>-->
-<!--        <servlet-class>servproject1.MasterServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>MasterServlet</servlet-name>-->
-<!--        <url-pattern>*.do</url-pattern>-->
-<!--    </servlet-mapping>-->
+<web-app>
+<!--  <display-name>newtech</display-name>-->
+<!--  <servlet>-->
+<!--    <servlet-name>MasterServlet</servlet-name>-->
+<!--    <display-name>MasterServlet</display-name>-->
+<!--    <description></description>-->
+<!--    <servlet-class>servproject1.MasterServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>MasterServlet</servlet-name>-->
+<!--    <url-pattern>*.do</url-pattern>-->
+<!--  </servlet-mapping>-->
 </web-app>
-

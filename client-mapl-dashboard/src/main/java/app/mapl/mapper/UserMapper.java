@@ -1,21 +1,22 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.UserDto;
-import app.mapl.dto.UserEntityDto;
 import app.mapl.models.User;
-import app.mapl.models.UserEntity;
+import app.mapl.dto.UserDto;
 import org.mapstruct.*;
 
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+import java.util.List;
 
+@Mapper(componentModel = "spring")
 public interface UserMapper {
+//    @Mapping(  target = "username", expression = "java(user.getEmail().truncate(10))")
+//    @Mapping(source = "id", target sss
+
+
     User toEntity(UserDto userDto);
 
     UserDto toDto(User user);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     User partialUpdate(UserDto userDto, @MappingTarget User user);
-
-    UserEntity toUserEntity(UserEntityDto uerEntityDto);
 }

@@ -2,19 +2,17 @@ package app.mapl.models;
 
 import lombok.Data;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Version;
-
-import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
 import java.util.Date;
 
 @Data
-public class AbstractDomainClass implements Serializable {
+public class AbstractDomainClass implements DomainObject {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.AUTO)
         Integer id;
 
         @Version

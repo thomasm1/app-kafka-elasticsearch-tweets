@@ -136,7 +136,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n \r\n        \"username\": \"Tom13@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom1\",\r\n        \"userType\": 3,\r\n        \"phone\": \"123412123421\",\r\n        \"email\": \"Tom13@gmail.com\",\r\n        \"cusUrl\": \"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ]\r\n    }"
+					"raw": "{\r\n \r\n        \"username\": \"Tom13@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom1\",\r\n        \"userType\": 3,\r\n        \"organizationCode\": \"123412123421\",\r\n        \"email\": \"Tom13@gmail.com\",\r\n        \"cusUrl\": \"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ]\r\n    }"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/api/users",
@@ -197,7 +197,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"userId\": 211,\r\n        \"username\": \"Tom1@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom1\",\r\n        \"userType\": 3,\r\n        \"phone\": \"123412123421\",\r\n        \"email\": \"Tom1@gmail.com\",\r\n        \"cusUrl\": \"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ]\r\n    }",
+					"raw": "{\r\n        \"userId\": 211,\r\n        \"username\": \"Tom1@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom1\",\r\n        \"userType\": 3,\r\n        \"organizationCode\": \"123412123421\",\r\n        \"email\": \"Tom1@gmail.com\",\r\n        \"cusUrl\": \"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -228,7 +228,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"userId\": 6,\r\n        \"userName\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"phone\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"1\"\r\n    }",
+					"raw": "{\r\n        \"userId\": 6,\r\n        \"username\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"organizationCode\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"1\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -387,7 +387,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"description\": \"description\",\r\n           \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"address\": \"address\",\r\n    \"chain\": \"chain\",\r\n    \"iconUrl\": \"iconUrl\",\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n    \"user\":  { \r\n              \"username\": \"thomas1.maestas@gmail.com\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"groupType\": \"userGroup\",\r\n        \"email\": \"thomas.maestas@hotmail.com\",\r\n        \"userId\": \"1\",\r\n        \"lname\": \"Smith\",\r\n        \"fname\": \"Tom\"\r\n    },\r\n    \"chainId\": 0\r\n}"
+					"raw": "{ \r\n    \"description\": \"description\",\r\n           \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"address\": \"address\",\r\n    \"chain\": \"chain\",\r\n    \"iconUrl\": \"iconUrl\",\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n    \"user\":  { \r\n              \"username\": \"thomas1.maestas@gmail.com\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"groupType\": \"dashboardCode\",\r\n        \"email\": \"thomas.maestas@hotmail.com\",\r\n        \"userId\": \"1\",\r\n        \"lname\": \"Smith\",\r\n        \"fname\": \"Tom\"\r\n    },\r\n    \"chainId\": 0\r\n}"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/api/addresses",

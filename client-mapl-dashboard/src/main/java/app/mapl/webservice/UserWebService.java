@@ -3,82 +3,81 @@ package app.mapl.webservice;
 import java.io.IOException;
 import java.util.List;
 
-import app.mapl.dto.UserDto;
-import app.mapl.models.User;
-import app.mapl.repositories.UsersRepository;
-import app.mapl.service.UsersServiceJPA;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-@Slf4j
-@Service
+import app.mapl.models.User;
+import app.mapl.service.UserService;
+
 public class UserWebService {
-	UsersRepository usersRepository;
-	public void createUser(HttpServletRequest request, HttpServletResponse response) {
+
+	public static void createUser(HttpServletRequest request, HttpServletResponse response) {
 
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.SQLDriverManager"));
-			log.info("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
+			System.out.println("... JDBC Drive successfully connected.");
 			
 		} catch (ClassNotFoundException e1) {
-			log.info("oops, Driver not found :-O...\n" +e1);
+			System.out.println("oops, Driver not found :-O...\n" +e1);
 //			e1.printStackTrace();
 		}
 //		int userId = Integer.parseInt(request.getParameter("id"));
 		int groupsId = Integer.parseInt(request.getParameter("groupsId"));
-		log.info(String.valueOf(groupsId));
-		String email = request.getParameter("email");
-		log.info(email);
+		System.out.println(groupsId);
+		String username = request.getParameter("username");
+		System.out.println(username);
 		String password = request.getParameter("password");
-		 email = request.getParameter("email");
+		String email = request.getParameter("email");
 
 //		 add db using these fields
 //		"user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net"
 //		User d = new User(999, groupsId,  username, password, email);
-//		log.info("UserWebService: "+d);
+//		System.out.println("UserWebService: "+d);
 
 		// Call UserService to add it.
-	    usersRepository.save(new User(1, "t@t.com", "password", "lastNamedd", "firstnam", 1,   "5055087707" ,"user4@cryptomaven.xyz","http://www.dailytech.net", "photopaath", 0,0,null ));
+		UserService.createUser(new User("user4", "passwordX", "Smith", "Tom", 3, 1, "user4@cryptomaven.xyz",  "5055087707" ,"http://www.dailytech.net", "photopaath", "usergrup",0,0,"id"));
 
 		try {
-			response.getWriter().append("Successfully added data to ORACLE (AWS) input: ").append(request.getContextPath());
+			response.getWriter().append("Successfully added data to ORACLE (AWS) input: " + request.getContextPath());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 	}
  
-	public   void getUser(HttpServletRequest request, HttpServletResponse response) {
+	public static void getUser(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("userId"));
-		log.info("id: " + id);
+		System.out.println("id: " + id);
 		
-		String email = request.getParameter("email");
-		log.info("parameter: "+email);
-		User u = usersRepository.findByEmail(email).orElseThrow();
-		log.info("getUser(name):"+u.getEmail());
-
-		User d = usersRepository.findByEmail(u.getEmail()).orElseThrow();
-
-		String dbUser = d.getEmail();
-		int dbId = Integer.parseInt(d.getUserId());
-		log.info(dbUser+"..getting userInfo:" );
+		String username = request.getParameter("username");
+		System.out.println("parameter: "+username);
+		User u = UserService.getUser(username);
+		System.out.println("getUser(name):"+u.getUsername());
+		
+		User d = UserService.getUser(u.getUsername());
+		System.out.println("getUser(name):"+d.getUserId());
+		 
+		String dbUser = d.getUsername();
+		int dbId = d.getUserId();
+		int dbGroups = d.getGroups();
+		System.out.println(dbUser+"..getting userInfo:" );
 
 		HttpSession sess = request.getSession();   
 		sess.setAttribute("sessionId", sess.getId());
 		sess.setAttribute("useradminname", dbUser);
 		sess.setAttribute("useradminid", dbId);
+		sess.setAttribute("usergroups", dbGroups);
 
 		Cookie sessUser = new Cookie("sessUser", dbUser);
 		Cookie sessId = new Cookie("sessId", Integer.toString(dbId));
+		Cookie sessGroups = new Cookie("sessGroups", Integer.toString(dbGroups));
 		response.setContentType("text/html"); 
 		response.addCookie(sessId);
 		response.addCookie(sessUser);
+		response.addCookie(sessGroups);
  
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
@@ -94,14 +93,14 @@ public class UserWebService {
 		}  
 	}
 
-//	int userId, int groupsId, int superId, String email, String password, String email
+//	int userId, int groupsId, int superId, String username, String password, String email
 
-	public   void listUser(HttpServletRequest request, HttpServletResponse response) {
+	public static void listUser(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<User> d = usersRepository.findAll();
+		List<User> d = UserService.getUsers();
+		
 
-
-		log.info(d.toString());
+		System.out.println(d);
 
 		ObjectMapper om = new ObjectMapper();
 		try {
@@ -117,11 +116,11 @@ public class UserWebService {
 	}
 
 	public static void register(HttpServletRequest request, HttpServletResponse response) {
-		log.info("register");
+		System.out.println("register");
 	}
 
 	public static void update(HttpServletRequest request, HttpServletResponse response) {
-		log.info("update");
+		System.out.println("update");
 	}
 
 	public static void delete(HttpServletRequest request, HttpServletResponse response) {

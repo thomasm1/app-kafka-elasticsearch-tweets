@@ -19,7 +19,7 @@ public class ErrorDetailsDto implements Serializable {
     private  String message;
     private  String details;
 
-    public ErrorDetailsDto( List<Map<String,String>> errors, Date timestamp, String message, String details) {
+    public ErrorDetailsDto(List<Map<String,String>> errors, Date timestamp, String message, String details) {
         this.errors = errors;
         this.timestamp = timestamp;
         this.message = message;

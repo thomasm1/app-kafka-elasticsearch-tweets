@@ -36,19 +36,14 @@ public class Utilities {
         if (args.length < 1) return;
         if (args.length < 2) {
             if (args[0].matches("quit|exit|q")) {
-                MainDashboard.console();
+                MainDashboard.mainConsole();
             }
         } else {
             for (String s : args) {
                 if (s.matches("quit|exit|q")) {
-                    MainDashboard.console();
+                    MainDashboard.mainConsole();
                 }
             }
         }
-    }
-
-    public static boolean isAValidEmailAddress(String email) {
-        if (email == null) return false;
-        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
     }
 }

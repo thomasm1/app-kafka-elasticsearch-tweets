@@ -1,34 +1,38 @@
 package app.mapl.dto;
 
-import app.mapl.models.RoleEntity;
+import app.mapl.models.Address;
 import lombok.*;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
-
-//@NoArgsConstructor
-@Builder
-@RequiredArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto  implements Serializable {
-    static final long serialVersionUID = 1L;
-    private int userId; // userId;
-    private String email;
-    private String password;
-    private String lastName;
-    private String firstName;
-    private int userType;
+
+    @Id
+    private int userId; // userId
+    private String username;
+    private String lastName; // lastName
+    private String firstName; // firstName
     private String organizationCode;
 
-    private String dashboardCode;
+    private String dashboardCode; // usergroup
+    private String cusUrl; // usergroup
+    private int userType;
+    private String email;
+    private int contactType;
+    private int isActive;
 
-    // parent of many
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
 
-    private Set<RoleEntity> roles;
+    private String id; // id
 
+    private List<Address> addresses ;
+
+    public String getPassword() {
+        return username; // for/admin
+    }
 }

@@ -1,18 +1,8 @@
 package app.mapl.controllerTests;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class sddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddMaPLInvokerTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
+class MaPLInvokerTest {
 
     @Test
     void register() {
@@ -40,5 +30,9 @@ class sddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 
     @Test
     void execute() {
+    }
+
+    @Test
+    void testExecute() {
     }
 }

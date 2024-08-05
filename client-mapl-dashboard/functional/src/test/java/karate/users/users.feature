@@ -21,20 +21,20 @@ Feature:  users karate test script
   Scenario: create a user and then get it by id
 
     * def rando = Math.floor(Math.random() * 1031)
-    * def userNameEmail = "user"+rando+"@gmail.com"
+    * def usernameEmail = "user"+rando+"@gmail.com"
     * def dashboardCode = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
-    * print "_______________________ID____:" + userNameEmail
+    * print "_______________________ID____:" + usernameEmail
     * def user =
       """
   {
 
-  "username": '#(userNameEmail)',
+  "username": '#(usernameEmail)',
   "password": "$2a$10$j/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6",
   "lastName": "Smith",
   "firstName": "Tom1",
   "userType": 3,
-  "phone": "5051231234",
-  "email":'#(userNameEmail)',
+  "organizationCode": "5051231234",
+  "email":'#(usernameEmail)',
   "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg",
   "dashboardCode": '#(dashboardCode)',
   "isActive": 0,
@@ -83,19 +83,19 @@ Feature:  users karate test script
   Scenario Outline: Update a user, get it by id, verify changes
     * def rando = Math.floor(Math.random() * 100)
     * def dashboardCode = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
-    * def userNameEmail = "user"+rando+"@gmail.com"
-    * print "_______________________ID____" + userNameEmail
+    * def usernameEmail = "user"+rando+"@gmail.com"
+    * print "_______________________ID____" + usernameEmail
     * def user =
       """
   {
 
-      "username": '#(userNameEmail)',
+      "username": '#(usernameEmail)',
       "password": "$2a$10$j/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6",
       "lastName": "Maestas",
       "firstName": "Tom2",
       "userType": 3,
-      "phone": "5055087707",
-      "email":'#(userNameEmail)',
+      "organizationCode": "5055087707",
+      "email":'#(usernameEmail)',
       "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg",
       "dashboardCode": '#(dashboardCode)',
       "isActive": 0,
@@ -140,7 +140,7 @@ Feature:  users karate test script
     "lastName":'##string',
     "firstName":'##string',
     "userType":'##number',
-    "phone":'##string',
+    "organizationCode":'##string',
     "email":'##string',
     "cusUrl":'##string',
     "dashboardCode":'##string',

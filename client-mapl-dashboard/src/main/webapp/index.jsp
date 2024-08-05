@@ -197,6 +197,7 @@
 				<div id="mouse"></div>
 			</div>
 
+			<div id="ckmeans"></div>
 		</div>
 
 	</div>
@@ -216,7 +217,7 @@
 <script src="lib/babel.6.10.3.min.js"></script>
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js'></script> -->
 <script lang="babel" type="text/babel" src="js/populations.js">
-
+        //ckmeans
       </script>
 <!-- <script lang="babel" type="text/babel"    src='dataVisuals/indexModule.js'></script>
 <script  lang="babel" type="text/babel"   src='dataVisuals/index.js'></script> -->

@@ -1,6 +1,7 @@
 package app.mapl.util.methods;
 
-import app.mapl.service.UsersServiceJPA;
+import org.springframework.beans.factory.annotation.Autowired;
+import app.mapl.service.UserService;
 
 import java.time.temporal.Temporal;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 public class StringService {
 
-    private UsersServiceJPA userService;
+    private UserService userService;
     private int i;
 
 
@@ -20,7 +21,7 @@ public class StringService {
      * @param string
      * @return
      */
-
+    @Autowired
     public String reverse(String string) {
 	//	StringBuilder sb = new StringBuilder(string);
 	//	return sb.reverse().toString();
@@ -136,7 +137,7 @@ public class StringService {
     /**
      * 5. Clean up user-entered organizationCode numbers so that they can be sent SMS messages.
      * <p>
-     * The North American Numbering Plan (NANP) is a teleorganizationCode numbering system used
+     * The North American Numbering Plan (NANP) is a telephone numbering system used
      * by many countries in North America like the United States, Canada or Bermuda.
      * All NANP-countries share the same international country code: 1.
      * <p>
@@ -151,7 +152,7 @@ public class StringService {
      * 1 (NXX)-NXX-XXXX where N is any digit from 2 through 9 and X is any digit
      * from 0 through 9.
      * <p>
-     * Your task is to clean up differently formatted teleorganizationCode numbers by removing
+     * Your task is to clean up differently formatted telephone numbers by removing
      * punctuation and the country code (1) if present.
      * <p>
      * For example, the inputs
@@ -164,7 +165,7 @@ public class StringService {
      * Note: As this exercise only deals with telephone numbers used in
      * NANP-countries, only 1 is considered a valid country code.
      */
-    public String cleanOrganizationCodeNumber(String string) {
+    public String cleanPhoneNumber(String string) {
         // TODO Write an implementation for this method declaration
         return null;
     }

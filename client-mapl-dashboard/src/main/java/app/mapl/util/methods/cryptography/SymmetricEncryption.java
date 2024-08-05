@@ -1,7 +1,6 @@
 package app.mapl.util.methods.cryptography;
 
 import javax.crypto.*;
-
 import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -16,6 +15,8 @@ public class SymmetricEncryption {
             generator = KeyGenerator.getInstance("AES");
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
+        } catch (GeneralSecurityException e2) {
+            throw new RuntimeException(e2);
         }
 
         //specifiy want a key length of 192 bits, for AES

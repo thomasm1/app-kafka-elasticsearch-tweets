@@ -1,9 +1,7 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.PostEntityDto;
 import app.mapl.models.Comment;
-import app.mapl.dto.CommentDto;
-import app.mapl.models.PostEntity;
+import app.mapl.models.CommentDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
@@ -11,7 +9,7 @@ public interface CommentMapper {
     Comment toEntity(CommentDto commentDto);
 
     CommentDto toDto(Comment comment);
-    PostEntity map(PostEntityDto value);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Comment partialUpdate(CommentDto commentDto, @MappingTarget Comment comment);
 }

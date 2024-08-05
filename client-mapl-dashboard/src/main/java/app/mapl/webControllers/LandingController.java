@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("username")
 public class LandingController {
 
-	@RequestMapping(value="/v1/landing",method = RequestMethod.GET)
+	@RequestMapping(value="/landing",method = RequestMethod.GET)
 	public String gotoLandingPage(ModelMap model) {
 //		model.put("username", getLoggedinUsername());
 		model.put("username", "thomas");

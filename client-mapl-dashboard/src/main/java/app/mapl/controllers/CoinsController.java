@@ -1,61 +1,52 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.CoinDto;
+import app.mapl.models.Coin;
 import app.mapl.service.CoinsService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/coins")
+@RequestMapping("/api")
 @RestController
 public class CoinsController {
+    @Autowired
+    CoinsService coinsService;
 
-    public CoinsService coinsService;
+    @RequestMapping(value = "/coins", method = RequestMethod.POST, consumes = "application/json")
+    public Coin createCoin(@RequestBody Coin c) {
+        return coinsService.createCoin(c);
+    }
+    @GetMapping(value = "/coins/{coinId}")
+    public Coin getCoin(@PathVariable("coinId") int coinId) {
 
-    public CoinsController(CoinsService coinsService) {
-        this.coinsService = coinsService;
+        return coinsService.getCoin(coinId);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<CoinDto> createCoin(@RequestBody CoinDto c) {
-
-        return new ResponseEntity<>(coinsService.createCoin(c), HttpStatus.CREATED);
-    }
-    @GetMapping(value = "{coinId}")
-    public ResponseEntity<CoinDto> getCoin(@PathVariable("coinId") int coinId) {
-
-        return new ResponseEntity<>(coinsService.getCoin(coinId), HttpStatus.OK);
+    @GetMapping(value = "/coins/{username}")
+    public List<Coin> getAllCoinsIOwn(@PathVariable("username") String username) {
+        return null; // coinsService.getAllCoinsIOwn(username);
     }
 
-    @GetMapping(value = "{username}")
-    public ResponseEntity<List<CoinDto>> getAllCoinsCust(@PathVariable("username") String username) {
-        return   new ResponseEntity<>(coinsService.getAllCoinsIOwn(username), HttpStatus.OK);
+    @GetMapping(value = "/coins")
+    public List<Coin> getAllCoins() {
+        return coinsService.getAllCoins();
     }
 
-    @GetMapping(value = "")
-    public ResponseEntity<List<CoinDto>> getAllCoins() {
-
-        return new ResponseEntity<>(coinsService.getAllCoins(), HttpStatus.OK);
+    @GetMapping(value = "/coins/{id}")
+    public List<Coin> getAllCoinsCust(@PathVariable("id") int id) {
+        return coinsService.getAllCoinsCust();
     }
-
-    @GetMapping(value = "{id}")
-    public ResponseEntity<List<CoinDto>> getAllCoinsCust(@PathVariable("id") int id) {
-        return new ResponseEntity<>(coinsService.getAllCoinsCust(), HttpStatus.OK);
+   @PutMapping(value = "/coins", consumes = "application/json")
+    public Coin updateCoin(@RequestBody Coin change) {
+        return coinsService.updateCoin(change);
     }
-   @PutMapping(value = "", consumes = "application/json")
-    public ResponseEntity<CoinDto> updateCoin(@RequestBody CoinDto change) {
-        return new ResponseEntity<>( coinsService.updateCoin(change), HttpStatus.CREATED);
+    @DeleteMapping(value = "/coins/{coinId}")
+    public boolean deleteCoin(@PathVariable("coinId") int coinId) {
+        return coinsService.deleteCoin(coinId);
     }
-    @DeleteMapping(value = "{coinId}")
-    public ResponseEntity<Boolean> deleteCoin(@PathVariable("coinId") int coinId) {
-        return new ResponseEntity<>(coinsService.deleteCoin(coinId), HttpStatus.OK);
-    }
-    @GetMapping(value = "/market")
+    @GetMapping(value = "/coins/market")
     public void coinMarketViewAll() {
         coinsService.coinMarketViewAll();
     }

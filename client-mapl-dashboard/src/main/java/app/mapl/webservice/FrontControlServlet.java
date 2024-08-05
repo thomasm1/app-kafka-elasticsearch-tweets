@@ -4,12 +4,12 @@ import app.mapl.models.User;
 
 import java.io.IOException;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/data/*")
 public class FrontControlServlet extends HttpServlet {
@@ -37,9 +37,10 @@ public class FrontControlServlet extends HttpServlet {
 //		System.out.println("getCookies"+Arrays.asList(request.getCookies()));
 
 		User u = new User();
+		u.setUserId(1);
 		u.setFirstName("John");
 		u.setLastName("Doe");
-
+		u.setCusUrl("https://www.google.com");
 		u.setEmail("thomas.maestas@hotmail.com");
 
 		HttpSession sess = request.getSession();

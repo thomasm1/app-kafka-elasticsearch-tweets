@@ -1,18 +1,15 @@
 package app.mapl.models;
 
 
-import jakarta.persistence.*;
+
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
-@Builder
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "cointable")
 public class Coin implements Serializable {
@@ -20,7 +17,7 @@ public class Coin implements Serializable {
 	@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
 //	@SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "coinid", nullable = false)
 	int coinId;
 	@Column(name = "cointoken")
@@ -29,38 +26,8 @@ public class Coin implements Serializable {
 	String coinSymbol;
 	@Column(name = "pricetotal")
 	double priceTotal;
-	@Column(name = "amounttotal")
-	double amountTotal;
 
 	int purchased;
-
-    public Coin(int coinid, String coinToken, String coinSymbol, double priceTotal, double amountTotal, int purchased) {
-		this.coinId = coinid;
-		this.coinToken = coinToken;
-		this.coinSymbol = coinSymbol;
-		this.priceTotal = priceTotal;
-		this.amountTotal = amountTotal;
-		this.purchased = purchased;
-	}
-
-	public Coin(int coinid, String coinToken, String coinSymbol, double priceTotal, int amountTotal , int purchased ){
-		this.coinId = coinid;
-		this.coinToken = coinToken;
-		this.coinSymbol = coinSymbol;
-		this.priceTotal = priceTotal;
-		this.amountTotal = amountTotal;
-		this.purchased = purchased;
-	}
-
-	public Coin(int coinid, String coinToken, String coinSymbol, double priceTotal, int amountTotal  ){
-		this.coinId = coinid;
-		this.coinToken = coinToken;
-		this.coinSymbol = coinSymbol;
-		this.priceTotal = priceTotal;
-		this.amountTotal = amountTotal;
-		this.purchased = 1;
-	}
-
 
 	public int isPurchased() {
 		return 0;
@@ -71,19 +38,4 @@ public class Coin implements Serializable {
 	 * *purchased = 1 ; (not) purchased = 0
 	 */
 
-	@Override
-	public final boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null) return false;
-		Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-		Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
-		if (thisEffectiveClass != oEffectiveClass) return false;
-		Coin coin = (Coin) o;
-		return false;
-	}
-
-	@Override
-	public final int hashCode() {
-		return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
-	}
 }

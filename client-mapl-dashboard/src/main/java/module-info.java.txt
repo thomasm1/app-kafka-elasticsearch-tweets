@@ -1,4 +1,4 @@
-module client-mapl {
+module cli {
     requires spring.data.jpa;
     requires spring.boot.autoconfigure;
     requires spring.boot;

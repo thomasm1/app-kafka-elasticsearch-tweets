@@ -1,98 +1,44 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.JWTAuthResponse;
-import app.mapl.dto.LoginDto;
-import app.mapl.dto.RegisterDto;
 import app.mapl.dto.UserDto;
 import app.mapl.exception.ResourceNotFoundException;
-import app.mapl.service.UsersService;
+import app.mapl.mapper.UserMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.ConstraintViolationException;
-import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import app.mapl.models.User;
+import app.mapl.service.UsersService;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
+@CrossOrigin(origins = "*")
+@RequestMapping("/rest")
+@RestController
 @Tag(
         name = "CRUD REST APIs for User Resource",
         description = "CRUD REST APIs - Create User, Update User, Get User, Get All Users, Delete User"
 )
-@CrossOrigin(origins = "*")
-@RequiredArgsConstructor
-@RestController
-@SessionAttributes("name")
 public class UsersController {
-    static final Logger log = LoggerFactory.getLogger(UsersController.class);
-
-    private PasswordEncoder bcrypt;
-
-    private UsersService usersService;
     public static final String USER_PATH = "/api/users";
     public static final String USER_PATH_ID = USER_PATH + "/{userId}";
+    private final UserMapper userMapper;
 
-    @Autowired
-    public UsersController( UsersService usersService ) {
+    private final UsersService usersService;
 
+    public UsersController(UserMapper userMapper, UsersService usersService) {
+        this.userMapper = userMapper;
         this.usersService = usersService;
     }
 
-
-    @Operation(
-            summary = "login User By ID REST API and JWT Authentication",
-            description = "login User By ID REST API is used to get a single user from the database"
-    )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status 200 SUCCESS"
-    )
-    @PostMapping(value = {"/auth/login", "/auth/signin"}, consumes = "application/x-www-form-urlencoded; charset=utf-8")
-    public ResponseEntity<LoginDto> loginUser(@RequestParam String usernameOrEmail, @RequestParam String password
-    ) {
-        LoginDto ldto = new LoginDto();
-        ldto.setUsernameOrEmail(usernameOrEmail);
-        log.info("Login user usernameOrEmail =========={}", usernameOrEmail);
-        log.info("Login user password =========={}", password);
-
-        ldto.setPassword(bcrypt.encode(password));
-        log.info(" ldto.setPassword(bcrypt.encode(password)) =========={}", ldto.getPassword());
-
-        return new ResponseEntity<>(ldto,HttpStatus.CREATED);
-    }
-
-    @Operation(
-            summary = "Create User REST API  registerUser",
-            description = "Create User REST API is used to save user in a database"
-    )
-    @ApiResponse(
-            responseCode = "201",
-            description = "HTTP Status 201 CREATED"
-    )
-    @PostMapping(value = {"/auth/register", "/auth/signup"}, consumes = "application/x-www-form-urlencoded; charset=utf-8")
-    public ResponseEntity<String> registerUser(@RequestParam String email, @RequestParam String password,
-                                               @RequestParam String firstName, @RequestParam String lastName) {
-        RegisterDto rdto = new RegisterDto();
-        rdto.setEmail(email);
-        rdto.setPassword(bcrypt.encode(password));
-        rdto.setFirstName(firstName);
-        rdto.setLastName(lastName);
-//        String response = authService.register(rdto);
-        return new ResponseEntity<>(rdto.toString(), HttpStatus.CREATED);
-//        return new ResponseEntity<>(
-//                usersService.registerUser(rdto);,
-//                HttpStatus.CREATED);
-    }
 
     @Operation(
             summary = "Get All Users REST API",
@@ -126,7 +72,7 @@ public class UsersController {
     // http://localhost:8080/api/users/1
     @GetMapping(value = USER_PATH_ID)
     public ResponseEntity<UserDto> getUser(@PathVariable("userId") int userId) {
-        if(usersService.getUser(userId).isEmpty()) {
+        if (usersService.getUser(userId).isEmpty()) {
             throw new ResourceNotFoundException("User " + userId + "not found");
         }
         return new ResponseEntity<>(usersService.getUser(userId).get(), HttpStatus.OK);
@@ -140,15 +86,16 @@ public class UsersController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    @GetMapping(value = USER_PATH+ "/email/{email}")
+    @GetMapping(value = USER_PATH + "/email/{email}")
     public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) {
-        if(usersService.getUser(email).isEmpty()) {
+        if (usersService.getUser(email).isEmpty()) {
             throw new ResourceNotFoundException("User " + email + "not found");
         }
         return new ResponseEntity<>(usersService.getUser(email).get(), HttpStatus.OK);
     }
 
     /// Non-Register Creation Request
+
     @PostMapping(USER_PATH)
     public ResponseEntity createUser(@RequestBody UserDto user) {
         UserDto savedUser = usersService.createUser(user);
@@ -170,13 +117,11 @@ public class UsersController {
     )
     @PutMapping(value = USER_PATH + "/{userId}", consumes = "application/json")  // userId in body
     public ResponseEntity<UserDto> updateUser(@PathVariable("userId") int userId, @RequestBody UserDto userDto) {
-        Optional<UserDto> updated = usersService.updateUser( userDto);
+        Optional<UserDto> updated = usersService.updateUser(userDto);
         return updated.map(dto -> new ResponseEntity<>(
                 dto,
                 HttpStatus.CREATED)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
-
-
 
 
     @Operation(
@@ -195,8 +140,6 @@ public class UsersController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
 
 
     @Operation(
@@ -228,5 +171,11 @@ public class UsersController {
             return new ResponseEntity<>(boolSuccess, HttpStatus.NO_CONTENT);
         }
     }
+
+//    public List<String> getUsersByCoins();
+
+//    public User getUserByPassword(String username, String password) {
+//        return null;
+//    }ResponseEntity
 
 }

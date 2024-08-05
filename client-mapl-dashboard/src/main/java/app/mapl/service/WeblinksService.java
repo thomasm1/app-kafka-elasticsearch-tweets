@@ -1,17 +1,17 @@
 package app.mapl.service;
 
-import app.mapl.dto.WeblinkDto;
+import app.mapl.models.Weblink;
 
 import java.util.List;
 
 public interface WeblinksService {
-    public WeblinkDto createWeblinks(WeblinkDto bkmk);
+    public Weblink createWeblinks(Weblink bkmk);
 
-    public WeblinkDto getWeblinks(long id);
+    public Weblink getWeblinks(long id);
 
-    public List<WeblinkDto> getAllWeblinks();
+    public List<Weblink> getAllWeblinks();
 
-    public WeblinkDto updateWeblinks(WeblinkDto change);
+    public Weblink updateWeblinks(Weblink change);
 
     public boolean deleteWeblinks(long id);
 

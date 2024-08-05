@@ -3,6 +3,8 @@ package app.mapl.dto;
 import app.mapl.models.PostEntity;
 import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
+
 import java.io.Serializable;
 
 /**
@@ -20,17 +22,17 @@ public class PostEntityDto implements Serializable {
     private String monthOrder;
     private String cat3;
 
-//    @NotEmpty
+    @NotEmpty
 //    @Size(min = 10, message="Post title should have at least 10 characters")
     private String title;
 
-//    @NotEmpty
+    @NotEmpty
     private String post;
     private String blogcite;
 
-    private String email;
+    private String username;
 
     private Long categoryId;
 
-//    private Set<app.mapl.dto.CommentDto> comments;
+//    private Set<CommentDto> comments;
 }

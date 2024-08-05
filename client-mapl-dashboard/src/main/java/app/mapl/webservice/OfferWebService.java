@@ -1,66 +1,79 @@
 package app.mapl.webservice;
 
-import app.mapl.repositories.OffersRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import app.mapl.models.Offer;
+import app.mapl.service.OfferService;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
-@Slf4j
-@Service
 public class OfferWebService  {
-	OffersRepository offersRepository;
-	public   void addOffer(HttpServletRequest request, HttpServletResponse response) {
 
+	public static void addOffer(HttpServletRequest request, HttpServletResponse response) {
+
+//		int reqId = Integer.parseInt(request.getParameter("reqId"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
 
+		String reqName = request.getParameter("reqName");
+		String reqType = request.getParameter("reqType");
+		String reqDesc = request.getParameter("reqDesc");
+
+		String reqJustify = request.getParameter("reqJustify");
+		String reqDatetime = request.getParameter("reqDatetime");
+		String reqPlace = request.getParameter("reqPlace");
+
+		String reqGradeType = request.getParameter("reqGradeType");
+		String reqGradePass = request.getParameter("reqGradePass");
+		double reqAmt = Double.parseDouble(request.getParameter("reqAmt"));
+//		int stage = Integer.parseInt(request.getParameter("stage"));
+		int stage = 0; // Starts at stage 0
+		int reqId = 99; // Procedure auto-loads reqId
+		String superText = "";
+		String dheadText = "";
+		String bencoText = "";
+		String reqText = "";
+
+		// add db using these fields
+		// reqId, r.getUsername(), r.getCoinId(), r.getOfferAmt(), r.getOfferMos(), r.getOfferStatus()
+
 			 Offer o = new Offer();
-		 			 o.setEmail("test");
+		 			 o.setUsername("test");
 					  o.setCoinId(1);
 					  o.setOfferAmt(1.0);
 					  o.setOfferMos(1);
 
-		log.info("ReqWebServ submit: " + o);
+		System.out.println("ReqWebServ submit: " + o);
+		System.out.println("ReqWebServ stage: " + stage);
 		// Call OfferService to add it.
-		offersRepository.save(o);
+		OfferService.createOffer(o);
 
 		try {
 			response.getWriter().append("Successfully added data input: " + request.getContextPath());
 		} catch (IOException e1) {
-			log.info("error adding??" + e1);
+			System.out.println("error adding??" + e1);
 			;
 //			e1.printStackTrace();
 		}
 	}
 		 	//// EC2 WORKS   Offer URL: http://3.86.59.44:8080/project1/getOffer.do?reqId=101
-	public   void getOffer(HttpServletRequest request, HttpServletResponse response) {
+	public static void getOffer(HttpServletRequest request, HttpServletResponse response) {
 
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.SQLDriverManager"));
-			log.info("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
+			System.out.println("... JDBC Drive successfully connected.");
 
 		} catch (ClassNotFoundException e1) {
-			log.info("oops, Driver not found :-O...\n" + e1);
+			System.out.println("oops, Driver not found :-O...\n" + e1);
 //			e1.printStackTrace();
 		}
 
 		int id = Integer.parseInt(request.getParameter("reqId"));
-		log.info("just got parameter #:" + id);
+		System.out.println("just got parameter #:" + id);
 
-		Optional<Offer> d = offersRepository.findById(id);
-		if (d.isPresent()) {
-			log.info("OfferWebServ: " + d.get());
-		} else {
-			log.info("OfferWebServ: " + d);
-		}
-		log.info(String.valueOf(d.get()));
+		Offer d = OfferService.getOffer(id);
+		System.out.println(d);
 
 		ObjectMapper om = new ObjectMapper();
 		if (d != null) {
@@ -82,25 +95,26 @@ public class OfferWebService  {
 		}
 	}
        /// EC2  DOES NOT WORK =>       Offer URL: http://3.86.59.44:8080/project1/listOffer.do?userId=4
-	public   void listOffer(HttpServletRequest request, HttpServletResponse response) {
+	public static void listOffer(HttpServletRequest request, HttpServletResponse response) {
  
 		String uid = request.getParameter("userId");
-		String uuid = (uid == "") ? "0" : uid;
+		String uuid = (uid == "") ? "8888" : uid;
 		Integer intId = Integer.parseInt(uuid);
 		System.out.println("uid=" + uid + " intId=" + intId + "userId=" + uid);
 
-		String uname = request.getParameter("email");
-			List<Offer> offerList = offersRepository.findAllByUsername(uname);
+		if ((intId > 0) && (intId != 8888)) {
+			/// TODO change to String paramater
+//			List<Offer> d = OfferService.getAllOffers(username);
+			List<Offer> d = OfferService.getAllOffers();
 			ObjectMapper om = new ObjectMapper();
-			if (offerList.size() > 0) {    //   HAS ID
+			if (d.size() > 0) {
 				try {
-					String requestJSON = om.writeValueAsString(offerList);
-					response.getWriter().append("\n Welcome to Subservlet. You are accessing .do File\n request.getContextPath()");
-					response.getWriter().append(request.getContextPath());
+					String requestJSON = om.writeValueAsString(d);
+//					response.getWriter().append("\n\n\n Welcome to Subservlet. You are accessing .do File");
 					response.getWriter().append(requestJSON);
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				}
+				} // ("Served at: ").append(request.getContextPath());
 			} else {
 				try {
 					response.getWriter().append("No Reimbursement Requests have been made.");
@@ -108,37 +122,46 @@ public class OfferWebService  {
 					e.printStackTrace();
 				}
 			}
+		} else if (intId == 8888) {
+			List<Offer> dd = OfferService.getAllOffers();
+			System.out.println(dd);
+
+			ObjectMapper om = new ObjectMapper();
+			try {
+				String requestJSON = om.writeValueAsString(dd);
+//				response.getWriter().append("\n\n\n Welcome to Subservlet. You are accessing .do File");
+				response.getWriter().append(requestJSON);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} // ("Served at: ").append(request.getContextPath());
 		}
 
-	public   void updateOffer(HttpServletRequest request, HttpServletResponse response) {
+	}
+
+	public static void updateOffer(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			System.out.println(Class.forName("oracle.jdbc.driver.SQLDriverManager"));
-			log.info("... JDBC Drive successfully connected.");
+			System.out.println(Class.forName("oracle.jdbc.driver.OracleDriver"));
+			System.out.println("... JDBC Drive successfully connected.");
 
 		} catch (ClassNotFoundException e1) {
 			System.out.println("oops, Driver not found :-O...\n" + e1);
+//			e1.printStackTrace();
 		}
 		
 		int reqId = Integer.parseInt(request.getParameter("reqId")); 
-
+		int stage = Integer.parseInt(request.getParameter("stage"));
+		String superText = request.getParameter("superText");
+		String dheadText = request.getParameter("dheadText");
+		String bencoText = request.getParameter("bencoText");
+		String reqText = request.getParameter("reqText");
  
-		Optional<Offer> rOptional = offersRepository.findById(reqId);
-		Offer r = rOptional.get();
+		Offer r = OfferService.getOffer(reqId);
 		// add db using these fields
 		System.out.println("OfferWebServ old one: " + r);
-		r = new Offer(reqId,
-				r.getEmail(),
-				r.getCoinId(),
-				r.getOfferAmt(),
-				r.getOfferMos(),
-				r.getOfferStatus(),
-				r.getDescription(),
-				r.getTargetDate(),
-				r.isDone()
-		);
+		r = new Offer(reqId, r.getUsername(), r.getCoinId(), r.getOfferAmt(), r.getOfferMos(), r.getOfferStatus());
 		System.out.println("OfferWebServ new one: " + r);
 		// Call OfferService to update it.
-		offersRepository.saveAndFlush(r);
+		OfferService.updateOffer(r);
 
 		try {
 			response.getWriter().append("Successfully added data input: " + request.getContextPath());

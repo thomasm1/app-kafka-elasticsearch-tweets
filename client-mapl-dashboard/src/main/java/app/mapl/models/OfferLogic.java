@@ -1,13 +1,10 @@
 package app.mapl.models;
 
-import app.mapl.dto.CoinDto;
-import app.mapl.service.CoinsService;
-import app.mapl.service.CoinsServiceJPA;
+import app.mapl.service.CoinService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
-import lombok.RequiredArgsConstructor;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -15,17 +12,14 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 public class OfferLogic   {
 
-	@Transient
-	CoinsService coinService;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int id;
 	private int offerid;
 	private int coinid;
 
-	@Column(name = "email")
-	String email;
+	@Column(name = "username")
+	String username;
 	private Double pricetotal;
 	private Double offeramt;
 
@@ -47,9 +41,9 @@ public class OfferLogic   {
 		return Math.round(value * scale) / scale;
 	}
 
-	public  OfferLogic makeElectro(Offer o) {
+	public static OfferLogic makeElectro(Offer o) {
 
-		CoinDto coinid = coinService.getCoin(o.getCoinId());
+		Coin coinid = CoinService.getCoin(o.getCoinId());
 		double balDayOne = coinid.getPriceTotal() - o.getOfferAmt(); // Calculate balance by dividing Total-price by
 		balDayOne = roundIt(balDayOne, 2);
 		System.out.println("Balance Day 1: $" + balDayOne);
@@ -67,10 +61,10 @@ public class OfferLogic   {
 
 		i = (int) (Math.random() * i); // Random id generator (Overwritten in DB in any case)
 
-		OfferLogic newest = new OfferLogic(i, o.getOfferID(), coinid.getCoinId(), o.getEmail(), coinid.getPriceTotal(),
+		OfferLogic newest = new OfferLogic(i, o.getOfferID(), coinid.getCoinId(), o.getUsername(), coinid.getPriceTotal(),
 				o.getOfferAmt(), balance, o.getOfferMos(), monthsRemaining, monthlyPayments);
 
-		System.out.println(o.getEmail() + "'s " + coinid.getCoinToken() + " " + coinid.getCoinSymbol() + " Balance:"
+		System.out.println(o.getUsername() + "'s " + coinid.getCoinToken() + " " + coinid.getCoinSymbol() + " Balance:"
 				+ newest.getBalance() + " " + " monthly payments: $" + newest.getMonthlyPayments());
 
 		return newest;
@@ -93,13 +87,13 @@ public class OfferLogic   {
 		MONTH_TIME = t;
 	}
 
-	public OfferLogic(int id, int offerid, int coinid, String email, Double pricetotal, Double offeramt,
+	public OfferLogic(int id, int offerid, int coinid, String username, Double pricetotal, Double offeramt,
 			Double balance, int offermos, int monthsRemaining, double monthlyPayments) {
 		super();
 		this.id = id;
 		this.offerid = offerid;
 		this.coinid = coinid;
-		this.email =	email;
+		this.username =	username;
 
 		this.pricetotal = pricetotal;
 		this.offeramt = offeramt;
@@ -109,6 +103,94 @@ public class OfferLogic   {
 		this.monthsRemaining = monthsRemaining;
 		this.monthlyPayments = monthlyPayments;
 	}
- 
+
+//	public int getMonthsRemaining() {
+//		return monthsRemaining;
+//	}
+//
+//	public void setMonthsRemaining(int monthsRemaining) {
+//		this.monthsRemaining = monthsRemaining;
+//	}
+//
+//	public double getMonthlyPayments() {
+//		return monthlyPayments;
+//	}
+//
+//	public void setMonthlyPayments(double monthlyPayments) {
+//		this.monthlyPayments = monthlyPayments;
+//	}
+//
+//	public int getId() {
+//		return id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
+//
+//	public int getOfferid() {
+//		return offerid;
+//	}
+//
+//	public void setOfferid(int offerid) {
+//		this.offerid = offerid;
+//	}
+//
+//	public int getCoinid() {
+//		return coinid;
+//	}
+//
+//	public void setCoinid(int coinid) {
+//		this.coinid = coinid;
+//	}
+//
+//	public String getUsername() {
+//		return username;
+//	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+//
+//	public Double getPricetotal() {
+//		return pricetotal;
+//	}
+//
+//	public void setPricetotal(Double pricetotal) {
+//		this.pricetotal = pricetotal;
+//	}
+//
+//	public Double getOfferamt() {
+//		return offeramt;
+//	}
+//
+//	public void setOfferamt(Double offeramt) {
+//		this.offeramt = offeramt;
+//	}
+//
+//	public Double getBalance() {
+//		return balance;
+//	}
+//
+//	public void setBalance(Double balance) {
+//		this.balance = balance;
+//	}
+//
+//	public int getOffermos() {
+//		return offermos;
+//	}
+//
+//	public void setOffermos(int offermos) {
+//		this.offermos = offermos;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "\nContract #" + id + ", Offer #" + offerid + ", Coin #" + coinid + ", Owner=" + username
+//				+ ",\n      price: $" + pricetotal + ", Offer: $" + offeramt + ", Balance: $" + balance + ", Pay plan: "
+//				+ offermos + " mos.,\n      Months remaining=" + monthsRemaining + ", Monthly Pay: $" + monthlyPayments
+//				+ " \n"
+//				+ "-------------------------";
+//	}
  
 }

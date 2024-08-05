@@ -1,166 +1,188 @@
 package app.mapl.models;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.springframework.data.convert.ValueConverter;
 
-import java.io.Serial;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
-
-@Builder
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "USERS")
-public class User  implements Serializable{
-    @Serial
+public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    private long id;
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
+    @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
+    @Column(name="USERID", nullable = false, unique = true)
+    private int userId;
 
-    private long createdBy;
-    private long updatedBy;
-    @NotBlank
-    private String userId;
-
+    @Column(name="USERNAME", nullable = false )
+    private String username;
+    @Column(name="PASSWORD")
     private String password;
-    @NotBlank
-    private String firstName;
-
-    @NotBlank
+    @Column(name="LASTNAME")
     private String lastName;
 
-
-    @NotBlank
-    @Size(max = 120)
-    private String email;
-
-    @NotBlank /*TODO Enum cardinal*/
+    @Column(name="FIRSTNAME")
+    private String firstName;
+    @Transient
+    private int groups;
+    @Column(name="USERTYPE")
     private int userType;
-
-    private String imageUrl;
-
+    @Column(name="EMAIL", nullable = false )
+    private String email;
+    @Column(name="ORGANIZATIONCODE")
     private String organizationCode;
 
-    private String dashboardCode; // 0 = admin, 1 = user
+    @Column(name="CUSURL")
+    private String cusUrl;
 
-    private String bio;
+    @Transient
+    private String photoPath;
 
-    @Column(columnDefinition = "text")
-    private String qrCodeImageUri;
+    @Column(name="DASHBOARDCODE")
+    private String dashboardCode;
+    @Column(name="ISACTIVE")
+    private int isActive;
 
-    private LocalDateTime lastLogin;
+    @Column(name="CONTACTTYPE")
+    private int contactType; // ContactType contactType
+    @Transient
+    private String id;
 
-    private Integer loginAttempts;
+    // parent of many
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses;
 
-    private String createdAt;
-    private String updatedAt;
-    private String role;
-    private String authorities;
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-    private boolean enabled;
-    private boolean mfa;
+//    @ManyToMany(fetch = FetchType.EAGER)
+//   @JoinTable(name = "USERS_ROLE", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    private List<Role> roles = new ArrayList<>();
+////
+    public User(int userid, String username, String password, String lastName, String firstName, int groups, int userType, String organizationCode, String email, String cusUrl, String photoPath, String dashboardCode, int isActive, int contactType, String id, List<Address> user) {
+        super();
 
-    // UserDetailsCommandLineRunner
-    public User(long id, String userId,  String lastname, String firstName, int userType, String organizationCode, String email, String imageUrl, String dashboardCode,  Boolean accountNonExpired ) {
-          super();
-        this.userId =  userId ;
-        this.lastName = lastname;
+        this.username = username;
+        this.password = password;
+        this.lastName = lastName;
         this.firstName = firstName;
         this.userType = userType;
-        this.organizationCode = organizationCode;
+        this.groups = groups;
         this.email = email;
-        this.imageUrl = imageUrl;
+        this.organizationCode = organizationCode;
+        this.cusUrl = cusUrl;
+        this.photoPath = photoPath;
         this.dashboardCode = dashboardCode;
-        this.accountNonExpired = accountNonExpired;
+        this.isActive = isActive;
+        this.contactType = contactType;
+        this.id = id;
     }
 
-    // overloaded for getUsersByCArs() call to DB
-//    public User(int userId, String email) {
-//        super();
-//        this.userId = userId;
-//        this.email = email;
+
+//    public void addRole(Role role){
+//        if(!this.roles.contains(role)){
+//            this.roles.add(role);
+//        }
+//
+//        if(!role.getUsers().contains(this)){
+//            role.getUsers().add(this);
+//        }
+//    }
+//
+//    public void removeRole(Role role){
+//        this.roles.remove(role);
+//        role.getUsers().remove(this);
 //    }
 
-    public User(String email, String password) {
+
+    //////////////////////////////////////
+    // overloaded for getUsersByCArs() call to DB
+    public User(int userId, String username) {
         super();
-        this.email = email;
-//        this.password = password;
+        this.userId = userId;
+        this.username = username;
+    }
+
+    public User(String username, String password) {
+        super();
+        this.username = username;
+        this.password = password;
+    }
+
+    // overloaded for OFFER/ Groups must be multi-purpose
+    public User(int userId, String username, String password, int groups, int userType) {
+        super();
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
+        this.groups = groups;
     }
 
 
     //	 overloaded WITHOUT userId  FOR Creating TO ORACLE DB  FOR ORACLE DB INSERTION/RETRIEVAL
-    public User( String lastName, String firstName,
-                 int userType, String organizationCode,String email,  String imageUrl, String dashboardCode
-    ) {
+    public User(String username, String password, String lastName, String firstName,
+                int groups, int userType, String organizationCode,String email,  String cusUrl, String photoPath,
+                String dashboardCode,
+                int isActive,
+                int contactType,
+                String id) {
         super();
+        this.username = username;
+        this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.groups = groups;
         this.userType = userType;
         this.organizationCode = organizationCode;
         this.email = email;
-        this.imageUrl = imageUrl;
+        this.cusUrl = cusUrl;
+        this.photoPath = photoPath;
         this.dashboardCode = dashboardCode;
-
-
+        this.isActive = isActive;
+        this.contactType = contactType;
+        this.id = id;
     }
 
-    public User(int i, String s, String password, String lastNamedd, String firstname, int i1, String s1, String s2, String s3, String photopaath, int i2, int i3, Object o) {
-
-
-
-
+    public User(int userId, String username, String password) {
+        super();
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
     }
-
-    public User(int i, String s, String password, String lastName, String firstName, int i1, String organizationCode, String s1, String cusUrl, String dashboardCode, int i2, int i3) {
-    }
-
-    public User(String value, String value1, String value2, String value3, int parseInt, String value4, String value5, String value6, String value7, int parseInt1, int parseInt2) {
-    }
-
-
-//    public User(int userId, String email, String password) {
-//        super();
-//        this.userId = userId;
-//        this.email = email;
-//        this.password = password;
-//    }
 
 //     Contstructor for EDIT PROFILE (options available for user)
-//public User(  String password, String lastName, String firstName, int userType, String organizationCode,String email,  String imageUrl, String dashboardCode,   int isActive,
-//            int contactType // ContactType contactType
-//          ) {
-//    super();
-//
-//    this.password = password;
-//    this.lastName = lastName;
-//    this.firstName = firstName;
-//    this.userType = userType;
-//    this.email = email;
-//    this.organizationCode = organizationCode;
-//    this.imageUrl = imageUrl;
-//    this.dashboardCode = dashboardCode;
-//    this.isActive = isActive;
-//    this.contactType = contactType;
-//
-//}
+public User(  String password, String lastName, String firstName,
+            int groups, int userType, String organizationCode,String email,  String cusUrl, String photoPath,
+            String dashboardCode,
+            int isActive,
+            int contactType, // ContactType contactType
+            String id) {
+    super();
 
-
+    this.password = password;
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.userType = userType;
+    this.groups = groups;
+    this.email = email;
+    this.organizationCode = organizationCode;
+    this.cusUrl = cusUrl;
+    this.photoPath = photoPath;
+    this.dashboardCode = dashboardCode;
+    this.isActive = isActive;
+    this.contactType = contactType;
+    this.id = id;
+}
 
 //    public void registerThis(String un, String pw, String ln, String fn) {
-//        this.email = un;
+//        this.username = un;
 //        this.password = pw;
 //        this.lastName = ln;
 //        this.firstName = fn;

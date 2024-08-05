@@ -1,21 +1,21 @@
 package app.mapl.models;
 
-import lombok.*;
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+//import org.springframework.beans.factory.annotation.Value;
 
-import java.util.HashSet;
-import java.util.Set;
 
-@Getter
-@Setter
+import javax.persistence.*;
+
+@Data
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Builder
+@NoArgsConstructor
 @Entity
 @Table(
 		name = "POST_ENTITY", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})}
 )
-public class PostEntity extends BaseModel {
+public class PostEntity {
 
 	public interface SimplePost {
 		String getTitle();
@@ -25,10 +25,9 @@ public class PostEntity extends BaseModel {
 		String getCat3();
 		String getBlogcite();
 	}
-
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "ID", nullable = false)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", nullable = false)
 	private Long id;
 
 	@Column(name = "DID", nullable = false)
@@ -36,31 +35,34 @@ public class PostEntity extends BaseModel {
 
 	@Column(name = "DATE_")
 	private String date;
-
+	
 	@Column(name = "AUTHOR")
 	private String author; //TODO MAKE AUTHOR OBJECT
-
+	
+	@Column(name = "MONTH_ORDER")
+	private String monthOrder;
+	
 	@Column(name = "CAT3")
 	private String cat3;
 
 	@Column(name = "TITLE", nullable = false)
 	private String title;
-
+	
 	@Column(name = "POST", nullable = false)
 	private String post;
-
+	
 	@Column(name = "BLOGCITE", nullable = false)
-	private String blogcite;
-
+	private String blogcite;	
+	
 	@Column(name = "USERNAME", nullable = false)
-	private String email;
+	private String username;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Comment> comments = new HashSet<>();
+//	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private Set<Comment> comments = new HashSet<>();
 
-
+	
 }

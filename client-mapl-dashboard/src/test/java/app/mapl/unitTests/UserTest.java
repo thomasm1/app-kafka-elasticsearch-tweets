@@ -40,15 +40,15 @@ public class UserTest {
     @Test
     public void setUsername() {
 //    	custOne.setUsername("newUsername");
-//    	assertEquals("newUsername", custOne.getEmail());
+//    	assertEquals("newUsername", custOne.getUsername());
     }
 
     @Test
     public void getUsername() { 
-//    	String thomUsername = custOne.getEmail();
+//    	String thomUsername = custOne.getUsername();
 //    	System.out.println("-getUsername()-  " + thomUsername);
 //    	custOne.setUsername("newUsername"); 
-//    	String thomUsername2 = custOne.getEmail();
+//    	String thomUsername2 = custOne.getUsername();
 //    	System.out.println("-getUsername()-  " + thomUsername2);
     }
 

@@ -1,7 +1,6 @@
 package app.mapl.service;
 
 
-import app.mapl.dto.CoinDto;
 import app.mapl.models.Coin;
 
 import java.util.List;
@@ -10,23 +9,20 @@ import java.util.List;
 public interface CoinsService {
 
 
-    public CoinDto createCoin(CoinDto c);
+    public Coin createCoin(Coin c);
 
-    public CoinDto getCoin(int coinId);
+    public Coin getCoin(int coinId);
 
-    public List<CoinDto> getAllCoins();
+//    public List<Coin> getAllCoinsIOwn(String username);
 
-    public List<CoinDto> getAllCoinsCust();
+    public List<Coin> getAllCoins();
 
-    public CoinDto updateCoin(CoinDto change);
+    public List<Coin> getAllCoinsCust();
+
+    public Coin updateCoin(Coin change);
 
     public boolean deleteCoin(int id);
 
     public void coinMarketViewAll();
 
-    List<CoinDto> getAllCoinsIOwn(String email);
-
-    // CLI
-    public Coin getCoinCLI(int coinId);
-    public List<Coin> getAllCoinsCustCLI();
 }

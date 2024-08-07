@@ -6,8 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import xyz.cryptomaven.client_mapl.rest.services.RegisterServiceRequest;
-import xyz.cryptomaven.client_mapl.rest.services.ServiceResponse;
+
 
 import java.net.URI;
 import java.util.UUID;

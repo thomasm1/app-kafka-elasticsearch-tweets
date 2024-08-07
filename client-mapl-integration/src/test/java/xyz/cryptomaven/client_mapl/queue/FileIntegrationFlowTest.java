@@ -23,26 +23,26 @@ public class FileIntegrationFlowTest {
 
         // Setup
         Path inputDir = Paths.get("input-directory");
-        Path backupDir = Paths.get("backup-directory");
+        Path outputDir = Paths.get("output-directory");
         Files.createDirectories(inputDir);
-        Files.createDirectories(backupDir);
+        Files.createDirectories(outputDir);
 
-        Path testFile = inputDir.resolve("text2.txt");
+        Path testFile = inputDir.resolve("text-input.txt");
         Files.writeString(testFile, "Text file here...!");
 
         // Wait for the file to be processed
         Thread.sleep(2000);
 
         // Verify
-        File backupFile = backupDir.resolve("text2.txt").toFile();
-        assertThat(backupFile).exists();
-        assertThat(Files.readString(backupFile.toPath())).isEqualTo("Text file here...!");
+        File outputFile = outputDir.resolve("text-input.txt").toFile();
+        assertThat(outputFile).exists();
+        assertThat(Files.readString(outputFile.toPath())).isEqualTo("Text file here...!");
 
         // Clean up
         Files.deleteIfExists(testFile);
-        Files.deleteIfExists(backupFile.toPath());
+        Files.deleteIfExists(outputFile.toPath());
         Files.deleteIfExists(inputDir);
-        Files.deleteIfExists(backupDir);
+        Files.deleteIfExists(outputDir);
 
         context.close();
     }

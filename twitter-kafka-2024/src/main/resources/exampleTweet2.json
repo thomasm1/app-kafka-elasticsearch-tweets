@@ -1,0 +1,130 @@
+{
+  "created_at": "Sat Apr 17 21:30:04 +0000 2021",
+  "id": 1383533243752878084,
+  "id_str": "1383533243752878084",
+  "text": "[\u20bf] #Bitcoin Daily $BTC [\u20bf]\n\nKraken\u276f\nA:$60,940 L:$59,702 H:$62,636\nBitstamp\u276f\nA:$60,977 L:$59,677 H:$62,596\nBitfinex\u2026 https:\/\/t.co\/8xNszKIFt6",
+  "source": "\u003ca href=\"https:\/\/tezos.com\" rel=\"nofollow\"\u003eBakedNetwork\u003c\/a\u003e",
+  "truncated": true,
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 1139188584219578368,
+    "id_str": "1139188584219578368",
+    "name": "BakedNet\ud83c\udf2e",
+    "screen_name": "bakednet",
+    "location": "Paris, FR",
+    "url": null,
+    "description": "Baked Network ~ From #Tezos\ud83c\udf2e with Love \ud83d\udc99 $XTZ ~ Head Chef \ud83d\udc68\u200d\ud83c\udf73 @chefTezos",
+    "translator_type": "none",
+    "protected": false,
+    "verified": false,
+    "followers_count": 422,
+    "friends_count": 17,
+    "listed_count": 6,
+    "favourites_count": 5,
+    "statuses_count": 46261,
+    "created_at": "Thu Jun 13 15:11:38 +0000 2019",
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": "",
+    "profile_background_image_url_https": "",
+    "profile_background_tile": false,
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1164605282238025731\/6kyDWsvh_normal.jpg",
+    "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1164605282238025731\/6kyDWsvh_normal.jpg",
+    "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/1139188584219578368\/1560439562",
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "withheld_in_countries": []
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": false,
+  "extended_tweet": {
+    "full_text": "[\u20bf] #Bitcoin Daily $BTC [\u20bf]\n\nKraken\u276f\nA:$60,940 L:$59,702 H:$62,636\nBitstamp\u276f\nA:$60,977 L:$59,677 H:$62,596\nBitfinex\u276f\nA:$60,795 L:$59,662 H:$62,450\n\nMarket Cap: $1,137,077,777,795\n24h Volume: $7,844,781,240\n24h: -1.10%  7d: 11.14%",
+    "display_text_range": [
+      0,
+      229
+    ],
+    "entities": {
+      "hashtags": [
+        {
+          "text": "Bitcoin",
+          "indices": [
+            4,
+            12
+          ]
+        }
+      ],
+      "urls": [],
+      "user_mentions": [],
+      "symbols": [
+        {
+          "text": "BTC",
+          "indices": [
+            19,
+            23
+          ]
+        }
+      ]
+    }
+  },
+  "quote_count": 0,
+  "reply_count": 0,
+  "retweet_count": 0,
+  "favorite_count": 0,
+  "entities": {
+    "hashtags": [
+      {
+        "text": "Bitcoin",
+        "indices": [
+          4,
+          12
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "https:\/\/t.co\/8xNszKIFt6",
+        "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/1383533243752878084",
+        "display_url": "twitter.com\/i\/web\/status\/1\u2026",
+        "indices": [
+          117,
+          140
+        ]
+      }
+    ],
+    "user_mentions": [],
+    "symbols": [
+      {
+        "text": "BTC",
+        "indices": [
+          19,
+          23
+        ]
+      }
+    ]
+  },
+  "favorited": false,
+  "retweeted": false,
+  "filter_level": "low",
+  "lang": "en",
+  "timestamp_ms": "1618695004772"
+}

@@ -47,7 +47,7 @@ public class FileIntegrationFlow {
     @Bean
     @ServiceActivator(inputChannel = "fileOutputChannel")
     public MessageHandler fileWritingMessageHandler() {
-        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File("backup-directory"));
+        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File("output-directory"));
         handler.setExpectReply(false);
 //         .autoCreateDirectory(true)
 //                .fileExistsMode(FileExistsMode.REPLACE)

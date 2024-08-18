@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "offerlogic")
+@Table(name = "OFFERLOGIC")
 @NoArgsConstructor
 public class OfferLogic   {
 

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "comments")
+@Table(name = "COMMENTS")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // MUST BE AUTO; IDENTITY NO-GO with ORACLE

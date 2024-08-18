@@ -8,19 +8,21 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "weblinks")
+@Table(name = "WEBLINKS")
 public class Weblink extends Bookmark implements Shareable {
 	@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
 //	@SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name="ID")
 	private long id;
+	@Column(name="URL")
 	private String url;
+	@Column(name="HOST")
 	private String host;
-	@Column(name="htmlpage")
+	@Column(name="HTMLPAGE")
 	private String htmlPage;
-	@Column(name="downloadstatus")
+	@Column(name="DOWNLOADSTATUS")
 	private DownloadStatus downloadStatus = DownloadStatus.NOT_ATTEMPTED;
 
 	public enum DownloadStatus {

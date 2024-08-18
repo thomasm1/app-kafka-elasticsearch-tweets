@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "movies")
+@Table(name = "MOVIES")
 public class Movie extends Bookmark implements Shareable {
 
 	@Id

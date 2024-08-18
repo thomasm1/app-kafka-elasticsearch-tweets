@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter @Setter @ToString
 @Entity
-@Table(name = "offers")
+@Table(name = "OFFERS")
 public class Offer {
 
 	@Id

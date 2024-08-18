@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cointable")
+@Table(name = "COINTABLE")
 public class Coin implements Serializable {
 
 	@Id

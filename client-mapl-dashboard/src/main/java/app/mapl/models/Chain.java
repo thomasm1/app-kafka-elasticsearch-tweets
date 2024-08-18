@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 @Data
 @Entity
-@Table(name = "chain")
+@Table(name = "CHAIN")
 public class Chain {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

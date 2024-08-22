@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserDto  implements Serializable {
 
-    @Id
+
     private int userId; // userId
     private String username;
     private String lastName; // lastName

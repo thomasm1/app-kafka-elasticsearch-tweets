@@ -1,5 +1,6 @@
 package app.mapl.models;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,4 +28,21 @@ public class Chain {
 
 
     private String blockExplorerUrl;
+
+    public Chain(String name, String symbol, String description, String longDescription, String iconUrl, String category, String chainListIcon, String rpcUrl, Integer chainId, String blockExplorerUrl) {
+        this.name = name;
+        this.symbol = symbol;
+        this.description = description;
+        this.longDescription = longDescription;
+        this.iconUrl = iconUrl;
+        this.category = category;
+        this.chainListIcon = chainListIcon;
+        this.rpcUrl = rpcUrl;
+        this.chainId = chainId;
+        this.blockExplorerUrl = blockExplorerUrl;
+    }
+
+    public Chain() {
+
+    }
 }

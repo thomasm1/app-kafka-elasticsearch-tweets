@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.CategoryDto;
+import app.mapl.models.dto.CategoryDto;
 import app.mapl.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

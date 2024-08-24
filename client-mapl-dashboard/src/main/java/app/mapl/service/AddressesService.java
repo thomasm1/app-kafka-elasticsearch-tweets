@@ -1,7 +1,7 @@
 package app.mapl.service;
 
-import app.mapl.dto.AddressDto;
-import app.mapl.dto.NftDto;
+import app.mapl.models.dto.AddressDto;
+import app.mapl.models.dto.NftDto;
 
 import java.util.List;
 

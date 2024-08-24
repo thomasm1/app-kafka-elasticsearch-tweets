@@ -1,11 +1,13 @@
 package app.mapl.service;
 
-import app.mapl.dto.AddressDto;
-import app.mapl.dto.NftDto;
+
+import app.mapl.models.Nft;
+import app.mapl.models.dto.AddressDto;
 import app.mapl.mapper.AddressMapper;
 import app.mapl.models.Address;
 import app.mapl.mapper.NftMapper;
-import app.mapl.models.Nft;
+
+import app.mapl.models.dto.NftDto;
 import app.mapl.repositories.NftRepository;
 import app.mapl.repositories.AddressesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +93,9 @@ public class AddressesServiceImpl implements AddressesService {
                 return false;
             }
     }
-/////////////////////////
+
+
+    /////////////////////////
 @Override
 public NftDto createNft(NftDto nftDto) {
     Nft nft = nftMapper.toEntity(nftDto);

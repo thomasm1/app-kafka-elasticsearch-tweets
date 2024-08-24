@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.NftAddressDto;
+import app.mapl.models.dto.NftAddressDto;
 import app.mapl.models.NftAddress;
 import org.mapstruct.*;
 

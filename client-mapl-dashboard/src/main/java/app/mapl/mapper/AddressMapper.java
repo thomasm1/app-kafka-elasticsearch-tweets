@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.AddressDto;
+import app.mapl.models.dto.AddressDto;
 import app.mapl.models.Address;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 
 @EqualsAndHashCode(callSuper = true)
-@Data
 @Entity
 @Table(name = "BOOKS")
 public class Book extends Bookmark implements Shareable {

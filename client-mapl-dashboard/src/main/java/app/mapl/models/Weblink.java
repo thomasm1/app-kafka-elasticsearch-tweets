@@ -6,7 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 
 
-@Data
 @Entity
 @Table(name = "WEBLINKS")
 public class Weblink extends Bookmark implements Shareable {
@@ -24,6 +23,8 @@ public class Weblink extends Bookmark implements Shareable {
 	private String htmlPage;
 	@Column(name="DOWNLOADSTATUS")
 	private DownloadStatus downloadStatus = DownloadStatus.NOT_ATTEMPTED;
+
+
 
 	public enum DownloadStatus {
 		NOT_ATTEMPTED,

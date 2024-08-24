@@ -1,7 +1,7 @@
 package app.mapl.service;
 
 
-import app.mapl.dto.ChainDto;
+import app.mapl.models.dto.ChainDto;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.models.Chain;
 import app.mapl.mapper.ChainMapper;
@@ -22,27 +22,20 @@ private ChainsRepository chainsRepository;
 private ChainMapper chainMapper;
 
     /**
-     * @param c
+     * @param cd
      * @return
      */
 
     @Override
-    public ChainDto createChain(ChainDto cd) {
-        Chain chain = chainMapper.toEntity(cd);
-        Chain newChain = chainsRepository.save(chain);
-
-        ChainDto newChainDto = chainMapper.toOneDto(newChain);
-         return newChainDto;
+    public   ChainDto createChain(ChainDto cd) {
+        return null;
     }
     @Override
-    public ChainDto getChain(int id) {
+    public   ChainDto getChain(int id) {
         Chain chain = chainsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", Integer.toString(id)));
             return chainMapper.toOneDto(chain);
     }
-//    @Autowired
-//    public List<Chain> getAllChainsIOwn(String username) {
-//        return null; //(List<Chain>)  chainsRepository.findByUsername(username);
-//    }
+
     @Override
     public List<ChainDto> getAllChains() {
         List<Chain> chains = chainsRepository.findAll();
@@ -65,7 +58,6 @@ private ChainMapper chainMapper;
         return chainMapper.toOneDto(c);
     }
 
-    @Override
     public ChainDto updateChain(ChainDto change) {
         try {
             Chain chainUpdate = chainMapper.toEntity(change);
@@ -92,7 +84,7 @@ private ChainMapper chainMapper;
 
     }
     @Override
-    public boolean deleteChain(int id) {
+    public   boolean deleteChain(int id) {
         try {
             chainsRepository.deleteById(id);
             return true;
@@ -100,5 +92,9 @@ private ChainMapper chainMapper;
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<Chain> getChains() {
+        return chainsRepository.findAll();
     }
 }

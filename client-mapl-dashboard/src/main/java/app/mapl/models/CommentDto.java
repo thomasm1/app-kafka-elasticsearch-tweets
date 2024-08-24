@@ -1,6 +1,6 @@
 package app.mapl.models;
 
-import app.mapl.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityDto;
 import lombok.Data;
 
 import java.io.Serializable;

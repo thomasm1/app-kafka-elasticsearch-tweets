@@ -38,8 +38,8 @@ spring:
         format_sql: true
         jdbc.lob.non_contextual_creation: true
         connection:
-          characterEncoding:  UTF-8
-          CharSet:  UTF-8
+          characterEncoding: UTF-8
+          CharSet: UTF-8
 
 
 
@@ -48,6 +48,5 @@ spring.jmx.enabled: false
 #because the javax.management.InstanceAlreadyExistsException occurs when there is an attempt to register an MBean (Managed Bean) that has already been registered. JMX is used for managing and monitoring Java applications, \
 #  and Spring Boot automatically registers various MBeans for management purposes.
 spring.jpa.hibernate.ddl-auto: update
-
 management.endpoints.web.exposure.include: "*"
 logging.level.org.springframework: info

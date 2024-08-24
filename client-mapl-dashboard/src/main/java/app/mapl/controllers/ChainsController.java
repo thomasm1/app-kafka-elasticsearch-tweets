@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.ChainDto;
+import app.mapl.models.dto.ChainDto;
 import app.mapl.mapper.ChainMapper;
 import app.mapl.service.ChainsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,8 @@ public class ChainsController {
 
     @RequestMapping(value = "/chains", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ChainDto> createChain(@RequestBody ChainDto cd) {
-        return new ResponseEntity<>(chainsService.createChain(cd), HttpStatus.CREATED);
+        ChainDto response = chainsService.createChain(cd);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 

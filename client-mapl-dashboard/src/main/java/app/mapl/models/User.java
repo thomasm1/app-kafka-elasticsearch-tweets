@@ -11,15 +11,16 @@ import java.util.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @ToString
 @Entity
 @Table(name = "USERS")
-public class User implements Serializable {
+public class User {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
-    @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
+//    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ID_MAKER" )
+//    @SequenceGenerator(name = "ID_MAKER", sequenceName = "ID_MAKER", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="USERID", nullable = false, unique = true)
     private int userId;
 

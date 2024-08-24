@@ -1,11 +1,8 @@
 package app.mapl.mapper;
 
 import app.mapl.models.User;
-import app.mapl.dto.UserDto;
+import app.mapl.models.dto.UserDto;
 import org.mapstruct.*;
-
-
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

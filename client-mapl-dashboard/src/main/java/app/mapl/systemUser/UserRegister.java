@@ -3,7 +3,7 @@ package app.mapl.systemUser;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import app.mapl.dto.UserDto;
+import app.mapl.models.dto.UserDto;
 import app.mapl.util.constants.Cmds;
 import app.mapl.models.User;
 import app.mapl.service.UsersServiceImpl;

@@ -1,7 +1,7 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.PostEntityDto;
-import app.mapl.dto.PostEntityResponse;
+import app.mapl.models.dto.PostEntityDto;
+import app.mapl.models.dto.PostEntityResponse;
 import app.mapl.mapper.PostEntityMapper;
 
 import app.mapl.service.PostService;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import app.mapl.util.constants.*;
 
-import java.net.URI;
 import java.util.List;
 
 @RequestMapping(path = "/api/posts")

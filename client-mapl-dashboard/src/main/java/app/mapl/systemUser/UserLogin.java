@@ -1,11 +1,9 @@
 package app.mapl.systemUser;
 
 
-import app.mapl.consoles.AdminDashboard;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
 import app.mapl.consoles.MainDashboard;
-import app.mapl.consoles.UserDashboard;
+import app.mapl.service.UsersService;
 
 import java.util.Scanner;
 import java.sql.SQLException;
@@ -32,22 +30,9 @@ public class UserLogin {
 
             //  admin   hardcoded backdoor
             if (hardCodedAdminNameAndPassword(un, pw)) {
-//                User login = UserService.getUser(un);
-                AdminDashboard.adminConsole(); //
+                MainDashboard.mainConsole();
             }
 
-            // VALIDATION #1 - LOOK UP AND GET Targeted DB USER
-            if (checkDbUsernameAndPassword(un, pw)) {
-                decideDashboard("yes", un);
-            } else {
-                System.out.println("Oops, typo time, please try again");
-                try {
-                    login(); // login input clears for next attempt
-                } catch (InputMismatchException e) {
-                    e.getMessage();
-                    MainDashboard.mainConsole();
-                }
-            }
             scanner.close();
         } catch (
 
@@ -60,7 +45,7 @@ public class UserLogin {
 		if (resp.matches("y|yes|true")) {
             try {
                 System.out.println("...sounds good, *" + username + "*, now logging you into your Dashboard");
-                UserDashboard.dashboardChoice(username);
+                MainDashboard.mainConsole();
             } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 MainDashboard.mainConsole();
@@ -70,20 +55,6 @@ public class UserLogin {
         }
     }
 
-    static boolean checkDbUsernameAndPassword(String un, String pw)  {
-        User login = UserService.getUser(un); // returns null if not in DB
-//	    VALIDATION #2 - Check targeted DB User against logged-in Username & password
-        if (login != null && (un.contentEquals(
-                login.getUsername()) && pw.contentEquals(
-                login.getPassword()
-        ))) {
-            System.out.println(
-                    "...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
-            String name = (login.getFirstName() != null) ? login.getFirstName() : un;
-            return true;
-        }
-        return false;
-    }
 
     static boolean hardCodedAdminNameAndPassword(String un, String pw) {
         if (un.contentEquals(ADMIN) && pw.contentEquals(ADMIN_PASSWORD)) {

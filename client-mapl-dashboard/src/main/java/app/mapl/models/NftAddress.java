@@ -1,5 +1,6 @@
 package app.mapl.models;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,4 +26,8 @@ public class NftAddress {
 	@OneToMany
 	@Column(name = "nft_address_id")
 	List<Nft> nfts; // nft id, nft name,  nft amount, metadata_id
+
+	public NftAddress() {
+
+	}
 }

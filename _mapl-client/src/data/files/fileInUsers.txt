@@ -1,5 +1,0 @@
-1000,user0,password,Smith,Tom,7,1,5055087707,user0@cryptomaven.xyz,http://www.dailytech.net,photo,userGroup,1,2,500
-1001,user1,password,Smith,Tom,7,1,5055087707,user1@cryptomaven.xyz,http://www.dailytech.net,photo,userGroup,1,2,501
-1002,user2,password,Smith,Tom,7,1,5055087707,user2@cryptomaven.xyz,http://www.dailytech.net,photo,userGroup,1,2,502
-1003,user3,password,Smith,Tom,7,1,5055087707,user3@cryptomaven.xyz,http://www.dailytech.net,photo,userGroup,1,2,503
-1004,user4,password,Smith,Tom,7,1,5055087707,user4@cryptomaven.xyz,http://www.dailytech.net,photo,userGroup,1,2,504

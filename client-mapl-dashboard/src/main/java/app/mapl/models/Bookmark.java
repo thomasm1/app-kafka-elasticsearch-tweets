@@ -22,6 +22,7 @@ public class Bookmark implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "shared_by_userid")
 	private User sharedBy;
+
 //
 //	public Bookmark(long id, String title, String profileUrl) {
 //		this.id = id;

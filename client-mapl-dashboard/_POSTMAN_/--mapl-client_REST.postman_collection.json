@@ -139,7 +139,7 @@
 			"response": []
 		},
 		{
-			"name": "{{baseUrl}}/rest/coins",
+			"name": "{{baseUrl}}/rest/chains",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -159,13 +159,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/rest/coins",
+					"raw": "{{baseUrl}}/rest/chains",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"rest",
-						"coins"
+						"chains"
 					]
 				}
 			},
@@ -192,13 +192,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/rest/coins",
+					"raw": "{{baseUrl}}/rest/chains",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"rest",
-						"coins"
+						"chains"
 					]
 				}
 			},

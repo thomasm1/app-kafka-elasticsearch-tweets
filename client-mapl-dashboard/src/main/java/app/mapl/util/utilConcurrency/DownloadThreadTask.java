@@ -1,15 +1,10 @@
 package app.mapl.util.utilConcurrency;
 
-import app.mapl.dao.BookmarkDAO;
-import app.mapl.dao.BookmarkDaoImpl;
 import app.mapl.models.Weblink;
 import app.mapl.util.DownloadSequential;
 import app.mapl.util.InputOutput;
 import app.mapl.util.constants.Datum;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -17,7 +12,7 @@ import java.util.concurrent.*;
 public class DownloadThreadTask implements Runnable {
     private static int SUBSEQUENTS = 1;
     // STATIC VARS
-    private static BookmarkDAO bookmDaoImpl= new BookmarkDaoImpl();
+
     private static final long TIME_FRAME = 3000000000L;
 
     // INSTANCE VARS
@@ -32,20 +27,7 @@ public class DownloadThreadTask implements Runnable {
             this.weblink = weblink;
         }
         public T call() {
-            try {
-                if(!weblink.getUrl().endsWith(".pdf")) {
-                    weblink.setDownloadStatus(Weblink.DownloadStatus.FAILED);
-                    String htmlPage = DownloadSequential.downloadFromUrl(weblink.getUrl());
-                    weblink.setHtmlPage(htmlPage);
-                } else {
-                    weblink.setDownloadStatus(Weblink.DownloadStatus.NOT_ELIGIBLE);
-
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (URISyntaxException | IOException e) {
-                e.printStackTrace();
-            }
+            DownloadSequential.download(weblink);
             return weblink;
         }
     }
@@ -91,28 +73,6 @@ public class DownloadThreadTask implements Runnable {
             e.printStackTrace();
         }
 
-        for (Future< Weblink> future : futures) {
-            try {
-                // if any downloader can't download a page, then it will be canceled
-                if (!future.isCancelled()) {
-                  Weblink weblink = future.get();
-                  String webpage = weblink.getHtmlPage();
-                  if (webpage != null) {
-                      InputOutput.writeWebpage(webpage, weblink.getId());
-                      weblink.setDownloadStatus(Weblink.DownloadStatus.FAILED);
-                      System.out.println(Datum.ANSI_PURPLE+ "Concurrent webpage Download Succeeded: " + weblink.getUrl());
-                  } else {
-                      System.out.println(Datum.ANSI_RED+ "Concurrent webpage NOT Downloaded: " + weblink.getUrl());
-                    }
-                } else {
-                    System.out.println("\n\nTask is cancelled --> " + Thread.currentThread());
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
 
 
     }
@@ -128,13 +88,7 @@ public class DownloadThreadTask implements Runnable {
 
     private List<Weblink> getWeblinks() {
         List<Weblink> weblinks = null;
-        if(downloadAll) {
-            weblinks = bookmDaoImpl.getAllWebLinks();
-            downloadAll = false; // so then will only look for new weblinks
-        } else {
-            weblinks = bookmDaoImpl.getWebLinks(Weblink.DownloadStatus.NOT_ATTEMPTED);
 
-        }
         return weblinks;
     }
 

@@ -1,7 +1,10 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.AddressDto;
-import app.mapl.dto.NftDto;
+import app.mapl.mapper.NftAddressMapper;
+import app.mapl.mapper.NftMapper;
+import app.mapl.models.dto.AddressDto;
+
+import app.mapl.models.dto.NftDto;
 import app.mapl.service.AddressesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,10 @@ import java.util.List;
 public class AddressesController {
     @Autowired
     private AddressesService addressesService;
+    @Autowired
+    private NftAddressMapper nftAddressMapper;
+    @Autowired
+    private NftMapper nftMapper;
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<AddressDto> createAddress(@RequestBody AddressDto c) {
@@ -50,6 +57,7 @@ public class AddressesController {
 
         return new ResponseEntity<>(addressesService.createNft(n), HttpStatus.CREATED);
     }
+
     @GetMapping(value = "/nfts")
     public ResponseEntity<List<NftDto>> getAllNFTs() {
         return new ResponseEntity<>(addressesService.getAllNFTs(), HttpStatus.OK);

@@ -1,10 +1,7 @@
 package app.mapl.integrationTests;
 
 import org.junit.jupiter.api.*;
-import app.mapl.consoles.AdminDashboard;
-import app.mapl.consoles.UserDashboard;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
 
 import java.sql.SQLException;
 

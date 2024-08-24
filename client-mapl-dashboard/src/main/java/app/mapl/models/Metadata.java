@@ -1,5 +1,6 @@
 package app.mapl.models;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,8 +18,10 @@ public class Metadata {
     @OneToOne(mappedBy = "metadata")
     @JoinColumn(name = "nft_id")
     Nft nft;
-//    @OneToMany
-//    List<Attribute> attributes;
+
+    public Metadata() {
+
+    }
 
 
 }

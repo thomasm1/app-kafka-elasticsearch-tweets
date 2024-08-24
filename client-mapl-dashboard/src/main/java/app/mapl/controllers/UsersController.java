@@ -1,17 +1,15 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.UserDto;
+import app.mapl.models.dto.UserDto;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.mapper.UserMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import app.mapl.models.User;
 import app.mapl.service.UsersService;
 
 import javax.validation.ConstraintViolationException;
@@ -21,7 +19,7 @@ import java.util.Optional;
 
 
 @CrossOrigin(origins = "*")
-@RequestMapping("/rest")
+//@RequestMapping("/rest")
 @RestController
 @Tag(
         name = "CRUD REST APIs for User Resource",

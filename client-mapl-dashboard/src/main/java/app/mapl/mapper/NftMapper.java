@@ -1,7 +1,7 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.NftDto;
 import app.mapl.models.Nft;
+import app.mapl.models.dto.NftDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")

@@ -1,7 +1,7 @@
 package app.mapl.util.methods;
 
+import app.mapl.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import app.mapl.service.UserService;
 
 import java.time.temporal.Temporal;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class StringService {
 
-    private UserService userService;
+    private UsersService userService;
     private int i;
 
 
@@ -21,7 +21,7 @@ public class StringService {
      * @param string
      * @return
      */
-    @Autowired
+
     public String reverse(String string) {
 	//	StringBuilder sb = new StringBuilder(string);
 	//	return sb.reverse().toString();

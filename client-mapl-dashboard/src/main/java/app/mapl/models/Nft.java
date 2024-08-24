@@ -1,5 +1,6 @@
 package app.mapl.models;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "NFT")
 public class Nft {
+	public Nft() {
+	}
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id

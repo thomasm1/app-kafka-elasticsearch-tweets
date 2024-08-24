@@ -1,29 +1,29 @@
 
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (211, 'Tom1@gmail.com', 'password', 'Smith', 'Tom1', 3,  '5055087707',        'Tom1@gmail.com', 'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg', 'dashboardCode', 0, 1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (212, 'Tom2@gmail.com', 'password', 'Maestas', 'Tom2', 3, '5055087707',        'Tom2@gmail.com', 'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg','dashboardCode',  0, 1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (213,'Tom3@gmail.com', 'password', 'Smith', 'Tom3', 3,  '5055087707', 'Tom3@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a3.jpg', 'dashboardCode',  0, 1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (214,'Tom4@gmail.com', 'password', 'Smith', 'Tom4', 0, '5055087707', 'Tom4@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a4.jpg', 'dashboardCode',  0, 0);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (215, 'Tom5@gmail.com', 'password', 'Smith', 'Tom5', 3, '5055087707','Tom5@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a6.jpg', 'dashboardCode',  0,    1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (216, 'Tom6@gmail.com', 'password', 'Smith', 'Tom6', 3, '5055087707','Tom6@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a7.jpg', 'dashboardCode',  0,    1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (217,'tom7@gmail.com', 'password', 'maestas', 'tom7', 4, '999-999-9999','tom7@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode',  0, 1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (218,'Tom8@gmail.com', 'password', 'Smith', 'Tom8', 3,  '5055087707','Tom8@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode', 0,     1);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (219, 'thomas.maestas@hotmail.com', 'password', 'Maestas', 'thomas', 0, '5055087707','thomas.maestas@hotmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode',  0, 0);
-Insert into USERS (USER_ID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (220, 'thomas1.maestas@gmail.com', 'password', 'Maestas', 'thomasm1', 3, '5055087707','thomas1.maestas@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode',  0, 1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (211, 'Tom1@gmail.com', 'password', 'Smith', 'Tom1', 3,  '5055087707',        'Tom1@gmail.com', 'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg', 'dashboardCode', 0, 1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (212, 'Tom2@gmail.com', 'password', 'Maestas', 'Tom2', 3, '5055087707',        'Tom2@gmail.com', 'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg','dashboardCode',  0, 1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (213,'Tom3@gmail.com', 'password', 'Smith', 'Tom3', 3,  '5055087707', 'Tom3@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a3.jpg', 'dashboardCode',  0, 1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (214,'Tom4@gmail.com', 'password', 'Smith', 'Tom4', 0, '5055087707', 'Tom4@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a4.jpg', 'dashboardCode',  0, 0);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (215, 'Tom5@gmail.com', 'password', 'Smith', 'Tom5', 3, '5055087707','Tom5@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a6.jpg', 'dashboardCode',  0,    1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (216, 'Tom6@gmail.com', 'password', 'Smith', 'Tom6', 3, '5055087707','Tom6@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a7.jpg', 'dashboardCode',  0,    1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (217,'tom7@gmail.com', 'password', 'maestas', 'tom7', 4, '999-999-9999','tom7@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode',  0, 1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (218,'Tom8@gmail.com', 'password', 'Smith', 'Tom8', 3,  '5055087707','Tom8@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode', 0,     1);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (219, 'thomas.maestas@hotmail.com', 'password', 'Maestas', 'thomas', 0, '5055087707','thomas.maestas@hotmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode',  0, 0);
+Insert into USERS (USERID, USERNAME, PASSWORD, LASTNAME, FIRSTNAME, USERTYPE, ORGANIZATIONCODE, EMAIL, CUSURL, DASHBOARDCODE, ISACTIVE, CONTACTTYPE)values (220, 'thomas1.maestas@gmail.com', 'password', 'Maestas', 'thomasm1', 3, '5055087707','thomas1.maestas@gmail.com',        'https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg', 'dashboardCode',  0, 1);
 
 
 INSERT INTO ROLES (id, name) VALUES (2,'ROLE_ADMIN');
 INSERT INTO ROLES (id, name) VALUES (1,'ROLE_USER');
 
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (1, 211, 2);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (2, 212, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (3, 213, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (4, 214, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (5, 215, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (6, 216, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (7, 217, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (8, 218, 1);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (9, 219, 2);
-insert into USERS_ROLES(id, USER_ID, ROLE_ID)values (10,220 ,2);
+insert into USERS_ROLES(ID, USERID, ROLE_ID)values (1, 211, 2);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (2, 212, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (3, 213, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (4, 214, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (5, 215, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (6, 216, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (7, 217, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (8, 218, 1);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (9, 219, 2);
+insert into USERS_ROLES(id, USERID, ROLE_ID)values (10,220 ,2);
 
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (1, 'ethereum',   'ETH', 12000.22, 0);
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (2, 'polygon',    'MATIC', 9.22, 0);
@@ -41,11 +41,11 @@ Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)valu
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (14, 'binance',    'bsc', 45000, 0);
 Insert into COINTABLE (COINID, COINTOKEN, COINSYMBOL, PRICETOTAL, PURCHASED)values (15, 'binance',    'bnb', 45000, 0);
 
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (1, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html>thomasmaestas</html>', 1);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (2, 'https://cryptomaven.xyz', 'https://cryptomaven.xyz', '<html>cryptomaven</html>', 1);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (3, 'https://mapl.app', 'https://mapl.app', '<html>mapl</html>', 2);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (4, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html></html>',  3);
-INSERT INTO weblink (id, url, host, htmlpage, downloadstatus) VALUES (5, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html></html>',  4);
+INSERT INTO WEBLINKS (ID, URL, HOST, HTMLPAGE, DOWNLOADSTATUS) VALUES (1, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html>thomasmaestas</html>', 1);
+INSERT INTO WEBLINKS (ID, URL, HOST, HTMLPAGE, DOWNLOADSTATUS) VALUES (2, 'https://cryptomaven.xyz', 'https://cryptomaven.xyz', '<html>cryptomaven</html>', 1);
+INSERT INTO WEBLINKS (ID, URL, HOST, HTMLPAGE, DOWNLOADSTATUS) VALUES (3, 'https://mapl.app', 'https://mapl.app', '<html>mapl</html>', 2);
+INSERT INTO WEBLINKS (ID, URL, HOST, HTMLPAGE, DOWNLOADSTATUS) VALUES (4, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html></html>',  3);
+INSERT INTO WEBLINKS (ID, URL, HOST, HTMLPAGE, DOWNLOADSTATUS) VALUES (5, 'https://thomasmaestas.net', 'https://thomasmaestas.net', '<html></html>',  4);
 --
 -- create sequence id_maker start with 250 increment by 50;
 -- create sequence cointable_seq start with 2066 increment by 50;

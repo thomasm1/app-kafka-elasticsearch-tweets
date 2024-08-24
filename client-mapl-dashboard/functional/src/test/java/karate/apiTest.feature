@@ -23,8 +23,8 @@ Feature: comments feature api
       | categories    | GET   | 200   |        |       |       |
       | categories    | GET   | 200   | /11501 |       |       |
 
-      | coins    | GET   | 200   |        |       |       |
-      | coins    | GET   | 200   | /11501 |       |       |
+      | chains    | GET   | 200   |        |       |       |
+      | chains    | GET   | 200   | /11501 |       |       |
 
       | users     | GET   | 200   |        |       |       |
       | users     | GET   | 200   | /211   |       |       |

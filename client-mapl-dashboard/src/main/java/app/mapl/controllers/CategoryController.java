@@ -1,6 +1,6 @@
 package app.mapl.controllers;
 
-import app.mapl.dto.CategoryDto;
+import app.mapl.models.dto.CategoryDto;
 import app.mapl.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@CrossOrigin(origins = "*")
+@RequestMapping(CategoryController.API_CATEGORIES)
 public class CategoryController {
 
+    public static final String API_CATEGORIES = "/api/categories";
     private CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {

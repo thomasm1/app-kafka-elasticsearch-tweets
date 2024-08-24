@@ -1,12 +1,9 @@
 package app.mapl.integrationTests;
 
  
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class UserDAOTesting {

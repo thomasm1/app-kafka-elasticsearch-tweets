@@ -1,17 +1,16 @@
 package app.mapl.models;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roles")
+@Builder
+@Table(name = "ROLES")
 public class Role extends AbstractDomainClass  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

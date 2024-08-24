@@ -15,9 +15,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import app.mapl.dao.UserDAOimpl;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
 
 import java.util.Arrays;
 import java.util.List;

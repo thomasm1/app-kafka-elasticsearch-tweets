@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@RestController 
-@CrossOrigin(origins="*")
+@RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/login")
 public class KeysController {
 	@GetMapping("/getMoralisApi")

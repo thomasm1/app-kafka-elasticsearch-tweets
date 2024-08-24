@@ -1,6 +1,6 @@
 package app.mapl.service;
 
-import app.mapl.dto.UserDto;
+import app.mapl.models.dto.UserDto;
 import app.mapl.exception.ResourceNotFoundException;
 import app.mapl.mapper.UserMapper;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,7 @@
 package app.mapl.util;
 
+import app.mapl.models.Weblink;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
@@ -29,6 +31,9 @@ public class DownloadSequential {
 
     public static String downloadFromStream(InputStream in) throws MalformedURLException, URISyntaxException {
         return InputOutput.readFromStream(in);
+    }
+
+    public static <T extends Weblink> void download(T weblink) {
     }
 
     public InputStream getStreamFromUrl(String sourceUrl) throws MalformedURLException, URISyntaxException {

@@ -1,12 +1,14 @@
 package app.mapl.models;
 
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@Builder
 @Table(name = "ATTRIBUTE")
 public class Attribute {
     @Id

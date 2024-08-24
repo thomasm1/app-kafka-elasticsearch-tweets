@@ -1,7 +1,8 @@
 package app.mapl.service;
 
 
-import app.mapl.dto.ChainDto;
+import app.mapl.models.Chain;
+import app.mapl.models.dto.ChainDto;
 
 import java.util.List;
 
@@ -11,18 +12,18 @@ public interface ChainsService {
 
     ChainDto createChain(ChainDto cd);
 
-    public ChainDto getChain(int chainId);
+    ChainDto getChain(int id);
 
-//    public List<Chain> getAllChainsIOwn(String username);
+    //    @Autowired
+    //    public List<Chain> getAllChainsIOwn(String username) {
+    //        return null; //(List<Chain>)  chainsRepository.findByUsername(username);
+    //    }
+    List<ChainDto> getAllChains();
 
-    public List<ChainDto> getAllChains();
 
     ChainDto  getChainByName(String name);
 
-    public ChainDto updateChain(ChainDto change);
+    ChainDto updateChain(ChainDto change);
 
-    public boolean deleteChain(int id);
-
-
-
+    boolean deleteChain(int id);
 }

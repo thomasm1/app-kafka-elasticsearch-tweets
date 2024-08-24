@@ -1,6 +1,6 @@
 package app.mapl.mapper;
 
-import app.mapl.dto.ChainDto;
+import app.mapl.models.dto.ChainDto;
 import app.mapl.models.Chain;
 import org.mapstruct.*;
 

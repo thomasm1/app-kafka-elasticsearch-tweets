@@ -22,7 +22,7 @@ Feature: Spring REST feature api
       | offer_logic | GET    | 200    | "VA>R_3" | "VAR_" |
       | post        | GET    | 200    | "VA>R_3" | "VAR_" |
       | comment     | GET    | 200    | "VA>R_3" | "VAR_" |
-      | coin        | GET    | 200    | "VA>R_3" | "VAR_" |
+      | chain        | GET    | 200    | "VA>R_3" | "VAR_" |
       | author      | GET    | 200    | "VA>R_3" | "VAR_" |
 #      | book        | GET    | 200    | "VA>R_3" | "VAR_" |
       | weblink     | GET    | 200    | "VA>R_3" | "VAR_" |

@@ -7,8 +7,7 @@ import java.util.*;
 import app.mapl.systemUser.UserLogin;
 import app.mapl.systemUser.UserRegister;
 
-import static app.mapl.cli.ClientActions.CliStaticLoader.*;
-import static app.mapl.service.CoinService.coinMarketViewAll; // 3 DB
+//import static app.mapl.service.CoinService.coinMarketViewAll; // 3 DB
 import static app.mapl.consoles.GeoDashboard.mainNavigator; // 7 Local
 
 
@@ -65,7 +64,6 @@ public class MainDashboard {
                         }
                         case 4: {
                             System.out.println("\n Ok, Initiating Local Offline Data Loader....");
-                            cliStaticDataLoader();  // Local Offline Automated USER
                             break;
                         }
                         case 5: {
@@ -75,12 +73,10 @@ public class MainDashboard {
                         }
                         case 6: {
                             System.out.println("\n   #5, runDownloaderJob();...");
-                            runDownloaderJob();
                             break;
                         }
                         case MAIN_OPTIONS_COUNT: {
                             System.out.println("\n   #6 startBrowsingBuying();");
-                            startBrowsingBuying();
                             break;
                         }
                         case 0: {
@@ -111,6 +107,8 @@ public class MainDashboard {
         }
     }
 
+    private static void coinMarketViewAll() {
+    }
 
 
 }

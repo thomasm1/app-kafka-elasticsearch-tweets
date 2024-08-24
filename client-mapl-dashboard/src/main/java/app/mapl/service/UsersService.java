@@ -1,7 +1,6 @@
 package app.mapl.service;
 
-import app.mapl.dto.UserDto;
-import app.mapl.models.User;
+import app.mapl.models.dto.UserDto;
 
 import java.util.List;
 import java.util.Optional;

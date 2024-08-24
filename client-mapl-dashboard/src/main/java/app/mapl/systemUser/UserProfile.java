@@ -1,8 +1,6 @@
 package app.mapl.systemUser;
 
-import app.mapl.consoles.UserDashboard;
 import app.mapl.models.User;
-import app.mapl.service.UserService;
 
 import java.util.Scanner;
 
@@ -126,7 +124,6 @@ public class UserProfile {
                 System.out.println("saveProfile"+  user+ pw+ ln+fn+  groups+userType+  organizationCode+email+ cusurl+ photoPath+ dashboardCode+ isActive+contactType+  id);
                 saveProfile(user, pw,  ln, fn, groups, userType, organizationCode,  email, cusurl, photoPath, dashboardCode,isActive,contactType, id);
 
-                UserDashboard.dashboardChoice(user.getUsername());
                 break;
         }
         editLoop(user, pw, ln, fn,  groups, userType,  organizationCode,email, cusurl, photoPath, dashboardCode, isActive,contactType,  id);
@@ -160,6 +157,6 @@ public class UserProfile {
         user.setIsActive(isActive);
         user.setContactType(contactType);
         user.setId(id);
-        System.out.println("Successfully Updated: " + UserService.updateUser(user) + "\nChanges: " + user);
+
     }
 }

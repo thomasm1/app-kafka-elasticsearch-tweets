@@ -1,6 +1,7 @@
 package app.mapl.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 @Entity
 @Table(
         name = "AUTHORS", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})}

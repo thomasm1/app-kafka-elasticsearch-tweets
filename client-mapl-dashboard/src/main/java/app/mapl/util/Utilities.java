@@ -18,7 +18,7 @@ public class Utilities {
     public static List<String>  getReflectionNames(Object o) {
         List<String> info = new ArrayList<>();
         String names = "getName, getSuperclass, isInterface, getInterfaces.length";
-        info.add(names);
+         System.out.println(names);
         info.add(o.getClass().getName());
         info.add(o.getClass().getSuperclass().getName());
         info.add(String.valueOf(o.getClass().isInterface()));

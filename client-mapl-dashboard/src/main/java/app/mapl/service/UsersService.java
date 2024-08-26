@@ -8,6 +8,12 @@ import java.util.Optional;
 
 public interface UsersService {
 
+	static UserDto deleteUserCli(String s) {return null;
+	}
+
+	static UserDto getUserCli(String s) { return null;
+	}
+
 	public UserDto createUser(UserDto user);
 
 	public static UserDto createUserCli(UserDto user) {

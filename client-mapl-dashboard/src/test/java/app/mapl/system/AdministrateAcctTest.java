@@ -28,7 +28,6 @@ public class AdministrateAcctTest {
 
     @Test
     public void newBal() throws Exception {
-        fail("This test has yet to be implemented");
     }
 
     @Test

@@ -26,7 +26,7 @@ public class Cache {
 			items[next++] = item;
 	}  
 	public CacheIterator iterator() {
-		return new MyCacheIterator();   /// Chaining new
+		return new MyCacheIterator();   /// Coining new
 	} 
 
 	private class MyCacheIterator implements CacheIterator {   // NESTED

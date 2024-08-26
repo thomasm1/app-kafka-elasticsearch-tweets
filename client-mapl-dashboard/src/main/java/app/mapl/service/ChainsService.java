@@ -26,4 +26,6 @@ public interface ChainsService {
     ChainDto updateChain(ChainDto change);
 
     boolean deleteChain(int id);
+
+    void createChainCLI(ChainDto createdChain);
 }

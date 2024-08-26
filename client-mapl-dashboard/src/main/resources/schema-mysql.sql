@@ -42,7 +42,7 @@ create table NFT_REF
     primary key (id)
 );
 
-select * from Users;
+# select * from USERS;
 
 create table COINTABLE
 (

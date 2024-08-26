@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class JPAErrorControllerAdvice {
 
     @ExceptionHandler
-    ResponseEntity handleJPAViolations(TransactionSystemException exception) {
+    ResponseEntity handleImplViolations(TransactionSystemException exception) {
         return ResponseEntity.badRequest().build();
     }
 

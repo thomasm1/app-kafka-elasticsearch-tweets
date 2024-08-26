@@ -15,42 +15,52 @@ import java.util.stream.Collectors;
 @Service
 public class ChainsServiceImpl implements ChainsService {
 
-@Autowired
-private ChainsRepository chainsRepository;
+private final ChainsRepository chainsRepository;
 
-@Autowired
-private ChainMapper chainMapper;
+private final ChainMapper chainMapper;
+public ChainsServiceImpl() {
+        chainsRepository = null;
+        chainMapper = null;
+}
+    public ChainsServiceImpl(ChainsRepository chainsRepository, ChainMapper chainMapper) {
+        this.chainsRepository = chainsRepository;
+        this.chainMapper = chainMapper;
+    }
+
 
     /**
      * @param cd
-     * @return
+     * @return ChainDto
      */
-
     @Override
     public   ChainDto createChain(ChainDto cd) {
-        return null;
+
+        Chain chain = chainMapper.toEntity(cd);
+        Chain newChain = chainsRepository.save(chain);
+
+        ChainDto newChainDto = chainMapper.toOneDto(newChain);
+        return newChainDto;
     }
+
     @Override
     public   ChainDto getChain(int id) {
         Chain chain = chainsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", Integer.toString(id)));
             return chainMapper.toOneDto(chain);
     }
-
+    /**
+     * @return List<ChainDto>
+     */
     @Override
     public List<ChainDto> getAllChains() {
         List<Chain> chains = chainsRepository.findAll();
         List<ChainDto> content = chains.stream().map(chainMapper::toOneDto).collect(Collectors.toList());
 
-
         return content;
-
     }
 
     /**
-     * @return
+     * @return ChainDto
      */
-
-
     @Override
     public  ChainDto  getChainByName(String name) {
 
@@ -94,7 +104,17 @@ private ChainMapper chainMapper;
         }
     }
 
+    @Override
+    public void createChainCLI(ChainDto createdChain) {
+        Chain chain = chainMapper.toEntity(createdChain);
+        chainsRepository.save(chain);
+    }
+
     public List<Chain> getChains() {
+        return chainsRepository.findAll();
+    }
+
+    public List<Chain> getAllChainsCustCLI() {
         return chainsRepository.findAll();
     }
 }

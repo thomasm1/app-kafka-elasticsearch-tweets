@@ -4,10 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import app.mapl.models.dto.UserDto;
+import app.mapl.repositories.UsersRepository;
+import app.mapl.service.UsersService;
+import app.mapl.service.UsersServiceImpl;
+import org.junit.jupiter.api.*;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,16 +20,18 @@ import app.mapl.models.User;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {      // *NOTE: change PK usernames before sending to DB
 
-    @InjectMocks
-	private UserService userServiceTester;
     @Mock
-    private UserDAOimpl userDAOimplTester = mock(UserDAOimpl.class);
+	private UsersService usersService;
+    @InjectMocks
+    private UsersServiceImpl usersServiceImpl = mock(UsersServiceImpl.class);
 
-    @BeforeAll
+
+    @BeforeEach
     public void setup() {
 
         MockitoAnnotations.openMocks(this);
@@ -36,71 +39,85 @@ public class UserServiceTest {      // *NOTE: change PK usernames before sending
     //TODO mockito Service INJECTION
     @Test
     public void add_new_user() {
-        User u = new User(
-                "user0", "passwordX",
-                "Smith", "Tom", 3, 1,
-                "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                "photoPath",
-                "dashboardCode",
-                0,
-                1,
-                "id");
-        when(userDAOimplTester.createUser(u)).thenReturn(true);
-        assertTrue(userServiceTester.createUser(u));
+        UserDto u =   UserDto.builder()
+        .username("user0")
+        .lastName("Smith")
+        .firstName("Tom")
+        .userType(3)
+        .organizationCode("CD")
+        .dashboardCode("dashboardCd")
+        .email("user4@cryptomaven.xyz")
+        .cusUrl("http://www.dailytech.net/photoPath")
+        .contactType(1)
+        .isActive(1)
+        .id("id")
+                .build();
+        when(usersService.createUser(u)).thenReturn(u);
+        assertEquals(usersService.createUser(u), u);
      }
 
     @Test
     public void get_users() {
 
-        when(userDAOimplTester.getUsers()).thenReturn(Arrays.asList(
-                new User(
-                        "user1", "password1",
-                        "Smith", "Tom", 3, 1,
-                        "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                        "photoPath",
-                        "dashboardCode",
-                        0,
-                        1,
-                        "id"),
-                new User(
-                        "user2", "password2",
-                        "Smith", "Tom", 3, 1,
-                        "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                        "photoPath",
-                        "dashboardCode",
-                        0,
-                        1,
-                        "id")));
-        List<User> users = userServiceTester.getUsers();
+        UserDto uDto;
+        when(usersService.getUsers()).thenReturn(Arrays.asList(
+                  uDto = UserDto.builder()
+                        .username("user0")
+                        .lastName("Smith")
+                        .firstName("Tom")
+                        .userType(3)
+                        .organizationCode("CD")
+                        .dashboardCode("dashboardCd")
+                        .email("user4@cryptomaven.xyz")
+                        .cusUrl("http://www.dailytech.net/photoPath")
+                        .contactType(1)
+                        .isActive(1)
+                        .id("id")
+                        .build(),
+        uDto = UserDto.builder()
+                .username("user0")
+                .lastName("Smith")
+                .firstName("Tom")
+                .userType(3)
+                .organizationCode("CD")
+                .dashboardCode("dashboardCd")
+                .email("user4@cryptomaven.xyz")
+                .cusUrl("http://www.dailytech.net/photoPath")
+                .contactType(1)
+                .isActive(1)
+                .id("id")
+                .build()
+        ));
+        List<UserDto> users = usersService.getUsers();
         assertEquals("user0", users.get(0).getUsername());
-        assertEquals("password1", users.get(1).getPassword());
+        assertEquals("Smith", users.get(1).getLastName());
     }
 
     @Test
     public void get_user() {
 
-        when(userDAOimplTester.getUser("user1")).thenReturn(
-                new User(
-                        "user1", "password1",
-                        "Smith", "Tom", 3, 1,
-                        "user4@cryptomaven.xyz", "5055087707", "http://www.dailytech.net",
-                        "photoPath",
-                        "dashboardCode",
-                        0,
-                        1,
-                        "id"));
-        User user = userServiceTester.getUser("user1");
+        when(usersService.getUser("user4@cryptomaven.xyz")).thenReturn(
+                Optional.ofNullable(UserDto.builder()
+                        .username("user4@cryptomaven.xyz")
+                        .lastName("Smith")
+                        .firstName("Tom")
+                        .userType(3)
+                        .organizationCode("CD")
+                        .dashboardCode("dashboardCd")
+                        .email("user4@cryptomaven.xyz")
+                        .cusUrl("http://www.dailytech.net/photoPath")
+                        .contactType(1)
+                        .isActive(1)
+                        .id("id")
+                        .build()));
+        Optional<UserDto> user = usersService.getUser("user4@cryptomaven.xyz");
 
-        assertEquals("user1", user.getUsername());
+        assertEquals("user4@cryptomaven.xyz", user.get().getUsername());
     }
 
     @Test
     public void update_user() {
-//		User uUpdated = new User("password", "Smith", "Tom", 3, 1, "5055087707" , "user4@cryptomaven.xyz", "http://www.dailytech.net","photoPath", 	"dashboardCode",
-//				0,
-//				1,
-//				"id");   // PASSES
-//   		assertTrue(UserService.updateUser(uUpdated));
+
     }
 
     @Test

@@ -7,7 +7,7 @@ public class ServerSocket {
     public static void main(String[] args) {
         try(java.net.ServerSocket serverSocket = new java.net.ServerSocket(5000)) {
             while(true) {
-                new app.mapl.util.methods.http.Echoer(serverSocket.accept()).start();
+                new Echoer(serverSocket.accept()).start();
             }
 
 

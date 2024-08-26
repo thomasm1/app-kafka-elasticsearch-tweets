@@ -3,6 +3,7 @@ package app.mapl.models;
 import app.mapl.util.Shareable;
 
 import javax.persistence.*;
+
 @Entity
 @Table(name = "MOVIES")
 public class Movie extends Bookmark implements Shareable {

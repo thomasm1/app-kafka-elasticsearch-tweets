@@ -25,7 +25,10 @@ class UtilitiesTest {
     @Test
     void getReflectionInfo_getName() {
     List<String> info = Utilities.getReflectionNames(m);
-    assert info.contains(String.valueOf("MaPL"));
+    System.out.println(info.get(0));
+//    [getName, getSuperclass, isInterface, getInterfaces.length,
+//    app.mapl.commands.MaPL, java.lang.Object, false, 1]
+        assert info.get(0).contains("app.mapl.commands.MaPL");
     }
 
     @Test

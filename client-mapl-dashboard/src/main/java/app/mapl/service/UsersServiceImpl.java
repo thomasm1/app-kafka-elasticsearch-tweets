@@ -89,6 +89,19 @@ public class UsersServiceImpl implements UsersService {
     }
 
     /**
+     * @param id;
+     * @return Optional<UserDto>
+     */
+    public static Optional<UserDto> getUserCli(int id) {
+        try {
+       System.out.println("id is "+id);
+            return Optional.ofNullable(UserDto.builder()
+                    .username("uname").email("email").firstName("fname").lastName("lname").build());
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    /**
      * @param email;
      * @return Optional<UserDto>
      */

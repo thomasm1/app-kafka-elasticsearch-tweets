@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mapl-config
+  name: mapl-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mapl-config
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mapl-config
+    spec:
+      containers:
+      - image: thomasm1/mapl-config-server
+        name: mapl-config
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
+
+#1. kubectl nodes
+#2. kubectl get nodes
+#3. kubctl config get-contexts
+#4. kubectl config use-context docker-desktop
+#5. kubectl create deployment mapl-config --image thomasm1/mapl-config-server --dry-run=client -o=yaml > deployment.yml
+#6. kubectl apply -f deployment.
+#7. kubectl get deployments
+#8. kubectl get pods
+#9. kubectl describe pod mapl-config-<pod-id>
+#10. kubectl get services
+#11. kubectl expose deployment mapl-config --type=NodePort --port=8080
+#12. kubectl get services
+#13. kubectl describe service mapl-config
+#14. kubectl delete service mapl-config
+#15. kubectl delete deployment mapl-config
+#16. kubectl get services
+#17. kubectl get deployments
+#18. kubectl get pods
+#19. kubectl get pods -o wide
+#20. kubectl get pods -o wide --show-labels
+#21. kubectl get pods -o wide --show-labels --selector=app=mapl-config
+#22. kubectl get pods -o wide --show-labels --selector=app=mapl-config,env=dev
+
+

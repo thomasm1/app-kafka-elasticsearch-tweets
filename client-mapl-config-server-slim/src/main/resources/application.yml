@@ -1,0 +1,19 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    ROOT: INFO
+    org.spring.framework.cloud.config: DEBUG
+
+  spring.application.name: CONFIG-SERVER
+
+  eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+
+  spring.cloud.config.server.git.uri: https://github.com/thomasm1/config-server-repo
+  spring.cloud.config.server.git.clone-on-start: true
+  spring.cloud.config.server.git.default-label: main
+  spring.security.user.name: user
+  spring.security.user.password: password
+  spring.security.user.roles: USER
+

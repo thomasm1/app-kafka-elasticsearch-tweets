@@ -9,7 +9,7 @@
             <version>2.7.4</version>
             <relativePath/>
         </parent>
-    <groupId>org.mapl</groupId>
+    <groupId>app.mapl</groupId>
     <artifactId>twitter-kafka-2024</artifactId>
     <version>1.0-SNAPSHOT</version>
 

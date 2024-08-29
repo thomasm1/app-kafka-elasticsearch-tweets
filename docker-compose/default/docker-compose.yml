@@ -12,7 +12,7 @@ services:
       service: network-deploy-service
 
   configserver:
-    image: "thomasm1/configserver:s10"
+    image: "thomasm1/configserver:1.0.0"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -27,7 +27,7 @@ services:
       service: microservice-base-config
 
   eurekaserver:
-    image: "thomasm1/eurekaserver:s10"
+    image: "thomasm1/eurekaserver:1.0.0"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -47,7 +47,7 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "thomasm1/accounts:s10"
+    image: "thomasm1/accounts:1.0.0"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -69,7 +69,7 @@ services:
       service: microservice-eureka-config
 
   loans:
-    image: "thomasm1/loans:s10"
+    image: "thomasm1/loans:1.0.0"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -91,7 +91,7 @@ services:
       service: microservice-eureka-config
 
   cards:
-    image: "thomasm1/cards:s10"
+    image: "thomasm1/cards:1.0.0"
     container_name: cards-ms
     ports:
       - "9000:9000"
@@ -113,7 +113,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "thomasm1/gatewayserver:s10"
+    image: "thomasm1/gatewayserver:1.0.0"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
@@ -137,5 +137,5 @@ services:
       service: microservice-eureka-config
 
 networks:
-  eazybank:
+  demobank:
     driver: "bridge"

@@ -22,7 +22,7 @@ services:
         - 'mysql-data:/var/lib/mysql'
         - './schema.sql:/docker-entrypoint-initdb.dl/schema-mysql.sql'
     networks:
-      mapl-mysql-net:
+      demobank:
 
   mapl-restful-webservices:
     container_name: mapl-mvc
@@ -37,4 +37,4 @@ services:
     networks:
       mapl-mysql-net:
         aliases:
-          - mapl-mysql
+          - demobank

@@ -1,0 +1,393 @@
+### 2024 DOCKER REFS ###
+########################
+### Check docker install
+docker system df
+docker hostname       #identity name of container
+docker sbom     # "software bill of materials"
+docker pull hello-world  # empty container system check
+docker run --name test_container -d hello-world
+docker logs test_container
+docker logs -t test_container # time
+docker version
+docker info
+docker container run -it -p 80:80 nginx
+docker container run -d -p 80:80 nginx
+docker container run -d -p 80:80 --name nginx-server nginx
+docker container ls # OR
+docker ps
+docker container ls -a
+docker container logs [NAME]
+docker container top [NAME]   # List processes running in container
+
+docker container inspect [NAME]
+docker container inspect --format '{{ .NetworkSettings.IPAddress }}' [NAME]
+
+### Performance stats (cpu, mem, network, disk, etc)
+docker container stats [NAME]  # (cpu, mem, network, disk, etc)
+docker container run -it --name [NAME] nginx bash
+- i = interactive Keep STDIN open if not attached
+- t = tty - Open prompt
+**For **
+winpty docker container run -it --name [NAME] nginx bash #Git Bash,   "winpty"
+docker container run -it --name ubuntu ubuntu #no bash because ubuntu uses bash by default)
+docker container run --rm -it --name [NAME] ubuntu  #   it container does not stay by using the -rm
+docker container start -ai ubuntu  # Access an already created container, start with -ai
+docker container exec -it mysql bash # exec to edit config, etc
+
+docker container run -it alpine sh   # small Linux distro
+***(use sh because it does not include bash)
+alpine uses apk for its package manager - can install bash
+
+### Cleanup
+docker container stop [ID]
+docker stop $(docker ps -aq)  # Stop all running containers
+docker container rm [ID]
+docker container rm -f [ID]
+docker container rm [ID] [ID] [ID]
+docker rm $(docker ps -aq)
+
+docker image tag nginx thomasm1/nginx # Retag existing image
+docker image push thomasm1/nginx
+docker login
+docker image tag thomasm1/nginx thomasm1/nginx:testing # Add tag to new image
+docker image rm [IMAGE]
+docker rmi jenkins/jenkins
+docker rmi httpd:2-alpine
+docker images
+docker image ls
+
+docker rmi $(docker images -a -q)
+- Host provides the kernel, big difference between VM
+
+VOLUME:
+    ## special location outside of container UFS. Used for databases
+
+    docker volume create localvolume
+docker volume ls
+docker volume inspect localvolume
+echo "This file exists" > /var/lib/docker/volumes/localvolume/_data/file.txt
+docker run -d --name mountvolume --mount src=localvolume,dst=/data httpd
+docker exec -it mountvolume /bin/bash
+df -h
+cat /data/file.txt
+echo "Created from inside the container" > /data/from-container.txt
+cat /data/from-container.txt
+exit
+cat /var/lib/docker/volumes/localvolume/_data/from-container.txt
+docker run -d --name tempvolume --mount type=tmpfs,dst=/tempdata httpd
+docker inspect tempvolume | grep Mounts -A 10
+docker exec -it tempvolume /bin/bash
+df -h
+exit
+docker volume prune
+
+BIND MOUNTS:
+    - Can not use in Dockerfile, specified at run time (uses -v as well)
+- ... run -v /Users/brad/stuff:/path/container (mac/linux)
+- ... run -v //c/Users/brad/stuff:/path/container (windows)
+
+**TIP: Instead of typing out local path, for working directory use $(pwd):/path/container - On windows may not work unless you are in your users folder**
+### Run and be able to edit index.html file (local dir should have the Dockerfile and the index.html)
+```
+docker container run  -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
+```
+### Go into the container and check
+    ```
+docker container exec -it nginx bash
+cd /usr/share/nginx/html
+ls -al
+# You could create a file in the container and it will exiost on the host as well
+touch test.txt
+# Bind Mount -Link container path to host path  
+
+NETWORKING: 
+### "bridge" or "docker0" is the default network 
+docker container port [NAME]  # GET port 
+docker network ls 
+docker network inspect [NETWORK_NAME]
+("bridge" is default) 
+docker network create [NETWORK_NAME] 
+docker container run -d --name [NAME] --network [NETWORK_NAME] nginx 
+docker network connect [NETWORK_NAME] [EXISTING_CONTAINER_NAME] 
+docker network disconnect [NETWORK_NAME] [CONTAINER_NAME] 
+docker network disconnect
+
+CACHE & ORDER: 
+- If you change one line and re-run, that line and everything after will not be cached-- Keep things that change the most toward the bottom of the Dockerfile
+
+
+DOCKER COMPOSE:
+- Configure relationships between containers
+- Save our docker container run settings in easy to read file
+- 2 Parts: YAML File (docker.compose.yml) + CLI tool (docker-compose)
+
+### 1. docker.compose.yml - Describes solutions for
+- containers
+- networks
+- volumes 
+### 2. docker-compose CLI - used for local dev/test automation with YAML files
+sample
+```
+version: '2'
+
+# same as
+# docker run -p 80:4000 -v $(pwd):/site thomasm1/jekyll-serve
+
+services:
+    jekyll:
+        image: thomasm1/jekyll-serve
+volumes:
+    - .:/site
+ports:
+    - '80:4000'
+        ```
+  
+##########################
+
+	 # REACT APP: 
+	FROM node:alpine   # The os used. Common is alpine, debian, ubuntu
+	WORKDIR /app       #  (also could use 'RUN cd /some/path')
+	ENV env=docker
+	COPY package.json ./. # Copies files from host to container 
+	RUN npm install     # - Run commands/shell scripts, etc
+	COPY ./ ./.       # Copies files from host to container 
+	EXPOSE 3000.    #- Ports to expose
+	CMD ["npm", "start"].   # Final command run when you launch a new container from image - can be overridden  
+	
+	
+	## STATIC HTML
+	# EXTENDING DOCKERFILE -- Custom Dockerfile for html paqge with nginx
+	FROM nginx:latest # Extends nginx so everything included in that image is included here
+	WORKDIR /usr/share/nginx/html
+	COPY index.html index.html
+	COPY . .
+    
+    
+NGINX: 
+docker container run -d -p 80:80 --name nginx nginx  
+```
+FROM nginx:latest # Extends nginx so everything included in that image is included here
+WORKDIR /usr/share/nginx/html
+COPY index.html index.html
+    ```
+docker image build -t nginx-website
+docker container run -p 80:80 --rm nginx-website
+docker image tag nginx-website:latest thomasm1/nginx-website:latest 
+docker image push thomasm1/nginx-website
+
+APACHE: 
+docker container run -d -p 8080:80 --name apache httpd 
+MONGODB: 
+docker container run -d -p 27017:27017 --name mongo mongo 
+MYSQL: 
+docker pull mysql
+docker image inspect mysql
+docker container run -d -p 3306:3306 --name mysql --env MYSQL_ROOT_PASSWORD=123456 mysql 
+docker container inspect mysql
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql 
+docker volume inspect mysql-db
+    1. docker pull mysql/mysql-server:latest
+	 docker images 
+	2.  “mySQLContainer”    docker run --name=mySQLContainer -p 3306:3306 -d mysql/mysql-server:latest
+	docker ps 
+	3. docker logs mySQLContainer  save generated root password 
+	 
+	4. docker exec -it mySQLContainer mysql -uroot -p 
+	
+	5.ALTER USER 'root'@'localhost' IDENTIFIED BY 'uhgmjg8i7y-h87b,tyr99jy6';
+	
+	6.: CREATE DATABASE dashboard_db
+	7. SHOW DATABASES
+	
+	8.  CREATE USER 'admin'@'%' IDENTIFIED BY 'abc123!!';
+	9. GRANT ALL PRIVILEGES ON * . * TO 'admin'@'%';
+	10. FLUSH PRIVILEGES;
+	11. SELECT host, user FROM mysql.user;  --  verify  entry for | % | user | in your table. 
+	| host | user    | 
+	| %     | admin |   \
+
+MARIADB:
+docker pull mariadb
+docker run -p 3307:3306 --name localhost -e MYSQL_ROOT_PASSWORD=password  MYSQL_DATABASE=grootdb -e MYSQL_USER=groot MYSQL_PASSWORD=password -d mysql:latest
+    docker exec -it xa3cbcydef1 bash
+	mysql -u root -p
+	
+	docker build -t groot-restful-webservices . 
+	docker images 
+	docker run --network groot-mysql-net --name groot-mysql-container2 -p 8080:8080 docker logs -f
+	docker run --name mysqldb --network groot-mysql-net -e MYSQL_ROOT_PASSWORD=password
+	      MYSQL_DATABASE=grootdb -e MYSQL_USER=groot 
+    
+    CREATE database contactdb;
+	SHOW databases;
+	connect contactdb;
+	CREATE table 'contact' ( 
+	'contact_id' int(11) not null auto_increment, 
+	'name' varchar(45) not null,
+	'email' varchar(45) not null,
+	'address' varchar(100) not null,
+	'phone' varchar(15) not null primary key ('contact_id')
+	);
+	SHOW tables;
+	desc contact;
+	blogstoredb
+	contactdb 
+
+REDIS:
+docker pull redis:latest
+docker run -dit --name redis_container redis # NOTE: You can also use the "--name=CONTAINER_NAME" syntax.
+docker ps
+docker stop redis_container
+docker ps -a
+docker logs redis_container
+docker ps
+docker ps -a
+
+MQ:
+docker pull ibmcom/mq:latest
+docker volume create mqlocalvolume
+docker run --env LICENSE=accept --env MQ_QMGR_NAME=QM1 --volume mqlocalvolume:/mnt/mqm
+   --publish 1414:1414 --publish 9443:9443 --name mqlocal --detach --env MQ_APP_PASSWORD=passw0rd ibmcom/mq:latest
+docker exec -it 00c bash
+    dspmqver
+    dspmq
+docker ps
+[[ https://localhost:9443/ibmmq/console     username admin, password passw0rd
+
+DOCKERFILE PARTS:
+- FROM - The os used. Common is alpine, debian, ubuntu
+- ENV - Environment variables
+- RUN - Run commands/shell scripts, etc
+- EXPOSE - Ports to expose
+- CMD - Final command run when you launch a new container from image
+- WORKDIR - Sets working directory (also could use 'RUN cd /some/path')
+- COPY # Copies files from host to container 
+### Build image from dockerfile (reponame can be whatever)
+
+### From the same directory as Dockerfile
+ 
+docker image build -t [REPONAME] .
+
+JAVA: 
+FROM eclipse-temurin:17
+WORKDIR /app
+COPY target/mapl-config-server-1.0.0.jar /app/mapl-config-server.jar
+ENTRYPOINT ["java", "-jar", "mapl-config-server.jar"]
+
+# Java smallest: Dockerfile.base-openjdk
+docker build -t user-service .
+	FROM openjdk:17-jdk-slim  
+	WORKDIR /app  
+	# Create user & # Change to user
+	RUN addgroup --system spring && adduser --system spring --ingroup spring
+	USER spring:spring
+	COPY target/*.jar app.jar
+	EXPOSE 8080
+	CMD ["java", "-jar", "app.jar"]
+# Java small: Dockerfile.base-temurin
+docker build -t user-service:alpine -f Dockerfile.base-alpine . --platform=linux/amd64
+	FROM eclipse-temurin:17-jdk-alpine
+	ARG APPLICATION_USER=spring
+	# Create a user to run the application, don't run as root
+	RUN addgroup --system $APPLICATION_USER && adduser --system $APPLICATION_USER --ingroup $APPLICATION_USER
+	# Create the application directory
+	RUN mkdir /app && chown -R $APPLICATION_USER /app
+	# Set the user to run the application
+	USER $APPLICATION_USER
+	# Copy the jar file to the container
+	COPY --chown=$APPLICATION_USER:$APPLICATION_USER target/*.jar /app/app.jar
+	WORKDIR /app
+	EXPOSE 8080
+	ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+### jlink for: custom runtime image only necessary modules 
+docker build -t user-service:jlink-all-modules-temurin -f Dockerfile.jlink-all-modules.temurin .
+	FROM eclipse-temurin:17-jdk-alpine AS jre-builder 
+	# Install binutils, required by jlink
+	RUN apk update &&  \
+		apk add binutils 
+	# Build small JRE image
+	RUN $JAVA_HOME/bin/jlink \
+			 --verbose \
+			 --add-modules ALL-MODULE-PATH \
+			 --strip-debug \
+			 --no-man-pages \
+			 --no-header-files \
+			 --compress=2 \
+			 --output /optimized-jdk-17
+
+	# Second stage, Use the custom JRE and build the app image
+	FROM alpine:latest
+	ENV JAVA_HOME=/opt/jdk/jdk-17
+	ENV PATH="${JAVA_HOME}/bin:${PATH}"
+	# copy JRE from the base image
+	COPY --from=jre-builder /optimized-jdk-17 $JAVA_HOME 
+	# Add app user
+	ARG APPLICATION_USER=spring 
+	# Create a user to run the application, don't run as root
+	RUN addgroup --system $APPLICATION_USER &&  adduser --system $APPLICATION_USER --ingroup $APPLICATION_USER
+	RUN mkdir /app && chown -R $APPLICATION_USER /app
+	COPY --chown=$APPLICATION_USER:$APPLICATION_USER target/*.jar /app/app.jar
+	WORKDIR /app
+	USER $APPLICATION_USER
+	EXPOSE 8080
+	ENTRYPOINT [ "java", "-jar", "/app/app.jar" ]
+
+
+Python:
+
+### Postgres & Drupy
+docker network create drupy
+docker volume create db
+POSTGRES_USER=drupy
+POSTGRES_PASSWORD=pw123
+POSTGRES_DB=drupy #  https://hub.docker.com/_/postgres
+docker run -d --network drupy --name db -e POSTGRES_DB=drupy
+-e POSTGRES_USER=drupy -e POSTGRES_PASSWORD=pw123
+--mount src=db,dst=/var/lib/postgresql/data postgres:11.5
+Inspect the "drupy" network to make sure the container is attached to it. You should see the "db"
+container listed in the "Containers" section of the output.
+docker network inspect drupy
+docker run -d --network drupy --name drupy -p 80:80 drupy:8.7.7
+docker network inspect drupy
+ip a
+Choose Language: English
+Choose Profile: Standard
+Set up Database:
+Select "PostgreSQL"
+Database name: drupy
+Database username: drupy
+Database password: pw123
+Click "Advanced Options."
+Host: db
+Port number: 5432
+Configure Site:
+Site name: Test
+Site email address: root@localhost.localdomainUsername: admin
+Password: admin123
+Confirm Password: admin123
+Click "Save and continue".
+docker volume create registry
+docker run -d --name registry --mount src=registry,dst=/var/lib/registry
+-p 5000:5000 registry:2 # NOTE: You can also use the "--publish=5000:5000" syntax.
+#https://hub.docker.com/_/registry.)
+
+
+docker pull nginx:latest
+docker tag nginx:latest localhost:5000/nginx:latest
+docker images
+Push the retagged nginx image into the private registry.
+docker push localhost:5000/nginx:latest
+(For details on the API, see https://docs.docker.com/registry/spec/api/.)
+curl http://localhost:5000/v2/_catalog
+You should see "nginx" listed as a repository.
+{"repositories":["nginx"]}
+docker rmi nginx:latest
+docker images
+docker rmi localhost:5000/nginx:latest
+docker images
+docker pull localhost:5000/nginx
+docker images
+docker run -d localhost:5000/nginx
+docker ps
+ip a

@@ -39,7 +39,8 @@ public class UserRegisterTest {
 
 	@Test // WelcomeScript Test
 	public void WelcomeScriptTest3() throws FileNotFoundException {
-		String userScript = "C:/Users/thoma/git/_javaclient/mini/client-mapl-dashboard/src/data/userscript.txt";
+//		String userScript = "C:/Users/thoma/git/_javaclient/mini/client-mapl-dashboard/src/data/userscript.txt";
+		String userScript = "./src/data/userscript.txt";
 		File textScript = new File(userScript);
 
 		Scanner scan = new Scanner(textScript);

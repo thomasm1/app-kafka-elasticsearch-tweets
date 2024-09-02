@@ -128,8 +128,7 @@ public class AdminDashboard {
         }
     }
 
-    public static void adminConsole() {
-    }
+
 
     private void navigateAddressLot()  {
         System.out.println("NavigateAddressLot()");

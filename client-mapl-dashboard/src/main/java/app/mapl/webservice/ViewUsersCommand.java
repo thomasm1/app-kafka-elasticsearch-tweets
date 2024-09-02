@@ -3,9 +3,9 @@ package app.mapl.webservice;
 import app.mapl.models.User;
 import app.mapl.repositories.UsersRepository;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 public class ViewUsersCommand implements Command {

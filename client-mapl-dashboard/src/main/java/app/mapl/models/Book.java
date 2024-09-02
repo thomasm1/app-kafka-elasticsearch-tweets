@@ -3,7 +3,7 @@ package app.mapl.models;
 import app.mapl.util.Shareable;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 @EqualsAndHashCode(callSuper = true)

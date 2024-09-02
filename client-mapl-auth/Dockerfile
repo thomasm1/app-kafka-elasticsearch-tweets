@@ -1,5 +1,4 @@
-FROM eclipse-temurin:17
+FROM openjdk:17-jdk-slim
 LABEL maintainer="thomas1.maestas@gmail.com"
-WORKDIR /app
-COPY target/mapl-authorization-service*.jar /app/mapl-auth.jar
+COPY target/mapl-authorization-service-1.2.0.jar mapl-auth.jar
 ENTRYPOINT ["java", "-jar", "mapl-auth.jar"]

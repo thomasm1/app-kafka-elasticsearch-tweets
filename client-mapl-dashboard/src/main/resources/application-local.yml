@@ -1,6 +1,9 @@
 
+spring.application.name: DASHBOARD-SERVICE
+eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+server.port: 8082
 
-#spring.mvc.view.prefix=/WEB-INF/jsps
+#spring.mvc.view.prefix=/WEB-INF/jsp
 #spring.mvc.view.suffix=.jsp
 #server.context-path=/cli
 
@@ -22,7 +25,7 @@ spring:
         trace: false
         web-allow-others: true
   datasource:
-    url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
+#    url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
     username: sa
     password:
     driver-class-name: org.h2.Driver

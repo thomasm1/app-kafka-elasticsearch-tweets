@@ -29,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                     user.getRoles().stream()
                             .map((role) -> new SimpleGrantedAuthority(role.getName()))
                             .collect(Collectors.toList()));
-        }else {
+        } else {
             throw new UsernameNotFoundException("Invalid email or password");
         }
     }

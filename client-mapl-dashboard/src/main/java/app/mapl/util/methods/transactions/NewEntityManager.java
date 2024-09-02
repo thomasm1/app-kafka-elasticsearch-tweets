@@ -1,7 +1,7 @@
 package app.mapl.util.methods.transactions;
 
 import app.mapl.models.User;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import org.springframework.util.Assert;
 
 public class NewEntityManager {

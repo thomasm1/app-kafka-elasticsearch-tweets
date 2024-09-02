@@ -1,6 +1,6 @@
 package app.mapl.webControllers;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import app.mapl.models.Todo;
 import app.mapl.webServices.TodoService;

@@ -1,6 +1,6 @@
 package app.mapl.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import lombok.*;
 

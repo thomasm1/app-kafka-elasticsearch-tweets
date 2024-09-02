@@ -6,11 +6,12 @@ import java.util.*;
 
 import app.mapl.systemUser.UserLogin;
 import app.mapl.systemUser.UserRegister;
+import org.springframework.stereotype.Component;
 
 //import static app.mapl.service.CoinService.coinMarketViewAll; // 3 DB
 import static app.mapl.consoles.GeoDashboard.mainNavigator; // 7 Local
 
-
+@Component
 public class MainDashboard {
     private static final int MAIN_OPTIONS_COUNT = 7;
 

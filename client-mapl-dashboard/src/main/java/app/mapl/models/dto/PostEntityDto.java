@@ -3,7 +3,7 @@ package app.mapl.models.dto;
 import app.mapl.models.PostEntity;
 import lombok.*;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 

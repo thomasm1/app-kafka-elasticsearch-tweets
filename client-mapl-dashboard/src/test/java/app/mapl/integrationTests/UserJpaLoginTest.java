@@ -1,7 +1,7 @@
 package app.mapl.integrationTests;
 
-import app.mapl.consoles.AdminDashboard;
-import app.mapl.consoles.UserDashboard;
+//import app.mapl.consoles.AdminDashboard;
+//import app.mapl.consoles.UserDashboard;
 import app.mapl.models.dto.UserDto;
 import app.mapl.service.UsersServiceImpl;
 import org.junit.jupiter.api.*;
@@ -40,7 +40,7 @@ class UserJpaLoginTest {  // INTE
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
 		if (un.contentEquals(adminUsername) && pw.contentEquals(adminPassword)) {
 			System.out.println("Welcome Administrator, *" + un + "*\n    ... now preparing your Dashboard");
-			AdminDashboard.adminConsole();//
+//			AdminDashboard.adminConsole();//
 
 		} else if ((un.contentEquals(tempUsername) && pw.contentEquals(tempPassword))) {
 //			VALIDATION #2 - Check targeted DB User against logged-in Username & password
@@ -49,7 +49,7 @@ class UserJpaLoginTest {  // INTE
 					"...grreat, password checks out! *" + un + "* #1, now logging you into your Dashboard");
 //			String name = (login.getFirstName() != null) ? login.getFirstName() : un;
 // USER LOGIN
-			UserDashboard.console(un); //
+//			UserDashboard.console(un); //
 		}
 	}
 }

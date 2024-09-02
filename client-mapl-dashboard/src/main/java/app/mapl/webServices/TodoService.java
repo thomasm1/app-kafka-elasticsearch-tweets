@@ -1,6 +1,6 @@
 package app.mapl.webServices;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import app.mapl.models.Todo;
 import org.springframework.stereotype.Service;

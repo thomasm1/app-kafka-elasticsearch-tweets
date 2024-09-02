@@ -2,7 +2,7 @@ package app.mapl.models;
 
 import app.mapl.util.Shareable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "MOVIES")

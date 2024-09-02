@@ -1,7 +1,7 @@
 services:
   network-deploy-service:
     networks:
-      - eazybank
+      - demobank
 
   microservice-base-config:
     extends:

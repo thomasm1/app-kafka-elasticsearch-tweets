@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MessageController {
 
-    @Value("${spring.boot.message}")
+    @Value("${mapl.message}")
     private String message;
 
     @GetMapping("/users/message")
     public String messageUsers(){
-        return message;
+        return message + "! This is the Users service.";
     }
 
     @GetMapping("/navigators/message")
     public String messageNavigators(){
-        return message;
+        return message+"Navigator Dashboard! This is the Navigators service.";
     }
 
-    @GetMapping("/employees/message")
-    public String messageEmployee(){
-        return message;
+    @GetMapping("/dashboards/message")
+    public String messageDashboards(){
+        return message+" Dashboard!";
     }
 }

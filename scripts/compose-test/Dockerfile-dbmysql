@@ -1,0 +1,15 @@
+FROM ubuntu-jdk
+
+LABEL maintainer=thomas1.maestas@gmail.com
+ 
+ENV version=localhost
+
+ENV dbuser=root
+ENV dbpass=password
+ENV jdbcurl=jdbc:mysql://localhost:3306/groot
+
+WORKDIR /usr/local/bin
+
+ADD "target/my-personal-librarian.war" .
+
+ENTRYPOINT ["java", "-jar", "my-personal-librarian.war"]

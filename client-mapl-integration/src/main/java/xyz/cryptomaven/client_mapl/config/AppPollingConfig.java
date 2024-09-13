@@ -18,16 +18,16 @@ public class AppPollingConfig {
 
 
     @Bean
-    MessageChannel greetings() {
+    MessageChannel greetings() throws Exception {
         return MessageChannels.direct().getObject();
     }
     @Bean
-    MessageChannel atob() {
+    MessageChannel atob() throws Exception {
         return MessageChannels.direct().getObject();
     }
 
     @Bean    /// 2.0
-    IntegrationFlow flowChannel() {
+    IntegrationFlow flowChannel() throws Exception {
         return IntegrationFlow
                 .from(
                         (MessageSource<String>) ()  ->
@@ -38,7 +38,7 @@ public class AppPollingConfig {
                 .get();
     }
     @Bean
-    IntegrationFlow flowHandle() {
+    IntegrationFlow flowHandle() throws Exception {
         return IntegrationFlow
                 .from(
                         atob()
@@ -83,7 +83,7 @@ public class AppPollingConfig {
                     System.out.println("flowFilter" + source);
                     return   source.contains("notime");
                 })
-                .transform( (GenericTransformer<String, String>) source -> source.toUpperCase())
+                .transform( (GenericTransformer<String, String>) String::toUpperCase)
                 .handle( (GenericHandler<String>)  (payload, headers)  -> {
                     System.out.println("flowFilter___+_+_2 " + payload);
                     return null;

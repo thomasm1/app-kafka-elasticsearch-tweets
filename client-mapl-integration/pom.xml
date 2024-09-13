@@ -99,10 +99,16 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		<!-- REACTIVE -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -252,6 +258,9 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<configuration>
+						<image>
+							<name>thomasm1/${project.artifactId}:${project.version}</name>
+						</image>
 						<excludes>
 							<exclude>
 								<groupId>org.projectlombok</groupId>
@@ -261,14 +270,37 @@
 					</configuration>
 				</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>17</source>
-					<target>17</target>
-				</configuration>
-			</plugin>
+				<!--			<plugin>-->
+				<!--				<groupId>com.google.cloud.tools</groupId>-->
+				<!--				<artifactId>jib-maven-plugin</artifactId>-->
+				<!--				<version>3.4.3</version>-->
+				<!--				<configuration>-->
+				<!--					<to>-->
+				<!--					<image>thomasm1/${project.artifactId}:${project.version}</image>-->
+				<!--					</to>-->
+				<!--				</configuration>-->
+				<!--			</plugin>-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+
+						<compilerArgs>
+							<compilerArg>
+								-Amapstruct.defaultComponentModel=spring
+							</compilerArg>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<configuration>
+
+					</configuration>
+				</plugin>
 		</plugins>
 	</build>
 <!--	<repositories>-->

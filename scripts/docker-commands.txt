@@ -177,8 +177,11 @@ docker image push thomasm1/nginx-website
 
 APACHE: 
 docker container run -d -p 8080:80 --name apache httpd 
+
 MONGODB: 
+docker pull mongo
 docker container run -d -p 27017:27017 --name mongo mongo 
+
 MYSQL: 
 docker pull mysql
 docker image inspect mysql

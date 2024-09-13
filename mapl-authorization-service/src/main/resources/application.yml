@@ -17,22 +17,22 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/ems
-
-spring.rabbitmq.host: localhost
-spring.rabbitmq.port: 5672
-spring.rabbitmq.username: guest
-spring.rabbitmq.password: guest
+      host: localhost
+      port: 27017
+      database: spring
+  rabbitmq.host: localhost
+  rabbitmq.port: 5672
+  rabbitmq.username: guest
+  rabbitmq.password: guest
 
 #spring.config.import: optional:configserver:http://localhost:8071/
 ## Configuring info endpoint
-info.app.name: Gateway Server
+info.app.name: Authorization Server
 info.app.description: Mapl Server Application
 info.app.version: 1.0.0
 management.info.env.enabled:  true
-management.endpoint.gateway.enabled: true
 management.endpoint.health.show-details: always
 
-logging.level.app.mapl.gatewayserver:  DEBUG
 
 spring.datasource.url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
 spring.datasource.username: sa
@@ -45,17 +45,17 @@ spring.jpa.hibernate.ddl-auto: update
 #spring.sleuth.sampler.probability: 1.0
 
 # Actuator endpoints for Circuit Breaker
-management.health.circuitbreakers.enabled: true
+#management.health.circuitbreakers.enabled: true
 
 # Circuit Breaker configuration
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.registerHealthIndicator: true
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.failureRateThreshold: 50
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.minimumNumberOfCalls: 5
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.automaticTransitionFromOpenToHalfOpenEnabled: true
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.waitDurationInOpenState: 5s
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.permittedNumberOfCallsInHalfOpenState: 3
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.slidingWindowSize: 10
-resilience4j.circuitbreaker.instances.AUTH-SERVICE.slidingWindowType: COUNT_BASED
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.registerHealthIndicator: true
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.failureRateThreshold: 50
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.minimumNumberOfCalls: 5
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.automaticTransitionFromOpenToHalfOpenEnabled: true
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.waitDurationInOpenState: 5s
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.permittedNumberOfCallsInHalfOpenState: 3
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.slidingWindowSize: 10
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.slidingWindowType: COUNT_BASED
 
 # Retry configuration
 #resilience4j.retry.instances.AUTH-SERVICE.registerHealthIndicator: true

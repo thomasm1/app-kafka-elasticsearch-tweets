@@ -27,7 +27,7 @@ spring:
 
 #spring.config.import: optional:configserver:http://localhost:8071/
 ## Configuring info endpoint
-info.app.name: Authorization Server
+info.app.name: AUTH SERVICE
 info.app.description: Mapl Server Application
 info.app.version: 1.0.0
 management.info.env.enabled:  true

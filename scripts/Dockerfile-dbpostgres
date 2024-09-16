@@ -1,7 +1,6 @@
 FROM ubuntu-jdk
 
-MAINTAINER Thomas Maestas "thomas.maestas@hotmail.com"
-
+LABEL Maintainer="thomas.maestas@hotmail.com" 
 ENV version=aws-db-usage
 
 ENV dbuser=postgres

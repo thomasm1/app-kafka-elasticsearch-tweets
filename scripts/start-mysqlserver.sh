@@ -1,4 +1,10 @@
 #!/bin/bash
+if ! command -v docker &> /dev/null
+then
+    echo "Docker is not installed. Please install Docker first."
+    exit 1
+fi
+docker --version
 docker pull mysql/mysql-server:latest
 docker images 
 docker run --name=mySQLContainer -p 3306:3306 -d mysql/mysql-server:latest

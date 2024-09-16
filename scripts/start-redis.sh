@@ -1,5 +1,10 @@
 #!/bin/bash
-
+if ! command -v docker &> /dev/null
+then
+    echo "Docker is not installed. Please install Docker first."
+    exit 1
+fi
+docker --version
 docker pull redis:latest
 
 docker run -dit -p 6379:6379 --name redis_container -e SPRING_DATA_REDIS_CONNECT-TIMEOUT=2s -e SPRING_DATA_HOST=redis -e SPRING_DATA_PORT=6379 -e SPRING_DATA_TIMEOUT=1s   redis

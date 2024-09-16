@@ -1,4 +1,10 @@
-#D!i/bin/bash
+#!/bin/bash
+# if ! command -v docker &> /dev/null
+# then
+#     echo "Docker is not installed. Please install Docker first."
+#     exit 1
+# fi
+# docker --version
 #docker pull mysql/mysql-server:latest && \
 docker run --name mysqlContainer --publish 3306:3306 -d 1d9c2 && \
 #docker logs mysqlContainer

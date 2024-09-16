@@ -33,17 +33,17 @@ public class NavigatorController {
     }
     ////////////////// REACTIVE //////////////////////////////
     // Build Reactive Save Navigator REST API
-    @PostMapping
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public Mono<NavigatorDto> saveReactiveNavigator(@RequestBody NavigatorDto navigatorDto){
-        return navigatorService.saveReactiveNavigator(navigatorDto);
-    }
-
-    // Build Reactive Get Single Navigator REST API
-    @GetMapping("{id}")
-    public Mono<NavigatorDto> getReactiveNavigator(@PathVariable("id") String navigatorId){
-        return navigatorService.getReactiveNavigator(navigatorId);
-    }
+//    @PostMapping
+//    @ResponseStatus(value = HttpStatus.CREATED)
+//    public Mono<NavigatorDto> saveReactiveNavigator(@RequestBody NavigatorDto navigatorDto){
+//        return navigatorService.saveReactiveNavigator(navigatorDto);
+//    }
+//
+//    // Build Reactive Get Single Navigator REST API
+//    @GetMapping("{id}")
+//    public Mono<NavigatorDto> getReactiveNavigator(@PathVariable("id") String navigatorId){
+//        return navigatorService.getReactiveNavigator(navigatorId);
+//    }
 
     // Build Reactive Get All Navigators REST API
     @GetMapping

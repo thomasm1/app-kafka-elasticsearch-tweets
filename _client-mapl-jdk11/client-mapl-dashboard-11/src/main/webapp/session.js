@@ -8,7 +8,7 @@
 
 let sessdata;
 let sessDataArray1;
-// pass in my employee's requests as an array optionals[];
+// pass in my navigator's requests as an array optionals[];
 
 // atstart:false=; true-
 // oId: param->userAdminId(7777=wipe table)

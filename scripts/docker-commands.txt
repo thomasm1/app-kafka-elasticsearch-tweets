@@ -180,34 +180,50 @@ docker container run -d -p 8080:80 --name apache httpd
 
 MONGODB: 
 docker pull mongo
-docker container run -d -p 27017:27017 --name mongo mongo 
+docker run -d -p 27017:27017 --name mongodb_container mongo
+docker ps
+docker exec -it mongodb_container bash
+    # mongosh # Start the MongoDB shell
+    # show dbs
+    # use mydb
+    # db.mydb.insertOne({name: "John Doe", age: 30})
+    # db.mydb.find()
+    # # Exit the MongoDB container
+    # exit
 
-MYSQL: 
-docker pull mysql
-docker image inspect mysql
-docker container run -d -p 3306:3306 --name mysql --env MYSQL_ROOT_PASSWORD=123456 mysql 
-docker container inspect mysql
-docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql 
-docker volume inspect mysql-db
+ ORACLE: 
+ docker pull container-registry.oracle.com/database/express:latest
+ docker container create -it --name oracle2 -p 1521:1521 -e ORACLE_PWD=root
+ container-registry.oracle.com/database/express:latest
+
+ MYSQL:
+ $ docker pull mysql
+ $ docker image inspect mysql
+ $ docker container run -d -p 3306:3306 --name mysql --env MYSQL_ROOT_PASSWORD=123456 mysql
+ 	 \\\\\OR\\\\\
+ $ docker container run -d --name mysql3  -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysqlvol:/var/lib/mysql mysql
+ docker volume inspect mysqlvol
+
     1. docker pull mysql/mysql-server:latest
-	 docker images 
-	2.  “mySQLContainer”    docker run --name=mySQLContainer -p 3306:3306 -d mysql/mysql-server:latest
-	docker ps 
-	3. docker logs mySQLContainer  save generated root password 
-	 
-	4. docker exec -it mySQLContainer mysql -uroot -p 
-	
-	5.ALTER USER 'root'@'localhost' IDENTIFIED BY 'uhgmjg8i7y-h87b,tyr99jy6';
-	
-	6.: CREATE DATABASE dashboard_db
-	7. SHOW DATABASES
-	
-	8.  CREATE USER 'admin'@'%' IDENTIFIED BY 'abc123!!';
-	9. GRANT ALL PRIVILEGES ON * . * TO 'admin'@'%';
-	10. FLUSH PRIVILEGES;
-	11. SELECT host, user FROM mysql.user;  --  verify  entry for | % | user | in your table. 
-	| host | user    | 
-	| %     | admin |   \
+    2.  docker run --name=mySQLContainer -p 3306:3306 -d mysql/mysql-server:latest
+ 	3. docker logs mySQLContainer  #save generated root password
+ 	4. docker exec -it mySQLContainer mysql -uroot -p
+
+ 	5. ALTER USER 'root'@'localhost' IDENTIFIED BY 'uhgmjg8i7y-h87b,tyr99jy6';
+ 	6. CREATE DATABASE dashboard_db
+ 	7. SHOW DATABASES
+
+ 	8.  CREATE USER 'admin'@'%' IDENTIFIED BY 'abc123!!';
+ 	9. GRANT ALL PRIVILEGES ON * . * TO 'admin'@'%';
+ 	10. FLUSH PRIVILEGES;
+ 	11. SELECT host, user FROM mysql.user;  --  verify  entry for | % | user | in your table.
+ 	| host | user    |
+ | %     | admin |   \\\
+
+ 	12. docker exec -it mySQLContainer mysql -uadmin -p
+ 	13. USE dashboard_db;
+ 	14. SHOW tables;
+ 	15. CREATE table 'dashboard' (
 
 MARIADB:
 docker pull mariadb

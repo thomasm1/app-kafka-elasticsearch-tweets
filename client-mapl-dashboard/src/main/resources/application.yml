@@ -1,6 +1,7 @@
 spring.application.name: DASHBOARD-SERVICE
-spring.profiles.active: local
-
+spring.profiles.active: docker,local
+spring.config.import: optional:configserver:http://localhost:8888
+server.port: 8082
 ## Configuring info endpoint
 info.app.name: DASHBOARD SERVICE
 info.app.description: Mapl Server Application
@@ -23,8 +24,6 @@ management.endpoints.web.exposure.include: health,metrics
 #trace, debug, info, warn, error, fatal, off
 #nothing but error
 logging.level.org.springframework: error
-
-spring.jpa.show-sql: true
 
 
 #spring.activemq.in-memory: true

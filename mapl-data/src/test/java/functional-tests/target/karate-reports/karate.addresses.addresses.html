@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="res/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="res/karate-report.css" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="res/jquery.min.js"></script>
+    <script type="text/javascript" src="res/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="res/bootstrap.min.js"></script>
+    <script type="text/javascript" src="res/karate-report.js"></script>
+    <title>karate.addresses.addresses</title>  
+  </head>
+  <body>   
+    <div id="root-container">
+      <div id="leftnav">
+                
+        <div>
+  <div class="nav-logo">
+    <a href="karate-summary.html">
+      <img src="karate-logo.svg" alt="Karate"/>
+    </a>
+    <div class="nav-count">
+      <div id="nav-pass" class="bg-success">2</div>
+      <div id="nav-fail" class="bg-danger">0</div>
+    </div>
+  </div>
+  <div id="nav-type">
+    <div>Scenarios</div>
+  </div>         
+  <div id="nav-date">
+    <div>2023-12-08 09:14:56 PM</div>
+  </div>        
+</div>
+
+        <div class="nav-container">
+          <div class="nav-item passed">
+            <a href="#[1.1:19]"><span>[1.1:19]</span> <span></span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[1.2:20]"><span>[1.2:20]</span> <span></span></a>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <div class="page-heading alert alert-primary">
+          <a href="karate-summary.html">Summary</a><span class="feature-label">|</span>
+          <a href="karate-tags.html">Tags</a><span class="feature-label">|</span>
+          <span class="feature-label">Feature:</span>
+          <span class="feature-path">karate/addresses/addresses.feature</span><span class="feature-label">|</span>
+          <span class="feature-name">chains feature api</span>
+          <span class="feature-description"></span>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[1.1:19]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[1.1:19]</span>
+                <span class="scenario-name"></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>91</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[1.1:19]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[1.1:19]bg"><div>
+  
+
+  <div class="step-row">
+    <div class="step-container">
+      <div class="step-ref passed"></div>
+      
+      <div class="step-cell comment">#</div>
+    </div>
+    <div class="time-cell comment"></div>            
+  </div>
+
+  <div class="step-row">
+    <div class="step-container">
+      <div class="step-ref passed"></div>
+      
+      <div class="step-cell comment">#    * url &#39;http://34.199.129.2:8080/api&#39;</div>
+    </div>
+    <div class="time-cell comment"></div>            
+  </div>
+
+  <div class="step-row">
+    <div class="step-container" id="1.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url &#39;http://localhost:8080/api/&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.10">
+      <div class="step-ref passed">10</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>path &#39;addresses&#39; + &#39;/10001&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.11">
+      <div class="step-ref passed">11</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method GET</span>
+      </div>
+    </div>
+    <div class="time-cell passed">89</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="1.11">21:14:56.292 request:
+1 &gt; GET http://localhost:8080/api/addresses/10001
+1 &gt; Host: localhost:8080
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 &gt; Accept-Encoding: gzip,deflate
+
+
+21:14:56.380 response time in milliseconds: 87
+1 &lt; 200
+1 &lt; Vary: Origin
+1 &lt; Vary: Access-Control-Request-Method
+1 &lt; Vary: Access-Control-Request-Headers
+1 &lt; X-Content-Type-Options: nosniff
+1 &lt; X-XSS-Protection: 0
+1 &lt; Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+1 &lt; Pragma: no-cache
+1 &lt; Expires: 0
+1 &lt; X-Frame-Options: SAMEORIGIN
+1 &lt; Content-Length: 0
+1 &lt; Date: Sat, 09 Dec 2023 02:14:55 GMT
+1 &lt; Keep-Alive: timeout=60
+1 &lt; Connection: keep-alive
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.12">
+      <div class="step-ref passed">12</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.13">
+      <div class="step-ref passed">13</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>json res = response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.14">
+      <div class="step-ref passed">14</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def payload = res.data</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.15">
+      <div class="step-ref passed">15</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print payload</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="1.15">21:14:56.382 [print] null 
+</div>   
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[1.2:20]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[1.2:20]</span>
+                <span class="scenario-name"></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>356</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[1.2:20]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[1.2:20]bg"><div>
+  
+
+  <div class="step-row">
+    <div class="step-container">
+      <div class="step-ref passed"></div>
+      
+      <div class="step-cell comment">#</div>
+    </div>
+    <div class="time-cell comment"></div>            
+  </div>
+
+  <div class="step-row">
+    <div class="step-container">
+      <div class="step-ref passed"></div>
+      
+      <div class="step-cell comment">#    * url &#39;http://34.199.129.2:8080/api&#39;</div>
+    </div>
+    <div class="time-cell comment"></div>            
+  </div>
+
+  <div class="step-row">
+    <div class="step-container" id="2.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url &#39;http://localhost:8080/api/&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="2.10">
+      <div class="step-ref passed">10</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>path &#39;addresses&#39; + &#39;&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="2.11">
+      <div class="step-ref passed">11</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method GET</span>
+      </div>
+    </div>
+    <div class="time-cell passed">355</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="2.11">21:14:56.386 request:
+1 &gt; GET http://localhost:8080/api/addresses
+1 &gt; Host: localhost:8080
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.9)
+1 &gt; Accept-Encoding: gzip,deflate
+
+
+21:14:56.739 response time in milliseconds: 353
+1 &lt; 200
+1 &lt; Vary: Origin
+1 &lt; Vary: Access-Control-Request-Method
+1 &lt; Vary: Access-Control-Request-Headers
+1 &lt; X-Content-Type-Options: nosniff
+1 &lt; X-XSS-Protection: 0
+1 &lt; Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+1 &lt; Pragma: no-cache
+1 &lt; Expires: 0
+1 &lt; X-Frame-Options: SAMEORIGIN
+1 &lt; Content-Type: application/json
+1 &lt; Transfer-Encoding: chunked
+1 &lt; Date: Sat, 09 Dec 2023 02:14:56 GMT
+1 &lt; Keep-Alive: timeout=60
+1 &lt; Connection: keep-alive
+[{&quot;id&quot;:1,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom1@gmail.com&quot;,&quot;address&quot;:&quot;0x900bE021E38B8d08435A03c05657C8cFA837cAeF&quot;,&quot;chain&quot;:&quot;ropstein&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:101,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:2,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom2@gmail.com&quot;,&quot;address&quot;:&quot;0x399EEc3B8e889a2E0853dd254f09C4535061693A&quot;,&quot;chain&quot;:&quot;polygon&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:151,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:3,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom3@gmail.com&quot;,&quot;address&quot;:&quot;0x399EEc3B8e889a2E0853dd254f09C4535061693A&quot;,&quot;chain&quot;:&quot;ethereum&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:201,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:4,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom4@gmail.com&quot;,&quot;address&quot;:&quot;0x399EEc3B8e889a2E0853dd254f09C4535061693A&quot;,&quot;chain&quot;:&quot;polygon&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:251,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:5,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom5@gmail.com&quot;,&quot;address&quot;:&quot;0x399EEc3B8e889a2E0853dd254f09C4535061693A&quot;,&quot;chain&quot;:&quot;polygon&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:301,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:6,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom6@gmail.com&quot;,&quot;address&quot;:&quot;0x399EEc3B8e889a2E0853dd254f09C4535061693A&quot;,&quot;chain&quot;:&quot;ropstein&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:351,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:7,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom7@gmail.com&quot;,&quot;address&quot;:&quot;0x900bE021E38B8d08435A03c05657C8cFA837cAeF&quot;,&quot;chain&quot;:&quot;ethereum&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:401,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:8,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;Tom8@gmail.com&quot;,&quot;address&quot;:&quot;0x900bE021E38B8d08435A03c05657C8cFA837cAeF&quot;,&quot;chain&quot;:&quot;ethereum&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:451,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:9,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;thomas.maestas@hotmail.com&quot;,&quot;address&quot;:&quot;0x900bE021E38B8d08435A03c05657C8cFA837cAeF&quot;,&quot;chain&quot;:&quot;polygon&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:501,&quot;nftAddressDto&quot;:null},{&quot;id&quot;:10,&quot;description&quot;:&quot;description&quot;,&quot;email&quot;:&quot;thomasm1.maestas@gmail.com&quot;,&quot;address&quot;:&quot;0x399EEc3B8e889a2E0853dd254f09C4535061693A&quot;,&quot;chain&quot;:&quot;goerli&quot;,&quot;iconUrl&quot;:&quot;ICON_URL&quot;,&quot;blockExplorerUrl&quot;:&quot;BLOCK_EXPLORER_URL&quot;,&quot;user&quot;:null,&quot;chainId&quot;:551,&quot;nftAddressDto&quot;:null}]
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="2.12">
+      <div class="step-ref passed">12</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="2.13">
+      <div class="step-ref passed">13</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>json res = response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="2.14">
+      <div class="step-ref passed">14</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def payload = res.data</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="2.15">
+      <div class="step-ref passed">15</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print payload</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="2.15">21:14:56.740 [print] null 
+</div>   
+
+  
+
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

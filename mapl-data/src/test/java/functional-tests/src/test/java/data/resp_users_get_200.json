@@ -1,0 +1,202 @@
+[
+  {
+    "userId": 211,
+    "username": "Tom1@gmail.com",
+    "password": "password",
+    "lastName": "Smith",
+    "firstName": "Tom1",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "Tom1@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 2,
+        "name": "ROLE_ADMIN"
+      }
+    ]
+  },
+  {
+    "userId": 212,
+    "username": "Tom2@gmail.com",
+    "password": "password",
+    "lastName": "Maestas",
+    "firstName": "Tom2",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "Tom2@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 213,
+    "username": "Tom3@gmail.com",
+    "password": "password",
+    "lastName": "Smith",
+    "firstName": "Tom3",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "Tom3@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a3.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 214,
+    "username": "Tom4@gmail.com",
+    "password": "password",
+    "lastName": "Smith",
+    "firstName": "Tom4",
+    "userType": 0,
+    "phone": "5055087707",
+    "email": "Tom4@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a4.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 0,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 215,
+    "username": "Tom5@gmail.com",
+    "password": "password",
+    "lastName": "Smith",
+    "firstName": "Tom5",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "Tom5@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a6.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 216,
+    "username": "Tom6@gmail.com",
+    "password": "password",
+    "lastName": "Smith",
+    "firstName": "Tom6",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "Tom6@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a7.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 217,
+    "username": "tom7@gmail.com",
+    "password": "password",
+    "lastName": "maestas",
+    "firstName": "tom7",
+    "userType": 4,
+    "phone": "999-999-9999",
+    "email": "tom7@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 218,
+    "username": "Tom8@gmail.com",
+    "password": "password",
+    "lastName": "Smith",
+    "firstName": "Tom8",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "Tom8@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  {
+    "userId": 219,
+    "username": "thomas.maestas@hotmail.com",
+    "password": "password",
+    "lastName": "Maestas",
+    "firstName": "thomas",
+    "userType": 0,
+    "phone": "5055087707",
+    "email": "thomas.maestas@hotmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 0,
+    "roles": [
+      {
+        "id": 2,
+        "name": "ROLE_ADMIN"
+      }
+    ]
+  },
+  {
+    "userId": 220,
+    "username": "thomas1.maestas@gmail.com",
+    "password": "password",
+    "lastName": "Maestas",
+    "firstName": "thomas1",
+    "userType": 3,
+    "phone": "5055087707",
+    "email": "thomas1.maestas@gmail.com",
+    "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg",
+    "photoPath": "photoPath",
+    "isActive": 0,
+    "contactType": 1,
+    "roles": [
+      {
+        "id": 2,
+        "name": "ROLE_ADMIN"
+      }
+    ]
+  }
+]

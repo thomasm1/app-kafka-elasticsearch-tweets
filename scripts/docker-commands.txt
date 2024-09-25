@@ -178,6 +178,34 @@ docker image push thomasm1/nginx-website
 APACHE: 
 docker container run -d -p 8080:80 --name apache httpd 
 
+
+MARIADB:
+docker pull mariadb
+docker run -p 3307:3306 --name localhost -e MYSQL_ROOT_PASSWORD=password  MYSQL_DATABASE=grootdb -e MYSQL_USER=groot MYSQL_PASSWORD=password -d mysql:latest
+    docker exec -it xa3cbcydef1 bash
+	mysql -u root -p
+	
+	docker build -t groot-restful-webservices . 
+	docker images 
+	docker run --network groot-mysql-net --name groot-mysql-container2 -p 8080:8080 docker logs -f
+	docker run --name mysqldb --network groot-mysql-net -e MYSQL_ROOT_PASSWORD=password
+	      MYSQL_DATABASE=grootdb -e MYSQL_USER=groot 
+    
+    CREATE database contactdb;
+	SHOW databases;
+	connect contactdb;
+	CREATE table 'contact' ( 
+	'contact_id' int(11) not null auto_increment, 
+	'name' varchar(45) not null,
+	'email' varchar(45) not null,
+	'address' varchar(100) not null,
+	'phone' varchar(15) not null primary key ('contact_id')
+	);
+	SHOW tables;
+	desc contact;
+	blogstoredb
+	contactdb 
+
 MONGODB: 
 docker pull mongo
 docker run -d -p 27017:27017 --name mongodb_container mongo
@@ -190,11 +218,6 @@ docker exec -it mongodb_container bash
     # db.mydb.find()
     # # Exit the MongoDB container
     # exit
-
- ORACLE: 
- docker pull container-registry.oracle.com/database/express:latest
- docker container create -it --name oracle2 -p 1521:1521 -e ORACLE_PWD=root
- container-registry.oracle.com/database/express:latest
 
  MYSQL:
  $ docker pull mysql
@@ -225,32 +248,29 @@ docker exec -it mongodb_container bash
  	14. SHOW tables;
  	15. CREATE table 'dashboard' (
 
-MARIADB:
-docker pull mariadb
-docker run -p 3307:3306 --name localhost -e MYSQL_ROOT_PASSWORD=password  MYSQL_DATABASE=grootdb -e MYSQL_USER=groot MYSQL_PASSWORD=password -d mysql:latest
-    docker exec -it xa3cbcydef1 bash
-	mysql -u root -p
-	
-	docker build -t groot-restful-webservices . 
-	docker images 
-	docker run --network groot-mysql-net --name groot-mysql-container2 -p 8080:8080 docker logs -f
-	docker run --name mysqldb --network groot-mysql-net -e MYSQL_ROOT_PASSWORD=password
-	      MYSQL_DATABASE=grootdb -e MYSQL_USER=groot 
-    
-    CREATE database contactdb;
-	SHOW databases;
-	connect contactdb;
-	CREATE table 'contact' ( 
-	'contact_id' int(11) not null auto_increment, 
-	'name' varchar(45) not null,
-	'email' varchar(45) not null,
-	'address' varchar(100) not null,
-	'phone' varchar(15) not null primary key ('contact_id')
-	);
-	SHOW tables;
-	desc contact;
-	blogstoredb
-	contactdb 
+MQ:
+docker pull ibmcom/mq:latest
+docker volume create mqlocalvolume
+docker run --env LICENSE=accept --env MQ_QMGR_NAME=QM1 --volume mqlocalvolume:/mnt/mqm
+   --publish 1414:1414 --publish 9443:9443 --name mqlocal --detach --env MQ_APP_PASSWORD=passw0rd ibmcom/mq:latest
+docker exec -it 00c bash
+    dspmqver
+    dspmq
+docker ps
+[[ https://localhost:9443/ibmmq/console     username admin, password passw0rd
+
+
+ORACLE: 
+docker pull container-registry.oracle.com/database/express:latest
+docker container create -it --name oracle2 -p 1521:1521 -e ORACLE_PWD=root
+container-registry.oracle.com/database/express:latest
+
+RABBITMQ:
+docker pull rabbitmq:3.12-management
+docker run -it --rm --name rabbitmq_container \
+   -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
+#http://localhost:15672/  user: guest, password: guest
+
 
 REDIS:
 docker pull redis:latest
@@ -262,16 +282,9 @@ docker logs redis_container
 docker ps
 docker ps -a
 
-MQ:
-docker pull ibmcom/mq:latest
-docker volume create mqlocalvolume
-docker run --env LICENSE=accept --env MQ_QMGR_NAME=QM1 --volume mqlocalvolume:/mnt/mqm
-   --publish 1414:1414 --publish 9443:9443 --name mqlocal --detach --env MQ_APP_PASSWORD=passw0rd ibmcom/mq:latest
-docker exec -it 00c bash
-    dspmqver
-    dspmq
-docker ps
-[[ https://localhost:9443/ibmmq/console     username admin, password passw0rd
+========================================
+
+
 
 DOCKERFILE PARTS:
 - FROM - The os used. Common is alpine, debian, ubuntu

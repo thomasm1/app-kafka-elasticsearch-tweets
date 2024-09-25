@@ -1,0 +1,603 @@
+openapi: 3.0.2
+info:
+  title: Groot API Multi-chain NFT Proof of Concept
+  description: Specification for OpenAPI Course
+  termsOfService: http://example.com/terms/
+  contact:
+    name: Thomas Maestas
+    url: https://thomasmaestas.net
+    email: thomas1.maestas@gmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: "1.0"
+servers:
+- url: https://dev.example.com
+  description: Development Server
+- url: http://34.199.com
+  description: QA Server
+- url: http://friendsofgroot.com
+  description: Production Server
+paths:
+  /v1/users:
+    get:
+      tags:
+      - Users
+      summary: List Users
+      description: Get a list of users in the system
+      operationId: listUsersV1
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page Number
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: Page Size
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 25
+      responses:
+        200:
+          description: List of Users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPagedList'
+    post:
+      tags:
+      - Users
+      summary: New User
+      description: Create a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        201:
+          description: User Created
+          headers:
+            Location:
+              description: Location of the created user
+              style: simple
+              explode: false
+              schema:
+                type: string
+                format: uri
+                example: http://example.com/v1/users/{assignedIdValue}
+        400:
+          description: Bad Request
+        409:
+          description: Conflict
+  /v1/users/{userId}:
+    get:
+      tags:
+      - Users
+      summary: Get User By ID
+      description: Get a single **User** by its Id value.
+      operationId: getUserByIdV1
+      parameters:
+      - name: userId
+        in: path
+        description: User Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: Found User
+          content:
+
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: Not found
+    put:
+      tags:
+      - Users
+      summary: Update User
+      description: Update user by id.
+      parameters:
+      - name: userId
+        in: path
+        description: User Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        204:
+          description: User Updated
+        400:
+          description: Bad Request
+        409:
+          description: Conflict
+    delete:
+      tags:
+      - Users
+      summary: Delete User By ID
+      description: Delete a user by its Id value.
+      operationId: deleteUserV1
+      parameters:
+      - name: userId
+        in: path
+        description: User Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: User Delete
+        404:
+          description: Not found
+  /v1/users/{userId}/orders:
+    post:
+      tags:
+      - Order Service
+      description: Place Order
+      parameters:
+      - name: userId
+        in: path
+        description: User Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChainOrder'
+        required: false
+      responses:
+        201:
+          description: Chain Order Created
+          headers:
+            Location:
+              description: Reference to created Order
+              style: simple
+              explode: false
+              schema:
+                type: string
+                format: uri
+        400:
+          description: Bad Reqeust
+        404:
+          description: Not Found
+        409:
+          description: Conflict
+      callbacks:
+        orderStatusChange:
+          ${request.body#/orderStatusCallbackUrl}:
+            description: Webhook for order status change notifications
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        orderId:
+                          type: string
+                          format: uuid
+                        orderStatus:
+                          type: string
+              responses:
+                200:
+                  description: Okay
+  /v1/chains:
+    get:
+      tags:
+      - Chains
+      summary: List Chains
+      description: List all chains in system.
+      operationId: listChainsV1
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page Number
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: Page Size
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 25
+      responses:
+        200:
+          description: List of Chains
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChainPagedList'
+        404:
+          description: No Chains Found
+    post:
+      tags:
+      - Chains
+      summary: New Chain
+      description: Create a new Chain Object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Chain'
+        required: true
+      responses:
+        201:
+          description: Chain Created
+          headers:
+            Location:
+              description: Chain Object created
+              style: simple
+              explode: false
+              schema:
+                type: string
+                format: uri
+                example: http://example.com/v1/chains/{assignedIdValue}
+        400:
+          description: Bad Request
+        409:
+          description: Conflict
+  /v1/chains/{chainId}:
+    get:
+      tags:
+      - Chains
+      summary: Get Chain by ID
+      description: Get a single chain by its ID value.
+      operationId: getChainByIdV1
+      parameters:
+      - name: chainId
+        in: path
+        description: Chain Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: Found Chain by Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chain'
+        404:
+          description: Not Found
+    put:
+      tags:
+      - Chains
+      summary: Update Chain by ID
+      description: Update a chain by its ID value.
+      operationId: updateChainByIdV1
+      parameters:
+      - name: chainId
+        in: path
+        description: Chain Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Chain'
+        required: true
+      responses:
+        204:
+          description: Chain Updated
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+        409:
+          description: Conflict
+    delete:
+      tags:
+      - Chains
+      summary: Delete Chain by Id
+      description: Delete a chain resource by its ID value.
+      operationId: deleteChainV1
+      parameters:
+      - name: chainId
+        in: path
+        description: Chain Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: Chain Resource Deleted
+        404:
+          description: Not Found
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+          example: 123 main
+        city:
+          type: string
+          example: St Pete
+        stateCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: 2 Letter State Code
+          enum:
+          - AL
+          - AK
+          - AZ
+          - AR
+          - CA
+        zipCode:
+          type: string
+          example: "33701"
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: number
+          readOnly: true
+        firstName:
+          maxLength: 100
+          minLength: 2
+          type: string
+          example: John
+        lastName:
+          maxLength: 100
+          minLength: 2
+          type: string
+          example: Thompson
+        address:
+          $ref: '#/components/schemas/Address'
+      description: user object
+    UserList:
+      maxItems: 100
+      minItems: 1
+      type: array
+      description: List of Users
+      items:
+        $ref: '#/components/schemas/User'
+    UserPagedList:
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/UserList'
+      allOf:
+      - $ref: '#/components/schemas/PagedResponse'
+    Brewery:
+      type: object
+      properties:
+        name:
+          type: string
+        location:
+          type: string
+    Chain:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        chainName:
+          type: string
+        style:
+          type: string
+          enum:
+          - ALE
+          - PALE_ALE
+          - IPA
+          - WHEAT
+          - LAGER
+        price:
+          type: number
+          format: float
+        quantityOnHand:
+          type: integer
+          format: int32
+        brewery:
+          $ref: '#/components/schemas/Brewery'
+      description: Chain Object
+    ChainList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Chain'
+    ChainPagedList:
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/ChainList'
+      allOf:
+      - $ref: '#/components/schemas/PagedResponse'
+    ChainOrder:
+      required:
+      - userId
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+          readOnly: true
+        userId:
+          type: string
+          format: uuid
+        userRef:
+          type: string
+          nullable: true
+        chainOrderLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainOrderLine'
+        orderStatusCallbackUrl:
+          type: string
+          format: uri
+    ChainOrderLine:
+      required:
+      - orderQuantity
+      - upc
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+          readOnly: true
+        chainId:
+          type: string
+          format: uuid
+          readOnly: true
+        upc:
+          type: string
+        orderQuantity:
+          maximum: 999
+          minimum: 1
+          type: integer
+        quantityAllocated:
+          type: integer
+          nullable: true
+          readOnly: true
+    PagedResponse:
+      type: object
+      properties:
+        pageable:
+          $ref: '#/components/schemas/PagedResponse_pageable'
+        totalPages:
+          type: integer
+          format: int32
+        last:
+          type: boolean
+        totalElements:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        number:
+          type: integer
+          format: int32
+        numberOfElements:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/PagedResponse_pageable_sort'
+        first:
+          type: boolean
+    PagedResponse_pageable_sort:
+      type: object
+      properties:
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+    PagedResponse_pageable:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/PagedResponse_pageable_sort'
+        offset:
+          type: integer
+          format: int32
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        paged:
+          type: boolean
+        unpaged:
+          type: boolean
+  parameters:
+    PageNumberParam:
+      name: pageNumber
+      in: query
+      description: Page Number
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 1
+    PageSizeParam:
+      name: pageSize
+      in: query
+      description: Page Size
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 25
+    UserIdPathParm:
+      name: userId
+      in: path
+      description: User Id
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+    ChainIdPathParm:
+      name: chainId
+      in: path
+      description: Chain Id
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid

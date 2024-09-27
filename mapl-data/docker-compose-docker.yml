@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    restart: on-failure
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: grootdb
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+    networks:
+      groot-mysql-net:
+
+  groot-restful-webservices:
+    container_name: groot-restful-webservices
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      groot-mysql-net:
+        aliases:
+          - groot-mysql
+
+networks:
+    groot-mysql-net:
+

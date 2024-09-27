@@ -1,0 +1,7 @@
+{
+  "type": "about:blank",
+  "title": "Method Not Allowed",
+  "status": 405,
+  "detail": "Method 'PUT' is not supported.",
+  "instance": "/api/users/211"
+}

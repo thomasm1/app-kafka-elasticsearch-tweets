@@ -1,0 +1,904 @@
+{
+	"info": {
+		"_postman_id": "72f7c6fc-9aa8-4ce1-8e87-8647f50e431b",
+		"name": "*NFT_GROOT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3422017"
+	},
+	"item": [
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\":333,\r\n        \"fName\":\"customer3\",\r\n        \"lName\":\"c3\",\r\n        \"email\":\"customer3@gmail.com\",\r\n        \"password\":\"pass\",\r\n        \"memberSince\":\"02-04-2020\",\r\n        \"groupType\":\"Premium\",\r\n        \"userId\":\"string\",\r\n        \"tokenId\":\"string\",\r\n        \"addresses\":[\r\n           {\r\n              \"id\":1,\r\n              \"description\":\"NFT - 0x1\",\r\n              \"owner\":\"customer3@gmail.com\",\r\n              \"address\":\"0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n              \"chain\":\"binance\",\r\n              \"blockExplorerUrl\":\"https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n              \"ownerId\":2,\r\n              \"chainId\":1\r\n           },\r\n           {\r\n              \"id\":4,\r\n              \"description\":\"NFT - 0x1\",\r\n              \"owner\":\"customer3@gmail.com\",\r\n              \"address\":\"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n              \"chain\":\"binance\",\r\n              \"blockExplorerUrl\":\"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n              \"ownerId\":2,\r\n              \"chainId\":1\r\n           }\r\n        ]\r\n     }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"users.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\":3,\r\n        \"fName\":\"customer3\",\r\n        \"lName\":\"c3\",\r\n        \"email\":\"customer3@gmail.com\",\r\n        \"password\":\"pass\",\r\n        \"memberSince\":\"02-04-2020\",\r\n        \"groupType\":\"Premium\",\r\n        \"userId\":\"string\",\r\n        \"tokenId\":\"string\",\r\n        \"addresses\":[\r\n           {\r\n              \"id\":1,\r\n              \"description\":\"NFT - 0x1\",\r\n              \"owner\":\"customer3@gmail.com\",\r\n              \"address\":\"0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n              \"chain\":\"binance\",\r\n              \"blockExplorerUrl\":\"https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n              \"ownerId\":2,\r\n              \"chainId\":1\r\n           },\r\n           {\r\n              \"id\":4,\r\n              \"description\":\"NFT - 0x1\",\r\n              \"owner\":\"customer3@gmail.com\",\r\n              \"address\":\"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n              \"chain\":\"binance\",\r\n              \"blockExplorerUrl\":\"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n              \"ownerId\":2,\r\n              \"chainId\":1\r\n           }\r\n        ]\r\n     }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"users.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users Copy 2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\":3,\r\n        \"fName\":\"customer3\",\r\n        \"lName\":\"c3\",\r\n        \"email\":\"customer3@gmail.com\",\r\n        \"password\":\"pass\",\r\n        \"memberSince\":\"02-04-2020\",\r\n        \"groupType\":\"Premium\",\r\n        \"userId\":\"string\",\r\n        \"tokenId\":\"string\",\r\n        \"addresses\":[\r\n           {\r\n              \"id\":1,\r\n              \"description\":\"NFT - 0x1\",\r\n              \"owner\":\"customer3@gmail.com\",\r\n              \"address\":\"0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n              \"chain\":\"binance\",\r\n              \"blockExplorerUrl\":\"https://explorer-mainnet.maticvigil.com/address/0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n              \"ownerId\":2,\r\n              \"chainId\":1\r\n           },\r\n           {\r\n              \"id\":4,\r\n              \"description\":\"NFT - 0x1\",\r\n              \"owner\":\"customer3@gmail.com\",\r\n              \"address\":\"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n              \"chain\":\"binance\",\r\n              \"blockExplorerUrl\":\"https://explorer-mainnet.maticvigil.com/address/0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n              \"ownerId\":2,\r\n              \"chainId\":1\r\n           }\r\n        ]\r\n     }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users/-NKWDS4yHn8bDBJKN_si.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"users",
+						"-NKWDS4yHn8bDBJKN_si.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users Copy 3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"fName\": \"Thoms\",\r\n    \"groupType\": \"Admin\",\r\n    \"id\": 0,\r\n    \"lName\": \"Milton\",\r\n    \"memberSince\": \"02-04-2020\",\r\n    \"password\": \"pass\",\r\n    \"tokenId\": \"string\",\r\n    \"userId\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/users/-NKWDS4yHn8bDBJKN_si.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"users",
+						"-NKWDS4yHn8bDBJKN_si.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\":\"thomas1.maestas@gmail.com\",\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"pulsechain23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/nft.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"nft.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"address\": \"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n        \"chain\": \"avalanche-212\",\r\n        \"email\":\"thomas1.maestas@gmail.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/nft/-NKEMZxPfzYObXOMhGvJ.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"nft",
+						"-NKEMZxPfzYObXOMhGvJ.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/nft.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"nft.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api Copy 2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/nft/-NKEM51oIMUTsWYS4hhL.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"nft",
+						"-NKEM51oIMUTsWYS4hhL.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://friends-of-groot-default-rtdb.firebaseio.com/api Copy 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://friends-of-groot-default-rtdb.firebaseio.com/api/nft/-NKEMZxPfzYObXOMhGvJ.json",
+					"protocol": "https",
+					"host": [
+						"friends-of-groot-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"api",
+						"nft",
+						"-NKEMZxPfzYObXOMhGvJ.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postLOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"thomas1.maestas@gmail.com\",\r\n\"password\":\"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9000/api/nft-test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/api/nft-test",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9000/api/users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9000/api/users Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/api/users/walter.white@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"users",
+						"walter.white@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "34.199.129.2:9000/api/nft-test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "34.199.129.2:9000/api/nft-test",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/api/nfts-test ETH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0x5f7B0DDd217D55bFC4927b3E49E3CbF57FA81834\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/nfts-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nfts-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://34.199.129.2:9000/api/nft-tests ETH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"ethereum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:9000/api/nft",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/api/nfts-test CopyETH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/nft-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/api/nfts-test COPY ETH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n    \"chain\":\"ethereum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/nfts-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nfts-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POLY http://localhost:9000/api/nfts-test POLY",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"eth\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/nft-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POLY http://34.199.129.2:9000/api/nfts-test POLY",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"eth\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/nft-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ETH http://localhost:9000/api/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"eth\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:9000/api/nft-test",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ETH http://34.199.129.2:9000/api/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"eth\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:9000/api/nft-test",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BSC http://localhost.2:8887/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"bsc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8887/nft",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8887",
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://34.199.129.2:9000/api/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"bsc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:8887/nft",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "8887",
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POLYGON http://localhost:8887/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"polygon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8887/nft",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8887",
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POLYGON http://34.2:8887/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n    \"chain\":\"polygon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:8887/nft",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "8887",
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AVALANCHE localhost:8887/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"polygon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8887/nft",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8887",
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AVALANCHE http://34.2:8887/nft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"polygon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:8887/nft",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "8887",
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS http://34.2:9000/api/chains",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"0xc8d6A88EF3627C7B666117Da5F6d23Ac0B01b156\",\r\n    \"chain\":\"polygon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.199.129.2:9000/api/nft",
+					"protocol": "http",
+					"host": [
+						"34",
+						"199",
+						"129",
+						"2"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"nft"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

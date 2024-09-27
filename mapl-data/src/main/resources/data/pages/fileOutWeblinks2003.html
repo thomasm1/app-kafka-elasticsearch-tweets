@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <base href="/" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="http://www.googletagmanager.com/gtag/js?id=UA-71584977-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-71584977-1');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Software Development Consulting, Thomas Milton Maestas.
+Thomas offers services related to analyzing qualitative &amp; quantitative data and reporting results in academic journals and business briefs alike.  Recent projects include research design, app design, proof-of-concepts, data analysis and business-applications.">
+
+    <meta name="keywords" content="web development,  Thomas Maestas, data analysis and visualization, sociology statistical tests">
+    <meta name="author" content="Thomas Maestas">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="dist/css/app.min.css" />
+    <link rel="stylesheet" href="dist/css/app-edits.css" />
+
+    <!-- <style>
+.d3-map {
+    max-width: 90%;
+}
+    </style> -->
+</head>
+
+<body ng-app="app">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="menu-btn navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navtmm" ui-sref="home"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling   -->
+            <div class="collapse navbar-collapse navtech-wrapper" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right pull-right dailytech">
+                    <li>
+                        <a title="github" href="https://github.com/thomas1" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="twitter" href="https://twitter.com/ThomasMaestas" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a title="facebook" href="https://www.facebook.com/thomas1.maestas" target="_blank">
+
+                            <i class="fa fa-facebook"></i>
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a title="linkedin" href="https://linkedin.com/in/thomasmaestas" target="_blank">
+
+                            <i class="fa fa-linkedin"></i>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navtech">
+                    <li><a ui-sref="about" ui-sref-active="active"><small>ABOUT</small></a></li>
+                    <li><a ui-sref="profile" ui-sref-active="active"><small>PROFILE</small></a></li>
+                    <li><a href="https://ourdailytech.net"  ><small>BLOG&nbsp; &nbsp;<i class="fa fa-external-link"></i></small></a></li>
+                </ul>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div id="index" class="index">
+        <!-- move these to maps dependencies -->
+
+        <!-- <script src='dist/js/d3/babel.min.js'></script> -->
+
+        <script src="dist/js/d3/d3v3.min.js"></script>
+        <!-- this only for map, not hypersolid  -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-array/1.2.1/d3-array.min.js" integrity="sha384-c+16cUIc0b/tqEZ9mRvDfI/r1Dg1Yq3JpWgZFW4mjN2QU7XXFWVB90PDFlV8SIAm" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-collection/1.0.4/d3-collection.min.js" integrity="sha384-H/Didu3qLpyrVmUqlvWapaxyhCzc+anaMa9uw+CHWHu+GNfClr91w8QgiLFIp7/V" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-dispatch/1.0.3/d3-dispatch.min.js" integrity="sha384-dGRK/lIqGrmmAoVA9K4pwKI4YL4BxIpaGa1dwU6lcRdpp5OJR6FoMZqxqzvCzFBS" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-request/1.0.6/d3-request.min.js" integrity="sha384-xsZEl8WRzIEBs+gkv/88ttcv7hmGnFJX8t8k6V+fZcrG2y5o1SXsCRLzl2S9HkFU" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-selection/1.1.0/d3-selection.min.js" integrity="sha384-AOxWgfcHKw/K6u7UX8IJ4vy418+zXnA6wB6P4/sobPFG0mM34UlLPHELGvI+aEX5" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.1/showdown.min.js" integrity="sha384-Mcx6WhltjdlkIwTWetAJIBNgD0lLtUcl//A7Ksp/vmVZVD2rzQ949wtmoehrDJd/" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+    </div>
+
+    <div ui-view></div>
+    <div class="map d3-map"></div>
+    <!-- <footer> -->
+    <div class="site-footer row column">
+        <nav class="footer-nav">
+
+            <div ng-include="'app/templates/footer.html'"></div>
+        </nav>
+    </div>
+
+    <!-- </footer>  -->
+
+    <script src="dist/js/vendor/toastr.min.js"></script>
+    <script src="dist/js/vendor/angular.min.js"></script>
+    <script src="dist/js/vendor/angular-ui.min.js"></script>
+    <!-- Application code -->
+    <script src="app/app.js"></script>
+    <script src="app/services/notifier.js"></script>
+    <script src="app/services/d3.js"></script>
+
+    <script src="app/controllers/GlobeController.js"></script>
+    <script src="app/controllers/AboutController.js"></script>
+    <script src="app/controllers/ProfileController.js"></script>
+    <script src="app/controllers/PlanetsController.js"></script>
+    <script src="app/controllers/ChlorController.js"></script>
+    <script src="app/controllers/ChlorOwnerController.js"></script>
+    <script src="app/controllers/HomeController.js"></script>
+
+    <script src="dist/js/d3/d3v4.min.js"></script>
+    <script src="dist/js/d3/d3-scale-chromatic.v1.min.js"></script>
+    <!-- <script src="dist/js/d3/topojson.v1.min.js"></script> -->
+    <script src="dist/js/d3/queue.v1.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="dist/js/d3/d3-geo-projection.v1.min.js"></script>
+    <!-- <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script> -->
+    <script src='dist/js/d3/simple-statistics.min.js'></script>
+    <script src="dist/js/d3/d3-tip.js"></script>
+    <!-- <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then((registration) => {
+                    console.log('SW registered');
+                })
+                .catch((err) => {
+                    console.log('SW error', err);
+                });
+        }
+    </script> -->
+</body>
+
+</html>

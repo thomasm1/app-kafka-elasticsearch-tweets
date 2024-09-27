@@ -1,0 +1,12 @@
+karate\chains\ChainsRunner.class
+utils\JavaUtils.class
+karate\springActuator\SpringActuatorRunner.class
+karate\swaggerOpenapi3\SwaggerRunner.class
+karate\addresses\AddressesRunner.class
+karate\jwtGetRequest\TestSecureGetRunner.class
+utils\ReadSystemProperty.class
+utils\DataGenerator.class
+karate\springRest\SpringRestRunner.class
+karate\ApiTest.class
+utils\MongoUtils.class
+karate\users\UsersRunner.class

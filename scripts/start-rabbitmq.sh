@@ -5,6 +5,7 @@ then
     exit 1
 fi
 docker --version
-docker pull rabbitmq:3.11.0
+docker pull rabbitmq:3.12.0-management
 
-docker run --rm -it -p 5672:5672 rabbitmq:3.11.0
+winpty docker run --rm -it --name rabbitmq_container -p 15672:15672 -p 5672:5672 rabbitmq:3.12.0-management
+#http://localhost:15672/  user: guest, password: guest

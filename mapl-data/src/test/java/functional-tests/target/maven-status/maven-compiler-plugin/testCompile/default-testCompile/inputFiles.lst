@@ -1,0 +1,12 @@
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\ApiTest.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\chains\ChainsRunner.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\utils\JavaUtils.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\users\UsersRunner.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\jwtGetRequest\TestSecureGetRunner.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\springActuator\SpringActuatorRunner.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\swaggerOpenapi3\SwaggerRunner.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\utils\ReadSystemProperty.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\utils\MongoUtils.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\addresses\AddressesRunner.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\utils\DataGenerator.java
+C:\w\git\www\_groot\mat-api\src\test\java\functional-tests\src\test\java\karate\springRest\SpringRestRunner.java

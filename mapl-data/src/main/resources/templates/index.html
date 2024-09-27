@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layouts :: header}">
+</head>
+
+<nav th:replace="~{layouts :: navbar}"></nav>
+
+<body>
+<login th:replace="~{layouts :: login}"></login>
+
+
+<div class="container">
+
+	<h3>Main Dashboard</h3>
+	<a th:text="${versionNumber}"></a>
+		<h4> Current Users </h4>
+ <hr>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+				<tr>
+					<th> LName </th>
+					<th> FName </th>
+					<th> Email </th>
+					<th> Path </th>
+
+					<th> Active </th>
+					<th> CusUrl </th>
+
+                    <th> Addresses </th>
+					<th> UserType</th>
+					<th> Roles</th>
+					<th> Phone</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="aUser : ${users}">
+					<td th:text="${aUser.getLastName()}"/>
+					<td th:text="${aUser.getFirstName()}"/>
+					<td th:text="${aUser.getEmail()}"/>
+					<td th:text="${aUser.getPhotoPath()}"/>
+
+					<td th:text="${aUser.getIsActive()}"/>
+					<td th:text="${aUser.getCusUrl()}"/>
+
+      			<td th:text="${aUser.getAddresses()}"/>
+					<td th:text="${aUser.getUserType()}"/>
+					<td th:text="${aUser.getRoles()}"/>
+					<td th:text="${aUser.getPhone()}"/>
+
+				</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+
+
+		<div class="col-md-4">
+
+
+			<!--				<script>-->
+			<!--					var chartData = "[[${dataCat}]]"-->
+			<!--				</script>-->
+
+		</div>
+
+	</div>
+		<h4> Chains </h4>
+ <hr />
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th> Name </th>
+							<th> ChainId</th>
+							<th> Category</th>
+							<th> BlockUrl</th>
+
+							<th> Symbol</th>
+							<th> Desc.</th>
+							<th> RpcUrl</th>
+							<th> LongDesc</th>
+							<th> ChainIcon</th>
+							<th> Id</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aChain : ${chains}">
+							<td th:text="${aChain.name}"/>
+							<td th:text="${aChain.getChainId()}"/>
+							<td th:text="${aChain.getCategory()}"/>
+							<td th:text="${aChain.getBlockExplorerUrl()}"/>
+
+							<td th:text="${aChain.getSymbol()}"/>
+							<td th:text="${aChain.getDescription()}"/>
+							<td th:text="${aChain.getRpcUrl()}"/>
+							<td th:text="${aChain.getLongDescription()}"/>
+							<td th:text="${aChain.getChainListIcon()}"/>
+							<td th:text="${aChain.getId()}"/>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+			</div>
+
+
+			<div class="col-md-4">
+<!--				<canvas id="myPieChart" height="50" width="50"></canvas>-->
+
+<!--				<script>-->
+<!--					var chartData = "[[${dataCat}]]"-->
+<!--				</script>-->
+
+			</div>
+
+		</div>
+		<h4> Current Users By Chains </h4>
+<hr />
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th> First Name </th>
+							<th> Last Name </th>
+							<th> Chain Count </th>
+						</tr>
+
+<!--		<tr th:each="aUserProjectCnt : ${userChainCnt}">&ndash;&gt;-->
+<!--			<td th:text="${aUserProjectCnt.getFirstName()}"/>-->
+<!--			<td th:text="${aUserProjectCnt.getLastName()}"/>-->
+<!--			<td th:text="${aUserProjectCnt.getLabel()}"/>-->
+<!--			<td th:text="${aUserProjectCnt.getValue()}"/>-->
+<!--		</tr>-->
+
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+</div>
+<!--<script type="text/javascript" th:src="@{js/pieChairt.js}"></script>-->
+
+</body>
+</html>

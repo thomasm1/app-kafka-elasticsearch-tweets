@@ -1,0 +1,1 @@
+User [userId=504, id=1004, lastName=Smith, firstName=Tom, username=user4, password=password, userType=7, groups=1, email=user4@cryptomaven.xyz, phone=5055087707, cusUrl=http://www.dailytech.net]

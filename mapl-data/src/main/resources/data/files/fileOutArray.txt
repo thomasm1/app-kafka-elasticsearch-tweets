@@ -1,0 +1,5 @@
+User [userId=501, id=1001, lastName=Smith, firstName=Tom, username=user1, password=password, userType=7, groups=1, email=user1@cryptomaven.xyz, phone=5055087707, cusUrl=http://www.dailytech.net]
+User [userId=502, id=1002, lastName=Smith, firstName=Tom, username=user2, password=password, userType=7, groups=1, email=user2@cryptomaven.xyz, phone=5055087707, cusUrl=http://www.dailytech.net]
+User [userId=503, id=1003, lastName=Smith, firstName=Tom, username=user3, password=password, userType=7, groups=1, email=user3@cryptomaven.xyz, phone=5055087707, cusUrl=http://www.dailytech.net]
+User [userId=504, id=1004, lastName=Smith, firstName=Tom, username=user4, password=password, userType=7, groups=1, email=user4@cryptomaven.xyz, phone=5055087707, cusUrl=http://www.dailytech.net]
+User [userId=505, id=1005, lastName=Smith, firstName=Tom, username=user5, password=password, userType=7, groups=1, email=user4@cryptomaven.xyz, phone=5055087707, cusUrl=http://www.dailytech.net]

@@ -1,0 +1,117 @@
+!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header">
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" th:href="@{/css/formatting.css}">
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<style>
+		.navbar {
+			margin-bottom: 0;
+			border-radius: 0;
+		}
+
+		.row.content {
+			height: 450px
+		}
+
+		.sidenav {
+			padding-top: 20px;
+			background-color: #f1f1f1;
+			height: 100%;
+		}
+		.table td, .table th {
+			padding: 0.05rem;
+			margin:0.05rem;
+			font-size: small;
+			max-width:4px;
+		}
+	</style>
+</head>
+
+<login th:fragment="login" class="content">
+
+	<div class="container-fluid" style="margin-top: 10px;">
+
+		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form autocomplete="off" th:action="@{/api/auth/login}" th:object="${loginDto}" method="post" class="form-signin" role="form">
+				<h3 class="form-signin-heading">Registration Form</h3>
+				<div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{usernameOrEmail}" placeholder="Username or Email" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="">
+						<input type="password" th:field="*{password}" placeholder="Password" class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="">
+						<button type="submit" class="btn btn-primary btn-block">Login</button>
+					</div>
+				</div>
+				<!-- <span th:utext="${successMessage}"></span> -->
+			</form>
+		</div>
+	</div>
+</login>
+
+	<nav th:fragment = "navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" th:href="@{/v1/}"> Chain IO</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+	      <li class="nav-item active">
+	        <a class="nav-link" th:href="@{/v1}">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/v1/users}">Users</a>
+	      </li>
+	            <li class="nav-item">
+	        <a class="nav-link" th:href="@{/v1/chains}">Chains</a>
+	      </li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/v1/register}">Register</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/v1/login}">Login</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="http://localhost:4200">Angular Site</a>
+			</li>
+			<li class="nav-item pull-right" >
+				<a class="nav-link" th:href="@{/v1/chains}">Chains</a>
+			</li>
+	    </ul>
+	  </div>
+	</nav>
+
+
+<footer th:fragment="footer">
+
+	<a href="ourdailytech.net">ourdailytech.net</a>
+</footer>
+
+
+</html>

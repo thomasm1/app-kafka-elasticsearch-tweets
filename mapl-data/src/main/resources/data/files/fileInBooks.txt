@@ -1,0 +1,5 @@
+4000,Walden,1854,Wilder Publications,Henry David Thoreau,BIOGRAPHY,4.3
+4001,Walden,1854,Wilder Publications,Henry David Thoreau,FICTION,4.3
+4002,Walden,1854,WilderPublications,Henry David Thoreau,PHILOSOPHY,4.3
+4003,Walden,1854,Wilder Publications,Henry David Thoreau,RELIGION,4.3
+4004,Walden,1854,Wilder Publications,Henry David Thoreau,TECHNICAL,4.3

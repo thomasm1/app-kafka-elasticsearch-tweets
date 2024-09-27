@@ -1,0 +1,33 @@
+1001
+oracle.jdbc.driver.OracleDriver
+CryptoMaven's <<MaPL>> My Personal Librarian
+ROLE: USER
+-|
+-|
+-|
+-|
+-|__________Miscellaneous Data Starting at LINE 10:  KEY IS LINE NUMBER__________
+USER Can I run any tests on any of your websites?
+USER Check google weather api?
+USER Check local and network ports?
+USER Here is your annual state weekly day. Want to update?
+USER Can I look something up for you in your database?
+USER Let's see I can look it up in aws s3 documents?
+USER How about test aws Oracle?
+USER How about check up on blockchain?
+USER May I print something to the screen?
+USER I know nothing of the outside world.  So all I know are my electroLots. Do you want to buy one?
+USER About my world I have but one source of truth a that is standard.in
+USER I have in my world one knowledge domain. I have , ${class} Oracle db that I can inquire from. Shall I connect a new DB?
+USER I also have the methods and values you have taught me.
+USER I am ready to open up your workstation layout. Ready [1]
+
+USER Can I run any tests?
+USER How about I Web3 connect to blockchain. May I start Ganache?
+USER May I start Truffle?
+USER Can I start Geth now?
+USER Shall I open an API to CryptoMavenAPI?
+USER Will I be reading from Our Daily Tech?
+
+
+

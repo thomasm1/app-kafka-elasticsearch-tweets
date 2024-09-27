@@ -45,7 +45,6 @@ public class ChainsServiceImpl implements ChainsService {
                 .chainListIcon("https://www.cryptocompare.com/media/37746251/eth.png")
                 .rpcUrl("https://www.cryptocompare.com/media/37746251/eth.png")
                 .blockExplorerUrl("https://www.cryptocompare.com/media/37746251/eth.png")
-                .category("Smart Contract")
                 .longDescription("Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.")
                 .description("Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.")
                 .iconUrl("https://www.cryptocompare.com/media/37746251/eth.png")
@@ -58,7 +57,6 @@ public class ChainsServiceImpl implements ChainsService {
                         .chainListIcon("https://www.cryptocompare.com/media/37746251/eth.png")
                         .rpcUrl("https://www.cryptocompare.com/media/37746251/eth.png")
                         .blockExplorerUrl("https://www.cryptocompare.com/media/37746251/eth.png")
-                        .category("Smart Contract")
                         .longDescription("Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.")
                         .description("Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.")
                         .iconUrl("https://www.cryptocompare.com/media/37746251/eth.png")
@@ -71,7 +69,6 @@ public class ChainsServiceImpl implements ChainsService {
                 .chainListIcon("https://www.cryptocompare.com/media/37746251/eth.png")
                 .rpcUrl("https://www.cryptocompare.com/media/37746251/eth.png")
                 .blockExplorerUrl("https://www.cryptocompare.com/media/37746251/eth.png")
-                .category("Smart Contract")
                 .longDescription("Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.")
                 .description("Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.")
                 .iconUrl("https://www.cryptocompare.com/media/37746251/eth.png")
@@ -229,9 +226,6 @@ public class ChainsServiceImpl implements ChainsService {
                 if (StringUtils.hasText(change.getChainListIcon())) {
                     chainUpdate.setChainListIcon(change.getChainListIcon());
                 }
-                if (StringUtils.hasText(change.getCategory())) {
-                    chainUpdate.setCategory(change.getCategory());
-                }
                 if (StringUtils.hasText(change.getRpcUrl())) {
                     chainUpdate.setRpcUrl(change.getRpcUrl());
                 }
@@ -262,9 +256,6 @@ public class ChainsServiceImpl implements ChainsService {
 
         if (chain.getSymbol() != null) {
             chainUpdate.setSymbol(chain.getSymbol());
-        }
-        if (chain.getSymbol() != null) {
-            chainUpdate.setCategory(chain.getCategory());
         }
         if (StringUtils.hasText(chain.getDescription())) {
             chainUpdate.setDescription(chain.getDescription());

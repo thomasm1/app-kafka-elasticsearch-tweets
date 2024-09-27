@@ -21,9 +21,6 @@ public interface ChainsRepository extends JpaRepository<Chain, Integer> {
     @NotNull List<Chain> findAll();
     @NotNull Page<Chain> findAll(@RequestParam @NotNull Pageable pageable);
 
-
-    List<Chain> findByCategory(@RequestParam String category);
-
     @Query("select c from Chain c where c.chainId = ?1")
     Optional<Chain> getOptional(@RequestParam Integer chainId);
 

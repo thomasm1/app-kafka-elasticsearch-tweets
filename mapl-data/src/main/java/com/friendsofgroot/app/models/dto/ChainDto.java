@@ -37,7 +37,6 @@ public class ChainDto implements Serializable {
     private String description;
     private String longDescription;
     private String iconUrl;
-    private String category;
     private String chainListIcon;
     private String rpcUrl;
 //    @NotNull

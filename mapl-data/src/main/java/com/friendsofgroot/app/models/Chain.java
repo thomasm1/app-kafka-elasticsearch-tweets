@@ -57,7 +57,6 @@ public class Chain implements Serializable {
     @Column(name = "icon_url")
     private String iconUrl;
 
-    private String category;
     @Column(name = "chain_list_icon")
     private String chainListIcon;
     @Column(name = "rpc_url")

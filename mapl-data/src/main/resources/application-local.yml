@@ -1,4 +1,4 @@
-
+#spring.application.name: DATA-SERVICE
 #spring.config.import: optional:configserver:http://localhost:8888
 #
 #eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
@@ -9,17 +9,19 @@ springdoc:
   swagger-ui.path: /swagger-ui.html
 spring.sql.init.schema-locations: classpath:schema-mysql.sql
 spring.sql.init.data-locations: classpath:data-mysql.sql
-spring.jpa.hibernate.ddl-auto: create-drop
+spring.jpa.hibernate.ddl-auto: update
+spring.sql.init.mode: never
+spring.sql.init.continue-on-error: true
 spring:
   h2:
     console:
       enabled: true
-      path: /h2-console
+      path: /h2-console/
       settings:
         trace: false
         web-allow-others: true
   datasource:
-#    url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
+    url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
     username: sa
     password:
     driver-class-name: org.h2.Driver

@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChainCSVRecord {
 
-    @CsvBindByName
-    private Integer row;
+//    @CsvBindByName
+//    private Integer row;
 
-    @CsvBindByName(column = "count.x")
-    private Integer version;
+    @CsvBindByName(column = "chain_id")
+    private Integer chainId;
 
     @CsvBindByName
     private String name;
@@ -50,11 +50,11 @@ public class ChainCSVRecord {
 
     @CsvBindByName
     private Float price;
+//
+//    @CsvBindByName(column = "count.y")
+//    private String count_y;
 
-    @CsvBindByName(column = "count.y")
-    private String count_y;
-
-    @CsvBindByName
-    private String label;
+//    @CsvBindByName
+//    private String label;
 
 }

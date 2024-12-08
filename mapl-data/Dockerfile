@@ -4,6 +4,6 @@ LABEL maintainer="thomas1.maestas@gmail.com"
 
 WORKDIR /app
 
-COPY target/friendsofgroot.war /app/friendsofgroot.war
+COPY target/mapl-data-1.2.0.war /app/mapl-data.war
 
-ENTRYPOINT ["java", "-jar", "friendsofgroot.war"]
+ENTRYPOINT ["java", "-jar", "mapl-data.war"]

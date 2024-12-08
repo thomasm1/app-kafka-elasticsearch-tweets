@@ -15,7 +15,7 @@
 
     </Appenders>
     <Loggers>
-        <Logger name="com.friendsofgroot.app" level="debug" />
+        <Logger name="app.mapl" level="debug" />
         <Root level="info">
             <AppenderRef ref="STDOUT" />
 <!--            <AppenderRef ref="FILE" />-->

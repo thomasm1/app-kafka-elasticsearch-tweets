@@ -1,7 +1,5 @@
 spring.application.name: DASHBOARD-SERVICE
 spring.profiles.active: local
-spring.config.import: optional:configserver:http://localhost:8888
-server.port: 8082
 ## Configuring info endpoint
 info.app.name: DASHBOARD SERVICE
 info.app.description: Mapl Server Application

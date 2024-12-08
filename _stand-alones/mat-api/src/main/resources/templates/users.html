@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layouts :: header}">
+
+	<style>
+		.navbar {
+			margin-bottom: 0;
+			border-radius: 0;
+		}
+
+		.row.content {
+			height: 450px
+		}
+
+		.sidenav {
+			padding-top: 20px;
+			background-color: #f1f1f1;
+			height: 100%;
+		}
+	.table td, .table th {
+		padding: 0.05rem;
+		margin:0.05rem;
+		font-size: small;
+	}
+	</style>
+
+</head>
+
+	<nav th:replace="~{layouts :: navbar}"></nav>
+
+<body>
+
+
+
+<div class="container">
+
+	<h3>User Dashboard</h3>
+	<a th:text="${versionNumber}"></a>
+		<h4> Current Users </h4>
+ <hr>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+				<tr>
+					<th> LName </th>
+					<th> FName </th>
+					<th> Email </th>
+					<th> Path </th>
+
+					<th> Active </th>
+					<th> CusUrl </th>
+<!--					<th> Addresses </th>-->
+					<th> Groups</th>
+					<th> UserType</th>
+					<th> Groups</th>
+					<th> Roles</th>
+					<th> Phone</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="aUser : ${users}">
+					<td th:text="${aUser.getLastName()}"/>
+					<td th:text="${aUser.getFirstName()}"/>
+					<td th:text="${aUser.getEmail()}"/>
+					<td th:text="${aUser.getPhotoPath()}"/>
+
+					<td th:text="${aUser.getIsActive()}"/>
+					<td th:text="${aUser.getCusUrl()}"/>
+
+    				<td th:text="${aUser.getAddresses()}"/>
+					<td th:text="${aUser.getUserType()}"/>
+					<td th:text="${aUser.getRoles()}"/>
+					<td th:text="${aUser.getPhone()}"/>
+
+				</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+
+
+		<div class="col-md-4">
+
+
+			<!--				<script>-->
+			<!--					var chartData = "[[${dataCat}]]"-->
+			<!--				</script>-->
+
+		</div>
+
+	</div>
+		<h4> Addresses </h4>
+ <hr />
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th> Id </th>
+							<th> Email</th>
+							<th> Address</th>
+							<th> BlockUrl</th>
+
+							<th> Chain</th>
+							<th> Desc.</th>
+							<th> User</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aAddress : ${addresses}">
+							<td th:text="${aAddress.getId()}"/>
+							<td th:text="${aAddress.getEmail()}"/>
+							<td th:text="${aAddress.getAddress()}"/>
+							<td th:text="${aAddress.getBlockExplorerUrl()}"/>
+
+							<td th:text="${aAddress.getChain()}"/>
+							<td th:text="${aAddress.getDescription()}"/>
+							<td th:text="${aAddress.getUser()}"/>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+			</div>
+
+
+			<div class="col-md-4">
+<!--				<canvas id="myPieChart" height="50" width="50"></canvas>-->
+
+<!--				<script>-->
+<!--					var chartData = "[[${dataCat}]]"-->
+<!--				</script>-->
+
+			</div>
+
+		</div>
+		<h4> Current Users By Addresses </h4>
+<hr />
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>ID </th>
+							<th> Address </th>
+<!--							<th> Addresses Count </th>-->
+						</tr>
+
+		<tr th:each="aDataAddressesByEmail : ${dataAddressesByEmail}">-->
+<!--			<td th:text="${aDataAddressesByEmail.getId()}"/>-->
+<!--			<td th:text="${aDataAddressesByEmail.getAddress()}"/>-->
+<!--			<td th:text="${aDataAddressesByEmail.getEmail()}"/>-->
+		</tr>
+
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+</div>
+<!--<script type="text/javascript" th:src="@{js/pieChairt.js}"></script>-->
+
+</body>
+</html>

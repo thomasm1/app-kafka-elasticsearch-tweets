@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="layouts :: head">
+	</head>
+
+	<body>
+
+	<nav th:replace="layouts :: navbar"></nav>
+
+		<div class="container">
+			<h3>Projects Directory</h3>
+			<hr>
+
+			<!--  Add New ChainProject Button -->
+			<a th:href="@{/chains/new}"
+				class="btn btn-primary btn-sm mb-3">
+				New ChainProject
+			</a>
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>ChainProject Name</th>
+						<th>ChainProject Stage</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="aChainProject : ${chains}">
+						<td th:text="${aChainProject.name}"/>
+						<td th:text="${aChainProject.stage}"/>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</body>
+
+</html>

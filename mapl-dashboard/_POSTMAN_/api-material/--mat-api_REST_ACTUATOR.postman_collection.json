@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "e818d3fd-e1b0-4b2e-8811-4baf31c43b08",
+		"name": "**mat-api_REST_ACTUATOR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3422017"
+	},
+	"item": [
+		{
+			"name": "/rest/user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/user",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/address",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/address",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/chain",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/chain",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/nft",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/nft",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/role",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/role",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/nft_ref",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/nft_ref",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"nft_ref"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-------------ACTUATOR------------",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "/actuator/health",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/nft_ref",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"nft_ref"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actuator/role",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/role",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actuator/chain",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/chain",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actuator/nft",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/nft",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actuator/address",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/rest/address",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rest",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-------------Swagger------------ Copy",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/swagger-ui.html",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/swagger-ui.html",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"swagger-ui.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/v3/api-docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/v3/api-docs",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v3",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/v3/api-docs.yaml",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/v3/api-docs.yaml",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v3",
+						"api-docs.yaml"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

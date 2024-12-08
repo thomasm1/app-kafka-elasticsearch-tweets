@@ -71,4 +71,10 @@ public class AuthController {
         model.addAttribute("users", users);
         return "users";
     }
+    // handler method to handle list of users
+    @GetMapping("/api/users")
+    public List<UserDto> users(){
+        List<UserDto> users = userService.findAllUsers();
+        return users;
+    }
 }

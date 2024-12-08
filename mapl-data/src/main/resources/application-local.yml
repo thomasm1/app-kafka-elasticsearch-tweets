@@ -1,0 +1,109 @@
+#spring.application.name: DATA-SERVICE
+#spring.config.import: optional:configserver:http://localhost:8888
+#
+#eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+server.port: 8080
+
+springdoc:
+  api-docs.path: /v3/api-docs
+  swagger-ui.path: /swagger-ui.html
+spring.sql.init.schema-locations: classpath:schema-mysql.sql
+spring.sql.init.data-locations: classpath:data-mysql.sql
+spring.jpa.hibernate.ddl-auto: create-drop
+spring.sql.init.mode: never
+spring.sql.init.continue-on-error: true
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console/
+      settings:
+        trace: false
+        web-allow-others: true
+  datasource:
+    url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+        useUnicode: true
+        show-sql: true
+        format_sql: true
+        jdbc.lob.non_contextual_creation: true
+        connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+#spring.zipkin.base-url: http://127.0.0.1:9411/
+#spring.sleuth.sampler.probability: 1.0
+
+# DEV ONLY
+spring.jmx.enabled: false
+#because the javax.management.InstanceAlreadyExistsException occurs when there is an attempt to register an MBean (Managed Bean) that has already been registered. JMX is used for managing and monitoring Java applications, \
+#  and Spring Boot automatically registers various MBeans for management purposes.
+
+
+spring.rabbitmq.host: localhost
+spring.rabbitmq.port: 5672
+spring.rabbitmq.username: guest
+spring.rabbitmq.password: guest
+### Security
+security.basic.enable: false
+security.user.name: admin
+security.user.password: password
+## MIGRATIONS
+#spring.flyway.enabled: true
+
+########## LOG LEVELS ##########
+management.endpoints.web.exposure.include: health,info,env,metrics,loggers,auditevents,httptrace
+management.endpoint.health.show-details: always
+management.endpoint.shutdown.enabled: true
+########## Log springframework   ##########
+logging.level.org.springframework.web: INFO
+logging.level.org.springframework.security: INFO
+logging.level.org.springframework.security.web: OFF
+logging.level.org.springframework.security.authentication: OFF
+logging.level.org.springframework: info
+########## Log hibernate SQL statements ##########
+logging.level.org.hibernate.cache: info
+logging.level.org.hibernate.stat: info
+########## Log app/class level ##########
+logging.level.com.mapl.app: info
+
+logging.appender.console: org.springframework.boot.logging.logback.ConsoleAppender
+#logging.appender.console: org.springframework.boot.logging.logback.ConsoleAppender
+logging.appender.console.layout: org.springframework.boot.logging.logback.ColorConsoleLayout
+logging.appender.console.layout.pattern: %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${PID}){magenta} %clr(---){faint} %clr([%5p]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(---){faint} %clr([%t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%xEx
+
+# UI
+spring.mvc.view.suffix: .jsp
+#spring.mvc.view.prefix: /view/jsp/
+spring.mvc.format.date: yyyy-MM-dd
+spring.thymeleaf.cache: false
+spring.thymeleaf.enabled: true
+#server.context-path: /
+
+#server.servlet.context-path: /v1
+
+# File System
+#spring.cloud.config.server.native.search-locations: classpath:/,classpath:/config/,file:./,file:///C://config
+#spring.servlet.multipart.location: /tmp
+#spring.servlet.multipart.max-file-size: 10MB
+#spring.servlet.multipart.max-request-size: 10MB
+
+
+# Configuration
+currency-service.url: https://mapl.app
+currency-service.username: thomas
+currency-service.key: devKey
+
+# Mail
+#spring.mail.host: smtp.loans.mapl.app
+
+app.jwt-secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+app.jwt-expiration-milliseconds: 604800000

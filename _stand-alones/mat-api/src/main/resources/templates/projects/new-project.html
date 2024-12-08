@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+	<br>
+
+	<div class="container">
+		<form th:action="@{/chains/save}" th:object="${chain}" method="POST">
+
+		<div class="form-group row">
+			<input type="text" placeholder="ChainProject Name" th:field="*{name}">
+		</div>
+
+		<div class="form-group row">
+			<select th:field="${chain.stage}">
+				<option th:value="NOTSTARTED"> Not Started</option>
+				<option th:value="INPROGRESS"> In Progress</option>
+				<option th:value="COMPLETED"> Completed</option>
+			</select>
+		</div>
+
+		<div class="form-group row">
+			<textarea type="text" placeholder="Enter ChainProject Description" th:field="${chain.description}"></textarea>
+		</div>
+
+		<div class="form-group row">
+			<select th:field="*{users}" multiple="multiple">
+				<option th:each = "user : ${allUsers}"
+						th:value = "${user.userId}"
+						th:text = "${user.firstName}">
+				</option>
+			</select>
+		</div>
+
+		ChainProject Start Date:
+		<div class="form-group row">
+			<input id="dp3" type="text" class="mb-4 col-2 col-xs-4" value="Start Date" th:field="${chain.startDate}">
+		</div>
+
+
+		ChainProject End Date:
+		<div class="form-group row">
+			<input id="dp4" type="text" class="mb-4 col-2 col-xs-4" value="End Date" th:field="${chain.endDate}">
+		</div>
+
+		<script type="text/javascript">
+	      	$('#dp3').datepicker();
+	      	$('#dp4').datepicker();
+	      </script>
+
+
+		<button class="btn btn-info col-2" type="submit">Enter ChainProject</button>
+
+		</form>
+	</div>
+
+</body>
+
+</html>

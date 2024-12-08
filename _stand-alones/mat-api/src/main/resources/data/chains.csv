@@ -1,0 +1,3 @@
+"row","chainId","abv","ibu","id","name","symbol","chain_id","ounces","style2","count.y","brewery","city","state","label"
+"1",1,0.05,NA,1436,"Pub Chain","American Pale Lager",408,12,NA,409,"10 Barrel Brewing Company","Bend","OR","Pub Chain (10 Barrel Brewing Company)"
+"2",2,0.066,NA,2265,"Devil's Cup","American Pale Ale (APA)",177,12,"American Pale Ale (APA)",178,"18th Street Brewery","Gary","IN","Devil's Cup (18th Street Brewery)"

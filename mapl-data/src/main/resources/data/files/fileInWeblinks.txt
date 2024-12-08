@@ -1,0 +1,12 @@
+2000,http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html,http://www.javaworld.com
+2001,http://mindprod.com/jgloss/interfacevsabstract.html,http://mindprod.com
+2002,https://www.imdb.com/title/tt0120915/,http://www.starwars.com
+2003,https://thomasmaestas.net,http://www.javaworld.com
+2004,https://ourdailytech.net,https://ourdailytech.net
+2005,https://bitswapdex.io/#/swap,https://bitswapdex.io
+2006,https://nomics.com/assets/eth-ethereum,https://nomics.com/
+2007,https://www.coinbase.com/home-how-to.pdf,https://www.coinbase.com
+2008,https://digiconomist.net/launching-public-api-for-energy-and-carbon-footprint-data/,https://digiconomist.net/
+2009,https://www.quantamagazine.org/inside-the-proton-the-most-complicated-thing-imaginable-20221019/,https://news.ycombinator.com/
+2010,https://www.coindesk.com/markets/2020/11/24/xrp-price-surges-to-2-year-high-as-airdrop-frenzy-builds/,https://www.coindesk.com
+2011,https://www.sciencemag.org/news/2018/11/why-536-was-worst-year-be-alive,https://www.sciencemag.org

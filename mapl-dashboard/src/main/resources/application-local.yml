@@ -1,0 +1,63 @@
+
+spring.application.name: DASHBOARD-SERVICE
+spring.config.import: optional:configserver:http://localhost:8888
+eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+server.port: 8082
+
+#spring.mvc.view.prefix=/WEB-INF/jsp
+#spring.mvc.view.suffix=.jsp
+#server.context-path=/cli
+
+springdoc:
+  api-docs.path: /v3/api-docs
+  swagger-ui.path: /swagger-ui.html
+
+currency-service:
+  url: http://mapl.app
+  username: devusername
+  key: devkey
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: true
+  datasource:
+#    url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+        useUnicode: true
+        show-sql: true
+        format_sql: true
+        jdbc.lob.non_contextual_creation: true
+        connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+
+########## LOG LEVELS ##########
+management.endpoints.web.exposure.include: "*"
+spring.zipkin.base-url: http://127.0.0.1:9411/
+spring.sleuth.sampler.probability: 1.0
+
+# DEV ONLY
+spring.jmx.enabled: false
+#because the javax.management.InstanceAlreadyExistsException occurs when there is an attempt to register an MBean (Managed Bean) that has already been registered. JMX is used for managing and monitoring Java applications, \
+#  and Spring Boot automatically registers various MBeans for management purposes.
+spring.jpa.hibernate.ddl-auto: update
+logging.level.org.springframework: info
+
+spring.rabbitmq.host: localhost
+spring.rabbitmq.port: 5672
+spring.rabbitmq.username: guest
+spring.rabbitmq.password: guest

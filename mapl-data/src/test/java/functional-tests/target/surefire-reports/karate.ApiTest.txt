@@ -1,0 +1,33 @@
+-------------------------------------------------------------------------------
+Test set: karate.ApiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.898 s <<< FAILURE! - in karate.ApiTest
+testParallel  Time elapsed: 6.894 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+status code was: 400, expected: 200, response time in milliseconds: 14, url: http://localhost:8080/api/users/null, response: 
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Failed to convert 'null' with value: 'null'","instance":"/api/users/null"}
+classpath:karate/users/users.feature:64
+match failed: CONTAINS
+  $ | actual does not contain expected | all key-values did not match, expected has un-matched keys - [password, roles] (MAP:MAP)
+  {"userId":212,"username":"user14@gmail.com","password":"$2a$10$lCq.Iea1zFOt7lFMB1eoQuqQr6tihZB78SnEee1oSfrt107TSge0m","lastName":"Maestas","firstName":"Tom2","userType":3,"phone":"5055087707","email":"Tom2@gmail.com","cusUrl":"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg","photoPath":"photoPath","isActive":0,"contactType":1,"roles":[{"id":2,"name":"ROLE_ADMIN"}]}
+  {"username":"user14@gmail.com","password":"$2a$10$j/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6","lastName":"Maestas","firstName":"Tom2","userType":3,"phone":"5055087707","email":"Tom2@gmail.com","cusUrl":"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg","photoPath":"photoPath","isActive":0,"contactType":1,"roles":[{"id":1,"name":"ROLE_USER"}]}
+
+    $.roles | not equal | array match failed at index 0 (LIST:LIST)
+    [{"id":2,"name":"ROLE_ADMIN"}]
+    [{"id":1,"name":"ROLE_USER"}]
+
+      $.roles[0] | not equal | match failed for name: 'id' (MAP:MAP)
+      {"id":2,"name":"ROLE_ADMIN"}
+      {"id":1,"name":"ROLE_USER"}
+
+        $.roles[0].id | not equal (NUMBER:NUMBER)
+        2
+        1
+
+          $.password | not equal (STRING:STRING)
+          '$2a$10$lCq.Iea1zFOt7lFMB1eoQuqQr6tihZB78SnEee1oSfrt107TSge0m'
+          '$2a$10$j/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6'
+
+classpath:karate/users/users.feature:134 ==> expected: <0> but was: <2>
+	at karate.ApiTest.testParallel(ApiTest.java:17)
+

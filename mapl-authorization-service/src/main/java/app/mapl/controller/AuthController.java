@@ -1,80 +1,224 @@
 package app.mapl.controller;
 
-import jakarta.validation.Valid;
+import app.mapl.dto.JWTAuthResponse;
+import app.mapl.dto.LoginDto;
+import app.mapl.dto.RegisterDto;
 import app.mapl.dto.UserDto;
-import app.mapl.models.User;
-import app.mapl.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import app.mapl.exception.ResourceNotFoundException;
+import app.mapl.mapper.UserMapper;
+import app.mapl.service.UsersService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.ConstraintViolationException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AuthController {
 
-    private UserService userService;
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
+    public static final String USER_PATH = "/api/users";
+    public static final String USER_PATH_ID = USER_PATH + "/{userId}";
+//    @Autowired
+    private   UserMapper userMapper;
+
+    private final UsersService usersService;
+
+    public AuthController( UsersService usersService) {
+
+        this.usersService = usersService;
     }
 
-    // handler method to handle home page request
-    @GetMapping("/index")
-    public String home(){
-        return "index";
-    }
 
-    // handler method to handle login request
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
+    @Operation(
+            summary = "Get All Users REST API",
+            description = "Get All Users REST API is used to get a all the users from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
 
-    // handler method to handle user registration form request
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model){
-        // create model object to store form data
-        UserDto user = new UserDto();
-        model.addAttribute("user", user);
-        return "register";
-    }
-
-    // handler method to handle user registration form submit request
-    @PostMapping("/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto userDto,
-                               BindingResult result,
-                               Model model){
-        User existingUser = userService.findUserByEmail(userDto.getEmail());
-
-        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-            result.rejectValue("email", null,
-                    "There is already an account registered with the same email");
+    @GetMapping({USER_PATH, USER_PATH+"/"})
+    public ResponseEntity<List<UserDto>> getUsers() {
+        List<UserDto> users = new ArrayList<>();
+        try {
+            users = usersService.getUsers();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return new ResponseEntity<>(users,
+                HttpStatus.OK);
+    }
 
-        if(result.hasErrors()){
-            model.addAttribute("user", userDto);
-            return "/register";
+    @Operation(
+            summary = "Get User By ID REST API",
+            description = "Get User By ID REST API is used to get a single user from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+    // build get user by id REST API
+    // http://localhost:8080/api/users/1
+    @GetMapping(value = USER_PATH_ID)
+    public ResponseEntity<UserDto> getUser(@PathVariable("userId") int userId) {
+        if (usersService.getUser(userId).isEmpty()) {
+            throw new ResourceNotFoundException("User " + userId + "not found");
         }
-
-        userService.saveUser(userDto);
-        return "redirect:/register?success";
+        return new ResponseEntity<>(usersService.getUser(userId).get(), HttpStatus.OK);
     }
 
-    // handler method to handle list of users
-    @GetMapping("/users")
-    public String users(Model model){
-        List<UserDto> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";
+    @Operation(
+            summary = "Get User By EMAIL REST API",
+            description = "Get User By EMAIL REST API is used to get a single user from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+    @GetMapping(value = USER_PATH + "/email/{email}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) {
+        if (usersService.getUserByEmail(email).isEmpty()) {
+            throw new ResourceNotFoundException("User " + email + "not found");
+        }
+        return new ResponseEntity<>(usersService.getUserByEmail(email).get(), HttpStatus.OK);
     }
-    // handler method to handle list of users
-    @GetMapping("/api/users")
-    public List<UserDto> users(){
-        List<UserDto> users = userService.findAllUsers();
-        return users;
+
+    /// Non-Register Creation Request
+    @Operation(
+            summary = "NON-REGISTRATION Create User REST API",
+            description = "Create User REST API is used to create a user in the db"
+    )
+    @ApiResponse(
+            responseCode = "201",
+            description = "HTTP Status 201 SUCCESS"
+    )
+    @PostMapping(USER_PATH)
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
+        UserDto savedUser = usersService.createUser(user);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", USER_PATH + "/" + savedUser.getUserId());
+
+        return new ResponseEntity<>(savedUser, headers, HttpStatus.CREATED);
+    }
+
+    /// REGISTER Creation Request
+    @Operation(
+            summary = "Register User REST API",
+            description = "Register User REST API is used to register a user in the db"
+    )
+    @ApiResponse(
+            responseCode = "201",
+            description = "HTTP Status 201 SUCCESS"
+    )
+    @PostMapping({USER_PATH+"/auth/register", USER_PATH+"/auth/signup"})
+    public ResponseEntity<UserDto> register(@RequestBody RegisterDto registerDto) {
+        Optional<UserDto> response = usersService.register(registerDto);
+        response.orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", USER_PATH + "/" + registerDto.getEmail());
+
+        return new ResponseEntity<>(response.get(), headers, HttpStatus.CREATED);
+    }
+    // Build Login REST API
+    @Operation(
+            summary = "Login User REST API",
+            description = "Login User REST API is used to login a user in the db"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+    @PostMapping(value = {USER_PATH+"/auth/login", USER_PATH+"/auth/signin"})
+    public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto){
+        String token = usersService.login(loginDto);
+
+        JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
+        jwtAuthResponse.setAccessToken(token);
+
+        return ResponseEntity.ok(jwtAuthResponse);
+    }
+
+    @Operation(
+            summary = "Update User REST API",
+            description = "Update User REST API is used to update a particular user in the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+
+    @PutMapping(value = { USER_PATH}, consumes = "application/json")  // userId in body
+    public ResponseEntity<UserDto> updateUser( @RequestBody UserDto userDto) {
+        Optional<UserDto> updated = usersService.updateUser(userDto);
+        return updated.map(dto -> new ResponseEntity<>(
+                dto,
+                HttpStatus.CREATED)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+
+    @Operation(
+            summary = "Patch User REST API",
+            description = "Patch User REST API is used to patch - partially update -  a particular user from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+    @PatchMapping(USER_PATH_ID)
+    public ResponseEntity<UserDto> patchUserById(@PathVariable("userId") Integer userId,
+                                                 @RequestBody UserDto user) {
+
+        usersService.patchUserById(userId, user);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @Operation(
+            summary = "Delete User REST API",
+            description = "Delete User REST API is used to delete a particular user from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 SUCCESS"
+    )
+    @SecurityRequirement(
+            name = "Bearer Authentication"
+    )
+    //  @PreAuthorize("hasRole({'ADMIN', 'USER'})")
+    @DeleteMapping(value = USER_PATH_ID)
+    public ResponseEntity<Boolean> deleteUser(@PathVariable("userId") int userId) {
+        Boolean boolSuccess = null;
+
+        Optional<UserDto> tempUser = usersService.getUser(userId);
+        if (tempUser == null) throw new ResourceNotFoundException("User " + userId + "not found to delete");
+        try {
+            boolSuccess = usersService.deleteUser(String.valueOf(tempUser));
+            if (boolSuccess) {
+                return new ResponseEntity<>(boolSuccess, HttpStatus.OK);
+            }
+            ;
+            return new ResponseEntity<>(boolSuccess, HttpStatus.NO_CONTENT);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(boolSuccess, HttpStatus.NO_CONTENT);
+        } catch (ConstraintViolationException exception) { // || DataIntegrityViolationException e){
+
+            return new ResponseEntity<>(boolSuccess, HttpStatus.NO_CONTENT);
+        }
     }
 }

@@ -1,9 +1,7 @@
 package app.mapl.repositories;
 
 import app.mapl.models.Navigator;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface NavigatorRepository extends MongoRepository<Navigator, Long> {
 }

@@ -1,25 +1,49 @@
 package app.mapl.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+@Schema(
+        description = "User profile information Data Transfer Object"
+)
 @Getter
 @Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
-    private Long id;
-    @NotEmpty
-    private String firstName;
-    @NotEmpty
-    private String lastName;
-    @NotEmpty(message = "Email should not be empty")
-    @Email
+public class UserDto implements Serializable {
+
+
+    private int userId; // userId
+    @Schema(description = "User First Name")
+    private String username;
+    private String lastName; // lastName
+    @Schema(description = "User First Name")
+    private String firstName; // firstName
+    private String organizationCode;
+    private String dashboardCode; // usergroup
+    private String cusUrl; // usergroup
+    private int userType;
+
+    @Schema(description = "Username==email")
+    @NotEmpty(message = "User email should not be null or empty")
+    @Email(message = "Email address should be valid")
     private String email;
-    @NotEmpty(message = "Password should be empty")
-    private String password;
+    private int contactType;
+    private int isActive;
+
+    private Set<RoleDto> roles;
+    private String id; // id
+
+
+    public String getPassword() {
+        return username; // for/admin
+    }
 }

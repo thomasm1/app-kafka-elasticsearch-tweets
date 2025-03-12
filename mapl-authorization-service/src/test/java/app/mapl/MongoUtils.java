@@ -1,18 +1,9 @@
 package app.mapl;
-
-import static com.mongodb.client.model.Filters.eq;
-
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-import com.fasterxml.jackson.core.*;
-
-import com.mongodb.util.JSON;
-import net.minidev.json.JSONObject;
-import org.bson.BsonDocument;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -26,9 +17,7 @@ public class MongoUtils {
     private static MongoClient mongoClient;
 
     public MongoUtils(String url, String db, String col) {
-        MongoClientURI mongoClientURI = new MongoClientURI(url);
-        mongoClient = new MongoClient(mongoClientURI);
-        database = mongoClient.getDatabase(db);
+         database = mongoClient.getDatabase(db);
         collection = database.getCollection(col);
         System.out.println("MONGO Coneection");
     }

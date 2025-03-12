@@ -4,7 +4,13 @@
 			"path": ".."
 		},
 		{
-			"path": "../../_groot"
+			"path": "../../daily/daily-microservices"
+		},
+		{
+			"path": "../../daily/env"
+		},
+		{
+			"path": "../../tmm"
 		}
 	],
 	"settings": {}

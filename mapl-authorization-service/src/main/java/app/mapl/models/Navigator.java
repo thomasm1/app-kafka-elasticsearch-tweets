@@ -24,7 +24,7 @@ public class Navigator {
     private Long id;
     private String firstName;
     private String lastName;
-    @Column(nullable = false, unique = true)
+    @Field( name = "email")
     private String email;
     @Field(name = "dashboard_code")
     private String dashboardCode;

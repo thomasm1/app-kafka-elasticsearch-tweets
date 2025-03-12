@@ -1,8 +1,8 @@
 server:
   port: 8181
 
-twitter-to-kafka-service:
-  twitter-keywords:
+x-to-kafka-service:
+  x-keywords:
     - bitcoin
     - ethereum
     - avalanche

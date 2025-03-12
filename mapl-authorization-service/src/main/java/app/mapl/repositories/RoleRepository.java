@@ -1,11 +1,17 @@
 package app.mapl.repositories;
 
 import app.mapl.models.Role;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface RoleRepository extends MongoRepository<Role, Long> {
+import java.util.Optional;
+import java.util.Set;
 
-    Role findByName(String name);
+// @Repository
+public interface RoleRepository extends MongoRepository<Role, Integer> {
+    Optional<Role> findById(@NotNull Integer id);
 
-    Role save(Role role);
+    Optional<Role> findByName(String name);
+
+    Set<Role> findAllByName(String name);
 }

@@ -1,0 +1,48 @@
+server.port: 8888
+
+currency-service:
+  url: http://cryptomaven.xyz
+  username: devusername
+  key: devkey
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+#        web-allow-others: false  # usually false for local dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE;NON_KEYWORDS=VALUE,PASSWORD
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+    defer-datasource-initialization: false
+  sql:
+    init:
+      schema-locations: classpath:schema-h2.sql
+      data-locations: classpath:data-h2.sql
+      mode:  always
+  security:
+    user:
+      name: admin
+      password: 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+      roles: ADMIN
+## Public views
+# show  bind values
+logging.level.org.hibernate.type.descriptor.sql: trace
+management.endpoints.web.exposure.include: "*"
+management.info.env.enabled: true

@@ -1,0 +1,75 @@
+spring.application.name: REST-DAILYTECH
+spring.profiles.active: mysql  # h2
+server.port: 8888
+
+#spring.config.import: optional:configserver:http://localhost:8888
+#eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+
+## Configuring info endpoint
+info.app.name: REST-DAILYTECH
+info.app.description: Daily-Tech Server Application
+info.app.version: 1.0.0
+management.info.env.enabled: false
+
+management.endpoints.web.exposure.include: health,metrics
+springdoc:
+  api-docs.path: /v3/api-docs
+  swagger-ui.path: /swagger-ui.html
+
+spring.jmx.enabled: false
+#because the javax.management.InstanceAlreadyExistsException occurs when there is an attempt to register an MBean (Managed Bean) that has already been registered. JMX is used for managing and monitoring Java applications, \
+#  and Spring Boot automatically registers various MBeans for management purposes.
+logging.level.org.springframework: info
+
+spring.rabbitmq.host: localhost
+spring.rabbitmq.port: 5672
+spring.rabbitmq.username: guest
+spring.rabbitmq.password: guest
+
+app:
+  jwt-secret: e037837c23ab0fe4f59e203ece8c0ddda2c70bfd5b5319fce2af9647be43b704
+  jwt-expiration-milliseconds: 604800000
+
+
+#spring.mvc.view.prefix=/WEB-INF/jsp
+#spring.mvc.view.suffix=.jsp
+#server.context-path=/cli
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

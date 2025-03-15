@@ -1,0 +1,38 @@
+-- dailytechdb database
+DROP DATABASE IF EXISTS dailytechdb;
+DROP USER IF EXISTS `admin`@`%`;
+DROP USER IF EXISTS `user`@`%`;
+
+CREATE DATABASE IF NOT EXISTS dailytechdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS `admin`@`%` IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, EXECUTE, CREATE VIEW, SHOW VIEW,
+
+CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER ON `dailytechdb`.* TO `admin`@`%`;
+CREATE USER IF NOT EXISTS `user`@`%` IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+GRANT SELECT, INSERT, UPDATE, DELETE, SHOW VIEW ON `dailytechdb`.* TO `user`@`%`;
+FLUSH PRIVILEGES;
+
+
+-- card database
+-- DROP DATABASE IF EXISTS card;
+-- DROP USER IF EXISTS `cardadmin`@`%`;
+-- DROP USER IF EXISTS `carduser`@`%`;
+-- CREATE DATABASE IF NOT EXISTS card CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- CREATE USER IF NOT EXISTS `cardadmin`@`%` IDENTIFIED WITH mysql_native_password BY 'password';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, EXECUTE, CREATE VIEW, SHOW VIEW,
+-- CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER ON `card`.* TO `cardadmin`@`%`;
+-- CREATE USER IF NOT EXISTS `carduser`@`%` IDENTIFIED WITH mysql_native_password BY 'password';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, SHOW VIEW ON `card`.* TO `carduser`@`%`;
+-- FLUSH PRIVILEGES;
+
+-- card PAN database
+-- DROP DATABASE IF EXISTS pan;
+-- DROP USER IF EXISTS `panadmin`@`%`;
+-- DROP USER IF EXISTS `panuser`@`%`;
+-- CREATE DATABASE IF NOT EXISTS pan CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- CREATE USER IF NOT EXISTS `panadmin`@`%` IDENTIFIED WITH mysql_native_password BY 'password';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, EXECUTE, CREATE VIEW, SHOW VIEW,
+-- CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER ON `pan`.* TO `panadmin`@`%`;
+-- CREATE USER IF NOT EXISTS `panuser`@`%` IDENTIFIED WITH mysql_native_password BY 'password';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, SHOW VIEW ON `pan`.* TO `panuser`@`%`;
+-- FLUSH PRIVILEGES;

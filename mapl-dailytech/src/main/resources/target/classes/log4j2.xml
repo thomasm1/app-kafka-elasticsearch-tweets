@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" xmlns="http://logging.apache.org/log4j/2.0/core/config">
+    <Properties>
+        <Property name="BASE_PATH">logs</Property>
+    </Properties>
+    <Appenders>
+        <!-- File Appender -->
+        <File name="FILE" fileName="${BASE_PATH}/Project0logfile.log" append="true">
+            <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+        </File>
+
+        <!-- Console Appender -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.jcg" level="debug" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="FILE"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="FILE" />
+        </Root>
+    </Loggers>
+</Configuration>

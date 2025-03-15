@@ -1,0 +1,5 @@
+net\ourdailytech\rest\controllerTests\CommentsControllerTest.class
+net\ourdailytech\rest\PostServiceMockTest.class
+net\ourdailytech\rest\PostServiceImplTest.class
+net\ourdailytech\rest\RestApplicationTests.class
+net\ourdailytech\rest\controllerTests\PostEntityControllerTest.class

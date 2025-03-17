@@ -1,3 +1,5 @@
 #!/bin/bash
-cd src/test/java/functional-tests && \
-mvn clean test 
+cd functional-tests && \
+mvn clean test --debug
+
+

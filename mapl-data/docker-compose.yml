@@ -4,30 +4,24 @@ services:
   mysqldb:
     container_name: mysqldb
     image: mysql
-    restart: on-failure
     environment:
-        MYSQL_ROOT_PASSWORD: password
-        MYSQL_DATABASE: groot
-        MYSQL_USER: groot
-        MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cryptomav3n
     networks:
-      groot-mysql-net:
+      cryptomaven-mysql-net:
 
-  groot-restful-webservices:
-    container_name: groot-restful-webservices
+  dailytech-rest:
+    container_name: cryptomaven-rest
     build:
       context: ./
       dockerfile: Dockerfile
-    restart: on-failure
     ports:
       - "8080:8080"
     depends_on:
       - mysqldb
     networks:
-      groot-mysql-net:
-        aliases:
-          - groot-mysql
+      cryptomaven-mysql-net:
+    restart: on-failure
 
 networks:
-    groot-mysql-net:
-
+  cryptomaven-mysql-net:

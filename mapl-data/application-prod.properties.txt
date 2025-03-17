@@ -1,0 +1,129 @@
+app.version=3.3.3
+server.port=8080
+local.server.port=8080
+system.environment=prod
+#spring.config.import=optional:configserver:http://localhost:8071
+
+### Security
+security.basic.enable= false
+security.user.name=admin
+security.user.password=password
+
+# Database  Settings
+#spring.sql.init.mode=never
+spring.sql.init.continue-on-error=true
+spring.sql.init.schema-locations=classpath:schema-prod.sql
+spring.sql.init.data-locations=classpath:data-prod.sql
+
+##########  OVERRIDE Oracle AWS ##########
+spring.data.jpa.repositories.bootstrap-mode=default
+#lazy, deferred, default
+#spring.datasource.url=jdbc:oracle:thin:@thomas-db.cmcadlepsyx9.us-east-1.rds.amazonaws.com:thomas
+spring.datasource.url=jdbc:oracle:thin:@thomas-db.cmcadlepsyx9.us-east-1.rds.amazonaws.com:1521:thomas
+spring.datasource.username=thomas
+spring.datasource.password=${ORACLE_DB_PASSWORD}
+
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+logging.level.com.zaxxer.hikari=DEBUG
+logging.level.com.zaxxer.hikari.HikariConfig=DEBUG
+logging.level.com.zaxxer.hikari.HikariDataSource=DEBUG
+## JPA Hibernate
+spring.jpa.database=oracle
+
+spring.jpa.hibernate.ddl-auto=none
+## JPA Props
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
+spring.jpa.properties.hibernate.connection.characterEncoding= UTF-8
+spring.jpa.properties.hibernate.connection.CharSet= UTF-8
+spring.jpa.properties.hibernate.useUnicode=true
+spring.jpa.properties.hibernate.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+########## Log jpa slow queries ##########
+spring.jpa.properties.hibernate.session.events.log.LOG_QUERIES_SLOWER_THAN_MS=1
+spring.jpa.properties.hibernate.generate_statistics=true
+spring.jpa.properties.hibernate.session.events.log=org.hibernate.event.service.spi.EventListenerRegistry
+spring.jpa.properties.jakarta.persistence.validation.mode=none
+### CACHE
+spring.jpa.properties.jakarta.persistence.sharedCache.mode=ENABLE_SELECTIVE
+spring.jpa.properties.jakarta.persistence.cache.storeMode=REFRESH
+spring.jpa.properties.jakarta.persistence.cache.retrieveMode=BYPASS
+## H2
+spring.h2.console.enabled=false
+#spring.h2.console.path=/h2-console/
+#spring.h2.console.settings.trace=false
+#spring.h2.console.settings.web-allow-others=false
+
+## MIGRATIONS
+spring.flyway.enabled=false
+oracle.jdbc.implicitStatementCacheSize=0
+########## LOG LEVELS ##########
+management.endpoints.web.exposure.include=health,info,env,metrics,loggers,auditevents,httptrace
+########## Log springframework   ##########
+logging.level.org.springframework.web=INFO
+logging.level.org.springframework.security=INFO
+logging.level.org.springframework.security.web=INFO
+logging.level.org.springframework.security.authentication=INFO
+logging.level.org.springframework=INFO
+########## Log hibernate SQL statements ##########
+logging.level.org.hibernate.cache=INFO
+logging.level.org.hibernate.stat=INFO
+########## Log app/class level ##########
+logging.level.com.mapl.app=INFO
+
+# UI
+spring.mvc.format.date=yyyy-MM-dd
+spring.thymeleaf.cache=false
+spring.thymeleaf.enabled=true
+spring.mvc.view.suffix=.jsp
+#spring.mvc.view.prefix=/view/jsp/
+#server.servlet.context-path=/v1
+#server.context-path=/
+
+
+logging.appender.console=org.springframework.boot.logging.logback.ConsoleAppender
+#logging.appender.console=org.springframework.boot.logging.logback.ConsoleAppender
+logging.appender.console.layout=org.springframework.boot.logging.logback.ColorConsoleLayout
+logging.appender.console.layout.pattern=%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${PID}){magenta} %clr(---){faint} %clr([%5p]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(---){faint} %clr([%t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%xEx
+
+
+app.jwt-secret=daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+app.jwt-expiration-milliseconds=604800000
+
+##########  NOTES    ##########
+
+
+########## Docker #################################################
+#/connect todos-user@localhost:3306
+#docker run --detach
+#--env MYSQL_ROOT_PASSWORD=dummypassword
+#--env MYSQL_USER=todos-user
+#--env MYSQL_PASSWORD=dummytodos
+#--env MYSQL_DATABASE=todos
+#--name mysql
+#--publish 3306:3306
+#mysql:8-oracle
+
+########## MySQL Container ##########
+#spring.datasource.url=jdbc:mysql://localhost:3306/todos
+#spring.datasource.url=jdbc:mysql://localhost:3306/test_db?createDatabaseIfNotExist=true
+#spring.datasource.username=thomas
+#spring.datasource.password=password
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+# #spring2.4 => spring.jpa.hibernate.dialect.MySQL5InnoDBDialect     #  .MySQL8Dialect
+#spring.jpa.proper
+
+#Prod notes
+# Oracle19cDialect Oracle12cDialect
+
+
+#spring.activemq.in-memory=true
+#spring.activemq.pooled=false
+#app.mapl.server=10.10.10.123
+#app.mapl.port=3330
+#app.mapl.user=
+#app.mapl.password=
+
+
+
+##########  ORACLE -Specific NOTES    ##########

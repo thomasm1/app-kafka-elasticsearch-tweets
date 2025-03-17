@@ -1,7 +1,9 @@
-spring.application.name: DASHBOARD-SERVICE
+
+server.port: 8084
+spring.application.name: MAPL-DASHBOARD
 spring.profiles.active: local
 ## Configuring info endpoint
-info.app.name: DASHBOARD SERVICE
+info.app.name: MAPL-DASHBOARD
 info.app.description: Mapl Server Application
 info.app.version: 1.0.0
 management.info.env.enabled: true

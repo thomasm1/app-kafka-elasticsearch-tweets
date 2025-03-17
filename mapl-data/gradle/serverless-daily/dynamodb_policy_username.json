@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "AllowAccessToOnlyItemsMatchingUserID",
+        "Effect": "Allow",
+        "Action": [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:UpdateItem"
+        ],
+        "Resource": [
+          "arn:aws:dynamodb:us-east-1:123456789012:table/Posts"
+        ],
+        "Condition": {
+          "ForAllValues:StringEquals": {
+            "dynamodb:LeadingKeys": [
+              "${aws:username}"
+            ]
+          },
+          "StringEquals": {
+            "dynamodb:Attributes": "username"
+          }
+        }
+      }
+    ]
+  }
+  

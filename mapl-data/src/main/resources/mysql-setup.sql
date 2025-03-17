@@ -1,0 +1,24 @@
+-- -- cryptomav3n database
+-- DROP DATABASE IF EXISTS cryptomav3n;
+-- DROP USER IF EXISTS `mav3nadmin`@`%`;
+-- DROP USER IF EXISTS `user`@`%`;
+-- CREATE DATABASE IF NOT EXISTS cryptomav3n CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- CREATE USER IF NOT EXISTS `mav3nadmin`@`%` IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, EXECUTE, CREATE VIEW, SHOW VIEW,
+-- CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER ON `cryptomav3n`.* TO `admin`@`%`;
+-- CREATE USER IF NOT EXISTS `mav3nuser`@`%` IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, SHOW VIEW ON `cryptomav3n`.* TO `user`@`%`;
+-- FLUSH PRIVILEGES;
+
+
+-- -- card database
+-- DROP DATABASE IF EXISTS dailytechdb;
+-- DROP USER IF EXISTS `dailyadmin`@`%`;
+-- DROP USER IF EXISTS `dailyuser`@`%`;
+-- CREATE DATABASE IF NOT EXISTS dailytech CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- CREATE USER IF NOT EXISTS `dailyadmin`@`%` IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, EXECUTE, CREATE VIEW, SHOW VIEW,
+-- CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER ON `dailytech`.* TO `dailyadmin`@`%`;
+-- CREATE USER IF NOT EXISTS `dailyuser`@`%` IDENTIFIED WITH mysql_native_password BY 'abc123!!';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, SHOW VIEW ON `dailytech`.* TO `dailyuser`@`%`;
+-- FLUSH PRIVILEGES;

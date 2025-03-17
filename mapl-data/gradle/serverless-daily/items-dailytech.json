@@ -1,0 +1,25 @@
+
+{
+	"DailyTech": [
+		{
+			"PutRequest": {
+				"Item": {
+					"Id": { "S": "472e94ce-8e10-4403-ac4b-e19b12ce4c51" },
+					"author": { "S": "by Thomas Maestas, MA" },
+					"blogcite": { "S": "<p class=\"cite\">1. <a href=\"https://www.forbes.com/sites/forbestechcouncil/2018/03/09/why-progressive-web-apps-will-replace-native-mobile-apps/#3f39b4fa2112\" target=\"_blank\">https://www.forbes.com/sites/forbestechcouncil/2018/03/09/why-progressive-web-apps-will-replace-native-mobile-apps/#3f39b4fa2112</a></p>\n  \n  <p class=\"cite\">2. <a href=\"https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e\" target=\"_blank\">https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e</a></p>" },
+					"cat3": { "S": "Web Dev Affairs" },
+					"date": { "S": "April 7-8, 2018<br /> Weekend" },
+					"did": { "S": "18-04-07" },
+					"monthOrder": { "S": "4" },
+					"post": { "S": "  <p class=\"firstparagraph\">Revolutions come and revolutions go, but the <i>2nd app revolution</i> is already underway, albeit quietly.<sup>1</sup> Most media sources refer to a \"Native App - Progressive Web App Debate\" with emphasis on what the native app can already do--<i>so if it's not broke, don't fix it</i>. However, implications change as the conversation turns to the Hyper Text Transfer Protocol (HTTP) Chrome V-8 JavaScript Engine<sup>2</sup>--you know, the web-app on <i>steroids</i>! </p>\n  <p>So what kind of steroids you ask? Let us say that the power of the modern browser lies in the open-source JavaScript engine, first C++ variation <i>originally </i>introduced in 2008 by Google's Chromium project. Open-source<i>-who?</i> (close your eyes next paragraph for the jargon-wary!) </p>\n  <p class=\"quote\">A JavaScript engine is a program or an interpreter which executes JavaScript code. A JavaScript engine can be implemented as a standard interpreter, or just-in-time compiler that compiles JavaScript to bytecode in some form.<sup>2</sup></p>\n  <p>In plain english, this means that the browser speaks directly to machine code, and this is a big deal. Happily 'roided, the browser now accomodates tasks that the \"App\" was invented for: <i>To direct service work</i>--image and data loading, caching, storage, offline data, icons, notifica       tions, etc. </p>\n  <p>Now, through a \"Manifest\" file provided to the device from the browser, all of those same tasks are accomplished through a series of handshakes, and voil&aacute;: the mobile device doesn't see the difference between a native app and, well ... a <i>progressive app!</i></p>\n  <p>They say History repeats itself. In our digital lifetime, we have seen <i>record sales</i> surpass digital downloads again (due to streaming); we have seen the originally-decentralized internet return, or at least begin the journey, back to decentralization! And now, we have the once-lowly browser return with a vengeance and strength to replace native apps, with encrypted security, instant loading, and <i>better</i> off-line caching! Do you have an app for that?</p>\n  \n  <p class=\"cite\">1. <a href=\"https://www.forbes.com/sites/forbestechcouncil/2018/03/09/why-progressive-web-apps-will-replace-native-mobile-apps/#3f39b4fa2112\" target=\"_blank\">https://www.forbes.com/sites/forbestechcouncil/2018/03/09/why-progressive-web-apps-will-replace-native-mobile-apps/#3f39b4fa2112</a></p>\n  \n  <p class=\"cite\">2. <a href=\"https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e\" target=\"_blank\">https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e</a></p> "		},
+					"title": { "S": "On the Inevitable Demise of Native Mobile Apps  in favor of Progressive Web Apps<br />Part III: The Nuts &amp; Bolts of the App Replacement Process" },
+					"durationGoal": { "N": "90" },
+					"news": { "L": [{ "S": "http://www.wired.com" }, { "S": "http://www.medium.com" }] },
+					"state": { "S": "completed" },
+					"username": { "S": "thomas.maestas@hotmail.com" },
+					"wordCount": { "N": "0" }
+				}
+			}
+		}
+	]
+} 

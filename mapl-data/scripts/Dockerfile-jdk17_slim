@@ -1,0 +1,11 @@
+#docker build -t user-service .
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+LABEL maintainer=thomas1.maestas@gmail.com
+
+RUN addgroup --system spring && adduser --system spring --ingroup spring
+USER spring:spring
+COPY target/*.jar app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
+

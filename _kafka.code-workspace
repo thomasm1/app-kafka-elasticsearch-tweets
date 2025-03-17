@@ -4,13 +4,16 @@
 			"path": ".."
 		},
 		{
-			"path": "../../daily/daily-microservices"
-		},
-		{
 			"path": "../../daily/env"
 		},
 		{
 			"path": "../../tmm"
+		},
+		{
+			"path": "../../daily"
+		},
+		{
+			"path": "../../_jsFunctions"
 		}
 	],
 	"settings": {}

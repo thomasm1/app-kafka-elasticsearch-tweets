@@ -1,0 +1,2 @@
+ALTER TABLE addresses
+  ADD email VARCHAR(255) NULL;

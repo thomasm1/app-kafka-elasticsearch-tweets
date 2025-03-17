@@ -887,7 +887,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "   {\r\n      \"id\": 999,\r\n      \"name\": \"pulsechain7\",\r\n      \"symbol\": \"pls\",\r\n      \"description\": \"Pulsechain Mainnet\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/img/pulsechain.png\",\r\n      \"category\": \"Mainnet\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \"https://rpc.pulsechain.io\",\r\n      \"addressesCount\": 3\r\n    }"
+					"raw": "   {\r\n      \"id\": 999,\r\n      \"name\": \"pulsechain7\",\r\n      \"symbol\": \"pls\",\r\n      \"description\": \"Pulsechain Mainnet\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/images/crypto/pulsechain.png\",\r\n      \"category\": \"Mainnet\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \"https://rpc.pulsechain.io\",\r\n      \"addressesCount\": 3\r\n    }"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/chains",
@@ -991,7 +991,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n      \"id\": 323,\r\n      \"name\":\"Binance323323\",\r\n      \"symbol\": \"bsc\",\r\n      \"description\": \"BNB [BSC] Mainnet323323\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/img/bnb.png\",\r\n      \"category\": \"Mainnet323323\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \" https://bsc-dataseed.binance.org/\",\r\n      \"addressesCount\": 3\r\n    }"
+					"raw": "{\r\n      \"id\": 323,\r\n      \"name\":\"Binance323323\",\r\n      \"symbol\": \"bsc\",\r\n      \"description\": \"BNB [BSC] Mainnet323323\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/images/crypto/bnb.png\",\r\n      \"category\": \"Mainnet323323\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \" https://bsc-dataseed.binance.org/\",\r\n      \"addressesCount\": 3\r\n    }"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/chains",

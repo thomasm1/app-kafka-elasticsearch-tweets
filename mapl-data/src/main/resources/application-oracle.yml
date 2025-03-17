@@ -1,0 +1,92 @@
+app:
+  version: 3.3.3
+  jwt-secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+  jwt-expiration-milliseconds: 604800000
+
+system:
+  environment: oracle  # Updated from MySQL to Oracle
+
+# Security settings
+security:
+  basic:
+    enable: false
+  user:
+    name: admin
+    password: password
+
+# Database Settings
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@cryptomav3n.ce1qqymm6i27.us-east-1.rds.amazonaws.com:1521/ORCL
+    username: admin
+    password: ${ORACLE_AWS_DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      pool-name: OracleDB-Pool
+      maximum-pool-size: 10
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+
+  # JPA Hibernate DDL Auto (Avoid using `update` in production)
+  spring.jpa.hibernate.ddl-auto: none  # Use `update` if needed
+  jpa:
+    database: oracle
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        useUnicode: true
+        show-sql: true
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+    sql:
+      init:
+        schema-locations: classpath:schema-oracle.sql
+        data-locations: classpath:data-oracle.sql
+        mode: never  # Set to `always` if you want automatic schema updates
+        continue-on-error: true
+  jmx:
+    enabled: false
+  thymeleaf:
+    cache: false
+    enabled: true
+  mvc:
+    format:
+      date: yyyy-MM-dd
+    view:
+      suffix: .jsp
+
+# Hibernate Slow Query Logging
+logging:
+  level:
+    org:
+      hibernate:
+        cache: info
+        stat: info
+        orm:
+          jdbc:
+            bind: OFF
+      springframework:
+        web: INFO
+        security: INFO
+        security.web: OFF
+        security.authentication: OFF
+    com:
+      mapl:
+        app: info
+    root: info
+
+

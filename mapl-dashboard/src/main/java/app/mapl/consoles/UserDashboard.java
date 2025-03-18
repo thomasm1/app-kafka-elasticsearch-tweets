@@ -1,18 +1,12 @@
 package app.mapl.consoles;
  
-import app.mapl.models.Chain;
-import app.mapl.models.dto.ChainDto;
 import app.mapl.repositories.UsersRepository;
-import app.mapl.service.ChainsService;
-import app.mapl.service.ChainsServiceImpl;
-import app.mapl.service.UsersService;
-import app.mapl.service.UsersServiceImpl;
-import app.mapl.systemUser.UserProfile;
+import app.mapl.services.ChainsService;
+import app.mapl.services.UsersServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Scanner;
 
 import static app.mapl.util.constants.Cmds.*;

@@ -1,7 +1,7 @@
 package app.mapl.controllers;
 
 import app.mapl.models.Weblink;
-import app.mapl.service.WeblinksService;
+import app.mapl.services.WeblinksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

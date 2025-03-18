@@ -3,7 +3,7 @@ package app.mapl.integrationTests;
 //import app.mapl.consoles.AdminDashboard;
 //import app.mapl.consoles.UserDashboard;
 import app.mapl.models.dto.UserDto;
-import app.mapl.service.UsersServiceImpl;
+import app.mapl.services.UsersServiceImpl;
 import org.junit.jupiter.api.*;
 
 import java.sql.SQLException;

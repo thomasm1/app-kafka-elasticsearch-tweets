@@ -1,3 +1,17 @@
+build:
+  version: "1.3.0"
+cryptomaven:
+  message: "Welcome to DAILYTECH-REST APIs "
+  contactDetails:
+    name: "Thomas Maesatas - Developer"
+    email: "thomas1.maestas@gmail.com"
+  dependsOn:
+    - MAPL-AUTHORIZATION
+    - CRYPTOMAVEN-REST
+  depenedencies:
+    - none
+####################################################
+
 spring.application.name: DAILYTECH-REST
 spring.application.version: 1.3.0
 spring.profiles.active: mysql  # h2
@@ -7,9 +21,9 @@ spring.config.import: optional:configserver:http://localhost:8888
 eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
 
 ## Configuring info endpoint
-info.app.name: DAILYTECH-REST
-info.app.description: Dailytech Rest Server Application
-info.app.version: 1.3.0
+info.app.name: ${spring.application.name}
+info.app.description: ${spring.application.name} Server Application
+info.app.version: ${spring.application.version}
 
 springdoc:
   api-docs.path: /v3/api-docs
@@ -26,7 +40,6 @@ spring.rabbitmq.password: guest
 app:
   jwt-secret: e037837c23ab0fe4f59e203ece8c0ddda2c70bfd5b5319fce2af9647be43b704
   jwt-expiration-milliseconds: 604800000
-
 
  ####################
 

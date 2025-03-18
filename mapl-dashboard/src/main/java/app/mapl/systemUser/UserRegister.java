@@ -6,8 +6,7 @@ import java.util.Scanner;
 import app.mapl.models.dto.UserDto;
 import app.mapl.util.constants.Cmds;
 import app.mapl.models.User;
-import app.mapl.service.UsersServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import app.mapl.services.UsersServiceImpl;
 import org.springframework.stereotype.Component;
 
 @Component

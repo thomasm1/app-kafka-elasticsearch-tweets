@@ -1,9 +1,7 @@
 package app.mapl.systemUser;
 
 
-import app.mapl.models.User;
 import app.mapl.consoles.MainDashboard;
-import app.mapl.service.UsersService;
 
 import java.util.Scanner;
 import java.sql.SQLException;

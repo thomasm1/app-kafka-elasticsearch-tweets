@@ -4,7 +4,7 @@ import app.mapl.models.dto.PostEntityDto;
 import app.mapl.models.dto.PostEntityResponse;
 import app.mapl.mapper.PostEntityMapper;
 
-import app.mapl.service.PostService;
+import app.mapl.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

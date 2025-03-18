@@ -5,9 +5,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import app.mapl.models.dto.UserDto;
-import app.mapl.repositories.UsersRepository;
-import app.mapl.service.UsersService;
-import app.mapl.service.UsersServiceImpl;
+import app.mapl.services.UsersService;
+import app.mapl.services.UsersServiceImpl;
 import org.junit.jupiter.api.*;
 
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,8 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import app.mapl.models.User;
 
 import java.util.Arrays;
 import java.util.List;

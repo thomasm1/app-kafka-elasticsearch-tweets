@@ -2,7 +2,7 @@ package app.mapl.controllers;
 
 
 import app.mapl.models.Book;
-import app.mapl.service.BooksService;
+import app.mapl.services.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

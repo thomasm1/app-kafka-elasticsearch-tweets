@@ -1,6 +1,6 @@
 package app.mapl.util.methods;
 
-import app.mapl.service.UsersServiceImpl;
+import app.mapl.services.UsersServiceImpl;
 
 import java.time.temporal.Temporal;
 import java.util.List;

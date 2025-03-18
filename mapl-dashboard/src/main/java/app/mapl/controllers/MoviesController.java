@@ -3,7 +3,7 @@ package app.mapl.controllers;
 
 
 import app.mapl.models.Movie;
-import app.mapl.service.MoviesService;
+import app.mapl.services.MoviesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

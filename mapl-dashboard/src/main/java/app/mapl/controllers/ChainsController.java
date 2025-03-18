@@ -2,7 +2,7 @@ package app.mapl.controllers;
 
 import app.mapl.models.dto.ChainDto;
 import app.mapl.mapper.ChainMapper;
-import app.mapl.service.ChainsService;
+import app.mapl.services.ChainsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

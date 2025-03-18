@@ -1,12 +1,9 @@
 package app.mapl.serviceTests;
 
 import app.mapl.mapper.ChainMapper;
-import app.mapl.models.Chain;
 import app.mapl.models.dto.ChainDto;
-import app.mapl.service.ChainsService;
-import app.mapl.service.ChainsServiceImpl;
+import app.mapl.services.ChainsService;
 import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 

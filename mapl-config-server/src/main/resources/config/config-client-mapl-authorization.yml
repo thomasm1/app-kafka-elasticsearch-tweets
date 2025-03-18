@@ -1,0 +1,83 @@
+build:
+  version: "1.3.0"
+authorization:
+  message: "Welcome to DAILYTECH-REST APIs "
+  contactDetails:
+    name: "Thomas Maesatas - Developer"
+    email: "thomas1.maestas@gmail.com"
+  dependsOn:
+    - MAPL-AUTHORIZATION
+    - CRYPTOMAVEN-REST
+  depenedencies:
+    - none
+####################################################
+
+
+spring.application.name: MAPL-AUTHORIZATION
+application.version: 1.3.0
+spring.profiles.active: docker
+server.port: 8081
+
+spring.config.import: optional:configserver:http://localhost:8888
+eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+
+#eureka.client.register-with-eureka: true
+#spring.datasource.url: jdbc:mysql://localhost:3306/users_db
+#spring.datasource.username: users
+#spring.datasource.password: abc123!!
+#spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+mapl.message: Welcome to Mapl
+management.endpoints.web.exposure.include: "*"
+
+# Configuring MongoDB
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/auth
+      host: localhost
+      port: 27017
+      database: spring
+
+  rabbitmq.host: localhost
+  rabbitmq.port: 5672
+  rabbitmq.username: guest
+  rabbitmq.password: guest
+
+## Configuring info endpoint
+info.app.name: MAPL-AUTHORIZATION
+info.app.description: Mapl Authentication Server Application
+info.app.version: 1.3.0
+management.info.env.enabled:  true
+management.endpoint.health.show-details: always
+
+#spring.datasource.url: jdbc:h2:~/test;NON_KEYWORDS=VALUE,PASSWORD;
+#spring.datasource.username: sa
+#spring.datasource.password:
+#spring-datasource.driver-class-name: org.h2.Driver
+#spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+#spring.jpa.hibernate.ddl-auto: update
+
+spring.zipkin.base-url: http://127.0.0.1:9411/
+spring.sleuth.sampler.probability: 1.0
+
+# Actuator endpoints for Circuit Breaker
+#management.health.circuitbreakers.enabled: true
+
+# Circuit Breaker configuration
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.registerHealthIndicator: true
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.failureRateThreshold: 50
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.minimumNumberOfCalls: 5
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.automaticTransitionFromOpenToHalfOpenEnabled: true
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.waitDurationInOpenState: 5s
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.permittedNumberOfCallsInHalfOpenState: 3
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.slidingWindowSize: 10
+#resilience4j.circuitbreaker.instances.AUTH-SERVICE.slidingWindowType: COUNT_BASED
+
+# Retry configuration
+#resilience4j.retry.instances.AUTH-SERVICE.registerHealthIndicator: true
+#resilience4j.retry.instances.AUTH-SERVICE.maxRetryAttempts: 5
+#resilience4j.retry.instances.AUTH-SERVICE.waitDuration: 2s
+app:
+  jwt-secret: e037837c23ab0fe4f59e203ece8c0ddda2c70bfd5b5319fce2af9647be43b704
+  jwt-expiration-milliseconds: 604800000
+

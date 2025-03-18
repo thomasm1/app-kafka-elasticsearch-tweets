@@ -6,8 +6,8 @@ import static org.mockito.Mockito.mock;
 
 import app.mapl.mapper.ChainMapper;
 
-import app.mapl.service.ChainsService;
-import app.mapl.service.ChainsServiceImpl;
+import app.mapl.services.ChainsService;
+import app.mapl.services.ChainsServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
  

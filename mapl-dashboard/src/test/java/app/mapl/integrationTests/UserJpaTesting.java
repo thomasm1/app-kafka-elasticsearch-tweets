@@ -2,14 +2,12 @@ package app.mapl.integrationTests;
 
 
 import app.mapl.models.dto.UserDto;
-import app.mapl.service.UsersService;
-import app.mapl.service.UsersServiceImpl;
+import app.mapl.services.UsersService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 @DataJpaTest
 @TestMethodOrder(OrderAnnotation.class)

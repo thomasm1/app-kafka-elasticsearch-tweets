@@ -4,16 +4,15 @@ package app.mapl.consoles;
 import app.mapl.models.dto.ChainDto;
 import app.mapl.models.dto.UserDto;
 import app.mapl.repositories.UsersRepository;
-import app.mapl.service.ChainsService;
-import app.mapl.service.ChainsServiceImpl;
-import app.mapl.service.UsersServiceImpl;
+import app.mapl.services.ChainsService;
+import app.mapl.services.ChainsServiceImpl;
+import app.mapl.services.UsersServiceImpl;
 import app.mapl.util.constants.Cmds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 

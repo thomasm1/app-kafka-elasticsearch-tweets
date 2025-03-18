@@ -5,7 +5,7 @@ import app.mapl.mapper.NftMapper;
 import app.mapl.models.dto.AddressDto;
 
 import app.mapl.models.dto.NftDto;
-import app.mapl.service.AddressesService;
+import app.mapl.services.AddressesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -7,20 +7,24 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: cryptomav3n
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: ${MYSQL_AWS_DB_PASSWORD}
     networks:
       cryptomaven-mysql-net:
 
-  dailytech-rest:
+  cryptomaven-rest:
     container_name: cryptomaven-rest
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8083:8083"
     depends_on:
       - mysqldb
     networks:
       cryptomaven-mysql-net:
+        aliases:
+          - mapl-data
     restart: on-failure
 
 networks:

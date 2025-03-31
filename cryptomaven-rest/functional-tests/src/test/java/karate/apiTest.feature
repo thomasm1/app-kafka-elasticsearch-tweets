@@ -16,14 +16,14 @@ Feature: chains feature api
 
     Examples:/
       | _path     | _meth | _stat | _var1 | _var2 | _var3 |
-      | addresses | GET   | 200   |    |   |   |
-      | addresses | GET   | 200   | /10002    |   |   |
+      | addresses | GET   | 200   |        |   |   |
+      | addresses | GET   | 200   | /20    |   |   |
 
-      | chains | GET   | 200   |   |   |   |
-      | chains | GET   | 200   | /11501    |   |   |
+      | chains | GET   | 200   |       |   |   |
+      | chains | GET   | 200   | /30   |   |   |
 
-      | users | GET   | 200   |   |   |   |
-      | users | GET   | 200   | /211    |   |   |
+      | users | GET   | 200   |        |   |   |
+      | users | GET   | 200   | /10    |   |   |
 
-      | coins | GET   | 200   |   |   |   |
-      | coins | GET   | 200   | /4002   |   |   |
+      | coins | GET   | 200   |       |   |   |
+      | coins | GET   | 200   | /40   |   |   |

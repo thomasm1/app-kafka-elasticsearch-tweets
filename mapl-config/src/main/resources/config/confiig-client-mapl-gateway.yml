@@ -1,0 +1,66 @@
+build:
+  version: "1.3.0"
+cryptomaven:
+  message: "Welcome to  API GATEWAY "
+  contactDetails:
+    name: "Thomas Maesatas - Developer"
+    email: "thomas1.maestas@gmail.com"
+  dependsOn:
+    - CONFIG-SERVER
+  depenedencies:
+    - none
+####################################################
+
+
+spring.application.name: MAPL-GATEWAY
+server.port: 9191
+
+eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+spring.config.import: optional:configserver:http://localhost:8071/
+## Configuring info endpoint
+info.app.name: ${spring.application.name}
+info.app.description: ${spring.application.name} Server Application
+info.app.version: ${spring.application.version}
+
+management.info.env.enabled:  true
+management.endpoint.gateway.enabled: true
+
+logging.level.app.mapl.gatewayserver: DEBUG
+
+management.endpoints.web.exposure.include: "*"
+
+##1.) AUTO-UPDATED ROUTING, with
+#spring.cloud.gateway.discovery.locator.enabled: true
+#spring.cloud.gateway.discovery.locator.lowerCaseServiceId: true
+##2.) MANUAL ROUTING
+## Routes for User Service
+spring.cloud.gateway.routes[0].id: MAPL-AUTHORIZATION
+spring.cloud.gateway.routes[0].uri: lb://MAPL-AUTHORIZATION
+spring.cloud.gateway.routes[0].predicates[0]: Path=/api/users/**
+
+## Routes for Dashboard Service
+spring.cloud.gateway.routes[1].id: MAPL-DASHBOARD
+spring.cloud.gateway.routes[1].uri: lb://DASHBOARD-SERVICE
+spring.cloud.gateway.routes[1].predicates[0]: Path=/api/dashboard/**
+
+## Routes for DAILYTECH Service
+spring.cloud.gateway.routes[2].id: DAILYTECH-REST
+spring.cloud.gateway.routes[2].uri: lb://DAILYTECH-REST
+spring.cloud.gateway.routes[2].predicates[0]: Path=/api/dailytech/**
+
+
+## Routes for CRYPTOMAVEN Service
+spring.cloud.gateway.routes[3].id: CRYPTOMAVEN-REST
+spring.cloud.gateway.routes[3].uri: lb://CRYPTOMAVEN-REST
+spring.cloud.gateway.routes[3].predicates[0]: Path=/api/cryptomaven/**
+
+## Routes for Organization Service
+spring.cloud.gateway.routes[4].id: ORGANIZATION-SERVICE
+spring.cloud.gateway.routes[4].uri: lb://ORGANIZATION-SERVICE
+spring.cloud.gateway.routes[4].predicates[0]: Path=/api/organizations/**
+
+spring.zipkin.base-url: http://127.0.0.1:9411/
+spring.sleuth.sampler.probability: 1.0
+
+spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedOrigins: "*"
+spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedMethods: GET,POST,PUT,DELETE

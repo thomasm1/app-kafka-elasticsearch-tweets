@@ -4,12 +4,13 @@ MAINTAINER Thomas Maestas "thomas.maestas@hotmail.com"
 
 ENV version=localhost
 
-ENV dbuser=root
-ENV dbpass=password
-ENV jdbcurl=jdbc:mysql://localhost:3306/groot
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=cryptomav3n
+ENV MYSQL_USER=admin
+ENV MYSQL_PASSWORD=${MYSQL_AWS_DB_PASSWORD}
+ENV jdbcurl=jdbc:mysql://localhost:3306/cryptomav3n
 
 WORKDIR /usr/local/bin
+COPY target/cryptomaven*.jar  ./cryptomaven-rest.jar
 
-ADD "target/friendsofgroot.war" .
-
-ENTRYPOINT ["java", "-jar", "friendsofgroot.war"]
+ENTRYPOINT ["java", "-jar", "cryptomaven-rest.jar"]

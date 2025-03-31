@@ -6,22 +6,75 @@ services:
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dailytech
+      MYSQL_DATABASE: mapl
     networks:
-      dailytech-mysql-net:
+      mapl-mysql-net:
+    restart: on-failure
 
   dailytech-rest:
     container_name: dailytech-rest
     build:
-      context: ./
+      context: ./dailytech-rest
       dockerfile: Dockerfile
     ports:
       - "8082:8082"
     depends_on:
       - mysqldb
     networks:
-      dailytech-mysql-net:
+      mapl-mysql-net:
+    restart: on-failure
+ 
+  cryptomaven-rest:
+    container_name: cryptomaven-rest
+    build:
+      context: ./cryptomaven-rest
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mysqldb
+    networks:
+      mapl-mysql-net:
+        aliases:
+          - mapl-data
     restart: on-failure
 
+  mapl-registry:
+    container_name: mapl-registry
+    build:
+      context: ./mapl-registry
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761" 
+    networks:
+      mapl-mysql-net: 
+    restart: on-failure
+  
+  mapl-gateway:
+    container_name: mapl-gateway
+    build:
+      context: ./mapl-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "9091:9091"
+    networks:
+      mapl-mysql-net:
+        aliases:
+          - api-gateway
+    restart: on-failure
+   
+  mapl-config:
+    container_name: mapl-config
+    build:
+      context: ./mapl-config
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      mapl-mysql-net:
+        aliases:
+          - config-server
+    restart: on-failure
+    
 networks:
-  dailytech-mysql-net:
+  mapl-mysql-net:

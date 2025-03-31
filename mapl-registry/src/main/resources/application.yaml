@@ -1,0 +1,14 @@
+#spring.application.name: eurekaserver
+spring.application.name: MAPL-REGISTRY
+spring.application.version: 1.3.0
+server.port: 8761
+
+spring.config.import: optional:configserver:http://localhost:8888
+eureka.client.register-with-eureka: false
+eureka.client.fetch-registry: false
+
+info.app.name: ${spring.application.name}
+info.app.description: ${spring.application.name} Server Application
+info.app.version: ${spring.application.version}
+#   actuator
+management.info.env.enabled: true

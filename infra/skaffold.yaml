@@ -1,0 +1,73 @@
+apiVersion: skaffold/v4beta3
+kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: thomasm1/dailytech-rest
+      context: ./dailytech-rest
+      sync:
+        manual:
+          - src: src/**/*.js
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/cryptomaven-rest
+      context: ./cryptomaven-rest
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/mapl-authorization
+      context: ./mapl-authorization
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/mapl-dashboard
+      context: ./mapl-dashboard
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/mapl-graph
+      context: ./mapl-graph
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/mapl-registry
+      context: ./mapl-registry
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/mapl-gateway
+      context: ./mapl-gateway
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: thomasm1/mapl-config
+      context: ./mapl-config
+      sync:
+        manual:
+          - src: "src/main/java/**/*.java"
+            dest: .
+      docker:
+        dockerfile: Dockerfile

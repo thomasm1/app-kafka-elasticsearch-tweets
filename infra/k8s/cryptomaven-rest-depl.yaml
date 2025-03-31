@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptomaven-rest-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cryptomaven-rest
+  template:
+    metadata:
+      labels:
+        app: cryptomaven-rest
+    spec:
+      containers:
+        - name: cryptomaven-rest
+          image: thomasm1/cryptomaven-rest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cryptomaven-rest-clusterip-srv
+spec:
+  selector:
+    app: cryptomaven-rest
+  ports:
+    - name: cryptomaven-rest
+      protocol: TCP
+      port: 8083
+      targetPort: 8083

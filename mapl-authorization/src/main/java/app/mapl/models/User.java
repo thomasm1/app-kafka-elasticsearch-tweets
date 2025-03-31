@@ -15,8 +15,6 @@ import java.util.Set;
 @Setter
 @Builder
 @ToString
-//@Entity
-//@Table(name = "users")
 @Document(collection = "users")
 public class User {
 

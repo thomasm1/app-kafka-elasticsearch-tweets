@@ -1,0 +1,69 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: mapl.app
+      http:
+        paths:
+          - path: /mapl-dashboard
+            pathType: Prefix
+            backend:
+              service:
+                name: mapl-dashboard-srv
+                port:
+                  number: 8084
+          - path: /mapl-auth/auth/login
+            pathType: Prefix
+            backend:
+              service:
+                name: mapl-auth-login-srv
+                port:
+                  number: 8081
+          - path: /mapl-auth/auth/register
+            pathType: Prefix
+            backend:
+              service:
+                name: mapl-auth-register-srv
+                port:
+                  number: 8091
+          - path: /crypto-maven/api/addresses
+            pathType: Prefix
+            backend:
+              service:
+                name: cryptomaven-addresses-clusterip-srv
+                port:
+                  number: 8083
+          - path: /crypto-maven/api/addresses/?(.*)/chains
+            pathType: Prefix
+            backend:
+              service:
+                name: cryptomaven-chains-clusterip-srv
+                port:
+                  number: 8093
+          - path: /crypto-maven/api/addresses/?(.*)/coins
+            pathType: Prefix
+            backend:
+              service:
+                name: cryptomaven-coins-clusterip-srv
+                port:
+                  number: 8103
+          - path: /dailytech-rest/api/posts
+            pathType: Prefix
+            backend:
+              service:
+                name: dailytech-posts-srv
+                port:
+                  number: 8082
+          - path: /dailytech-rest/api/posts/?(.*)/comments
+            pathType: Prefix
+            backend:
+              service:
+                name: dailytech-comments-srv
+                port:
+                  number: 8092
+

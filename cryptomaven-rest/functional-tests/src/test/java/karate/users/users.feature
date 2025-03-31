@@ -2,9 +2,9 @@ Feature:  users karate test script
 
   Background:
 #    * url 'http://34.199.129.2:8080/api/'
-    * url 'http://localhost:8080/api/'
+#    * url 'http://localhost:8080/api/'
+  * url baseUrl + /api/
 
-#  * url baseUrl
   @Order(1)
   Scenario: get all users and then get the first user by id
     Given path 'users'
@@ -21,22 +21,20 @@ Feature:  users karate test script
   Scenario: create a user and then get it by id
 
     * def rando = Math.floor(Math.random() * 1031)
-    * def userNameEmail = "user"+rando+"@gmail.com"
-    * def photoPath = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
-    * print "_______________________ID____:" + userNameEmail
+    * def usernameEmail = "user"+rando+"@gmail.com"
+    * def cusUrl = "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
+    * print "_______________________ID____:" + usernameEmail
     * def user =
       """
   {
 
-  "username": '#(userNameEmail)',
+  "username": '#(usernameEmail)',
   "password": "$2a$10$j/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6",
   "lastName": "Smith",
   "firstName": "Tom1",
-  "userType": 3,
-  "phone": "5051231234",
-  "email":'#(userNameEmail)',
-  "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg",
-  "photoPath": '#(photoPath)',
+  "userType": 3, 
+  "email":'#(usernameEmail)',
+  "cusUrl": '#(cusUrl)',
   "isActive": 0,
   "contactType": 1,
   "ROLES": [
@@ -82,22 +80,20 @@ Feature:  users karate test script
   @Order(3)
   Scenario Outline: Update a user, get it by id, verify changes
     * def rando = Math.floor(Math.random() * 100)
-    * def photoPath = "www.photo-"+rando+".fancyPhotos.com/photos/"+rando
-    * def userNameEmail = "user"+rando+"@gmail.com"
-    * print "_______________________ID____" + userNameEmail
+    * def cusUrl = "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
+    * def usernameEmail = "user"+rando+"@gmail.com"
+    * print "_______________________ID____" + usernameEmail
     * def user =
       """
   {
 
-      "username": '#(userNameEmail)',
+      "username": '#(usernameEmail)',
       "password": "$2a$10$j/BATcerSAuRXltl7ee5feXlpmHTJgtaAAhNB.eRxuFz2qjuyv5w6",
       "lastName": "Maestas",
       "firstName": "Tom2",
       "userType": 3,
-      "phone": "5055087707",
-      "email":'#(userNameEmail)',
-      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg",
-      "photoPath": '#(photoPath)',
+      "email":'#(usernameEmail)', 
+      "cusUrl": '#(cusUrl)',
       "isActive": 0,
       "contactType": 1,
       "ROLES": [
@@ -120,8 +116,8 @@ Feature:  users karate test script
     * user.email = email
     * def username = resp.username
     * user.username = username
-    * def photoPath = resp.photoPath
-    * user.photoPath = photoPath
+    * def cusUrl = resp.cusUrl
+    * user.cusUrl = cusUrl
     * print 'updated   resp.userId]_________: ', localId
     * print 'updated  email is [STILL]_________: ', email
     * print 'updated  username is [STILL]_________: ', username
@@ -140,10 +136,8 @@ Feature:  users karate test script
     "lastName":'##string',
     "firstName":'##string',
     "userType":'##number',
-    "phone":'##string',
     "email":'##string',
     "cusUrl":'##string',
-    "photoPath":'##string',
     "isActive":'#number',
     "contactType":'##number',
     "ROLES": '#array'

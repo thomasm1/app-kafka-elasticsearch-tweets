@@ -1,3 +1,3 @@
 #!/bin/bash
 mvn clean package -Dmaven.test.skip=true  && \
-java -jar target/cryptomaven-rest.jar
+java -jar build/libs/*0.jar

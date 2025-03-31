@@ -4,7 +4,7 @@ Feature: To send the get request with JWT token
 
   Scenario: Send the GET request with JWT token
     * def token = call read('utils/getToken.feature') {username:'thomas1.maestas@gmail.com',password:'password'}
-    Given url 'http://localhost:8080/api/auth/login'
+    Given url baseUrl
     And headers {Accept:'application/json',Authorization:'#("Bearer " + token.authToken)'}
     When method get
     Then status 200

@@ -1,0 +1,13 @@
+package app.mapl.maplgraph.app;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MaplGraphApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

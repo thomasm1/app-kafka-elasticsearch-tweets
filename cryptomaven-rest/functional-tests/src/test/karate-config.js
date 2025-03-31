@@ -5,7 +5,7 @@ function fn() {
         env = 'prod';
     }
     karate.log('karate.env system property was:', env);
-    var system = karate.baseUrl = karate.baseUrl || "http://localhost:8080"
+    var system = karate.baseUrl = karate.baseUrl || "http://localhost:8080/"
     var pw = process.env.ORACLE_DB_PASSWORD
     console.log("----------pw----------" + pw)
     var spring_datasource_url = karate.spring_datasource_url || ''

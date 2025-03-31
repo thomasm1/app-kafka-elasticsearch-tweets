@@ -16,7 +16,12 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-core</artifactId>
+            <version>${karate.version}</version>  <!-- Use the latest version -->
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.intuit.karate</groupId>
             <artifactId>karate-junit5</artifactId>

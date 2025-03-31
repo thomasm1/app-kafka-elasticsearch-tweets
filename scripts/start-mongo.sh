@@ -5,7 +5,16 @@ then
     exit 1
 fi
 docker --version
-docker pull mongo
+
+if [ "$(docker ps -aq -f name=mongodb_container)"]; 
+then
+     echo "Mongo Image already on local system"
+else
+     docker pull mongo
+     echo "Mongo image pulled from Registry"
+fi
+
+
 
 
 if [ "$(docker ps -q -f name=mongodb_container)" ]; then

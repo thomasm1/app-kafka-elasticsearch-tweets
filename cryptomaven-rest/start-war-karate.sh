@@ -1,4 +1,4 @@
 #!/bin/bash
 cd src/test/java/functional-tests && \
-mvn package && \
+mvn clean package && \
 java -jar target/*.jar

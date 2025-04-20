@@ -3,6 +3,7 @@ package xyz.cryptomaven.rest.services;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import xyz.cryptomaven.rest.exception.ResourceNotFoundException;
 import xyz.cryptomaven.rest.mapper.CoinMapper;
 import xyz.cryptomaven.rest.models.Coin;
@@ -28,7 +29,7 @@ private final CoinMapper coinMapper;
 
 
     /**
-     * @param cd
+     * @param
      * @return CoinDto
      */
     @Override
@@ -41,14 +42,10 @@ private final CoinMapper coinMapper;
         return newCoinDto;
     }
 
-    @Override
-    public   CoinDto getCoin(Long id) {
-        Coin coin = coinRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", Long.toString(id)));
-            return coinMapper.toDto(coin);
-    }
     /**
      * @return List<CoinDto>
      */
+    @Transactional(readOnly=true)
     @Override
     public List<CoinDto> getAllCoin() {
         List<Coin> coin = coinRepository.findAll();
@@ -59,13 +56,14 @@ private final CoinMapper coinMapper;
     /**
      * @return CoinDto
      */
+    @Transactional(readOnly=true)
     @Override
-    public  CoinDto  getCoinById(Long id) {
+    public Optional<CoinDto>  getCoinById(Long id) {
 
       assert coinRepository != null;
       Optional<Coin> c = coinRepository.findById(id);
-      assert coinMapper != null;
-      return coinMapper.toDto(c.orElse(null));
+      CoinDto coinDto =  coinMapper.toDto(c.orElse(null));
+      return Optional.ofNullable(coinDto);
     }
 
     public CoinDto updateCoin(CoinDto change) {

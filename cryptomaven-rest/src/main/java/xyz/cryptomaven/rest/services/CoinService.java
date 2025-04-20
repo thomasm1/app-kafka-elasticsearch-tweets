@@ -4,6 +4,7 @@ package xyz.cryptomaven.rest.services;
 import xyz.cryptomaven.rest.models.dto.CoinDto;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface CoinService {
@@ -11,7 +12,7 @@ public interface CoinService {
 
     CoinDto createCoin(CoinDto cd);
 
-    CoinDto getCoin(Long id);
+      Optional<CoinDto>  getCoinById(Long id);
 
     //    @Autowired
     //    public List<Coin> getAllCoinIOwn(String username) {
@@ -21,7 +22,6 @@ public interface CoinService {
 
 
 
-  CoinDto  getCoinById(Long id);
 
   CoinDto updateCoin(CoinDto change);
 

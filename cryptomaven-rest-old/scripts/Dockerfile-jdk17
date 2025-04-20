@@ -1,0 +1,16 @@
+
+# Java small: Dockerfile.base-temurin
+#docker build -t user-service:alpine -f Dockerfile.base-alpine . --platform=linux/amd64
+
+FROM eclipse-temurin:17-jdk-alpine
+ARG APPLICATION_USER=spring
+RUN addgroup --system $APPLICATION_USER && adduser --system $APPLICATION_USER --ingroup $APPLICATION_USER
+# Create the application directory
+RUN mkdir /app && chown -R $APPLICATION_USER /app
+
+USER $APPLICATION_USER
+COPY --chown=$APPLICATION_USER:$APPLICATION_USER target/*.jar /app/app.jar
+WORKDIR /app
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+

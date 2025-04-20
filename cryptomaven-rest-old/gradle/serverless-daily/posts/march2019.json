@@ -1,0 +1,32 @@
+[ 
+   { 
+      "id":"3",
+      "did":"19-03-03",
+      "date":"March 3-4, 2018 <br /> Weekend",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Sociology Tomorrow!",
+      "title":"A Return to the Question of Guns, Germs, and Steel",
+      "post":"\n    <p class=\"firstparagraph\">AWS Rekognition, a premier service among dozens of others, is like all AI software along with a Platform-as-a-Service necessarily reflects the biases of its origin lab. Alternately, AWS' democratizing access to every student, professional, and researcher the unlimited use of sophisticated and expensive AI resources;thus hedging any potential bias to diverse individual's and team's participation.  At the heart of these healthy public debates, it's the particular use-cases that exemplify the spectrum of the debate. For instance, policing practice by bot is a sure example, if not for the <i>RoboCop</i> Hollywood allure ... As always, the AI's algorithm bears the imprint of the creator's intentions: </p>\n\t\n\t<p class=\"quote\"> \n\tBut Washington County also became ground zero for a high-stakes battle over the unregulated growth of policing by algorithm. Defense attorneys, artificial-intelligence researchers and civil rights experts argue that the technology could lead to the wrongful arrest of innocent people who bear only a resemblance to a video image. Rekognition’s accuracy is also hotly disputed, and some experts worry that a case of mistaken identity by armed deputies could have dangerous implications, threatening privacy and people’s lives.<br /><br />\n\nSome police agencies have in recent years run facial-recognition searches against state or FBI databases using systems built by contractors such as Cognitec, IDEMIA and NEC. But the rollout by Amazon has marked perhaps the biggest step in making the controversial face-scanning technology mainstream. Rekognition is easy to activate, requires no major technical infrastructure, and is offered to virtually anyone at bargain-barrel prices. Washington County spent about $700 to upload its first big haul of photos, and now, for all its searches, pays about $7 a month.<sup>1</sup> \n    </p>\n    <p>Whether government services or commercial enterprise, the landscape  is converting <i>en masse</i> the manual and the mundane to machine learning.  Public advocacy, now more than ever, can help direct A.I. technology and use toward a more society-friendly endeavor ...</p>\n\t",
+      "blogcite":" \n \n\t<p>1.\n\t<a href=\"https://www.washingtonpost.com/technology/2019/04/30/amazons-facial-recognition-technology-is-supercharging-local-police/?noredirect=on&utm_source=pocket-newtab&utm_term=.8a8a1b75b94a\" target=\"_blank\">https://www.washingtonpost.com/technology/2019/04/30/amazons-facial-recognition-technology-is-supercharging-local-police/?noredirect=on&utm_source=pocket-newtab&utm_term=.8a8a1b75b94a</a>\n\t</p>\n    \n    "
+   },
+   { 
+      "id":"2",
+      "did":"19-03-02",
+      "date":"March 2, 2018",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Web Dev Affairs",
+      "title":"Widening Circles of Mobile-App Security Risks",
+      "post":"\n  <p class=\"firstparagraph\">Security, security, another day another platform risk, or risks from your device, or risks from transactions, Today&#39;s\n  headline buried beneath a techy jargon provides a glimpse of the rising threat of web-application-based hackery:\n  Cryptojacking.\n  <i>Coindesk</i> reports, &quot; Opera browser introduces cryptocurrency miner protection for smartphones ... &quot;</p>\n  \n  <p class=\"quote\">Cryptocurrency miners can overload smartphones&#39; CPUs, forcing 100 percent usage and potentially causing a phone\n  to overheat. And the damage can sometimes be permanent. According to a ZDNet article, one trojan generated so much\n  heat in a phone, its battery became swollen, permanently damaging the phone. While excessive ads were one reason\n  for the heat generation, the main cause was that the phone&#39;s CPU was hijacked to mine for Monero.\n  <sup>1</sup>\n  </p>\n  \n  <p>The larger issue here is that the lines between trusted mobile-app authorities, i.e., certified by Play Store or\n  Apple&#39;s is increasingly irrelevent. This is because an increasing number of app-users are ditching device-downloaded\n  apps, preferring for browser applications--hence, a much more appetizing market for the newest generation of blackhat\n  hackers, online thieves, peeping-toms, and other ill-wishers. There are a few driving factors for this issue--one\n  of which is the onset of Decentralized Applications (DAPPs), which use the\n  <i>browser</i> to interface between the Every-Day blockchain client/merchant/programmer and the actual byte-code of\n  the blockchain (via WEB).</p>\n  \n  <p>More importantly, the larger issue is that we live in an age in which the exclusive, native browser language since\n  1995, i.e. JavaScript. Security issues with browser-based apps were very low, because JavaScript never left the\n  browser, ever. Until 2009, Data, Servers were the domain of PHP, JAVA, Python, etc. or some other language for the\n  highly sensitive, dirty work of dipping into all that data sitting ontop of centralized servers around the world.\n  PHP wasn&#39;t easy, so power and responsibility usually followed with all the extra effort and expertise.</p>\n  \n  <p>2015 augured in the Node.js server-accessing (can create, read, update, and delete date) new-born capabilities of\n  JavaScript</p>\n  \n\t",
+      "blogcite":" \n     \n       \n      \n  \n  <p>1.\n  <a href=\"https://medium.com/s/story/algorithms-can-now-identify-cancerous-cells-better-than-humans-78e6518f65e8\" target=\"_blank\">\n  https://medium.com/s/story/algorithms-can-now-identify-cancerous-cells-better-than-humans-78e6518f65e8\n  </a>\n  </p>\n  "
+   },
+   { 
+      "id":"1",
+      "did":"19-03-01",
+      "date":"March 1, 2018",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"Blockchain Sustainability Issues and The Double-Edged Sword",
+      "post":"\n  <p class=\"firstparagraph\"> \n  <sup>2</sup>\n  </p>\n  \n  <p> </p>\n  \n  \n  <p class=\"quote\"> \n  <sup>1</sup>\n  </p>\n  \n  <p>\n \n  </p>\n  \n\t",
+      "blogcite":" \n  <p>1.\n  <a href=\"https://hackernoon.com/blockchains-dont-scale-not-today-at-least-but-there-s-hope-2cb43946551a\" target=\"_blank\">https://hackernoon.com/blockchains-dont-scale-not-today-at-least-but-there-s-hope-2cb43946551a</a>\n  </p>\n   \n  "
+   }
+]

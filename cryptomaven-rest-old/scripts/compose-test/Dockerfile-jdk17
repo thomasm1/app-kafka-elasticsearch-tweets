@@ -1,0 +1,10 @@
+FROM eclipse-temurin:17
+
+LABEL maintainer=thomas1.maestas@gmail.com
+
+WORKDIR /app
+
+COPY target/mapl-gateway-0.0.1-SNAPSHOT.jar /app/mapl-gateway.jar
+
+ENTRYPOINT ["java", "-jar", "mapl-gateway.jar"]
+

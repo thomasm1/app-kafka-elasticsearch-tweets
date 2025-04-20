@@ -10,7 +10,6 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class AddressDto implements Serializable {
 
   private static final long serialVersionUID = 1L;

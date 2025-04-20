@@ -3,6 +3,7 @@ package xyz.cryptomaven.rest.models.dto;
 
 import lombok.*;
 import xyz.cryptomaven.rest.models.Metadata;
+import xyz.cryptomaven.rest.models.NftCoin;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,12 +17,13 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class MetadataDto implements Serializable {
-  private final int metadataId;
-  private final String name;
-  private final String description;
-  private final String image;
+  private Long metadataId;
+  private String name;
+  private String description;
+  private String image;
   private String external_url;
-  private final List<AttributeDto> attributes;
+  private List<AttributeDto> attributes;
+  private NftCoin nftCoin;
+
 }

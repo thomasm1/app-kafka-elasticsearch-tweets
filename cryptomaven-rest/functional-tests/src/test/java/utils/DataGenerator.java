@@ -1,10 +1,12 @@
 package utils;
-
+import com.github.javafaker.Faker;
 import net.minidev.json.JSONObject;
 
 public class DataGenerator {
-    public static String getRandomEmail(){
+    private static Faker faker = new Faker();
 
+    public static String getRandomEmail(){
+        String email = faker.internet().emailAddress();
         return email;
     }
 

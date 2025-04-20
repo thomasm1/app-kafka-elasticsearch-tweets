@@ -1,0 +1,97 @@
+spring.application.name: DATA-SERVICE
+spring.config.import: optional:configserver:http://localhost:8888
+
+eureka.instance.client.serverUrl.defaultZone: http://localhost:8761/eureka/
+server.port=8080
+
+############
+
+spring.profiles.active=mysql
+
+## Configuring info endpoint
+info.app.name: DASHBOARD DATA SERVICE
+info.app.description: Mapl Server Application
+info.app.version: 1.0.0
+management.info.env.enabled: true
+
+app.version=1.0.0
+# spring.profiles.active={}
+
+spring.data.rest.base-path=/rest/
+
+# Database  Settings
+#spring.sql.init.mode=embedded
+#spring.sql.init.continue-on-error=true
+#spring.sql.init.schema-locations=classpath:schema-mysql.sql
+#spring.sql.init.data-locations=classpath:data-mysql.sql
+
+##########  OVERRIDE H2 Server ###############
+#spring.data.jpa.repositories.bootstrap-mode=default
+##lazy, deferred, default
+#spring.datasource.url=jdbc:h2:mem:test;NON_KEYWORDS=VALUE,PASSWORD;
+#spring.datasource.username=sa
+#spring.datasource.password=
+#spring.datasource.driver-class-name=org.h2.Driver
+### JPA Hibernate
+#spring.jpa.database=h2
+
+#spring.jpa.hibernate.ddl-auto=none
+### JPA Props
+##spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+#spring.jpa.properties.hibernate.connection.characterEncoding= UTF-8
+#spring.jpa.properties.hibernate.connection.CharSet= UTF-8
+#spring.jpa.properties.hibernate.useUnicode=true
+#spring.jpa.properties.hibernate.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+########### Log jpa slow queries ##########
+#spring.jpa.properties.hibernate.session.events.log.LOG_QUERIES_SLOWER_THAN_MS=1
+#spring.jpa.properties.hibernate.generate_statistics=true
+#spring.jpa.properties.hibernate.session.events.log=org.hibernate.event.service.spi.EventListenerRegistry
+#spring.jpa.properties.jakarta.persistence.validation.mode=none
+#### CACHE
+#spring.jpa.properties.jakarta.persistence.sharedCache.mode=ENABLE_SELECTIVE
+#spring.jpa.properties.jakarta.persistence.cache.storeMode=REFRESH
+#spring.jpa.properties.jakarta.persistence.cache.retrieveMode=BYPASS
+### H2
+#spring.h2.console.enabled=true
+#spring.h2.console.path=/h2-console/
+#spring.h2.console.settings.trace=false
+##spring.h2.console.settings.web-allow-others=false    # ????
+
+##########  NOTES    ##########
+
+
+########## Docker #################################################
+#/connect todos-user@localhost:3306
+#docker run --detach
+#--env MYSQL_ROOT_PASSWORD=dummypassword
+#--env MYSQL_USER=todos-user
+#--env MYSQL_PASSWORD=dummytodos
+#--env MYSQL_DATABASE=todos
+#--name mysql
+#--publish 3306:3306
+#mysql:8-oracle
+
+########## MySQL Container ##########
+#spring.datasource.url=jdbc:mysql://localhost:3306/todos
+#spring.datasource.url=jdbc:mysql://localhost:3306/test_db?createDatabaseIfNotExist=true
+#spring.datasource.username=thomas
+#spring.datasource.password=password
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+# #spring2.4 => spring.jpa.hibernate.dialect.MySQL5InnoDBDialect     #  .MySQL8Dialect
+#spring.jpa.proper
+
+#Prod notes
+# Oracle19cDialect Oracle12cDialect
+
+
+
+#spring.activemq.in-memory=true
+#spring.activemq.pooled=false
+#app.mapl.server=10.10.10.123
+#app.mapl.port=3330
+#app.mapl.user=
+#app.mapl.password=
+
+

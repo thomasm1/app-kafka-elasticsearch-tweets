@@ -1,0 +1,72 @@
+{
+  "id": 20,
+  "description": "ETH: Ethereum",
+  "email": "thomas1@gmail.com",
+  "owner": "Thomas1@gmail.com",
+  "address": "0xAAA111...",
+  "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+  "blockExplorerUrl": "https://etherscan.io",
+  "nftAddress": "0xAAA111...",
+  "chains": [
+    {
+      "id": 30,
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "description": "Layer1",
+      "longDescription": "Mainnet",
+      "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+      "category": "DeFi",
+      "chainListIcon": null,
+      "rpcUrl": "https://mainnet.ethereum.org",
+      "chainId": 1,
+      "blockExplorerUrl": "https://etherscan.io"
+    }
+  ],
+  "coins": [
+    {
+      "version": null,
+      "dateCreated": null,
+      "timeCreated": null,
+      "lastUpdated": null,
+      "timeUpdated": null,
+      "id": 40,
+      "nativeToken": 2.5,
+      "tokens": [
+        {
+          "id": 80,
+          "rawToken": "RawAlpha",
+          "mapToken": {}
+        }
+      ],
+      "nfts": [
+        {
+          "id": 70,
+          "name": "NFTOne",
+          "amount": 1.0
+        }
+      ]
+    }
+  ],
+  "user": {
+    "userId": 20,
+    "username": "thomas1@gmail.com",
+    "lastName": "Maestas",
+    "firstName": "Thomas1",
+    "organizationCode": "ORG1",
+    "dashboardCode": "DASH1",
+    "cusUrl": "https://s3.amazonaws.com/tmm.net/images/people/random_pf1",
+    "userType": 0,
+    "email": "thomas1@gmail.com",
+    "contactType": 101,
+    "isActive": 1,
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_ADMIN",
+        "user": null
+      }
+    ],
+    "id": null,
+    "password": "thomas1@gmail.com"
+  }
+}

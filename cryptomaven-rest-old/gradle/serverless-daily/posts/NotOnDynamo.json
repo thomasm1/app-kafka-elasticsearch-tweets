@@ -1,0 +1,142 @@
+ 
+   
+   { 
+      "monthOrder":"14",
+      "did":"19-05-16",
+      "date":"May 16, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"M",
+      "title":"",
+      "post":" \n  <p class=\"firstparagraph\"> \n  </p>\n \n<p class=\"quote\"> <sup></sup></p>\n",
+      "blogcite":" \n    <p><a  target=\"_blank\" href=\"\"></a> \n    </p>\n"
+   }  
+   { 
+      "monthOrder":"13",
+      "did":"19-05-15",
+      "date":"May 15, 2019 ",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"",
+      "title":"",
+      "post":" \n<p class=\"firstparagraph\"> \n</p>\n\n<p class=\"quote\"> <sup></sup></p>\n",
+      "blogcite":"  \n<p><a  target=\"_blank\" href=\"\"></a> \n</p>\n\n"
+   }
+   { 
+      "monthOrder":"12",
+      "did":"19-05-14",
+      "date":"May 14, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"",
+      "title":"",
+      "post":" \n<p class=\"firstparagraph\"> \n</p>\n\n<p class=\"quote\"> <sup></sup></p>\n",
+      "blogcite":"  \n<p><a  target=\"_blank\" href=\"\"></a> \n</p>\n\n"
+   }
+   { 
+      "monthOrder":"11",
+      "did":"19-05-13",
+      "date":"May 13, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"Satoshi 'Le Roux' Nakamoto?",
+      "post":" \n  <p class=\"firstparagraph\">The <i>global quest</i> for Satoshi Nakamoto's identity now reveals an interesting new plot twist. Contrasting with my  May 4th and 5th post articles, this theory appears to hold water ... \n  </p> \n<p class=\"quote\">\nOne of the most enduring mysteries of modern times has produced another enthralling twist. Satoshi Nakamoto, Bitcoin’s pseudonymous and enigmatic creator, has not been seen online in more than eight years. Evidence has now surfaced that points to a new Satoshi candidate, whose known life has a number of parallels with that of Bitcoin’s inventor. His name is Paul Le Roux and, if proven to be Satoshi, there is a good reason why his 1 million BTC hasn’t moved – the Rhodesian has been in jail since 2012.<sup>1</sup></p>\n",
+      "blogcite":"  \n<p>1.<a target=\"_blank\"  href=\"https://news.bitcoin.com/satoshi-nakamoto-could-be-criminal-mastermind-paul-le-roux/\">https://news.bitcoin.com/satoshi-nakamoto-could-be-criminal-mastermind-paul-le-roux/</a> \n</p> \n"
+   }
+   { 
+      "monthOrder":"10",
+      "did":"19-05-11",
+      "date":"May 11-12, 2019 <br /> Weekend",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"Finite Bitcoin",
+      "post":" \n<p class=\"quote\"><i>Bitcoin is like gold in many ways. Like gold, Bitcoin cannot simply be created arbitrarily. Gold must be mined out of the ground, and Bitcoin must be mined via digital means. Linked with this process is the stipulation set forth by the founders of Bitcoin that, like gold, it have a limited and finite supply. In fact, there are only 21 million Bitcoins that can be mined in total. Once miners have unlocked this many Bitcoins, the planet's supply will essentially be tapped out, unless Bitcoin's protocol is changed to allow for a larger supply. All confirmed Bitcoin transactions are recorded in the blockchain. The blockchain is described as a shared public ledger on which the entire Bitcoin network relies.</i> <sup>1</sup></p>\n<p class=\"firstparagraph\">Sometime near 2020, the rules of crypto-logic begin to bend ... \n</p>\n<p class=\"quote\"> It may seem that the group of individuals most directly affected by the limit of the Bitcoin supply will be the Bitcoin miners themselves. On one hand, there are detractors of the Bitcoin limitation who that say that miners will be forced away from the block rewards they receive for their work once the Bitcoin supply has reached 21 million in circulation. In this case, these miners may need to rely on transaction fees in order to maintain operations. Bitcoin.com points to an argument that miners will then find the process unaffordable, leading to a reduction in the number of miners, a centralization process of the Bitcoin network, and numerous negative effects on the Bitcoin system. <sup>2</sup></p>\n\n\n",
+      "blogcite":"  \n\n  <p>1.\n  <a href=\"https://hackernoon.com/blockchains-dont-scale-not-today-at-least-but-there-s-hope-2cb43946551a\" target=\"_blank\">https://hackernoon.com/blockchains-dont-scale-not-today-at-least-but-there-s-hope-2cb43946551a</a>https://www.cnbc.com/2019/04/28/bitcoin-bull-tom-lee-says-new-crypto-highs-likely-by-2020.html\n  </p>\n<p>1.\n<a href=\"https://www.investopedia.com/tech/what-happens-bitcoin-after-21-million-mined/\" target=\"_blank\">https://www.investopedia.com/tech/what-happens-bitcoin-after-21-million-mined/</a> \n</p>\n"
+   }
+   { 
+      "monthOrder":"9",
+      "did":"19-05-10",
+      "date":"May 10, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Web Dev Affairs",
+      "title":"The Long and Ubiquitous Reign of Linux OS",
+      "post":" \n  <p class=\"firstparagraph\">Linus Torvalds' great contribution now extends to Microsoft 10, rather than the past couple year's emulated mounting. \n  </p>\n \n<p class=\"quote\">Windows 10 will soon include a built-in Linux kernel updated through Windows Update. Windows itself will still be based on the Windows kernel, of course. The Linux kernel will power the Windows Subsystem for Linux 2 (WSL 2) and let you run even more Linux applications on Windows 10.\n<br /><br />\nWSL version 1 was powerful, but it relied on emulation to run Linux software. That prevented more complex Linux applications—like Docker—from running on Windows. WSL 2 will be more powerful and will run Linux software using an actual Linux kernel.<sup>1</sup></p>\n<p>\nThis, along with 2019 Google Chromebooks' command-line Linux development environments -- Hooray, the Universe has finally converged!\n</p>\n",
+      "blogcite":"  \n<p>1. <a href=\"https://www.howtogeek.com/414036/2019-is-the-year-of-linux-on-the-desktop/\">https://www.howtogeek.com/414036/2019-is-the-year-of-linux-on-the-desktop/</a> \n</p>\n \n"
+   }
+   { 
+      "monthOrder":"8",
+      "did":"19-05-09",
+      "date":"May 9, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":" ",
+      "title":" ",
+      "post":" \n  <p class=\"firstparagraph\"> \n  </p>\n \n<p class=\"quote\"> <sup></sup></p>\n",
+      "blogcite":"  \n<p><a href=\"\"></a> \n</p>\n \n"
+   }
+   { 
+      "monthOrder":"7",
+      "did":"19-05-08",
+      "date":"May 8, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"Toward a Smarter Bitcoin, Part II:<br />Designing a More Scalable and Private Crypto-Currency",
+      "post":" \n  <p class=\"firstparagraph\">  BTC smart contract ability now gets a boost, as it looks like R & D has been busy lately:\n  </p>\n  <p class=\"quote\">\n  The two proposals, announced on the bitcoin developer email list, describe Taproot, a code change designed to increase bitcoin’s privacy. Taproot is expected to be bundled together with an upgrade called Schnorr in a soft fork that developers have been looking into for some time, paving the way for privacy and scalability improvements to bitcoin.\n<br /><br />\nDevelopers have long been thinking about how to arrange this particular upgrade. There have been a number of proposed changes to bitcoin over the years and, as they are all related, it makes sense to implement them together. That includes Merkelized Abstract Syntax Trees (MAST), adding, improved bitcoin smart contracts, Schnorr signatures, which adds another way to sign bitcoin transactions, and Taproot, which adds even better privacy.<sup>1</sup>\n</p>\n\n",
+      "blogcite":" \n<p>1.<a href=\"https://www.coindesk.com/new-bips-hint-at-upcoming-taproot-bitcoin-soft-fork\">https://www.coindesk.com/new-bips-hint-at-upcoming-taproot-bitcoin-soft-fork</a>\n</p> \n\n"
+   }
+   { 
+      "monthOrder":"6",
+      "did":"19-05-07",
+      "date":"May 7, 2019 <br /> Weekend",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"Toward a Smarter Bitcoin, Part I:<br />Contracting a More Functional Crypto-Currency",
+      "post":" \n  <p class=\"firstparagraph\">Bitcoin's bare simplicity--designed more than ten years ago, published October 31, 2008--has traditionally served as a strength of reliability in an uncharted industry field. Yet, in a complex and demanding Tech world, others took the spotlight--as the Bitcoin distributed ledger has been contrasted with Ethereum's complex scripting language, Solidity, which provides multi-variate <i>Smart Contracts</i> that are well-suited for Distributed Apps, <i>DAPPs</i> and generally for financial-clerical-legal documents. However, the once belittled simple, but reliable, distributed blockchain ledger leverages third-party smart contracting:\n  </p>\n \n<p class=\"quote\">\nEthereum has become the most popular blockchain for creating smart contracts. One of the major design goals of the Ethereum platform was to support smart contracts. From the start, this set Ethereum apart from Bitcoin, which was created first and foremost as a digital currency platform.\n<br /><br />\nAs the Bitcoin protocol has evolved, it has gained support for smart contracts. Smart contract functionality is not as programmable and extensible on Bitcoin as it is on Ethereum. However, using features added to Bitcoin through improvement proposals, certain smart contract functionality can be achieved through Bitcoin scripting.\n<br /><br />\nFor Particl, the most important smart contract feature in Bitcoin is the OP_CHECKLOCKTIMEVERIFY opcode, which was introduced by Peter Todd as Bitcoin Improvement Proposal (BIP) 65. The opcode makes it possible to write scripts that prevent funds in a multi-signature wallet from being spent until a certain signature pattern is implemented or a certain amount of time passes.<sup>1</sup></p>\n",
+      "blogcite":"  \n<p>1.<a href=\"https://bitcoinmagazine.com/articles/yes-bitcoin-can-do-smart-contracts-and-particl-demonstrates-how/\">https://bitcoinmagazine.com/articles/yes-bitcoin-can-do-smart-contracts-and-particl-demonstrates-how/</a> \n</p>\n\n<p>White Paper<a href=\"https://github.com/particl/whitepaper/blob/master/decentralized-private-marketplace-draft-0.1.pdf\">https://github.com/particl/whitepaper/blob/master/decentralized-private-marketplace-draft-0.1.pdf</a>\n</p>\n"
+   }
+   { 
+      "monthOrder":"5",
+      "did":"19-05-05",
+      "date":"May 6, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"<i>What is Love? Baby, Baby Don't Hurt Me No More! </i><sup>0</sup> Part II:<br /><br />Bitcoin's Palaentology Deepens the Founder's Obscurity",
+      "post":" \n  <p class=\"firstparagraph\"> \n  </p>\n    \n  <p class=\"quote\">\n  The self-proclaimed Satoshi, Craig Wright, is being sued by the Kleiman family on behalf of the now deceased Dave Kleiman and his estate. The lawsuit accuses Wright of fraud and theft of “over $11 billion worth of bitcoins and intellectual property from the estate of Dave Kleiman and W&K shortly after Dave’s 2013 death.” Last week the court ordered Wright to disclose bitcoin addresses that belonged to him before December 2013. The Florida Magistrate overseeing the lawsuit, Judge Bruce Reinhart, signed the order and gave Wright a few days to produce the list.\n  <br /><br />\n  Since then a list of addresses that were once filed in an obscure fashion was unsealed and Wright claims to have mined the first 70 bitcoin blocks starting from the Genesis block. After the redacted list was unsealed, the researchers at Wizsec decided to study the addresses and wrote a blog post about the recently disclosed file. Wizsec claims that Wright simply copied and pasted the addresses from the first 70 blocks and asserted the addresses belonged to him without any cryptographic proof.\n<br /><br />\nWizsec says the motion begs the belief that the self-proclaimed inventor acts as if he is “ignorant about the fundamentals of his invention.” “Perhaps Wright thinks that being a bitcoin miner means pointing at bitcoins and yelling ‘Mine,’” the researchers jokingly remarked. In the document, Wright’s filing continues to assert that he did not keep track of which Bitcoin blocks he mined and that he does not know any of the other Bitcoin public addresses. The motion further states that the self-styled Satoshi does not have a complete list of the public addresses that he owned as of any date.<sup>1</sup>\n</p>\n",
+      "blogcite":" \n<p>1.<a href=\"https://www.coindesk.com/new-bips-hint-at-upcoming-taproot-bitcoin-soft-fork\">https://www.coindesk.com/new-bips-hint-at-upcoming-taproot-bitcoin-soft-fork\" target=\"_blank\">https://www.coindesk.com/new-bips-hint-at-upcoming-taproot-bitcoin-soft-fork</a>\n</p>\n \n"
+   }
+   { 
+      "monthOrder":"4",
+      "did":"19-05-04",
+      "date":"May 4 - 5, 2019 <br /> Weekend",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"<i>What is Love? Baby, Baby Don't Hurt Me No More! </i><sup>0</sup> Part I:<br /><br />Paparazzi Sighting of our Bitcoin Father: <br />Adoring Adulation or Privacy Invasion?",
+      "post":" \n<p class=\"firstparagraph\">Satoshi Nakamoto, the omni-present legend that introduced the final frontier for Trustless-based cryptocurrencies is worthy of the world's respect. But the Prying Eyes of the tech paparazzi are on the attack. <br /><br />Some character development:  \n</p>\n \n\n<p class=\"quote\"> Ten years ago today, someone using the name Satoshi Nakamoto sent an academic paper to a cryptography mailing list proposing a form of digital cash called \"bitcoin.\" The pseudonymous Nakamoto, whose true identity remains unknown, described an idea for \"mining\" a limited amount of this virtual currency through a peer-to-peer scheme that wouldn't depend on a bank, government, or any other central authority. Once people started using bitcoin, it would be impossible for a government to pull the plug, as happened with previous attempts to create digital money, such as E-Gold.\n<sup>1</sup>\n</p>\n<p>However, seeking a life of anonymity can only stir up further the paparazzis' research fervor. So, the latest attempt on the inventor's privacy, there is the latest claim:</p>\n<p class=\"quote\">The Gotsatoshi.com domain was registered in May 2017, but has lain dormant until last month, when an archived snapshot of the site shows it to have been proclaiming Satoshi’s unveiling as 10 days away then. It’s possible that the great reveal will remain forever 10 days away, to frustrate watchers hoping for a thrilling denouement, or the countdown may reach zero only to reveal a new shitcoin, puzzle game, or to hail the efforts of the marketing agency that dreamed up the stunt.<sup>2</sup>\n</p>\n<p> \nChanneling our adoration of Satoshi Nakamoto toward respect is a bygone hope, but unwarranted paparazzi expos&eacute;s cross the line of decency, so let's see if Satoshi's cleverness yet once again thwarts the prying eyes!</p>\n",
+      "blogcite":"\n<p>0. Night at the Roxbury</p>\n<p>1.<a href=\"https://www.wired.com/story/after-10-years-bitcoin-changed-everything-nothing/\" target=\"_blank\">Oct. 31, 2019: https://www.wired.com/story/after-10-years-bitcoin-changed-everything-nothing/</a>\n</p>\n\n<p>2.   <a href=\"https://news.bitcoin.com/new-website-promises-to-unveil-satoshi-nakamoto-in-10-days/\" target=\"_blank\">https://news.bitcoin.com/new-website-promises-to-unveil-satoshi-nakamoto-in-10-days/</a>\n</p>\n"
+   }
+   { 
+      "monthOrder":"3",
+      "did":"19-05-03",
+      "date":"May 3, 2019  ",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"A.I.Now.",
+      "title":"Rekognize Me?",
+      "post":"\n    <p class=\"firstparagraph\">Rekognition, a premier AWS service, shines among a few dozen other AI software resources, not to mention Platforms-as-a-Service, yet not without controversy: On the one hand, AI algorithms necessarily reflect the biases of its origin lab. On the other hand, Providers like AWS' democratizing access to every researcher, professional, and student the unlimited use of sophisticated and expensive AI resources; thus canceling out any potential bias through the diversity of individuals' and teams' participation.  \n    <br /><br />\n    <img   class=\"zoom\" src=\"https://s3.amazonaws.com/tmm-nov/img/rekognition.jpg\">  \n    <br /><br />\n    At the heart of these healthy public debates, it's the particular use-cases that exemplify the spectrum of the debate. For instance, policing practice by bot is a sure example, if not for the <i>RoboCop</i> Hollywood allure ... As always, the AI's algorithm bears the imprint of the creator's intentions: </p>\n\t\n\t<p class=\"quote\"> \n\tBut Washington County also became ground zero for a high-stakes battle over the unregulated growth of policing by algorithm. Defense attorneys, artificial-intelligence researchers and civil rights experts argue that the technology could lead to the wrongful arrest of innocent people who bear only a resemblance to a video image. Rekognition’s accuracy is also hotly disputed, and some experts worry that a case of mistaken identity by armed deputies could have dangerous implications, threatening privacy and people’s lives.<br /><br />\n\nSome police agencies have in recent years run facial-recognition searches against state or FBI databases using systems built by contractors such as Cognitec, IDEMIA and NEC. But the rollout by Amazon has marked perhaps the biggest step in making the controversial face-scanning technology mainstream. Rekognition is easy to activate, requires no major technical infrastructure, and is offered to virtually anyone at bargain-barrel prices. Washington County spent about $700 to upload its first big haul of photos, and now, for all its searches, pays about $7 a month.<sup>1</sup> \n    </p>\n    <p>Whether government services or commercial enterprise, the landscape  is converting <i>en masse</i> the manual and the mundane to machine learning.  Public advocacy, now-g5 23 more than ever, can help direct A.I. technology and use toward a more society-friendly endeavor ...</p>\n\t",
+      "blogcite":" \n \n\t<p>1.\n\t<a href=\"https://www.washingtonpost.com/technology/2019/04/30/amazons-facial-recognition-technology-is-supercharging-local-police/?noredirect=on&utm_source=pocket-newtab&utm_term=.8a8a1b75b94a\" target=\"_blank\">https://www.washingtonpost.com/technology/2019/04/30/amazons-facial-recognition-technology-is-supercharging-local-police/?noredirect=on&utm_source=pocket-newtab&utm_term=.8a8a1b75b94a</a>\n\t</p>\n    \n    "
+   }
+   { 
+      "monthOrder":"2",
+      "did":"19-05-02",
+      "date":"May 2, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"Musing Blockchain",
+      "title":"Modern Healthcare, Part II:<br />The Scalable and Clean Data Platform",
+      "post":"  \n    <p class=\"firstparagraph\">Ethereum Ether and Bitcoin have plenty in common, including their Proof-of-Work architecture--requiring Mining computationally difficult math problems to create scarcity and other functions. The downside is the nation-comparable amount of electricity spent each year, which in many cases are unregulated, coal-filled energy sources across the globe. This commonality will end next month when the Ethereum cryptocurrency will transition to Proof-of-Stake architecture, the long-ago and highly anticipated Ethereum 2.0.\n    </p> \n    <p class=\"quote\"> \n    Ethereum has been inching toward a major upgrade, dubbed ethereum 2.0, which would radically change the how the $17 billion network creates blocks and verifies transactions. As explained by founder of ethereum Vitalik Buterin in a recent interview at ethereum conference ETHCapetown, ethereum 2.0 has “two major flagship components.”\n    <br /><br />\n    “One is Casper, which is our proof-of-stake algorithm which replaces mining…with something that we consider to be much more efficient,” Buterin said at the time. “The second part is sharding which is this massive scalability improvement which happens because you don’t need every computer in the network to process every transaction in the network any more.\n    <br /><br />\n    Buterin added that with sharding, he anticipates a “1,000 factor increase in scalability” to the network. However, sharding will only come in the later two phases of ethereum 2.0 roll-out. The first phase – dubbed Phase Zero – strictly launches ethereum’s new proof-of-stake blockchain.\n    <sup>1.</sup>\n    </p>\n    \n    <p>The second improvement accentuates Ethereum's contract-capable currency (unlike Bitcoin's lack of contractual functionality), which means to revolutionize not only how data is persisted but also distributed, and managed at the individualized crypto-level! Using a language called <i>Solidity</i>, derived from Java and JavaScript origins, this crypto-currency stands first in line for upsetting the existing systems of finance, manufacture, and enterprise data. An exemple use-case ...\n   \n    </p>\n    \n    <p class=\"quote\"> \n    In the United States, healthcare comes from a patchwork of private companies, which means the handling of patient data is even more fragmented. John Halamka, chief information officer at Beth Israel Deaconess Medical Center in Boston, Massachusetts, told MIT Technology Review last year that there are 26 different electronic medical records systems in his home city alone.\n    <br /><br />\n    In 2016, Halamka teamed up with a group of scientists at MIT to try to find a solution to the problem using blockchain. They published their white paper on the subject in August 2016, laying out their proposal for a system that would help all those disparate databases exchange data — a project they called MedRec.\n    <br /><br />\n    Andy Lippman, a senior research scientist at MIT, co-authored the paper with Halamka. The system they outlined was to use Ethereum software — which, unlike bitcoin, can integrate and execute smart contracts — to build a private blockchain, linking healthcare providers together and allowing them to share their data.\n    <sup>2.</sup>\n    </p>\n    <p>So, as usual, Ethereum wins the day for both daily applicability and now a more scalable <strong><i>and</i> conscientious</strong> crypto-currency Tech!\n\t",
+      "blogcite":" \n      \n  <p class=\"cite\">1. \n  <a href=\"https://www.coindesk.com/code-for-ethereums-proof-of-stake-blockchain-to-be-finalized-next-month\" target=\"_blank\"> https://www.coindesk.com/code-for-ethereums-proof-of-stake-blockchain-to-be-finalized-next-month</a>\n  \n  </p>\n  \n      \n  <p class=\"cite\">2. [Post article 2/20/18]\n  <a href=\"https://medium.com/s/welcome-to-blockchain/what-could-blockchain-do-for-healthcare-59c17245448e\" target=\"_blank\">https://medium.com/s/welcome-to-blockchain/what-could-blockchain-do-for-healthcare-59c17245448e</a> </p>\n  \n  "
+   }
+   { 
+      "monthOrder":"1",
+      "did":"19-05-01",
+      "date":"May 1, 2019",
+      "author":"by Thomas Maestas, MA",
+      "cat3":"A.I.Now.",
+      "title":"Modern Healthcare, Part I:<br />On the Second Opinion of 10,000 Doctors",
+      "post":" \n  \n  <p class=\"firstparagraph\">Data Analytics' <i>Law of Large Numbers</i>, i.e. over n = 10,000, promises a predictable likelihood of conditions and events, given a sufficiently high sample of training data. Despite the quantum-directed molecular behavior of biological organisms, the classical exponentiation of machine-learning statistical algorithms still does work miracles:  \n  </p> \n  \n  <p class=\"quote\"> \n  Studies indicate that using algorithms to analyze digital slides delivers diagnoses as accurate as an expert pathologist—and in some instances, the algorithms are more accurate. A 2018 study by Massachusetts General Hospital and MIT found that an automated system they developed diagnosed dense breast tissue (an indicator of breast cancer) in mammograms at the same level as an expert radiologist. Another algorithm developed by Google was found to “help detect metastatic breast cancers with significant accuracy and improve pathologist performance,” according to studies in the Archives of Pathology and Laboratory Medicine and the American Journal of Surgical Pathology.\n  </p>\n  So, how can we best take advantage of these advances? Clear the brush! The meta-organization of healthcare technology and financing simply can't keep pace with the pure tech:\n  <p class=\"quote\">\n  After taking a look, the pathologist might ship it to a specialist at another lab for a second opinion. Each time the slide is moved, it is packed up and shipped to a different address. All the while, you’re waiting days or even weeks to hear whether or not you have cancer.\n<br /><br />\n  For decades, there have been limited ways to share medical slides, with information management lagging behind even as medical science advanced. But in the past few years, a new industry of digital pathology has emerged that could finally offer a more efficient and large-scale way of distributing and analyzing these kinds of samples.\n  <sup>1</sup>\n  </p>\n  <p>So, the good news from <i>the doctors'</i> occasional nemesis, U.S. Food and Drug Administration, decided that after 8 years of trials and hearings, truly scalable and sufficiently large sample data can now be digitized - hence personalizing the law of large numbers from the whole to the individual patient. At long last, the patience has paid off!\n  ",
+      "blogcite":"\n  \n  \n  <p>1. [Post article 2/22/19]\n  <a href=\"https://medium.com/s/story/algorithms-can-now-identify-cancerous-cells-better-than-humans-78e6518f65e8\" target=\"_blank\">\n  https://medium.com/s/story/algorithms-can-now-identify-cancerous-cells-better-than-humans-78e6518f65e8\n  </a>\n  </p>\n  \n  "
+   }

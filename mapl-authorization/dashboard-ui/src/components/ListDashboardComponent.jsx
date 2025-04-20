@@ -6,7 +6,7 @@ const ListDashboardComponent = () => {
 
     const [dashboards, setDashboards] = useState([]);
 
-    const navigator= useNavigate();
+    const user= useNavigate();
 
     useEffect( () => {
        listOfDashboards();
@@ -22,7 +22,7 @@ const ListDashboardComponent = () => {
     }
 
     function updateDashboard(id){
-        navigator(`/edit-dashboard/${id}`)
+        user(`/edit-dashboard/${id}`)
     }
 
 

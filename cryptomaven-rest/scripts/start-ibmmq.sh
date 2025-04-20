@@ -12,4 +12,4 @@ docker exec -it [a3v200c] bash
 # dspmq
 docker ps
 
-#[[ https://localhost:9443/ibmmq/console     username: admin, password:  passw0rd    <-zero 0
+[[ https://localhost:9443/ibmmq/console     username: admin, password:  passw0rd    <-zero 0

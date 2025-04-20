@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RepositoryRestResource(collectionResourceRel = "user", path = "user")
+@RepositoryRestResource(collectionResourceRel = "users", path = "users")
 @Repository
 public interface UsersRepository extends JpaRepository<User, Long> {
 

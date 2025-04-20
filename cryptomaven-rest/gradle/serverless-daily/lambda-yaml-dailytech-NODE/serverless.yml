@@ -2,7 +2,7 @@ service: lambda-dailytech
 
 custom: 
   settings:
-    POSTS_TABLE: posts
+    ADDRESSES_TABLE: posts
 
 provider:
   name: aws
@@ -19,7 +19,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
      Resource:
-      - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.settings.POSTS_TABLE}"
+      - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.settings.ADDRESSES_TABLE}"
 
 functions:
   createPost:
@@ -73,4 +73,4 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:custom.settings.POSTS_TABLE}
+        TableName: ${self:custom.settings.ADDRESSES_TABLE}

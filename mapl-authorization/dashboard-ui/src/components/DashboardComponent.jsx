@@ -9,7 +9,7 @@ const DashboardComponent = () => {
 
   const {id} = useParams();
 
-  const navigator= useNavigate();
+  const user= useNavigate();
 
   useEffect(() => {
 
@@ -32,14 +32,14 @@ const DashboardComponent = () => {
     if(id){
       updateDashboard(id, dashboard).then((response) => {
         console.log(response.data);
-        navigator('/dashboards');
+        user('/dashboards');
       }).catch(error => {
         console.error(error);
       })
     }else {
       createDashboard(dashboard).then((response) => {
         console.log(response.data);
-        navigator('/dashboards')
+        user('/dashboards')
       }).catch(error => {
         console.error(error);
       })

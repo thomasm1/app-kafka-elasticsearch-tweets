@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import xyz.cryptomaven.rest.exception.ResourceNotFoundException;
 import xyz.cryptomaven.rest.mapper.CoinMapper;
 import xyz.cryptomaven.rest.models.dto.CoinDto;
 import xyz.cryptomaven.rest.services.CoinService;
@@ -39,8 +40,13 @@ public class CoinController {
   @Operation(summary = "Get a coin by id")
   @ApiResponse(responseCode = "200", description = "Coin returned")
   @GetMapping(value = "/{id}")
-  public ResponseEntity<CoinDto> getCoinById(@PathVariable("id") String id) {
-    return new ResponseEntity<>(coinService.getCoinById(Long.valueOf(id)), HttpStatus.OK);
+  public ResponseEntity<CoinDto> getCoinById(@PathVariable("id") Long id) {
+    if (coinService.getCoinById(id).isEmpty()) {
+      throw new ResourceNotFoundException("Coin " + id + "not found");
+    }
+    return coinService.getCoinById(id)
+            .map(userDto -> new ResponseEntity<>(userDto, HttpStatus.OK))
+            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
 

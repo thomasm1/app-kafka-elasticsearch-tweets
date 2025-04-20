@@ -13,6 +13,7 @@ import java.util.Optional;
 @Repository
 public interface ChainsRepository extends JpaRepository<Chain, Long> {
     Optional<Chain> findByName(String name);
+  Optional<Chain> findById(Long id);
   @Override
   List<Chain> findAll();
   // JPQL  ///////////////////

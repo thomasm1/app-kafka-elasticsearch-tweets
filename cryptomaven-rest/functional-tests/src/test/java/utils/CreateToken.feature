@@ -1,10 +1,18 @@
+Feature: Create JWT token for the registering user
+    POST baseUrl + '/api/auth/register'
 
-Feature: Create Token
-
-    Scenario: Create Token
-        Given url baseUrl
-        Given path 'auth/login'
-        And request {"user": {"email": "#(userEmail)","password": "#(userPassword)"}}
-        When method Post
+    Scenario: Register the user and generate the token
+    # Register the User
+        Given url  baseUrl + '/api/users/auth/register'
+        And headers {Accept:'application/json', Content-Type:'application/json'}
+        And request {   username: '#(username)',  password: '#(password)', email: '#(username)', lastName: '#(lastName)', firstName: '#(firstName)' }
+        When method post
         Then status 200
-        * def authToken = response.user.token
+
+    # Get the Token
+        Given url  baseUrl + '/api/users/auth/login'
+        And headers {Accept:'application/json', Content-Type:'application/json'}
+        And request {   username: '#(username)',  password: '#(password)' }
+        When method post
+        Then status 200
+        * def accessToken = response.accessToken

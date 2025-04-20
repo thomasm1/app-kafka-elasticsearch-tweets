@@ -1,5 +1,6 @@
 package xyz.cryptomaven.rest.services;
 
+import org.springframework.transaction.annotation.Transactional;
 import xyz.cryptomaven.rest.exception.ChainApiException;
 import xyz.cryptomaven.rest.exception.EmailAlreadyExistsException;
 import xyz.cryptomaven.rest.mapper.UserMapper;
@@ -67,6 +68,7 @@ public class UsersServiceImpl implements UsersService {
    * @param password;
    * @return UserDto
    */
+  @Transactional(readOnly=true)
   @Override
   public UserDto loginUser(String username, String password){
     Optional<User> optionalUser = usersRepository.findByUsernameOrEmail(username, username);
@@ -84,6 +86,7 @@ public class UsersServiceImpl implements UsersService {
    * @param loginDto;
    * @return String
    */
+  @Transactional(readOnly=true)
   @Override
   public String login(LoginDto loginDto) {
     Authentication authentication = authenticationManager.authenticate(
@@ -141,6 +144,7 @@ public class UsersServiceImpl implements UsersService {
    * @param id
    * @return UserDto
    */
+  @Transactional(readOnly=true)
   @Override
   public Optional<UserDto> getUser(Long id) {
     try {
@@ -155,6 +159,7 @@ public class UsersServiceImpl implements UsersService {
    * @param email;
    * @return UserDto
    */
+  @Transactional(readOnly=true)
   @Override
   public Optional<UserDto> getUser(String email) {
     try {
@@ -170,6 +175,7 @@ public class UsersServiceImpl implements UsersService {
   /**
    * @return List<UserDto>
    */
+  @Transactional(readOnly=true)
   @Override
   public List<UserDto> getUsers() {
     List<UserDto> userDtos =null;
@@ -191,6 +197,7 @@ public class UsersServiceImpl implements UsersService {
    * @param pw;
    * @return UserDto
    */
+  @Transactional(readOnly=true)
   @Override
   public UserDto getUserByEmailAndPassword(String email, String pw) {
     User u;
@@ -206,6 +213,8 @@ public class UsersServiceImpl implements UsersService {
    * @param email;
    * @return UserDto
    */
+  @Transactional(readOnly=true)
+  @Override
   public Optional<UserDto> getUserByEmail(String email) {
     User u;
     try {

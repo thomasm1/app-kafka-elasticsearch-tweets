@@ -13,7 +13,6 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class RoleDto implements Serializable {
     int id;
     String name;

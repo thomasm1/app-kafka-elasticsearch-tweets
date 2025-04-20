@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class AddressResponse implements Serializable {
     static long serialVersionUID = 1L;
 

@@ -1,0 +1,1831 @@
+{
+	"info": {
+		"_postman_id": "e3ff763a-3a93-42b2-9a4e-860381ea8545",
+		"name": "**project0-groot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3422017"
+	},
+	"item": [
+		{
+			"name": ":8080/api/currency-config",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/currency-config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"currency-config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8080/actuator/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8080/actuator/metrics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \r\n        \"userId\": 15201,\r\n        \"username\": \"u152011\",\r\n        \"password\": \"passwordss\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom\",\r\n        \"groups\": \"groups\",\r\n        \"userType\": 1,\r\n        \"phone\": \"5055087707\",\r\n        \"email\": \"user152013@cryptomaven.xyz\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": 4444,\r\n        \"addresses\":[ \r\n             { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n \r\n        \"chainId\": 0\r\n    }\r\n        ]\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/users Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \r\n        \"userId\": 741,\r\n        \"username\": \"u152013331\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"thomas1\",\r\n        \"firstName\": \"thomas1\",\r\n        \"groups\": \"groups\",\r\n        \"userType\": 1,\r\n        \"phone\": \"5055087707\",\r\n        \"email\": \"thomas.maestas@gmail.com\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": 4444,\r\n        \"addresses\":[ \r\n             { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n \r\n        \"chainId\": 0\r\n    }\r\n        ]\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/users/514",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/721",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"721"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/users/email/{email}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/email/user152011@cryptomaven.xyz",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"email",
+						"user152011@cryptomaven.xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/users/email/{email} Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/email/thomas1.maestas@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"email",
+						"thomas1.maestas@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 741,\r\n    \"username\": \"thomas1.maestas@gmail.com\",\r\n    \"password\": null,\r\n    \"lastName\": \"Maestas\",\r\n    \"firstName\": \"Thomasm\",\r\n    \"groups\": 0,\r\n    \"userType\": 0,\r\n    \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"phone\": null,\r\n    \"cusUrl\": null,\r\n    \"photoPath\": \"photoPath\",\r\n    \"userGroup\": \"userGroup\",\r\n    \"isActive\": 0,\r\n    \"contactType\": 0,\r\n    \"id\": \"4444\",\r\n    \"addresses\": [\r\n        {\r\n            \"id\": 661,\r\n            \"description\": \"description\",\r\n            \"owner\": \"thomas1.maestas@gmail.com\",\r\n            \"address\": \"0x399EEc3B8e889a2E0853dd254f09C4535061693A\",\r\n            \"chain\": \"polygon\",\r\n            \"iconUrl\": \"iconUrl\",\r\n            \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n            \"user\": null,\r\n            \"chainId\": 0,\r\n            \"nftAddress\": null\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/users/{userId}",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userId\": 631,\r\n        \"username\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"phone\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"id1\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users/515",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"515"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/coins",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   { \r\n        \"coinToken\": \"Solana\",\r\n        \"coinSymbol\": \"SOL\",\r\n        \"priceTotal\": 12.03,\r\n        \"purchased\": 1\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/coins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/coins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/coins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/coins",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"coinId\": 580,\r\n        \"coinToken\": \"AVALANCHE\",\r\n        \"coinSymbol\": \"AVAX\",\r\n        \"priceTotal\": 119.22,\r\n        \"purchased\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/coins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/coins/633",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/coins/633",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coins",
+						"633"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"title\": \"Neuromancer (Sprawl Trilogy Book 1)\",\r\n    \"profileUrl\": null,\r\n    \"sharedBy\": null,\r\n    \"publicationYear\": 0,\r\n    \"publisher\": null,\r\n    \"authors\": \"William Gibson\",\r\n    \"genre\": null,\r\n    \"rating\": 0.0,\r\n    \"itemData\": \"<item><type>Book</type><title>null</title><authors>null</authors><publisher>null</publisher><publicationYear>0</publicationYear><genrenull</genre></item>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/books",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/books/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/books/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/books",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"title\": \"40 Algorithms Every Programmer Should Know: Hone your problem-solving skills by learning different algorithms and their implementation in Python 1st Edition, Kindle Edition\",\r\n    \"profileUrl\": null,\r\n    \"sharedBy\": null,\r\n    \"publicationYear\": 0,\r\n    \"publisher\": null,\r\n    \"authors\": \"Imran Ahmad\",\r\n    \"genre\": null,\r\n    \"rating\": 0.0,\r\n    \"itemData\": \"<item><type>Book</type><title>null</title><authors>null</authors><publisher>null</publisher><publicationYear>0</publicationYear><genrenull</genre></item>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/books/0",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/books/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/movies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n    \"releaseYear\":  2022,\r\n    \"cast\": \"cast\",\r\n    \"directors\":  \"directors\",\r\n    \"genre\":  \"genre\",\r\n    \"imdbRating\": 3.0 ,\r\n    \"title\": \"title\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/weblinks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 642,\r\n    \"title\": \"https://www.amazon.com/hz/mycd/digital-console/contentlist/booksAll/dateDsc/\",\r\n    \"profileUrl\": \"https://www.amazon.com/hz/mycd/digital-console/contentlist/booksAll/dateDsc/\",\r\n    \"sharedBy\": null,\r\n    \"url\": null,\r\n    \"host\": null,\r\n    \"htmlPage\": null,\r\n    \"downloadStatus\": \"NOT_ATTEMPTED\",\r\n    \"itemData\": \"<item><type>WebLink</type><title>null</title><url>null</url><host>null</host></item>\",\r\n    \"web3Link\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/weblinks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weblinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/weblinks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/weblinks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weblinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    { \r\n        \"description\": \"description\",\r\n        \"owner\": \"owner\",\r\n        \"address\": \"address\",\r\n        \"chain\": \"chain\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n        \"user\": null,\r\n        \"chainId\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses[partial]",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    { \r\n    \r\n        \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n        \"chain\": \"polygon\",\r\n        \"owner\":\"thomas1.maestas@gmail.com\"\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses[partial] Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"chain\": \"polygon\",\r\n    \"address\": \"0x399EEc3B8e889a2E0853dd254f09C4535061693A\",\r\n    \"owner\": \"thomas1.maestas@gmail.com\",\r\n    \"nft\": {\r\n        \"native\": \"0.0\",\r\n        \"tokens\": {\"zero\":0,\"one\":1},\r\n        \"nfts\": []\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 261,\r\n    \"description\": \"description\",\r\n    \"owner\": \"owner\",\r\n    \"address\": \"address\",\r\n    \"chain\": \"chain\",\r\n    \"iconUrl\": \"iconUrl\",\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n    \"user\":  { \r\n        \"username\": \"user222222222222222\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"groupType\": \"userGroup\",\r\n        \"email\": \"5055087707\",\r\n        \"userId\": \"1\",\r\n        \"lname\": \"Smith\",\r\n        \"fname\": \"Tom\"\r\n    },\r\n    \"chainId\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses Copy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"id\": 598,\r\n        \"description\": null,\r\n        \"owner\": \"thomas1.maestas@gmail.com\",\r\n        \"address\": \"0x399EEc3B8e889a2E0853dd254f09C4535061693A\",\r\n        \"chain\": \"ropstein\",\r\n        \"iconUrl\": null,\r\n        \"blockExplorerUrl\": null,\r\n        \"user\": null,\r\n        \"chainId\": 0 \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/addresses/633",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/addresses/261",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses",
+						"261"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/chains",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n      \"id\": 999,\r\n      \"name\": \"pulsechain7\",\r\n      \"symbol\": \"pls\",\r\n      \"description\": \"Pulsechain Mainnet\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/images/crypto/pulsechain.png\",\r\n      \"category\": \"Mainnet\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \"https://rpc.pulsechain.io\",\r\n      \"addressesCount\": 3\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/chains",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/chains",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8080/api/chains/278",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/chains/278",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains",
+						"278"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/chains/name/avalanche",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/chains/name/avalanche ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains",
+						"name",
+						"avalanche "
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"id\": 323,\r\n      \"name\":\"Binance323323\",\r\n      \"symbol\": \"bsc\",\r\n      \"description\": \"BNB [BSC] Mainnet323323\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/images/crypto/bnb.png\",\r\n      \"category\": \"Mainnet323323\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \" https://bsc-dataseed.binance.org/\",\r\n      \"addressesCount\": 3\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/chains",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains/272",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "/chains/327",
+					"path": [
+						"chains",
+						"327"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addresses/nfts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 0,\r\n        \"name\": 0,\r\n        \"amount\": 0,\r\n        \"metadata\": null,\r\n        \"NFTADDRESS_id\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses/nfts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/addresses/nfts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n      \"id\":1,\r\n      \"name\": \"One day,Ujuuna killed in explosion, and his reincarnation is decided at generative.\",\r\n      \"amount\": 1,\r\n      \"metadata\": {\r\n        \"name\": \"Ten Uju Gene #08380\",\r\n        \"description\": \"ある日、イケハヤさんと対談し、未来にワクワクしながら布団に入るうじゅうな……。  \\n    \\n  （明日からも頑張ろう……）  \\n    \\n  そう思った矢先、爆死し、転生してしまううじゅうな。  \\n    \\n  念願の転生は思っていたのとは、なんか違うようで……。  \\n    \\n  その転生先はあなたの目で見届けてほしい。\",\r\n        \"image\": \"https://storage.googleapis.com/uju-explosion/images/8380.png\",\r\n        \"attributes\": [\r\n          {\r\n            \"value\": \"Tegaki\",\r\n            \"trait_type\": \"Base\"\r\n          },\r\n          {\r\n            \"value\": \"Knight\",\r\n            \"trait_type\": \"1st panel\"\r\n          },\r\n          {\r\n            \"trait_type\": \"1st panel option\",\r\n            \"value\": \"None\"\r\n          },\r\n          {\r\n            \"trait_type\": \"2nd panel\",\r\n            \"value\": \"Boss\"\r\n          },\r\n          {\r\n            \"value\": \"None\",\r\n            \"trait_type\": \"2nd panel option\"\r\n          },\r\n          {\r\n            \"trait_type\": \"3rd panel\",\r\n            \"value\": \"Fall\"\r\n          },\r\n          {\r\n            \"value\": \"Nobuyuki\",\r\n            \"trait_type\": \"3rd panel option\"\r\n          },\r\n          {\r\n            \"trait_type\": \"4th panel\",\r\n            \"value\": \"Reincarnation\"\r\n          },\r\n          {\r\n            \"trait_type\": \"4th panel option\",\r\n            \"value\": \"Sailor suit uncle\"\r\n          },\r\n          {\r\n            \"value\": \"Massage8\",\r\n            \"trait_type\": \"Massage\"\r\n          }\r\n        ]\r\n      }\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses/nfts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/addresses/nfts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/addresses/nfts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addresses",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": 153,\r\n            \"did\": \"22-02-232\",\r\n            \"date\": \"February 22, 20232\",\r\n            \"author\": \"by Thomas Maestas, MA\",\r\n            \"monthOrder\": 3,\r\n            \"cat3\": \"Sociology Tomorrow!\",\r\n            \"title\": \"A year for Math and Science: Embracing our Bots\",\r\n            \"post\": \"\\n  <p class=\\\"firstparagraph\\\">\\nLike Starsky &amp; Hutch, detectives in the abstract, symbolic world often work best together in pairs, given \\nFred Brooks' Maxim that adding minds to a project commensurably delays project completion.\\n<br /> This concept illustrates how an intellectual partnership with computers will shape professionalism and the workplace. </p>\\n  ... and, scholarly professions benefit from computing symbiosis ... <p class=\\\"quote\\\">\\n  Similarly, computers are becoming increasingly indispensable tools for mathematicians, who use them not just to carry out calculations but to solve otherwise impossible problems and even verify complicated proofs. And as machines become better at solving problems, \\n  this year has also seen new progress in understanding just how they got so good at it. <sup>1</sup>\\n  </p>\\n \",\r\n            \"blogcite\": \"   \\n   <p class=\\\"footnotes\\\">\\n   1. <a href=\\\"https://www.quantamagazine.org/the-year-in-math-and-computer-science-20211223/\\\"   target=\\\"_blank\\\">https://www.quantamagazine.org/the-year-in-math-and-computer-science-20211223/</a> \\n<br />  \\n   </p>  \\n     \",\r\n            \"username\": \"username2\",\r\n            \"categoryId\":  367 \r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNjAyMTczMCwiaWF0IjoxNjA1NDE2OTMwfQ.BXBIdkfNHtjO6IODvmMN2_rW3jYnKWh9X_Z2UklG9bcZKdmrCBAHmqkuuAtd3H3wXk7G8Hxsyi0v5bO03U7Y_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/129",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNjAyMTczMCwiaWF0IjoxNjA1NDE2OTMwfQ.BXBIdkfNHtjO6IODvmMN2_rW3jYnKWh9X_Z2UklG9bcZKdmrCBAHmqkuuAtd3H3wXk7G8Hxsyi0v5bO03U7Y_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/129",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"129"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts?pageNo=1&pageSize=3&sortBy=did&sortDir=DESC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNjAyMTczMCwiaWF0IjoxNjA1NDE2OTMwfQ.BXBIdkfNHtjO6IODvmMN2_rW3jYnKWh9X_Z2UklG9bcZKdmrCBAHmqkuuAtd3H3wXk7G8Hxsyi0v5bO03U7Y_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/posts?pageNo=1&pageSize=3&sortBy=did&sortDir=DESC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "3"
+						},
+						{
+							"key": "sortBy",
+							"value": "did"
+						},
+						{
+							"key": "sortDir",
+							"value": "DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posts/username/username2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/username/username2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"username",
+						"username2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/username/admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/username/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"username",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/category/367",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/category/367",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"category",
+						"367"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/280",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/384",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"384"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/280 Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/category/367",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"category",
+						"367"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/posts/username2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n            \"id\": 333,\r\n            \"did\": \"22-02-20\",\r\n            \"date\": \"February 20, 2022\",\r\n            \"author\": \"by Thomas Maestas, MA\",\r\n            \"monthOrder\": null,\r\n            \"cat3\": \"Sociology Tomorrow!\",\r\n            \"title\": \"A year for Math and Science: Embracing our Bots\",\r\n            \"post\": \"\\n  <p class=\\\"firstparagraph\\\">\\nLike Starsky &amp; Hutch, detectives in the abstract, symbolic world often work best together in pairs, given \\nFred Brooks' Maxim that adding minds to a project commensurably delays project completion.\\n<br /> This concept illustrates how an intellectual partnership with computers will shape professionalism and the workplace. </p>\\n  ... and, scholarly professions benefit from computing symbiosis ... <p class=\\\"quote\\\">\\n  Similarly, computers are becoming increasingly indispensable tools for mathematicians, who use them not just to carry out calculations but to solve otherwise impossible problems and even verify complicated proofs. And as machines become better at solving problems, \\n  this year has also seen new progress in understanding just how they got so good at it. <sup>1</sup>\\n  </p>\\n \",\r\n            \"blogcite\": \"   \\n   <p class=\\\"footnotes\\\">\\n   1. <a href=\\\"https://www.quantamagazine.org/the-year-in-math-and-computer-science-20211223/\\\"   target=\\\"_blank\\\">https://www.quantamagazine.org/the-year-in-math-and-computer-science-20211223/</a> \\n<br />  \\n   </p>  \\n     \",\r\n            \"username\": \"username2\",\r\n            \"categoryId\": 369\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/posts/333",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"333"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/280",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/131",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"131"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/1002/comments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \r\n        \"name\":\"thomas name129\"  ,\r\n        \"email\":\"thomas@thomas.com\",\r\n        \"body\": \"Wrong set of ideas\" \r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/posts/129/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"129",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/301/comments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNjAyMTczMCwiaWF0IjoxNjA1NDE2OTMwfQ.BXBIdkfNHtjO6IODvmMN2_rW3jYnKWh9X_Z2UklG9bcZKdmrCBAHmqkuuAtd3H3wXk7G8Hxsyi0v5bO03U7Y_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/posts/129/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"129",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  { \r\n        \"name\": \"A.I.Now.\",\r\n        \"description\": \"A.I.Now. as category\",\r\n        \"urls\": \" A.I.Now. of ideas\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNjAyMTczMCwiaWF0IjoxNjA1NDE2OTMwfQ.BXBIdkfNHtjO6IODvmMN2_rW3jYnKWh9X_Z2UklG9bcZKdmrCBAHmqkuuAtd3H3wXk7G8Hxsyi0v5bO03U7Y_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories/367",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNjAyMTczMCwiaWF0IjoxNjA1NDE2OTMwfQ.BXBIdkfNHtjO6IODvmMN2_rW3jYnKWh9X_Z2UklG9bcZKdmrCBAHmqkuuAtd3H3wXk7G8Hxsyi0v5bO03U7Y_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/categories/367",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"367"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8080/api/categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzY5NTA5MywiaWF0IjoxNjczMDkwMjkzfQ.5KyxSuHmOzePhWSdkbfPpRmXBIWI2J69eJpswV8xLxE-f52j-bZqSz_R0KDK_6Y8FK-2iA-RJBYkIaGwO3xNUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 367,\r\n        \"name\": \"A.I.Now367367367.\",\r\n        \"description\": \"A.I.Now. as category367367\",\r\n        \"urls\": \" A.I.Now. of idea367367367367s\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories/368",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/categories/368",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"368"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/GrootApp/getAllGroot.do",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/GrootApp/getAllGroot.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"GrootApp",
+						"getAllGroot.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/GrootApp/addGroot.do",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":4,\"name\":\"Animal\",\"type\":\"Cravatte\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/GrootApp/addGroot.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"GrootApp",
+						"addGroot.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/GrootApp/addGroot.do",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":4,\"name\":\"Animal\",\"type\":\"Cravatte\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/GrootApp/addGroot.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"GrootApp",
+						"addGroot.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/GrootApp/getGroot.do?id=4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/GrootApp/getGroot.do?id=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"GrootApp",
+						"getGroot.do"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,14 @@
+
+  {
+    "id": 31,
+    "name": "BSC",
+    "symbol": "BNB",
+    "description": "BinanceChain",
+    "longDescription": "Mainnet",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/bsc.png",
+    "category": "DeFi",
+    "chainListIcon": null,
+    "rpcUrl": "https://bsc-dataseed.binance.org",
+    "chainId": 56,
+    "blockExplorerUrl": "https://bscscan.com"
+  }

@@ -36,7 +36,7 @@ public class Coin extends AbstractDomainClass {
   @EqualsAndHashCode.Exclude // ✅ Avoids issues with hashCode()
   private List<NftCoin> nfts = new ArrayList<>();
 
-  @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @ManyToOne ( cascade = CascadeType.ALL,   fetch = FetchType.LAZY)
   @JoinColumn(name = "address_id" ) // ✅ Fixed foreign key name
   @ToString.Exclude
   @JsonIgnore

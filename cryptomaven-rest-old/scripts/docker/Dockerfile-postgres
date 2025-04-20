@@ -1,0 +1,15 @@
+FROM ubuntu-jdk
+
+MAINTAINER Thomas Maestas "thomas.maestas@hotmail.com"
+
+ENV version=aws-db-usage
+
+ENV dbuser=postgres
+ENV dbpass=abc123!!
+ENV jdbcurl=jdbc:postgresql://thomas.cngquqqjuc9v.us-east-1.rds.amazonaws.com:5432/postgres
+
+WORKDIR /usr/local/bin
+
+ADD target/friendsofgroot.war .
+
+ENTRYPOINT ["java", "-jar", "friendsofgroot.jar"]

@@ -13,7 +13,6 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class ChainCSVRecord {
 
     @CsvBindByName

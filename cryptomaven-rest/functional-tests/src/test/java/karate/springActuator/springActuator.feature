@@ -1,10 +1,13 @@
 Feature: Spring REST feature api health,info,env,metrics,loggers,auditevents,httptrace
 
   Background: background
-#
-#    * url 'http://34.199.129.2:8080/'
-    * url 'http://localhost:8080/'
-#    * url baseUrl
+#    * url 'http://52.3.58.191:8083/api'
+#    * url 'http://localhost:8083/api/'
+
+
+    * url baseUrl
+
+
 
   Scenario Outline: Spring REST Framework
     Given path 'actuator/' + '<_PATH>'
@@ -12,7 +15,7 @@ Feature: Spring REST feature api health,info,env,metrics,loggers,auditevents,htt
     Then status 200
     * json res = response
     * def payload = res.data
-    * print payload
+#    * print payload
 
 #  health,info,env,metrics,loggers
     Examples:

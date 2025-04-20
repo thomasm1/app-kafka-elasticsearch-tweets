@@ -2,6 +2,7 @@ package xyz.cryptomaven.rest.services;
 
 
 import org.springframework.context.annotation.Primary;
+import org.springframework.transaction.annotation.Transactional;
 import xyz.cryptomaven.rest.models.dto.ChainDto;
 import xyz.cryptomaven.rest.exception.ResourceNotFoundException;
 import xyz.cryptomaven.rest.models.Chain;
@@ -39,15 +40,16 @@ private final ChainMapper chainMapper;
         ChainDto newChainDto = chainMapper.toOneDto(newChain);
         return newChainDto;
     }
-
+    @Transactional(readOnly=true)
     @Override
     public   ChainDto getChain(Long id) {
-        Chain chain = chainsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found", "not found", Long.toString(id)));
+        Chain chain = chainsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ChainById", "NOT_FOUND", Long.toString(id)));
             return chainMapper.toOneDto(chain);
     }
     /**
      * @return List<ChainDto>
      */
+    @Transactional(readOnly=true)
     @Override
     public List<ChainDto> getAllChains() {
         List<Chain> chains = chainsRepository.findAll();
@@ -58,6 +60,7 @@ private final ChainMapper chainMapper;
     /**
      * @return ChainDto
      */
+    @Transactional(readOnly=true)
     @Override
     public  ChainDto  getChainByName(String name) {
 

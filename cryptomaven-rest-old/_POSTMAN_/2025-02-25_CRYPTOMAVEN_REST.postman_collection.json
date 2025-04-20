@@ -1,0 +1,1222 @@
+{
+	"info": {
+		"_postman_id": "8f6172ac-5894-4c6e-a50e-1d652305f57d",
+		"name": "*2a_mat-api_App_Endpoints_",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3422017"
+	},
+	"item": [
+		{
+			"name": "{{baseUrl}}/actuator/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actuator/health",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/actuator/metrics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actuator/metrics",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actuator",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `",
+							"<style type=\"text/css\">",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+							"    .tftable tr {background-color:#ffffff;}",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+							"    .tftable tr:hover {background-color:#e0ffff;}",
+							"</style>",
+							"",
+							"<table class=\"tftable\" border=\"1\">",
+							"    <tr>",
+							"        <th>User ID</th>",
+							"        <th>Username</th>",
+							"        <th>Last Name</th>",
+							"        <th>First Name</th>",
+							"        <th>User Type</th>",
+							"        <th>Email</th>",
+							"        <th>Active</th>",
+							"    </tr>",
+							"    ",
+							"    {{#each response}}",
+							"        <tr>",
+							"            <td>{{userId}}</td>",
+							"            <td>{{username}}</td>",
+							"            <td>{{lastName}}</td>",
+							"            <td>{{firstName}}</td>",
+							"            <td>{{userType}}</td>",
+							"            <td>{{email}}</td>",
+							"            <td>{{isActive}}</td>",
+							"        </tr>",
+							"    {{/each}}",
+							"</table>",
+							"`;",
+							"",
+							"function constructVisualizerPayload() {",
+							"    return { response: pm.response.json() }",
+							"}",
+							"",
+							"pm.visualizer.set(template, constructVisualizerPayload());",
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Roles array is present and has expected number of elements\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    responseData.forEach(function(user) {",
+							"        pm.expect(user.roles).to.exist;",
+							"        pm.expect(user.roles).to.be.an('array');",
+							"        pm.expect(user.roles).to.have.lengthOf(1); // Replace 1 with the expected number of elements",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Username is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  responseData.forEach(function(user) {",
+							"    pm.expect(user.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+							"  });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Email is in a valid format\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    responseData.forEach(function(user) {",
+							"        pm.expect(user.email).to.match(/^[\\w-]+@([\\w-]+\\.)+[\\w-]+$/, \"Email is not in a valid format\");",
+							"    });",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response content type is 'text/xml' and body is not empty\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");",
+							"    const responseData = xml2Json(pm.response.text());",
+							"    pm.expect(responseData).to.not.be.null.and.to.not.be.empty;",
+							"});",
+							"",
+							"pm.test(\"Response does not contain any sensitive information\", function () {",
+							"    const responseData = xml2Json(pm.response.text());",
+							"    pm.expect(responseData).to.not.include.keys('password', 'creditCardNumber', 'ssn');",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    { \r\n        \"username\": \"alice222@example.com\",\r\n        \"lastName\": \"Wonderland\",\r\n        \"firstName\": \"Alice\",\r\n        \"organizationCode\": \"ORG001\",\r\n        \"dashboardCode\": \"DASH-A\",\r\n        \"cusUrl\": \"https://example.com/alice\",\r\n        \"userType\": 1,\r\n        \"email\": \"alice222@example.com\",\r\n        \"contactType\": 101,\r\n        \"isActive\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 1,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ],\r\n        \"id\": null \r\n    } "
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{register}}/api/users/auth/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response content type is 'text/xml' and body is not empty\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");",
+							"    const responseData = xml2Json(pm.response.text());",
+							"    pm.expect(responseData).to.not.be.null.and.to.not.be.empty;",
+							"});",
+							"",
+							"pm.test(\"Response does not contain any sensitive information\", function () {",
+							"    const responseData = xml2Json(pm.response.text());",
+							"    pm.expect(responseData).to.not.include.keys('password', 'creditCardNumber', 'ssn');",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n        \"username\": \"ty@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"email\":\"ty@gmail.com\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom123\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/auth/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{LOGIN}}/api/users/auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response content type is 'text/xml' and body is not empty\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");",
+							"    const responseData = xml2Json(pm.response.text());",
+							"    pm.expect(responseData).to.not.be.null.and.to.not.be.empty;",
+							"});",
+							"",
+							"pm.test(\"Response does not contain any sensitive information\", function () {",
+							"    const responseData = xml2Json(pm.response.text());",
+							"    pm.expect(responseData).to.not.include.keys('password', 'creditCardNumber', 'ssn');",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "r@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "r@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n        \"usernameOrEmail\": \"ty@gmail.com\",\r\n        \"password\": \"password\" \r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users/email/Tom1234@gmail.com",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/email/thomas2@gmail.com",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"email",
+						"thomas2@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users/email/i@gm",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userId\": 17,\r\n        \"username\": \"reincarnation2@gmail.com\",\r\n        \"lastName\": \"lastName\",\r\n        \"firstName\": \"firstName\",\r\n        \"organizationCode\": \"organizationCode\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"cusUrl\": \"cusUrl\",\r\n        \"userType\": 1,\r\n        \"email\": \"reincarnation2@gmail.com\",\r\n        \"contactType\": 1,\r\n        \"isActive\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/email/reincarnation2@gmail.com",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"email",
+						"reincarnation2@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users/515",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userId\": 6,\r\n        \"userName\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"phone\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"photoPath\": \"photoPath\",\r\n        \"userGroup\": \"userGroup\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"1\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/2134",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2134"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses/13551",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses/12",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n  \r\n        \"description\": \"description\",\r\n        \"email\": \"d.maestas@gmail.com\",\r\n        \"owner\": \"d.maestas@gmail.com\",\r\n        \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n        \"iconUrl\": \"https://icons.example.com/icon1.png\",\r\n        \"blockExplorerUrl\": \"https://explorer1.com\",\r\n        \"chainId\": null,\r\n        \"chains\": [],\r\n        \"nftAddress\": \"abc123!!\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses [partial]",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n   \r\n    \"description\": null,\r\n    \"email\": \"thomas11.maestas@gmail.com\",\r\n    \"owner\": \"thomas11.maestas@gmail.com\",\r\n    \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n    \"iconUrl\":\"https://icons.example.com/icon1.png\",\r\n     \"blockExplorerUrl\": \"https://explorer1.com\",\r\n    \"chainId\":  null,\r\n    \"chains\": null,\r\n    \"nftAddress\": null\r\n}\r\n        "
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"description\": \"Backup address\",\r\n    \"email\": null,\r\n    \"owner\": \"Bob\",\r\n    \"address\": \"0x67890...\",\r\n    \"iconUrl\": \"https://icons.example.com/icon2.png\",\r\n    \"blockExplorerUrl\": \"https://explorer2.com\",\r\n    \"chainId\": null,\r\n    \"chains\": [\r\n        {\r\n            \"id\": 2,\r\n            \"name\": \"Polygon\",\r\n            \"symbol\": \"MATIC\",\r\n            \"description\": \"Polygon sidechain\",\r\n            \"longDescription\": \"Another extended description\",\r\n            \"iconUrl\": \"https://icons.example.com/matic.png\",\r\n            \"category\": \"Layer2\",\r\n            \"chainListIcon\": \"https://icons.example.com/maticlist.png\",\r\n            \"rpcUrl\": \"https://rpc.matic.com\",\r\n            \"chainId\": 137,\r\n            \"blockExplorerUrl\": \"https://explorer.matic.com\",\r\n            \"chainToken\": \"MATIC\"\r\n        }\r\n    ],\r\n    \"nftAddress\": \"0xdef...\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses/261",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses/261",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses",
+						"261"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/chains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains/13551",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/chains/34",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains/name/ethereum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/chains/name/PulseChain",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains",
+						"name",
+						"PulseChain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   { \r\n       \"chain_id\":136,\r\n           \"chainId\": 136,\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n      \"name\": \"phex\",\r\n      \"symbol\": \"phex\",\r\n      \"description\": \"Pulsechain Mainnet\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/img/pulsechain.png\",\r\n      \"category\": \"Mainnet\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \"https://rpc.pulsechain.io\",\r\n      \"addressesCount\": 3\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/chains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"id\": 30,\r\n        \"name\": \"Ethereum\",\r\n        \"symbol\": \"ETH\",\r\n        \"description\": \"Layer_ONE\",\r\n        \"longDescription\": \"Mainnet Layer_ONE //mainnet.ethereum.org\",\r\n        \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/images/crypto/eth.png\",\r\n        \"category\": \"DeFi\",\r\n        \"chainListIcon\": \"https://s3.amazonaws.com/tmm.net/images/crypto/eth.png\",\r\n        \"rpcUrl\": \"https://mainnet.ethereum.org\",\r\n        \"chainId\": 1,\r\n        \"blockExplorerUrl\": \"https://etherscan.io\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/chains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains/272",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/chains/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/coins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/coins",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/coin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/coins/40",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"coins",
+						"40"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/coinNft",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":23,\r\n        \"version\": null,\r\n        \"dateCreated\": null,\r\n        \"timeCreated\": null,\r\n        \"lastUpdated\": null,\r\n        \"timeUpdated\": null, \r\n        \"nativeToken\": 2.5,\r\n        \"tokens\": [\r\n            {\r\n                \"id\": 80,\r\n                \"rawToken\": \"RawAlpha\",\r\n                \"mapToken\": {}\r\n            }\r\n        ],\r\n        \"nfts\": [\r\n            {\r\n                \"id\": 70,\r\n                \"name\": \"NFTOne\",\r\n                \"amount\": 1.0\r\n            }\r\n        ]\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/coins",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/coins",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"name": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"version\": 123,\r\n        \"dateCreated\": \"\",\r\n        \"timeCreated\": \"\",\r\n        \"lastUpdated\": \"\",\r\n        \"timeUpdated\": \"\",\r\n        \"id\": 44,\r\n        \"nativeToken\": 999.999,\r\n        \"tokens\": [\r\n            {\r\n                \"id\": 84,\r\n                \"rawToken\": \"RawEpsilon\",\r\n                \"mapToken\": {}\r\n            }\r\n        ],\r\n        \"nfts\": [\r\n            {\r\n                \"id\": 74,\r\n                \"name\": \"NFTFive\",\r\n                \"amount\": 50.0\r\n            }\r\n        ]\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/coins",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/coins/633",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/coins/633",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"coins",
+						"633"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/nfts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/nfts/5501",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts/70",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts",
+						"70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/nfts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n      \r\n        \"name\": \"NFT One\",\r\n        \"amount\": 10,\r\n        \"metadata\": \"MetaRefOne\",\r\n        \"nftAddress\": \"0xnft1\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nfts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"name": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n \r\n      \"name\": \"One day,Ujuuna killed in explosion, and his reincarnation is decided at generative.\",\r\n      \"amount\": 1,\r\n      \"metadata\": {\r\n        \"name\": \"Ten Uju Gene #08380\",\r\n        \"description\": \"ある日、イケハヤさんと対談し、未来にワクワクしながら布団に入るうじゅうな……。  \\n    \\n  （明日からも頑張ろう……）  \\n    \\n  そう思った矢先、爆死し、転生してしまううじゅうな。  \\n    \\n  念願の転生は思っていたのとは、なんか違うようで……。  \\n    \\n  その転生先はあなたの目で見届けてほしい。\",\r\n        \"image\": \"https://storage.googleapis.com/uju-explosion/images/8380.png\",\r\n        \"attributes\": [\r\n          {\r\n            \"value\": \"Tegaki\",\r\n            \"trait_type\": \"Base\"\r\n          },\r\n          {\r\n            \"value\": \"Knight\",\r\n            \"trait_type\": \"1st panel\"\r\n          },\r\n          {\r\n            \"trait_type\": \"1st panel option\",\r\n            \"value\": \"None\"\r\n          },\r\n          {\r\n            \"trait_type\": \"2nd panel\",\r\n            \"value\": \"Boss\"\r\n          },\r\n          {\r\n            \"value\": \"None\",\r\n            \"trait_type\": \"2nd panel option\"\r\n          },\r\n          {\r\n            \"trait_type\": \"3rd panel\",\r\n            \"value\": \"Fall\"\r\n          },\r\n          {\r\n            \"value\": \"Nobuyuki\",\r\n            \"trait_type\": \"3rd panel option\"\r\n          },\r\n          {\r\n            \"trait_type\": \"4th panel\",\r\n            \"value\": \"Reincarnation\"\r\n          },\r\n          {\r\n            \"trait_type\": \"4th panel option\",\r\n            \"value\": \"Sailor suit uncle\"\r\n          },\r\n          {\r\n            \"value\": \"Massage8\",\r\n            \"trait_type\": \"Massage\"\r\n          }\r\n        ]\r\n      }\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/nfts",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"name": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 5501,\r\n        \"name\": \"polygon\",\r\n        \"amount\": 8888,\r\n        \"metadataDto\": null,\r\n        \"nft_address_id\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/nfts/5501",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts/5501",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts",
+						"5501"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-------------------------- Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0eUBnbWFpbC5jb20iLCJpYXQiOjE3NDA1Mjc4ODIsImV4cCI6MTc0MTEzMjY4Mn0.S0QddW6ydT5y8GNKnbfFfZ2_0QWa5P85d3ZBRiGvb_mgundAB0Mf6KC9kDszlDso",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

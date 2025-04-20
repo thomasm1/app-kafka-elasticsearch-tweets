@@ -1,5 +1,5 @@
 {
-  "userId": 211,
+  "userId": 11,
   "username": "Tom1@gmail.com",
   "password": "password",
   "lastName": "Smith",
@@ -11,7 +11,7 @@
   "photoPath": "photoPath",
   "isActive": 0,
   "contactType": 1,
-  "ROLES": [
+  "roles": [
     {
       "id": 2,
       "name": "ROLE_ADMIN"

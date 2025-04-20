@@ -1,6 +1,7 @@
 package xyz.cryptomaven.rest.services;
 
 
+import org.springframework.transaction.annotation.Transactional;
 import xyz.cryptomaven.rest.mapper.ChainMapper;
 import xyz.cryptomaven.rest.mapper.CoinMapper;
 import xyz.cryptomaven.rest.models.Coin;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -49,16 +51,20 @@ public class AddressesServiceImpl implements AddressesService {
     }
 
 
-  @Override
-  public AddressDto getAddress(Long id) {
+
+    @Transactional(readOnly=true)
+    @Override
+    public Optional<AddressDto> getAddress(Long id) {
        try {
               Address address = addressesRepository.findById(id).get();
-                return addressMapper.addressToAddressDto(address);
+                return Optional.ofNullable(addressMapper.addressToAddressDto(address));
        } catch (Exception e) {
-           return null;
+           return Optional.empty();
        }
     }
 
+
+    @Transactional(readOnly=true)
     @Override
     public List<AddressDto> getAllAddresses() {
 

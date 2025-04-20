@@ -11,7 +11,7 @@
   "photoPath": "photoPath",
   "isActive": 0,
   "contactType": 1,
-  "ROLES": [
+  "roles": [
     {
       "id": 1,
       "name": "ROLE_USER"

@@ -1,0 +1,41 @@
+services:
+  postgresdb:
+    container_name: postgrescontainer
+    restart: always
+    image: postgres:16.2
+
+#    image: 'thomasm1/postgres:latest'
+    environment:
+      POSTGRES_URL: ${DATABASE_URL:localhost}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER:postgres}
+      POSTGRES_DATABASE: dashboarddb
+    expose:
+      - 5432
+    ports:
+      - ${DB_PORT}: 5432
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - 'postgresvolume:/var/lib/postgresql/data'
+      - './schema.sql:/docker-entrypoint-initdb.dl/schema-postgres.sql'
+
+# docker run --name mapl-postgres -p 5432:5432 --network mapl-mysql-net -d
+
+  pgadmin:
+    container_name: pgadmincontainer
+    restart: always
+    image: 'thomasm1/pgadmin4:latest'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_EMAIL_PASSWORD}
+      PGADMIN_LISTEN_PORT: 6000
+      PGADMIN_DEFAULT_ADDRESS: 6000
+    expose:
+        - 6000
+    ports:
+        - 7000:6000
+    volumes:
+        - 'pgadminvolume:/var/lib/pgadmin'
+  volumes:
+    postgresvolume
+    pgadminvolume

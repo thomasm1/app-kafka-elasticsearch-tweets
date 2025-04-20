@@ -1,0 +1,67 @@
+[
+  {
+    "id": 30,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "description": "Layer1",
+    "longDescription": "Mainnet",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+    "category": "DeFi",
+    "chainListIcon": null,
+    "rpcUrl": "https://mainnet.ethereum.org",
+    "chainId": 1,
+    "blockExplorerUrl": "https://etherscan.io"
+  },
+  {
+    "id": 31,
+    "name": "BSC",
+    "symbol": "BNB",
+    "description": "BinanceChain",
+    "longDescription": "Mainnet",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/bsc.png",
+    "category": "DeFi",
+    "chainListIcon": null,
+    "rpcUrl": "https://bsc-dataseed.binance.org",
+    "chainId": 56,
+    "blockExplorerUrl": "https://bscscan.com"
+  },
+  {
+    "id": 32,
+    "name": "Polygon",
+    "symbol": "MATIC",
+    "description": "Sidechain",
+    "longDescription": "Mainnet",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/matic.png",
+    "category": "DeFi",
+    "chainListIcon": null,
+    "rpcUrl": "https://rpc-mainnet.maticvigil.com",
+    "chainId": 137,
+    "blockExplorerUrl": "https://polygonscan.com"
+  },
+  {
+    "id": 33,
+    "name": "Avalanche",
+    "symbol": "AVAX",
+    "description": "C-Chain",
+    "longDescription": "Mainnet",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/avax.png",
+    "category": "DeFi",
+    "chainListIcon": null,
+    "rpcUrl": "https://api.avax.network",
+    "chainId": 43114,
+    "blockExplorerUrl": "https://snowtrace.io"
+  },
+  {
+    "id": 34,
+    "name": "PulseChain",
+    "symbol": "PLS",
+    "description": "Fork of ETH",
+    "longDescription": "Mainnet",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/pls.png",
+    "category": "DeFi",
+    "chainListIcon": null,
+    "rpcUrl": "https://rpc.pulsechain.io",
+    "chainId": 369,
+    "blockExplorerUrl": "https://scan.pulsechain.com"
+  }
+]

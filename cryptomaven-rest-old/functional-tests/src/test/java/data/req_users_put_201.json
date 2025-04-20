@@ -1,0 +1,20 @@
+{
+  "userId": 212,
+  "username": "user91@gmail.com",
+  "password": "password",
+  "lastName": "Maestas",
+  "firstName": "Tom2",
+  "userType": 3,
+  "phone": "5055087707",
+  "email": "Tom2@gmail.com",
+  "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg",
+  "photoPath": "photoPath",
+  "isActive": 0,
+  "contactType": 1,
+  "ROLES": [
+    {
+      "id": 1,
+      "name": "ROLE_USER"
+    }
+  ]
+}

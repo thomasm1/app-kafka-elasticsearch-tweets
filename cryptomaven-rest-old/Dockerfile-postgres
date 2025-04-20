@@ -1,0 +1,17 @@
+FROM ubuntu-jdk
+
+MAINTAINER Thomas Maestas "thomas.maestas@hotmail.com"
+
+ENV version=postgres
+
+ENV dbuser=postgres
+ENV dbpass=abc123!!
+ENV jdbcurl=jdbc:postgresql://thomas.cngquqqjuc9v.us-east-1.rds.amazonaws.com:5432/postgres
+
+WORKDIR /usr/local/bin
+
+COPY build/libs/cryptomaven*.jar  ./cryptomaven-rest.jar
+
+ENTRYPOINT ["java", "-jar", "cryptomaven-rest.jar"]
+
+

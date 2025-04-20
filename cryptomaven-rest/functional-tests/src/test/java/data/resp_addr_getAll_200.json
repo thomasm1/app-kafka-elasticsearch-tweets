@@ -1,0 +1,427 @@
+[
+  {
+    "id": 20,
+    "description": "ETH: Ethereum",
+    "email": "thomas1@gmail.com",
+    "owner": "Thomas1@gmail.com",
+    "address": "0xAAA111...",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+    "blockExplorerUrl": "https://etherscan.io",
+    "nftAddress": "0xAAA111...",
+    "chains": [
+      {
+        "id": 30,
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "description": "Layer1",
+        "longDescription": "Mainnet",
+        "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+        "category": "DeFi",
+        "chainListIcon": null,
+        "rpcUrl": "https://mainnet.ethereum.org",
+        "chainId": 1,
+        "blockExplorerUrl": "https://etherscan.io"
+      }
+    ],
+    "coins": [
+      {
+        "version": null,
+        "dateCreated": null,
+        "timeCreated": null,
+        "lastUpdated": null,
+        "timeUpdated": null,
+        "id": 40,
+        "nativeToken": 2.5,
+        "tokens": [
+          {
+            "id": 80,
+            "rawToken": "RawAlpha",
+            "mapToken": {}
+          }
+        ],
+        "nfts": [
+          {
+            "id": 70,
+            "name": "NFTOne",
+            "amount": 1.0
+          }
+        ]
+      }
+    ],
+    "user": {
+      "userId": 20,
+      "username": "thomas1@gmail.com",
+      "lastName": "Maestas",
+      "firstName": "Thomas1",
+      "organizationCode": "ORG1",
+      "dashboardCode": "DASH1",
+      "cusUrl": "https://s3.amazonaws.com/tmm.net/images/people/random_pf1",
+      "userType": 0,
+      "email": "thomas1@gmail.com",
+      "contactType": 101,
+      "isActive": 1,
+      "roles": [
+        {
+          "id": 1,
+          "name": "ROLE_ADMIN",
+          "user": null
+        }
+      ],
+      "id": null,
+      "password": "thomas1@gmail.com"
+    }
+  },
+  {
+    "id": 21,
+    "description": "BSC: Binance",
+    "email": "thomas2@gmail.com",
+    "owner": "Thomas2@gmail.com",
+    "address": "0xBBB222...",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/bsc.png",
+    "blockExplorerUrl": "https://bscscan.com",
+    "nftAddress": "0xBBB222...",
+    "chains": [
+      {
+        "id": 31,
+        "name": "BSC",
+        "symbol": "BNB",
+        "description": "BinanceChain",
+        "longDescription": "Mainnet",
+        "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/bsc.png",
+        "category": "DeFi",
+        "chainListIcon": null,
+        "rpcUrl": "https://bsc-dataseed.binance.org",
+        "chainId": 56,
+        "blockExplorerUrl": "https://bscscan.com"
+      }
+    ],
+    "coins": [
+      {
+        "version": null,
+        "dateCreated": null,
+        "timeCreated": null,
+        "lastUpdated": null,
+        "timeUpdated": null,
+        "id": 41,
+        "nativeToken": 0.1,
+        "tokens": [
+          {
+            "id": 81,
+            "rawToken": "RawBeta",
+            "mapToken": {}
+          }
+        ],
+        "nfts": [
+          {
+            "id": 71,
+            "name": "NFTTwo",
+            "amount": 2.5
+          }
+        ]
+      }
+    ],
+    "user": {
+      "userId": 11,
+      "username": "thomas2@gmail.com",
+      "lastName": "Maestas",
+      "firstName": "Thomas2",
+      "organizationCode": "ORG2",
+      "dashboardCode": "DASH2",
+      "cusUrl": "https://s3.amazonaws.com/tmm.net/images/people/random_pf2",
+      "userType": 1,
+      "email": "thomas2@gmail.com",
+      "contactType": 102,
+      "isActive": 1,
+      "roles": [
+        {
+          "id": 2,
+          "name": "ROLE_USER",
+          "user": null
+        }
+      ],
+      "id": null,
+      "password": "thomas2@gmail.com"
+    }
+  },
+  {
+    "id": 22,
+    "description": "MATIC: Polygon",
+    "email": "thomas3@gmail.com",
+    "owner": "Thomas3@gmail.com",
+    "address": "0xCCC333...",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/matic.png",
+    "blockExplorerUrl": "https://polygonscan.com",
+    "nftAddress": "0xCCC333...",
+    "chains": [
+      {
+        "id": 32,
+        "name": "Polygon",
+        "symbol": "MATIC",
+        "description": "Sidechain",
+        "longDescription": "Mainnet",
+        "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/matic.png",
+        "category": "DeFi",
+        "chainListIcon": null,
+        "rpcUrl": "https://rpc-mainnet.maticvigil.com",
+        "chainId": 137,
+        "blockExplorerUrl": "https://polygonscan.com"
+      }
+    ],
+    "coins": [
+      {
+        "version": null,
+        "dateCreated": null,
+        "timeCreated": null,
+        "lastUpdated": null,
+        "timeUpdated": null,
+        "id": 42,
+        "nativeToken": 10.0,
+        "tokens": [
+          {
+            "id": 82,
+            "rawToken": "RawGamma",
+            "mapToken": {}
+          }
+        ],
+        "nfts": [
+          {
+            "id": 72,
+            "name": "NFTThree",
+            "amount": 3.75
+          }
+        ]
+      }
+    ],
+    "user": {
+      "userId": 12,
+      "username": "thomas3@gmail.com",
+      "lastName": "Maestas",
+      "firstName": "Thomas3",
+      "organizationCode": "ORG3",
+      "dashboardCode": "DASH3",
+      "cusUrl": "https://s3.amazonaws.com/tmm.net/images/people/random_pf3",
+      "userType": 2,
+      "email": "thomas3@gmail.com",
+      "contactType": 103,
+      "isActive": 0,
+      "roles": [
+        {
+          "id": 1,
+          "name": "ROLE_ADMIN",
+          "user": null
+        }
+      ],
+      "id": null,
+      "password": "thomas3@gmail.com"
+    }
+  },
+  {
+    "id": 23,
+    "description": "AVAX: Avalanche",
+    "email": "thomas4@gmail.com",
+    "owner": "Thomas4@gmail.com",
+    "address": "0xDDD444...",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+    "blockExplorerUrl": "https://snowtrace.io",
+    "nftAddress": "0xDDD444...",
+    "chains": [
+      {
+        "id": 33,
+        "name": "Avalanche",
+        "symbol": "AVAX",
+        "description": "C-Chain",
+        "longDescription": "Mainnet",
+        "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/avax.png",
+        "category": "DeFi",
+        "chainListIcon": null,
+        "rpcUrl": "https://api.avax.network",
+        "chainId": 43114,
+        "blockExplorerUrl": "https://snowtrace.io"
+      }
+    ],
+    "coins": [
+      {
+        "version": null,
+        "dateCreated": null,
+        "timeCreated": null,
+        "lastUpdated": null,
+        "timeUpdated": null,
+        "id": 43,
+        "nativeToken": 0.05,
+        "tokens": [
+          {
+            "id": 83,
+            "rawToken": "RawDelta",
+            "mapToken": {}
+          }
+        ],
+        "nfts": [
+          {
+            "id": 73,
+            "name": "NFTFour",
+            "amount": 10.0
+          }
+        ]
+      }
+    ],
+    "user": {
+      "userId": 13,
+      "username": "thomas4@gmail.com",
+      "lastName": "Maestas",
+      "firstName": "Thomas4",
+      "organizationCode": "ORG4",
+      "dashboardCode": "DASH4",
+      "cusUrl": "https://s3.amazonaws.com/tmm.net/images/people/random_pf4",
+      "userType": 3,
+      "email": "thomas4@gmail.com",
+      "contactType": 104,
+      "isActive": 0,
+      "roles": [
+        {
+          "id": 2,
+          "name": "ROLE_USER",
+          "user": null
+        }
+      ],
+      "id": null,
+      "password": "thomas4@gmail.com"
+    }
+  },
+  {
+    "id": 24,
+    "description": "PLS: PulseChain",
+    "email": "thomas4@gmail.com",
+    "owner": "Thomas4@gmail.com",
+    "address": "0xEEE555...",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/pls.png",
+    "blockExplorerUrl": "https://scan.pulsechain.com",
+    "nftAddress": "0xEEE555...",
+    "chains": [
+      {
+        "id": 34,
+        "name": "PulseChain",
+        "symbol": "PLS",
+        "description": "Fork of ETH",
+        "longDescription": "Mainnet",
+        "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/pls.png",
+        "category": "DeFi",
+        "chainListIcon": null,
+        "rpcUrl": "https://rpc.pulsechain.io",
+        "chainId": 369,
+        "blockExplorerUrl": "https://scan.pulsechain.com"
+      }
+    ],
+    "coins": [
+      {
+        "version": null,
+        "dateCreated": null,
+        "timeCreated": null,
+        "lastUpdated": null,
+        "timeUpdated": null,
+        "id": 44,
+        "nativeToken": 999.999,
+        "tokens": [
+          {
+            "id": 84,
+            "rawToken": "RawEpsilon",
+            "mapToken": {}
+          }
+        ],
+        "nfts": [
+          {
+            "id": 74,
+            "name": "NFTFive",
+            "amount": 50.0
+          }
+        ]
+      }
+    ],
+    "user": {
+      "userId": 14,
+      "username": "thomas5@gmail.com",
+      "lastName": "Maestas",
+      "firstName": "Thomas5",
+      "organizationCode": "ORG5",
+      "dashboardCode": "DASH5",
+      "cusUrl": "https://s3.amazonaws.com/tmm.net/images/people/random_pf5",
+      "userType": 3,
+      "email": "thomas5@gmail.com",
+      "contactType": 105,
+      "isActive": 0,
+      "roles": [
+        {
+          "id": 1,
+          "name": "ROLE_ADMIN",
+          "user": null
+        }
+      ],
+      "id": null,
+      "password": "thomas5@gmail.com"
+    }
+  },
+  {
+    "id": 25,
+    "description": "description",
+    "email": "d.maestas@gmail.com",
+    "owner": "d.maestas@gmail.com",
+    "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+    "blockExplorerUrl": "https://explorer1.com",
+    "nftAddress": "abc123!!",
+    "chains": [],
+    "coins": [],
+    "user": null
+  },
+  {
+    "id": 26,
+    "description": "description",
+    "email": "d.maestas@gmail.com",
+    "owner": "d.maestas@gmail.com",
+    "address": "0x900bE021E38B8d08435A03c05657C8cFA837cAeF",
+    "iconUrl": "https://s3.amazonaws.com/tmm.net/images/crypto/eth.png",
+    "blockExplorerUrl": "https://explorer1.com",
+    "nftAddress": "abc123!!",
+    "chains": [],
+    "coins": [],
+    "user": null
+  },
+  {
+    "id": 27,
+    "description": null,
+    "email": null,
+    "owner": null,
+    "address": "0x1234567890abcdef1234567890abcdef12345678",
+    "iconUrl": null,
+    "blockExplorerUrl": null,
+    "nftAddress": null,
+    "chains": [],
+    "coins": [],
+    "user": null
+  },
+  {
+    "id": 28,
+    "description": null,
+    "email": null,
+    "owner": null,
+    "address": "0x1234567890abcdef1234567890abcdef12345678",
+    "iconUrl": null,
+    "blockExplorerUrl": null,
+    "nftAddress": null,
+    "chains": [],
+    "coins": [],
+    "user": null
+  },
+  {
+    "id": 29,
+    "description": null,
+    "email": null,
+    "owner": null,
+    "address": "0x1234567890abcdef1234567890abcdef12345678",
+    "iconUrl": null,
+    "blockExplorerUrl": null,
+    "nftAddress": null,
+    "chains": [],
+    "coins": [],
+    "user": null
+  }
+]

@@ -39,9 +39,11 @@ public class AddressesController {
   @Operation(summary = "Get an address by id")
   @ApiResponse(responseCode = "200", description = "Address found")
   @GetMapping(value = "/{id}")
-  public AddressDto getAddress(@PathVariable("id") Long id) {
+  public ResponseEntity<AddressDto> getAddress(@PathVariable("id") Long id) {
 
-    return addressesService.getAddress(id);
+    return addressesService.getAddress(id)
+            .map(addressDto -> new ResponseEntity<>(addressDto, HttpStatus.OK))
+            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
   @Operation(summary = "Get an address by id")
@@ -49,10 +51,9 @@ public class AddressesController {
   @GetMapping(value = "/{id}/coins")
   public ResponseEntity<Set<CoinDto>> getAddressCoins(@PathVariable("id") Long id) {
 
-    AddressDto addressDto = addressesService.getAddress(id);
-    Set<CoinDto> coinDtos = addressDto.getCoins();
-
-    return new ResponseEntity<>(coinDtos, HttpStatus.OK);
+    return addressesService.getAddress(id)
+            .map(addressDto -> new ResponseEntity<>(addressDto.getCoins() , HttpStatus.OK))
+            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
   @Operation(summary = "Get an address by id")
@@ -60,16 +61,15 @@ public class AddressesController {
   @GetMapping(value = "/{id}/chains")
   public ResponseEntity<Set<ChainDto>> getAddressCChains(@PathVariable("id") Long id) {
 
-    AddressDto addressDto = addressesService.getAddress(id);
-    Set<ChainDto> chainDtos = addressDto.getChains();
-
-    return new ResponseEntity<>(chainDtos, HttpStatus.OK);
+    return addressesService.getAddress(id)
+            .map(addressDto -> new ResponseEntity<>(addressDto.getChains() , HttpStatus.OK))
+            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
   }
 
   @ApiResponse(responseCode = "201", description = "Address created")
   @Operation(summary = "Create a new address")
-  @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
+  @RequestMapping(value = "",  method = RequestMethod.POST, consumes = "application/json")
   public ResponseEntity<AddressDto> createAddress(@RequestBody AddressDto c) {
 
     return new ResponseEntity<>(addressesService.createAddress(c), HttpStatus.CREATED);

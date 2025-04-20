@@ -1,0 +1,805 @@
+{
+	"info": {
+		"_postman_id": "8f6172ac-5894-4c6e-a50e-1d652305f57d",
+		"name": "**mat-api_App_Endphaints_",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3422017"
+	},
+	"item": [
+		{
+			"name": "{{baseUrl}}/actuator/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actuator/health",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/actuator/metrics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actuator/metrics",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actuator",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n        \"username\": \"Tom13@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom1\",\r\n        \"userType\": 3,\r\n        \"organizationCode\": \"123412123421\",\r\n        \"email\": \"Tom13@gmail.com\",\r\n        \"cusUrl\": \"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ]\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users/211",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/211",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"211"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/email/thomas1.maestas@gmail.com",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/email/thomas1.maestas@gmail.com",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"email",
+						"thomas1.maestas@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userId\": 211,\r\n        \"username\": \"Tom1@gmail.com\",\r\n        \"password\": \"password\",\r\n        \"lastName\": \"Smith\",\r\n        \"firstName\": \"Tom1\",\r\n        \"userType\": 3,\r\n        \"organizationCode\": \"123412123421\",\r\n        \"email\": \"Tom1@gmail.com\",\r\n        \"cusUrl\": \"https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"roles\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_ADMIN\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/211",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"211"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/users/515",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userId\": 6,\r\n        \"username\": \"user152011\",\r\n        \"password\": \"passwords22\",\r\n        \"lastName\": \"Smith22\",\r\n        \"firstName\": \"Tom22\",\r\n        \"groups\": 3,\r\n        \"userType\": 1,\r\n        \"email\": \"user152011@cryptomaven.xyz\",\r\n        \"organizationCode\": \"5055087707\",\r\n        \"cusUrl\": \"http://www.dailytech.net\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"isActive\": 0,\r\n        \"contactType\": 1,\r\n        \"id\": \"1\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses/13551",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses/13551",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses",
+						"13551"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    { \r\n        \"description\": \"description\",\r\n        \"email\": \"thomas1.maestas@gmail.com\",\r\n        \"address\": \"0xcfCa3FEBAceA3AbB643bA90C670D7c4E6D74b633\",\r\n        \"chain\": \"ethereum\",\r\n        \"iconUrl\": \"iconUrl\",\r\n        \"blockExplorerUrl\": \"blockExplorerUrl\", \r\n        \"chainId\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses [partial]",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    { \r\n    \r\n        \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n        \"chain\": \"polygon\",\r\n        \"email\":\"thomas1.maestas@gmail.com\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"description\": \"description\",\r\n           \"email\": \"thomas1.maestas@gmail.com\",\r\n    \"address\": \"address\",\r\n    \"chain\": \"chain\",\r\n    \"iconUrl\": \"iconUrl\",\r\n    \"blockExplorerUrl\": \"blockExplorerUrl\",\r\n    \"user\":  { \r\n              \"username\": \"thomas1.maestas@gmail.com\",\r\n        \"dashboardCode\": \"dashboardCode\",\r\n        \"groupType\": \"dashboardCode\",\r\n        \"email\": \"thomas.maestas@hotmail.com\",\r\n        \"userId\": \"1\",\r\n        \"lname\": \"Smith\",\r\n        \"fname\": \"Tom\"\r\n    },\r\n    \"chainId\": 0\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/addresses/261",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/addresses/261",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"addresses",
+						"261"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/chains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains/13551",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/chains/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/chains",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   { \r\n       \"chain_id\": 0,\r\n      \"name\": \"pulsechain\",\r\n      \"symbol\": \"pls\",\r\n      \"description\": \"Pulsechain Mainnet\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/img/pulsechain.png\",\r\n      \"category\": \"Mainnet\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \"https://rpc.pulsechain.io\",\r\n      \"addressesCount\": 3\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/chains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/chains/name/avalanche",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/chains/name/ethereum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains",
+						"name",
+						"ethereum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"id\": 323,\r\n      \"name\":\"Binance323323\",\r\n      \"symbol\": \"bsc\",\r\n      \"description\": \"BNB [BSC] Mainnet323323\",\r\n      \"longDescription\": \"NFT - 0x1\",\r\n      \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/img/bnb.png\",\r\n      \"category\": \"Mainnet323323\",\r\n      \"chainListIcon\": \"https://friends-of-groot-society.s3.amazonaws.com/assets/android-chrome-384x384.png\",\r\n      \"rpcUrl\": \" https://bsc-dataseed.binance.org/\",\r\n      \"addressesCount\": 3\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/chains",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host:8080/api/chains/272",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/chains/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chains",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "--------------------------",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "thomas",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "------------",
+					"host": [
+						"------------"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/nfts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/nfts/5501",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/nfts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n        \"name\": \"nethereum\",\r\n        \"amount\": 9999,\r\n        \"metadataDto\": null,\r\n        \"nft_address_id\": 0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nfts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n \r\n      \"name\": \"One day,Ujuuna killed in explosion, and his reincarnation is decided at generative.\",\r\n      \"amount\": 1,\r\n      \"metadata\": {\r\n        \"name\": \"Ten Uju Gene #08380\",\r\n        \"description\": \"ある日、イケハヤさんと対談し、未来にワクワクしながら布団に入るうじゅうな……。  \\n    \\n  （明日からも頑張ろう……）  \\n    \\n  そう思った矢先、爆死し、転生してしまううじゅうな。  \\n    \\n  念願の転生は思っていたのとは、なんか違うようで……。  \\n    \\n  その転生先はあなたの目で見届けてほしい。\",\r\n        \"image\": \"https://storage.googleapis.com/uju-explosion/images/8380.png\",\r\n        \"attributes\": [\r\n          {\r\n            \"value\": \"Tegaki\",\r\n            \"trait_type\": \"Base\"\r\n          },\r\n          {\r\n            \"value\": \"Knight\",\r\n            \"trait_type\": \"1st panel\"\r\n          },\r\n          {\r\n            \"trait_type\": \"1st panel option\",\r\n            \"value\": \"None\"\r\n          },\r\n          {\r\n            \"trait_type\": \"2nd panel\",\r\n            \"value\": \"Boss\"\r\n          },\r\n          {\r\n            \"value\": \"None\",\r\n            \"trait_type\": \"2nd panel option\"\r\n          },\r\n          {\r\n            \"trait_type\": \"3rd panel\",\r\n            \"value\": \"Fall\"\r\n          },\r\n          {\r\n            \"value\": \"Nobuyuki\",\r\n            \"trait_type\": \"3rd panel option\"\r\n          },\r\n          {\r\n            \"trait_type\": \"4th panel\",\r\n            \"value\": \"Reincarnation\"\r\n          },\r\n          {\r\n            \"trait_type\": \"4th panel option\",\r\n            \"value\": \"Sailor suit uncle\"\r\n          },\r\n          {\r\n            \"value\": \"Massage8\",\r\n            \"trait_type\": \"Massage\"\r\n          }\r\n        ]\r\n      }\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{baseUrl}}/api/nfts",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 5501,\r\n        \"name\": \"polygon\",\r\n        \"amount\": 8888,\r\n        \"metadataDto\": null,\r\n        \"nft_address_id\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/nfts/5501",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/nfts/5501",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"nfts",
+						"5501"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

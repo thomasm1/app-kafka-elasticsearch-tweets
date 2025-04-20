@@ -14,10 +14,9 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class AttributeDto implements Serializable {
-    private final int attrid;
-    private final String attribute_value;
-    private final String trait_type;
+    private Long attrid;
+    private String attribute_value;
+    private String trait_type;
 
 }

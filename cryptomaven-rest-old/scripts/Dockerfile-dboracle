@@ -1,0 +1,11 @@
+FROM ubuntu-jdk
+MAINTAINER Thomas Maestas "thomas.maestas@hotmail.com"
+
+ENV version=aws-db-usage
+ENV dbuser=thomas
+ENV dbpassword=${ORACLE_DB_PASSWORD}
+ENV jdbcurl=jdbc:oracle:thin:@thomas.cmcadlepsyx9.us-east-1.rds.amazonaws.com:1521:thomas
+WORKDIR /usr/local/bin
+ADD target/app.jar .
+
+ENTRYPOINT ["java", "-jar", "friendsofgroot.war"]

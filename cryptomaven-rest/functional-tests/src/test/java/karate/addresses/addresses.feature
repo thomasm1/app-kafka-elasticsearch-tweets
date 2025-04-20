@@ -1,10 +1,12 @@
 Feature: chains feature api
 
   Background: background
+#    * url 'http://52.3.58.191:8083/api'
+#    * url 'http://localhost:8083/api/'
+#    Given def baseUrl =  config.baseUrl
 #
-#    * url 'http://34.199.129.2:8080/api'
-    * url 'http://localhost:8080/api/'
-#    * url baseUrl
+    * url baseUrl + '/api/'
+
 
   Scenario Outline:
     Given path '<_path>' + '<_var1>'
@@ -15,9 +17,10 @@ Feature: chains feature api
     * print payload
 
     Examples:
-      | _path     | _meth | _stat | _var1 | _var2 | _var3 |
-      | addresses | GET   | 200   |/10001    |   |   |
-      | addresses | GET   | 200   |   |   |   |
+      | _path     | _meth | _stat | _var1      | _var2 | _var3 |
+      | addresses | GET   | 200   | /20        |       |       |
+      | addresses | GET   | 200   |            |       |       |
+      | addresses | GET   | 200   | /20/chains |       |       |
 #      | addresses | PUT   | 201   |/10000    |   |   |
 #      | addresses | POST   | 201   |   |   |   |
 #      | addresses | PATCH   | 201   |/10000    |   |   |

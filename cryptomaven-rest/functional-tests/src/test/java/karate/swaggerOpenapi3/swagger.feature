@@ -1,10 +1,11 @@
 Feature: health and actuator endoints
 
   Background: background
+#    * url 'http://52.3.58.191:8083/api'
+#    * url 'http://localhost:8083/api/'
 
-#    * url 'http://34.199.129.2:8080/'
-    * url "http://localhost:8080"
-#    * configure karate.baseUrl = karate.properties['baseUrl']
+    * url baseUrl + '/api/'
+
 
 
   Scenario Outline:

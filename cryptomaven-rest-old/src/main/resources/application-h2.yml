@@ -1,0 +1,42 @@
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+  #        web-allow-others: false  # usually false for local dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE;NON_KEYWORDS=VALUE,PASSWORD
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        #        dialect: org.hibernate.dialect.H2Dialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+    defer-datasource-initialization: false
+  sql:
+    init:
+      data-locations: classpath:data.sql
+      schema-locations: classpath:schema-mysql.sql
+      mode: always # never # always
+  security:
+    user:
+      name: admin
+      password: 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+      roles: ADMIN
+## Public views
+# show  bind values
+logging.level.org.hibernate.type.descriptor.sql: trace
+management.endpoints.web.exposure.include: "*"
+management.info.env.enabled: true

@@ -49,9 +49,11 @@ public class ChainsController {
   @Operation(summary = "Get a chain by id")
   @ApiResponse(responseCode = "200", description = "Chain returned")
   @GetMapping(value = "/{id}"   )
-  public ChainDto getChain(@PathVariable("id") Long id) {
+  public ResponseEntity<ChainDto> getChain(@PathVariable("id") Long id) {
 
-    return chainsService.getChain(id);
+    ChainDto chainDto = chainsService.getChain(id);
+    return new ResponseEntity<>(chainDto, HttpStatus.OK);
+
   }
 
   //    @GetMapping(value = "/{username}")

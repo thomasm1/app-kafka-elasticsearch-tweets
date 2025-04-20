@@ -17,7 +17,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class CoinDto implements Serializable {
   Integer version;
   Date dateCreated;
@@ -29,4 +28,9 @@ public class CoinDto implements Serializable {
  List<RawTokenDto> tokens;
   List<NftCoinDto> nfts;
 
+    public void setId(long l) {
+    }
+
+  public void setName(String bitcoin) {
+  }
 }

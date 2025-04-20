@@ -15,9 +15,8 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-@Value
 public class ChainDto implements Serializable {
-    private Integer id;
+    private Long id;
     private String name;
     private String symbol;
     private String description;
@@ -28,4 +27,10 @@ public class ChainDto implements Serializable {
     private String rpcUrl;
     private Integer chainId;
     private String blockExplorerUrl;
+
+    public void setId(long l) {
+    }
+
+    public void setName(String ethereumChain) {
+    }
 }

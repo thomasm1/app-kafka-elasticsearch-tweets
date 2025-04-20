@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: 'thomasm1/mysql:latest'
+    restart: always # on-failure
+    environment:
+       MYSQL_USER: ${AWS_MYSQL_USER:root}
+       MYSQL_PASSWORD: ${AWS_MYSQL_PASSWORD:root}
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_URL: ${AWS_MYSQL_URL:'canevyvhhxpf.us-east-1.rds.amazonaws.com'}
+       MYSQL_DATABASE: dashboarddb
+       DEFAULT_EMAIL_USERNAME: ${DEFAULT_EMAIL_USERNAME}
+       DEFAULT_EMAIL_PASSWORD: ${DEFAULT_EMAIL_PASSWORD}
+    expose:
+      - 3306
+    ports:
+        - 3306:3306
+        - 33060:33060
+    volumes:
+        - 'mysql-data:/var/lib/mysql'
+        - './schema.sql:/docker-entrypoint-initdb.dl/schema-mysql.sql'
+    networks:
+      mapl-mysql-net:
+
+  mapl-restful-webservices:
+    container_name: mapl-mvc
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "9091:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      mapl-mysql-net:
+        aliases:
+          - mapl-mysql

@@ -541,7 +541,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n  \r\n        \"description\": \"description\",\r\n        \"email\": \"d.maestas@gmail.com\",\r\n        \"owner\": \"d.maestas@gmail.com\",\r\n        \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n        \"iconUrl\": \"https://icons.example.com/icon1.png\",\r\n        \"blockExplorerUrl\": \"https://explorer1.com\",\r\n        \"chainId\": null,\r\n        \"chains\": [],\r\n        \"nftAddress\": \"abc123!!\"\r\n    }"
+					"raw": "    {\r\n  \r\n        \"description\": \"description\",\r\n        \"email\": \"d.maestas@gmail.com\",\r\n        \"owner\": \"d.maestas@gmail.com\",\r\n        \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n        \"iconUrl\": \"https://s3.amazonaws.com/tmm.net/images/crypto/eth.png\",\r\n        \"blockExplorerUrl\": \"https://explorer1.com\",\r\n        \"chainId\": null,\r\n        \"chains\": [],\r\n        \"nftAddress\": \"abc123!!\"\r\n    }"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/api/addresses",
@@ -569,7 +569,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n   \r\n    \"description\": null,\r\n    \"email\": \"thomas11.maestas@gmail.com\",\r\n    \"owner\": \"thomas11.maestas@gmail.com\",\r\n    \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n    \"iconUrl\":\"https://icons.example.com/icon1.png\",\r\n     \"blockExplorerUrl\": \"https://explorer1.com\",\r\n    \"chainId\":  null,\r\n    \"chains\": null,\r\n    \"nftAddress\": null\r\n}\r\n        "
+					"raw": " {\r\n   \r\n    \"description\": null,\r\n    \"email\": \"thomas11.maestas@gmail.com\",\r\n    \"owner\": \"thomas11.maestas@gmail.com\",\r\n    \"address\": \"0x900bE021E38B8d08435A03c05657C8cFA837cAeF\",\r\n    \"iconUrl\":\"https://s3.amazonaws.com/tmm.net/images/crypto/eth.png\",\r\n     \"blockExplorerUrl\": \"https://explorer1.com\",\r\n    \"chainId\":  null,\r\n    \"chains\": null,\r\n    \"nftAddress\": null\r\n}\r\n        "
 				},
 				"url": {
 					"raw": "{{baseUrl}}/api/addresses",

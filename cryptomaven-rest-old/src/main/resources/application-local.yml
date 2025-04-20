@@ -1,0 +1,129 @@
+app.version: 3.3.3
+
+system.environment: mysql
+#spring.config.import: optional:configserver:http://localhost:8071
+### Security
+security.basic.enable: false
+security.user.name: admin
+security.user.password: password
+# Database  Settings
+
+
+spring.jpa.database: mysql
+## JPA Props
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.connection.characterEncoding: UTF-8
+spring.jpa.properties.hibernate.connection.CharSet: UTF-8
+spring.jpa.properties.hibernate.useUnicode: true
+spring.jpa.properties.hibernate.show-sql: true
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
+########## Log jpa slow queries ##########
+spring.jpa.properties.hibernate.session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 1
+spring.jpa.properties.hibernate.generate_statistics: true
+spring.jpa.properties.hibernate.session.events.log: org.hibernate.event.service.spi.EventListenerRegistry
+spring.jpa.properties.jakarta.persistence.validation.mode: none
+### CACHE
+spring.jpa.properties.jakarta.persistence.sharedCache.mode: ENABLE_SELECTIVE
+spring.jpa.properties.jakarta.persistence.cache.storeMode: REFRESH
+spring.jpa.properties.jakarta.persistence.cache.retrieveMode: BYPASS
+
+#spring.datasource.url: jdbc:mysql://localhost:3306/test_db?createDatabaseIfNotExist: true
+spring:
+  datasource:
+    #    url: spring.datasource.url: jdbc:mysql://localhost:3306/groot?createDatabaseIfNotExist: true&allowPublicKeyRetrieval: true&useSSL: false&useUnicode: true&characterEncoding: UTF-8&serverTimezone: UTC
+#    url: jdbc:mysql://cryptomav3n.ce1qqymm6i27.us-east-1.rds.amazonaws.com:3306/cryptomav3n?useSSL=false&serverTimezone=UTC&DATABASE_TO_LOWER=TRUE&CASE_INSENSITIVE_IDENTIFIERS=TRUE&NON_KEYWORDS=VALUE,PASSWORD
+    url: jdbc:mysql://localhost:3306/cryptomav3n?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: admin
+    password: ${MYSQL_AWS_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      database: mysql
+      #########  OVERRIDE MySQL ##########
+      repositories:
+      #        bootstrap-mode: default
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+          useUnicode: true
+          show-sql: true
+          format_sql: true
+          jdbc.lob.non_contextual_creation: true
+          connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+      sql:
+        init:
+          schema-locations: classpath:schema-mysql.sql
+          data-locations: classpath:data-mysql.sql
+          mode: never #  always #
+          continue-on-error: true
+# DEV ONLY
+spring.jmx.enabled: false
+#because the javax.management.InstanceAlreadyExistsException occurs when there is an attempt to register an MBean (Managed Bean) that has already been registered. JMX is used for managing and monitoring Java applications, \
+#  and Spring Boot automatically registers various MBeans for management purposes.
+spring.jpa.hibernate.ddl-auto: none #update
+## Public views
+# show  bind values
+logging.level.org.hibernate.type.descriptor.sql: trace
+management.endpoints.web.exposure.include: "*"
+management.info.env.enabled: true
+logging.level.org.springframework: info
+## Hikari
+spring.datasource.hikari.pool-name: MaplDB-Pool
+spring.datasource.hikari.maximum-pool-size: 5
+spring.datasource.hikari.data-source-properties.cachePrepStmts: true
+spring.datasource.hikari.data-source-properties.prepStmtCacheSize: 250
+spring.datasource.hikari.data-source-properties.prepStmtCacheSqlLimit: 2048
+spring.datasource.hikari.data-source-properties.useServerPrepStmts: true
+spring.datasource.hikari.data-source-properties.useLocalSessionState: true
+spring.datasource.hikari.data-source-properties.rewriteBatchedStatements: true
+spring.datasource.hikari.data-source-properties.cacheResultSetMetadata: true
+spring.datasource.hikari.data-source-properties.cacheServerConfiguration: true
+spring.datasource.hikari.data-source-properties.elideSetAutoCommits: true
+spring.datasource.hikari.data-source-properties.maintainTimeStats: false
+## MIGRATIONS
+spring.flyway.enabled: false
+
+########## LOG LEVELS ##########
+########## Log springframework   ##########
+logging.level.org.springframework.web: INFO
+logging.level.org.springframework.security: INFO
+logging.level.org.springframework.security.web: OFF
+logging.level.org.springframework.security.authentication: OFF
+# Show bind values ######### trace OFF #########
+logging.level.org.hibernate.orm.jdbc.bind: OFF
+#pre spring boot 3.0.2: logging.level.org.hibernate.type.descriptor.sql: trace
+########## Log hibernate SQL statements ##########
+logging.level.org.hibernate.cache: info
+logging.level.org.hibernate.stat: info
+########## Log app/class level ##########
+logging.level.com.mapl.app: info
+# UI
+spring.mvc.format.date: yyyy-MM-dd
+spring.thymeleaf.cache: false
+spring.thymeleaf.enabled: true
+spring.mvc.view.suffix: .jsp
+#spring.mvc.view.prefix: /view/jsp/
+#server.servlet.context-path: /v1
+#logging.appender.console: org.springframework.boot.logging.logback.ConsoleAppender
+#logging.appender.console: org.springframework.boot.logging.logback.ConsoleAppender
+#logging.appender.console.layout: org.springframework.boot.logging.logback.ColorConsoleLayout
+#logging.appender.console.layout.pattern: %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){yellow} %clr(${PID}){yellow} %clr(-){blue} %clr([%5p]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(---){faint} %clr([%t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%xEx
+
+##########  APP-Specific NOTES    ##########
+########## Docker #################################################
+#/connect todos-user@localhost:3306
+#docker run --detach
+#--env MYSQL_ROOT_PASSWORD: dummypassword
+#--env MYSQL_USER: todos-user
+#--env MYSQL_PASSWORD: dummytodos
+#--env MYSQL_DATABASE: todos
+#--name mysql
+#--publish 3306:3306
+#mysql:8-oracle
+
+app.jwt-secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+app.jwt-expiration-milliseconds: 604800000
+##########  DEV -Specific NOTES    ##########
+

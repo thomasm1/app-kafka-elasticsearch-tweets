@@ -1,3 +1,14 @@
+
+#### Spring Cloud Netflix Eureka
+#### Spring Cloud Zuul
+#### Spring Cloud Config
+#### Spring Security OAuth2
+#### Spring Cloud Gateway
+
+```SH
+curl http://localhost:8761/eureka/apps
+ ```
+
 Port(s): 8761 (http) with context path ''
 REGISTRY (Eureka)
 http://localhost:8761/

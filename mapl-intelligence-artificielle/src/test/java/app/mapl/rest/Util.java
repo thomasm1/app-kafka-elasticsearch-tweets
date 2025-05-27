@@ -1,4 +1,4 @@
-package app.mapl;
+package app.mapl.rest;
 
 import org.springframework.test.web.reactive.server.WebTestClient;
 

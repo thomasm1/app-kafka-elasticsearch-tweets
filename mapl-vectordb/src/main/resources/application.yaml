@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: vectordb
+  datasource:
+    username: vectordb_user
+    password: vectordb_password
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/vectordb
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+#      enabled: true
+
+
+## Configuring actuator endpoints
+spring.ai.openai.api-key: ${OPENAI_API_KEY}
+spring.ai.openai.chat.options.model: gpt-4

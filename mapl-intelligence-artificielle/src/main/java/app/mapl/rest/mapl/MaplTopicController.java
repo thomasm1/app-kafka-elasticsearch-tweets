@@ -3,7 +3,7 @@ package app.mapl.rest.mapl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.jetbrains.annotations.NotNull;
+ 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,7 +77,7 @@ public class MaplTopicController {
             description = "HTTP Status 200 SUCCESS"
     )
 @GetMapping("/mapl-topic/{id}")
-MaplTopic getMaplTopicById(@NotNull @PathVariable UUID id)  {
+MaplTopic getMaplTopicById( @PathVariable UUID id)  {
     Optional<MaplTopic> maplTopic = Optional.ofNullable(this.maplRepository.findById(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         return maplTopic.get();
@@ -90,13 +90,15 @@ MaplTopic getMaplTopicById(@NotNull @PathVariable UUID id)  {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS; "
     )
-    @GetMapping("/mapl-topics")
+    @GetMapping("/mapl-topic")
     public Flux<String> getMaplTopics() {
         return maplClient.prompt()
                 .user("I am going to Paris and and Valenciennes, what are 10 places I should see first in each place: \n EXPECTED RESPONSE - ")
                 .stream()   // StreamResponseSpec
                 .content();
     }
+
+
     @Operation(
             summary = "Get All mapl-topic-string REST API",
             description = "Get All mapl-topic-string"
@@ -105,12 +107,12 @@ MaplTopic getMaplTopicById(@NotNull @PathVariable UUID id)  {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    @GetMapping("/mapl-topic-string")
-    public String maplTopicString(String topic) {
+    @GetMapping("/mapl-topic/topic/{topic}")
+    public String maplTopicString(@PathVariable String topic) {
 
         return  maplClient.prompt()
                 .user(u -> {
-                    u.text("Tell me a fact about {topic}");
+                    u.text("Tell me a fact about "+topic);
                     u.param("topic", topic);
                 })
                 .call()

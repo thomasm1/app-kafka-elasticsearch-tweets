@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>app.mapl</groupId>
-	<artifactId>mapl-integration</artifactId>
+	<artifactId>mapl-intelligence-artificielle</artifactId>
 	<version>1.2.0</version>
 	<packaging>jar</packaging>
-	<name>mapl-integration</name>
-	<description>client-mapl-integration</description>
+	<name>mapl-intelligence-artificielle</name>
+	<description>client-mapl-intelligence-artificielle</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -34,7 +34,9 @@
 
 		<project.report.sourceEncoding>UTF-8</project.report.sourceEncoding>
 		<spring.version>3.1.0</spring.version>
- 		<junit.jupiter.version>5.10.2</junit.jupiter.version>
+		<spring-ai.version>1.0.0-M1</spring-ai.version>
+<!--		<spring-ai.version>1.0.0-M2</spring-ai.version>-->
+		<junit.jupiter.version>5.10.2</junit.jupiter.version>
 <!--		<assertj.version>3.21.0</assertj.version>-->
 
 		<jakartaee-api.version>9.1.0</jakartaee-api.version>
@@ -67,44 +69,20 @@
 			<scope>runtime</scope>
 		</dependency>
 
-
-
-		<!-- CLOUD -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-
+		<!-- REACTIVE -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!--        <dependency>-->
-		<!--            <groupId>org.springframework.cloud</groupId>-->
-		<!--            <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>-->
-		<!--        </dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
@@ -118,15 +96,7 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- REACTIVE -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
+
 
 <!-- TEST -->
 		<dependency>
@@ -154,39 +124,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!--INTEEGRATION-->
-							<dependency>
-								<groupId>org.springframework.integration</groupId>
-								<artifactId>spring-integration-core</artifactId>
-							</dependency>
-							<dependency>
-								<groupId>org.springframework.integration</groupId>
-								<artifactId>spring-integration-file</artifactId>
-							</dependency>
-							<dependency>
-								<groupId>org.springframework.integration</groupId>
-								<artifactId>spring-integration-test</artifactId>
-								<scope>test</scope>
-							</dependency>
-							<dependency>
-								<groupId>org.springframework.integration</groupId>
-								<artifactId>spring-integration-http</artifactId>
-							</dependency>
-							<dependency>
-								<groupId>org.springframework.integration</groupId>
-								<artifactId>spring-integration-webflux</artifactId>
-							</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -203,19 +141,18 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.1.0</version>
 		</dependency>
-
-
-		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>24.0.1</version>
-			<scope>compile</scope>
-		</dependency>
-
 	</dependencies>
+
+
 	<dependencyManagement>
 		<dependencies>
-
+			<dependency>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-bom</artifactId>
+				<version>${spring-ai.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 				<dependency>
 					<groupId>org.springframework.cloud</groupId>
 					<artifactId>spring-cloud-dependencies</artifactId>

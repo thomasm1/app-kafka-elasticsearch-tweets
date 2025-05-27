@@ -1,0 +1,2 @@
+curl --form POST http://localhost:8080/thomas/inquire \
+question=="What is the richest city in France?"

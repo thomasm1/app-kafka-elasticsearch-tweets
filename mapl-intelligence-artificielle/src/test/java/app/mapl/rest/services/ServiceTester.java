@@ -1,6 +1,6 @@
-package app.mapl.rest.services;
+ package app.mapl.rest.services;
 
-import app.mapl.Util;
+import app.mapl.rest.Util;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -9,27 +9,25 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.net.URI;
 import java.util.UUID;
 
-@Lazy  // Ensures local.server.port is set by the time it is wired
+@Lazy
 @Component
 public class ServiceTester {
 
-    @Value(value = "${local.server.port}")
+    @Value("${local.server.port}")
     private int port;
-    
+
     private static final String SERVICE_PATH = "/services";
 
     public URI uriForServiceId(UUID id) {
-        return URI.create(
-                Util.baseUri(port) + SERVICE_PATH + "/" + id.toString()
-              );
+        return URI.create(Util.baseUri(port) + SERVICE_PATH + "/" + id);
     }
 
     public WebTestClient.ResponseSpec registerService(RegisterServiceRequest serviceRequest) {
-        return Util.newMaplClient(port) 
-                .post()
-                .uri(SERVICE_PATH)
-                .bodyValue(serviceRequest)
-                .exchange(); 
+        return Util.newMaplClient(port)
+            .post()
+            .uri(SERVICE_PATH)
+            .bodyValue(serviceRequest)
+            .exchange();
     }
 
     public ServiceResponse registerServiceAsEntity(RegisterServiceRequest serviceRequest) {
@@ -42,16 +40,15 @@ public class ServiceTester {
 
     public WebTestClient.ResponseSpec getService(URI serviceUri) {
         return Util.newMaplClient(port)
-                .get()
-                .uri(serviceUri)
-                .exchange();
+            .get()
+            .uri(serviceUri)
+            .exchange();
     }
 
     public ServiceResponse getServiceFromResponse(WebTestClient.ResponseSpec response) {
         return response
-                .expectBody(ServiceResponse.class)
-                .returnResult()
-                .getResponseBody();
+            .expectBody(ServiceResponse.class)
+            .returnResult()
+            .getResponseBody();
     }
-    
 }

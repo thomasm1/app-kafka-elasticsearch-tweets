@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 
 @OpenAPIDefinition(
 		info = @Info(
-				title = "Personal Crypto Librarian REST API Documentation",
+				title = "Personal ai Librarian REST API Documentation",
 				description = "Spring Boot REST API Documentation",
 				version = "v1.0",
 				contact = @Contact(

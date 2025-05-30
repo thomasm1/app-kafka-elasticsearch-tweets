@@ -35,9 +35,9 @@ public class ServiceController {
             description = " makeNew Resource; pass Name //    {  \"name\":\"any-name\"   } save to database"
     )
     @ApiResponse(
-            responseCode = "201",
-            description = "HTTP Status 201 SUCCESS",
-            content = @Content(mediaType = "id:6a81b3c3-c0c3-4bc6-8bb7-7f80eca45812,name:any-name")
+        responseCode = "201",
+        description = "HTTP Status 201 SUCCESS",
+        content = @Content(mediaType = "application/json")
     )
     @PostMapping("/services")
     ResponseEntity<Service> registerNewService(@RequestBody Service registerServiceRequest) {

@@ -1,5 +1,7 @@
 package xyz.cryptomaven.rest.services;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.cryptomaven.rest.models.Attribute;
@@ -43,7 +45,7 @@ public class NftServiceImpl implements NftService {
     }
 
     @Override
-    public NftCoinDto createNft(NftCoinDto nftCoinDto) {
+    public @Nullable NftCoinDto createNft(@NonNull NftCoinDto nftCoinDto) {
         NftCoin nftCoin = convertToEntity(nftCoinDto);
 
         // Save Metadata first
